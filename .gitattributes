@@ -1,0 +1,10 @@
+* text=auto
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.mp3 binary
+*.wav binary
+*.woff2 binary
+**/fonts/LICENSE.txt -text

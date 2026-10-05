@@ -1,0 +1,118 @@
+.nooks-create-overlay{position:fixed;inset:0;z-index:220;display:grid;place-items:center;padding:24px;background:#17161480;backdrop-filter:blur(9px)}
+.nooks-create-dialog{box-sizing:border-box;--create-ink:#38352e;--create-muted:#79736a;--create-line:#e6e0d6;color-scheme:light;width:min(620px,100%);max-height:min(820px,92dvh);display:flex;flex-direction:column;overflow:hidden;background:#fcfaf5;color:var(--create-ink);border:1px solid #fff9;border-radius:20px;box-shadow:0 28px 90px #100c0838;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.5;animation:nooks-create-arrive .2s ease-out}
+.nooks-create-dialog *{box-sizing:border-box}
+.nooks-create-dialog>header{display:flex;align-items:center;justify-content:space-between;padding:21px 24px 8px;gap:20px}
+.nooks-create-dialog h2{margin:0;color:var(--create-ink);font:600 22px/1.4 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.5px}
+.nooks-create-dialog button{font:inherit;cursor:pointer;transition:background .15s,color .15s;box-shadow:none}
+.nooks-create-dialog button:disabled{opacity:.45;cursor:default}
+.nooks-create-dialog .nooks-material-close{position:static;inset:auto;z-index:auto;display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--create-muted);padding:0}
+.nooks-create-dialog .nooks-material-close:hover:not(:disabled){background:#eee9df;color:var(--create-ink)}
+.nooks-create-dialog form{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.nooks-create-dialog .nooks-create-scroll{overflow:auto;overscroll-behavior:contain;padding:0 24px 13px;min-height:0}
+.nooks-create-dialog fieldset{border:0;padding:0;margin:0;min-width:0}
+.nooks-create-dialog fieldset:disabled{opacity:.65}
+.nooks-create-dialog .nooks-create-formats{display:flex;gap:24px;border-bottom:1px solid var(--create-line);margin-bottom:19px}
+.nooks-create-dialog .nooks-create-formats button{border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:var(--create-muted);padding:12px 0 10px;min-height:44px;font-size:14px}
+.nooks-create-dialog .nooks-create-formats button[aria-pressed=true]{border-color:var(--create-ink);color:var(--create-ink);font-weight:600}
+.nooks-create-dialog label{display:flex;flex-direction:column;gap:7px;color:var(--create-ink);font-size:13px;font-weight:500;min-width:0}
+.nooks-create-dialog input,.nooks-create-dialog textarea,.nooks-create-dialog select{width:100%;min-width:0;border:1px solid var(--create-line);border-radius:9px;background:#fffdf9;color:var(--create-ink);padding:11px 12px;font:400 14px/1.6 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:normal;box-shadow:none}
+.nooks-create-dialog input::placeholder,.nooks-create-dialog textarea::placeholder{color:#9a9389;opacity:1}
+.nooks-create-dialog textarea{resize:vertical;max-height:360px}
+.nooks-create-dialog .nooks-create-request textarea{min-height:135px;max-height:260px;resize:vertical;font-size:16px;line-height:1.7;background:transparent;border:0;border-radius:0;padding:4px 0 10px}
+.nooks-create-dialog .nooks-create-request textarea:focus-visible{outline-offset:5px;border-radius:4px}
+.nooks-create-dialog :is(button,input,textarea,select,summary):focus-visible{outline:2px solid #8e775d;outline-offset:3px}
+.nooks-create-dialog .nooks-create-tools{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 -4px 10px}
+.nooks-create-dialog .nooks-create-text{padding:8px 4px;min-height:36px;color:var(--create-muted);border:0;border-radius:5px;background:transparent;font-size:12px;text-align:left}
+.nooks-create-dialog .nooks-create-text:hover:not(:disabled){color:var(--create-ink);background:#f0ece4}
+.nooks-create-dialog details summary{cursor:pointer;list-style:none;color:var(--create-muted);font-size:13px;min-height:40px;display:flex;align-items:center;gap:7px}
+.nooks-create-dialog details summary::-webkit-details-marker{display:none}
+.nooks-create-dialog details summary:before{content:'+';font-size:17px;font-weight:400;width:12px;flex-shrink:0}
+.nooks-create-dialog details[open]>summary:before{content:'−'}
+.nooks-create-dialog details summary>span{color:#989186;font-size:11px;margin-left:auto}
+.nooks-create-dialog .nooks-create-details{border-top:1px solid var(--create-line)}
+.nooks-create-dialog .nooks-create-details[open]{padding-bottom:12px}
+.nooks-create-dialog .nooks-create-metadata{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;padding-top:4px}
+.nooks-create-dialog .nooks-create-manual-heading,.nooks-create-dialog .nooks-create-item-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nooks-create-dialog .nooks-create-manual-heading{margin:-6px 0 13px;color:var(--create-muted);font-size:12px}
+.nooks-create-dialog .nooks-create-title{margin-bottom:18px}
+.nooks-create-dialog .nooks-create-note{margin-bottom:18px}
+.nooks-create-dialog .nooks-create-note textarea{min-height:210px}
+.nooks-create-dialog .nooks-create-item{padding:16px 0;border-top:1px solid var(--create-line);background:transparent;border-radius:0;box-shadow:none}
+.nooks-create-dialog .nooks-create-item-heading{margin-bottom:11px}
+.nooks-create-dialog .nooks-create-item-heading strong{font-size:13px;font-weight:600}
+.nooks-create-dialog .nooks-create-remove{background:transparent;border:0;padding:6px 0 6px 8px;color:var(--create-muted);font-size:12px;min-height:32px}
+.nooks-create-dialog .nooks-create-remove:hover{color:#914b3e}
+.nooks-create-dialog .nooks-create-card-sides{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.nooks-create-dialog .nooks-create-card-sides textarea{min-height:94px}
+.nooks-create-dialog .nooks-create-detail-field{margin-top:5px}
+.nooks-create-dialog .nooks-create-detail-field summary{font-size:12px}
+.nooks-create-dialog .nooks-create-add{background:transparent;border:0;padding:8px 0 15px;min-height:42px;color:#645342;font-size:13px}
+.nooks-create-dialog .nooks-create-answer-style{max-width:185px;margin:12px 0}
+.nooks-create-dialog .nooks-create-answer-style select{font-size:12px;padding:8px 10px}
+.nooks-create-dialog .nooks-create-options>p{font-size:12px;color:var(--create-muted);margin:0 0 9px}
+.nooks-create-dialog .nooks-create-option{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.nooks-create-dialog .nooks-create-radio{display:flex;flex-direction:row;align-items:center;justify-content:center;flex-shrink:0;gap:5px;width:43px;min-height:40px;font-size:12px;color:var(--create-muted)}
+.nooks-create-dialog .nooks-create-radio input{width:16px;height:16px;min-width:16px;margin:0;padding:0;accent-color:#897057}
+.nooks-create-dialog .nooks-create-option>input{flex:1;padding:9px 10px;font-size:13px}
+.nooks-create-dialog .nooks-create-item>label{margin-bottom:12px}
+.nooks-create-dialog .nooks-create-optional{font-size:11px;font-weight:400;color:var(--create-muted)}
+.nooks-create-dialog footer{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-shrink:0;padding:15px 24px 20px;border-top:1px solid var(--create-line);background:#fcfaf5}
+.nooks-create-dialog .nooks-create-submit{min-height:44px;padding:11px 19px;border:0;border-radius:10px;background:#4c443a;color:#fffdf8;font-size:13px;font-weight:500;white-space:nowrap}
+.nooks-create-dialog .nooks-create-submit:hover:not(:disabled){background:#665847}
+.nooks-create-dialog .nooks-create-errors{margin:12px 0 0;padding:11px 13px;border-left:2px solid #b97154;color:#884d38;background:#f7eee5;font-size:13px;border-radius:0 5px 5px 0}
+.nooks-create-dialog .nooks-create-errors ul{margin:0;padding-left:17px}
+.nooks-create-dialog .nooks-create-status{margin:12px 0 0;color:#5f674e;font-size:13px}
+.nooks-create-dialog .nooks-create-input-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:3px 0 12px}
+.nooks-create-dialog .nooks-create-input-actions>button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--create-line);border-radius:8px;background:#fffdf9;color:#625c52;padding:7px 11px;min-height:36px;font-size:12px}
+.nooks-create-dialog .nooks-create-input-actions>button:hover,.nooks-create-dialog .nooks-create-input-actions>button[aria-expanded=true]{background:#f0ece5;border-color:#d2c9bc;color:var(--create-ink)}
+.nooks-create-dialog .nooks-create-input-actions>button>span{display:grid;place-items:center;min-width:17px;height:17px;border-radius:5px;background:#e7ded0;color:#514739;font-size:10px}
+.nooks-create-dialog .nooks-create-source-chips{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:0 0 12px}
+.nooks-create-dialog .nooks-create-source-chips>span:first-child{color:var(--create-muted);font-size:11px;margin-right:2px}
+.nooks-create-dialog .nooks-create-source-chip{display:inline-flex;align-items:center;gap:5px;max-width:100%;border-radius:6px;background:#ede7dc;color:#615747;padding:4px 4px 4px 9px;font-size:12px;animation:nooks-create-arrive .18s ease-out}
+.nooks-create-dialog .nooks-create-source-chip>span{max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nooks-create-dialog .nooks-create-source-chip>button{display:grid;place-items:center;width:24px;height:24px;padding:0;border:0;border-radius:4px;background:transparent;color:inherit}
+.nooks-create-dialog .nooks-create-source-chip>button:hover{background:#ded3c2}
+.nooks-create-dialog .nooks-create-source-chip>.nooks-create-pasted-chip{width:auto;font-size:12px;padding:0 2px}
+.nooks-create-dialog .nooks-create-source-chip.is-unavailable{color:#984e38;background:#f3e5de}
+.nooks-create-dialog .nooks-create-scope-hint{color:#898176;font-size:11px;padding:8px 4px}
+.nooks-create-dialog .nooks-create-paste{padding:12px 14px 5px;border:1px solid var(--create-line);border-radius:10px;margin-bottom:12px;background:#f6f2ea;animation:nooks-create-arrive .18s ease-out}
+.nooks-create-dialog .nooks-create-paste label>span{font-size:12px;color:#777064}
+.nooks-create-dialog .nooks-create-paste textarea{font-size:13px;min-height:100px;max-height:200px;background:#fffdf9}
+.nooks-create-dialog .nooks-create-source-picker{margin:0 0 14px;padding:0 12px;background:#fffefa;border:1px solid #ddd5c9;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px #4f382908;animation:nooks-create-arrive .18s ease-out}
+.nooks-create-dialog .nooks-create-picker-heading{display:flex;align-items:center;justify-content:space-between;padding:6px 0 3px}
+.nooks-create-dialog .nooks-create-picker-heading>strong{font-size:13px;font-weight:550}
+.nooks-create-dialog .nooks-create-source-search{display:flex;flex-direction:row;gap:8px;align-items:center;padding:0 10px;border:1px solid var(--create-line);border-radius:7px;background:#faf8f3;color:#918779;margin-bottom:6px}
+.nooks-create-dialog .nooks-create-source-search>input{border:0;background:transparent;padding:8px 0;font-size:12px;line-height:1.7}
+.nooks-create-dialog .nooks-create-source-search:focus-within{outline:2px solid #9b846a;outline-offset:2px}
+.nooks-create-dialog .nooks-create-source-search>input:focus-visible{outline:none}
+.nooks-create-dialog .nooks-create-source-list{max-height:208px;overflow:auto;overscroll-behavior:contain;padding:2px 0}
+.nooks-create-dialog .nooks-create-source-row{position:relative;display:flex;flex-direction:row;align-items:center;gap:11px;padding:10px 7px;border-radius:7px;cursor:pointer;color:#4a433a;transition:background .14s}
+.nooks-create-dialog .nooks-create-source-row:hover{background:#f6f2ea}
+.nooks-create-dialog .nooks-create-source-row.is-selected{background:#f3eee4}
+.nooks-create-dialog .nooks-create-source-row>input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;padding:0}
+.nooks-create-dialog .nooks-create-source-row:has(input:focus-visible){outline:2px solid #9b846a;outline-offset:-2px}
+.nooks-create-dialog .nooks-create-source-row:has(input:disabled){opacity:.45;cursor:default}
+.nooks-create-dialog .nooks-create-source-tick{display:grid;place-items:center;flex-shrink:0;width:17px;height:17px;border:1px solid #c9bfae;border-radius:4px;background:#fffefa;color:#fff}
+.nooks-create-dialog .nooks-create-source-row.is-selected .nooks-create-source-tick{background:#74604a;border-color:#74604a}
+.nooks-create-dialog .nooks-create-source-row>span:last-child{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nooks-create-dialog .nooks-create-source-row strong{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nooks-create-dialog .nooks-create-source-row small{font-size:10px;color:#948a7d}
+.nooks-create-dialog .nooks-create-picker-empty{font-size:12px;color:#8d8477;padding:14px 6px}
+.nooks-create-dialog .nooks-create-picker-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--create-line);padding:8px 0;color:#8a7e6d;font-size:11px}
+.nooks-create-dialog .nooks-create-picker-footer button{padding:6px 13px;min-height:32px;border:0;border-radius:6px;background:#eee6d8;color:#5d4c38;font-size:12px}
+.nooks-create-dialog .nooks-create-footer-note{font-size:11px;color:#93887a;display:block;max-width:150px}
+.nooks-create-dialog .nooks-create-submit{display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.nooks-create-dialog .nooks-create-title{display:block}
+.nooks-create-dialog .nooks-create-title>input{display:block;margin-top:6px}
+.nooks-create-dialog .nooks-create-title>.nooks-create-optional{margin-left:5px}
+.nooks-create-dialog .nooks-create-handoff{border-top:1px solid var(--create-line);margin-top:14px;padding:14px 0 0}
+.nooks-create-dialog .nooks-create-handoff>a{display:inline-flex;align-items:center;gap:5px;color:#67533c;font-size:13px;text-underline-offset:3px}
+.nooks-create-dialog .nooks-create-handoff>p{font-size:11px;color:#8a8072;margin:8px 0 0}
+.nooks-create-dialog .nooks-create-handoff textarea{font-size:12px;line-height:1.6;min-height:110px}
+.nooks-create-dialog .nooks-create-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.nooks-create-overlay.is-closing{animation:nooks-create-fade-out 140ms ease-in both}.nooks-create-overlay.is-closing .nooks-create-dialog{animation:nooks-create-leave 140ms ease-in both}
+@keyframes nooks-create-fade-out{to{opacity:0}}@keyframes nooks-create-leave{to{transform:translateY(6px)}}
+@keyframes nooks-create-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:540px){.nooks-create-overlay{padding:12px}.nooks-create-dialog{border-radius:16px;max-height:94dvh}.nooks-create-dialog>header{padding:16px 18px 6px}.nooks-create-dialog .nooks-create-scroll{padding:0 18px 12px}.nooks-create-dialog footer{padding:14px 18px 17px;gap:8px}.nooks-create-dialog .nooks-create-formats{gap:24px}.nooks-create-dialog .nooks-create-tools{gap:0;flex-wrap:wrap}.nooks-create-dialog .nooks-create-request textarea{font-size:16px;min-height:145px}.nooks-create-dialog input,.nooks-create-dialog textarea{font-size:16px}.nooks-create-dialog .nooks-create-card-sides,.nooks-create-dialog .nooks-create-metadata{grid-template-columns:1fr}.nooks-create-dialog .nooks-create-submit{font-size:12px;padding:11px 14px}}
+@media(max-width:540px){.nooks-create-dialog h2{font-size:20px}.nooks-create-dialog .nooks-create-formats{gap:20px}.nooks-create-dialog .nooks-create-source-search>input,.nooks-create-dialog .nooks-create-paste textarea{font-size:16px}.nooks-create-dialog .nooks-create-footer-note{font-size:10px;max-width:120px}.nooks-create-dialog .nooks-create-source-chip>span{max-width:220px}}
+@media(prefers-reduced-motion:reduce){.nooks-create-dialog,.nooks-create-overlay.is-closing,.nooks-create-overlay.is-closing .nooks-create-dialog,.nooks-create-dialog .nooks-create-source-chip,.nooks-create-dialog .nooks-create-paste,.nooks-create-dialog .nooks-create-source-picker{animation:none}.nooks-create-dialog button,.nooks-create-dialog .nooks-create-source-row{transition:none}}

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "desert-casita",
+    "image": "/images/lofi-desert-casita.webp",
+    "style": "cinematic",
+    "prompt": "Use case: stylized-concept. Create one original cinematic 16:9 widescreen cozy study-room background, approximately 1672x941. Hand-painted atmospheric anime/lofi gouache aesthetic, exquisite painterly detail and light, authentic architecture, tactile wood/stone/fabric. Camera seated eye level, rich landscape seen through a generous window, an elegant study desk lower-right or lower-left foreground with open notebook, books and warm lamp, uncluttered breathing room in middle for floating app controls. Entire image is actual scenic artwork, not an interface or mockup. No people, animals, characters, pets, lettering, readable text, logos, watermarks, borders or UI. Fill frame edge to edge. A terracotta adobe casita study at sunset in the Sonoran desert. Rounded plaster window reveals distant layered sandstone mesas, cactus silhouettes, peach and mauve sunset sky. Deep rust plaster, handwoven cream rug, clay pots, linen curtains, walnut desk and amber lamp in lower-right. Warm dry copper/peach palette and dramatic soft sunset shafts.",
+    "originalImage": "assets/originals/images/lofi-desert-casita.png"
+  },
+  {
+    "id": "underwater-study",
+    "image": "/images/lofi-underwater-study.webp",
+    "style": "dreamlike",
+    "prompt": "Use case: stylized-concept. Create one original cinematic 16:9 widescreen cozy study-room background, approximately 1672x941. Hand-painted atmospheric anime/lofi gouache aesthetic, exquisite painterly detail and light, authentic architecture, tactile wood/stone/fabric. Camera seated eye level, rich landscape seen through a generous window, an elegant study desk lower-right or lower-left foreground with open notebook, books and warm lamp, uncluttered breathing room in middle for floating app controls. Entire image is actual scenic artwork, not an interface or mockup. No people, animals, characters, pets, lettering, readable text, logos, watermarks, borders or UI. Fill frame edge to edge. A believable fantastical underwater research study, warm wooden interior enclosed by a broad curved aquarium glass window. Outside: tranquil deep-blue water, sunrays, coral reefs, flowing kelp, underwater rock formations, no creatures. Walnut writing desk lower-right with brass lamp, cream pages, wool blanket. Cozy amber refuge contrasted with rich cobalt/teal ocean, cinematic caustic reflections.",
+    "originalImage": "assets/originals/images/lofi-underwater-study.png"
+  },
+  {
+    "id": "floating-airship",
+    "image": "/images/lofi-floating-airship.webp",
+    "style": "dreamlike",
+    "prompt": "Use case: stylized-concept. Create one original cinematic 16:9 widescreen cozy study-room background, approximately 1672x941. Hand-painted atmospheric anime/lofi gouache aesthetic, exquisite painterly detail and light, authentic architecture, tactile wood/stone/fabric. Camera seated eye level, rich landscape seen through a generous window, an elegant study desk lower-right or lower-left foreground with open notebook, books and warm lamp, uncluttered breathing room in middle for floating app controls. Entire image is actual scenic artwork, not an interface or mockup. No people, animals, characters, pets, lettering, readable text, logos, watermarks, borders or UI. Fill frame edge to edge. An antique floating airship navigator's cozy study cabin high above clouds, broad brass-framed windows revealing enormous golden clouds and distant mountain peaks at sunrise. Warm polished wood walls, curved copper riveted supports, old maps with no text, brass telescope, small amber desk lamp, rich burgundy cushions. Desk lower-right. Amber brass, cream cloud and dusty blue palette; serene airborne wonder.",
+    "originalImage": "assets/originals/images/lofi-floating-airship.png"
+  },
+  {
+    "id": "moon-base",
+    "image": "/images/lofi-moon-base.webp",
+    "style": "cinematic",
+    "prompt": "Use case: stylized-concept. Create one original cinematic 16:9 widescreen cozy study-room background, approximately 1672x941. Hand-painted atmospheric anime/lofi gouache aesthetic, exquisite painterly detail and light, authentic architecture, tactile wood/stone/fabric. Camera seated eye level, rich landscape seen through a generous window, an elegant study desk lower-right or lower-left foreground with open notebook, books and warm lamp, uncluttered breathing room in middle for floating app controls. Entire image is actual scenic artwork, not an interface or mockup. No people, animals, characters, pets, lettering, readable text, logos, watermarks, borders or UI. Fill frame edge to edge. A quiet lunar observatory study interior on the Moon at blue hour: panoramic sealed glass window reveals lunar ridges, cratered grey ground, black velvet starry space and a beautiful blue Earth above horizon. Cozy small walnut desk lower-right with a soft warm lamp and cream notebook, matte ivory modular architecture, burgundy wool throw. Refined believable space habitat; cool silver/indigo and restrained amber warmth, deep quiet.",
+    "originalImage": "assets/originals/images/lofi-moon-base.png"
+  },
+  {
+    "id": "woodland-treehouse",
+    "image": "/images/lofi-woodland-treehouse.webp",
+    "style": "illustrated",
+    "prompt": "Use case: illustration-story. Original widescreen 16:9 cozy treehouse study background for a study app, approximately 1672x941. STRONGLY whimsical illustrated children's storybook cartoon, charming slightly wonky hand-drawn contours, flattened painted gouache shapes, warm textured paper brush strokes, expressive rounded timber architecture; NOT photorealistic or 3D. Giant oak branches frame a broad open window onto layers of green forest canopy, soft mist and honey sunshine. Small hand-carved writing desk lower right, notebook without writing, books, canvas cushions, suspended paper lamp. Warm woodland greens, caramel wood and golden light. Large uncluttered middle area for an interface overlay, actual scenic art full bleed edge to edge. No people, animals, pets, faces, characters, readable text, typography, logos, watermarks, borders, UI, collage.",
+    "originalImage": "assets/originals/images/lofi-woodland-treehouse.png"
+  },
+  {
+    "id": "lavender-cottage",
+    "image": "/images/lofi-lavender-cottage.webp",
+    "style": "watercolor",
+    "prompt": "Use case: stylized-concept. Original widescreen 16:9 Provence lavender cottage study background, approximately 1672x941. DISTINCT airy watercolor painting on textured cold-press paper: soft translucent washes, visible pigment blooms, loose elegant pencil line work, graceful unfinished edges within the scene, gentle violet and cream palette. NOT photorealism, digital glossy rendering or 3D. Rustic limestone cottage interior with generous shuttered window onto violet lavender fields, cypress rows, blue distant hills and late afternoon honey light. Pale oak writing desk lower-right with blank open cream notebook and ceramic warm lamp, linen curtains and lavender stems in a simple vase. Spacious quiet center for floating interface controls. Full bleed scenic illustration edge to edge, no white exterior border. No humans, animals, pets, characters, text, logos, watermarks, UI, labels or collage.",
+    "originalImage": "assets/originals/images/lofi-lavender-cottage.png"
+  },
+  {
+    "id": "canal-apartment",
+    "image": "/images/lofi-canal-apartment.webp",
+    "style": "anime",
+    "prompt": "Use case: stylized-concept. Original widescreen 16:9 cozy Amsterdam canal apartment study background, approximately 1672x941. Bold clearly TWO-DIMENSIONAL FLAT ANIME LOFI environment illustration: clean ink outlines, simplified geometry, deliberate cel-shading, limited rich indigo, dusty lavender, warm terracotta and amber palette, graphic reflections; NOT painterly photorealism, NOT 3D. Tall wood-framed bay windows reveal Dutch gabled houses, narrow canal, arched brick bridge, rain ripples and warm lights at dusk. Walnut writing desk lower-right with blank open notebook and small glowing brass lamp, bookcase, burgundy carpet and linen curtain. Serene restrained city refuge. Large breathing room in the middle to overlay app controls. Full bleed scenic art edge to edge. No people, pets, animals, characters, text, logos, watermarks, UI, border or collage.",
+    "originalImage": "assets/originals/images/lofi-canal-apartment.png"
+  },
+  {
+    "id": "night-campus",
+    "image": "/images/lofi-night-campus.webp",
+    "style": "pixel",
+    "prompt": "Use case: stylized-concept. Original 16:9 cozy PIXEL ART university library at night background, rendered approximately 1672x941. CRISP AUTHENTIC hand-placed pixel art look with obvious square pixel clusters and stair-stepped edges, a low-resolution 320x180 composition enlarged nearest-neighbor to widescreen, restrained richly shaded 24-color palette, no smooth gradients, no antialiasing, no photo detail, no 3D. Gothic arched windows show a dark blue ivy collegiate quadrangle, rain-wet stone paths, softly lit university buildings and tiny stars. Warm amber reading lamp pools, dark oak shelves, small desk lower-right with an open notebook with NO legible writing, oxblood armchair. Indigo/violet night, russet wood, golden lamps, nostalgic serene study atmosphere. Clear uncluttered center for floating app controls. Full bleed scenic pixel illustration edge to edge. No humans, animals, pets, characters, text, logos, watermarks, UI frames, border or collage.",
+    "originalImage": "assets/originals/images/lofi-night-campus.png"
+  }
+]

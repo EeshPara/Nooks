@@ -1,0 +1,26 @@
+/* Motion acknowledges actions, then settles so the study content stays readable. */
+.lofi-world :is(button,a,input,textarea,select){transition:background-color 150ms ease,border-color 150ms ease,color 150ms ease,box-shadow 150ms ease,opacity 150ms ease}
+.lofi-world button:active:not(:disabled){scale:.98;transition:scale 90ms ease}
+.lofi-world button{scale:1;transition:transform 160ms ease,scale 160ms ease,background-color 160ms ease,border-color 160ms ease,color 160ms ease,box-shadow 160ms ease}
+.lofi-world .page-content{animation:nooks-view-in 230ms cubic-bezier(.22,.65,.3,1);opacity:1}
+@keyframes nooks-view-in{from{opacity:.88;translate:0 7px}to{opacity:1;translate:0 0}}
+:is(.nooks-org-dialog,.nooks-studio,.nooks-create-dialog,.modal,.personalize-modal,.nooks-live,.room-journey-modal,.nooks-community,.nd-dialog){animation:nooks-panel-in 220ms cubic-bezier(.22,.65,.3,1)}
+@keyframes nooks-panel-in{from{opacity:.8;translate:0 12px;scale:.985}to{opacity:1;translate:0 0;scale:1}}
+:is(.nooks-org-dialog,.nooks-studio,.nooks-create-dialog)::backdrop{animation:nooks-shade-in 180ms ease}
+@keyframes nooks-shade-in{from{background-color:#15110c00}to{background-color:#15110c77}}
+.lofi-world :is(.popover-menu,.nooks-library-location,.nook-chat-exchange){animation:nooks-detail-in 160ms ease-out}
+@keyframes nooks-detail-in{from{opacity:.8;translate:0 4px}to{opacity:1;translate:0 0}}
+.lofi-world :is(.task-check,.room-task-check,.nooks-plan-checkbox){transition:background-color 180ms,border-color 180ms,scale 180ms}
+.lofi-world :is(.task-row.done,.room-task-list>.done){transition:opacity 220ms,color 220ms}
+.lofi-world .journey-progress-saved{transition:width 650ms cubic-bezier(.2,.7,.25,1)}
+@media(prefers-reduced-motion:reduce){.lofi-world :is(button,a,input,textarea,select),.lofi-world .page-content,:is(.nooks-org-dialog,.nooks-studio,.nooks-create-dialog,.modal,.personalize-modal,.nooks-live,.room-journey-modal,.nooks-community,.nd-dialog){animation:none!important;transition:none!important}.lofi-world button:active:not(:disabled){scale:1}}
+
+.lofi-world :is(.ambient-mixer,.note-appearance-popover,.sound-island-panel,.nook-room-generator){animation:nooks-panel-in 180ms cubic-bezier(.22,.65,.3,1);transform-origin:top right}
+:is(.nooks-community-list-panel,.nooks-studio-review,.nooks-studio-success,.nd-detail,.nooks-note-source){animation:nooks-detail-in 180ms ease-out}
+.lofi-world :is(.nooks-note-paper,.nooks-note-inline-title,.nooks-note-inline-editor){transition:background-color 220ms ease,box-shadow 220ms ease,border-color 180ms ease}
+@media(prefers-reduced-motion:reduce){.lofi-world :is(.ambient-mixer,.note-appearance-popover,.sound-island-panel,.nook-room-generator,.nooks-library-location,.nook-chat-exchange,.popover-menu),:is(.nooks-community-list-panel,.nooks-studio-review,.nooks-studio-success,.nd-detail,.nooks-note-source){animation:none!important;transition:none!important}}
+
+/* Scene decoration and interface motion are separate preferences. */
+/* The nook pause button stops recurring scenery; interaction feedback still
+   follows the OS reduced-motion setting rather than this scenery preference. */
+.lofi-world.ambient-motion-off :is(.world-rain,.world-glow){display:none!important}

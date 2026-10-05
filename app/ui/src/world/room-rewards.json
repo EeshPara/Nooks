@@ -1,0 +1,1221 @@
+{
+  "rooms": {
+    "rainy-library": {
+      "label": "Rainy library",
+      "theme": "rainy reading nook",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "rainy-library-first-page",
+          "name": "A letter between pages",
+          "minutes": 15,
+          "description": "A small folded letter for your reading desk; the first page of your nook’s story.",
+          "art": "letter"
+        },
+        {
+          "id": "rainy-library-quiet-cup",
+          "name": "The quiet cup",
+          "minutes": 45,
+          "description": "A warm ceramic tea cup to make the rainy reading corner feel lived in.",
+          "art": "tea"
+        },
+        {
+          "id": "rainy-library-secret-volume",
+          "name": "The unmarked volume",
+          "minutes": 90,
+          "description": "An illustrated old book with a curious clasp, collected for your bookshelf.",
+          "art": "spellbook",
+          "surprise": true
+        },
+        {
+          "id": "rainy-library-little-library",
+          "name": "A little place of your own",
+          "minutes": 180,
+          "description": "A miniature cottage for the shelf: a tiny retreat inside your bigger retreat.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "midnight-train": {
+      "label": "Midnight train",
+      "theme": "moonlit railway",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "midnight-train-night-ticket",
+          "name": "A letter from somewhere",
+          "minutes": 15,
+          "description": "A folded keepsake letter for the window table, inspired by journeys after dark.",
+          "art": "letter"
+        },
+        {
+          "id": "midnight-train-window-lantern",
+          "name": "Window lantern",
+          "minutes": 45,
+          "description": "A small lantern decoration to accompany the painted countryside outside.",
+          "art": "lantern"
+        },
+        {
+          "id": "midnight-train-paper-voyage",
+          "name": "The next voyage",
+          "minutes": 90,
+          "description": "A little boat ornament: a reminder that the rails are only one way to wander.",
+          "art": "boat",
+          "surprise": true
+        },
+        {
+          "id": "midnight-train-last-star",
+          "name": "The last star before dawn",
+          "minutes": 180,
+          "description": "A tiny star keepsake for this carriage’s study table.",
+          "art": "star",
+          "surprise": true
+        }
+      ]
+    },
+    "sakura-garden": {
+      "label": "Sakura garden",
+      "theme": "blossom garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "sakura-garden-first-sprout",
+          "name": "A little beginning",
+          "minutes": 15,
+          "description": "A small potted sprout joins your garden collection.",
+          "art": "plant"
+        },
+        {
+          "id": "sakura-garden-first-flower",
+          "name": "A bloom for today",
+          "minutes": 45,
+          "description": "A flowering pot brings another gentle detail to your cherry-blossom study.",
+          "art": "flower"
+        },
+        {
+          "id": "sakura-garden-petal-secret",
+          "name": "Under the petals",
+          "minutes": 90,
+          "description": "A tiny woodland mushroom decoration, an unexpected find beneath the blossoms.",
+          "art": "mushroom",
+          "surprise": true
+        },
+        {
+          "id": "sakura-garden-patient-tree",
+          "name": "The patient little tree",
+          "minutes": 180,
+          "description": "A bonsai decoration marks the garden you have steadily collected through focus.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "seaside-studio": {
+      "label": "Seaside morning",
+      "theme": "coastal morning",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "seaside-studio-shore-shell",
+          "name": "Found at the tideline",
+          "minutes": 15,
+          "description": "A shell keepsake for the desk, inspired by the shoreline beyond your window.",
+          "art": "shell"
+        },
+        {
+          "id": "seaside-studio-small-sail",
+          "name": "A little sail away",
+          "minutes": 45,
+          "description": "A small boat ornament brings the sea horizon into your nook.",
+          "art": "boat"
+        },
+        {
+          "id": "seaside-studio-reef-fragment",
+          "name": "A garden under the waves",
+          "minutes": 90,
+          "description": "An illustrated coral ornament adds a surprising ocean detail to the collection.",
+          "art": "coral",
+          "surprise": true
+        },
+        {
+          "id": "seaside-studio-ocean-pearl",
+          "name": "The ocean’s small treasure",
+          "minutes": 180,
+          "description": "A pearl keepsake completes your first set of seaside desk treasures.",
+          "art": "pearl",
+          "surprise": true
+        }
+      ]
+    },
+    "alpine-cabin": {
+      "label": "Snowbound cabin",
+      "theme": "winter cabin",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "alpine-cabin-fireside-cup",
+          "name": "The fireside cup",
+          "minutes": 15,
+          "description": "A ceramic tea cup for the warm cabin corner while the painted snow falls outside.",
+          "art": "tea"
+        },
+        {
+          "id": "alpine-cabin-pocket-winter",
+          "name": "Winter in your pocket",
+          "minutes": 45,
+          "description": "A snow-globe ornament joins your cabin shelf.",
+          "art": "snowglobe"
+        },
+        {
+          "id": "alpine-cabin-late-lantern",
+          "name": "A light for the long evening",
+          "minutes": 90,
+          "description": "A lantern decoration for your winter collection.",
+          "art": "lantern",
+          "surprise": true
+        },
+        {
+          "id": "alpine-cabin-forest-visitor",
+          "name": "The forest’s little visitor",
+          "minutes": 180,
+          "description": "A tiny fox figurine brings a woodland detail to the warm cabin shelf.",
+          "art": "fox",
+          "surprise": true
+        }
+      ]
+    },
+    "autumn-bookshop": {
+      "label": "Autumn bookshop",
+      "theme": "autumn reading corner",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "autumn-bookshop-tucked-letter",
+          "name": "Tucked inside a book",
+          "minutes": 15,
+          "description": "A folded letter decoration for the little reading table.",
+          "art": "letter"
+        },
+        {
+          "id": "autumn-bookshop-rainy-pastry",
+          "name": "Rainy-day pastry",
+          "minutes": 45,
+          "description": "A painted pastry keepsake adds a cozy café detail to your bookshop collection.",
+          "art": "pastry"
+        },
+        {
+          "id": "autumn-bookshop-after-hours-volume",
+          "name": "The after-hours volume",
+          "minutes": 90,
+          "description": "An old illustrated book with a mysterious clasp for your shelf.",
+          "art": "spellbook",
+          "surprise": true
+        },
+        {
+          "id": "autumn-bookshop-corner-retreat",
+          "name": "The little corner retreat",
+          "minutes": 180,
+          "description": "A small cottage ornament evokes a warm place to disappear into a story.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "moonlit-observatory": {
+      "label": "Moonlit observatory",
+      "theme": "celestial study",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "moonlit-observatory-first-lens",
+          "name": "Your first little telescope",
+          "minutes": 15,
+          "description": "A miniature telescope ornament for the observatory desk.",
+          "art": "telescope"
+        },
+        {
+          "id": "moonlit-observatory-moon-keepsake",
+          "name": "A moon within reach",
+          "minutes": 45,
+          "description": "A small moon decoration joins the celestial collection.",
+          "art": "moon"
+        },
+        {
+          "id": "moonlit-observatory-fallen-star",
+          "name": "A star for your desk",
+          "minutes": 90,
+          "description": "An illustrated star keepsake adds a bright detail to the quiet nook.",
+          "art": "star",
+          "surprise": true
+        },
+        {
+          "id": "moonlit-observatory-night-crystal",
+          "name": "The night-sky crystal",
+          "minutes": 180,
+          "description": "A crystal ornament finishes this first constellation of desk treasures.",
+          "art": "crystal",
+          "surprise": true
+        }
+      ]
+    },
+    "sunlit-greenhouse": {
+      "label": "Sunlit greenhouse",
+      "theme": "sunlit botanical garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "sunlit-greenhouse-green-beginning",
+          "name": "A green beginning",
+          "minutes": 15,
+          "description": "A potted plant starts your greenhouse collection.",
+          "art": "plant"
+        },
+        {
+          "id": "sunlit-greenhouse-glasshouse-bloom",
+          "name": "The glasshouse bloom",
+          "minutes": 45,
+          "description": "A flowering pot joins your little garden of earned decorations.",
+          "art": "flower"
+        },
+        {
+          "id": "sunlit-greenhouse-shade-find",
+          "name": "A find in the shade",
+          "minutes": 90,
+          "description": "A tiny mushroom ornament adds a woodland surprise among the potted plants.",
+          "art": "mushroom",
+          "surprise": true
+        },
+        {
+          "id": "sunlit-greenhouse-quiet-bonsai",
+          "name": "A quiet little canopy",
+          "minutes": 180,
+          "description": "A bonsai decoration celebrates the greenhouse collection you have grown.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "neon-tokyo": {
+      "label": "Tokyo after rain",
+      "theme": "rainy rooftop city",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "neon-tokyo-window-light",
+          "name": "A light by the window",
+          "minutes": 15,
+          "description": "A small lantern decoration keeps the warm rooftop desk feeling cozy.",
+          "art": "lantern"
+        },
+        {
+          "id": "neon-tokyo-night-listening",
+          "name": "The late-night listening corner",
+          "minutes": 45,
+          "description": "Headphones for your rooftop desk, with the Moonlit piano listening preset.",
+          "art": "headphones",
+          "perk": {
+            "type": "soundtrack",
+            "id": "moonlit-piano"
+          }
+        },
+        {
+          "id": "neon-tokyo-record-after-rain",
+          "name": "The record after rain",
+          "minutes": 90,
+          "description": "A vinyl-record keepsake adds a late-night listening detail to your shelf.",
+          "art": "vinyl",
+          "surprise": true
+        },
+        {
+          "id": "neon-tokyo-city-memento",
+          "name": "A city worth remembering",
+          "minutes": 180,
+          "description": "A miniature camera decoration rounds out the rooftop collection.",
+          "art": "camera",
+          "surprise": true
+        }
+      ]
+    },
+    "paris-attic": {
+      "label": "Paris at dawn",
+      "theme": "Paris morning attic",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "paris-attic-first-pastry",
+          "name": "A slow morning pastry",
+          "minutes": 15,
+          "description": "A painted pastry keepsake for your dawn-lit writing desk.",
+          "art": "pastry"
+        },
+        {
+          "id": "paris-attic-rooftop-letter",
+          "name": "A letter above the rooftops",
+          "minutes": 45,
+          "description": "A small folded letter adds a personal detail to your attic collection.",
+          "art": "letter"
+        },
+        {
+          "id": "paris-attic-rooftop-record",
+          "name": "The rooftop record",
+          "minutes": 90,
+          "description": "A record keepsake for your attic collection, with the Vinyl evening listening preset.",
+          "art": "vinyl",
+          "surprise": true,
+          "perk": {
+            "type": "soundtrack",
+            "id": "vinyl-evening"
+          }
+        },
+        {
+          "id": "paris-attic-little-home",
+          "name": "A little home in the city",
+          "minutes": 180,
+          "description": "A miniature cottage keepsake brings a small, warm silhouette to your shelf.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "kyoto-teahouse": {
+      "label": "Kyoto teahouse",
+      "theme": "tea garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "kyoto-teahouse-tea-ritual",
+          "name": "A quiet tea ritual",
+          "minutes": 15,
+          "description": "A tea-cup decoration begins your calm garden collection.",
+          "art": "tea"
+        },
+        {
+          "id": "kyoto-teahouse-garden-pot",
+          "name": "The garden’s first pot",
+          "minutes": 45,
+          "description": "A small potted plant joins the tatami nook’s collection.",
+          "art": "plant"
+        },
+        {
+          "id": "kyoto-teahouse-rain-bloom",
+          "name": "A bloom after the rain",
+          "minutes": 90,
+          "description": "A flowering pot adds a gentle surprise beside your painted bamboo garden.",
+          "art": "flower",
+          "surprise": true
+        },
+        {
+          "id": "kyoto-teahouse-patient-canopy",
+          "name": "A patient canopy",
+          "minutes": 180,
+          "description": "A bonsai ornament marks a growing collection of tranquil desk decorations.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "brooklyn-loft": {
+      "label": "Sunday in Brooklyn",
+      "theme": "Sunday city loft",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "brooklyn-loft-sunday-record",
+          "name": "The Sunday record",
+          "minutes": 15,
+          "description": "A vinyl-record ornament for the loft shelf, with the Vinyl evening listening preset.",
+          "art": "vinyl",
+          "perk": {
+            "type": "soundtrack",
+            "id": "vinyl-evening"
+          }
+        },
+        {
+          "id": "brooklyn-loft-slow-listening",
+          "name": "A little time to listen",
+          "minutes": 45,
+          "description": "A headphone keepsake adds a familiar listening-corner detail to the loft.",
+          "art": "headphones"
+        },
+        {
+          "id": "brooklyn-loft-weekend-frame",
+          "name": "A frame from the weekend",
+          "minutes": 90,
+          "description": "A miniature camera decoration for your collected Sunday objects.",
+          "art": "camera",
+          "surprise": true
+        },
+        {
+          "id": "brooklyn-loft-sunday-pal",
+          "name": "Sunday’s little pal",
+          "minutes": 180,
+          "description": "A tiny dog figurine joins the shelf: a familiar little face for Sunday study.",
+          "art": "dog",
+          "surprise": true
+        }
+      ]
+    },
+    "cloud-bedroom": {
+      "label": "Cloud nine",
+      "theme": "soft cloud bedroom",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "cloud-bedroom-cloud-letter",
+          "name": "A letter to your future self",
+          "minutes": 15,
+          "description": "A folded letter keepsake for the soft, quiet bedroom desk.",
+          "art": "letter"
+        },
+        {
+          "id": "cloud-bedroom-bedside-bloom",
+          "name": "The bedside bloom",
+          "minutes": 45,
+          "description": "A flowering pot adds a gentle living-nook detail to this collected vignette.",
+          "art": "flower"
+        },
+        {
+          "id": "cloud-bedroom-daydream-star",
+          "name": "A daydream caught in a star",
+          "minutes": 90,
+          "description": "A star ornament brings one playful detail down from the imagined clouds.",
+          "art": "star",
+          "surprise": true
+        },
+        {
+          "id": "cloud-bedroom-cloud-cat",
+          "name": "The tiny cloud guardian",
+          "minutes": 180,
+          "description": "A small cat figurine curls into a cozy detail on the bedroom shelf.",
+          "art": "cat",
+          "surprise": true
+        }
+      ]
+    },
+    "oxford-library": {
+      "label": "The old reading nook",
+      "theme": "old academic library",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "oxford-library-old-volume",
+          "name": "The first old volume",
+          "minutes": 15,
+          "description": "An illustrated book with a clasp joins your academic shelf.",
+          "art": "spellbook"
+        },
+        {
+          "id": "oxford-library-reading-tea",
+          "name": "Tea for the reading hour",
+          "minutes": 45,
+          "description": "A ceramic cup decoration for the oak reading desk.",
+          "art": "tea"
+        },
+        {
+          "id": "oxford-library-scholar-cloak",
+          "name": "The scholar’s folded cloak",
+          "minutes": 90,
+          "description": "A small cloak keepsake adds a storybook academic detail to your collection.",
+          "art": "cloak",
+          "surprise": true
+        },
+        {
+          "id": "oxford-library-library-key",
+          "name": "A key to your own quiet",
+          "minutes": 180,
+          "description": "An old-fashioned decorative key completes your collection of scholarly keepsakes.",
+          "art": "key",
+          "surprise": true
+        }
+      ]
+    },
+    "lighthouse-study": {
+      "label": "Lighthouse lookout",
+      "theme": "coastal lighthouse",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "lighthouse-study-keepers-boat",
+          "name": "The keeper’s little boat",
+          "minutes": 15,
+          "description": "A boat ornament for the coastal study desk.",
+          "art": "boat"
+        },
+        {
+          "id": "lighthouse-study-salt-shell",
+          "name": "A shell with a story",
+          "minutes": 45,
+          "description": "A shell keepsake adds a shoreline detail to your nook collection.",
+          "art": "shell"
+        },
+        {
+          "id": "lighthouse-study-keepers-lantern",
+          "name": "The keeper’s lantern",
+          "minutes": 90,
+          "description": "A lantern decoration marks the warm shelter of the lighthouse nook.",
+          "art": "lantern",
+          "surprise": true
+        },
+        {
+          "id": "lighthouse-study-horizon-pearl",
+          "name": "A pearl beyond the horizon",
+          "minutes": 180,
+          "description": "A small pearl keepsake completes your first lighthouse collection.",
+          "art": "pearl",
+          "surprise": true
+        }
+      ]
+    },
+    "tropical-veranda": {
+      "label": "Monsoon veranda",
+      "theme": "monsoon botanical veranda",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "tropical-veranda-rain-pot",
+          "name": "The rain-loving pot",
+          "minutes": 15,
+          "description": "A potted plant begins your veranda collection.",
+          "art": "plant"
+        },
+        {
+          "id": "tropical-veranda-wet-season-find",
+          "name": "A wet-season find",
+          "minutes": 45,
+          "description": "A tiny mushroom ornament adds a shaded woodland detail.",
+          "art": "mushroom"
+        },
+        {
+          "id": "tropical-veranda-monsoon-bloom",
+          "name": "The monsoon bloom",
+          "minutes": 90,
+          "description": "A flowering pot brings a little color to the collected veranda garden.",
+          "art": "flower",
+          "surprise": true
+        },
+        {
+          "id": "tropical-veranda-river-canopy",
+          "name": "The river’s little canopy",
+          "minutes": 180,
+          "description": "A bonsai decoration celebrates the calm garden collection you have grown.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "mossy-watermill": {
+      "label": "The watermill",
+      "theme": "forest stream garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "mossy-watermill-streamside-sprout",
+          "name": "A streamside sprout",
+          "minutes": 15,
+          "description": "A potted plant starts your forest-window collection.",
+          "art": "plant"
+        },
+        {
+          "id": "mossy-watermill-moss-secret",
+          "name": "A secret in the moss",
+          "minutes": 45,
+          "description": "A little mushroom ornament recalls the shady stream outside.",
+          "art": "mushroom"
+        },
+        {
+          "id": "mossy-watermill-forest-cottage",
+          "name": "A cottage in miniature",
+          "minutes": 90,
+          "description": "A small cottage decoration adds a surprising storybook detail to your garden shelf.",
+          "art": "tiny-house",
+          "surprise": true
+        },
+        {
+          "id": "mossy-watermill-mill-canopy",
+          "name": "The little forest canopy",
+          "minutes": 180,
+          "description": "A bonsai ornament completes this first collected woodland garden.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "aurora-cabin": {
+      "label": "Under the northern lights",
+      "theme": "arctic night sky",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "aurora-cabin-arctic-snowglobe",
+          "name": "A pocket of winter",
+          "minutes": 15,
+          "description": "A snow-globe ornament for your cabin shelf.",
+          "art": "snowglobe"
+        },
+        {
+          "id": "aurora-cabin-northern-star",
+          "name": "The northern star",
+          "minutes": 45,
+          "description": "A star keepsake brings a small celestial detail into the warm nook.",
+          "art": "star"
+        },
+        {
+          "id": "aurora-cabin-aurora-crystal",
+          "name": "A crystal for the night",
+          "minutes": 90,
+          "description": "An illustrated crystal adds a dreamlike detail to your collection.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "aurora-cabin-northern-fox",
+          "name": "The quiet northern visitor",
+          "minutes": 180,
+          "description": "A tiny fox figurine brings a woodland silhouette to your arctic cabin shelf.",
+          "art": "fox",
+          "surprise": true
+        }
+      ]
+    },
+    "autumn-camper": {
+      "label": "The long way home",
+      "theme": "autumn road trip",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "autumn-camper-road-camera",
+          "name": "A camera for the long way",
+          "minutes": 15,
+          "description": "A camera ornament begins your travel-inspired desk collection.",
+          "art": "camera"
+        },
+        {
+          "id": "autumn-camper-camp-cup",
+          "name": "The campsite cup",
+          "minutes": 45,
+          "description": "A ceramic cup keepsake for your little camper study table.",
+          "art": "tea"
+        },
+        {
+          "id": "autumn-camper-camp-lantern",
+          "name": "A lantern after sundown",
+          "minutes": 90,
+          "description": "A small lantern decoration marks the cozy shelter of your painted camper.",
+          "art": "lantern",
+          "surprise": true
+        },
+        {
+          "id": "autumn-camper-lake-boat",
+          "name": "One more way to wander",
+          "minutes": 180,
+          "description": "A little boat ornament celebrates the lake outside this imagined campsite.",
+          "art": "boat",
+          "surprise": true
+        }
+      ]
+    },
+    "ricefield-porch": {
+      "label": "Ricefield afternoon",
+      "theme": "summer porch garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "ricefield-porch-porch-pot",
+          "name": "The porch’s first pot",
+          "minutes": 15,
+          "description": "A potted plant starts your breezy porch collection.",
+          "art": "plant"
+        },
+        {
+          "id": "ricefield-porch-summer-flower",
+          "name": "A little summer bloom",
+          "minutes": 45,
+          "description": "A flowering pot joins the collected veranda garden.",
+          "art": "flower"
+        },
+        {
+          "id": "ricefield-porch-afternoon-tea",
+          "name": "Tea before the breeze",
+          "minutes": 90,
+          "description": "A ceramic cup decoration makes a gentle surprise among your garden pots.",
+          "art": "tea",
+          "surprise": true
+        },
+        {
+          "id": "ricefield-porch-porch-bonsai",
+          "name": "The little summer canopy",
+          "minutes": 180,
+          "description": "A bonsai ornament celebrates steady focus in the ricefield nook.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "lakeside-boathouse": {
+      "label": "Lakeside boathouse",
+      "theme": "watercolor lake retreat",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "lakeside-boathouse-lake-boat",
+          "name": "The lake in miniature",
+          "minutes": 15,
+          "description": "A small boat ornament starts your lakeside collection.",
+          "art": "boat"
+        },
+        {
+          "id": "lakeside-boathouse-shoreline-shell",
+          "name": "A shoreline keepsake",
+          "minutes": 45,
+          "description": "A shell decoration adds a simple water-inspired detail.",
+          "art": "shell"
+        },
+        {
+          "id": "lakeside-boathouse-stillwater-tea",
+          "name": "The still-water cup",
+          "minutes": 90,
+          "description": "A ceramic tea cup keepsake for the peaceful study corner.",
+          "art": "tea",
+          "surprise": true
+        },
+        {
+          "id": "lakeside-boathouse-lake-pearl",
+          "name": "A small treasure of still water",
+          "minutes": 180,
+          "description": "A pearl ornament completes this tranquil collection of desk objects.",
+          "art": "pearl",
+          "surprise": true
+        }
+      ]
+    },
+    "castle-study": {
+      "label": "The candlelit tower",
+      "theme": "original enchanted castle",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "castle-study-apprentice-wand",
+          "name": "The apprentice’s first wand",
+          "minutes": 15,
+          "description": "A decorative wand begins your tower collection, a small keepsake for an apprentice’s desk.",
+          "art": "wand"
+        },
+        {
+          "id": "castle-study-curious-potion",
+          "name": "The curious little potion",
+          "minutes": 45,
+          "description": "An illustrated potion bottle adds a playful magical object to the shelf.",
+          "art": "potion"
+        },
+        {
+          "id": "castle-study-tower-spellbook",
+          "name": "The tower’s secret volume",
+          "minutes": 90,
+          "description": "A clasped spellbook ornament is discovered for your candlelit study collection.",
+          "art": "spellbook",
+          "surprise": true
+        },
+        {
+          "id": "castle-study-moonstone-key",
+          "name": "The key to the Moonstone annex",
+          "minutes": 180,
+          "description": "A small enchanted key opens the Moonstone annex, a secret study nook beyond your tower.",
+          "art": "key",
+          "surprise": true,
+          "perk": {
+            "type": "room",
+            "id": "moonstone-annex"
+          }
+        }
+      ]
+    },
+    "desert-casita": {
+      "label": "Desert casita",
+      "theme": "desert earthen retreat",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "desert-casita-mesa-crystal",
+          "name": "The mesa crystal",
+          "minutes": 15,
+          "description": "A crystal keepsake begins your desert-colored desk collection.",
+          "art": "crystal"
+        },
+        {
+          "id": "desert-casita-casita-pot",
+          "name": "A small green shelter",
+          "minutes": 45,
+          "description": "A potted plant ornament adds a little garden detail to the warm casita.",
+          "art": "plant"
+        },
+        {
+          "id": "desert-casita-desert-cup",
+          "name": "The slow desert afternoon",
+          "minutes": 90,
+          "description": "A ceramic cup decoration adds a quiet ritual to your collected objects.",
+          "art": "tea",
+          "surprise": true
+        },
+        {
+          "id": "desert-casita-desert-fox",
+          "name": "The little desert lookout",
+          "minutes": 180,
+          "description": "A small fox figurine finishes the warm collection of desert desk treasures.",
+          "art": "fox",
+          "surprise": true
+        }
+      ]
+    },
+    "underwater-study": {
+      "label": "Underwater study",
+      "theme": "imagined ocean garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "underwater-study-reef-garden",
+          "name": "Your first reef ornament",
+          "minutes": 15,
+          "description": "A coral decoration begins your imaginary underwater garden.",
+          "art": "coral"
+        },
+        {
+          "id": "underwater-study-ocean-shell",
+          "name": "A shelter from the sea",
+          "minutes": 45,
+          "description": "A shell keepsake joins the ocean collection.",
+          "art": "shell"
+        },
+        {
+          "id": "underwater-study-reef-pearl",
+          "name": "A pearl among the branches",
+          "minutes": 90,
+          "description": "A small pearl ornament appears as a collectible ocean treasure.",
+          "art": "pearl",
+          "surprise": true
+        },
+        {
+          "id": "underwater-study-deepsea-egg",
+          "name": "The deep-sea curiosity",
+          "minutes": 180,
+          "description": "An illustrated egg-shaped keepsake adds a curious, dreamlike treasure to the ocean display.",
+          "art": "egg",
+          "surprise": true
+        }
+      ],
+      "growthArt": "coral"
+    },
+    "floating-airship": {
+      "label": "Cloudbound airship",
+      "theme": "fantasy sky voyage",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "floating-airship-sky-boat",
+          "name": "A voyage in miniature",
+          "minutes": 15,
+          "description": "A little boat ornament begins your navigator-inspired collection.",
+          "art": "boat"
+        },
+        {
+          "id": "floating-airship-sky-telescope",
+          "name": "Beyond the next cloud",
+          "minutes": 45,
+          "description": "A miniature telescope decoration joins your airship desk.",
+          "art": "telescope"
+        },
+        {
+          "id": "floating-airship-cloud-moon",
+          "name": "A moon for the cabin",
+          "minutes": 90,
+          "description": "A moon keepsake adds a dreamlike celestial detail.",
+          "art": "moon",
+          "surprise": true
+        },
+        {
+          "id": "floating-airship-sky-guardian",
+          "name": "The cloud captain’s guardian",
+          "minutes": 180,
+          "description": "A small dragon figurine completes the navigator’s collection of sky-voyage keepsakes.",
+          "art": "dragon",
+          "surprise": true
+        }
+      ]
+    },
+    "moon-base": {
+      "label": "Lunar observatory",
+      "theme": "imagined lunar base",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "moon-base-lunar-moon",
+          "name": "A moon within the Moon",
+          "minutes": 15,
+          "description": "A moon ornament begins your celestial desk display.",
+          "art": "moon"
+        },
+        {
+          "id": "moon-base-earthward-lens",
+          "name": "The Earthward lens",
+          "minutes": 45,
+          "description": "A miniature telescope decoration for the quiet lunar nook.",
+          "art": "telescope"
+        },
+        {
+          "id": "moon-base-orbit-token",
+          "name": "The orbit token",
+          "minutes": 90,
+          "description": "An illustrated glyph-token ornament adds an invented celestial detail to the collection.",
+          "art": "rune",
+          "surprise": true
+        },
+        {
+          "id": "moon-base-moon-curiosity",
+          "name": "The lunar curiosity",
+          "minutes": 180,
+          "description": "An egg-shaped decorative keepsake is the final curious treasure on your lunar desk.",
+          "art": "egg",
+          "surprise": true
+        }
+      ]
+    },
+    "woodland-treehouse": {
+      "label": "Woodland treehouse",
+      "theme": "storybook forest garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "woodland-treehouse-canopy-sprout",
+          "name": "A sprout in the canopy",
+          "minutes": 15,
+          "description": "A potted plant begins your treehouse collection.",
+          "art": "plant"
+        },
+        {
+          "id": "woodland-treehouse-woodland-find",
+          "name": "The woodland find",
+          "minutes": 45,
+          "description": "A tiny mushroom ornament brings the forest floor up to your shelf.",
+          "art": "mushroom"
+        },
+        {
+          "id": "woodland-treehouse-canopy-cottage",
+          "name": "A house among your plants",
+          "minutes": 90,
+          "description": "A miniature cottage adds a playful surprise to this collected forest garden.",
+          "art": "tiny-house",
+          "surprise": true
+        },
+        {
+          "id": "woodland-treehouse-treehouse-bonsai",
+          "name": "A forest in miniature",
+          "minutes": 180,
+          "description": "A bonsai decoration celebrates the little woodland display you have grown.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "lavender-cottage": {
+      "label": "Lavender cottage",
+      "theme": "watercolor cottage garden",
+      "progression": "growth",
+      "rewards": [
+        {
+          "id": "lavender-cottage-cottage-pot",
+          "name": "The cottage’s first pot",
+          "minutes": 15,
+          "description": "A potted plant begins your soft watercolor nook collection.",
+          "art": "plant"
+        },
+        {
+          "id": "lavender-cottage-cottage-bloom",
+          "name": "A bloom for the cottage",
+          "minutes": 45,
+          "description": "A flowering pot adds a gentle detail to your earned garden display.",
+          "art": "flower"
+        },
+        {
+          "id": "lavender-cottage-garden-secret",
+          "name": "A secret beside the path",
+          "minutes": 90,
+          "description": "A tiny mushroom ornament is the garden’s unexpected little find.",
+          "art": "mushroom",
+          "surprise": true
+        },
+        {
+          "id": "lavender-cottage-cottage-tree",
+          "name": "The cottage’s little tree",
+          "minutes": 180,
+          "description": "A bonsai decoration completes your first collection of garden keepsakes.",
+          "art": "bonsai",
+          "surprise": true
+        }
+      ],
+      "growthArt": "plant"
+    },
+    "canal-apartment": {
+      "label": "Canal apartment",
+      "theme": "anime canal-side home",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "canal-apartment-canal-boat",
+          "name": "The canal’s little boat",
+          "minutes": 15,
+          "description": "A boat ornament begins your canal-side desk collection.",
+          "art": "boat"
+        },
+        {
+          "id": "canal-apartment-rain-headphones",
+          "name": "Headphones for canal rain",
+          "minutes": 45,
+          "description": "A headphone ornament beside your window, with the Moonlit piano listening preset.",
+          "art": "headphones",
+          "perk": {
+            "type": "soundtrack",
+            "id": "moonlit-piano"
+          }
+        },
+        {
+          "id": "canal-apartment-rain-pastry",
+          "name": "A pastry after the rain",
+          "minutes": 90,
+          "description": "A painted pastry ornament makes a cozy surprise for the study corner.",
+          "art": "pastry",
+          "surprise": true
+        },
+        {
+          "id": "canal-apartment-canal-home",
+          "name": "A little home by the water",
+          "minutes": 180,
+          "description": "A small cottage figure completes your canal-inspired display of cozy desk objects.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "night-campus": {
+      "label": "Night campus",
+      "theme": "pixel academic night",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "night-campus-campus-volume",
+          "name": "The after-dark volume",
+          "minutes": 15,
+          "description": "A book ornament begins your pixel-library collection.",
+          "art": "spellbook"
+        },
+        {
+          "id": "night-campus-campus-key",
+          "name": "The reading-nook keepsake",
+          "minutes": 45,
+          "description": "A decorative key joins the desk display as a keepsake from the old reading nook.",
+          "art": "key"
+        },
+        {
+          "id": "night-campus-campus-rune",
+          "name": "The margin’s curious mark",
+          "minutes": 90,
+          "description": "An illustrated glyph-token ornament adds a storybook surprise to the collection.",
+          "art": "rune",
+          "surprise": true
+        },
+        {
+          "id": "night-campus-campus-star",
+          "name": "One star after studying",
+          "minutes": 180,
+          "description": "A star keepsake finishes your first set of after-hours study treasures.",
+          "art": "star",
+          "surprise": true
+        }
+      ]
+    },
+    "custom": {
+      "label": "Your own nook",
+      "theme": "personal creative collection",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "custom-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your uploaded nook artwork.",
+          "art": "plant"
+        },
+        {
+          "id": "custom-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "custom-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "custom-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "mosslight-dungeon": {
+      "label": "Mosslight dungeon",
+      "theme": "original enchanted underground study",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "mosslight-dungeon-first-rune",
+          "name": "The first mosslight rune",
+          "minutes": 15,
+          "description": "A small rune-token ornament begins your collection of underground study curiosities.",
+          "art": "rune"
+        },
+        {
+          "id": "mosslight-dungeon-cavern-crystal",
+          "name": "The cavern’s little crystal",
+          "minutes": 45,
+          "description": "A crystal keepsake adds another quiet treasure to your lantern-lit study ledge.",
+          "art": "crystal"
+        },
+        {
+          "id": "mosslight-dungeon-stone-egg",
+          "name": "A curious egg beneath the stone",
+          "minutes": 90,
+          "description": "An egg-shaped ornament is discovered for your collection of dungeon desk treasures.",
+          "art": "egg",
+          "surprise": true
+        },
+        {
+          "id": "mosslight-dungeon-vault-sentinel",
+          "name": "The crystal vault’s tiny sentinel",
+          "minutes": 180,
+          "description": "A miniature dragon figurine marks the completed collection and opens the Crystal vault study nook.",
+          "art": "dragon",
+          "surprise": true,
+          "perk": {
+            "type": "room",
+            "id": "crystal-vault"
+          }
+        }
+      ]
+    }
+  }
+}

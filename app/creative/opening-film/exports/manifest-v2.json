@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "duration_seconds": 11,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "sources": [
+    "01-attic-tokyo",
+    "02-tokyo-library-continuous"
+  ],
+  "source_resolution": "native 720p; no upscale",
+  "handoff_source_frame": 108,
+  "travel_rate": 1.25,
+  "title": "Nooks",
+  "tagline": "Your little study nook in ChatGPT.",
+  "ending": "Current plural wordmark reveals, then wordmark/tagline/shade fade out to the actual rainy library background.",
+  "review_status": "Source geometry and final-cadence seam reviewed; browser playback, sound, immediate X/Escape, and natural return to mounted local workspace verified.",
+  "integration_status": "Local preview only; explicit About > Watch opening. Not deployed."
+}

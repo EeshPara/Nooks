@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.notable-data/
+.env
+test-results/
+playwright-report/
+
+.sites-runtime/
+.wrangler/
+.openai-build/
+*.tar.gz
+
+# Original high-resolution production artwork stays in the primary project.
+assets/originals/

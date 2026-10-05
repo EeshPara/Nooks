@@ -1,0 +1,12 @@
+[0:v]trim=end_frame=121,setpts=(PTS-STARTPTS)*74/120,fps=24,tpad=stop_mode=clone:stop_duration=0.1,trim=end_frame=75,setpts=PTS-STARTPTS,setsar=1[v0];
+[1:v]trim=end_frame=121,setpts=(PTS-STARTPTS)*74/120,fps=24,tpad=stop_mode=clone:stop_duration=0.1,trim=end_frame=75,setpts=PTS-STARTPTS,setsar=1[v1];
+[2:v]trim=end_frame=121,setpts=(PTS-STARTPTS)*74/120,fps=24,tpad=stop_mode=clone:stop_duration=0.1,trim=end_frame=75,setpts=PTS-STARTPTS,setsar=1[v2];
+[3:v]trim=end_frame=121,setpts=(PTS-STARTPTS)*74/120,fps=24,tpad=stop_mode=clone:stop_duration=0.1,trim=end_frame=75,setpts=PTS-STARTPTS,setsar=1[v3];
+[v0][v1][v2][v3]concat=n=4:v=1:a=0,tpad=stop_mode=clone:stop_duration=2.5,trim=duration=15,format=yuv420p[scene];
+color=c=black@0.28:s=1280x720:r=24:d=15,format=rgba,fade=t=in:st=11.8:d=0.8:alpha=1[shade];
+[scene][shade]overlay=shortest=1[dimmed];
+[4:v]scale=430:-2,format=rgba,fade=t=in:st=12.05:d=0.65:alpha=1[logo];
+[dimmed][logo]overlay=x=(W-w)/2:y=250:shortest=1[branded];
+[6:v]scale=450:35,format=rgba,fade=t=in:st=12.4:d=0.5:alpha=1[tagline];
+[branded][tagline]overlay=x=(W-w)/2:y=415:shortest=1[final];
+[5:a]volume=0.65,afade=t=in:d=0.2,afade=t=out:st=13.8:d=1.2,apad=whole_dur=15,atrim=duration=15[audio]

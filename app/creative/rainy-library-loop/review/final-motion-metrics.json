@@ -1,0 +1,132 @@
+{
+  "video": "/Users/rparasu/plugins/notable-ai/creative/rainy-library-loop/rainy-library-loop-v1.mp4",
+  "frames": 173,
+  "fps": 24,
+  "duration": 7.208333333333333,
+  "measurement_dimensions": [
+    640,
+    360
+  ],
+  "regions": {
+    "all": {
+      "bounds_640px": [
+        0,
+        0,
+        640,
+        360
+      ],
+      "adjacent_mean_mae_255": 0.15274778008460999,
+      "adjacent_p95_mae_255": 0.236482635140419,
+      "first_last_seam_mae_255": 1.0865364074707031,
+      "seam_over_adjacent_p95": 4.594571634511507,
+      "best_first_last_alignment": {
+        "offset_640px": [
+          0,
+          0
+        ],
+        "error": 0.702360212802887
+      },
+      "max_first_frame_drift_mae_255": 1.8089221715927124
+    },
+    "desk_and_chair": {
+      "bounds_640px": [
+        50,
+        264,
+        362,
+        354
+      ],
+      "adjacent_mean_mae_255": 0.0806860625743866,
+      "adjacent_p95_mae_255": 0.15691646933555603,
+      "first_last_seam_mae_255": 0.6989910006523132,
+      "seam_over_adjacent_p95": 4.454541984102158,
+      "best_first_last_alignment": {
+        "offset_640px": [
+          0,
+          0
+        ],
+        "error": 0.40179604291915894
+      },
+      "max_first_frame_drift_mae_255": 0.7758309841156006
+    },
+    "right_books": {
+      "bounds_640px": [
+        540,
+        15,
+        633,
+        195
+      ],
+      "adjacent_mean_mae_255": 0.07895376533269882,
+      "adjacent_p95_mae_255": 0.16214554011821747,
+      "first_last_seam_mae_255": 0.803862988948822,
+      "seam_over_adjacent_p95": 4.957663271914477,
+      "best_first_last_alignment": {
+        "offset_640px": [
+          0,
+          0
+        ],
+        "error": 0.42773309350013733
+      },
+      "max_first_frame_drift_mae_255": 0.8569693565368652
+    },
+    "cat_and_cushion": {
+      "bounds_640px": [
+        508,
+        246,
+        635,
+        317
+      ],
+      "adjacent_mean_mae_255": 0.09526751935482025,
+      "adjacent_p95_mae_255": 0.20418283343315125,
+      "first_last_seam_mae_255": 0.8773797750473022,
+      "seam_over_adjacent_p95": 4.2970300700355075,
+      "best_first_last_alignment": {
+        "offset_640px": [
+          0,
+          0
+        ],
+        "error": 0.4774790108203888
+      },
+      "max_first_frame_drift_mae_255": 0.9417027235031128
+    },
+    "far_city": {
+      "bounds_640px": [
+        297,
+        63,
+        443,
+        153
+      ],
+      "adjacent_mean_mae_255": 0.20674341917037964,
+      "adjacent_p95_mae_255": 0.4176623523235321,
+      "first_last_seam_mae_255": 1.8354642391204834,
+      "seam_over_adjacent_p95": 4.3946126073117675,
+      "best_first_last_alignment": {
+        "offset_640px": [
+          0,
+          0
+        ],
+        "error": 1.3852685689926147
+      },
+      "max_first_frame_drift_mae_255": 1.916387677192688
+    },
+    "steam_plume": {
+      "bounds_640px": [
+        140,
+        0,
+        290,
+        220
+      ],
+      "adjacent_mean_mae_255": 0.3675558865070343,
+      "adjacent_p95_mae_255": 0.6395313143730164,
+      "first_last_seam_mae_255": 1.3656162023544312,
+      "seam_over_adjacent_p95": 2.1353390704460717,
+      "best_first_last_alignment": {
+        "offset_640px": [
+          0,
+          0
+        ],
+        "error": 0.8592165112495422
+      },
+      "max_first_frame_drift_mae_255": 5.853696823120117
+    }
+  }
+}

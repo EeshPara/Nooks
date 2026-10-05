@@ -1,0 +1,675 @@
+{
+  "result": "passed",
+  "startedAt": "2026-10-04T19:30:09.125Z",
+  "postgres": "psql (PostgreSQL) 14.20 (Homebrew)",
+  "limits": {
+    "owners": 2,
+    "materialCounts": [
+      100,
+      1000
+    ],
+    "concurrentClients": 6,
+    "monitoringClients": 1,
+    "writerActionsPerClient": 6,
+    "casAttempts": 5,
+    "pollIterations": 20,
+    "communityIterations": 6,
+    "monitoringSamples": 100,
+    "phaseDeadlineMs": 45000,
+    "statementTimeoutMs": 8000,
+    "lockTimeoutMs": 3000
+  },
+  "isolation": {
+    "transport": "private Unix socket",
+    "tcpEnabled": false,
+    "hostedServicesContacted": false,
+    "existingDatabasesContacted": false,
+    "credentialsUsed": false
+  },
+  "migrations": [
+    {
+      "name": "202610010001_nooks_production.sql",
+      "sha256": "149032c543ac04987d1b8b2b8a9ffe358fb86f4f41650fdf3bc6ff9a570ed816"
+    },
+    {
+      "name": "202610010002_nooks_community.sql",
+      "sha256": "151ba1201c6723b75136aad8f23fd484304ba2b6ae02fcc8c20a8a9739065cf4"
+    },
+    {
+      "name": "202610010003_nooks_events.sql",
+      "sha256": "567070c44a9e67ee27d9e6d29763d513501b7ce59b5cd6db2396f87ee9a19a57"
+    },
+    {
+      "name": "202610020001_nooks_browser_api.sql",
+      "sha256": "4173371632e6a6c0180361eddfda6165fd676d7e24f69ad1f454eebae1f92303"
+    },
+    {
+      "name": "20261004185440_production_hardening.sql",
+      "sha256": "cbfaee69b969aad56860961d0303708121f6152db27cf421a39dca2780761895"
+    },
+    {
+      "name": "20261004192857_focus_membership_serialization.sql",
+      "sha256": "a0d0f233534bf9ab424a0363ebde258acc92330c0583275a05c39cc36bac79a3"
+    }
+  ],
+  "phases": [
+    {
+      "materialsPerOwner": 100,
+      "seedWorkspaceBytes": [
+        109581,
+        109578
+      ],
+      "commits": [
+        12,
+        12
+      ],
+      "casConflicts": [
+        4,
+        3
+      ],
+      "maximumAttempts": [
+        2,
+        2
+      ],
+      "sqlErrors": [],
+      "databaseCalls": 206,
+      "monitorSamples": 21,
+      "maximumObservedActiveClients": 6,
+      "maximumObservedLockWaiters": 0,
+      "workloadMs": 2210.917,
+      "totalPhaseMs": 3190.624,
+      "byOperation": {
+        "quota": {
+          "dbMs": {
+            "count": 84,
+            "p50": 0.317,
+            "p95": 7.648,
+            "max": 12.68
+          },
+          "clientMs": {
+            "count": 84,
+            "p50": 1.315,
+            "p95": 11.449,
+            "max": 15.924
+          },
+          "responseBytes": {
+            "count": 84,
+            "p50": 64,
+            "p95": 64,
+            "max": 65
+          },
+          "totalResponseBytes": 5377
+        },
+        "session_poll": {
+          "dbMs": {
+            "count": 20,
+            "p50": 0.019,
+            "p95": 0.054,
+            "max": 0.095
+          },
+          "clientMs": {
+            "count": 20,
+            "p50": 0.727,
+            "p95": 2.182,
+            "max": 3.993
+          },
+          "responseBytes": {
+            "count": 20,
+            "p50": 157,
+            "p95": 185,
+            "max": 185
+          },
+          "totalResponseBytes": 3392
+        },
+        "heartbeat": {
+          "dbMs": {
+            "count": 12,
+            "p50": 0.323,
+            "p95": 3.678,
+            "max": 3.678
+          },
+          "clientMs": {
+            "count": 12,
+            "p50": 0.847,
+            "p95": 4.925,
+            "max": 4.925
+          },
+          "responseBytes": {
+            "count": 12,
+            "p50": 147,
+            "p95": 147,
+            "max": 147
+          },
+          "totalResponseBytes": 1762
+        },
+        "workspace_read": {
+          "dbMs": {
+            "count": 35,
+            "p50": 3.251,
+            "p95": 9.424,
+            "max": 9.794
+          },
+          "clientMs": {
+            "count": 35,
+            "p50": 6.562,
+            "p95": 32.819,
+            "max": 37.118
+          },
+          "responseBytes": {
+            "count": 35,
+            "p50": 112620,
+            "p95": 112814,
+            "max": 112815
+          },
+          "totalResponseBytes": 3942701
+        },
+        "nook_snapshot": {
+          "dbMs": {
+            "count": 12,
+            "p50": 1.62,
+            "p95": 18.678,
+            "max": 18.678
+          },
+          "clientMs": {
+            "count": 12,
+            "p50": 2.189,
+            "p95": 27.43,
+            "max": 27.43
+          },
+          "responseBytes": {
+            "count": 12,
+            "p50": 943,
+            "p95": 1264,
+            "max": 1264
+          },
+          "totalResponseBytes": 12856
+        },
+        "list_nooks": {
+          "dbMs": {
+            "count": 12,
+            "p50": 0.909,
+            "p95": 2.229,
+            "max": 2.229
+          },
+          "clientMs": {
+            "count": 12,
+            "p50": 1.703,
+            "p95": 3.086,
+            "max": 3.086
+          },
+          "responseBytes": {
+            "count": 12,
+            "p50": 344,
+            "p95": 345,
+            "max": 345
+          },
+          "totalResponseBytes": 4134
+        },
+        "autosave_commit": {
+          "dbMs": {
+            "count": 16,
+            "p50": 4.402,
+            "p95": 17.125,
+            "max": 17.125
+          },
+          "clientMs": {
+            "count": 16,
+            "p50": 8.587,
+            "p95": 29.761,
+            "max": 29.761
+          },
+          "responseBytes": {
+            "count": 16,
+            "p50": 64,
+            "p95": 65,
+            "max": 65
+          },
+          "totalResponseBytes": 1018,
+          "successfulAttempts": {
+            "count": 12,
+            "p50": 4.844,
+            "p95": 12.883,
+            "max": 12.883
+          },
+          "conflictingAttempts": {
+            "count": 4,
+            "p50": 1.417,
+            "p95": 17.125,
+            "max": 17.125
+          },
+          "logicalSaveMs": {
+            "count": 12,
+            "p50": 23.252,
+            "p95": 100.219,
+            "max": 100.219
+          }
+        },
+        "checkpoint_commit": {
+          "dbMs": {
+            "count": 8,
+            "p50": 4.391,
+            "p95": 13.255,
+            "max": 13.255
+          },
+          "clientMs": {
+            "count": 8,
+            "p50": 9.78,
+            "p95": 19.49,
+            "max": 19.49
+          },
+          "responseBytes": {
+            "count": 8,
+            "p50": 64,
+            "p95": 65,
+            "max": 65
+          },
+          "totalResponseBytes": 511,
+          "successfulAttempts": {
+            "count": 6,
+            "p50": 4.391,
+            "p95": 13.255,
+            "max": 13.255
+          },
+          "conflictingAttempts": {
+            "count": 2,
+            "p50": 1.57,
+            "p95": 12.401,
+            "max": 12.401
+          },
+          "logicalSaveMs": {
+            "count": 6,
+            "p50": 18.663,
+            "p95": 90.248,
+            "max": 90.248
+          }
+        },
+        "focus_commit": {
+          "dbMs": {
+            "count": 7,
+            "p50": 5.362,
+            "p95": 18.174,
+            "max": 18.174
+          },
+          "clientMs": {
+            "count": 7,
+            "p50": 10.224,
+            "p95": 24.272,
+            "max": 24.272
+          },
+          "responseBytes": {
+            "count": 7,
+            "p50": 64,
+            "p95": 64,
+            "max": 64
+          },
+          "totalResponseBytes": 446,
+          "successfulAttempts": {
+            "count": 6,
+            "p50": 5.362,
+            "p95": 18.174,
+            "max": 18.174
+          },
+          "conflictingAttempts": {
+            "count": 1,
+            "p50": 0.97,
+            "p95": 0.97,
+            "max": 0.97
+          },
+          "logicalSaveMs": {
+            "count": 6,
+            "p50": 19.738,
+            "p95": 73.975,
+            "max": 73.975
+          }
+        }
+      }
+    },
+    {
+      "materialsPerOwner": 1000,
+      "seedWorkspaceBytes": [
+        1095461,
+        1095451
+      ],
+      "commits": [
+        12,
+        12
+      ],
+      "casConflicts": [
+        11,
+        10
+      ],
+      "maximumAttempts": [
+        3,
+        3
+      ],
+      "sqlErrors": [],
+      "databaseCalls": 234,
+      "monitorSamples": 26,
+      "maximumObservedActiveClients": 6,
+      "maximumObservedLockWaiters": 1,
+      "workloadMs": 3202.488,
+      "totalPhaseMs": 4725.436,
+      "byOperation": {
+        "quota": {
+          "dbMs": {
+            "count": 84,
+            "p50": 0.333,
+            "p95": 8.132,
+            "max": 10.941
+          },
+          "clientMs": {
+            "count": 84,
+            "p50": 1.358,
+            "p95": 37.805,
+            "max": 56.4
+          },
+          "responseBytes": {
+            "count": 84,
+            "p50": 64,
+            "p95": 64,
+            "max": 65
+          },
+          "totalResponseBytes": 5378
+        },
+        "session_poll": {
+          "dbMs": {
+            "count": 20,
+            "p50": 0.025,
+            "p95": 0.047,
+            "max": 0.051
+          },
+          "clientMs": {
+            "count": 20,
+            "p50": 0.685,
+            "p95": 1.356,
+            "max": 1.434
+          },
+          "responseBytes": {
+            "count": 20,
+            "p50": 157,
+            "p95": 187,
+            "max": 187
+          },
+          "totalResponseBytes": 3404
+        },
+        "heartbeat": {
+          "dbMs": {
+            "count": 12,
+            "p50": 0.259,
+            "p95": 3.908,
+            "max": 3.908
+          },
+          "clientMs": {
+            "count": 12,
+            "p50": 1.692,
+            "p95": 21.516,
+            "max": 21.516
+          },
+          "responseBytes": {
+            "count": 12,
+            "p50": 147,
+            "p95": 147,
+            "max": 147
+          },
+          "totalResponseBytes": 1763
+        },
+        "nook_snapshot": {
+          "dbMs": {
+            "count": 12,
+            "p50": 1.916,
+            "p95": 8.652,
+            "max": 8.652
+          },
+          "clientMs": {
+            "count": 12,
+            "p50": 2.547,
+            "p95": 9.597,
+            "max": 9.597
+          },
+          "responseBytes": {
+            "count": 12,
+            "p50": 943,
+            "p95": 1263,
+            "max": 1263
+          },
+          "totalResponseBytes": 11960
+        },
+        "list_nooks": {
+          "dbMs": {
+            "count": 12,
+            "p50": 0.953,
+            "p95": 2.612,
+            "max": 2.612
+          },
+          "clientMs": {
+            "count": 12,
+            "p50": 1.448,
+            "p95": 4.255,
+            "max": 4.255
+          },
+          "responseBytes": {
+            "count": 12,
+            "p50": 621,
+            "p95": 622,
+            "max": 622
+          },
+          "totalResponseBytes": 7458
+        },
+        "workspace_read": {
+          "dbMs": {
+            "count": 49,
+            "p50": 33.319,
+            "p95": 62.545,
+            "max": 65.723
+          },
+          "clientMs": {
+            "count": 49,
+            "p50": 78.181,
+            "p95": 171.889,
+            "max": 217.472
+          },
+          "responseBytes": {
+            "count": 49,
+            "p50": 1123110,
+            "p95": 1123311,
+            "max": 1123311
+          },
+          "totalResponseBytes": 55034679
+        },
+        "checkpoint_commit": {
+          "dbMs": {
+            "count": 11,
+            "p50": 26.313,
+            "p95": 42.741,
+            "max": 42.741
+          },
+          "clientMs": {
+            "count": 11,
+            "p50": 87.813,
+            "p95": 185.103,
+            "max": 185.103
+          },
+          "responseBytes": {
+            "count": 11,
+            "p50": 64,
+            "p95": 66,
+            "max": 66
+          },
+          "totalResponseBytes": 708,
+          "successfulAttempts": {
+            "count": 6,
+            "p50": 29.597,
+            "p95": 42.741,
+            "max": 42.741
+          },
+          "conflictingAttempts": {
+            "count": 5,
+            "p50": 8.856,
+            "p95": 25.156,
+            "max": 25.156
+          },
+          "logicalSaveMs": {
+            "count": 6,
+            "p50": 331.049,
+            "p95": 545.189,
+            "max": 545.189
+          }
+        },
+        "autosave_commit": {
+          "dbMs": {
+            "count": 22,
+            "p50": 29.414,
+            "p95": 43.601,
+            "max": 43.956
+          },
+          "clientMs": {
+            "count": 22,
+            "p50": 95.758,
+            "p95": 172.539,
+            "max": 178.616
+          },
+          "responseBytes": {
+            "count": 22,
+            "p50": 65,
+            "p95": 65,
+            "max": 65
+          },
+          "totalResponseBytes": 1420,
+          "successfulAttempts": {
+            "count": 12,
+            "p50": 29.414,
+            "p95": 43.601,
+            "max": 43.601
+          },
+          "conflictingAttempts": {
+            "count": 10,
+            "p50": 12.869,
+            "p95": 43.956,
+            "max": 43.956
+          },
+          "logicalSaveMs": {
+            "count": 12,
+            "p50": 367.423,
+            "p95": 703.634,
+            "max": 703.634
+          }
+        },
+        "focus_commit": {
+          "dbMs": {
+            "count": 12,
+            "p50": 24.811,
+            "p95": 47.858,
+            "max": 47.858
+          },
+          "clientMs": {
+            "count": 12,
+            "p50": 78.789,
+            "p95": 149.787,
+            "max": 149.787
+          },
+          "responseBytes": {
+            "count": 12,
+            "p50": 65,
+            "p95": 65,
+            "max": 65
+          },
+          "totalResponseBytes": 775,
+          "successfulAttempts": {
+            "count": 6,
+            "p50": 26.774,
+            "p95": 47.858,
+            "max": 47.858
+          },
+          "conflictingAttempts": {
+            "count": 6,
+            "p50": 8.275,
+            "p95": 42.649,
+            "max": 42.649
+          },
+          "logicalSaveMs": {
+            "count": 6,
+            "p50": 318.457,
+            "p95": 671.133,
+            "max": 671.133
+          }
+        }
+      }
+    }
+  ],
+  "focusMembershipRace": {
+    "result": "passed",
+    "leaveWaitedForStart": true,
+    "activeClock": false,
+    "focusStatus": "cancelled",
+    "membershipLeft": true,
+    "method": "local test-only BEFORE INSERT trigger and advisory gate force focus-start membership-check/leave overlap; not a timing sample"
+  },
+  "completionRaces": [
+    {
+      "action": "leave_nook",
+      "first": "community",
+      "result": "passed",
+      "secondWaited": true,
+      "expectedStatus": "cancelled",
+      "activeClock": false,
+      "focusStatus": "cancelled",
+      "membershipLeft": true,
+      "errors": []
+    },
+    {
+      "action": "leave_nook",
+      "first": "completion",
+      "result": "passed",
+      "secondWaited": true,
+      "expectedStatus": "completed",
+      "activeClock": false,
+      "focusStatus": "completed",
+      "membershipLeft": true,
+      "errors": []
+    },
+    {
+      "action": "archive_nook",
+      "first": "community",
+      "result": "passed",
+      "secondWaited": true,
+      "expectedStatus": "cancelled",
+      "activeClock": false,
+      "focusStatus": "cancelled",
+      "membershipLeft": true,
+      "errors": []
+    },
+    {
+      "action": "archive_nook",
+      "first": "completion",
+      "result": "passed",
+      "secondWaited": true,
+      "expectedStatus": "completed",
+      "activeClock": false,
+      "focusStatus": "completed",
+      "membershipLeft": true,
+      "errors": []
+    }
+  ],
+  "verified": [
+    "timed phases: exact expected revision and save counts",
+    "timed phases: forced stale CAS conflict retried within five attempts",
+    "timed phases: no lost autosaves/checkpoints/navigation/focus state",
+    "timed phases: unchanged other artifacts preserved",
+    "timed phases: owner RLS isolation after concurrent writes",
+    "timed phases: completed database-clock focus credit bounded by actual run time",
+    "timed phases: one latest unclaimed workspace hint per owner",
+    "timed phases: no SQL/deadlock/serialization/timeout errors"
+  ],
+  "limitations": [
+    "Short finite local correctness workload on PostgreSQL14 with synthetic Auth/Storage/Realtime stubs; not production capacity evidence.",
+    "Direct RPC SQL over persistent Unix-socket psql connections; excludes HTTP, PostgREST, JWT verification, deployed server compute, Storage, WAN latency and native UI.",
+    "Synthetic material content is compressible; two new owners per phase (four total), six clients plus one monitor; time-compressed action bursts, not sustained load or real UI cadence.",
+    "API quota uses180/60 with one charge per synthetic public operation; checkpoint/navigation are combined in one synthetic write, so this is not an exact public API traffic replay.",
+    "DB timings cover SQL expression execution. clientMs includes output serialization/transfer/parse, psql and shared Node event-loop waits; input JSON/SQL construction precedes that timer. logicalSaveMs includes construction, mutation and CAS retries. Small-sample p95 values are descriptive only.",
+    "Focus history and community membership are small; no claim about long-lived large histories, public traffic or hosted timeout budgets."
+  ],
+  "cleanup": {
+    "clusterStopped": true,
+    "temporaryFilesRemoved": true
+  }
+}

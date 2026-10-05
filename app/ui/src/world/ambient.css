@@ -1,0 +1,80 @@
+/* Compact music controls; the audio engine stays mounted when the panel closes. */
+.lofi-world .world-sound-panel{position:fixed;top:84px;right:24px;left:auto;bottom:auto;z-index:80;width:384px;max-height:calc(100dvh - 108px);display:block;overflow:visible;border-radius:20px;visibility:hidden;opacity:0;transform:translateY(-6px) scale(.985);transform-origin:top right;pointer-events:none;transition:opacity .16s ease,transform .2s cubic-bezier(.2,.7,.3,1),visibility 0s .2s}
+.lofi-world .world-sound-panel.open{visibility:visible;opacity:1;transform:none;pointer-events:auto;transition-delay:0s;animation:none}
+.lofi-world .world-sound-panel .ambient-mixer{position:relative;inset:auto;width:100%;max-height:calc(100dvh - 108px);overflow:auto;padding:22px;border:1px solid #fffaf3b3;border-radius:20px;background:linear-gradient(130deg,#faf8f3f7,#eee9dff5);backdrop-filter:blur(28px);box-shadow:0 18px 70px #12110e42,0 2px 5px #12110e0d;color:#35322d;font-family:var(--nook-font),sans-serif;scrollbar-width:thin;scrollbar-color:#c1b9aa transparent;animation:none}
+.lofi-world .ambient-mixer *{box-sizing:border-box}
+.lofi-world .ambient-header{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:20px}
+.lofi-world .world-sound-panel .ambient-header h2{margin:0;font-family:var(--nook-font),sans-serif;font-size:21px;line-height:1.3;font-weight:550;letter-spacing:-.5px;color:#37332e;font-style:normal}
+.lofi-world .ambient-header p{margin:5px 0 0;color:#8a8174;font-size:12px;line-height:1.5}
+.lofi-world .ambient-icon{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;min-width:0;padding:0;border:0;border-radius:50%;background:transparent;color:#8b8275;cursor:pointer;transition:background .15s,color .15s}
+.lofi-world .ambient-icon:hover{background:#4435250b;color:#423b30}
+.lofi-world .ambient-mixer :is(button,input,summary):focus-visible{outline:2px solid #9d8b6c;outline-offset:3px}
+.lofi-world .ambient-curated{position:relative;padding:18px;border:1px solid #d9cbb469;border-radius:14px;background:linear-gradient(145deg,#e9ddc6a8,#f4efe5);overflow:hidden}
+.lofi-world .ambient-curated-label{display:flex;justify-content:space-between;gap:12px;color:#8b795e;font-size:10px;line-height:1.4}
+.lofi-world .ambient-curated-label>span:last-child{color:#716954}
+.lofi-world .ambient-curated-track{display:flex;align-items:center;gap:14px;margin:17px 0 12px}
+.lofi-world .ambient-curated-track>div{min-width:0}
+.lofi-world .ambient-curated-track h3{margin:0 0 4px;color:#41382d;font:600 19px/1.22 var(--nook-font),sans-serif;letter-spacing:-.4px;overflow-wrap:anywhere}
+.lofi-world .ambient-curated-track>div>span{font-size:11px;color:#887962}
+.lofi-world .ambient-curated .ambient-curated-vinyl{width:52px;height:52px;background:radial-gradient(circle,#eee2c7 0 2px,#ae8c59 2px 11px,#35332d 11px 14px,#4b473d 14px 15px,#35332d 15px 19px,#4b473d 19px 20px,#35332d 20px 23px,#4b473d 23px 24px,#35332d 24px);box-shadow:0 3px 6px #4b3b2426}
+.lofi-world .ambient-curated>p{margin:0 0 17px;color:#7c6d58;font-size:12px;line-height:1.55}
+.lofi-world .ambient-curated-open{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:40px;padding:10px 13px;border:1px solid #fff5e65c;border-radius:8px;background:#574b3a;color:#fbf5e8;font:500 12px var(--nook-font),sans-serif;cursor:pointer;transition:background .18s,transform .18s}
+.lofi-world .ambient-curated-open:hover{background:#443b2f}
+.lofi-world .ambient-curated-open:active{transform:scale(.985)}
+.lofi-world .ambient-curated>small{display:block;margin-top:9px;font-size:9px;text-align:center;color:#93816a}
+.lofi-world .ambient-spotify{margin-top:18px;padding:0 0 17px;border-bottom:1px solid #c2b59d45}
+.lofi-world .ambient-spotify-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:13px}
+.lofi-world .ambient-spotify-heading strong{font-size:12px;font-weight:500;color:#6f6659}
+.lofi-world .ambient-spotify-heading>span{color:#9a9184;font-size:8px;letter-spacing:1.2px;font-weight:500}
+.lofi-world .ambient-spotify-input{display:flex;align-items:center;gap:4px;min-height:42px;padding:4px 5px 4px 11px;border:1px solid #d8d1c4;background:#fffcf6;border-radius:8px}
+.lofi-world .ambient-spotify-input input{min-width:0;width:100%;padding:5px 0;border:0;background:none;box-shadow:none;font:11px var(--nook-font),sans-serif;color:#3b3730;outline:none}
+.lofi-world .ambient-spotify-input input::placeholder{color:#a19a8f}
+.lofi-world .ambient-spotify-input:focus-within{border-color:#a49375;box-shadow:0 0 0 2px #ae9c7820}
+.lofi-world .ambient-spotify-input button{display:flex;align-items:center;justify-content:center;gap:4px;flex:none;padding:8px 9px;border:0;border-radius:5px;font:11px var(--nook-font),sans-serif;background:#464137;color:#faf6ec;cursor:pointer}
+.lofi-world .ambient-spotify-input button:disabled{opacity:.4;cursor:default}
+.lofi-world .ambient-spotify-shortcuts{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px}
+.lofi-world .ambient-spotify-shortcuts>button{display:flex;align-items:center;gap:8px;padding:0;border:0;background:none;text-align:left;color:#5c554a;font:11px var(--nook-font),sans-serif;cursor:pointer}
+.lofi-world .ambient-spotify-shortcuts>button:hover{color:#26241f}
+.lofi-world .ambient-spotify-shortcuts small{display:block;margin-top:2px;font-size:9px;color:#958c7f}
+.lofi-world .ambient-spotify-shortcuts>span{min-width:0;font-size:9px;color:#9c9386;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lofi-world .ambient-vinyl{width:29px;height:29px;border-radius:50%;background:radial-gradient(circle,#ebdec4 0 2px,#b59a70 2px 6px,#34332f 6px 8px,#4c4941 8px 9px,#34332f 9px 12px,#514d44 12px 13px,#34332f 13px);box-shadow:0 2px 4px #30271824;flex:none}
+.lofi-world .ambient-sound-section{margin-top:20px}
+.lofi-world .ambient-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px}
+.lofi-world .ambient-section-heading h3{margin:0;font:500 12px var(--nook-font),sans-serif;color:#6f6659}
+.lofi-world .world-sound-panel .ambient-play{display:flex;align-items:center;justify-content:center;gap:6px;min-height:31px;padding:7px 10px;border:1px solid #d1c6b3;background:#e3d6bd;color:#554631;font:500 11px var(--nook-font),sans-serif;border-radius:7px;cursor:pointer;transition:background .15s}
+.lofi-world .world-sound-panel .ambient-play:hover{background:#dac9a9}
+.lofi-world .world-sound-panel .ambient-play.ambient-playing{background:#ebe4d7;color:#66563e}
+.lofi-world .ambient-play:disabled{opacity:.5;cursor:wait}
+.lofi-world .ambient-channels{display:grid;gap:0}
+.lofi-world .ambient-channel{display:grid;grid-template-columns:129px minmax(0,1fr) 31px;align-items:center;gap:12px;min-height:43px;border-bottom:1px solid #c2b59d22}
+.lofi-world .ambient-channel-toggle{display:flex;align-items:center;gap:9px;padding:8px 0;border:0;background:none;color:#554e43;text-align:left;font:12px var(--nook-font),sans-serif;cursor:pointer;white-space:nowrap}
+.lofi-world .ambient-channel-toggle>span{display:grid;place-items:center;width:16px;height:16px;border:1px solid #c2b6a1;border-radius:5px;background:transparent;color:#7b6749;transition:background .16s}
+.lofi-world .ambient-channel-toggle[aria-checked=true]>span{background:#e7ddc9;border-color:#c2b191}
+.lofi-world .world-sound-panel .ambient-slider{display:block;width:100%;min-width:0;height:24px;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;appearance:none;-webkit-appearance:none;cursor:pointer;accent-color:#9a8460}
+.ambient-slider::-webkit-slider-runnable-track{height:3px;background:#d6cdbd;border-radius:4px}
+.ambient-slider::-moz-range-track{height:3px;background:#d6cdbd;border-radius:4px}
+.ambient-slider::-moz-range-progress{height:3px;background:#ad9471;border-radius:4px}
+.ambient-slider::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:10px;height:10px;margin-top:-3.5px;border:0;border-radius:50%;background:#a18b66;box-shadow:0 1px 3px #4b3c2323}
+.ambient-slider::-moz-range-thumb{width:10px;height:10px;border:0;border-radius:50%;background:#a18b66}
+.lofi-world .ambient-percent{font-size:10px;color:#9b9181;font-variant-numeric:tabular-nums;text-align:right}
+.lofi-world .ambient-master{display:grid;grid-template-columns:26px 91px minmax(0,1fr) 31px;gap:12px;align-items:center;margin:8px 0 0;padding:5px 0 0}
+.lofi-world .ambient-master>span{font-size:11px;color:#837969}
+.lofi-world .ambient-master .ambient-icon{width:26px;height:26px;color:#8f826d}
+.lofi-world .ambient-master .ambient-muted{background:#ddcdb65c;color:#8a6743}
+.lofi-world .ambient-local{margin-top:16px;padding-top:14px;border-top:1px solid #cabfac63}
+.lofi-world .ambient-local summary{display:flex;align-items:center;gap:9px;list-style:none;font:11px var(--nook-font),sans-serif;color:#8d8070;cursor:pointer}
+.ambient-local summary::-webkit-details-marker{display:none}
+.lofi-world .ambient-local-expand{margin-left:auto;font-size:17px;line-height:1;transition:transform .18s}
+.lofi-world .ambient-local[open] .ambient-local-expand{transform:rotate(45deg)}
+.lofi-world .ambient-upload{width:100%;margin-top:13px;padding:11px;border:1px dashed #cbbda5;border-radius:7px;background:#fffcf641;color:#857458;font:11px var(--nook-font),sans-serif;cursor:pointer}
+.lofi-world .ambient-upload:hover{background:#fef9ef}
+.ambient-file-input{display:none}
+.lofi-world .ambient-local-track{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;margin-top:9px}
+.lofi-world .ambient-file-name{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#6a5f4e}
+.lofi-world .ambient-local-track>.ambient-slider,.lofi-world .ambient-local-note{grid-column:1/-1}
+.lofi-world .ambient-local-note,.lofi-world .ambient-privacy{font-size:9px;color:#a19482;margin:6px 0 0;line-height:1.5}
+.lofi-world .ambient-error{font-size:11px;line-height:1.55;color:#a34634;margin:10px 0 0}
+.lofi-world .ambient-footer{margin-top:17px;font-size:9px;color:#a39886;text-align:center;line-height:1.5}
+.ambient-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:680px){.lofi-world .world-sound-panel{top:76px;left:12px;right:12px;width:auto;max-height:calc(100dvh - 155px)}.lofi-world .world-sound-panel .ambient-mixer{padding:20px;max-height:calc(100dvh - 155px);border-radius:17px}.lofi-world .ambient-channel{grid-template-columns:116px minmax(0,1fr) 29px;gap:9px}.lofi-world .ambient-master{grid-template-columns:26px 81px minmax(0,1fr) 29px;gap:9px}.lofi-world .ambient-spotify-shortcuts>span{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.lofi-world .world-sound-panel,.lofi-world .ambient-mixer *{animation:none!important;transition:none!important}}

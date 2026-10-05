@@ -1,0 +1,96 @@
+{
+  "result": "passed",
+  "startedAt": "2026-10-04T19:30:55.399Z",
+  "postgres": "pg_dump (PostgreSQL) 14.20 (Homebrew)",
+  "isolation": {
+    "clusters": 2,
+    "transport": "private Unix sockets",
+    "tcpEnabled": false,
+    "existingDatabasesContacted": false,
+    "hostedServicesContacted": false,
+    "credentialsUsed": false
+  },
+  "migrations": [
+    {
+      "name": "202610010001_nooks_production.sql",
+      "sha256": "149032c543ac04987d1b8b2b8a9ffe358fb86f4f41650fdf3bc6ff9a570ed816"
+    },
+    {
+      "name": "202610010002_nooks_community.sql",
+      "sha256": "151ba1201c6723b75136aad8f23fd484304ba2b6ae02fcc8c20a8a9739065cf4"
+    },
+    {
+      "name": "202610010003_nooks_events.sql",
+      "sha256": "567070c44a9e67ee27d9e6d29763d513501b7ce59b5cd6db2396f87ee9a19a57"
+    },
+    {
+      "name": "202610020001_nooks_browser_api.sql",
+      "sha256": "4173371632e6a6c0180361eddfda6165fd676d7e24f69ad1f454eebae1f92303"
+    },
+    {
+      "name": "20261004185440_production_hardening.sql",
+      "sha256": "cbfaee69b969aad56860961d0303708121f6152db27cf421a39dca2780761895"
+    },
+    {
+      "name": "20261004192857_focus_membership_serialization.sql",
+      "sha256": "a0d0f233534bf9ab424a0363ebde258acc92330c0583275a05c39cc36bac79a3"
+    }
+  ],
+  "fixture": {
+    "owners": 2,
+    "privateArtifacts": 8,
+    "artifactFormats": [
+      "note",
+      "flashcards",
+      "quiz",
+      "exam"
+    ],
+    "tablesCompared": 23,
+    "storageObjects": 0
+  },
+  "archive": {
+    "format": "custom",
+    "bytes": 109976,
+    "sha256": "33b4425afe632309b2240ed6d097e8a556c6c9a759eedc3e52d352929f9dd165",
+    "roleDefinitions": "pg_dumpall --globals-only --no-role-passwords"
+  },
+  "fingerprints": {
+    "schemaIncludingOwnersAndAcls": "024c51d4770a4770e427f752a84092e945dd5b24f4dd5ace618f38f98e0f5289",
+    "allTableData": "2afcaa79b335e61eebc74348e3bfa3675b89e37f6d80ca354995b9042913871e",
+    "roleAttributes": "0729f3a22f7ad489e2918682b672658e59d27489ac31b6cfe7d7e14e7f762a1e"
+  },
+  "verified": [
+    "all current migrations applied",
+    "schema, function, constraint, RLS policy, owner and ACL SQL equality (CHECK clauses use PostgreSQL canonical formatting)",
+    "exact table data and migration hash manifest equality",
+    "role attributes and database ownership",
+    "two-owner identity links and private artifact isolation",
+    "authenticated and anonymous permission denials",
+    "complete workspace reconstruction",
+    "owner-prefixed artwork references",
+    "stale CAS rejection and current-revision save",
+    "restored hardening regression suite",
+    "verification transactions rolled back"
+  ],
+  "limitations": [
+    "Synthetic local PostgreSQL with Auth/Storage/Realtime schema stubs; not a hosted Supabase restore.",
+    "No Storage object metadata or image bytes were copied. Restored artwork references do not establish image availability.",
+    "No hosted Auth sessions, Realtime delivery, managed roles/extensions/settings, PITR, backup schedules, encryption/retention, alert routing or operator handoff were tested.",
+    "Timings cover a tiny synthetic fixture and are not production RTO/RPO evidence."
+  ],
+  "timingsMs": {
+    "sourceClusterStartMs": 2427.338,
+    "applyMigrationsMs": 488.505,
+    "seedSyntheticDataMs": 88.464,
+    "dumpMs": 358.953,
+    "restoreClusterStartMs": 1848.42,
+    "restoreMs": 428.982,
+    "restoredBehaviorChecksMs": 93.186,
+    "restoredHardeningChecksMs": 79.501,
+    "totalIncludingCleanupMs": 10814.105
+  },
+  "cleanup": {
+    "clustersStopped": true,
+    "temporaryFilesRemoved": true
+  }
+}

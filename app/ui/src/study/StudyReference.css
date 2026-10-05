@@ -1,0 +1,31 @@
+.nooks-study-with-reference{display:grid;grid-template-columns:minmax(0,2fr) minmax(250px,1fr);align-items:start;gap:24px}
+.nooks-study-primary{min-width:0}
+.nooks-study-reference{min-width:0;display:flex;flex-direction:column;max-height:calc(100dvh - 210px);border:1px solid #fff9e15c;border-radius:16px;background:#f8f3e9f2;backdrop-filter:blur(20px);box-shadow:0 12px 38px #1c160c26;color:#403a31;font-family:var(--nook-font,Inter,sans-serif);overflow:hidden}
+.nooks-study-reference>header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-shrink:0;padding:20px 20px 17px;border-bottom:1px solid #76654b24}
+.nooks-study-reference>header>div{min-width:0}
+.nooks-study-reference>header span{display:block;margin-bottom:8px;color:#88785f;font-size:10px;font-weight:500;letter-spacing:.2px}
+.nooks-study-reference>header h2{margin:0;color:#403a31;font:550 17px/1.4 var(--nook-font,Inter,sans-serif);letter-spacing:-.2px;overflow-wrap:anywhere}
+.nooks-study-reference>header button{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;margin:-5px -6px 0 0;border:0;border-radius:50%;background:transparent;color:#7c6f5c;cursor:pointer;transition:background .16s,transform .16s}
+.nooks-study-reference>header button:hover{background:#c8bba831}
+.nooks-study-reference>header button:active{transform:scale(.93)}
+.nooks-study-reference-body{min-height:0;overflow:auto;overscroll-behavior:contain;padding:20px;font:13px/1.8 var(--nook-font,Inter,sans-serif);color:#494136;overflow-wrap:anywhere;scrollbar-width:thin;scrollbar-color:#b7a994 transparent}
+.nooks-study-reference-body p{margin:0 0 15px;white-space:pre-wrap;color:inherit;font:inherit}
+.nooks-study-reference-body :is(h2,h3,h4,h5,h6){margin:22px 0 10px;color:#413a30;font-family:inherit;font-weight:600;font-style:normal;line-height:1.5;letter-spacing:-.1px}
+.nooks-study-reference-body h2{font-size:17px}.nooks-study-reference-body h3{font-size:15px}.nooks-study-reference-body :is(h4,h5,h6){font-size:14px}
+.nooks-study-reference-body>div>:first-child{margin-top:0}.nooks-study-reference-body>div>:last-child{margin-bottom:0}
+.nooks-study-reference-body :is(ul,ol){padding-left:20px;margin:0 0 16px}.nooks-study-reference-body li{margin:5px 0;font:inherit}.nooks-study-reference-body li p{margin-bottom:5px}
+.nooks-study-reference-body blockquote{margin:17px 0;padding:2px 0 2px 14px;border-left:2px solid #bbaa91;color:#77664f;font:inherit}
+.nooks-study-reference-body blockquote p:last-child{margin-bottom:0}
+.nooks-study-reference-body pre{margin:17px 0;padding:13px;background:#b8a68d18;border-radius:7px;max-width:100%;overflow:auto;white-space:pre;font:11px/1.7 ui-monospace,monospace}
+.nooks-study-reference-body code{font-family:ui-monospace,monospace;font-size:.9em}.nooks-study-reference-body :not(pre)>code{padding:2px 4px;background:#b8a68d26;border-radius:3px}
+.nooks-study-reference-body a{color:#805a34;text-decoration:underline;text-underline-offset:3px}.nooks-study-reference-body hr{border:0;border-top:1px solid #76654b24;margin:22px 0}
+.nooks-reference-table{max-width:100%;overflow:auto;margin:17px 0}.nooks-reference-table table{width:100%;border-collapse:collapse;font:inherit;font-size:12px}.nooks-reference-table :is(th,td){min-width:80px;border:1px solid #76654b24;padding:8px;text-align:left;vertical-align:top}.nooks-reference-table th{background:#b8a68d15}.nooks-reference-table p{margin:0}
+.nooks-study-reference-body .nooks-reference-tasks{list-style:none;padding-left:0}.nooks-reference-tasks>li{display:flex;gap:9px}.nooks-reference-task-state{color:#8c7c63;flex-shrink:0}.nooks-study-reference-body .nooks-reference-empty{color:#8a7e6b}
+.nooks-study-reference :focus-visible{outline:2px solid #ad9171;outline-offset:-3px}
+@media(max-width:900px){.nooks-study-with-reference{grid-template-columns:minmax(0,1fr);gap:22px}.nooks-study-reference{max-height:360px}.nooks-study-reference>header{padding:17px 20px 14px}.nooks-study-reference-body{padding:18px 20px}}
+@media(prefers-reduced-motion:reduce){.nooks-study-reference>header button{transition:none}}
+
+@keyframes nooks-reference-arrive{from{opacity:0;translate:10px 0}to{opacity:1;translate:0 0}}
+.nooks-study-reference{animation:nooks-reference-arrive .24s cubic-bezier(.22,.8,.25,1)}
+.motion-off .nooks-study-reference{animation:none}
+@media(prefers-reduced-motion:reduce){.nooks-study-reference{animation:none}}

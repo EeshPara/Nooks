@@ -1,0 +1,52 @@
+.lofi-world .study-focus-dock{position:relative;flex-shrink:0;font-family:var(--nook-font,Inter,sans-serif);}
+.lofi-world .study-focus-trigger{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:0 12px;border:1px solid #fff5e72b;border-radius:24px;background:#23222170;color:#fff7ea;box-shadow:inset 0 1px 0 #fff1;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);font:500 11px var(--nook-font,Inter,sans-serif);transition:background .2s,border-color .2s,transform .2s;}
+.lofi-world .study-focus-trigger:hover,.lofi-world .study-focus-dock.is-open .study-focus-trigger{background:#37342fbd;border-color:#fff4e455;}
+.lofi-world .study-focus-clock{width:15px;height:15px;display:grid;place-items:center;color:#dfd4bf;}
+.lofi-world .study-focus-tick{width:7px;height:7px;border-radius:50%;background:#e7cea1;box-shadow:0 0 0 4px #e7cea118;animation:study-focus-breathe 3s ease-in-out infinite;}
+.lofi-world .study-focus-trigger-time{font-variant-numeric:tabular-nums;min-width:34px;color:#f6eddf;}
+.lofi-world .study-focus-trigger-label{color:#e9decd;}
+.lofi-world .study-focus-chevron{opacity:.65;transition:transform .2s;}
+.lofi-world .study-focus-dock.is-open .study-focus-chevron{transform:rotate(180deg);}
+.lofi-world .study-focus-popover{position:absolute;top:calc(100% + 12px);right:0;z-index:140;width:314px;max-width:calc(100vw - 32px);padding:19px;border:1px solid #fff9ee90;border-radius:19px;background:linear-gradient(135deg,#faf7f0fa,#f3efe6f5);color:#3c3831;box-shadow:0 18px 60px #080a1338,0 3px 9px #080a130f;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);opacity:0;visibility:hidden;transform:translateY(-6px) scale(.985);transform-origin:top right;transition:opacity .18s ease,transform .23s cubic-bezier(.22,1,.36,1),visibility .18s;max-height:calc(100dvh - 130px);overflow:auto;text-align:left;}
+.lofi-world .study-focus-dock.is-open .study-focus-popover{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+.lofi-world .study-focus-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.lofi-world .study-focus-heading h2{margin:0;font-family:inherit;font-size:14px;font-weight:600;letter-spacing:-.2px;color:#3c3831;}
+.lofi-world .study-focus-close{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:transparent;color:#898071;transition:background .18s,color .18s;}
+.lofi-world .study-focus-close:hover{background:#c9bda42b;color:#494137;}
+.lofi-world .study-focus-modes{display:flex;padding:3px;gap:2px;background:#e4ded54f;border-radius:9px;}
+.lofi-world .study-focus-modes button{flex:1;padding:8px 4px;font-family:inherit;font-size:10px;line-height:1.3;color:#8d8171;border-radius:7px;background:transparent;white-space:nowrap;transition:background .18s,color .18s;}
+.lofi-world .study-focus-modes button[aria-pressed=true]{background:#fffaf1;color:#494134;box-shadow:0 1px 4px #5248320d;}
+.lofi-world .study-focus-modes button:disabled:not([aria-pressed=true]){opacity:.5;cursor:default;}
+.lofi-world .study-focus-time{margin-top:23px;font-family:inherit;font-size:47px;font-weight:450;line-height:1.1;letter-spacing:-2px;color:#40392f;font-variant-numeric:tabular-nums;text-align:center;}
+.lofi-world .study-focus-state{font-family:inherit;font-size:10px;line-height:1.5;color:#938676;text-align:center;margin:8px 0 22px;}
+.lofi-world .study-focus-presets{display:flex;align-items:stretch;gap:6px;margin-bottom:20px;}
+.lofi-world .study-focus-presets>button,.lofi-world .study-focus-custom{display:flex;align-items:center;justify-content:center;flex:1;min-width:0;min-height:33px;border:1px solid #c6baa639;border-radius:8px;background:#fff7;color:#766a58;font-family:inherit;font-size:11px;white-space:nowrap;}
+.lofi-world .study-focus-presets>button span{margin-left:3px;font-size:9px;}
+.lofi-world .study-focus-presets>button[aria-pressed=true]{border-color:#b6a58b;background:#e9dfcd7a;color:#4d4334;}
+.lofi-world .study-focus-custom{gap:2px;background:transparent;font-size:9px;}
+.lofi-world .study-focus-custom input{min-width:0;width:30px;padding:0;border:0!important;outline-offset:2px;background:transparent!important;color:#625543!important;font-family:inherit;font-size:11px;line-height:25px;box-shadow:none!important;border-radius:3px!important;text-align:center;-moz-appearance:textfield;}
+.lofi-world .study-focus-custom input::-webkit-inner-spin-button,.lofi-world .study-focus-custom input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+.lofi-world .study-focus-work{display:flex;flex-direction:column;gap:5px;padding:13px 0 15px;border-top:1px solid #bfb39f36;font-family:inherit;min-width:0;}
+.lofi-world .study-focus-work>span{font-size:9px;color:#988974;}
+.lofi-world .study-focus-work>strong{font-size:12px;line-height:1.5;font-weight:500;color:#534735;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lofi-world .study-focus-work>small{font-size:9px;line-height:1.5;color:#958672;}
+.lofi-world .study-focus-break-note{font-family:inherit;font-size:11px;line-height:1.6;text-align:center;color:#8c7c65;margin:0 0 20px;}
+.lofi-world .study-focus-notice{font-size:10px;line-height:1.6;color:#8d6743;margin:0 0 14px;padding-top:10px;border-top:1px solid #bfb39f36;}
+.lofi-world .study-focus-actions{display:flex;gap:8px;}
+.lofi-world .study-focus-primary{display:flex;align-items:center;justify-content:center;gap:8px;min-height:39px;flex:1;border:1px solid #4a4139;border-radius:10px;background:#4a4139;color:#fff6e9;font-family:inherit;font-size:11px;font-weight:500;transition:background .2s,transform .2s;}
+.lofi-world .study-focus-primary:hover:not(:disabled){background:#5c5043;transform:translateY(-1px);}
+.lofi-world .study-focus-primary:disabled{opacity:.5;cursor:wait;}
+.lofi-world .study-focus-finish,.lofi-world .study-focus-reset{display:flex;align-items:center;justify-content:center;border:1px solid #c1b6a440;border-radius:10px;background:#fff6;color:#8a7962;font-family:inherit;font-size:11px;padding:0 14px;min-height:39px;transition:background .2s;}
+.lofi-world .study-focus-finish:hover,.lofi-world .study-focus-reset:hover{background:#fff;}
+.lofi-world .study-focus-discard-link{display:block;width:100%;padding:12px 0 0;background:transparent;color:#a59681;text-align:center;font-family:inherit;font-size:9px;}
+.lofi-world .study-focus-discard-link:hover{color:#8d5f47;}
+.lofi-world .study-focus-discard{border-top:1px solid #c1b6a440;padding-top:12px;}
+.lofi-world .study-focus-discard p{margin:0 0 11px;font-size:11px;line-height:1.6;color:#8f6b52;}
+.lofi-world .study-focus-discard>div{display:flex;gap:8px;}
+.lofi-world .study-focus-discard button{flex:1;font-family:inherit;font-size:10px;color:#796b59;border-radius:8px;background:#ddd1bf4f;padding:10px;}
+.lofi-world .study-focus-discard button:last-child{background:#a7663f15;color:#945b3c;}
+.lofi-world .study-focus-dock button:focus-visible,.lofi-world .study-focus-dock input:focus-visible{outline:2px solid #ad9470;outline-offset:3px;}
+@keyframes study-focus-breathe{0%,100%{box-shadow:0 0 0 4px #e7cea118;}50%{box-shadow:0 0 0 6px #e7cea108;}}
+@media(max-width:760px){.lofi-world .study-focus-trigger{min-height:35px;padding:0 10px;gap:6px;}.lofi-world .study-focus-trigger-label{display:none;}.lofi-world .study-focus-popover{position:fixed;top:112px;right:16px;width:314px;max-height:calc(100dvh - 144px);}}
+@media(max-width:420px){.lofi-world .study-focus-popover{right:12px;max-width:calc(100vw - 24px);padding:18px;}.lofi-world .study-focus-trigger{gap:5px;padding-inline:9px;}.lofi-world .study-focus-chevron{display:none;}}
+@media(prefers-reduced-motion:reduce){.lofi-world .study-focus-dock *{animation:none!important;transition:none!important;}}

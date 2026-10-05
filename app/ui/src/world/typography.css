@@ -1,0 +1,24 @@
+/* Interface type stays quiet. Serif remains an explicit notebook preference. */
+.lofi-world {
+  --nook-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--nook-font);
+}
+.lofi-world :is(h1,h2,h3,h4,h5,h6,.study-counter,.study-card-text,.study-option-letter,.study-results-stats strong,.study-review-item h3,.games-heading h1,.game-match-tile,.game-sprint-word,.game-source-title,.room-digits,.note-banner h1,.note-sidebar h3,.room-quote p,.room-buddy span,.about-free p,.space-scene-heading h2,.desk-item-text strong,.artifact-title,.cover-title,.plan-note h3) {
+  font-family: var(--nook-font);
+  font-style: normal;
+}
+.lofi-world :is(h1,h2,h3,h4) { font-weight: 550; letter-spacing: -.035em; }
+.lofi-world :is(.study-heading h1,.games-heading h1,.note-banner h1) { font-size: clamp(25px,2.8vw,34px); line-height: 1.25; }
+.lofi-world .study-counter { font-variant-numeric: tabular-nums; font-size: 22px; }
+.lofi-world .room-personal-welcome em { font: inherit; }
+.lofi-world .study-card-text { font-size: clamp(20px,2.5vw,30px); line-height: 1.5; }
+.lofi-world .study-flashcard.is-flipped .study-card-text { font-size: clamp(18px,2.2vw,25px); }
+.lofi-world :is(.study-feedback,.study-question p,.study-key-hint,.games-heading p,.study-heading p) { font-style: normal; }
+.lofi-world .note-paper.type-serif :is(h1,h2,h3,h4) { font-family: var(--note-font); }
+.lofi-world .note-paper.type-mono :is(h1,h2,h3,h4) { font-family: var(--note-font); }
+.lofi-world :is(.page-heading p,.note-sidebar p,.study-heading p,.games-heading p) { font-size: 13px; line-height: 1.65; }
+.lofi-world :is(.button,.text-button,.tabs button,.library-sort) { font-size: 12px; }
+.lofi-world :is(button,a,input,textarea,select):focus-visible { outline: 2px solid #ead4ae; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .lofi-world :is(button,a,input) { scroll-behavior: auto; }
+}

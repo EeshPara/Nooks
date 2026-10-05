@@ -1,0 +1,12 @@
+import { build as viteBuild } from 'vite';
+import { build } from 'esbuild';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { ARTWORK_ORIGIN } from '../worker/index.mjs';
+import { widgetHtml } from '../server/index.mjs';
+await viteBuild({ build: { outDir: '../dist/client', emptyOutDir: true } });
+const widget = await widgetHtml(resolve('dist/client'), {assetOrigin: ARTWORK_ORIGIN});
+await writeFile('dist/client/widget.html', widget);
+await mkdir('dist/server', { recursive: true });
+await build({ entryPoints: ['worker/index.mjs'], outfile: 'dist/server/index.js', bundle: true, format: 'esm', platform: 'browser', target: 'es2022', minify: true });
+console.log(`Nooks Worker built. Self-contained ChatGPT interface: ${(Buffer.byteLength(widget) / 1024 / 1024).toFixed(2)} MiB.`);

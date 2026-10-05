@@ -1,0 +1,49 @@
+{
+  "capturedAt": "2026-10-04T23:56:17.575Z",
+  "status": "primary-source-tested-not-deployed",
+  "databaseMigration": "20261004232607_custom_nook_artwork_publication.sql",
+  "tests": {
+    "focused": {
+      "passed": 84,
+      "failed": 0
+    },
+    "backend": {
+      "passed": 285,
+      "failed": 0
+    }
+  },
+  "files": [
+    {
+      "path": "server/nook-creator.mjs",
+      "sha256": "25671db72517ecd3f9bb7610e2e4c68055b2793de54c10ca813891a259a64f89"
+    },
+    {
+      "path": "server/community-tools.mjs",
+      "sha256": "7c6475af8d13aa51e658eb9e088dde1814c9ccc444d517a7cb3837cdd9e35c2e"
+    },
+    {
+      "path": "server/supabase-store.mjs",
+      "sha256": "d0582a281f26fd0356825d898b7ff844dbf3d0a6e609e5b432f37f497b566f85"
+    },
+    {
+      "path": "server/model-result.mjs",
+      "sha256": "1e023a818aaa8445f6674864c3e461548938ad14d893b581d60d115baf454442"
+    },
+    {
+      "path": "server/nook-creator-tools.mjs",
+      "sha256": "14bee74657b49f14196260b30329c6943e5ff7a2457545201277e71bb42b83cd"
+    },
+    {
+      "path": "tests/custom-nook-artwork.test.mjs",
+      "sha256": "3ab777d4357a10149bdf477a8b5883679c93a624e49a8024c0f8bcd815028643"
+    },
+    {
+      "path": "tests/community-integration.test.mjs",
+      "sha256": "0dfcbcb8d716769b173fd01d49ffede9b064e0f85c43498acb984eb1e1a64d64"
+    },
+    {
+      "path": "docs/production/custom-art-server-packet-2026-10-04.md",
+      "sha256": "29db06b0af5b2c261b73ba5e65b9dee8df0ff6a36cc69c09b8dd1f2077d6dde0"
+    }
+  ]
+}

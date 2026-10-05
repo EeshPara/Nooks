@@ -1,0 +1,10 @@
+.study-dismiss-toolbar{align-items:center;gap:10px}
+.study-surface-close{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid #d6c4a636;border-radius:50%;background:#302b24dd;color:#f1e5d1;cursor:pointer;transition:background .16s,transform .16s}
+.study-surface-close:hover:not(:disabled){background:#504639}
+.study-surface-close:active:not(:disabled){transform:scale(.94)}
+.study-surface-close:disabled{opacity:.45;cursor:default}
+.study-surface-close:focus-visible{outline:2px solid #d3b583;outline-offset:3px}
+.study-popup-topline,.study-topline-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.study-topline-actions .study-eyebrow{text-align:right}
+.motion-off .study-surface-close{transition:none}
+@media(prefers-reduced-motion:reduce){.study-surface-close{transition:none}}

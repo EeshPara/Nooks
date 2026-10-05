@@ -1,0 +1,144 @@
+{
+  "result": "passed",
+  "completedAt": "2026-10-04T23:38:58.433Z",
+  "postgres": "psql (PostgreSQL) 14.20 (Homebrew)",
+  "migrations": [
+    {
+      "name": "202610010001_nooks_production.sql",
+      "sha256": "149032c543ac04987d1b8b2b8a9ffe358fb86f4f41650fdf3bc6ff9a570ed816"
+    },
+    {
+      "name": "202610010002_nooks_community.sql",
+      "sha256": "151ba1201c6723b75136aad8f23fd484304ba2b6ae02fcc8c20a8a9739065cf4"
+    },
+    {
+      "name": "202610010003_nooks_events.sql",
+      "sha256": "567070c44a9e67ee27d9e6d29763d513501b7ce59b5cd6db2396f87ee9a19a57"
+    },
+    {
+      "name": "202610020001_nooks_browser_api.sql",
+      "sha256": "4173371632e6a6c0180361eddfda6165fd676d7e24f69ad1f454eebae1f92303"
+    },
+    {
+      "name": "20261004185440_production_hardening.sql",
+      "sha256": "cbfaee69b969aad56860961d0303708121f6152db27cf421a39dca2780761895"
+    },
+    {
+      "name": "20261004192857_focus_membership_serialization.sql",
+      "sha256": "a0d0f233534bf9ab424a0363ebde258acc92330c0583275a05c39cc36bac79a3"
+    },
+    {
+      "name": "20261004195006_community_management_pagination.sql",
+      "sha256": "7d50bcca386c7307f89bd2fce88ed7382d1f5294111847120fdafe2a28fd8a4e"
+    },
+    {
+      "name": "20261004195615_artwork_inventory_dry_run.sql",
+      "sha256": "6a627aa4d5b5ed536039be68131df8c3bbe29868ba032ed2760a89362bcfe1be"
+    },
+    {
+      "name": "20261004201449_artwork_generation_lifecycle.sql",
+      "sha256": "99b79095157822b87391c67f3e0ae94119287b66de36f182ca2fe70570269598"
+    },
+    {
+      "name": "20261004232607_custom_nook_artwork_publication.sql",
+      "sha256": "b4f60c35611113cc6f7e24e5016a568789fa1926058e9f8cc1af8b6dcde2105f"
+    }
+  ],
+  "isolation": {
+    "transport": "private Unix socket",
+    "tcpEnabled": false,
+    "existingDatabasesContacted": false,
+    "hostedServicesContacted": false,
+    "credentialsUsed": false,
+    "realStorageObjects": 0
+  },
+  "limits": {
+    "forcedRaces": 6,
+    "clientsPerRace": 2,
+    "maximumSqlSeconds": 8,
+    "lockTimeoutSeconds": 5,
+    "perClientDeadlineSeconds": 10
+  },
+  "outcomes": [
+    {
+      "kind": "publish",
+      "first": "operation",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "state": "ready",
+      "scenes": 1,
+      "references": 2,
+      "retentionFresh": null
+    },
+    {
+      "kind": "publish",
+      "first": "cleanup",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "state": "ready",
+      "scenes": 1,
+      "references": 2,
+      "retentionFresh": null
+    },
+    {
+      "kind": "archive",
+      "first": "operation",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "state": "ready",
+      "scenes": 1,
+      "references": 0,
+      "retentionFresh": true
+    },
+    {
+      "kind": "archive",
+      "first": "cleanup",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "state": "ready",
+      "scenes": 1,
+      "references": 0,
+      "retentionFresh": true
+    },
+    {
+      "kind": "membership-read",
+      "first": "read",
+      "result": "passed",
+      "secondBlocked": true,
+      "futureReadsDenied": true
+    },
+    {
+      "kind": "membership-read",
+      "first": "leave",
+      "result": "passed",
+      "secondBlocked": true,
+      "futureReadsDenied": true
+    }
+  ],
+  "additionalChecks": [
+    "SQL and server JS canonical digest agree with Unicode",
+    "service-only RPC and table ACLs",
+    "RLS enabled",
+    "public and accepted-private-member read authorization",
+    "unaccepted/expired invitation and former-member denial",
+    "stale review and foreign/fenced-generation denial",
+    "matching string revisions rejected despite identical digest-bound values",
+    "idempotent publication after draft removal",
+    "immutable published appearance",
+    "metadata-only directory",
+    "archive starts fresh retention and cannot revive",
+    "existing curated publication preserved"
+  ],
+  "limitations": [
+    "Local PostgreSQL14 with platform schema stubs; not hosted Storage HTTP, PostgREST, JWT or production capacity.",
+    "No feature enablement, hosted migration, actual image deletion or UI publication tested by this packet."
+  ],
+  "cleanup": {
+    "localClusterStopped": true,
+    "temporaryDirectoryRemoved": true
+  }
+}

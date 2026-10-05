@@ -1,0 +1,137 @@
+.nooks-member-avatar{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;position:relative;overflow:hidden;border-radius:50%;vertical-align:middle;isolation:isolate}
+.nooks-member-avatar>span{display:block;position:absolute;inset:2%;background-image:url('/images/nook-companion-atlas.webp');background-size:400% 200%;background-repeat:no-repeat}
+.nooks-presence-tab{display:inline-flex;align-items:center;gap:9px;min-height:38px;border:1px solid #f5e8d321;border-radius:24px;padding:4px 10px 4px 5px;color:#f5eadb;background:#2d28273d;box-shadow:inset 0 1px 0 #ffffff08;backdrop-filter:blur(14px);cursor:pointer;font-family:inherit;transition:background .2s,border-color .2s;white-space:nowrap}
+.nooks-presence-tab:hover{background:#3c343267;border-color:#f5e8d354}
+.nooks-presence-faces{display:flex;padding-right:0}
+.nooks-presence-faces .nooks-member-avatar{border:1.5px solid #665647}
+.nooks-presence-portrait{position:relative;display:block;width:27px;height:27px;flex-shrink:0;margin-left:-10px}
+.nooks-presence-portrait:first-child{margin-left:0}
+.nooks-presence-portrait>span{position:absolute;inset:0;display:block}
+.nooks-presence-portrait>.is-arriving{animation:nooks-face-arrive .9s ease-in-out both}
+.nooks-presence-portrait>.is-departing{animation:nooks-face-depart .9s ease-in-out both}
+@keyframes nooks-face-arrive{from{opacity:0}to{opacity:1}}
+@keyframes nooks-face-depart{from{opacity:1}to{opacity:0}}
+@media(max-width:680px){.nooks-presence-portrait{width:24px;height:24px}}
+@media(prefers-reduced-motion:reduce){.nooks-presence-portrait>.is-arriving,.nooks-presence-portrait>.is-departing{animation:none}}
+.nooks-presence-copy{display:flex;align-items:center;gap:7px}
+.nooks-presence-copy strong{font-size:11px;font-weight:500;letter-spacing:.1px}
+.nooks-presence-copy small{font-size:8px;letter-spacing:.5px;text-transform:uppercase;opacity:.7;border-left:1px solid #f5e8d32b;padding-left:7px}
+.nooks-community-overlay{position:fixed;inset:0;z-index:140;background:#16131155;backdrop-filter:blur(6px);display:flex;justify-content:flex-end;padding:16px;animation:nooks-community-dim .22s ease both;color-scheme:light}
+.nooks-community{--nc-ink:#3f3830;--nc-muted:#83796f;--nc-line:#eae4da;position:relative;display:flex;flex-direction:column;width:min(590px,100%);height:100%;min-height:0;background:#fffdf9;border:1px solid #fffcf7cc;border-radius:23px;overflow:hidden;box-shadow:0 22px 100px #0908074a;color:var(--nc-ink);font-family:var(--nook-font,Arial,sans-serif);animation:nooks-community-in .38s cubic-bezier(.2,.8,.2,1) both;outline:none}
+.nooks-community *{box-sizing:border-box}
+.nooks-community button{font:inherit;cursor:pointer}
+.nooks-community button:focus-visible,.nooks-community a:focus-visible{outline:2px solid #aa7457!important;outline-offset:3px}
+.nooks-community h2,.nooks-community h3,.nooks-community h4,.nooks-community p{font-family:inherit;font-style:normal;margin:0;letter-spacing:normal}
+.nooks-community-cover{position:relative;flex:0 0 auto;min-height:193px;background-size:cover;background-position:center 44%;color:#fff9ed;padding:15px 24px 22px}
+.nooks-community-cover-shade{position:absolute;inset:0;background:linear-gradient(180deg,#16100b22 5%,#17110b05 25%,#20130dba 100%)}
+.nooks-community-cover-top,.nooks-community-cover-copy{position:relative;z-index:1}
+.nooks-community-cover-top{display:flex;justify-content:space-between;align-items:center}
+.nooks-community-cover-top>span{font-size:8px;letter-spacing:1.5px;display:flex;align-items:center;gap:8px;text-shadow:0 1px 4px #0008}
+.nooks-community-cover-top>span i{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.7}
+.nooks-community-cover-top button{width:32px;height:32px;border:1px solid #fff4e42b;background:#27231d4a;backdrop-filter:blur(12px);color:#fff7ed;border-radius:50%;display:grid;place-items:center;transition:background .2s}
+.nooks-community-cover-top button:hover{background:#27231d9c}
+.nooks-community-cover-copy{padding-top:42px}
+.nooks-community-cover h2{font-size:27px;line-height:1.15;letter-spacing:-.7px;font-weight:550;color:#fff8e8;text-shadow:0 1px 5px #20180f33}
+.nooks-community-cover p{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:#f0e8da;line-height:1.4}
+.nooks-community-cover p>i{width:5px;height:5px;border-radius:50%;background:#eed0a4;box-shadow:0 0 8px #e9c79480;margin-right:1px}
+.nooks-community-cover p>span{color:#e8ded0b3}
+.nooks-community-tabs{display:flex;gap:27px;padding:0 26px;border-bottom:1px solid var(--nc-line);flex:0 0 auto}
+.nooks-community-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;padding:20px 0 16px;display:flex;align-items:center;gap:8px;color:#8c8176;font-size:12px;transition:color .2s,border-color .2s;white-space:nowrap}
+.nooks-community-tabs button.is-active{color:#4b3a2b;border-bottom-color:#aa8062}
+.nooks-community-tabs button>span{font-size:9px;color:#9b8d7e}
+.nooks-community-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ded5c9 transparent}
+.nooks-community-list-panel{padding:26px 26px 20px;animation:nooks-member-enter .25s ease both}
+.nooks-community-intro{margin-bottom:20px}
+.nooks-community-intro h3{font-size:19px;line-height:1.3;font-weight:500;letter-spacing:-.4px;color:#483b30}
+.nooks-community-intro p{font-size:12px;line-height:1.7;margin-top:4px;color:var(--nc-muted)}
+.nooks-community-audiences{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.nooks-community-audiences>span{font-size:9px;line-height:1.5;border:1px solid #e9e0d5;border-radius:20px;padding:4px 8px;color:#8b7763;background:#f8f4ed}
+.nooks-member-list{list-style:none;margin:0;padding:0}
+.nooks-member-list li+li{border-top:1px solid #eee8df}
+.nooks-member-list li>button{width:100%;display:flex;align-items:center;gap:12px;padding:13px 0;border:0;border-radius:12px;background:transparent;color:var(--nc-ink);text-align:left;transition:background .18s,transform .18s}
+.nooks-member-list li>button:hover{background:#f5f0e8;transform:translateX(3px)}
+.nooks-member-face-wrap{position:relative;display:block;flex-shrink:0}
+.nooks-member-face-wrap>i,.nooks-member-status>i{width:8px;height:8px;background:#d8c6a4;display:block;border-radius:50%}
+.nooks-member-face-wrap>i{position:absolute;right:1px;bottom:1px;border:2px solid #fffdf9;width:10px;height:10px}
+.nooks-member-face-wrap>i.is-focusing,.nooks-member-status>i.is-focusing{background:#a59777}
+.nooks-member-row-copy{display:flex;flex-direction:column;min-width:0;flex:1;gap:5px}
+.nooks-member-row-copy strong{font-size:13px;color:#473b32;font-weight:550}
+.nooks-member-row-copy small{font-size:10px;color:#95897e;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nooks-member-row-meta{display:flex;flex-direction:column;text-align:right;align-items:flex-end;gap:5px;flex-shrink:0}
+.nooks-member-row-meta>span:first-child{font-size:10px;color:#7c6d5c}
+.nooks-member-row-meta>small{font-size:9px;color:#a49584}
+.nooks-member-row-meta>strong{font-size:12px;font-weight:500;font-variant-numeric:tabular-nums;color:#74624f}
+.nooks-member-row-arrow{color:#b5a898;flex-shrink:0}
+.nooks-community-sample-note{font-size:10px!important;line-height:1.7;margin-top:25px!important;padding-top:17px;border-top:1px solid var(--nc-line);color:#a49482!important;max-width:460px}
+.nooks-leaderboard-labels{display:flex;justify-content:space-between;gap:20px;font-size:9px;color:#9c8a77;margin-bottom:6px;padding-right:25px}
+.nooks-member-rank{font-size:13px;min-width:24px;color:#b5a795;font-variant-numeric:tabular-nums;font-weight:400}
+.nooks-member-rank.is-top{color:#ad7955}
+.nooks-member-mini-prize{height:23px;display:flex;align-items:center}
+.nooks-community-footer{border-top:1px solid var(--nc-line);display:flex;align-items:center;gap:12px;padding:16px 25px;background:#f8f4ee;flex:0 0 auto}
+.nooks-community-footer>div{min-width:0;flex:1}
+.nooks-community-footer strong{font-size:12px;color:#66513f;font-weight:500}
+.nooks-community-footer strong>span{font-size:9px;font-weight:400;opacity:.6;margin-left:5px}
+.nooks-community-footer p{margin-top:4px;font-size:9px;color:#a08e7b;line-height:1.5}
+.nooks-community-footer-note{font-size:10px;color:#927b63;text-align:right;line-height:1.7}
+.nooks-community-footer-note small{font-size:8px;color:#b29d86}
+.nooks-member-detail{padding:19px 26px 28px;animation:nooks-profile-in .3s cubic-bezier(.2,.8,.2,1) both}
+.nooks-community-back{display:flex;align-items:center;gap:7px;font-size:11px!important;color:#96816c;background:none;border:0;padding:3px 0}
+.nooks-community-back:hover{color:#694c32}
+.nooks-member-identity{display:flex;align-items:center;gap:20px;padding:24px 0 22px}
+.nooks-member-identity h3{font-size:26px;font-weight:550;line-height:1.2;margin-top:7px;color:#493a2d;outline:none}
+.nooks-member-identity p{font-size:11px;margin-top:6px;color:#9c8b78}
+.nooks-member-status{display:flex;align-items:center;gap:6px;font-size:9px;color:#ad9980}
+.nooks-member-status>i{width:5px;height:5px}
+.nooks-profile-session{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;border-top:1px solid var(--nc-line);border-bottom:1px solid var(--nc-line)}
+.nooks-profile-session>div:first-child{display:flex;flex-direction:column;gap:7px}
+.nooks-profile-session>div:first-child>span:first-child{font-size:10px;color:#8f7c66}
+.nooks-session-clock{font-size:37px;line-height:1.15;letter-spacing:-1.5px;color:#574432;font-weight:400;font-variant-numeric:tabular-nums}
+.nooks-session-clock>span{color:#bba282;padding:0 1px}
+.nooks-profile-session>div:first-child>small{font-size:8px;color:#b09c83;letter-spacing:.3px}
+.nooks-profile-rank{display:flex;align-items:center;gap:12px}
+.nooks-profile-rank>span{font-size:37px;letter-spacing:-2px;color:#bc9269;line-height:1.2}
+.nooks-profile-rank>p{font-size:10px;color:#a58e74;line-height:1.65}
+.nooks-member-statline{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:15px;margin:0;padding:24px 0;border-bottom:1px solid var(--nc-line)}
+.nooks-member-statline dt{font-size:9px;color:#a18c73;margin-bottom:8px;line-height:1.5}
+.nooks-member-statline dd{margin:0;font-size:19px;font-weight:450;letter-spacing:-.4px;color:#6c5137;font-variant-numeric:tabular-nums}
+.nooks-member-statline dd>small{font-size:11px;font-weight:400;color:#a58b6e}
+.nooks-member-week{padding:24px 0;border-bottom:1px solid var(--nc-line)}
+.nooks-member-week>header,.nooks-member-collection>header{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.nooks-member-week h4,.nooks-member-collection h4{font-size:13px;font-weight:500;color:#75583c}
+.nooks-member-week>header>span,.nooks-member-collection>header>span{font-size:9px;color:#af9679}
+.nooks-week-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;padding-top:22px}
+.nooks-week-bars>div{display:flex;flex-direction:column;align-items:center;gap:8px}
+.nooks-week-bars>div>div{height:49px;width:100%;max-width:26px;display:flex;align-items:flex-end}
+.nooks-week-bars>div>div>span{display:block;background:#d9c2a5;border-radius:5px 5px 2px 2px;width:100%;min-height:3px}
+.nooks-week-bars>div:last-child>div>span{background:#ac7f56}
+.nooks-week-bars small{font-size:8px;color:#b29a7e}
+.nooks-member-collection{padding-top:25px}
+.nooks-member-collection header p{font-size:9px;line-height:1.6;margin-top:4px;color:#b09a7e}
+.nooks-member-collection>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.nooks-member-collection>div>div{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 7px 13px;background:#f8f3ea;border-radius:13px;gap:6px}
+.nooks-member-collection strong{font-size:10px;font-weight:450;color:#9a7650;line-height:1.5}
+.nooks-member-collection small{font-size:8px;color:#b09c83}
+.nooks-member-collection .is-unearned{background:#f9f7f3}
+.nooks-member-collection .is-unearned .reward-drawing{filter:grayscale(1);opacity:.2}
+.nooks-member-collection .is-unearned strong{color:#b4a797}
+.nooks-local-community{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 34px;min-height:100%}
+.nooks-local-community h3{font-size:24px;font-weight:500;line-height:1.4;color:#68513d;margin-top:24px;letter-spacing:-.5px}
+.nooks-local-community p{font-size:12px;line-height:1.8;color:#96816b;max-width:280px;margin-top:11px}
+.nooks-local-community>span{font-size:10px;color:#b29d85;margin-top:26px}
+@keyframes nooks-community-dim{from{opacity:0}to{opacity:1}}
+@keyframes nooks-community-in{from{transform:translateX(50px);opacity:.4}to{transform:translateX(0);opacity:1}}
+@keyframes nooks-profile-in{from{transform:translateX(14px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes nooks-member-enter{from{transform:translateY(5px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(max-width:680px){.nooks-community-overlay{padding:0}.nooks-community{width:100%;border:0;border-radius:0}.nooks-community-cover{min-height:172px;padding:calc(12px + env(safe-area-inset-top,0px)) 20px 18px}.nooks-community-cover-copy{padding-top:32px}.nooks-community-cover h2{font-size:25px}.nooks-community-tabs{padding:0 20px;gap:24px}.nooks-community-tabs button{padding:18px 0 14px}.nooks-community-list-panel{padding:23px 19px 18px}.nooks-community-footer{padding:13px 19px calc(13px + env(safe-area-inset-bottom,0px))}.nooks-member-detail{padding:18px 20px 25px}.nooks-presence-copy{gap:0}.nooks-presence-copy small{display:none}.nooks-presence-tab{padding-right:7px;gap:5px}.nooks-presence-copy strong{font-size:9px}.nooks-presence-faces .nooks-member-avatar{width:24px!important;height:24px!important}.nooks-member-list li>button{gap:9px}.nooks-member-row-copy small{font-size:9px}.nooks-member-row-arrow{display:none}.nooks-member-row-meta>span:first-child{font-size:9px}.nooks-member-list.is-leaderboard li>button{gap:8px}.nooks-member-rank{min-width:20px}.nooks-member-row-meta>strong{font-size:11px}.nooks-profile-rank{gap:8px}.nooks-profile-rank>p{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.nooks-community-overlay,.nooks-community,.nooks-member-detail,.nooks-community-list-panel{animation:none}.nooks-member-list li>button,.nooks-presence-tab{transition:none}}
+
+.nooks-community-cover p { flex-wrap:wrap; }
+.nooks-member-identity > div { min-width:0; }
+.nooks-member-identity h3 { overflow-wrap:anywhere; }
+@media(max-width:680px) {
+  .nooks-community { height:100dvh; }
+  .nooks-community-cover-top button { width:40px;height:40px; }
+  .nooks-community-back { min-height:40px; }
+  .nooks-community-cover-copy { padding-top:24px; }
+  .nooks-community-footer { padding-bottom:calc(13px + env(safe-area-inset-bottom,0px)); }
+}

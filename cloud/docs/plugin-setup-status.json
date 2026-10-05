@@ -1,0 +1,295 @@
+{
+  "updatedAt": "2026-10-04",
+  "publicPreview": "https://nooks-study-space.vercel.app/",
+  "publicDeployment": "https://nooks-study-space-2s55w3urr-eeshpara-1663s-projects.vercel.app",
+  "sitesProjectId": "appgprj_6abf1d6c87c08191b8c6f30bc0267fe9",
+  "sitesSourceCommit": "05eca07aae393b1faba9758c8b5ef700d2bedfc4",
+  "sitesDeploymentId": "appgdep_6ac2dfc2dad88191a58f7b4dd834504c",
+  "sitesVersionId": "appgprj_6abf1d6c87c08191b8c6f30bc0267fe9~appgver_42013478a81c8191a789337dce24300a",
+  "database": {
+    "status": "connected_native",
+    "projectId": "lcfcjglybfeozyrjjikk",
+    "projectName": "Nooks",
+    "organizationId": "seewldyqaevlriiulvwf",
+    "organizationName": "Eeshwar Parasuramuni",
+    "organizationPlan": "pro",
+    "createdBy": "user",
+    "migrationsApplied": 9,
+    "rlsTables": 17,
+    "privateStorageBucket": "nooks-private",
+    "privateSchemaExposed": false
+  },
+  "verified": {
+    "backendTests": 250,
+    "frontendTests": 348,
+    "cloudAdapterTests": 18,
+    "sqlPermissions": "Nine migrations verified locally; hosted rollback lifecycle suite and real private Storage upload/read passed. Service-only lifecycle ACLs verified; see artwork-lifecycle-verification-2026-10-04.md.",
+    "publicArtworkUrls": 41,
+    "runtime": "actual workerd: fixed fetch binding, 10 mocked outbound calls passed",
+    "productionDependencyVulnerabilities": 0,
+    "frontendFinalFocusedTests": 24,
+    "cloudFocusedTests": 9
+  },
+  "nativeHostVerified": true,
+  "hostedDatabaseVerified": true,
+  "sitesStatus": "succeeded",
+  "sitesUrl": "https://nooks-study-space.eeshwarpara.chatgpt.site",
+  "hasMcp": true,
+  "pluginId": "plugin_asdk_app_sites_b049dd9e20708191b708f385c7fa079a",
+  "mcpUrl": "https://nooks-study-space.eeshwarpara.chatgpt.site/mcp",
+  "nativeInstallation": "confirmed: Nooks tools discovered and workspace_render invoked through native host",
+  "nativeLaunchProbe": {
+    "tool": "nooks_workspace_render",
+    "arguments": {
+      "artifactId": "09302bb3-e497-4cca-a5e7-622389e09b4a"
+    },
+    "result": "success",
+    "backend": "supabase",
+    "savedAndReopened": true,
+    "uiRendered": true,
+    "autosaveVerified": true,
+    "persistedRevision": 2,
+    "screenshot": "docs/native-supabase-autosave-2026-10-03.png"
+  },
+  "remoteServiceProbe": "401 authentication required; does not verify native host execution",
+  "nativeVisualVerified": true,
+  "publicBackend": {
+    "status": "unconfigured",
+    "blocker": "Explicit approval pending to store Nooks Supabase server key as Vercel production secret; browser Auth URL/email setup remains."
+  },
+  "sitesEnvironmentRevision": 1,
+  "chatFirstVerification": {
+    "backendFocusedTests": 69,
+    "initialUiTests": 127,
+    "previewAndNavigationTests": 22,
+    "cloudAdapterTests": 9,
+    "typescript": "passed",
+    "build": "passed",
+    "savedDeckId": "ac5166ee-6042-4bd8-8447-fa648ec6acf2",
+    "savedDeckCreatedAndReopened": true,
+    "nativePlayerVisible": true,
+    "nativeCardFlipVerified": true,
+    "screenshot": "docs/native-chat-created-deck-2026-10-03.png",
+    "panelNavigationInNativeHost": "pending tool catalog refresh; current conversation still exposes old workspace_render arguments",
+    "previewNativeRetest": "passed: latest hosted unsaved flashcards rendered the card player without checkpoint error"
+  },
+  "outsideDismiss": {
+    "status": "deployed_native_and_public",
+    "typescript": "passed",
+    "workspaceAndPickerTests": 17,
+    "additionalBackdropTests": 3,
+    "draftSafety": "dirty notes queue welcome navigation until autosave completes; drag-out and popup interactions excluded",
+    "nativeUiVerification": "deployed and loaded; coordinate backdrop QA performed on shared UI in public browser",
+    "websiteUiVerification": "passed: collection backdrop closes popup; saved note backdrop returns to welcome",
+    "screenshot": "/Users/rparasu/plugins/notable-ai/docs/outside-dismiss-2026-10-03.png"
+  },
+  "singleWorkspaceNavigation": {
+    "status": "deployed_native_and_public",
+    "features": [
+      "initial render followed by non-render navigation",
+      "app-provided navigation tools with owner-scoped session fallback",
+      "optional reference note beside quiz or flashcards",
+      "autosave-safe transitions and reduced-motion support"
+    ],
+    "focusedTests": {
+      "passed": 83,
+      "failed": 0
+    },
+    "typescript": "passed",
+    "productionBuilds": "passed_native_and_public",
+    "nativeUiVerification": "2026-10-04: native MCP navigate to Library, then quiz alongside reference note observed in same app tab. Ten tabs before and after; original question and answers preserved.",
+    "chatDrivenNavigationVerified": true,
+    "hostBlocker": null,
+    "unauthenticatedHttpProbe": "401 as expected: Sites bypass access does not provide a private Nooks user identity. No impersonation attempted."
+  },
+  "curatedSoundtracks": {
+    "status": "deployed_native_and_public",
+    "builtInNooks": 31,
+    "unlockableNooks": 2,
+    "distinctPublicPlaylists": 14,
+    "focusedTestsPassed": 29,
+    "typescript": "passed",
+    "builds": "passed",
+    "browserVerification": "Shared UI: Rainy Library recommendation opened the real Spotify embed. Entered Rooftop Tokyo: selected Lofi Girl player retained, recommendation changed to Synthwave. Existing player reopened successfully with Spotify track list visible.",
+    "playbackLimitation": "Spotify embed displayed Preview in the test browser. Full-track playback was not asserted.",
+    "screenshot": "docs/curated-nook-playlists-2026-10-03.png",
+    "research": "docs/nook-soundtracks.md"
+  },
+  "motionVerification": {
+    "status": "deployed_native_and_public",
+    "fixes": [
+      "Spotify controls animate height without remounting its iframe",
+      "Music panel fits desktop and mobile viewport with one inner scroll area",
+      "Pausing scenery or removing sparkles preserves interaction transitions",
+      "Removed duplicate active-work entry animation",
+      "Cloudflare-compatible manual redirect mode fixes navigation polling; redirects still fail closed"
+    ],
+    "focusedTestsPassed": 70,
+    "typescript": "passed",
+    "runtime": "Actual workerd: reproduced old redirect error; fixed session and artifact queries pass, 307 rejects without following",
+    "browser": "Music opens and closes via outside click and Escape; quiz opens in same browser tab; Spotify iframe retained through collapse; Music bounds fit 1280x720 and 390x844 without horizontal overflow",
+    "liveBrowser": "Final public index-C80rJRNJ.js loaded. With existing scenery-paused preference, ambient effects hidden while Music opacity/transform transitions remain enabled.",
+    "nativeBackend": "Saved quiz render returned authenticated Supabase result; subsequent MCP requests returned HTTP 200 without the earlier redirect exception. Does not prove visual navigation.",
+    "nativeChatDrivenNavigationVerified": true,
+    "nativeVisualBlocker": null,
+    "screenshot": "docs/motion-fixes-2026-10-03.png"
+  },
+  "productionReadiness": {
+    "review": "docs/release-judge-oct4.md",
+    "controlledOwnerTesting": "pass",
+    "privateStudentPilot": "hold",
+    "publicProduction": "fail",
+    "remaining": [
+      "Fresh native panel failed-save and reload recovery verification",
+      "Real two-account native and community journeys",
+      "Public Vercel database-secret destination approval and Auth configuration",
+      "Hosted SQL plus Storage restore, alerting ownership and capacity measurements",
+      "Real second-account artwork denial and physical cleanup/retention operation"
+    ]
+  },
+  "releaseOct4": {
+    "sourceCommit": "909c253984e9d19567003dcb3880d32a965498ad",
+    "sameTabNavigation": true,
+    "accountScopedRecovery": "implemented and regression-tested; fresh native iframe reload exercise pending",
+    "planCAS": true,
+    "artworkOutageIsolation": true,
+    "requestCorrelation": true,
+    "health": "liveness and recent per-instance backend observations, not comprehensive readiness",
+    "idlePolling": "5 seconds + up to250ms jitter after3 quiet polls; hidden tabs do not poll",
+    "outbox": "never-claimed workspace invalidations coalesce; claimed/retried events immutable; no historical events deleted",
+    "hostedSqlProbe": [
+      {
+        "notesPerOwner": 10,
+        "bytesPerOwner": 42266,
+        "twoCommitsMs": 18.901,
+        "sixReadsMs": 6.189
+      },
+      {
+        "notesPerOwner": 100,
+        "bytesPerOwner": 421708,
+        "twoCommitsMs": 33.51,
+        "sixReadsMs": 34.643
+      }
+    ],
+    "capacityProven": false,
+    "publicBrowser": "saved note opens, Spotify recommendation visible, outside-click dismissal works; no console errors/warnings",
+    "screenshot": "docs/release-public-note-oct4.png",
+    "localRestoreDrill": {
+      "result": "passed",
+      "evidence": "docs/production/local-restore-drill-2026-10-04.md",
+      "syntheticOwners": 2,
+      "syntheticArtifacts": 8,
+      "tablesVerified": 23,
+      "postgresVersion": "14.20",
+      "hostedRecoveryProven": false,
+      "storageObjectRecoveryProven": false
+    }
+  },
+  "releaseOct4Recovery": {
+    "sourceCommit": "d130e730c3bf1a2abb766d4888b7a09cb5f99696",
+    "sitesSucceededAt": "2026-10-04T19:43:04.655507Z",
+    "nativeBuild": "index-CaaZPUhP.js",
+    "publicBuild": "index-0wCCkv4N.js",
+    "tests": {
+      "backend": 172,
+      "ui": 224,
+      "cloud": 17,
+      "total": 413
+    },
+    "crashRecovery": "same-document reopen with scoped draft retention; blocked browser Storage retains memory and warns",
+    "initialIdentity": "cached presentation is staged until fresh owner verified; foreign cached work rejected",
+    "focusMembership": "room locks precede focus ledgers; five deterministic races pass; migration applied only to Nooks",
+    "simulatedBrowserEvidence": "docs/production/simulated-host-recovery-2026-10-04.md",
+    "nativeRead": "after deploy authenticated Supabase workspace_get returns 4 saved items without error",
+    "publicBrowser": "expected new bundle loaded, existing 139-word note opens Saved, no console warnings/errors; account saving remains explicitly unconfigured",
+    "screenshot": "docs/production/recovery-release-public-oct4.png",
+    "realNativeRecoveryProven": false,
+    "realTwoAccountJourneyProven": false,
+    "hostedCapacityProven": false,
+    "hostedRestoreProven": false
+  },
+  "releaseOct4Community": {
+    "sourceCommit": "b8157698e14452aecc2f69b20712bb503ab38e9a",
+    "sitesSucceededAt": "2026-10-04T20:09:32.561613+00:00",
+    "nativeBuild": "index-CqaEZQm8.js",
+    "publicBuild": "index-Bmv_vswC.js",
+    "tests": {
+      "backend": 178,
+      "ui": 229,
+      "cloud": 17,
+      "total": 424
+    },
+    "sourceJudge": "pass",
+    "ownerControls": "paginated invitation status, revoke, explicit archive confirmation; retries safe",
+    "directory": "bounded pages and Joined filter, selected lobby preserved",
+    "artwork": "rename retains artwork and appearance; validation and size preflight before uploads",
+    "inventory": "service-only, metadata-only dry run; current bucket empty; no deletion",
+    "hostedRollback": "community owner isolation, pagination, invite metadata/revoke, archive retry passed",
+    "nativeRead": "nooks_list exposes hasMore/nextOffset; workspace_get authenticated Supabase with 4 saved items",
+    "publicBrowser": "expected new bundle loaded; existing 139-word note remains Saved; no console errors/warnings",
+    "simulationEvidence": "docs/production/community-owner-verification-2026-10-04.md",
+    "realTwoAccountJourneyProven": false,
+    "realNativeRecoveryProven": false,
+    "physicalArtworkCleanupImplemented": false
+  },
+  "workspaceLayout": {
+    "status": "deployed_native_and_public",
+    "widgets": [
+      "spotify",
+      "timer",
+      "tasks",
+      "collection",
+      "welcome",
+      "people"
+    ],
+    "persistence": "owner-scoped workspace document; device-only IndexedDB in public preview",
+    "browser": "Pointer drag, keyboard moves, reload persistence, compact fallback, viewport clamp, per-widget reset and full reset verified on isolated local preview. Spotify displayed actual playlist embed; audible playback and real native save not asserted.",
+    "mobile": "Desktop layout retained; screen widths <=760 use default stacked layout.",
+    "evidence": "docs/production/workspace-layout-2026-10-04.md",
+    "sourceJudge": "pass",
+    "tests": {
+      "backend": 208,
+      "ui": 251,
+      "cloud": 18,
+      "total": 477
+    },
+    "screenshot": "docs/production/movable-workspace-2026-10-04.png"
+  },
+  "artworkHandoff": {
+    "status": "native_file_receipt_verified_import_pending",
+    "sourceReview": "pass",
+    "focusedArtworkTests": 27,
+    "browser": "simulated host save-before-prompt, cancellation preserves metadata, new request after cancel",
+    "remainingGate": "fresh native widget CORS import, completed private draft read/reopen; older open native draft left untouched",
+    "catalog": "artwork tools now exposed; real fileParams receive succeeded",
+    "publicPreview": "separate library; ID-free prompt only, no native pending request",
+    "actualFileReceipt": {
+      "status": "received",
+      "receivedAt": "2026-10-04T23:23:19.693Z",
+      "origin": "sdmntprcentralus.oaiusercontent.com",
+      "draftRevision": 1,
+      "imageSaved": false
+    }
+  },
+  "popupDismissFollowup": {
+    "deployedAt": "2026-10-04T23:11:02.079040+00:00",
+    "summary": "Outside tap, visible X and topmost Escape. Pending close intent retained; failed customization/sharing/material drafts recover without erasing newer work. Study editor uses explicit dirty confirmation.",
+    "publicBrowserVerified": [
+      "collection X returns to same nook",
+      "material dialog outside tap returns to same nook"
+    ],
+    "publicHttpVerified": [
+      "index 200",
+      "JavaScript 200",
+      "CSS 200",
+      "config 200",
+      "health 200"
+    ],
+    "nativeVerification": "Private deployment succeeded with MCP; existing native quiz sessions were left untouched. Native end-to-end popup interactions not repeated on this release.",
+    "screenshot": "docs/production/popup-close-final-2026-10-04.png"
+  },
+  "communityResumeFollowup": {
+    "scope": "Internal Nooks account scope verified separately from public Auth owner key; owner-selected lobby and profile restored, membership checked before presence.",
+    "verification": "Hook and App loader regressions pass; real two-user hosted journey remains open."
+  }
+}

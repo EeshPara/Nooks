@@ -1,0 +1,110 @@
+/* Let the illustrated nook remain the workspace. No panel around a panel. */
+.lofi-world.is-tool .page-content:has(.nooks-cards,.nooks-quiz,.nooks-note) {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 12px 22px 28px;
+}
+.lofi-world .nooks-cards {
+  max-width: 640px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 0;
+}
+.lofi-world .nooks-cards-topline { margin: 0 0 12px; font-size: 11px; }
+.lofi-world .nooks-cards-header h1 { font-size: clamp(21px,2vw,27px); font-weight: 520; }
+.lofi-world .nooks-cards-description { display: none; }
+.lofi-world .nooks-cards-progress-meta { margin: 17px 0 8px; font-size: 11px; }
+.lofi-world .nooks-cards-desk { padding-top: 11px; }
+.lofi-world .nooks-cards .nooks-cards-flip { height: clamp(225px,31dvh,300px); }
+.lofi-world .nooks-cards-face { border-radius: 12px; background: #f4eddeee; border-color: #fff6e1aa; box-shadow: 0 12px 34px #0003; padding: 22px 30px; backdrop-filter: blur(20px); }
+.lofi-world .nooks-cards-face.is-back { background: #eee2cfee; }
+.lofi-world .nooks-cards-copy { font-size: clamp(20px,2.1vw,27px); }
+.lofi-world .nooks-cards-under-card { min-height: 35px; padding: 4px 0; }
+.lofi-world .nooks-cards-rating { max-width: 350px; gap: 12px; }
+.lofi-world .nooks-cards-button { min-height: 39px; padding: 9px 13px; font-size: 12px!important; border-radius: 8px; }
+.lofi-world .nooks-cards-shortcuts { margin-top: 10px; }
+.lofi-world .study-edit-toolbar { position: static; width: 100%; max-width: 640px; margin: 0 auto 8px; }
+.lofi-world .study-edit-toolbar .study-secondary { background: transparent; border: 0; padding: 4px 0; min-height: 25px; font-size: 11px; }
+.lofi-world .nook-chat-empty { display: none; }
+.lofi-world .nook-chat :is(.nook-chat-card>strong,.nook-chat-prose,.nook-chat-prose p) { font-family: var(--nook-font); font-style: normal; }
+@media (min-width: 761px) {
+  .lofi-world.has-side-chat.is-tool:not(:has(.chat-aside.chat-expanded)) .page-content {
+    max-width: 1000px;
+    width: calc(100% - 92px);
+    margin: 14px auto 0;
+    max-height: calc(100dvh - 260px);
+  }
+  .lofi-world.has-side-chat.is-tool:not(:has(.chat-aside.chat-expanded)) .page-content:has(.nooks-cards,.nooks-quiz,.nooks-note) { max-width: 850px; }
+  .lofi-world.has-side-chat.is-tool:not(:has(.chat-aside.chat-expanded)) .conversation-anchor.chat-aside {
+    left: calc(50% + 42px);
+    right: auto;
+    top: auto;
+    bottom: 40px;
+    transform: translateX(-50%);
+    width: min(590px,calc(100% - 180px));
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .lofi-world .conversation-anchor.nook-chat.chat-aside.chat-expanded {
+    background: #201c1766;
+    border: 0;
+    padding: 8px 12px 10px;
+    backdrop-filter: blur(24px);
+    box-shadow: none;
+    top: 118px;
+    bottom: 38px;
+  }
+  .lofi-world .chat-aside.chat-expanded .nook-chat-transcript { background: transparent; border: 0; border-radius: 0; backdrop-filter: none; box-shadow: none; }
+  .lofi-world.is-tool:not(:has(.chat-expanded)) .nook-chat-context { margin-bottom: 7px; justify-content: flex-start; }
+  .lofi-world.is-tool:not(:has(.chat-expanded)) .nook-chat-context>span { border: 0; background: #241f1977; border-radius: 20px; font-size: 10px; padding: 5px 9px; }
+}
+.lofi-world .nook-chat .nook-chat-composer { background: #f2eadcdb; border: 1px solid #fff9eb70; border-radius: 20px; backdrop-filter: blur(26px); box-shadow: 0 8px 32px #0002; padding: 9px 13px 7px; }
+.lofi-world .nook-chat .preview-composer textarea { font-size: 14px; }
+.lofi-world .nook-chat .preview-composer-meta { margin-top: 3px; }
+.lofi-world .nook-chat .preview-composer-meta>span { font-size: 8px; color: #81705f; }
+.lofi-world .nook-chat .preview-composer-meta>button { display: none; }
+@media (max-width: 760px) {
+ .lofi-world.is-tool .page-content:has(.nooks-cards,.nooks-quiz,.nooks-note) { width: calc(100% - 28px); padding: 12px 6px 22px; margin: 8px auto 0; max-height: calc(100dvh - 260px); }
+ .lofi-world .nooks-cards .nooks-cards-flip { height: 235px; }
+ .lofi-world .nooks-cards-face { padding: 19px 22px; }
+ .lofi-world .nooks-cards-shortcuts { display: none; }
+ .lofi-world .nooks-cards-rating { width: 100%; }
+ .lofi-world .nook-chat .preview-composer textarea { font-size: 16px; }
+ .lofi-world .nook-chat:not(.chat-expanded) .nook-chat-context { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .lofi-world .page-content { scroll-behavior: auto; }
+}
+
+.lofi-world .nooks-quiz{max-width:700px;background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;backdrop-filter:none}.lofi-world .nooks-quiz-options{background:#25201c66;backdrop-filter:blur(20px);border-radius:12px;padding:5px}.lofi-world .nooks-quiz-title{margin-bottom:15px}.lofi-world .nooks-quiz-position{margin-block:14px}.lofi-world .nooks-quiz-topline{margin-bottom:12px}.lofi-world .nooks-quiz-question h2{font-size:24px;margin-bottom:19px}.lofi-world .nooks-note{max-width:1000px;margin-inline:auto}
+
+.note-organization-tools {display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:1000px;margin:0 auto 12px;color:#f6eddf;font-family:var(--nook-font)}
+.note-organization-tools fieldset{border:0;margin:0;padding:0;min-width:0}.note-organization-tools fieldset:disabled{opacity:.5}
+.lofi-world.is-tool .page-content:has(.nooks-library){background:transparent;border:0;box-shadow:none;backdrop-filter:none;padding:0}
+
+/* A delayed animation frame must never hide the actual study workspace. */
+.lofi-world .page-content {opacity:1;animation:nooks-content-arrive .28s ease-out;position:relative}
+@keyframes nooks-content-arrive {from{opacity:.88;translate:0 5px}to{opacity:1;translate:0 0}}
+.nooks-new-action{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#f4ead8;color:#3d3328;border:1px solid #fff6;border-radius:12px;padding:10px 13px;font:inherit;font-size:12px;font-weight:600;min-height:39px;cursor:pointer;transition:transform .16s,background .16s,box-shadow .16s;box-shadow:0 2px 10px #0001}
+.nooks-new-action:hover{background:#fff4e2;box-shadow:0 3px 15px #0002;transform:translateY(-1px)}.nooks-new-action:active{transform:scale(.96)}
+@media(max-width:680px){.nooks-new-action{padding:7px;min-height:33px;width:33px;border-radius:10px}.nooks-new-action>span{display:none}.world-top-actions .nooks-presence-faces{display:none}.world-top-actions .nooks-presence-tab{padding-inline:9px}}
+@media(prefers-reduced-motion:reduce){.lofi-world .page-content{animation:none}.nooks-new-action{transition:none}}
+
+/* Reading controls remain legible in both sunlit and midnight nooks. */
+.lofi-world .nooks-note-sidebar{padding:18px;background:rgba(37,32,27,.86);backdrop-filter:blur(18px);border:1px solid #fff1d71c;border-radius:14px;box-shadow:0 8px 28px #140d0718}
+.lofi-world .nooks-note-actions{gap:2px}
+.lofi-world .nooks-note-actions>button{border:0;border-bottom:1px solid #eedcca21;border-radius:5px;background:transparent;color:#f4eadc;padding:10px 5px}
+.lofi-world .nooks-note-actions>button:hover:not(:disabled){background:#fff3df13}
+.lofi-world .nooks-note-toolbar :is(.nooks-note-back,.note-appearance-trigger,.nooks-note-icon-button),.lofi-world .note-organization-tools :is(.nooks-library-location,.nooks-note-history-trigger){background:rgba(37,32,27,.84);backdrop-filter:blur(12px);color:#f4eadc;border:1px solid #fff1d71c;border-radius:9px;padding:9px 12px}
+@media(max-width:800px){.lofi-world .nooks-note-sidebar{display:contents}.lofi-world :is(.nooks-note-study-tools,.nooks-note-source,.nooks-note-contents){background:rgba(37,32,27,.86);backdrop-filter:blur(18px);padding:10px 14px;border:1px solid #fff1d71c;border-radius:12px}.lofi-world .nooks-note-actions{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.lofi-world .nooks-note-actions>button{justify-content:center;padding:9px 3px;border:0}.lofi-world .nooks-note-actions>button>svg{display:none}.lofi-world .nooks-note-add{background:rgba(37,32,27,.86);color:#f4eadc;padding:10px 14px;border-radius:9px}}
+@media(max-width:680px){.lofi-world .nooks-new-action{width:40px;min-height:40px}}

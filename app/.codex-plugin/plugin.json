@@ -1,0 +1,40 @@
+{
+  "name": "notable-ai",
+  "version": "0.1.0",
+  "description": "Nooks, your study nook within ChatGPT: notes, flashcards, quizzes, focus sessions, and keepsakes to collect.",
+  "author": {
+    "name": "Nooks"
+  },
+  "keywords": [
+    "study",
+    "notes",
+    "flashcards",
+    "quizzes",
+    "focus",
+    "education",
+    "nooks",
+    "lofi"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Nooks",
+    "shortDescription": "Your study nook within ChatGPT.",
+    "longDescription": "Find a study nook that feels like you. Organize notes, practice flashcards, take quizzes and exams, play recall games, plan focused sessions, and collect keepsakes as you study. Explore public nooks and sample community lobbies in this design preview.",
+    "developerName": "Nooks",
+    "category": "Education",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Open my Nooks study space.",
+      "Turn this material into notes and a flashcard set in Nooks.",
+      "Help me make a study plan for my exam."
+    ],
+    "brandColor": "#AD6E49",
+    "brandColorDark": "#D1A079",
+    "composerIcon": "./assets/nook-cat-logo.png",
+    "logo": "./assets/nook-cat-logo.png"
+  }
+}

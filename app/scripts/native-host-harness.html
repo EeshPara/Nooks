@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Nooks simulated host · recovery QA</title>
+<style>body{margin:0;background:#20242a;color:#fff;font:13px system-ui}header{padding:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}button{padding:7px 10px;cursor:pointer}label{white-space:nowrap}iframe{display:block;border:0;width:100%;height:calc(100vh - 110px)}#status{padding:0 12px 8px;color:#ddd;min-height:20px}strong{color:#ffe0a6}</style>
+<header><strong>SIMULATED HOST · synthetic fixtures only</strong><span id="owner">Account A</span>
+<button id="note">Open test note</button><button id="quiz">Open test quiz</button><button id="reload">Reload app</button><button id="switch">Switch account</button><button id="crash">Simulate render failure</button>
+<label><input type="checkbox" id="checkpoints">Fail checkpoint saves</label><label><input type="checkbox" id="notes">Fail note saves</label><label><input type="checkbox" id="workspace">Fail workspace reads</label><label><input type="checkbox" id="storage">Block frame storage</label><label><input type="checkbox" id="stale">Replay cached account A</label><button id="inspect">Inspect fixture</button></header>
+<div id="status" role="status">This harness does not verify the real ChatGPT/Codex host or hosted Supabase.</div><main id="mount"></main>
+<script>
+let owner='A', frame, requestId=1000;
+const $=id=>document.getElementById(id);
+const post=async(path,body)=>{const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!response.ok)throw Error('Harness request failed');return response.json()};
+function mount(){frame=document.createElement('iframe');frame.title='Nooks test frame';frame.setAttribute('sandbox','allow-scripts'+($('storage').checked?'':' allow-same-origin'));frame.src='/widget'+($('stale').checked?'?staleA=1':'');$('mount').replaceChildren(frame);$('status').textContent='Loading account '+owner+'; storage '+($('storage').checked?'blocked':'available')+'.';}
+function send(message){frame.contentWindow.postMessage({jsonrpc:'2.0',...message},'*');}
+window.addEventListener('message',async event=>{
+ if(event.source!==frame.contentWindow||event.data?.jsonrpc!=='2.0')return;
+ const message=event.data;if(!message.method)return;
+ const source=event.source,capturedOwner=owner;
+ const reply=result=>{if(source===frame.contentWindow&&owner===capturedOwner&&message.id!==undefined)source.postMessage({jsonrpc:'2.0',id:message.id,result},'*')};
+ try{
+  if(message.method==='ui/initialize')reply({protocolVersion:'2026-01-26',hostInfo:{name:'Local simulated host',version:'1'},hostCapabilities:{updateModelContext:{text:true,structuredContent:true}},hostContext:{displayMode:'fullscreen',availableDisplayModes:['fullscreen'],theme:'dark'}});
+  else if(message.method==='tools/call'){const result=await post('/rpc',{owner:capturedOwner,name:message.params.name,args:message.params.arguments||{}});reply(result);}
+  else if(message.method==='ui/request-display-mode')reply({mode:'fullscreen'});
+  else if(message.method==='ui/message'){ $('status').textContent='Chat request received in simulated host; no AI generation performed.';reply({}); }
+  else reply({});
+ }catch(error){if(source===frame.contentWindow)source.postMessage({jsonrpc:'2.0',id:message.id,error:{code:-32000,message:error.message}},'*')}
+});
+async function present(id){const captured=owner,result=await post('/rpc',{owner,name:'workspace_render',args:{artifactId:id}});if(captured===owner)send({method:'ui/notifications/tool-result',params:result});}
+$('note').onclick=()=>present('fixture-note');$('quiz').onclick=()=>present('fixture-quiz');
+$('crash').onclick=async()=>{const result=await post('/rpc',{owner,name:'workspace_get'});const data=result._meta.notableData;data.workspace.revision+=1;data.workspace.space.decorations={PRIVATE_STUDENT_SENTINEL:true};send({method:'ui/notifications/tool-result',params:result});$('status').textContent='Injected malformed render data into the simulated host only. Server fixtures remain valid.'};
+$('reload').onclick=mount;$('switch').onclick=()=>{owner=owner==='A'?'B':'A';$('owner').textContent='Account '+owner;mount()};$('storage').onchange=mount;$('stale').onchange=mount;
+for(const name of ['checkpoints','notes','workspace'])$(name).onchange=async()=>{await post('/control',{fault:name,enabled:$(name).checked});$('status').textContent=name+' failure '+($(name).checked?'enabled':'disabled')+'.'};
+$('inspect').onclick=async()=>{const state=await post('/state',{owner});$('status').textContent=JSON.stringify({owner,revision:state.workspace.revision,checkpoints:state.workspace.practiceCheckpoints||{},notes:state.workspace.artifacts.filter(a=>a.kind==='note').map(a=>({title:a.title,content:a.content})),calls:state.counts});};
+mount();
+</script></html>

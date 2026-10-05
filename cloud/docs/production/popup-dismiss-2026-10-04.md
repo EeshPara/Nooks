@@ -1,0 +1,15 @@
+# Popup dismissal — 2026-10-04
+
+Added visible 44px close buttons for study material, notes, study editor, games and reference notes; Spotify collapse X keeps playback alive. App close returns to the same nook, separate from Library navigation. Topmost Escape handling protects underlying popups. Transparent study layout wrappers now participate in backdrop dismissal while card content, inputs, drag selections, and open study editors remain protected. Notes flush autosave before closing; explicit discard no longer requeues a save. Nook Studio queues close while a mutation settles and visibly focuses its unsaved-changes prompt. Final confirmation rechecks non-durable image-cancellation safety.
+
+293 frontend tests passed, with final wrapper regression and related checks passing14/14 after the last edit. TypeScript and native/public builds passed. Independent dismissal source review passed. In the disposable browser harness, quiz X returned home, collection background tap dismissed, and final-build quiz background tap dismissed. Real native app sessions were left untouched. Some dialogs retain pending-write guards to avoid losing in-flight actions; unsaved work may require a visible decision.
+
+Native deployment succeeded at commit06ae3399e0dacd405f741c1efab81e72357d6f0d (appgdep_6ac2cbbccf54819196ad8d8eebfbd8c5). Public release required the Vercel prebuilt flag; the initial ordinary deployments omitted assets and were corrected by uploading the prepared output. No database or account changes.
+
+Corrected public deployment: https://nooks-study-space-qatvlnxi9-eeshpara-1663s-projects.vercel.app, alias https://nooks-study-space.vercel.app. Verified public index and logo return HTTP200.
+
+Follow-up audit found pending-write close intents dropped by several dialogs and lower-page discovery/celebration panels intercepting Escape above native dialogs. The shared soft-dismiss helper now optionally queues the first close intent until an in-flight write settles, uses the latest callback, and cancels on unmount. Close controls remain reachable during pending writes. Collection/reward and customization backdrops use pointer-origin checks to preserve drag selection. Source-level tests cover these interactions; release results are recorded below after final validation.
+
+Live pre-release browser checks passed for collection X, music outside tap, and native account-dialog outside tap. Existing user study sessions were not restarted or edited.
+
+Final validation for the follow-up: backend250/250; interface348/348 before the final narrow material-cache compare-and-delete regression; TypeScript passed. Creation, sharing and personalization retain failed drafts on deliberate close, scoped to the current owner. Late responses cannot clear a newer dismissed draft. Confirmed creation clears its original cached draft even when the parent intentionally unmounts it. Study-set editing routes outside tap/X/Escape through its existing explicit unsaved-change decision. Production readiness beyond these verified behaviors remains unapproved.

@@ -1,0 +1,35 @@
+{
+  "status": "revised-flight-keyframes",
+  "durationSeconds": 15,
+  "notes": "User requests a cinematic drone journey, distinct environments, unique cast per world. Only the orange cat returns at the end as brand continuity. Actual animated motion still needs generation and verification.",
+  "frames": [
+    {
+      "id": "01-liftoff-v2",
+      "title": "Lift off",
+      "time": "0\u20132 seconds",
+      "cast": "Orange cat",
+      "flight": "Rise from the notebook, bank right, and fly through the open attic window."
+    },
+    {
+      "id": "02-tokyo-flight-v2",
+      "title": "Across Tokyo",
+      "time": "2\u20135 seconds",
+      "cast": "Fox + red panda",
+      "flight": "Sweep over a rainy street, bank past an apartment, and let an approaching train pass the camera."
+    },
+    {
+      "id": "03-forest-flight-v2",
+      "title": "Through the canopy",
+      "time": "5\u20138 seconds",
+      "cast": "Scarf bunny + moss turtle + owl",
+      "flight": "Swoop down through the canopy, skim past the study branch, and weave behind a nearby tree."
+    },
+    {
+      "id": "04-neon-flight-v2",
+      "title": "Dive into the night",
+      "time": "8\u201312 seconds",
+      "cast": "Capybara + honey bear + little ghost",
+      "flight": "Descend between neon towers, arc outside a glass study pod, and enter the warm doorway."
+    }
+  ]
+}

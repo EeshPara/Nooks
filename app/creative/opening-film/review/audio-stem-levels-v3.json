@@ -1,0 +1,50 @@
+{
+  "06-rain-city": {
+    "input_i": "-24.66",
+    "input_tp": "-1.38",
+    "input_lra": "1.80",
+    "input_thresh": "-34.66",
+    "output_i": "-23.25",
+    "output_tp": "-2.00",
+    "output_lra": "1.40",
+    "output_thresh": "-33.25",
+    "normalization_type": "dynamic",
+    "target_offset": "0.25"
+  },
+  "07-air-motion": {
+    "input_i": "-47.27",
+    "input_tp": "-21.68",
+    "input_lra": "0.60",
+    "input_thresh": "-57.27",
+    "output_i": "-24.58",
+    "output_tp": "-2.00",
+    "output_lra": "0.10",
+    "output_thresh": "-34.58",
+    "normalization_type": "dynamic",
+    "target_offset": "1.58"
+  },
+  "08-library-foley": {
+    "input_i": "-26.80",
+    "input_tp": "-4.02",
+    "input_lra": "8.20",
+    "input_thresh": "-36.80",
+    "output_i": "-25.22",
+    "output_tp": "-2.00",
+    "output_lra": "6.40",
+    "output_thresh": "-35.22",
+    "normalization_type": "dynamic",
+    "target_offset": "2.22"
+  },
+  "09-warm-undertone": {
+    "input_i": "-10.05",
+    "input_tp": "-2.23",
+    "input_lra": "20.90",
+    "input_thresh": "-22.35",
+    "output_i": "-24.02",
+    "output_tp": "-16.33",
+    "output_lra": "6.00",
+    "output_thresh": "-35.22",
+    "normalization_type": "dynamic",
+    "target_offset": "1.02"
+  }
+}

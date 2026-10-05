@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nooks · Watch the journey</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#171613;color:#f5eddf;font:15px/1.5 system-ui,-apple-system,sans-serif}main{max-width:1440px;margin:auto;padding:26px 28px 42px}header{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:20px}h1{font-size:25px;letter-spacing:-.04em;margin:0;font-weight:600}header p{color:#afa696;margin:4px 0 0;font-size:13px}a{color:#e6d4b8;text-decoration:none}a:hover{text-decoration:underline}.stage{background:#080807;border:1px solid #ffffff14;border-radius:16px;overflow:hidden;position:relative}video{display:block;width:100%;max-height:71vh;aspect-ratio:16/9;object-fit:contain;background:#080807}.below{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:18px 0 25px}.below h2{font-size:17px;font-weight:500;margin:0}.below p{font-size:12px;color:#b4a997;margin:4px 0 0}.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}button{font:inherit;color:inherit;cursor:pointer}.actions button{border:1px solid #ffffff26;border-radius:99px;background:transparent;padding:8px 15px;font-size:13px}.actions button[aria-pressed=true]{background:#f3e8d3;color:#2e2923;border-color:transparent}.sound-options{margin:-5px 0 24px}.sound-options>span{font-size:12px;color:#afa696;margin-right:6px}.clips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.clip{padding:0;border:1px solid transparent;background:none;text-align:left;border-radius:12px;overflow:hidden;transition:background .18s,border-color .18s}.clip[aria-pressed=true]{border-color:#d6b88d;background:#ffffff09}.thumb{position:relative;display:block;aspect-ratio:16/9;overflow:hidden}.thumb img{display:block;width:100%;height:100%;object-fit:cover}.thumb span{position:absolute;bottom:8px;right:8px;background:#000a;border-radius:5px;padding:2px 7px;font-size:11px}.name{padding:10px 12px;display:block;font-size:13px}.name small{color:#a79d8d;display:block;font-size:11px;margin-top:3px}button:focus-visible,a:focus-visible{outline:2px solid #ead6b7;outline-offset:4px}.error{padding:20px;color:#f2c59d}.hint{font-size:12px;color:#908879;margin:25px 0 0}@media(max-width:760px){main{padding:18px 14px 32px}header{align-items:start}h1{font-size:22px}.below{align-items:start;flex-direction:column;gap:12px}.clips{grid-template-columns:repeat(2,minmax(0,1fr))}video{max-height:65vh}.clip:first-child{grid-column:1/-1}.clip:first-child .thumb{aspect-ratio:3/1}.hint{line-height:1.7}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><main>
+<header><div><h1>Watch the journey</h1><p>Desk → Tokyo → your nook. One continuous flight. A softer soundscape.</p></div><a id="download" href="exports/nooks-opening-v3.mp4" download>Download film ↓</a></header>
+<div class="stage"><video id="player" controls playsinline preload="metadata" poster="frames/01-liftoff-v2.png" src="exports/nooks-opening-v3.mp4" aria-label="Nooks opening film"></video><p class="error" id="error" hidden>The video could not load. <a id="direct" href="exports/nooks-opening-v3.mp4">Open this clip directly</a>.</p></div>
+<div class="below"><div><h2 id="title">Full journey</h2><p id="detail">11 seconds · soft air, rain & a little warmth</p></div><div class="actions"><button id="play" type="button">Play film</button><button id="restart" type="button">Replay from start</button><button id="slow" type="button" aria-pressed="false">0.5×</button><button id="normal" type="button" aria-pressed="true">1×</button><button id="repeat" type="button" aria-pressed="false">Loop</button></div></div>
+<div class="actions sound-options" role="group" aria-label="Sound mix"><span>Sound</span><button id="warm-mix" type="button" aria-pressed="true">Warm + ambience</button><button id="ambience-mix" type="button" aria-pressed="false">Ambience only</button></div>
+<div class="clips" aria-label="Choose a film or transition">
+<button class="clip" data-index="0" aria-pressed="true"><span class="thumb"><img src="frames/01-liftoff-v2.png" alt="Orange cat at the study desk"><span>0:11</span></span><span class="name">Full journey<small>New soundscape · subtle warmth</small></span></button>
+<button class="clip" data-index="1" aria-pressed="false"><span class="thumb"><img src="frames/02-tokyo-flight-v2.png" alt="Fox and red panda beside a Tokyo railway"><span>0:05</span></span><span class="name">1 · Desk → Tokyo<small>Through the window and over the rooftops</small></span></button>
+<button class="clip" data-index="2" aria-pressed="false"><span class="thumb"><img src="frames/06-actual-library.webp" alt="Rainy library with a warm desk and sleeping cat"><span>0:05</span></span><span class="name">2 · Tokyo → Your nook<small>One flight through the open library doorway</small></span></button>
+</div><p class="hint">Click a scene to play its full transition. Use the timeline to scrub, or 0.5× to look closely. The individual clips play at their original speed and are silent; the full film uses the sound mix you choose above.</p>
+</main><script>
+const clips=[
+{src:'exports/nooks-opening-v3.mp4',title:'Full journey',detail:'11 seconds · soft air, rain & a little warmth'},
+{src:'clips/01-attic-tokyo.mp4',title:'Desk → Tokyo',detail:'5 seconds · original transition · no audio'},
+{src:'clips/02-tokyo-library-continuous.mp4',title:'Tokyo → Your nook',detail:'5 seconds · continuous doorway flight · no audio'}];
+const player=document.getElementById('player'),play=document.getElementById('play'),error=document.getElementById('error');let selected=0,rate=1,mix="warm";
+function start(){error.hidden=true;player.play().catch(()=>{play.textContent='Play';});}
+function select(index){selected=index;const c=clips[index];if(index===0)c.src=mix==='warm'?'exports/nooks-opening-v3.mp4':'exports/nooks-opening-v3-ambience.mp4';player.pause();player.src=c.src;player.removeAttribute('poster');player.playbackRate=rate;document.getElementById('title').textContent=c.title;document.getElementById('detail').textContent=c.detail;document.getElementById('direct').href=c.src;document.querySelectorAll('.clip').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));start();}
+document.querySelectorAll('.clip').forEach(b=>b.addEventListener('click',()=>select(Number(b.dataset.index))));
+play.addEventListener('click',()=>player.paused?start():player.pause());player.addEventListener('play',()=>play.textContent='Pause');player.addEventListener('pause',()=>play.textContent='Play');player.addEventListener('ended',()=>play.textContent='Replay');player.addEventListener('error',()=>error.hidden=false);
+document.getElementById('restart').onclick=()=>{player.currentTime=0;start();};
+function speed(value){rate=value;player.playbackRate=value;document.getElementById('slow').setAttribute('aria-pressed',String(value===0.5));document.getElementById('normal').setAttribute('aria-pressed',String(value===1));}
+document.getElementById('slow').onclick=()=>speed(.5);document.getElementById('normal').onclick=()=>speed(1);document.getElementById('repeat').onclick=e=>{player.loop=!player.loop;e.currentTarget.setAttribute('aria-pressed',String(player.loop));};
+
+function chooseMix(value){
+ mix=value;
+ document.getElementById('warm-mix').setAttribute('aria-pressed',String(value==='warm'));
+ document.getElementById('ambience-mix').setAttribute('aria-pressed',String(value==='ambience'));
+ const src=value==='warm'?'exports/nooks-opening-v3.mp4':'exports/nooks-opening-v3-ambience.mp4';
+ clips[0].src=src;clips[0].detail=value==='warm'?'11 seconds · soft air, rain & a little warmth':'11 seconds · just the environment and camera movement';
+ document.getElementById('download').href=src;
+ select(0);
+}
+document.getElementById('warm-mix').onclick=()=>chooseMix('warm');
+document.getElementById('ambience-mix').onclick=()=>chooseMix('ambience');
+</script></body></html>

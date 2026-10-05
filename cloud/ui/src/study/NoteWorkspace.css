@@ -1,0 +1,158 @@
+.nooks-note { --note-ui-ink:#f1e7d8;--note-ui-muted:#c8b9a3;--note-ui-line:#e3ceb028;width:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-style:normal;color:var(--note-ui-ink); }
+.nooks-note * { box-sizing:border-box; }
+.nooks-note button { font:inherit;font-style:normal;cursor:pointer; }
+.nooks-note button:disabled { cursor:default;opacity:.42; }
+.nooks-note button:focus-visible,.nooks-note input:focus-visible,.nooks-note textarea:focus-visible,.nooks-note a:focus-visible { outline:2px solid #d3b583;outline-offset:4px; }
+.nooks-note-toolbar { display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px; }
+.nooks-note-back { display:flex;align-items:center;gap:8px;background:none;border:0;color:var(--note-ui-muted);font-size:12px!important;min-height:36px;padding:5px 0; }
+.nooks-note-back:hover { color:var(--note-ui-ink); }
+.nooks-note-controls { display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap; }
+.nooks-note-button,.nooks-note-icon-button { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:37px;padding:9px 13px;border:1px solid #e4d1b72e;border-radius:9px;background:#fff1d709;color:var(--note-ui-ink);font-size:12px!important;line-height:1.35;transition:background .16s; }
+.nooks-note-button:hover:not(:disabled),.nooks-note-icon-button:hover { background:#fff1d714; }
+.nooks-note-button.is-primary { background:#e6ceb0;color:#453626;border-color:#ead7bc;font-weight:550; }
+.nooks-note-button.is-primary:hover:not(:disabled) { background:#f0ddc2; }
+.nooks-note-icon-button { width:37px;padding:9px; }
+.nooks-note .note-appearance-trigger { min-height:37px;border-color:#e4d1b72e;background:#fff1d709;color:var(--note-ui-ink);font-size:12px;border-radius:9px; }
+.nooks-note .note-appearance-trigger:hover { background:#fff1d714; }
+.nooks-note .note-appearance-popover { background:#302a24f9;border-color:#e4d1b72e; }
+.nooks-note .note-appearance-heading strong,.nooks-note .note-appearance legend { color:#efe3d0; }
+.nooks-note .note-appearance-heading p,.nooks-note .note-appearance-footer > span,.nooks-note .note-large-toggle small { color:#c5b9a7; }
+.nooks-note-layout { display:grid;grid-template-columns:minmax(0,1fr) 214px;align-items:start;gap:28px; }
+.nooks-note .note-paper.nooks-note-paper { padding:clamp(24px,4vw,48px);min-width:0;min-height:470px;border:1px solid #e3d1b8;border-radius:17px;box-shadow:0 9px 28px #140d071c;background-color:var(--note-paper,#fff9ed);color:var(--note-ink,#403a31); }
+.nooks-note .note-paper.nooks-note-paper:focus-visible { outline:2px solid #cdb18a;outline-offset:5px; }
+.nooks-note-heading { padding-bottom:26px;margin-bottom:27px;border-bottom:1px solid #9f876929; }
+.nooks-note-meta { display:flex;align-items:center;gap:15px;flex-wrap:wrap;color:#786a57;font-size:11px;line-height:1.5;margin-bottom:18px; }
+.nooks-note-meta > span+span { position:relative; }
+.nooks-note-meta > span+span:before { content:'';position:absolute;left:-9px;top:7px;width:2px;height:2px;border-radius:50%;background:#968066; }
+.nooks-note-heading h1 { margin:0;color:var(--note-ink,#403a31);font:600 clamp(26px,3vw,36px)/1.3 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.8px;overflow-wrap:anywhere; }
+.nooks-note-heading > p { margin:13px 0 0;font-size:14px;line-height:1.7;color:#786a57; }
+.nooks-note-save-status { display:flex;align-items:center;gap:5px;margin-top:15px;color:#776956;font-size:10px;line-height:1.5; }
+.nooks-note-save-status.is-dirty { color:#8a5a32; }
+.nooks-note-save-status.is-dirty:before { content:'';width:5px;height:5px;border-radius:50%;background:#b5834a; }
+.nooks-note-title-label { display:grid;gap:8px;color:#786a57;font-size:11px; }
+.nooks-note .nooks-note-title-input { display:block;width:calc(100% + 12px);min-width:0;margin:-3px -6px;padding:3px 6px;border:0;border-radius:5px;background:transparent;color:var(--note-ink,#403a31);font:inherit;letter-spacing:inherit;resize:none;overflow:hidden;transition:background .16s; }
+.nooks-note .nooks-note-title-input:hover { background:#a28a6310; }
+.nooks-note .nooks-note-title-input:focus { background:#a28a630a;outline:0;box-shadow:0 1px 0 #aa947645; }
+.nooks-note .note-paper .nooks-note-prose { font-family:var(--note-font,Inter,sans-serif);font-size:var(--note-text-size,15px);line-height:1.85;color:var(--note-ink,#403a31);overflow-wrap:anywhere; }
+.nooks-note .note-paper .nooks-note-prose :is(h1,h2,h3,h4) { font-family:var(--note-font,Inter,sans-serif);font-style:normal;color:var(--note-ink,#403a31);font-weight:600;letter-spacing:-.3px;line-height:1.45;scroll-margin-top:25px; }
+.nooks-note .note-paper .nooks-note-prose h1 { font-size:26px;margin:30px 0 16px; }
+.nooks-note .note-paper .nooks-note-prose h2 { font-size:21px;margin:29px 0 13px; }
+.nooks-note .note-paper .nooks-note-prose h3 { font-size:18px;margin:26px 0 11px; }
+.nooks-note .note-paper .nooks-note-prose h4 { font-size:16px;margin:23px 0 10px; }
+.nooks-note .note-paper .nooks-note-prose > :first-child { margin-top:0; }
+.nooks-note .note-paper .nooks-note-prose > :last-child { margin-bottom:0; }
+.nooks-note .note-paper .nooks-note-prose p { margin:0 0 19px;white-space:pre-wrap;line-height:1.85; }
+.nooks-note .note-paper .nooks-note-prose strong { color:inherit;font-weight:650; }
+.nooks-note .note-paper .nooks-note-prose :is(ul,ol) { margin:0 0 21px;padding-left:24px; }
+.nooks-note .note-paper .nooks-note-prose li { padding-left:4px;margin-bottom:7px;font-size:var(--note-text-size,15px);line-height:1.85; }
+.nooks-note .note-paper .nooks-note-prose li::marker { color:#9a8160; }
+.nooks-note .note-paper .nooks-note-prose blockquote { margin:22px 0;padding:15px 19px;border:0;border-left:2px solid #b79b73;border-radius:0 7px 7px 0;background:#b8a18012;color:var(--note-ink,#403a31);font-family:var(--note-font,Inter,sans-serif);font-size:var(--note-text-size,15px);font-style:normal;line-height:1.85;white-space:pre-wrap; }
+.nooks-note .note-paper .nooks-note-prose a { color:#825b31;text-decoration:underline;text-underline-offset:3px; }
+.nooks-note .note-paper .nooks-note-prose :not(pre) > code { background:#ae946523;padding:2px 5px;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em; }
+.nooks-note .note-paper .nooks-note-prose pre { overflow-x:auto;max-width:100%;padding:19px;margin:22px 0;border:1px solid #baa58438;border-radius:9px;background:#8e795f0a;font:12px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre; }
+.nooks-note .note-paper .nooks-note-prose pre code { font:inherit; }
+.nooks-note .note-paper .nooks-note-prose hr { border:0;border-top:1px solid #ad92742e;margin:27px 0; }
+.nooks-note-table-scroll { max-width:100%;overflow-x:auto;margin:24px 0;border:1px solid #ac95763b;border-radius:9px; }
+.nooks-note-table-scroll table { width:100%;border-collapse:collapse;font-size:13px;line-height:1.65; }
+.nooks-note-table-scroll th { background:#ad95700d;font-weight:600;text-align:left; }
+.nooks-note-table-scroll :is(th,td) { min-width:100px;padding:12px 15px;border-bottom:1px solid #ac957625; }
+.nooks-note-table-scroll tbody tr:last-child td { border-bottom:0; }
+.nooks-note-editor-label { display:grid;gap:9px;color:#70604b;font-size:12px;font-weight:500; }
+.nooks-note-editor-label > span { color:#80705b;font-size:11px;font-weight:400;margin-bottom:6px; }
+.nooks-note .note-paper .note-editor.nooks-note-editor { display:block;width:100%;min-height:230px;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent;color:var(--note-ink,#403a31);font-family:var(--note-font,Inter,sans-serif);font-size:var(--note-text-size,15px);line-height:1.85;resize:none;overflow:hidden; }
+.nooks-note .note-paper .note-editor.nooks-note-editor:focus { outline:0;box-shadow:none; }
+.nooks-note-clickable { min-height:230px;cursor:text;border-radius:4px;outline-offset:8px; }
+.nooks-note-clickable:focus-visible { outline:1px solid #b69e785f; }
+.nooks-note-placeholder { margin:0;color:#948776;font-size:15px;line-height:1.85; }
+.nooks-note-writing-hint { display:block;margin-top:26px;color:#847460;font-size:10px;line-height:1.7;opacity:.7;transition:opacity .16s; }
+.nooks-note-clickable:hover .nooks-note-writing-hint,.nooks-note-editor-wrap:focus-within .nooks-note-writing-hint { opacity:1; }
+.nooks-note-notice > div { display:flex;align-items:center;gap:14px; }
+.nooks-note-sidebar { padding:7px 0; }
+.nooks-note-sidebar h2 { margin:0 0 9px;color:var(--note-ui-ink);font:550 14px/1.5 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.1px; }
+.nooks-note-study-tools > p { margin:0 0 16px;color:var(--note-ui-muted);font-size:12px;line-height:1.7; }
+.nooks-note-actions { display:grid;gap:8px; }
+.nooks-note-actions > button { display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:41px;padding:10px 12px;border:1px solid var(--note-ui-line);border-radius:8px;background:#e8cfa807;color:#e8d7bf;font-size:12px;line-height:1.5;text-align:left;transition:background .17s,border-color .17s; }
+.nooks-note-actions > button:hover:not(:disabled) { background:#e8cfa812;border-color:#e3ceb057; }
+.nooks-note-actions > button > svg { color:#baa284;flex-shrink:0; }
+.nooks-note-selection-hint { display:block;margin-top:14px;color:#bba98f;font-size:11px;line-height:1.75; }
+.nooks-note-contents { margin-top:25px;padding-top:22px;border-top:1px solid var(--note-ui-line); }
+.nooks-note-contents h2 { margin-bottom:12px; }
+.nooks-note-contents button { display:block;text-align:left;border:0;border-left:1px solid #b69d7930;background:none;color:#cebaa0;width:100%;padding:7px 0 7px 12px;font-size:12px;line-height:1.6;overflow-wrap:anywhere; }
+.nooks-note-contents button.is-nested { padding-left:24px;font-size:11px;color:#bca98f; }
+.nooks-note-contents button:hover { border-left-color:#dcc3a0;color:#f4e6d1;background:#d5b98c06; }
+.nooks-note-source { margin-top:25px;padding-top:16px;border-top:1px solid var(--note-ui-line); }
+.nooks-note-source > button { display:flex;align-items:center;justify-content:space-between;gap:15px;width:100%;min-height:34px;padding:2px 0;border:0;background:none;color:#d6c3a9;font-size:12px; }
+.nooks-note-source > button svg { transition:transform .18s; }
+.nooks-note-source > button svg.is-open { transform:rotate(180deg); }
+.nooks-note-source p { margin:12px 0;color:#bdaa8f;font-size:11px;line-height:1.8;overflow-wrap:anywhere;white-space:pre-wrap; }
+.nooks-note-source dl { margin:12px 0 0; }
+.nooks-note-source dl > div { display:flex;justify-content:space-between;gap:10px;margin-top:8px;font-size:10px;line-height:1.6; }
+.nooks-note-source dt { color:#a99373; }
+.nooks-note-source dd { margin:0;color:#d0bda3;overflow-wrap:anywhere;text-align:right; }
+.nooks-note-add { display:flex;align-items:center;gap:7px;margin-top:19px;min-height:36px;padding:4px 0;border:0;background:none;color:#d2bc9b;font-size:11px!important; }
+.nooks-note-add:hover { color:#f2e1c8; }
+.nooks-note-error,.nooks-note-notice { margin:0 0 18px;padding:13px 15px;border:1px solid #d8b8904f;border-radius:9px;background:#8d624422;color:#eed5b4;font-size:12px;line-height:1.65; }
+.nooks-note-notice { display:flex;justify-content:space-between;gap:15px;align-items:center; }
+.nooks-note-notice button { flex-shrink:0;border:0;background:none;color:#f4dfc0;font-size:11px;text-decoration:underline;text-underline-offset:3px; }
+.nooks-note-empty p { color:#887158;font-size:14px; }
+.nooks-note-empty button { display:flex;gap:8px;align-items:center;margin-top:17px;border:0;background:none;color:#715433;font-size:13px;padding:8px 0; }
+.nooks-note-sr { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(max-width:1050px) { .nooks-note-layout { grid-template-columns:minmax(0,1fr) 185px;gap:22px; }.nooks-note .note-paper.nooks-note-paper { padding:30px; } }
+@media(max-width:800px) {
+  .nooks-note-layout { grid-template-columns:1fr;gap:18px; }
+  .nooks-note-sidebar { display:contents; }
+  .nooks-note-study-tools { grid-column:1/-1;grid-row:1; }
+  .nooks-note-study-tools h2,.nooks-note-selection-hint { display:none; }
+  .nooks-note-paper { grid-row:2; }
+  .nooks-note-actions { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .nooks-note-contents,.nooks-note-source { margin-top:0; }
+  .nooks-note-add { grid-column:1/-1;margin:0; }
+  .nooks-note-notice { align-items:flex-start;flex-direction:column;gap:9px; }
+}
+@media(max-width:560px) {
+  .nooks-note-toolbar { align-items:flex-start;gap:10px;flex-direction:column; }
+  .nooks-note-controls { width:100%;justify-content:flex-start;gap:7px; }
+  .nooks-note .note-appearance { margin-right:auto; }
+  .nooks-note .note-appearance-popover { right:auto;left:0; }
+  .nooks-note .note-appearance-trigger { padding:9px;min-height:39px;font-size:11px; }
+  .nooks-note .note-appearance-trigger > svg { width:14px; }
+  .nooks-note-button { min-height:39px;padding:9px 11px;font-size:11px!important; }
+  .nooks-note-icon-button { width:34px;padding:8px; }
+  .nooks-note .note-paper.nooks-note-paper { padding:26px 21px;border-radius:13px;min-height:380px; }
+  .nooks-note-heading { padding-bottom:21px;margin-bottom:24px; }
+  .nooks-note-heading h1 { font-size:28px; }
+  .nooks-note-meta { font-size:10px;gap:13px;margin-bottom:15px; }
+  .nooks-note-meta > span+span:before { left:-8px;top:6px; }
+  .nooks-note-heading > p { font-size:13px; }
+  .nooks-note .note-paper .nooks-note-prose h1 { font-size:24px; }
+  .nooks-note .note-paper .nooks-note-prose h2 { font-size:20px; }
+  .nooks-note .note-paper .nooks-note-prose h3 { font-size:17px; }
+  .nooks-note .note-paper .nooks-note-prose blockquote { padding:12px 15px; }
+  .nooks-note .note-paper .note-editor.nooks-note-editor { padding:0;min-height:230px; }
+  .nooks-note-actions { gap:7px; }
+  .nooks-note-actions > button { padding:10px;font-size:11px;gap:6px; }
+  .nooks-note-actions > button > svg { width:12px; }
+  .nooks-note .nooks-note-title-input { font-size:inherit; }
+}
+@media(max-width:380px) { .nooks-note .note-paper.nooks-note-paper { padding:23px 17px; }.nooks-note-controls { gap:5px; }.nooks-note-button { padding:9px; }.nooks-note .note-appearance-trigger > span { font-size:10px; }.nooks-note-actions { grid-template-columns:1fr; }.nooks-note-sidebar { grid-template-columns:1fr;gap:19px; }.nooks-note-heading h1 { font-size:25px; } }
+@media(prefers-reduced-motion:reduce) { .nooks-note-button,.nooks-note-icon-button,.nooks-note-actions > button,.nooks-note-source > button svg { transition:none; } }
+
+.nooks-note-compare-intro { margin:0 0 22px;color:#786b5c;font:13px/1.8 Inter,sans-serif; }
+.nooks-note-compare { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px; }
+.nooks-note-compare section { min-width:0; }
+.nooks-note-compare h3 { margin:0 0 17px;color:#847463;font:500 11px/1.5 Inter,sans-serif; }
+.nooks-note-compare strong { display:block;color:#44392e;font:600 17px/1.5 Inter,sans-serif; }
+.nooks-note-compare pre { margin:14px 0 0;max-height:45vh;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;color:#554c40;font:13px/1.85 Inter,sans-serif; }
+.nooks-note-compare-actions { display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid #dbd0c0; }
+.nooks-note-compare-actions button { padding:10px 14px;border:1px solid #dacebd;border-radius:9px;background:transparent;color:#61513e;font:500 12px/1.5 Inter,sans-serif;cursor:pointer; }
+.nooks-note-compare-actions button:first-child { margin-right:auto;border-color:transparent;padding-left:0; }
+.nooks-note-compare-actions .is-primary { background:#67513c;border-color:#67513c;color:#fffaf2; }
+@media(max-width:600px) { .nooks-note-compare { grid-template-columns:1fr;gap:25px; }.nooks-note-compare pre { max-height:27vh; }.nooks-note-compare-actions button { flex:1; }.nooks-note-compare-actions button:first-child { flex-basis:100%;text-align:left; } }
+@media(prefers-reduced-motion:reduce) { .nooks-note .nooks-note-title-input,.nooks-note-writing-hint { transition:none; } }
+
+.lofi-world .nooks-doc-empty-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0 18px;font-size:12px;color:#8b877e}.lofi-world .nooks-doc-empty-actions button{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid #dedbd3;border-radius:7px;font-size:12px;color:#5b554a;background:#f7f5ef}.lofi-world .nooks-doc-empty-actions button:hover{background:#eeebe2}
+.nooks-note.nooks-document .nooks-doc-close{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:50%;background:transparent;color:#625c52;transition:background .16s,transform .16s}
+.nooks-note.nooks-document .nooks-doc-close:hover:not(:disabled){background:#e4e6dd}
+.nooks-note.nooks-document .nooks-doc-close:active:not(:disabled){transform:scale(.94)}
+.motion-off .nooks-note.nooks-document .nooks-doc-close{transition:none}
+@media(prefers-reduced-motion:reduce){.nooks-note.nooks-document .nooks-doc-close{transition:none}}

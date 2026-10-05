@@ -1,0 +1,18 @@
+{
+  "duration_seconds": 15,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "sources": [
+    "01-attic-tokyo",
+    "02-tokyo-forest-std",
+    "03-forest-neon",
+    "04-neon-home-v2"
+  ],
+  "title": "nook",
+  "tagline": "Your little study nook in ChatGPT.",
+  "review_status": "awaiting final review",
+  "source_resolution": "native 720p; no upscaling",
+  "sound": "original Sonilo instrumental, reduced by 3.74 dB; muted default in app",
+  "credits_before": 270
+}

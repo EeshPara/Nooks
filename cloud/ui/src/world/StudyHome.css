@@ -1,0 +1,215 @@
+/* The welcome is the center of the nook; useful objects stay within reach. */
+.lofi-world.unified-workspace .study-home.study-home-welcome {
+ --home-cream:#f7f0e3;
+ --home-muted:#e6dccc;
+ display:grid;
+ grid-template-columns:224px minmax(340px,1fr) 224px;
+ grid-template-areas:"tools welcome collection";
+ align-items:start;
+ gap:clamp(26px,3vw,48px);
+ min-height:calc(100dvh - 230px);
+ padding:56px 0 80px;
+ width:100%;
+ color:var(--home-cream);
+ font-family:var(--nook-font,Inter,sans-serif);
+}
+.lofi-world.unified-workspace .study-home-content {
+ grid-area:welcome;
+ width:100%;
+ min-width:0;
+ padding-top:38px;
+ animation:study-home-arrive .55s cubic-bezier(.22,1,.36,1) both;
+}
+.lofi-world.unified-workspace .study-home-heading {text-align:center;margin:0 0 30px;padding:0;}
+.lofi-world.unified-workspace .study-home-heading h1 {
+ margin:0 auto;
+ max-width:610px;
+ font:500 clamp(27px,2.55vw,39px)/1.22 var(--nook-font,Inter,sans-serif);
+ letter-spacing:-1.2px;
+ text-wrap:balance;
+ color:#fff9ed;
+ text-shadow:0 2px 28px #18191585;
+}
+.lofi-world.unified-workspace .study-home-heading h1 span {display:block;font:inherit;}
+.lofi-world.unified-workspace .study-home-heading p {margin:15px 0 0;font-size:12px;line-height:1.65;letter-spacing:.08px;color:#eee5d6;text-shadow:0 1px 13px #0b100bd6;}
+.lofi-world.unified-workspace .study-home-heading p.study-home-greeting {font-size:12px;margin:0 0 12px;color:#f2e7d4;}
+.lofi-world.unified-workspace .study-home button {font-family:inherit;cursor:pointer;transition:background .2s,transform .22s,color .2s,border-color .2s,opacity .2s;}
+.lofi-world.unified-workspace .study-home button:disabled {cursor:default;}
+.lofi-world.unified-workspace .study-home button:focus-visible {outline:2px solid #e8cf9f;outline-offset:4px;}
+.lofi-world.unified-workspace .study-home-change {display:inline-flex;align-items:center;gap:6px;color:#f5e8cf;background:#2929203d;border:1px solid #fff3;border-radius:30px;padding:7px 12px;font-size:10px;margin-top:18px;backdrop-filter:blur(14px);}
+.lofi-world.unified-workspace .study-home-change:hover {background:#ffffff26;border-color:#fff6;}
+.lofi-world.unified-workspace .study-home-composer {
+ width:100%;
+ padding:17px 17px 12px;
+ border:1px solid #fff9;
+ border-radius:24px;
+ background:linear-gradient(125deg,#fffaf2f5,#eee7dbeb);
+ box-shadow:0 12px 45px #0c11112e,inset 0 1px 0 #fff;
+ backdrop-filter:blur(32px);
+ -webkit-backdrop-filter:blur(32px);
+ transition:box-shadow .25s,border-color .25s,transform .25s;
+}
+.lofi-world.unified-workspace .study-home-composer:focus-within {border-color:#fff;box-shadow:0 14px 50px #090d143d,0 0 0 3px #f4dfb419;transform:translateY(-2px);}
+.lofi-world.unified-workspace .study-home-composer textarea {display:block;resize:none;width:100%;max-height:190px;min-height:68px;padding:2px 5px 8px;border:0;border-radius:0;background:transparent;outline:none;box-shadow:none;font:400 14px/1.65 var(--nook-font,Inter,sans-serif);color:#403c34;scrollbar-width:thin;}
+.lofi-world.unified-workspace .study-home-composer textarea::placeholder {color:#8e8170;opacity:1;}
+.lofi-world.unified-workspace .study-home-composer-controls {display:flex;align-items:center;gap:8px;}
+.lofi-world.unified-workspace .study-home-composer-controls>span {font-size:9px;color:#968773;flex:1;text-align:right;margin-right:5px;}
+.lofi-world.unified-workspace .study-home-source {display:flex;align-items:center;gap:5px;padding:6px 8px 6px 4px;min-height:34px;flex-shrink:0;border:0;border-radius:9px;background:transparent;color:#716754;font-size:10px;}
+.lofi-world.unified-workspace .study-home-source:hover {background:#8a7b6318;}
+.lofi-world.unified-workspace .study-home-send {display:grid;place-items:center;width:35px;height:35px;flex-shrink:0;border:0;border-radius:50%;background:#494338;color:#fff8e9;box-shadow:0 3px 9px #50442b13;}
+.lofi-world.unified-workspace .study-home-send:hover:not(:disabled) {background:#61543f;transform:translateY(-1px);}
+.lofi-world.unified-workspace .study-home-send:disabled {opacity:.35;}
+.lofi-world.unified-workspace .study-home-send:focus-visible,.lofi-world.unified-workspace .study-home-source:focus-visible {outline-color:#a18354;}
+.lofi-world.unified-workspace .study-home-quick-actions {display:flex;align-items:center;justify-content:center;gap:10px;margin:17px 0 0;flex-wrap:wrap;}
+.lofi-world.unified-workspace .study-home-quick-actions button {display:inline-flex;align-items:center;gap:13px;padding:9px 13px;min-height:34px;font-size:11px;font-weight:400;color:#f4ecdf;border:1px solid #fff3;border-radius:28px;background:#211f1c4d;backdrop-filter:blur(16px);box-shadow:inset 0 1px #ffffff09;}
+.lofi-world.unified-workspace .study-home-quick-actions button svg {opacity:.65;transition:transform .22s;}
+.lofi-world.unified-workspace .study-home-quick-actions button:hover {background:#f8e9cd22;border-color:#ffffff4f;transform:translateY(-2px);}
+.lofi-world.unified-workspace .study-home-quick-actions button:hover svg {transform:translateX(2px);}
+.lofi-world.unified-workspace .study-home-resume-link {display:flex;align-items:center;justify-content:center;gap:8px;width:fit-content;max-width:100%;margin:27px auto 0;padding:5px 0;min-height:30px;background:none;border:0;color:#e4d8c5;font-size:10px;line-height:1.4;text-shadow:0 1px 9px #101214a6;}
+.lofi-world.unified-workspace .study-home-resume-link>span {opacity:.75;flex-shrink:0;}
+.lofi-world.unified-workspace .study-home-resume-link strong {font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:185px;}
+.lofi-world.unified-workspace .study-home-resume-link>svg {flex-shrink:0;}
+.lofi-world.unified-workspace .study-home-resume-link:hover {color:#fff5e0;}
+.lofi-world.unified-workspace .study-home-tools {grid-area:tools;display:flex;flex-direction:column;gap:17px;min-width:0;animation:study-home-arrive .5s .07s cubic-bezier(.22,1,.36,1) both;}
+.lofi-world.unified-workspace .study-home-widget,.lofi-world.unified-workspace .study-home-collection .room-journey-widget {background:linear-gradient(145deg,#332e28b3,#292b2b80);border:1px solid #f8e8d22e;border-radius:18px;backdrop-filter:blur(26px) saturate(.8);-webkit-backdrop-filter:blur(26px) saturate(.8);box-shadow:0 12px 35px #07080b1a,inset 0 1px #fff1;color:var(--home-cream);padding:18px;}
+.lofi-world.unified-workspace .study-home-widget-heading {display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.lofi-world.unified-workspace .study-home-widget-heading h2 {font-family:inherit;font-style:normal;font-size:12px;font-weight:500;letter-spacing:0;margin:0;color:#f1e7d8;}
+.lofi-world.unified-workspace .study-home-widget-heading>button,.lofi-world.unified-workspace .study-home-widget-heading>span {display:flex;align-items:center;gap:4px;font-size:10px;background:none;border:0;color:#ddcdb7;padding:0;}
+.lofi-world.unified-workspace .study-home-widget-heading>button {padding:4px;margin:-4px;}
+.lofi-world.unified-workspace .study-home-widget-heading>button:hover {color:#fff5df;}
+.lofi-world.unified-workspace .study-home-clock {font-size:49px;font-weight:350;letter-spacing:-1.8px;line-height:1.15;font-variant-numeric:tabular-nums;text-align:center;margin:24px 0 20px;color:#f9efdf;}
+.lofi-world.unified-workspace .study-home-clock span {color:#d5c5ab;padding-inline:1px;}
+.lofi-world.unified-workspace .study-home-timer-buttons {display:flex;align-items:center;gap:7px;}
+.lofi-world.unified-workspace .study-home-timer-start {flex:1;display:flex;justify-content:center;align-items:center;gap:8px;border:1px solid #fff2;border-radius:10px;background:#e9d9bc;color:#494033;font-size:11px;font-weight:500;padding:11px 8px;min-height:37px;}
+.lofi-world.unified-workspace .study-home-timer-start:hover:not(:disabled) {background:#f8e7c9;transform:translateY(-1px);}
+.lofi-world.unified-workspace .study-home-timer-start:disabled {opacity:.55;}
+.lofi-world.unified-workspace .study-home-timer-reset {display:grid;place-items:center;width:34px;height:37px;background:#fff1;border:1px solid #fff2;color:#e4d6bf;border-radius:10px;}
+.lofi-world.unified-workspace .study-home-timer-reset:hover:not(:disabled) {background:#fff2;}
+.lofi-world.unified-workspace .study-home-timer-reset:disabled {opacity:.3;}
+.lofi-world.unified-workspace .study-home-focus-notice {font-size:9px;line-height:1.6;color:#d9c8ac;margin:12px 0 0;}
+.lofi-world.unified-workspace .study-home-tasks ul {list-style:none;padding:0;margin:13px 0 0;max-height:149px;overflow:auto;scrollbar-width:thin;scrollbar-color:#dbc29a42 transparent;}
+.lofi-world.unified-workspace .study-home-tasks li {margin:0;padding:0;}
+.lofi-world.unified-workspace .study-home-tasks li button {display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;background:none;border:0;padding:7px 0;color:#eee5d6;font-size:11px;line-height:1.55;}
+.lofi-world.unified-workspace .study-home-tasks li button>span:last-child {overflow-wrap:anywhere;}
+.lofi-world.unified-workspace .study-home-task-check {width:14px;height:14px;border:1px solid #d5cbb479;border-radius:5px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;transition:background .2s,border-color .2s;}
+.lofi-world.unified-workspace .study-home-tasks li button:hover:not(:disabled) .study-home-task-check {border-color:#f8ead0;}
+.lofi-world.unified-workspace .study-home-tasks li button.is-done {color:#cfc2ae80;}
+.lofi-world.unified-workspace .study-home-tasks li button.is-done>span:last-child {text-decoration:line-through;}
+.lofi-world.unified-workspace .study-home-tasks li button.is-done .study-home-task-check {background:#dac7a6;color:#4d473b;border-color:#dac7a6;}
+.lofi-world.unified-workspace .study-home-tasks-empty {font-size:11px;line-height:1.7;color:#d6c9b4b5;margin:19px 0 13px;}
+.lofi-world.unified-workspace .study-home-tasks form {display:flex;align-items:center;gap:6px;border-top:1px solid #ead0a825;margin-top:11px;padding-top:11px;}
+.lofi-world.unified-workspace .study-home-tasks input {width:100%;min-width:0;outline:0;box-shadow:none;border:0;border-radius:0;padding:5px 0;background:none;color:#fbedd7;font:11px/1.5 var(--nook-font,Inter,sans-serif);}
+.lofi-world.unified-workspace .study-home-tasks input::placeholder {color:#dacbb3a3;}
+.lofi-world.unified-workspace .study-home-tasks form:focus-within {border-color:#ecd3a966;}
+.lofi-world.unified-workspace .study-home-tasks form>button {display:grid;place-items:center;border:0;border-radius:50%;background:#fff1;width:27px;height:27px;color:#f3e2c6;flex-shrink:0;}
+.lofi-world.unified-workspace .study-home-tasks form>button:hover:not(:disabled) {background:#fff2;}
+.lofi-world.unified-workspace .study-home-tasks form>button:disabled {opacity:.4;}
+.lofi-world.unified-workspace .study-home-task-error,.lofi-world.unified-workspace .study-home-chat-error {color:#ffcfb8;font-size:11px;line-height:1.6;margin:12px 0 0;}
+.lofi-world.unified-workspace .study-home-collection {grid-area:collection;min-width:0;animation:study-home-arrive .5s .12s cubic-bezier(.22,1,.36,1) both;}
+.lofi-world.unified-workspace .study-home-collection .room-journey-widget {width:100%;max-width:none;margin:0;padding:18px 18px 15px;}
+.lofi-world.unified-workspace .study-home-collection .journey-widget-heading {font-size:12px;color:#f1e7d8;font-weight:500;}
+.lofi-world.unified-workspace .study-home-collection .journey-widget-heading>span:last-child {font-size:10px;font-weight:400;color:#ddcdb7;}
+.lofi-world.unified-workspace .study-home-collection .journey-first-object {flex-direction:column;align-items:center;text-align:center;gap:10px;padding:14px 0 10px;}
+.lofi-world.unified-workspace .study-home-collection .journey-preview-object {width:94px!important;height:94px!important;}
+.lofi-world.unified-workspace .study-home-collection .journey-first-object>span {font-size:12px;line-height:1.55;color:#f3e5ce;}
+.lofi-world.unified-workspace .study-home-collection .journey-first-object small {display:block;margin-top:5px;font-size:10px;line-height:1.55;color:#d6c3a4;}
+.lofi-world.unified-workspace .study-home-collection .journey-progress-heading {font-size:10px;color:#dfcba9;margin-top:16px;}
+.lofi-world.unified-workspace .study-home-collection .journey-open>p {font-size:9px;line-height:1.7;color:#d3bea0;margin-top:10px;}
+.lofi-world.unified-workspace .study-home-collection .journey-view-all {font-size:10px;color:#eee0c7;padding-top:13px;margin-top:15px;}
+.lofi-world.unified-workspace .study-home-collection .journey-progress-track {background:#f1dcb825;height:4px;}
+.lofi-world.unified-workspace .study-home-collection .journey-progress-saved {background:#dfc598;}
+.lofi-world.unified-workspace .study-home-shelf:has(.room-reward-shelf) {padding:18px 10px 0;}
+@keyframes study-home-arrive {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1101px) and (max-height:780px) {
+ .lofi-world.unified-workspace .study-home.study-home-welcome {padding-top:20px;padding-bottom:55px;min-height:calc(100dvh - 215px);}
+ .lofi-world.unified-workspace .study-home-content {padding-top:22px;}
+ .lofi-world.unified-workspace .study-home-heading {margin-bottom:24px;}
+ .lofi-world.unified-workspace .study-home-clock {margin:17px 0 15px;}
+ .lofi-world.unified-workspace .study-home-tasks ul {max-height:125px;}
+}
+@media(max-width:1100px) {
+ .lofi-world.unified-workspace .study-home.study-home-welcome {grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"welcome welcome" "tools collection";gap:30px;max-width:740px;margin:auto;padding-top:24px;}
+ .lofi-world.unified-workspace .study-home-content {max-width:590px;margin:auto;padding-top:0;}
+ .lofi-world.unified-workspace .study-home-heading h1 {font-size:35px;}
+ .lofi-world.unified-workspace .study-home-heading h1 span {display:inline;}
+ .lofi-world.unified-workspace .study-home-tools {display:contents;}
+ .lofi-world.unified-workspace .study-home-timer {grid-column:1;grid-row:2;}
+ .lofi-world.unified-workspace .study-home-tasks {grid-column:1;grid-row:3;}
+ .lofi-world.unified-workspace .study-home-collection {grid-column:2;grid-row:2 / span 2;}
+ .lofi-world.unified-workspace .study-home-collection .journey-first-object {padding-block:21px 19px;}
+}
+@media(max-width:680px) {
+ .lofi-world.unified-workspace .study-home.study-home-welcome {display:flex;flex-direction:column;gap:22px;padding:18px 3px 75px;min-height:0;}
+ .lofi-world.unified-workspace .study-home-content {width:100%;padding:0 3px;margin-bottom:5px;}
+ .lofi-world.unified-workspace .study-home-heading {margin-bottom:25px;}
+ .lofi-world.unified-workspace .study-home-heading h1 {font-size:31px;letter-spacing:-1px;max-width:380px;}
+ .lofi-world.unified-workspace .study-home-heading h1 span {display:block;}
+ .lofi-world.unified-workspace .study-home-heading p {font-size:11px;}
+ .lofi-world.unified-workspace .study-home-heading p.study-home-greeting {font-size:11px;margin-bottom:10px;}
+ .lofi-world.unified-workspace .study-home-composer {border-radius:22px;padding:16px 15px 11px;}
+ .lofi-world.unified-workspace .study-home-composer-controls>span {font-size:8px;}
+ .lofi-world.unified-workspace .study-home-composer textarea {font-size:16px;min-height:72px;}
+ .lofi-world.unified-workspace .study-home-quick-actions {gap:8px;margin-top:14px;}
+ .lofi-world.unified-workspace .study-home-quick-actions button {font-size:11px;padding:9px 12px;gap:9px;}
+ .lofi-world.unified-workspace .study-home-resume-link {flex-wrap:wrap;gap:5px 8px;margin-top:20px;font-size:10px;}
+ .lofi-world.unified-workspace .study-home-resume-link>span {flex-basis:100%;}
+ .lofi-world.unified-workspace .study-home-resume-link strong {max-width:230px;}
+ .lofi-world.unified-workspace .study-home-tools {display:grid;grid-template-columns:1fr;width:100%;gap:18px;}
+ .lofi-world.unified-workspace .study-home-timer,.lofi-world.unified-workspace .study-home-tasks {grid-column:auto;grid-row:auto;}
+ .lofi-world.unified-workspace .study-home-widget {padding:20px;}
+ .lofi-world.unified-workspace .study-home-widget-heading h2 {font-size:13px;}
+ .lofi-world.unified-workspace .study-home-widget-heading>span,.lofi-world.unified-workspace .study-home-widget-heading>button {font-size:11px;}
+ .lofi-world.unified-workspace .study-home-clock {font-size:54px;margin:20px 0;}
+ .lofi-world.unified-workspace .study-home-timer-buttons {gap:10px;}
+ .lofi-world.unified-workspace .study-home-timer-start {min-height:43px;font-size:12px;}
+ .lofi-world.unified-workspace .study-home-timer-reset {height:43px;width:42px;}
+ .lofi-world.unified-workspace .study-home-tasks ul {max-height:175px;}
+ .lofi-world.unified-workspace .study-home-tasks li button {font-size:12px;padding-block:9px;}
+ .lofi-world.unified-workspace .study-home-tasks input {font-size:16px;}
+ .lofi-world.unified-workspace .study-home-tasks form>button {width:32px;height:32px;}
+ .lofi-world.unified-workspace .study-home-collection {width:100%;}
+ .lofi-world.unified-workspace .study-home-collection .room-journey-widget {padding:20px;}
+ .lofi-world.unified-workspace .study-home-collection .journey-first-object {flex-direction:row;justify-content:flex-start;text-align:left;gap:20px;padding:18px 0 8px;}
+ .lofi-world.unified-workspace .study-home-collection .journey-first-object>span {font-size:13px;}
+ .lofi-world.unified-workspace .study-home-collection .journey-open>p {font-size:10px;}
+}
+@media(prefers-reduced-motion:reduce) {
+ .lofi-world.unified-workspace .study-home-content,.lofi-world.unified-workspace .study-home-tools,.lofi-world.unified-workspace .study-home-collection {animation:none;}
+ .lofi-world.unified-workspace .study-home button,.lofi-world.unified-workspace .study-home-composer {transition:none;}
+ .lofi-world.unified-workspace .study-home-composer:focus-within {transform:none;}
+}
+
+.lofi-world.unified-workspace .study-home-reset-confirm {margin-top:13px;padding-top:12px;border-top:1px solid #f0d7ac24;animation:study-home-arrive .18s ease-out both;}
+.lofi-world.unified-workspace .study-home-reset-confirm p {margin:0;font-size:10px;line-height:1.6;color:#e5d2b8;}
+.lofi-world.unified-workspace .study-home-reset-confirm>div {display:flex;align-items:center;gap:8px;margin-top:10px;}
+.lofi-world.unified-workspace .study-home-reset-confirm button {padding:7px 8px;min-height:31px;border:1px solid #f2dcc033;border-radius:7px;font-size:10px;color:#f2e7d4;background:#ffffff0c;}
+.lofi-world.unified-workspace .study-home-reset-confirm button:hover:not(:disabled) {background:#ffffff1c;}
+.lofi-world.unified-workspace .study-home-reset-confirm button:last-child {color:#e9b69d;border-color:#e9b69d33;}
+@media(prefers-reduced-motion:reduce){.lofi-world.unified-workspace .study-home-reset-confirm{animation:none;}}
+
+/* ChatGPT owns the conversation input in the embedded app. */
+.lofi-world.unified-workspace .study-home-native .study-home-content {padding-top:24px;}
+.lofi-world.unified-workspace .study-home-native .study-home-heading {margin-bottom:25px;}
+.lofi-world.unified-workspace .study-home-native-invitation {margin:0;text-align:center;font-size:12px;line-height:1.6;color:#f1e7d8;text-shadow:0 1px 12px #101211bf;}
+.lofi-world.unified-workspace .study-home-native .study-home-quick-actions {margin-top:15px;}
+.lofi-world.unified-workspace .study-home-native-add {display:flex;align-items:center;justify-content:center;gap:7px;margin:13px auto 0;min-height:34px;padding:7px 12px;border:0;border-radius:20px;background:transparent;color:#e9decc;font-size:11px;text-shadow:0 1px 10px #101211b0;}
+.lofi-world.unified-workspace .study-home-native-add:hover {background:#ffffff16;color:#fff3df;}
+.lofi-world.unified-workspace .study-home-native .study-home-resume-link {margin-top:14px;}
+@media(min-width:1101px) and (max-height:780px){.lofi-world.unified-workspace .study-home-native .study-home-content{padding-top:10px;}}
+@media(max-width:1100px){.lofi-world.unified-workspace .study-home-native .study-home-content{padding-top:0;}}
+
+/* Movable objects retain the original desk composition until repositioned. */
+.lofi-world.unified-workspace .study-home-welcome-position{grid-area:welcome;min-width:0;width:100%;}
+.lofi-world.unified-workspace .study-home-collection-position{grid-area:collection;min-width:0;width:100%;}
+.lofi-world.unified-workspace .study-home-tools{animation:none;}
+.lofi-world.unified-workspace .study-home-welcome-position .study-home-content{animation:none;}
+.lofi-world.unified-workspace .study-home-collection-position .study-home-collection{animation:none;}
+@media(max-width:1100px){
+ .lofi-world.unified-workspace .study-home-welcome-position{max-width:590px;margin:auto;}
+ .lofi-world.unified-workspace .study-home-timer-position{grid-column:1;grid-row:2;min-width:0;}
+ .lofi-world.unified-workspace .study-home-tasks-position{grid-column:1;grid-row:3;min-width:0;}
+ .lofi-world.unified-workspace .study-home-collection-position{grid-column:2;grid-row:2 / span 2;}
+}
+@media(max-width:680px){
+ .lofi-world.unified-workspace .study-home-welcome-position,.lofi-world.unified-workspace .study-home-timer-position,.lofi-world.unified-workspace .study-home-tasks-position,.lofi-world.unified-workspace .study-home-collection-position{width:100%;grid-area:auto;}
+}

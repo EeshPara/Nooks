@@ -1,0 +1,36 @@
+{
+  "version": 3,
+  "duration": 11,
+  "visual_source": "nooks-opening-v2.mp4",
+  "video_reencoded": false,
+  "default_audio": "warm environment and camera movement; very quiet beatless undertone",
+  "alternate_audio": "environment only",
+  "stems": {
+    "city": [
+      "06-rain-city.mp3",
+      -25
+    ],
+    "air": [
+      "07-air-motion.mp3",
+      -26
+    ],
+    "library": [
+      "08-library-foley.mp3",
+      -27
+    ],
+    "warm": [
+      "09-warm-undertone.m4a",
+      -32
+    ]
+  },
+  "master_gain_db": 8.43,
+  "cue_times": {
+    "window_exit": 0.65,
+    "outside_rain_train": 0.65,
+    "door_sweep": 4.85,
+    "library_return": 5.5,
+    "outro_fade": 9.7
+  },
+  "review": "Identical decoded picture to V2; technical audio levels and tail pass independent review; both mixes play unmuted in the same browser viewer without media errors. Subjective sound character awaits user audition.",
+  "deployment": "Local preview only."
+}

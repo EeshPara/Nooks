@@ -1,0 +1,120 @@
+{
+  "result": "passed",
+  "completedAt": "2026-10-04T20:23:46.758Z",
+  "postgres": "psql (PostgreSQL) 14.20 (Homebrew)",
+  "migrations": [
+    {
+      "name": "202610010001_nooks_production.sql",
+      "sha256": "149032c543ac04987d1b8b2b8a9ffe358fb86f4f41650fdf3bc6ff9a570ed816"
+    },
+    {
+      "name": "202610010002_nooks_community.sql",
+      "sha256": "151ba1201c6723b75136aad8f23fd484304ba2b6ae02fcc8c20a8a9739065cf4"
+    },
+    {
+      "name": "202610010003_nooks_events.sql",
+      "sha256": "567070c44a9e67ee27d9e6d29763d513501b7ce59b5cd6db2396f87ee9a19a57"
+    },
+    {
+      "name": "202610020001_nooks_browser_api.sql",
+      "sha256": "4173371632e6a6c0180361eddfda6165fd676d7e24f69ad1f454eebae1f92303"
+    },
+    {
+      "name": "20261004185440_production_hardening.sql",
+      "sha256": "cbfaee69b969aad56860961d0303708121f6152db27cf421a39dca2780761895"
+    },
+    {
+      "name": "20261004192857_focus_membership_serialization.sql",
+      "sha256": "a0d0f233534bf9ab424a0363ebde258acc92330c0583275a05c39cc36bac79a3"
+    },
+    {
+      "name": "20261004195006_community_management_pagination.sql",
+      "sha256": "7d50bcca386c7307f89bd2fce88ed7382d1f5294111847120fdafe2a28fd8a4e"
+    },
+    {
+      "name": "20261004195615_artwork_inventory_dry_run.sql",
+      "sha256": "6a627aa4d5b5ed536039be68131df8c3bbe29868ba032ed2760a89362bcfe1be"
+    },
+    {
+      "name": "20261004201449_artwork_generation_lifecycle.sql",
+      "sha256": "99b79095157822b87391c67f3e0ae94119287b66de36f182ca2fe70570269598"
+    }
+  ],
+  "isolation": {
+    "transport": "private Unix socket",
+    "tcpEnabled": false,
+    "existingDatabasesContacted": false,
+    "hostedServicesContacted": false,
+    "credentialsUsed": false,
+    "realStorageObjects": 0
+  },
+  "limits": {
+    "forcedRaces": 4,
+    "clientsPerRace": 2,
+    "maximumSqlSeconds": 8,
+    "lockTimeoutSeconds": 5,
+    "perClientDeadlineSeconds": 10
+  },
+  "outcomes": [
+    {
+      "kind": "workspace",
+      "first": "save",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "expectedDeniedSqlState": null,
+      "state": "ready",
+      "references": 1
+    },
+    {
+      "kind": "workspace",
+      "first": "cleanup",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "expectedDeniedSqlState": "40001",
+      "state": "deleting",
+      "references": 0
+    },
+    {
+      "kind": "share",
+      "first": "save",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "expectedDeniedSqlState": null,
+      "state": "ready",
+      "references": 1
+    },
+    {
+      "kind": "share",
+      "first": "cleanup",
+      "result": "passed",
+      "secondBlocked": true,
+      "otherOwnerProgressed": true,
+      "expectedDeniedSqlState": "40001",
+      "state": "deleting",
+      "references": 0
+    }
+  ],
+  "additionalChecks": [
+    "reservation and ack retries",
+    "strict pin and cleanup lease ownership",
+    "expired completion denial",
+    "share-only retention",
+    "retention and live-pin protection",
+    "late PUT tombstone re-sweep",
+    "legacy noncollection",
+    "100/day and128 retained-generation quotas with idempotent retries",
+    "service-only ACLs"
+  ],
+  "limitations": [
+    "Synthetic local PostgreSQL with platform schema stubs, not hosted Storage HTTP or production capacity.",
+    "SQL metadata simulates a late PUT; adapter deletion request/response behavior is tested separately with mocked Storage. Real hosted image-byte deletion remains unproven.",
+    "No scheduler, hosted mutation, real data deletion or lifecycle operational deployment is proven."
+  ],
+  "cleanup": {
+    "localClusterStopped": true,
+    "temporaryDirectoryRemoved": true
+  }
+}

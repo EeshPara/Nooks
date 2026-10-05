@@ -1,0 +1,147 @@
+/* Nook: quiet, upright type and illustrated objects, with room to breathe. */
+.lofi-world{--nook-font:ui-rounded,'SF Pro Rounded',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.nook-wordmark{width:108px;height:39px;object-fit:contain;flex-shrink:0}
+.world-rail .world-logo img{width:46px;height:46px}
+.lofi-world .room-welcome h1.room-personal-welcome{font-family:var(--nook-font);font-style:normal;font-weight:500;font-size:clamp(25px,2.45vw,37px);line-height:1.35;letter-spacing:-.9px;max-width:580px;margin:20px auto 15px;text-wrap:balance}
+.lofi-world .room-welcome h1 em{font:inherit}
+.lofi-world .room-welcome:has(.room-personal-welcome)>p{font-size:12px;letter-spacing:.1px}
+.lofi-world :is(.page-heading h1,.section-heading h2,.modal-heading h2,.personalize-modal-heading h2,.plan-aside h3,.study-heading h1,.note-sidebar h3,.empty-state h3,.about-notable-copy h2,.games-heading h2,.ambient-header h2){font-family:var(--nook-font);font-style:normal;font-weight:500;letter-spacing:-.5px}
+.lofi-world :is(.desk-item-text>strong,.artifact-title,.cover-title,.room-quote p,.about-free p,.space-scene-heading h2){font-family:var(--nook-font);font-style:normal}
+.lofi-world .room-quote p{font-size:12px}
+.lofi-world .desk-item{background:#eee3d2e8;color:#484239;box-shadow:0 5px 16px #0002;border:1px solid #ffffff36;border-radius:11px;min-height:81px}
+.lofi-world .desk-item .study-drawing{filter:drop-shadow(0 3px 2px #654b3a22)}
+.lofi-world .desk-item-text>strong{font-size:13px;font-weight:550;line-height:1.45}
+.lofi-world .desk-item-text>small{color:#817260}
+.lofi-world .desk-new{min-height:32px;background:transparent;border:0;box-shadow:none;color:#f0e5d3}
+.lofi-world .plan-layout{grid-template-columns:minmax(0,1.5fr) minmax(230px,1fr);gap:45px;align-items:start}
+.lofi-world .plan-main{background:transparent;border:0;padding:0;box-shadow:none}
+.lofi-world .plan-aside{display:block;padding:0 0 0 25px;border-left:1px solid #e8dac31a}
+.lofi-world .plan-aside h3{font-size:14px;color:#d6cdbf;margin:4px 0 16px}
+.lofi-world .plan-artifact{gap:12px;padding:16px 0;border-color:#e6dcca17}
+.lofi-world .plan-artifact strong{font-size:12px;font-weight:500;line-height:1.5;color:#eee4d2}
+.lofi-world .plan-artifact>div>span{font-size:10px;color:#b7ac9b}
+.lofi-world .plan-form{margin-top:25px;border-top:1px solid #e5d1b922;padding-top:22px}
+.lofi-world .plan-form input{background:#ffffff08;border-color:#ffffff26;color:#eee4d2}
+.lofi-world .plan-form label{color:#c7beaf}
+.lofi-world .task-row{border-color:#e8dac31a}
+.lofi-world .task-row strong{font-weight:500}
+.lofi-world .artifact-card{background:#ddd0b00a;border-color:#ffffff1b;border-radius:12px;box-shadow:none;overflow:hidden}
+.lofi-world .artifact-card .artifact-cover{height:128px;background:transparent!important;border:0;color:#eee2ce!important;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px}
+.lofi-world .artifact-cover:before,.lofi-world .cover-subject,.lofi-world .cover-title{display:none}
+.lofi-world .cover-symbol{margin:0;line-height:0}
+.lofi-world .artifact-title{font-size:15px;font-weight:500;line-height:1.5}
+.lofi-world .artifact-body{padding:0 18px 12px}
+.lofi-world .artifact-body p{font-size:11px;color:#c0b7aa}
+.lofi-world .artifact-kind>span,.lofi-world .artifact-meta{color:#bfb4a3}
+.lofi-world .as-list .artifact-cover{height:125px;width:108px;flex-shrink:0}
+.lofi-world .as-list .artifact-body{padding:15px;flex:1}
+.lofi-world .about-notable-art>.nook-about-mark{width:66px;height:66px}
+.lofi-world .about-notable-art>.nook-about-wordmark{width:125px;height:44px}
+.lofi-world .about-notable-copy h2{font-size:29px;line-height:1.3;color:#494238}
+.lofi-world .about-notable-copy h2>span{color:#88715b}
+.lofi-world .about-free p{font-size:14px;line-height:1.7}
+.lofi-world .world-info{font-family:var(--nook-font);font-style:normal;font-size:11px}
+.lofi-world .world-backdrop{transform:none}
+.lofi-world .world-rain{display:none}
+.lofi-world.weather-rain.motion-on .world-rain{display:block;opacity:.12}
+.lofi-world.weather-rain .world-rain i{width:1px;height:45px;border-radius:0;background:linear-gradient(transparent,#d6e2e9);animation-name:rainfall!important;animation-timing-function:linear!important}
+.lofi-world.weather-petals.motion-on .world-rain{display:block;opacity:.14}
+.lofi-world.weather-petals .world-rain i{width:6px;height:10px;border-radius:80% 0;background:#fac4cd;animation:petalfall 11s linear infinite!important}
+.lofi-world.weather-snow.motion-on .world-rain{display:block;opacity:.22}
+.lofi-world.weather-snow .world-rain i{width:3px;height:3px;border-radius:50%;background:#e3e8ef;animation:nook-snowfall 13s linear infinite!important}
+@keyframes nook-snowfall{from{translate:0 -10px}to{translate:40px 85vh}}
+@media(prefers-reduced-motion:reduce){.lofi-world .world-rain{display:none!important}}
+.lofi-world :is(.room-timer>p,.room-duration,.create-material-modal h2,.create-builder-heading strong,.ambient-header p,.study-heading h1,.study-empty h3){font-family:var(--nook-font);font-style:normal}
+.lofi-world .room-timer>p{font-size:10px}
+.lofi-world .overline{display:none}
+.lofi-world .world-wordmark>.nook-header-cat{display:none}
+.lofi-world .plan-main .section-heading>svg{display:none}
+.lofi-world .plan-main .task-row{background:transparent}
+.lofi-world .room-desk{max-width:650px;width:100%;align-self:center}
+.lofi-world .world-rail{background:#20201e91}
+.lofi-world.is-tool .page-content{background:#272727bd;backdrop-filter:blur(28px) saturate(.6)}
+.lofi-world button:focus-visible,.lofi-world input:focus-visible,.lofi-world a:focus-visible{outline-color:#edc799}
+.lofi-world .personalize-theme:focus-visible{outline:2px solid #f3d2ac;outline-offset:4px}
+.lofi-world .nook-room-categories button{background:transparent;border-color:#dfcdb329;color:#d9cdbc}
+.lofi-world .nook-room-categories button.is-selected{background:#e2c9a627;color:#f8e5c8;border-color:#e2c9a649}
+.lofi-world .nook-room-categories button:hover:not(.is-selected){background:#ffffff0c;color:#fff1db}
+.lofi-world .nook-room-card{padding:0 0 8px;background:transparent;border:0;color:#e8d9c1;box-shadow:none;border-radius:0;overflow:visible}
+.lofi-world .nook-room-card:is(.is-selected,:hover){background:transparent;border:0;box-shadow:none}
+.lofi-world .nook-room-thumbnail{border:1px solid #e5d5bc24;border-radius:9px;overflow:hidden;transition:border-color .2s,transform .2s}
+.lofi-world .nook-room-card.is-selected .nook-room-thumbnail{border:2px solid #e8cba2}
+.lofi-world .nook-room-card:hover .nook-room-thumbnail{transform:translateY(-2px);border-color:#eed2ae8a}
+.lofi-world .nook-room-card>strong{color:#e8dbc8;font-size:11px;font-weight:500}
+.lofi-world .nook-room-card>small{color:#b5a58f;font-size:9px;min-height:28px}
+.lofi-world .nook-generate-launch{background:#cfb48f12;border-color:#debd8f39;color:#ead8bc;border-radius:10px}
+.lofi-world .nook-generate-launch>span{color:#b8a98f}
+.lofi-world .nook-room-grid{gap:18px 12px}
+.lofi-world .personalize-scroll:has(.nook-room-generator) .nook-room-catalog{display:none}
+.lofi-world .nook-room-generator{background:transparent;color:#e8dbc8;border:0}
+.lofi-world .nook-room-generator>p{color:#c0b19b}
+.lofi-world .nook-generation-styles button{background:transparent;color:#d0bea4;border-color:#bca4824a}
+.lofi-world .nook-generation-styles button.is-selected{background:#e8cfab;color:#453628;border-color:#e8cfab}
+.lofi-world .nook-prompt-details{color:#d9c5a7}
+.lofi-world .nook-prompt-details textarea{color:#d8c9b2;background:#ffffff06;border-color:#bca48232}
+@media(max-width:950px){.lofi-world .plan-layout{grid-template-columns:1fr}.lofi-world .plan-aside{border-left:0;border-top:1px solid #e8dac31a;padding:24px 0 0}.lofi-world .room-welcome h1.room-personal-welcome{font-size:29px}}
+@media(max-width:680px){.nook-wordmark{width:87px;height:31px}.lofi-world .room-welcome h1.room-personal-welcome{font-size:28px;max-width:310px;line-height:1.35;letter-spacing:-.55px;margin:15px auto}.lofi-world .desk-item .study-drawing{display:none}.lofi-world .artifact-card .artifact-cover{height:98px}.lofi-world .cover-symbol .study-drawing{width:68px!important;height:68px!important}.lofi-world .artifact-body{padding:0 12px 10px}.lofi-world .artifact-title{font-size:13px}.lofi-world .plan-layout{gap:23px}}
+@media(max-width:680px){.lofi-world .world-wordmark>.nook-header-cat{display:block;width:40px;height:40px;object-fit:contain}.world-wordmark{gap:7px}.lofi-world .world-rail{background:#20201ef0}}
+
+/* A reading surface and a conversation share the desk. */
+@media(min-width:761px){
+.lofi-world.has-side-chat.is-tool .page-content{width:auto;max-width:none;margin:14px 427px 0 25px;max-height:calc(100dvh - 145px);padding:25px 30px;scroll-padding:25px;min-width:0}
+.lofi-world.has-side-chat .note-layout{grid-template-columns:1fr;gap:24px}
+.lofi-world.has-side-chat .note-sidebar{padding:10px 0 0;border:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.lofi-world.has-side-chat .note-sidebar>.eyebrow,.lofi-world.has-side-chat .note-sidebar>h3,.lofi-world.has-side-chat .note-sidebar>p{display:none}
+.lofi-world.has-side-chat .note-action{width:auto;max-width:none;margin:0;padding:10px 12px;font-size:11px;gap:8px}
+.lofi-world.has-side-chat .note-action>svg{width:14px;height:14px}
+.lofi-world.has-side-chat .note-source{flex-basis:100%;margin-top:12px;padding-top:12px}
+.lofi-world.has-side-chat .note-paper{min-height:350px;padding:32px 38px}
+.lofi-world.has-side-chat .note-banner{padding:22px 27px;margin-bottom:20px}
+.lofi-world.has-side-chat .note-banner h1{font-family:var(--nook-font);font-size:30px;font-weight:500;line-height:1.3}
+.lofi-world.has-side-chat .note-toolbar{flex-wrap:wrap;row-gap:14px}
+.lofi-world.has-side-chat .artifact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.lofi-world.has-side-chat .focus-layout,.lofi-world.has-side-chat .plan-layout{grid-template-columns:1fr}
+.lofi-world.has-side-chat .page-heading{gap:15px;flex-wrap:wrap}
+}
+@media(min-width:761px) and (max-width:1050px){.lofi-world.has-side-chat.is-tool .page-content{margin-right:342px;margin-left:16px;padding:20px}.lofi-world.has-side-chat .note-paper{padding:24px}.lofi-world.has-side-chat .note-banner h1{font-size:24px}.lofi-world.has-side-chat .artifact-grid{grid-template-columns:1fr}.lofi-world.has-side-chat .note-status{display:none}}
+.lofi-world .note-paper .markdown ::selection{background:#d9b78299;color:#332c24}
+
+.lofi-world .room-little-things{padding-top:13px;gap:20px;justify-content:flex-start;align-items:stretch}
+.lofi-world .room-little-things .room-quote{margin-top:12px}
+.lofi-world .room-desk>.room-reward-shelf{width:240px;margin:0 auto 15px}
+.lofi-world .room-focus-collection{background:transparent;padding:0;border:0;box-shadow:none}
+.lofi-world .room-focus-collection .room-journey-widget{width:100%;max-width:none}
+.lofi-world .secret-room-return{position:fixed;right:25px;top:96px;z-index:26;display:flex;flex-direction:column;gap:5px;padding:12px 17px;background:#30251fda;border:1px solid #e9cdae45;backdrop-filter:blur(20px);border-radius:11px;font-size:11px;color:#f3dec0}
+.secret-room-return>span{font-size:8px;color:#c9b494}
+/* Keep room progress at the top, beside the study surface rather than below it.
+   The same column measurements also bound the fixed home conversation. */
+.lofi-world.is-room{--room-rail:78px;--room-gutter:30px;--room-tools:235px;--room-rewards:230px;--room-gap:30px;--room-inset:max(0px,calc((100vw - var(--room-rail) - 1600px)/2))}
+@media(min-width:761px){
+ .lofi-world.is-room .room-home{grid-template-columns:var(--room-tools) minmax(0,1fr) var(--room-rewards);gap:var(--room-gap);align-items:start}
+ .lofi-world.is-room .room-little-things{display:flex;grid-column:3;grid-row:1;padding-top:0;min-width:0}
+ .lofi-world.is-room .room-little-things .room-journey-widget{width:100%;max-width:none;margin:0}
+ .lofi-world.is-room .room-widget-column{padding-top:0;min-width:0}
+ .lofi-world.is-room .room-center{grid-column:2;grid-row:1;min-width:0}
+}
+@media(min-width:761px) and (max-width:1200px){.lofi-world.is-room{--room-gutter:25px;--room-tools:198px;--room-rewards:205px;--room-gap:20px}}
+@media(min-width:761px) and (max-width:999px){
+ .lofi-world.is-room{--room-tools:207px;--room-rewards:0px;--room-gap:22px}
+ .lofi-world.is-room .room-home{grid-template-columns:var(--room-tools) minmax(0,1fr);grid-template-rows:min-content 1fr;row-gap:16px}
+ .lofi-world.is-room .room-little-things{grid-column:1;grid-row:1}
+ .lofi-world.is-room .room-widget-column{grid-column:1;grid-row:2}
+ .lofi-world.is-room .room-center{grid-row:1/3;padding-top:0}
+ .lofi-world.is-room .room-quote{display:none}
+}
+@media(min-width:681px) and (max-width:950px){.lofi-world.is-room{--room-rail:66px}}
+@media(max-width:760px){
+ .lofi-world.is-room .room-home{display:flex;flex-direction:column;gap:20px;min-height:0}
+ .lofi-world.is-room .room-center{display:contents}
+ .lofi-world.is-room .room-little-things{display:block;order:-3;padding:0;width:100%}
+ .lofi-world.is-room .room-little-things .room-journey-widget{max-width:none;width:100%;margin:0}
+ .lofi-world.is-room .room-little-things .room-quote{display:none}
+ .lofi-world.is-room .room-welcome{order:-2}
+ .lofi-world.is-room .room-widget-column{width:100%}
+ .lofi-world .secret-room-return{top:83px;right:14px;font-size:10px}
+ .lofi-world .room-desk>.room-reward-shelf{max-width:75%}
+}
+.lofi-world .room-growth{display:none}

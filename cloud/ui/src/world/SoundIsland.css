@@ -1,0 +1,122 @@
+/* One persistent audio surface: disclosure state never owns playback lifetime. */
+.lofi-world .sound-island-position {
+  --sound-width: 244px;
+  --sound-half-width: 122px;
+  --sound-bottom-clearance: 14px;
+  --sound-controls-clearance: 68px;
+  position: fixed;
+  bottom: calc(var(--sound-bottom-clearance) + var(--sound-viewport-bottom, 0px));
+  left: max(16px, calc(50% - var(--sound-half-width)));
+  z-index: 65;
+  width: var(--sound-width);
+  max-width: calc(100vw - 32px);
+}
+.lofi-world .sound-island-position.is-expanded { --sound-width: 350px; --sound-half-width: 175px; }
+.sound-island-position[data-layout-editing="true"] { --sound-controls-clearance: 104px; }
+.sound-island-position[data-layout-editing="true"] .workspace-widget-surface { padding-top: 36px; }
+.sound-island-position .workspace-widget-controls { top: 0; right: 0; }
+.lofi-world .sound-island {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  color: #f6f0e8;
+  background: #292622e8;
+  border: 1px solid #ffefdc29;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px #15120d24, inset 0 1px #ffffff0d;
+  backdrop-filter: blur(28px) saturate(125%);
+  -webkit-backdrop-filter: blur(28px) saturate(125%);
+  font-family: var(--nook-font, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-style: normal;
+  transition: border-radius 240ms ease, background 180ms ease;
+  animation: sound-island-arrive 240ms ease-out;
+}
+.lofi-world .sound-island.is-expanded { border-radius: 21px; background: #292622f5; }
+.sound-island button { font: inherit; cursor: pointer; }
+.sound-island button:disabled { cursor: default; opacity: .5; }
+.sound-island :is(button, input, a):focus-visible { outline: 2px solid #e0c7a8; outline-offset: 3px; }
+.lofi-world .sound-island-trigger { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 6px 14px 6px 7px; border-radius: 25px; color: inherit; text-align: left; transition: min-height 240ms ease, padding 240ms ease, background-color 150ms ease; }
+.sound-island-cover { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: #e9d2b313; color: #e6d3b8; transition: width 240ms ease, height 240ms ease; }
+.sound-island-cover.is-spotify { background: #ffffff0c; color: #f4eee5; }
+.sound-island-label { display: flex; flex: 1; min-width: 0; flex-direction: column; }
+.sound-island-label strong { overflow: hidden; color: #f6f0e8; font-size: 12px; font-weight: 550; line-height: 1.4; white-space: nowrap; text-overflow: ellipsis; letter-spacing: 0; }
+.sound-island-label small { color: #bfb5a7; font-size: 10px; line-height: 1.4; max-height: 0; margin-top: 0; opacity: 0; overflow: hidden; transition: max-height 240ms ease, margin-top 240ms ease, opacity 180ms ease; }
+.sound-island.is-expanded .sound-island-label small { max-height: 14px; margin-top: 3px; opacity: 1; }
+.sound-island-chevron { flex: none; color: #c4b7a5; transition: transform 220ms ease; }
+.sound-island.is-expanded .sound-island-trigger { min-height: 61px; padding: 12px 18px 10px 14px; }
+.sound-island.is-expanded .sound-island-cover { width: 34px; height: 34px; }
+.sound-island.is-expanded .sound-island-chevron { transform: rotate(180deg); }
+.sound-island-wave { display: flex; align-items: center; gap: 2px; width: 18px; height: 18px; flex: none; }
+.sound-island-wave i { display: block; width: 2px; height: 4px; background: #d7c3a8; border-radius: 2px; transform-origin: center; }
+.sound-island-wave i:nth-child(2), .sound-island-wave i:nth-child(4) { height: 8px; }
+.sound-island-wave i:nth-child(3) { height: 12px; }
+.sound-island.is-playing .sound-island-wave i { animation: sound-island-wave 950ms ease-in-out infinite alternate; }
+.sound-island.is-playing .sound-island-wave i:nth-child(2) { animation-delay: -.36s; }
+.sound-island.is-playing .sound-island-wave i:nth-child(3) { animation-delay: -.61s; }
+.sound-island.is-playing .sound-island-wave i:nth-child(4) { animation-delay: -.18s; }
+.sound-island.is-playing .sound-island-wave i:nth-child(5) { animation-delay: -.5s; }
+/* Animate intrinsic height without replacing or scaling the mounted iframe. */
+.lofi-world .sound-island .sound-island-panel { display: grid; grid-template-rows: 1fr; opacity: 1; visibility: visible; animation: none; transition: grid-template-rows 260ms cubic-bezier(.22,.68,.2,1), opacity 180ms ease, visibility 0s; }
+.lofi-world .sound-island .sound-island-panel.is-collapsed { grid-template-rows: 0fr; opacity: 0; visibility: hidden; pointer-events: none; transition: grid-template-rows 260ms cubic-bezier(.22,.68,.2,1), opacity 160ms ease, visibility 0s 260ms; }
+.sound-island-panel-clip { min-height: 0; overflow: hidden; }
+.sound-island-panel-body { padding: 0 17px 14px; max-height: max(0px, min(calc(var(--sound-viewport-height, 100dvh) - var(--sound-bottom-clearance) - var(--nooks-host-safe-top, 0px) - 96px - var(--sound-controls-clearance)), calc(var(--workspace-widget-max-height, 100dvh) - var(--sound-controls-clearance)))); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #938168 transparent; }
+.sound-island-subtitle { margin: 8px 0 15px; color: #c5bbad; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.sound-island-controls { display: flex; align-items: center; gap: 10px; }
+.sound-island-play { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 50%; color: #3f362b; background: #e7d3b5; transition: background 150ms, transform 150ms; }
+.sound-island-play:hover { background: #f3e5cd; }
+.sound-island-play:active { transform: scale(.94); }
+.sound-island-icon { display: grid; place-items: center; flex: none; width: 28px; height: 36px; color: #d6c7b3; }
+.lofi-world .sound-island-volume { flex: 1; min-width: 0; width: 100%; height: 4px; margin: 0; padding: 0; border: 0; accent-color: #dbc6a7; cursor: pointer; background: #51483b; }
+.sound-island-volume-value { min-width: 29px; color: #c8baA7; font-size: 10px; font-variant-numeric: tabular-nums; text-align: right; }
+.sound-island-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 17px; padding-top: 11px; border-top: 1px solid #f8e8d31b; }
+.sound-island-footer > button { display: flex; align-items: center; gap: 6px; min-height: 30px; padding: 5px 0; color: #c4b8a7; font-size: 11px; }
+.sound-island-footer > button:hover { color: #fff7e9; }
+.sound-island-sources { display: flex; flex-wrap: wrap; gap: 5px; margin: 1px 0 12px; }
+.sound-island-sources button { display: flex; align-items: center; gap: 6px; min-height: 31px; padding: 5px 11px; border-radius: 20px; color: #b9ae9f; font-size: 11px; transition: background 150ms ease, color 150ms ease; }
+.sound-island-sources button[aria-pressed=true] { color: #f5e9d7; background: #e6d0ae19; }
+.sound-island-sources button > span { width: 4px; height: 4px; border-radius: 50%; background: #8c7b64; }
+.sound-island-sources button > span.is-active { background: #dbc096; }
+.sound-island-error { margin: 10px 0 0; color: #f0bcaa; font-size: 12px; line-height: 1.6; }
+.sound-island-spotify-player { padding-top: 4px; }
+.sound-island-spotify-player iframe { display: block; border: 0; border-radius: 12px; background: #242424; }
+.sound-island-spotify-caption { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; font-size: 10px; color: #bdb1a0; }
+.sound-island-spotify-caption a { display: inline-flex; align-items: center; gap: 4px; padding: 4px 0; color: #e5d3b8; text-decoration: none; }
+.sound-island-spotify-caption a:hover { text-decoration: underline; }
+.sound-island-spotify-player.is-concealed { height: 0; padding: 0; overflow: hidden; visibility: hidden; pointer-events: none; }
+.sound-island-recommendation { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;width:100%;margin-top:12px;padding:11px 0 0;border-top:1px solid #f8e8d31b;text-align:left; }
+.sound-island-recommendation>span { color:#b7a890;font-size:10px; }
+.sound-island-recommendation>strong { grid-column:1;color:#e4d6c3;font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+.sound-island-recommendation>svg { grid-column:2;grid-row:1/3;transform:rotate(-90deg);color:#b7a890; }
+.sound-island-recommendation:hover>strong { color:#fff5e6; }
+.sound-island-spotify-form { padding-top: 7px; }
+.sound-island-spotify-form > label { display: block; margin-bottom: 9px; color: #eee4d6; font-size: 12px; font-weight: 500; }
+.sound-island-spotify-form > div:not(.sound-island-form-actions) { display: flex; align-items: center; gap: 8px; padding: 11px 10px; border: 1px solid #e8d6bc35; border-radius: 9px; background: #ffffff06; color: #bcaa93; }
+.lofi-world .sound-island-spotify-form input { min-width: 0; width: 100%; padding: 0; border: 0; background: transparent; color: #f5ead9; font-family: inherit; font-size: 12px; }
+.sound-island-spotify-form input::placeholder { color: #baab97; }
+.sound-island-form-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 13px; }
+.sound-island-spotify-form .sound-island-save { padding: 10px 15px; border-radius: 8px; background: #e6d0af; color: #3d3327; font-size: 12px; font-weight: 600; }
+.sound-island-spotify-form .sound-island-save:hover { background: #f0dec3; }
+.sound-island-spotify-form .sound-island-cancel { padding: 10px; color: #c7b8a4; font-size: 12px; }
+@keyframes sound-island-wave { from { transform: scaleY(.45); } to { transform: scaleY(1.2); } }
+@keyframes sound-island-arrive { from { opacity: 0; translate: 0 6px; } to { opacity: 1; translate: 0 0; } }
+/* Below a wide desktop, reserve an audio row so header actions stay reachable. */
+@media (max-width: 1650px) {
+  .lofi-world:has(.sound-island) .world-topbar { margin-bottom: 64px; }
+  .lofi-world.is-tool:has(.sound-island) .page-content { max-height: calc(100dvh - 324px); }
+  .lofi-world.is-tool:has(.sound-island) .page-content:has(.nooks-document) { height: calc(100dvh - 284px); }
+  .lofi-world:has(.sound-island) .conversation-anchor.nook-chat.preview-anchor.chat-bottom.chat-stage { top: 152px; }
+}
+@media (max-width: 950px) {
+  .lofi-world:has(.sound-island) .conversation-anchor.nook-chat.preview-anchor.chat-bottom.chat-stage { top: 144px; }
+}
+@media (max-width: 680px) {
+  .lofi-world .sound-island-position { --sound-bottom-clearance: 80px; --sound-width: 224px; --sound-half-width: 112px; }
+  .lofi-world .sound-island-position.is-expanded { --sound-width: 350px; --sound-half-width: 175px; }
+  .lofi-world .sound-island-spotify-form input { font-size: 16px; }
+  .lofi-world.is-tool:has(.sound-island) .page-content { max-height: calc(100dvh - 352px); }
+  .lofi-world.is-tool:has(.sound-island) .page-content:has(.nooks-document) { height: calc(100dvh - 306px); }
+  .lofi-world:has(.sound-island) .conversation-anchor.nook-chat.preview-anchor.chat-bottom.chat-stage { top: 140px; }
+}
+.lofi-world.host-chat-layout .sound-island-position { --sound-bottom-clearance: calc(14px + var(--nooks-composer-reserve, 0px) + var(--nooks-host-safe-bottom, 0px)); }
+.lofi-world.motion-off .sound-island, .lofi-world.motion-off .sound-island * { animation: none!important; transition: none!important; }
+@media (prefers-reduced-motion: reduce) { .sound-island, .sound-island * { animation: none!important; transition: none!important; } }

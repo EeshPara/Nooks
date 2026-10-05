@@ -1,0 +1,27 @@
+.reward-celebration-overlay{position:fixed;inset:0;z-index:180;display:grid;place-items:center;padding:24px;background:#15110dc4;backdrop-filter:blur(10px);animation:reward-overlay-in .25s ease both}
+.reward-celebration{box-sizing:border-box;position:relative;width:min(570px,100%);max-height:calc(100dvh - 48px);overflow:auto;overscroll-behavior:contain;padding:38px 30px 26px;border:1px solid #fff3;border-radius:24px;background:#f5eddf;color:#3c3027;box-shadow:0 24px 80px #0005;font-family:var(--nook-font,system-ui,sans-serif);font-style:normal;text-align:center;animation:reward-panel-in .42s cubic-bezier(.2,.7,.2,1) both;scrollbar-width:thin}
+.reward-celebration-close{border:0;background:transparent;position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;color:#716352}
+.reward-celebration-close:hover:not(:disabled){background:#66513910}
+.reward-celebration-place{font-size:12px;color:#75634e}
+.reward-celebration h2{font-family:inherit;font-size:27px;font-weight:600;letter-spacing:-.035em;font-style:normal;line-height:1.2;margin:10px 0}
+.reward-celebration>p{font-size:13px;line-height:1.65;color:#726150;margin:0}
+.reward-celebration-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px;list-style:none;margin:24px 0;padding:0}
+.reward-celebration-items.is-single{grid-template-columns:minmax(0,1fr)}
+.reward-celebration-items li{min-width:0}
+.reward-celebration-art{display:grid;place-items:center;min-height:115px;animation:reward-art-in .65s cubic-bezier(.2,.7,.2,1) both}
+.is-single .reward-celebration-art{min-height:170px}
+.reward-celebration h3{font-family:inherit;font-style:normal;font-size:15px;font-weight:550;line-height:1.4;margin:10px 0 5px;overflow-wrap:anywhere}
+.reward-celebration-items p{font-size:11px;line-height:1.5;color:#7b6b59;margin:0}
+.reward-celebration-place-item{border:1px solid #80674440;border-radius:20px;padding:8px 13px;margin-top:12px;font-size:12px;color:#654d34;min-height:40px}
+.reward-celebration-place-item:hover:not(:disabled){background:#8067440d}
+.reward-celebration-done{border:0;display:block;margin:20px auto 0;min-width:150px;min-height:44px;background:#534236;border-radius:24px;padding:12px 25px;color:#fff9ef;font-size:13px;font-weight:500}
+.reward-celebration button:disabled{opacity:.5;cursor:default}
+.reward-celebration button:focus-visible{outline:2px solid #83694a;outline-offset:4px}
+.reward-celebration:focus{outline:none}
+.reward-celebration>p.reward-celebration-error{color:#923b2e;margin:14px 0;font-size:12px}
+.reward-celebration>p.reward-celebration-status{color:#65503b;margin:14px 0;font-size:12px}
+@keyframes reward-overlay-in{from{opacity:0}to{opacity:1}}
+@keyframes reward-panel-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes reward-art-in{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:none}}
+@media(max-width:500px){.reward-celebration-overlay{padding:14px}.reward-celebration{padding:35px 20px 22px;max-height:calc(100dvh - 28px);border-radius:20px}.reward-celebration h2{font-size:25px}.reward-celebration-items{gap:20px 10px}.reward-celebration h3{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.reward-celebration-overlay,.reward-celebration,.reward-celebration-art{animation:none}}

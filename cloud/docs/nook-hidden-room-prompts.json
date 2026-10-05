@@ -1,0 +1,17 @@
+{
+  "tool": "Built-in image_gen",
+  "rooms": [
+    {
+      "key": "mosslight-dungeon",
+      "prompt": "A charming underground scholar's dungeon study nook carved into ancient stone, front three-quarter view, broad wooden study desk in foreground with old blank books, warm candle lantern, arching stone alcoves, moss and hanging ferns, a gentle turquoise crystal spring behind a window opening, cozy secret fantasy room. Inviting and safe, no frightening objects, no creatures or people. Painterly sophisticated storybook fantasy art, rich warm walnut and candle gold contrasting cool blue stone, restrained details, soft gouache textures. Full-bleed landscape 16:9, no text, no UI, no symbols or watermark. Clear calm center visual space for studying, beautiful magical atmosphere. Original environment."
+    },
+    {
+      "key": "moonstone-annex",
+      "prompt": "A hidden attic study annex in a magical academy at midnight, curving leaded glass windows onto an enormous soft moon and indigo clouds, warm carved oak desk along bottom foreground, miniature brass telescope and several blank old books, curved bookshelves built into the sloping walls, gold lamp glow, little hanging stars with gentle light. No people or creatures. Refined cozy storybook anime background art, hand-painted cinematic depth, warm caramel interior, luminous lavender indigo moonlight, beautiful subtle textures. Full-bleed landscape16:9, quiet composition with breathing room, no text, no UI, no watermark, original magical environment."
+    },
+    {
+      "key": "crystal-vault",
+      "prompt": "A secret crystal vault transformed into the coziest underground study room, wide walnut desk along bottom foreground, a few blank closed notebooks and glowing amber reading lamp, cavernous deep turquoise walls studded with softly glowing lavender crystals, a small arched opening showing a still underground lake reflecting warm lights, trailing delicate moss, ancient bookshelves carved into rock. Magical discoveries, peaceful and safe, no people, animals or creatures. Original high quality painterly lofi fantasy environment, elegant cozy gouache and animated film background finish, muted color harmony, soft atmospheric depth, full-bleed landscape16:9, no UI, no text or watermark."
+    }
+  ]
+}

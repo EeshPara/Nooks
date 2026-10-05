@@ -1,0 +1,93 @@
+[
+  {
+    "id": "paris-attic",
+    "path": "ui/public/images/lofi-paris-attic.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Original immersive lofi study world background for Nook, widescreen landscape 16:9, full-bleed cinematic environment with no text. Scene: Paris attic writer's room at dawn, tall open French casement windows overlooking zinc rooftops and distant pale skyline, linen curtains, antique oak writing table to right, apricot morning light, a croissant on cream ceramic plate and unmarked notebook. Hand-painted anime background art with restrained gouache texture, finely drawn architecture, soft layered atmospheric perspective, richly observed materials, delicate light and shadows. It should feel like inhabiting a real quiet room; inviting but not cluttered. Composition: seated eye level, foreground study desk occupying bottom/right with distinct everyday objects, setting and a generous window view filling the middle and left. High visual quality, coherent architectural perspective, soft sophisticated palette, room for subtle UI above it later. No people, no animals or characters, no logo, no typography, no readable words on books, no UI elements, no grids, no collage, not photorealistic or 3D."
+  },
+  {
+    "id": "kyoto-teahouse",
+    "path": "ui/public/images/lofi-kyoto-teahouse.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Original immersive lofi study world background for Nook, widescreen landscape 16:9, full-bleed cinematic environment with no text. Scene: Japanese tatami reading room, low walnut desk in rightforeground, shoji screens partially open onto mossy stone garden and dense bamboo in soft summer rain, steaming clay teapot, foldedlinen cushion, calm forest jade and honey wood. Hand-painted anime background art with restrained gouache texture, finely drawn architecture, soft layered atmospheric perspective, richly observed materials, delicate light and shadows. It should feel like inhabiting a real quiet room; inviting but not cluttered. Composition: seated eye level, foreground study desk occupying bottom/right with distinct everyday objects, setting and a generous window view filling the middle and left. High visual quality, coherent architectural perspective, soft sophisticated palette, room for subtle UI above it later. No people, no animals or characters, no logo, no typography, no readable words on books, no UI elements, no grids, no collage, not photorealistic or 3D."
+  },
+  {
+    "id": "brooklyn-loft",
+    "path": "ui/public/images/lofi-brooklyn-loft.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Original immersive lofi study world background for Nook, widescreen landscape 16:9, full-bleed cinematic environment with no text. Scene: Brooklyn loft living study corner on lazy Sunday, enormous arched industrialwindow and redbrick wall, low record player withvinyl discs, worn leather chair, walnutdesk andstacks ofbooks, warmgolden sun overwatertower rooftops, warmtaupe andterracotta. Hand-painted anime background art with restrained gouache texture, finely drawn architecture, soft layered atmospheric perspective, richly observed materials, delicate light and shadows. It should feel like inhabiting a real quiet room; inviting but not cluttered. Composition: seated eye level, foreground study desk occupying bottom/right with distinct everyday objects, setting and a generous window view filling the middle and left. High visual quality, coherent architectural perspective, soft sophisticated palette, room for subtle UI above it later. No people, no animals or characters, no logo, no typography, no readable words on books, no UI elements, no grids, no collage, not photorealistic or 3D."
+  },
+  {
+    "id": "cloud-bedroom",
+    "path": "ui/public/images/lofi-cloud-bedroom.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Original immersive lofi study world background for Nook, widescreen landscape 16:9, full-bleed cinematic environment with no text. Scene: Tasteful soft pink coquette bedroom study nook, cream scallopedwritingdesk andribbonbookmark, rosequartz ceramics, delicate pale pinkcurtains byabroadwindow looking onto big soft peach clouds and flowering citybalconies, warmcasual lived-in style, notglossy dollhouse. Hand-painted anime background art with restrained gouache texture, finely drawn architecture, soft layered atmospheric perspective, richly observed materials, delicate light and shadows. It should feel like inhabiting a real quiet room; inviting but not cluttered. Composition: seated eye level, foreground study desk occupying bottom/right with distinct everyday objects, setting and a generous window view filling the middle and left. High visual quality, coherent architectural perspective, soft sophisticated palette, room for subtle UI above it later. No people, no animals or characters, no logo, no typography, no readable words on books, no UI elements, no grids, no collage, not photorealistic or 3D."
+  },
+  {
+    "id": "oxford-library",
+    "path": "ui/public/images/lofi-oxford-library.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Generate a single ORIGINAL beautiful immersive study room background for Nook. Style is essential: Drawn 2D anime background painting, dark academia, clean confident linework, flat cel-painted shapes with subtle brushed shading, absolutely not photographic or 3D. Scene: Old English university library alcove, deepdarkoak bookshelves rising toceiling, largediamondleadwindow looking ontogothicstone courtyard infog andrain, patinatedbrass green-shaded readinglamp onrightsidewalnutdesk, handwrittenpages withoutlegiblemarks, amberpooloflight. Wide landscape 16:9 full-bleed composition with desk in foreground/right and view over setting in middle. Composed for a quiet lofi study workspace. Warm believable light, atmosphere and depth, still beautiful when cropped to a mobile screen. No people, animals, pets, text, logos, readable book titles, UI or frames. A fully drawn scene, NOT a collage or mockup."
+  },
+  {
+    "id": "lighthouse-study",
+    "path": "ui/public/images/lofi-lighthouse-study.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Generate a single ORIGINAL beautiful immersive study room background for Nook. Style is essential: Playful illustrated storybook style, softly exaggerated rounded architecture, simple charming shapes, muted chalk pastel and pencil texture, highly crafted 2D drawing, absolutely not photographic or 3D. Scene: Round coastal lighthouse keeper's readingroom, whitewashedcurvedstonewalls andwide wraparoundwindows acrosscenter overlooking bluegreywildAtlantic waves underpeachsunset, woodenwritingdesk rightforeground, vintagenauticalbrassinstruments, creamknittedthrow, cozywarminside. Wide landscape 16:9 full-bleed composition with desk in foreground/right and view over setting in middle. Composed for a quiet lofi study workspace. Warm believable light, atmosphere and depth, still beautiful when cropped to a mobile screen. No people, animals, pets, text, logos, readable book titles, UI or frames. A fully drawn scene, NOT a collage or mockup."
+  },
+  {
+    "id": "tropical-veranda",
+    "path": "ui/public/images/lofi-tropical-veranda.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Generate a single ORIGINAL beautiful immersive study room background for Nook. Style is essential: Lush 2D hand-painted anime film background, expressive ink-edged tropical leaves, painterly simple color planes, soft rain atmosphere, absolutely not photorealistic or 3D. Scene: Sheltered tropical wooden veranda study nook beside slowgreenriver, lushbroadbanana andmonstera leaves inheavymonsoonrain beyondroof, carvedteakdesk withnotebooks andmug, rattanarmchair, softlylit brasslantern onright, mistyrainforest depth, cinematicgreens warmwood. Wide landscape 16:9 full-bleed composition with desk in foreground/right and view over setting in middle. Composed for a quiet lofi study workspace. Warm believable light, atmosphere and depth, still beautiful when cropped to a mobile screen. No people, animals, pets, text, logos, readable book titles, UI or frames. A fully drawn scene, NOT a collage or mockup."
+  },
+  {
+    "id": "mossy-watermill",
+    "path": "ui/public/images/lofi-mossy-watermill.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. Generate a single ORIGINAL beautiful immersive study room background for Nook. Style is essential: Whimsical storybook cartoon painting: charming crooked timbers, oversized fern shapes, magical soft forest light, curving friendly architecture. Clearly drawn 2D artwork with expressive outlines and lightly textured gouache, not photography or 3D. Scene: Intimate old timber watermill study room opening throughwidecasementwindow onto mossywoodenwaterwheel andclearforeststream, fernframedrocks, filteredgoldenafternoonlight, softsageandteal woodland, honey oak desk withinkpotandbook onright, tangiblecozycraftdetails. Wide landscape 16:9 full-bleed composition with desk in foreground/right and view over setting in middle. Composed for a quiet lofi study workspace. Warm believable light, atmosphere and depth, still beautiful when cropped to a mobile screen. No people, animals, pets, text, logos, readable book titles, UI or frames. A fully drawn scene, NOT a collage or mockup."
+  },
+  {
+    "id": "aurora-cabin",
+    "path": "ui/public/images/lofi-aurora-cabin.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. A DREAMLIKE SURREAL pastel chalk illustration of a study alcove floating among lavender snow-clouds beneath huge flowing emerald and violet northern lights. Cozy open wooden cabin window, a little pale oak desk with one closed book and lamp on right, distant violet mountain and crescent moon, stars like gentle points. Soft luminous color gradients and deliberately simplified shapes, flat illustrative layers, surreal lucid dream atmosphere. Strong lavender, periwinkle and mint. Not realistic architecture, not a photograph. Original background for Nook, a cozy study workspace. Widescreen 16:9 landscape, single full-bleed room scene with inviting depth and usable open center. NO people, NO pets, NO characters, NO words, NO logos, NO typography, NO UI, NO borders. Avoid photography, 3D rendering, realistic material simulation, overly detailed textures, and decorative sparkles. The ART STYLE requested above must be unmistakable."
+  },
+  {
+    "id": "autumn-camper",
+    "path": "ui/public/images/lofi-autumn-camper.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. A clearly drawn flat 2D ANIME CARTOON background inside a cozy cream vintage campervan. Crisp dark brown outlines, large simple cel-shaded color shapes, only 3 shadow tones. Panoramic van window shows rolling orange autumn hills and turquoise lake. Little right-hand desk, open notebook, yellow mug, mustard plaid bench and string lights. Retro anime movie background. Deliberately graphic and illustrated, cheerful and warm, NOT a detailed realism painting. Original background for Nook, a cozy study workspace. Widescreen 16:9 landscape, single full-bleed room scene with inviting depth and usable open center. NO people, NO pets, NO characters, NO words, NO logos, NO typography, NO UI, NO borders. Avoid photography, 3D rendering, realistic material simulation, overly detailed textures, and decorative sparkles. The ART STYLE requested above must be unmistakable."
+  },
+  {
+    "id": "ricefield-porch",
+    "path": "ui/public/images/lofi-ricefield-porch.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. A crisp cel-painted 2D ANIME background, traditional Japanese open veranda with low wooden study table on right, notebook and tea cup, indigo floor cushion. Broad open view of luminous green rice paddies, blue mountains, giant cumulus summer clouds, thin wind chime. Clean confident ink outlines, big flat color planes, graphic warm sunlight and sharp cast shadow shapes. Deliberately looks like a frame from an original animated film, no photo or realistic texture. Original background for Nook, a cozy study workspace. Widescreen 16:9 landscape, single full-bleed room scene with inviting depth and usable open center. NO people, NO pets, NO characters, NO words, NO logos, NO typography, NO UI, NO borders. Avoid photography, 3D rendering, realistic material simulation, overly detailed textures, and decorative sparkles. The ART STYLE requested above must be unmistakable."
+  },
+  {
+    "id": "lakeside-boathouse",
+    "path": "ui/public/images/lofi-lakeside-boathouse.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. An airy WATERCOLOR AND PENCIL illustration of an old boathouse turned into a reading room. Broad open folding doors reveal a still turquoise alpine lake and pale blue mountains. Right foreground small oak writing table, a book, cream teacup, cane chair, flowing linen curtain. Visible watercolor pigments and soft bleeding edges on ivory paper, charming loose graphite contours, large calm washes, hand-made travel sketchbook atmosphere. Clearly a drawing not a realistic render. Original background for Nook, a cozy study workspace. Widescreen 16:9 landscape, single full-bleed room scene with inviting depth and usable open center. NO people, NO pets, NO characters, NO words, NO logos, NO typography, NO UI, NO borders. Avoid photography, 3D rendering, realistic material simulation, overly detailed textures, and decorative sparkles. The ART STYLE requested above must be unmistakable."
+  },
+  {
+    "id": "castle-study",
+    "path": "ui/public/images/lofi-castle-study.png",
+    "tool": "built-in image_gen",
+    "transparent_background": false,
+    "prompt": "Use case: illustration-story. A whimsical CARTOON illustration with thick softly wobbly brown outlines and charming simplified slightly crooked shapes, cozy medieval scholar study inside a round stone tower. Huge round arched window looks onto tiny pastel sleeping town, crescent moon and floating mauve clouds. Right foreground desk has stacked chunky colorful books, inkwell and little warm candle. Eggplant purple, honey yellow, dusty pink, periwinkle. Cheerful storybook magic, tactile gouache, clear 2D cartoon shapes not realistic materials. Original background for Nook, a cozy study workspace. Widescreen 16:9 landscape, single full-bleed room scene with inviting depth and usable open center. NO people, NO pets, NO characters, NO words, NO logos, NO typography, NO UI, NO borders. Avoid photography, 3D rendering, realistic material simulation, overly detailed textures, and decorative sparkles. The ART STYLE requested above must be unmistakable."
+  }
+]

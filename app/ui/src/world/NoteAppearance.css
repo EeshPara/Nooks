@@ -1,0 +1,43 @@
+.note-appearance{position:relative;display:inline-flex;isolation:isolate}
+.note-appearance button{font:inherit;cursor:pointer}
+.note-appearance-trigger{display:inline-flex;align-items:center;gap:7px;border:1px solid #ffffff38;border-radius:10px;padding:9px 11px;background:#17212bbb;color:#f8f4eb;font-size:11px;line-height:1.35;backdrop-filter:blur(10px);white-space:nowrap}
+.note-appearance-trigger:hover,.note-appearance-trigger[aria-expanded=true]{background:#25303eea;border-color:#ecd7ac75}
+.note-appearance-popover{position:absolute;right:0;top:calc(100% + 10px);z-index:70;width:min(304px,calc(100vw - 32px));padding:18px;box-sizing:border-box;background:#182029f5;color:#f5f0e6;border:1px solid #e8d6b339;border-radius:16px;box-shadow:0 18px 65px #0006;backdrop-filter:blur(18px);text-align:left}
+.note-appearance-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:18px}
+.note-appearance-heading strong{font-size:13px;font-weight:600;line-height:1.4}.note-appearance-heading p{font-size:10px;line-height:1.6;color:#bdc6cc;margin:5px 0 0}
+.note-appearance-close{border:0;background:#ffffff0b;color:#dbe0e2;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex-shrink:0}
+.note-appearance fieldset{padding:0;margin:0 0 17px;border:0;min-width:0}.note-appearance legend{font-size:10px;color:#e2d5bc;margin-bottom:8px;font-weight:600}
+.note-appearance-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.note-appearance-choice{position:relative;display:block;cursor:pointer;min-width:0}
+.note-appearance-choice input{position:absolute;opacity:0;width:1px;height:1px}
+.note-appearance-choice>span{display:flex;position:relative;min-height:58px;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1px solid #ffffff25;border-radius:8px;background:#ffffff06;color:#eef0ec;font-size:9px;line-height:1.3;box-sizing:border-box;padding:7px 4px}
+.note-appearance-choice>span>i{font-style:normal;font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.25}
+.note-appearance-choice>span>svg{position:absolute;right:4px;top:4px}
+.note-appearance-choice input:checked+span{outline:1px solid #e4d0a2;border-color:#e4d0a2;box-shadow:0 0 0 3px #e4d0a210}
+.note-appearance-choice input:focus-visible+span{outline:2px solid #b6e4d1;outline-offset:3px}
+.note-appearance-choice .swatch-cream{background:#fff9ed;color:#403a31}.note-appearance-choice .swatch-sage{background:#edf5eb;color:#304133}.note-appearance-choice .swatch-rose{background:#fff0f2;color:#4d343d}
+.note-type-swatch.type-serif i{font-family:Georgia,'Times New Roman',serif}.note-type-swatch.type-sans i{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.note-type-swatch.type-mono i{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+.compact-choices .note-appearance-choice>span{min-height:33px;font-size:10px}
+.note-large-toggle{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-top:2px;position:relative;cursor:pointer}
+.note-large-toggle>span{display:flex;flex-direction:column;gap:5px}.note-large-toggle strong{font-size:11px;font-weight:500}.note-large-toggle small{font-size:9px;color:#b8c3ca;line-height:1.5}
+.note-large-toggle>input{position:absolute;right:0;opacity:0;width:34px;height:22px;cursor:pointer}
+.note-large-toggle>i{width:32px;height:19px;border-radius:15px;background:#677482;position:relative;pointer-events:none;flex-shrink:0}
+.note-large-toggle>i:after{content:'';position:absolute;left:3px;top:3px;width:13px;height:13px;border-radius:50%;background:#faf5eb;transition:transform .16s}
+.note-large-toggle input:checked+i{background:#7caa98}.note-large-toggle input:checked+i:after{transform:translateX(13px)}.note-large-toggle input:focus-visible+i{outline:2px solid #b6e4d1;outline-offset:4px}
+.note-appearance-footer{margin-top:17px;border-top:1px solid #ffffff1c;padding-top:12px;display:flex;justify-content:space-between;align-items:center;gap:9px}
+.note-appearance-footer>span{font-size:9px;color:#b8c3ca;line-height:1.5}.note-appearance-footer>button{display:flex;align-items:center;gap:4px;font-size:9px;background:none;border:0;color:#e6d8bd;padding:5px;white-space:nowrap}
+.note-appearance button:focus-visible{outline:2px solid #b6e4d1;outline-offset:3px}
+/* Add noteAppearanceClasses(settings) to the existing note-paper element. */
+.note-paper.note-sheet{--note-font:Georgia,'Times New Roman',serif;--note-text-size:15px;--note-paper:#fff9ed;--note-ink:#403a31;background-color:var(--note-paper);color:var(--note-ink)}
+.note-paper.note-sheet.paper-sage{--note-paper:#edf5eb;--note-ink:#304133}.note-paper.note-sheet.paper-rose{--note-paper:#fff0f2;--note-ink:#4d343d}
+.note-paper.note-sheet.paper-cream,.note-paper.note-sheet.paper-sage,.note-paper.note-sheet.paper-rose{background-color:var(--note-paper);color:var(--note-ink)}
+.note-paper.note-sheet.type-sans{--note-font:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.note-paper.note-sheet.type-mono{--note-font:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+.note-paper.note-sheet.is-large{--note-text-size:18px}
+.note-paper.note-sheet.ruling-blank{background-image:none}.note-paper.note-sheet.ruling-ruled{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#49526413 31px,#49526413 32px)}
+.note-paper.note-sheet.ruling-dotted{background-image:radial-gradient(#49526429 .8px,transparent .8px);background-size:18px 18px}
+.note-paper.note-sheet .markdown,.note-paper.note-sheet .note-editor{font-family:var(--note-font);color:var(--note-ink);font-size:var(--note-text-size);line-height:1.9}
+.note-paper.note-sheet .markdown :is(p,li,blockquote,.markdown-bullet){font-family:var(--note-font);color:var(--note-ink);font-size:var(--note-text-size);line-height:1.9}
+.note-paper.note-sheet .markdown :is(h1,h2,h3,h4){font-family:var(--note-font);color:var(--note-ink)}
+.note-paper.note-sheet .note-editor{background:#ffffff36}
+@media(max-width:600px){.note-appearance-trigger{padding:8px 9px}.note-appearance-popover{padding:16px}}
+@media(prefers-reduced-motion:reduce){.note-large-toggle>i:after{transition:none}}
