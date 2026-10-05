@@ -1,5 +1,6 @@
+import { currentInvitation, invitationLink, invitationToken } from './inviteLinks';
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
-import { ArrowLeft, ArrowRight, Check, Copy, KeyRound, LockKeyhole, Plus, RefreshCw, Users, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Copy, KeyRound, LockKeyhole, Plus, RefreshCw, Users, UnlockKeyhole, X } from 'lucide-react';
 import { roomScenes } from '../personalization/types';
 import { useModalFocus } from '../personalization/PersonalizePanel';
 import { MemberAvatar, memberAvatarNames } from './NookCommunity';
@@ -13,14 +14,15 @@ type View = 'directory' | 'members' | 'leaderboard' | 'create' | 'profile' | 'in
 const minutes = (value: number) => value < 60 ? `${value}m` : `${Math.floor(value / 60)}h${value % 60 ? ` ${value % 60}m` : ''}`;
 
 export function LiveNookCommunity({ live, onClose, onSelectNook, onCreateNook }: { live: LiveNooksState; onClose: () => void; onSelectNook?: (nook: LiveNook) => void; onCreateNook?:()=>void }) {
-  const [view, setView] = useState<View>(live.activeNookId ? 'members' : 'directory');
+  const [view, setView] = useState<View>(currentInvitation() ? 'invite' : live.activeNookId ? 'members' : 'directory');
   const [name, setName] = useState(live.profile?.displayName ?? '');
   const [avatar, setAvatar] = useState(live.profile?.avatar ?? 0);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [roomId, setRoomId] = useState<string>(roomScenes[0].id);
   const [visibility, setVisibility] = useState<'private' | 'public'>('private');
-  const [inviteCode, setInviteCode] = useState('');
+  const [inviteCode, setInviteCode] = useState(() => currentInvitation() ?? '');
+  useEffect(() => { if (currentInvitation()) window.history.replaceState(null, '', window.location.pathname + window.location.search); }, []);
   const [invite, setInvite] = useState<LiveInvite | null>(null);
   const [copied, setCopied] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
@@ -30,7 +32,6 @@ export function LiveNookCommunity({ live, onClose, onSelectNook, onCreateNook }:
   const backdrop = useBackdropDismiss<HTMLDivElement>(() => dismiss());
   useModalFocus(modal, dismiss);
   const nook = live.snapshot?.nook ?? live.nooks.find(item => item.id === live.activeNookId);
-  const scene = roomScenes.find(item => item.id === nook?.roomId);
   const isOwner = nook?.role === 'owner';
   useEffect(() => {
     if (live.snapshot?.nook.id && selected.current !== live.snapshot.nook.id) {
@@ -57,23 +58,22 @@ export function LiveNookCommunity({ live, onClose, onSelectNook, onCreateNook }:
   }
   async function copy() {
     if (!invite?.token) return;
-    try { await navigator.clipboard.writeText(invite.token); setCopied(true); }
-    catch { setLocalError('Copy the invitation code from the field below.'); }
+    try { await navigator.clipboard.writeText(invitationLink(invite.token)); setCopied(true); }
+    catch { setLocalError('Copy the invitation link from the field below.'); }
   }
   const error = localError ?? live.error;
   return <div className="nooks-live-overlay" {...backdrop}>
     <div className="nooks-live" ref={modal} role="dialog" aria-modal="true" aria-labelledby={heading}>
-      <header className={`nooks-live-cover ${scene && view !== 'directory' ? 'has-image' : ''}`} style={scene && view !== 'directory' ? { backgroundImage: `url("${scene.image}")` } : undefined}>
-        <div className="nooks-live-cover-top"><span><i /> YOUR STUDY COMPANY</span><button type="button" aria-label="Close study community" onClick={() => dismiss()}><X size={19} /></button></div>
+      <header className="nooks-live-cover">
+        <div className="nooks-live-cover-top"><button type="button" aria-label="Close study community" onClick={() => dismiss()}><X size={19} /></button></div>
         <h2 id={heading}>{nook && ['members', 'leaderboard', 'manage'].includes(view) ? nook.title : 'A little company. A little focus.'}</h2>
-        <p>{nook && ['members', 'leaderboard', 'manage'].includes(view) ? <>{nook.visibility === 'private' ? <LockKeyhole size={13} /> : <Users size={13} />}{live.snapshot ? `${live.snapshot.onlineCount} online · ${live.snapshot.memberCount} ${live.snapshot.memberCount === 1 ? 'member' : 'members'}` : 'Refreshing this nook…'}</> : 'Find your people, or make a quiet corner of your own.'}</p>
+        {nook && ['members', 'leaderboard', 'manage'].includes(view) ? <div className="nooks-privacy-row"><button type="button" className={`nooks-privacy-pill ${nook.visibility === 'private' ? 'is-private' : ''}`} aria-label={`Nook is ${nook.visibility}${isOwner ? ', change privacy' : ''}`} aria-pressed={nook.visibility === 'private'} disabled={!isOwner || live.busy} title={isOwner ? 'Change nook privacy' : 'Only the nook owner can change privacy'} onClick={() => void act(() => live.updateVisibility(nook.id, nook.visibility === 'public' ? 'private' : 'public'))}>{nook.visibility === 'private' ? 'Private' : 'Public'}{nook.visibility === 'private' ? <LockKeyhole size={12} /> : <UnlockKeyhole size={12} />}</button><span className="nooks-people-count"><i />{live.snapshot?.onlineCount ?? nook.onlineCount} people</span></div> : <p>Find your people, or make a quiet corner of your own.</p>}
       </header>
       <nav className="nooks-live-nav" aria-label="Community views">
-        <button type="button" className={view === 'directory' ? 'is-active' : ''} onClick={() => setView('directory')}>Discover</button>
-        {live.activeNookId && <><button type="button" className={view === 'members' ? 'is-active' : ''} onClick={() => setView('members')}>In this nook</button><button type="button" className={view === 'leaderboard' ? 'is-active' : ''} onClick={() => setView('leaderboard')}>Focus board</button></>}
-        <button type="button" className={view === 'profile' ? 'is-active' : ''} onClick={() => setView('profile')}>Your profile</button>
-        <button type="button" aria-label="Refresh study community" disabled={live.loading || live.busy} onClick={() => { setLocalError(null); void live.refresh(); }}><RefreshCw size={15} className={live.loading ? 'is-refreshing' : ''} /></button>
+        {live.activeNookId ? <><button type="button" className={view === 'members' ? 'is-active' : ''} onClick={() => setView('members')}>People</button><button type="button" className={view === 'leaderboard' ? 'is-active' : ''} onClick={() => setView('leaderboard')}>Leaderboard</button></> : <button type="button" className={view === 'directory' ? 'is-active' : ''} onClick={() => setView('directory')}>Discover</button>}
+        {isOwner && nook?.visibility === 'private' && <button type="button" className="nooks-invite-tab" disabled={live.busy} onClick={() => void act(async () => { setInvite(await live.createInvite(nook.id)); setCopied(false); setView('invite'); })}>Invite</button>}
       </nav>
+      <div className="nooks-live-utilities"><button type="button" onClick={() => setView('directory')}>Discover</button><button type="button" onClick={() => setView('profile')}>Your profile</button><button type="button" aria-label="Refresh study community" disabled={live.loading || live.busy} onClick={() => { setLocalError(null); void live.refresh(); }}><RefreshCw size={15} className={live.loading ? 'is-refreshing' : ''} /></button></div>
       <div className="nooks-live-scroll">
         {!live.enabled ? <div className="nooks-live-empty"><LockKeyhole size={28} /><h3>Connect your study account.</h3><p>Community opens with your connected production account.</p></div> : <>
           {error && <div className="nooks-live-error" role="alert"><span>{error}</span><button type="button" disabled={live.loading || live.busy} onClick={() => { setLocalError(null); void live.refresh(); }}>Try again</button></div>}
@@ -120,7 +120,7 @@ export function LiveNookCommunity({ live, onClose, onSelectNook, onCreateNook }:
             <button className="nooks-live-primary" type="submit" disabled={live.busy || !title.trim()}>{visibility === 'public' ? 'Create a public nook' : 'Create a private nook'}</button>
           </form>}
           {view === 'invite' && <div className="nooks-live-form"><button className="nooks-live-text" type="button" onClick={() => setView(live.activeNookId ? 'members' : 'directory')}><ArrowLeft size={13} />Back</button>
-            {invite ? <><h3>A little invitation.</h3><p>This one-use code expires {new Date(invite.expiresAt).toLocaleString()}. Share it only with the person you want in your nook.</p><label>Invitation code<input readOnly value={invite.token} onFocus={event => event.target.select()} /></label><button className="nooks-live-primary" type="button" onClick={() => void copy()}>{copied ? <Check size={14} /> : <Copy size={14} />}{copied ? 'Copied' : 'Copy invitation'}</button></> : <form onSubmit={event => { event.preventDefault(); void act(async () => { await live.acceptInvite(inviteCode.trim()); setInviteCode(''); setView('members'); }); }}><h3>Someone saved you a seat.</h3><p>Paste the invitation code your friend shared.</p><label>Invitation code<input value={inviteCode} required autoComplete="off" maxLength={256} onChange={event => setInviteCode(event.target.value)} /></label><button className="nooks-live-primary" type="submit" disabled={live.busy || !inviteCode.trim()}>Accept invitation</button></form>}
+            {invite ? <><h3>A little invitation.</h3><p>This one-use link expires {new Date(invite.expiresAt).toLocaleString()}. Share it only with the person you want in your nook.</p><label>Invitation link<input readOnly value={invitationLink(invite.token)} onFocus={event => event.target.select()} /></label><button className="nooks-live-primary" type="button" onClick={() => void copy()}>{copied ? <Check size={14} /> : <Copy size={14} />}{copied ? 'Copied' : 'Copy invitation'}</button></> : <form onSubmit={event => { event.preventDefault(); void act(async () => { await live.acceptInvite(invitationToken(inviteCode) ?? inviteCode.trim()); setInviteCode(''); setView('members'); }); }}><h3>Someone saved you a seat.</h3><p>Paste the invitation link or code your friend shared.</p><label>Invitation link or code<input value={inviteCode} required autoComplete="off" maxLength={2048} onChange={event => setInviteCode(event.target.value)} /></label><button className="nooks-live-primary" type="submit" disabled={live.busy || !inviteCode.trim()}>Accept invitation</button></form>}
           </div>}
         </>}
       </div>

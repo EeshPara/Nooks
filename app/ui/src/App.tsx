@@ -1,3 +1,4 @@
+import { currentInvitation } from './community/inviteLinks';
 import { useEffect, useRef, useState } from 'react';
 import { DraftRecoveryScope, useCrashDraft } from './WorkspaceErrorBoundary';
 import { readLocalWorkspaceState, writeLocalWorkspaceState } from './localWorkspaceState';
@@ -95,7 +96,8 @@ function WorkspaceApp(){
  const live=useLiveNooks({enabled:workspace.backend==='supabase',recoveryScope:isPublicPreview?communityRecoveryScope:nativeRecoveryScope,activeNookId:workspace.focusSessions.find(s=>!s.completedAt&&!s.cancelledAt)?.nookId});
  const isLive=workspace.backend==='supabase';
  const selectedLiveNook=live.snapshot?.nook.id===live.activeNookId?live.snapshot?.nook:live.nooks.find(n=>n.id===live.activeNookId);
- const [showNooks,setShowNooks]=useState(false),[showPeople,setShowPeople]=useState(false),[showNookCreator,setShowNookCreator]=useCrashDraft('app:nook-creator',false,draftOwner),[showIdentity,setShowIdentity]=useCrashDraft('app:identity',false,draftOwner);
+ const [showNooks,setShowNooks]=useState(false),[showPeople,setShowPeople]=useState(()=>!!currentInvitation()),[showNookCreator,setShowNookCreator]=useCrashDraft('app:nook-creator',false,draftOwner),[showIdentity,setShowIdentity]=useCrashDraft('app:identity',false,draftOwner);
+ useEffect(()=>{if(isLive&&currentInvitation()){setShowAccount(false);setShowPeople(true);}},[isLive]);
  // Hiding the studio must not discard unsaved artwork prompts or pending saves.
  const studioLifetime=useRef({owner:draftOwner,mounted:false});
  if(studioLifetime.current.owner!==draftOwner)studioLifetime.current={owner:draftOwner,mounted:false};
@@ -512,7 +514,7 @@ function WorkspaceApp(){
    </div>}
   </main>
   {showNooks&&<NookDiscovery onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=roomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
-  {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} onClose={()=>setShowPeople(false)}/>}
+  {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} pendingInvite={!!currentInvitation()} onConnect={()=>{setShowPeople(false);setShowAccount(true);}} onClose={()=>setShowPeople(false)}/>}
   {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=roomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
   {showIdentity&&!isLive&&<NookIdentityDialog profile={profile} onClose={()=>{setShowIdentity(false);setPendingJoin(null);}} onSave={saveNookProfile}/>}
   {studioLifetime.current.mounted&&<NookStudio key={draftOwner} open={showNookCreator} initialDraftId={studioDraftId} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}

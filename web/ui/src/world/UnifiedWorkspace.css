@@ -201,3 +201,6 @@
 
 .lofi-world.unified-workspace .study-home-reset-confirm button,
 .lofi-world.unified-workspace .study-focus-discard button {border-radius:var(--nooks-pill-radius);}
+
+.nooks-utility-actions > button[data-sound-trigger]{border-color:#ecd8b836;}
+.nooks-utility-actions .workspace-layout-controls{flex-shrink:0;}

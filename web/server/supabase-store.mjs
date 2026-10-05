@@ -195,7 +195,9 @@ export class SupabaseStore {
     let token;
     if(action==='create_invite'){token=crypto.randomUUID().replaceAll('-','')+crypto.randomUUID().replaceAll('-','');safe.tokenHash=await sha256(token);}
     if(action==='accept_invite'){if(typeof safe.token!=='string'||!/^[a-f0-9]{64}$/i.test(safe.token))throw new InputError('Invalid invitation token.');safe.tokenHash=await sha256(safe.token);delete safe.token;}
-    const result=await this.rpc('nooks_community',{p_actor:this.identity.id,p_action:action,p_args:safe});
+    const result=action==='set_visibility'
+      ? await this.rpc('nooks_set_visibility',{p_actor:this.identity.id,p_nook_id:safe.nookId,p_visibility:safe.visibility})
+      : await this.rpc('nooks_community',{p_actor:this.identity.id,p_action:action,p_args:safe});
     if(action==='list_nooks'){
       // A directory refresh restores the caller's chosen profile, never another
       // member's display name or client-supplied identity. No workspace hydration.

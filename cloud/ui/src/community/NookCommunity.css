@@ -135,3 +135,8 @@
   .nooks-community-cover-copy { padding-top:24px; }
   .nooks-community-footer { padding-bottom:calc(13px + env(safe-area-inset-bottom,0px)); }
 }
+
+.nooks-privacy-row{display:flex;align-items:center;gap:22px;margin-top:10px}
+.nooks-privacy-pill{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #847363;background:transparent;border-radius:999px;padding:5px 13px;font-size:12px;color:#654f3d;line-height:1}
+.nooks-privacy-pill.is-private{background:#654f3d;color:#fffaf3;border-color:#654f3d}.nooks-privacy-pill:disabled{cursor:default;opacity:1}
+.nooks-people-count{display:flex;align-items:center;gap:6px;font-size:12px}.nooks-people-count i{width:6px;height:6px;border-radius:50%;background:#87ab73}

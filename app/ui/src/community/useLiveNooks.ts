@@ -184,8 +184,13 @@ export function useLiveNooks({ enabled, recoveryScope, activeNookId }: { enabled
     if (!result.invite?.token) throw new Error('An invitation could not be created.');
     return result.invite as LiveInvite;
   }, [runAction]);
+  const updateVisibility = useCallback(async (nookId: string, visibility: 'public' | 'private') => runAction('nook_visibility_update', { nookId, visibility }, result => {
+    if (result.nook?.id !== nookId || result.nook.visibility !== visibility || result.nook.role !== 'owner') throw new Error('The saved nook privacy could not be verified.');
+    setSnapshot(previous => previous?.nook.id === nookId ? { ...previous, nook: result.nook } : previous);
+    setNooks(items => items.map(item => item.id === nookId ? result.nook : item));
+  }), [runAction]);
   const acceptInvite = useCallback(async (token: string) => runAction('nook_invite_accept', { token }, result => { if (result.nookId) { active.current = result.nookId; setSelectedId(result.nookId); setSnapshot(null); } }), [runAction]);
   const visible = connected && scope === owner.current;
-  return { enabled: connected, directory, browse, archive, listInvites, revokeInvite, nooks: visible ? nooks : [], snapshot: visible ? snapshot : null, profile: visible ? profile : undefined, activeNookId: visible ? selectedId : undefined, loading, busy, error, updatedAt, refresh, select, join, leave, updateProfile, create, createInvite, acceptInvite };
+  return { enabled: connected, directory, browse, archive, listInvites, revokeInvite, nooks: visible ? nooks : [], snapshot: visible ? snapshot : null, profile: visible ? profile : undefined, activeNookId: visible ? selectedId : undefined, loading, busy, error, updatedAt, refresh, select, join, leave, updateVisibility, updateProfile, create, createInvite, acceptInvite };
 }
 export type LiveNooksState = ReturnType<typeof useLiveNooks>;
