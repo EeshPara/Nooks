@@ -4,7 +4,9 @@ Your little study nook in ChatGPT.
 
 This private repository contains the Nooks work needed to continue from another computer: source code, native plugin, public website, study/backend work, design research, original artwork, and animation source files.
 
-**Start with [START-HERE.md](START-HERE.md).** It records what is live, what is still in development, and how to continue safely.
+**Designer? Start with [DESIGNER-START.md](DESIGNER-START.md).** Describe changes in chat; the coding agent runs `npm run designer` and opens your preview.
+
+**For the complete project handoff, read [START-HERE.md](START-HERE.md).** It records what is live, what is still in development, and how to continue safely.
 
 - [Live public preview](https://nooks-study-space.vercel.app/)
 - [Existing owner-private native plugin](https://nooks-study-space.eeshwarpara.chatgpt.site)

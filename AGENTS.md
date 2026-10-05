@@ -1,6 +1,6 @@
 # Nooks continuation
 
-Read START-HERE.md first. This is a private cross-computer source repository, with three intentionally different source snapshots.
+For the designer or UI-prompt work, read DESIGNER-START.md first and handle setup automatically with `npm run designer`; use `web/ui` as the editing surface. Then read START-HERE.md. This is a private cross-computer source repository, with three intentionally different source snapshots.
 
 - `app/` is latest development source and includes pending changes; `cloud/` and `web/` are the latest published native/public baselines.
 - Preserve source differences. Do not copy all development backend code into a production target without reviewing/testing it.

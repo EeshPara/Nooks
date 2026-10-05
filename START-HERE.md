@@ -6,7 +6,7 @@ Handoff saved October 5, 2026. Read this before the older project reports.
 
 Clone `https://github.com/EeshPara/Nooks` while signed into the EeshPara GitHub account, then open that folder as a project in Codex. Ask the new chat to read this file and `AGENTS.md` before making edits.
 
-For ordinary UI work, use `app/ui/src/`. Start the app with Node 22.12+ using the README commands. No paid service or database setup is necessary for local preview work. This export was verified with a fresh `npm ci` followed by a successful TypeScript/Vite production build on October 5; it does not depend on the original project's node_modules or symbolic links.
+For designer-led UI work, follow `DESIGNER-START.md`: the agent runs `npm run designer` and edits `web/ui/src/`. For broader development use `app/` with Node 22.12+ and the README commands. No paid service or database setup is necessary for local preview work. This export was verified with a fresh `npm ci` followed by a successful TypeScript/Vite production build on October 5; it does not depend on the original project's node_modules or symbolic links.
 
 ## Three exact source states are preserved
 
