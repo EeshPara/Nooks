@@ -140,3 +140,7 @@
 .nooks-privacy-pill{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #847363;background:transparent;border-radius:999px;padding:5px 13px;font-size:12px;color:#654f3d;line-height:1}
 .nooks-privacy-pill.is-private{background:#654f3d;color:#fffaf3;border-color:#654f3d}.nooks-privacy-pill:disabled{cursor:default;opacity:1}
 .nooks-people-count{display:flex;align-items:center;gap:6px;font-size:12px}.nooks-people-count i{width:6px;height:6px;border-radius:50%;background:#87ab73}
+
+.nooks-community button.nooks-privacy-pill,.nooks-live button.nooks-privacy-pill{font-size:10px;line-height:1;padding:5px 12px;gap:6px}
+.nooks-community-tabs button.nooks-community-invite-tab{margin-left:auto;align-self:center;padding:7px 16px;border:1px solid #dacebf;border-radius:999px;background:#f3eee6;font-size:11px;color:#654f3d}
+.nooks-community-invite-panel{padding:24px 28px;color:#654f3d}.nooks-community-invite-panel h3{font-size:21px;margin:12px 0}.nooks-community-invite-panel p{font-size:12px;line-height:1.8;max-width:380px;color:#907b67}.nooks-community button.nooks-community-connect{margin:22px 0 16px;padding:11px 18px;border:1px solid #8c6b50;border-radius:999px;background:#8c6b50;color:#fff8ee;font-size:12px}.nooks-community-invite-panel small{display:block;font-size:10px;color:#907b67;line-height:1.7}
