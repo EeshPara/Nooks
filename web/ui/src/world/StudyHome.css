@@ -87,6 +87,19 @@
 .lofi-world.unified-workspace .study-home-timer-reset:hover:not(:disabled) {background:#fff2;}
 .lofi-world.unified-workspace .study-home-timer-reset:disabled {opacity:.3;}
 .lofi-world.unified-workspace .study-home-focus-notice {font-size:9px;line-height:1.6;color:#d9c8ac;margin:12px 0 0;}
+/* A full setup card becomes a quiet, compact clock for the active session. */
+.lofi-world.unified-workspace .study-home-timer-state {text-align:center;color:#ddcdb7;font-size:10px;margin:0 0 22px;}
+.lofi-world.unified-workspace .study-home-timer-presets {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:20px;}
+.lofi-world.unified-workspace .study-home-timer-presets>button,.lofi-world.unified-workspace .study-home-timer-custom {display:flex;align-items:center;justify-content:center;gap:3px;min-height:34px;border:1px solid #f8e8d22e;border-radius:var(--nooks-pill-radius);background:#fff1;color:#ddcdb7;font-size:11px;}
+.lofi-world.unified-workspace .study-home-timer-presets>button[aria-pressed=true] {border-color:#e9d9bc88;background:#e9d9bc26;color:#f7f0e3;}
+.lofi-world.unified-workspace .study-home-timer-custom input {width:34px;min-width:0;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:center;appearance:textfield;}
+.study-home-timer-custom input::-webkit-inner-spin-button,.study-home-timer-custom input::-webkit-outer-spin-button {-webkit-appearance:none;margin:0;}
+.lofi-world.unified-workspace .study-home-timer-work {display:flex;flex-direction:column;gap:5px;border-top:1px solid #f8e8d22e;padding:13px 0 15px;}
+.study-home-timer-work>span,.study-home-timer-work>small {font-size:9px;line-height:1.5;color:#ddcdb7;}
+.study-home-timer-work>strong {font-size:12px;font-weight:500;color:#f1e7d8;}
+.lofi-world.unified-workspace .study-home-timer.is-active .study-home-clock {margin-bottom:13px;}
+.lofi-world.unified-workspace .study-home-timer-progress {height:5px;width:100%;background:#fff2;border-radius:var(--nooks-pill-radius);overflow:hidden;margin:0 0 20px;}
+.study-home-timer-progress>span {display:block;height:100%;background:#e9d9bc;border-radius:inherit;}
 .lofi-world.unified-workspace .study-home-tasks ul {list-style:none;padding:0;margin:13px 0 0;max-height:149px;overflow:auto;scrollbar-width:thin;scrollbar-color:#dbc29a42 transparent;}
 .lofi-world.unified-workspace .study-home-tasks li {margin:0;padding:0;}
 .lofi-world.unified-workspace .study-home-tasks li button {display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;background:none;border:0;padding:7px 0;color:#eee5d6;font-size:11px;line-height:1.55;}
@@ -212,4 +225,19 @@
 }
 @media(max-width:680px){
  .lofi-world.unified-workspace .study-home-welcome-position,.lofi-world.unified-workspace .study-home-timer-position,.lofi-world.unified-workspace .study-home-tasks-position,.lofi-world.unified-workspace .study-home-collection-position{width:100%;grid-area:auto;}
+}
+
+@media(min-width:1101px){.lofi-world.unified-workspace .study-home.study-home-welcome{grid-template-columns:360px minmax(280px,1fr) 360px;gap:26px}}
+@media(min-width:681px) and (max-width:1100px){.collection-components{grid-template-columns:1fr}.collection-next-card{order:-1}}
+@media(max-width:680px){.collection-components{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.collection-timeline-card,.collection-next-card{padding:14px 10px}}
+
+.lofi-world.unified-workspace .study-home-reset-confirm button { border-radius:999px; }
+
+@media(min-width:1101px){.lofi-world.unified-workspace .study-home-tools{width:224px;justify-self:start}}
+
+/* Keep the timer and tasks in one flowing stack as the timer contracts. */
+@media(min-width:681px) and (max-width:1100px){
+ .lofi-world.unified-workspace .study-home-tools{display:flex;flex-direction:column;grid-column:1;grid-row:2 / span 2;align-self:start;gap:17px;}
+ .lofi-world.unified-workspace .study-home-timer-position,
+ .lofi-world.unified-workspace .study-home-tasks-position{grid-area:auto;}
 }

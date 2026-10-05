@@ -1,5 +1,5 @@
 /* One place for the work. Utilities stay at the edge. */
-.lofi-world.unified-workspace { --nooks-shell-height:126px; font-family:var(--nook-font,Inter,sans-serif); }
+.lofi-world.unified-workspace { --nooks-shell-height:126px; --nooks-pill-radius:999px; --nooks-card-radius:24px; --nooks-action-radius:10px; font-family:var(--nook-font,Inter,sans-serif); }
 .unified-workspace .world-main {margin:0!important;padding:0!important;min-height:100dvh;width:100%;max-width:none}
 .unified-workspace .world-shade {background:linear-gradient(180deg,#10141174 0%,#11120c17 38%,#10121042 100%)}
 .nooks-shell-header {position:relative;z-index:42;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 32px;gap:24px;background:linear-gradient(#161b2080,#181d2010);border-bottom:1px solid #fff2;color:#fff9ed}
@@ -124,8 +124,9 @@
 .nooks-utility-bar:has(.study-focus-dock.is-open){z-index:85;}
 .workspace-widget-surface:has(.room-journey-overlay){z-index:110;}
 @media(min-width:761px){
- .nooks-shell-brand{flex:1 1 auto;min-width:140px;}
- .nooks-shell-actions{flex:0 0 auto;}
+ .nooks-shell-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);}
+ .nooks-shell-brand{min-width:140px;justify-self:start;}
+ .nooks-shell-actions{justify-self:end;}
  .nooks-shell-nav{flex:none;}
 }
 @media(min-width:761px) and (max-width:1100px){
@@ -138,11 +139,65 @@
 }
 
 /* Replay the full opening in the current workspace. */
-.nooks-watch-intro {position:fixed;bottom:16px;left:141px;z-index:30;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 15px;border:1px solid #fff3;border-radius:24px;background:#22251f8c;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:#f0e8d7;font:500 12px var(--nook-font,Inter,sans-serif);white-space:nowrap;cursor:pointer;transition:background .2s,transform .2s,border-color .2s;}
+.nooks-watch-intro {position:fixed;bottom:16px;left:26px;z-index:30;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 15px;border:1px solid #fff3;border-radius:24px;background:#22251f8c;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:#f0e8d7;font:500 12px var(--nook-font,Inter,sans-serif);white-space:nowrap;cursor:pointer;transition:background .2s,transform .2s,border-color .2s;}
 .nooks-watch-intro:hover:not(:disabled){background:#51493ce0;border-color:#fff6;transform:translateY(-1px)}
 .nooks-watch-intro:active:not(:disabled){transform:scale(.97)}
 .nooks-watch-intro:focus-visible{outline:2px solid #f6dbad;outline-offset:4px}
 .nooks-watch-intro:disabled{opacity:.45;cursor:default}
-.host-chat-layout .nooks-watch-intro{bottom:calc(16px + var(--nooks-composer-reserve) + var(--nooks-host-safe-bottom,0px));left:calc(141px + var(--nooks-host-safe-left,0px))}
+.host-chat-layout .nooks-watch-intro{bottom:calc(16px + var(--nooks-composer-reserve) + var(--nooks-host-safe-bottom,0px));left:calc(26px + var(--nooks-host-safe-left,0px))}
 @media(max-width:680px){.nooks-watch-intro,.host-chat-layout .nooks-watch-intro{position:relative;inset:auto;display:flex;width:max-content;min-height:44px;margin:2px 17px 10px;z-index:1}}
 @media(prefers-reduced-motion:reduce){.nooks-watch-intro{transition:none}.nooks-watch-intro:hover:not(:disabled){transform:none}}
+
+.nooks-shell-actions .nooks-account-button.is-compact {display:grid;place-items:center;width:36px;height:36px;min-height:36px;padding:0;border-radius:50%;flex-shrink:0;}
+
+/* Consistent desk surfaces and pills; timer actions keep a gentler corner. */
+.lofi-world.unified-workspace .study-home-widget,
+.lofi-world.unified-workspace .study-home-collection .room-journey-widget,
+.lofi-world.unified-workspace .study-focus-popover,
+.lofi-world.unified-workspace .world-sound-panel .ambient-mixer {border-radius:var(--nooks-card-radius);}
+.lofi-world.unified-workspace .nooks-shell-nav,
+.lofi-world.unified-workspace .nooks-shell-nav button,
+.lofi-world.unified-workspace .nooks-utility-actions>button,
+.lofi-world.unified-workspace .study-focus-trigger,
+.lofi-world.unified-workspace .study-home-quick-actions>button,
+.lofi-world.unified-workspace .study-home-change,
+.lofi-world.unified-workspace .study-focus-modes,
+.lofi-world.unified-workspace .study-focus-modes button,
+.lofi-world.unified-workspace .study-focus-presets>button,
+.lofi-world.unified-workspace .study-focus-custom,
+.lofi-world.unified-workspace .workspace-layout-controls button {border-radius:var(--nooks-pill-radius);}
+.lofi-world.unified-workspace .study-home-timer-start,
+.lofi-world.unified-workspace .study-home-timer-reset,
+.lofi-world.unified-workspace .study-focus-primary,
+.lofi-world.unified-workspace .study-focus-finish,
+.lofi-world.unified-workspace .study-focus-reset {border-radius:var(--nooks-action-radius);}
+
+/* Focus mode hides desk distractions without stopping or unmounting a session. */
+.lofi-world.unified-workspace.nooks-focus-mode .study-home-timer-position,
+.lofi-world.unified-workspace.nooks-focus-mode .study-home-collection-position,
+.lofi-world.unified-workspace.nooks-focus-mode .nooks-watch-intro,
+.lofi-world.unified-workspace.nooks-focus-mode .study-focus-popover {display:none;}
+.lofi-world.unified-workspace .study-focus-trigger[aria-pressed=true] {background:#e9d9bc;color:#494033;border-color:#e9d9bc;}
+.lofi-world.unified-workspace .study-focus-trigger[aria-pressed=true] .study-focus-trigger-time {color:inherit;}
+.lofi-world.unified-workspace .study-home-timer-start {border-radius:var(--nooks-pill-radius);}
+
+/* Presence now belongs beside the workspace controls. */
+.nooks-utility-bar {justify-content:flex-end;}
+.nooks-shell-actions .nooks-people-position {flex:0 0 auto;}
+.nooks-shell-actions .study-presence-pill__copy small {max-width:145px;overflow:hidden;text-overflow:ellipsis;}
+@media(min-width:681px) and (max-width:1100px){
+ .nooks-shell-header {grid-template-columns:minmax(0,1fr) auto;height:auto;min-height:72px;padding-block:12px;row-gap:12px;}
+ .nooks-shell-brand {grid-column:1;grid-row:1;}
+ .nooks-shell-actions {grid-column:2;grid-row:1;}
+ .nooks-shell-nav {grid-column:1 / -1;grid-row:2;justify-self:center;}
+}
+@media(max-width:680px){
+ .nooks-shell-header {height:auto;min-height:66px;padding-block:12px;}
+ .nooks-shell-actions .study-presence-pill__faces {display:none;}
+ .nooks-shell-actions .study-presence-pill__copy small {max-width:115px;}
+ .nooks-utility-actions {width:auto;flex-wrap:wrap;}
+ .nooks-utility-bar {justify-content:flex-end;}
+}
+
+.lofi-world.unified-workspace .study-home-reset-confirm button,
+.lofi-world.unified-workspace .study-focus-discard button {border-radius:var(--nooks-pill-radius);}

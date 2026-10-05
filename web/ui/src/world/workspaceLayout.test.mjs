@@ -32,8 +32,8 @@ test('invalid geometry stays finite and pointer noise does not count as a move',
   assert.deepEqual(math.widgetPixels({ x: NaN, y: Infinity }, { width: NaN, height: Infinity }, { width: NaN, height: NaN }), { x: 0, y: 0 });
   assert.equal(math.passedWidgetDragThreshold(2, 2), false);
   assert.equal(math.passedWidgetDragThreshold(3, 4), true);
-  assert.deepEqual(math.movedWidget({ x: 20, y: 30 }, 'ArrowLeft'), { x: 10, y: 30 });
-  assert.deepEqual(math.movedWidget({ x: 20, y: 30 }, 'ArrowDown', true), { x: 20, y: 31 });
+  assert.deepEqual(math.movedWidget({ x: 20, y: 30 }, 'ArrowLeft'), { x: -4, y: 30 });
+  assert.deepEqual(math.movedWidget({ x: 20, y: 30 }, 'ArrowDown', true), { x: 20, y: 54 });
 });
 test('failed saves retain the exact draft and wait for explicit retry', async () => {
   const store = createWorkspaceLayoutStore(); let fail = true; const calls = [];
@@ -91,12 +91,12 @@ test('reset one and reset all persist in order and no optimistic edit is marked 
 // hook harness. The built-widget browser checks additionally verify iframe DOM
 // identity and the real CSS layout; these tests isolate event/save boundaries.
 const primitiveSource = fs.readFileSync(new URL('./WorkspaceLayout.tsx', import.meta.url), 'utf8').replace(/^import .*\n/gm, '').replace(/^export type .*\n/gm, '').replace(/export function /g, 'function ');
-const primitiveCode = ts.transpileModule(`export const create=({React,createContext,useContext,useRef,useLayoutEffect,useEffect,Grip,LayoutGrid,RotateCcw,Check,window,getComputedStyle,ResizeObserver,requestAnimationFrame,cancelAnimationFrame,widgetBounds,widgetPixels,widgetPosition,movedWidget,passedWidgetDragThreshold})=>{${primitiveSource};return {MovableWidget,LayoutControls};}`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022, jsx: ts.JsxEmit.React } }).outputText;
+const primitiveCode = ts.transpileModule(`export const create=({React,createContext,useContext,useRef,useLayoutEffect,useEffect,Grip,LayoutGrid,RotateCcw,Check,window,getComputedStyle,ResizeObserver,requestAnimationFrame,cancelAnimationFrame,widgetBounds,widgetPixels,widgetPosition,snapWidget,movedWidget,passedWidgetDragThreshold})=>{${primitiveSource};return {MovableWidget,LayoutControls};}`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022, jsx: ts.JsxEmit.React } }).outputText;
 const { create } = await import('data:text/javascript;base64,' + Buffer.from(primitiveCode).toString('base64'));
 function primitive() {
   const h = { states: [], effects: [], pending: [], at: 0, frames: new Map(), changes: [], outerWidth: 244, contentHeight: 180, captures: [], releases: [], observers: [], events: new Map() };
   const style = () => ({ removeProperty(key) { delete this[key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())]; delete this[key]; }, setProperty(key, value) { this[key] = value; } });
-  h.outer = { dataset: {}, style: style(), getBoundingClientRect: () => ({ width: parseFloat(h.outer.style.minWidth) || (h.intrinsic && h.outer.dataset.positioned ? 0 : h.outerWidth), height: 180 }) };
+  h.outer = { querySelectorAll:()=>[], dataset: {}, style: style(), getBoundingClientRect: () => ({ width: parseFloat(h.outer.style.minWidth) || (h.intrinsic && h.outer.dataset.positioned ? 0 : h.outerWidth), height: 180, left:0, top:0 }) };
   h.surface = { dataset: {}, style: style(), closest: () => h.outer, getBoundingClientRect() { return { width: parseFloat(this.style.width) || h.outerWidth, height: Math.min(h.contentHeight, parseFloat(this.style.maxHeight) || Infinity), left: parseFloat(this.style.left) || 120, top: parseFloat(this.style.top) || 160 }; } };
   h.handle = { focus() {}, setPointerCapture: id => h.captures.push(id), releasePointerCapture: id => h.releases.push(id) };
   h.context = { scope: 'alice', value: empty, compact: false, editing: true, change: change => h.changes.push(change) };
@@ -134,7 +134,7 @@ test('Escape restores the original flow and discards a pointer or keyboard gestu
 test('keyboard movement commits on release, while account changes cancel an active gesture', () => {
   const h = primitive(); h.button.props.onKeyDown(h.event({ key: 'ArrowRight', shiftKey: true })); h.frame();
   h.button.props.onKeyUp(h.event({ key: 'ArrowRight' })); assert.equal(h.changes.length, 1);
-  const expected = math.widgetPosition({ x: 121, y: 160 }, { width: 1200, height: 900, top: 96, bottom: 152, left: 16, right: 16 }, { width: 244, height: 180 });
+  const expected = math.widgetPosition({ x: 136, y: 168 }, { width: 1200, height: 900, top: 96, bottom: 152, left: 16, right: 16 }, { width: 244, height: 180 });
   assert.deepEqual(h.changes[0].position, expected);
   h.button.props.onPointerDown(h.event()); h.button.props.onPointerMove(h.event({ clientX: 500 }));
   h.context = { ...h.context, scope: 'bob', value: empty }; h.render(); h.frame(); h.button.props.onPointerUp(h.event());
@@ -144,7 +144,7 @@ test('expanding the existing music slot reclamps its width and height without ch
   const h = primitive(); h.context.value = changeLayout(empty, move('spotify', 1, 1)); h.render();
   assert.equal(h.surface.style.width, '244px'); const child = h.tree.children[0].children[0];
   h.outerWidth = 350; h.contentHeight = 420; h.observers.forEach(fn => fn());
-  assert.equal(h.surface.style.width, '350px'); assert.equal(h.surface.style.left, '834px'); assert.equal(h.surface.style.top, '328px');
+  assert.equal(h.surface.style.width, '350px'); assert.equal(h.surface.style.left, '832px'); assert.equal(h.surface.style.top, '312px');
   assert.equal(h.tree.children[0].children[0], child);
   h.context.compact = true; h.context.editing = false; h.render();
   assert.equal(h.surface.dataset.positioned, undefined); assert.equal(h.surface.style['--workspace-widget-max-height'], undefined);
@@ -159,4 +159,19 @@ test('an intrinsic flex widget retains its original slot width until reset', () 
   const h = primitive(); h.intrinsic = true; h.context.value = changeLayout(empty, move('spotify', .5, .5)); h.render();
   assert.equal(h.outer.style.minWidth, '244px'); assert.equal(h.outer.getBoundingClientRect().width, 244);
   h.context.value = empty; h.render(); assert.equal(h.outer.style.minWidth, undefined);
+});
+
+test('grid finds the nearest free cell with space around cards and controls',()=>{
+ const viewport={width:600,height:500,top:0,bottom:0,left:0,right:0},size={width:100,height:100};
+ const obstacles=[{x:0,y:0,width:200,height:200}];
+ const point=math.snapWidget({x:24,y:24},viewport,size,obstacles);
+ assert.ok(point);assert.equal(point.x%24,0);assert.equal(point.y%24,0);
+ assert.ok(point.x>=212||point.y>=212);
+ assert.equal(math.snapWidget({x:0,y:0},viewport,size,[{x:0,y:0,width:600,height:500}]),null);
+});
+test('positioned cards use document flow rather than viewport-fixed positioning',()=>{
+ const css=fs.readFileSync(new URL('./WorkspaceLayout.css',import.meta.url),'utf8');
+ assert.match(css,/\.workspace-widget-surface\[data-positioned="true"\] \{ position: relative/);
+ const h=primitive();h.context.value=changeLayout(empty,move('spotify',.5,.5));h.render();
+ const top=h.surface.style.top;h.events.get('scroll')?.();assert.equal(h.surface.style.top,top);
 });

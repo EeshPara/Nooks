@@ -65,6 +65,7 @@ export function RoomHome(p: Props) {
  const firstName = p.displayName?.trim().split(/\s+/)[0];
  const orderedTasks = [...p.tasks].sort((a,b) => Number(a.done)-Number(b.done));
  const completed = p.tasks.filter(item => item.done).length;
+ const focusProgress = Math.max(0, Math.min(1, 1 - p.timer.remaining / Math.max(1,p.timer.minutes * 60))) * 100;
  const ask = async () => {
   if (!prompt.trim() || sendingRef.current || !p.onAsk) return;
   sendingRef.current = true; setSending(true); setChatError('');
@@ -87,7 +88,7 @@ export function RoomHome(p: Props) {
   finally { taskBusyRef.current = false; setPendingTask(null); }
  };
  return <section className={`study-home study-home-welcome${p.nativeChat ? ' study-home-native' : ''}`} aria-label="Your study nook">
-  <MovableWidget id="welcome" label="Welcome" className="study-home-welcome-position"><div className="study-home-content">
+  <div className="study-home-welcome-position"><div className="study-home-content">
    <header className="study-home-heading">
     {firstName && <p className="study-home-greeting">Hi, {firstName}.</p>}
     <h1>Welcome to <span>{p.sceneName || 'your nook'}.</span></h1>
@@ -107,14 +108,21 @@ export function RoomHome(p: Props) {
    <div className="study-home-quick-actions" aria-label="Create study material">
     {([['note','Notes'],['flashcards','Flashcards'],['quiz','Quiz']] as const).map(([kind,label]) => <button key={kind} onClick={() => p.onCreateKind ? p.onCreateKind(kind,p.nativeChat ? '' : prompt) : p.onCreate()}>{label}<ArrowRight size={12} aria-hidden="true"/></button>)}
    </div>
-   {p.nativeChat && p.onWriteNote && <button className="study-home-native-add" onClick={p.onWriteNote}><Plus size={14} aria-hidden="true"/>Write a note</button>}
    {continuing && <button className="study-home-resume-link" onClick={() => p.onOpen(continuing)} title={continuing.title}><span>Pick up where you left off</span><strong>{continuing.title || 'Untitled note'}</strong><ArrowRight size={13} aria-hidden="true"/></button>}
-  </div></MovableWidget>
+  </div></div>
   <aside className="study-home-tools" aria-label="Focus and to-do">
-   <MovableWidget id="timer" label="Pomodoro timer" className="study-home-timer-position"><section className="study-home-timer study-home-widget" aria-label="Pomodoro timer">
-    <div className="study-home-widget-heading"><h2>Pomodoro</h2><button onClick={p.onFocus} aria-label="Pomodoro options">{p.timer.active ? p.timer.running ? 'Focusing' : 'Paused' : `${p.timer.minutes} min`}<ChevronDown size={11} aria-hidden="true"/></button></div>
+   <MovableWidget id="timer" label="Pomodoro timer" className="study-home-timer-position"><section className={`study-home-timer study-home-widget ${p.timer.active ? 'is-active' : 'is-ready'}`} aria-label="Pomodoro timer">
+    <div className="study-home-widget-heading"><h2>{p.timer.active ? 'Pomodoro' : 'Focus timer'}</h2><span>{p.timer.pending ? 'Saving…' : p.timer.active ? p.timer.running ? 'Focusing' : 'Paused' : `${p.timer.minutes} min`}</span></div>
     <div className="study-home-clock" role="timer" aria-label={`${Math.floor(p.timer.remaining / 60)} minutes ${p.timer.remaining % 60} seconds remaining`}>{String(Math.floor(p.timer.remaining / 60)).padStart(2,'0')}<span>:</span>{String(p.timer.remaining % 60).padStart(2,'0')}</div>
-    <div className="study-home-timer-buttons"><button className="study-home-timer-start" disabled={p.timer.pending || p.timer.disabled} onClick={p.timer.running ? p.timer.onPause : p.timer.onStart}>{p.timer.running ? <Pause size={13} aria-hidden="true"/> : <Play size={13} fill="currentColor" aria-hidden="true"/>}{p.timer.pending ? 'Saving…' : p.timer.running ? 'Pause' : p.timer.active ? 'Resume' : 'Start focus'}</button><button className="study-home-timer-reset" aria-label="Reset focus timer" disabled={p.timer.pending || p.timer.disabled || !p.timer.active} onClick={() => setConfirmReset(true)}><RotateCcw size={14} aria-hidden="true"/></button></div>
+    {p.timer.active ? <div className="study-home-timer-progress" role="progressbar" aria-label="Focus session progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(focusProgress)} aria-valuetext={`${Math.round(focusProgress)}% of session elapsed`}><span style={{width:`${focusProgress}%`}}/></div> : <>
+     <p className="study-home-timer-state">Ready to begin</p>
+     <div className="study-home-timer-presets" role="group" aria-label="Focus duration">
+      {[15,25,50].map(minutes => <button key={minutes} aria-pressed={p.timer.minutes === minutes} disabled={p.timer.pending || p.timer.disabled} onClick={() => p.timer.onMinutes(minutes)}>{minutes}<span> min</span></button>)}
+      <label className="study-home-timer-custom"><input aria-label="Custom focus minutes" type="number" inputMode="numeric" min="1" max="180" value={p.timer.minutes} disabled={p.timer.pending || p.timer.disabled} onChange={event => p.timer.onMinutes(Math.max(1,Math.min(180,Number(event.target.value) || 1)))}/><span>min</span></label>
+     </div>
+     <div className="study-home-timer-work"><span>Working on</span><strong>Independent study</strong><small>Time goes to {p.sceneName}</small></div>
+    </>}
+    <div className="study-home-timer-buttons"><button className="study-home-timer-start" disabled={p.timer.pending || p.timer.disabled} onClick={p.timer.running ? p.timer.onPause : p.timer.onStart}>{p.timer.running ? <Pause size={13} fill="currentColor" aria-hidden="true"/> : <Play size={13} fill="currentColor" aria-hidden="true"/>}{p.timer.pending ? 'Saving…' : p.timer.running ? 'Pause' : p.timer.active ? 'Resume' : 'Start'}</button><button className="study-home-timer-reset" aria-label="Reset focus timer" disabled={p.timer.pending || p.timer.disabled || !p.timer.active} onClick={() => setConfirmReset(true)}><RotateCcw size={14} aria-hidden="true"/></button></div>
     {confirmReset && p.timer.active && <div className="study-home-reset-confirm" role="group" aria-label="Discard this focus session?">
      <p>Discard this session? Its focus time will not be saved.</p>
      <div><button onClick={() => setConfirmReset(false)} disabled={p.timer.pending}>Keep session</button><button aria-label="Discard focus session" onClick={() => { setConfirmReset(false); p.timer.onReset(); }} disabled={p.timer.pending}>Discard</button></div>
@@ -128,9 +136,9 @@ export function RoomHome(p: Props) {
     {taskError && <p className="study-home-task-error" role="alert">{taskError}</p>}
    </section></MovableWidget>
   </aside>
-  <MovableWidget id="collection" label="Collection" className="study-home-collection-position"><aside className="study-home-collection" aria-label="Your nook collection">
+  <div className="study-home-collection-position"><aside className="study-home-collection" aria-label="Your nook collection">
    {p.journey}
    {p.rewardShelf && <div className="study-home-shelf">{p.rewardShelf}</div>}
-  </aside></MovableWidget>
+  </aside></div>
  </section>;
 }

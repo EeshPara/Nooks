@@ -7,6 +7,8 @@ import './StudyFocusDock.css';
 
 export interface StudyFocusDockProps {
   timer: RoomTimerProps;
+  focusMode?: boolean;
+  onToggleFocusMode?: () => void;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   workLabel?: string;
@@ -21,7 +23,7 @@ export interface StudyFocusDockProps {
 const formatTime = (seconds: number) => `${String(Math.floor(Math.max(0, seconds) / 60)).padStart(2, '0')}:${String(Math.max(0, seconds) % 60).padStart(2, '0')}`;
 
 /** Display and controls only: focus credits always come from the parent's persisted session. */
-export function StudyFocusDock({ timer, open, onOpenChange, workLabel = 'Independent study', nookLabel, earningNookLabel, onFinish, retrySaving = false, notice }: StudyFocusDockProps) {
+export function StudyFocusDock({ focusMode = false, onToggleFocusMode, timer, open, onOpenChange, workLabel = 'Independent study', nookLabel, earningNookLabel, onFinish, retrySaving = false, notice }: StudyFocusDockProps) {
   const breaks = useBreakTimer(timer.active || retrySaving);
   const [confirmDiscard, setConfirmDiscard] = useState(false);
   const root = useRef<HTMLDivElement>(null);
@@ -36,7 +38,7 @@ export function StudyFocusDock({ timer, open, onOpenChange, workLabel = 'Indepen
   const controlsDisabled = timer.pending || (isFocus && !!timer.disabled);
   const activeNook = earningNookLabel || nookLabel;
   const modeLabel = isFocus ? 'Focus' : 'Break';
-  const buttonLabel = timer.pending ? 'Saving…' : retrySaving ? 'Retry saving' : ticking ? 'Pause' : breakDone ? 'Back to focus' : isFocus ? timer.active ? 'Resume focus' : 'Start focus' : 'Start break';
+  const buttonLabel = timer.pending ? 'Saving…' : retrySaving ? 'Retry saving' : ticking ? 'Pause' : breakDone ? 'Back to focus' : isFocus ? timer.active ? 'Resume' : 'Start' : 'Start break';
 
   useEffect(() => {
     if (!open) { setConfirmDiscard(false); return; }
@@ -85,12 +87,12 @@ export function StudyFocusDock({ timer, open, onOpenChange, workLabel = 'Indepen
   }
 
   return <div className={`study-focus-dock ${ticking ? 'is-ticking' : ''} ${open ? 'is-open' : ''}`} ref={root}>
-    <button className="study-focus-trigger" ref={trigger} onClick={() => onOpenChange(!open)} aria-expanded={open} aria-controls={panelId} aria-haspopup="dialog" aria-label={`${modeLabel} timer, ${formatTime(seconds)}${ticking ? ', running' : timer.active ? ', paused' : ''}`}>
+    {onToggleFocusMode ? <button className="study-focus-trigger" ref={trigger} aria-pressed={focusMode} onClick={onToggleFocusMode}><Clock3 size={15} aria-hidden="true"/><span>Focus mode</span><span className="study-focus-trigger-time" role="timer" aria-label={`${Math.floor(timer.remaining / 60)} minutes ${timer.remaining % 60} seconds remaining`}>{formatTime(timer.remaining)}</span></button> : <button className="study-focus-trigger" ref={trigger} onClick={() => onOpenChange(!open)} aria-expanded={open} aria-controls={panelId} aria-haspopup="dialog" aria-label={`${modeLabel} timer, ${formatTime(seconds)}${ticking ? ', running' : timer.active ? ', paused' : ''}`}>
       <span className="study-focus-clock" aria-hidden="true">{ticking ? <span className="study-focus-tick"/> : <Clock3 size={15}/>}</span>
       <span className="study-focus-trigger-label">{modeLabel}</span>
       <span className="study-focus-trigger-time">{formatTime(seconds)}</span>
       <ChevronDown className="study-focus-chevron" size={12} aria-hidden="true"/>
-    </button>
+    </button>}
     <section className="study-focus-popover" id={panelId} role="dialog" aria-labelledby={headingId} aria-hidden={!open} inert={!open}>
       <header className="study-focus-heading"><h2 id={headingId}>Focus timer</h2><button className="study-focus-close" aria-label="Close focus timer" ref={closeButton} onClick={close}><X size={16}/></button></header>
       <div className="study-focus-modes" role="group" aria-label="Timer mode">
@@ -106,7 +108,7 @@ export function StudyFocusDock({ timer, open, onOpenChange, workLabel = 'Indepen
       {!isFocus && <p className="study-focus-break-note">Your work stays open. Breaks don’t add focus time.</p>}
       {notice && <p className="study-focus-notice" role="status">{notice}</p>}
       {confirmDiscard ? <div className="study-focus-discard" role="group" aria-label="Discard this focus session"><p>Discard this session without saving its time?</p><div><button onClick={() => setConfirmDiscard(false)}>Keep studying</button><button disabled={timer.pending} onClick={reset}>Discard</button></div></div> : <div className="study-focus-actions">
-        <button className="study-focus-primary" disabled={controlsDisabled} onClick={primaryAction}>{ticking ? <Pause size={14}/> : breakDone ? <Check size={14}/> : <Play size={14} fill="currentColor"/>}{buttonLabel}</button>
+        <button className="study-focus-primary" disabled={controlsDisabled} onClick={primaryAction}>{ticking ? <Pause size={14} fill="currentColor"/> : breakDone ? <Check size={14}/> : <Play size={14} fill="currentColor"/>}{buttonLabel}</button>
         {isFocus && timer.active && onFinish && !retrySaving ? <button className="study-focus-finish" disabled={timer.pending} onClick={onFinish}>Finish</button> : !retrySaving && <button className="study-focus-reset" disabled={controlsDisabled} onClick={reset} aria-label={isFocus ? 'Reset focus timer' : 'Reset break timer'}><RotateCcw size={15}/></button>}
       </div>}
       {isFocus && timer.active && !confirmDiscard && !retrySaving && <button className="study-focus-discard-link" disabled={timer.pending} onClick={() => setConfirmDiscard(true)}>Discard session</button>}

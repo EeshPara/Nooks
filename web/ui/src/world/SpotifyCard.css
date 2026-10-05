@@ -1,0 +1,34 @@
+.spotify-card-position{width:174px;max-width:100%;margin-top:16px;align-self:start}
+.lofi-world .spotify-card{box-sizing:border-box;width:100%;padding:14px;border-radius:28px;background:linear-gradient(145deg,#332e28d9,#292b2bb8);border:1px solid #f8e8d22e;color:#f1e7d8;backdrop-filter:blur(26px);box-shadow:0 12px 35px #07080b1a,inset 0 1px #fff1}
+.spotify-card-cover{display:grid;place-items:center;width:100%;aspect-ratio:1;border-radius:24px;overflow:hidden;background:#ffffff0c}
+.spotify-card-cover img{width:100%;height:100%;display:block;object-fit:cover}
+.spotify-card-label{padding:5px 0 8px;line-height:1.15;min-width:0}
+.spotify-card-label strong{display:block;font-size:12px;font-weight:500;overflow-wrap:anywhere}
+.spotify-card-label small{display:block;font-size:9px;margin-top:3px;opacity:.85;overflow-wrap:anywhere}
+.spotify-card-controls{display:flex;align-items:center;justify-content:space-evenly;gap:4px;background:#ffffff10;border:1px solid #f8e8d22e;border-radius:999px;height:34px;padding:0 7px;color:#e9d9bc}
+.spotify-card-controls button{display:grid;place-items:center;flex:1;height:34px;background:none;border:0;padding:0;color:inherit;cursor:pointer}
+.spotify-card-controls svg{width:18.7px;height:18.7px}.spotify-card-controls button:disabled{opacity:.5;cursor:default}
+.spotify-card-volume{display:flex;align-items:center;gap:4px;margin:9px 0 7px;color:#ddcdb7}
+.spotify-card-volume input{appearance:none;min-width:0;flex:1;height:5px;border:0;padding:0;border-radius:999px;cursor:pointer}
+.spotify-card-volume input::-webkit-slider-thumb{appearance:none;width:10px;height:10px;border-radius:50%;background:#e9d9bc}
+.spotify-card-volume input::-moz-range-thumb{width:10px;height:10px;border:0;border-radius:50%;background:#e9d9bc}
+.spotify-card-volume input:disabled{cursor:default;opacity:.55}
+.lofi-world .spotify-card-queue{display:block;width:100%;border:0;border-radius:999px;background:#e9d9bc;color:#494033;font-size:12px;padding:7px 10px;cursor:pointer}
+.spotify-card-connect{display:block;margin:7px auto 0;background:none;border:0;padding:2px 0;font-size:10px;color:#ddcdb7;text-decoration:underline;cursor:pointer}
+.spotify-card-error{font-size:10px;line-height:1.4;color:#e9b69d;margin:8px 0 0}
+.spotify-overlay{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:24px;background:#101714a8;backdrop-filter:blur(12px)}
+.spotify-dialog{width:min(460px,100%);max-height:80dvh;overflow:auto;background:linear-gradient(145deg,#332e28f5,#292b2bf5);border:1px solid #ffffff30;border-radius:28px;padding:24px;color:#f3eee5;box-shadow:0 20px 80px #0005}
+.spotify-dialog header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.spotify-dialog h2{font-size:22px;margin:0;font-weight:500}
+.spotify-dialog header button{width:33px;height:33px;border-radius:50%;border:1px solid #ffffff40;background:#ffffff10;color:inherit;display:grid;place-items:center}
+.spotify-dialog p{font-size:13px;line-height:1.6}.spotify-dialog label{display:block;font-size:12px;margin-top:18px}
+.spotify-dialog input{box-sizing:border-box;width:100%;margin-top:8px;padding:12px 16px;border-radius:999px;background:#ffffff10;border:1px solid #ffffff35;color:inherit}
+.spotify-setup code{display:block;overflow-wrap:anywhere;font-size:11px}
+.spotify-signin{border:0;border-radius:999px;background:#e9d9bc;color:#494033;font-weight:500;padding:12px 18px;margin-top:10px}
+.spotify-queue-current{display:flex;flex-direction:column;gap:5px;padding:14px;border-radius:18px;background:#ffffff10;margin-bottom:16px}.spotify-queue-current small{color:#ddcdb7}
+.spotify-queue-list{list-style:none;padding:0;margin:0}.spotify-queue-list li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #ffffff15}.spotify-queue-list img{width:44px;height:44px;object-fit:cover;border-radius:9px}.spotify-queue-list strong,.spotify-queue-list small{display:block;font-size:13px;line-height:1.5}.spotify-queue-list small{opacity:.7;font-size:11px}
+
+.collection-components:has(.spotify-card-position){grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.collection-components>.spotify-card-position{grid-column:1;grid-row:2;width:100%;margin-top:0}
+.collection-components:has(.spotify-card-position)>.workspace-widget-slot:first-child{grid-column:2;grid-row:2}
+@media(max-width:680px){.collection-components>.spotify-card-position{grid-row:2}}

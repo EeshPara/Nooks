@@ -1,6 +1,6 @@
 import type { WorkspaceLayoutChange, WorkspaceLayoutValue, WorkspaceWidgetId, WorkspaceWidgetPosition } from '../workspace-normalize';
 
-const ids = ['spotify', 'timer', 'tasks', 'collection', 'welcome', 'people'] as const;
+const ids = ['spotify', 'timer', 'tasks', 'collection', 'collection-next', 'welcome', 'people'] as const;
 export function readLayout(value?: WorkspaceLayoutValue): WorkspaceLayoutValue {
   const positions: Partial<Record<WorkspaceWidgetId, WorkspaceWidgetPosition>> = {};
   if (value?.version === 1) for (const id of ids) {

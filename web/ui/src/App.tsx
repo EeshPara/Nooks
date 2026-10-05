@@ -1,3 +1,4 @@
+import { SpotifyCard } from './world/SpotifyCard';
 import { useEffect, useRef, useState } from 'react';
 import { DraftRecoveryScope, useCrashDraft } from './WorkspaceErrorBoundary';
 import { readLocalWorkspaceState, writeLocalWorkspaceState } from './localWorkspaceState';
@@ -16,7 +17,6 @@ import { AmbientMixer } from './world/AmbientMixer';
 import { RoomJourney, RoomJourneyModal, RoomRewardShelf, emptyRoomProgress, unlockedRewards, getRoomRewards, type RoomProgress, type RewardPerk } from './world/RoomJourney';
 import { RewardDrawing } from './world/RewardDrawing';
 import { EarnedSoundtrack } from './world/EarnedSoundtrack';
-import { SoundIsland } from './world/SoundIsland';
 import { useSoftDismiss } from './world/useSoftDismiss';
 import { useBackdropDismiss } from './world/useBackdropDismiss';
 import { consumeDismissEscape, isTopmostDismissTarget } from './world/dismissal';
@@ -65,7 +65,7 @@ import { RainyLibraryBackdrop } from './world/RainyLibraryBackdrop';
 import { usesRainyLibraryFilm } from './world/rainyLibraryPlayback';
 
 type Page = 'home'|'library'|'practice'|'focus'|'plan';
-const navigation = [{id:'home',label:'Study'},{id:'library',label:'Library'},{id:'explore',label:'Explore'}] as const;
+const navigation = [{id:'home',label:'Study'},{id:'library',label:'Library'},{id:'explore',label:'Nooks'}] as const;
 const kindLabel={note:'Note',quiz:'Quiz',flashcards:'Flashcards',exam:'Practice exam'};
 const kindIcon:{[key:string]:LucideIcon}={note:FileText,quiz:Brain,flashcards:Copy,exam:GraduationCap};
 function storageGet(key:string){try{return localStorage.getItem(key);}catch{return null;}}
@@ -114,11 +114,13 @@ function WorkspaceApp(){
  useEffect(()=>()=>{if(portalTimeout.current)clearTimeout(portalTimeout.current);},[]);
  const [secretRoom,setSecretRoom]=useState<{id:'moonstone-annex'|'crystal-vault';parent:string}|null>(null);
  const [earnedTrack,setEarnedTrack]=useState<'moonlit-piano'|'vinyl-evening'|null>(null);
+ const [nextRewardPosition,setNextRewardPosition]=useCrashDraft<{x:number;y:number}|null>('layout:collection-next',null,draftOwner);
  const [showFocus,setShowFocus]=useState(false),[showCollection,setShowCollection]=useState(false),[showToday,setShowToday]=useCrashDraft('app:today',false,draftOwner);
  const [handoff,setHandoff]=useState(''),[handoffCopied,setHandoffCopied]=useState(false);
  const [creationInstruction,setCreationInstruction]=useCrashDraft('app:instruction','',draftOwner);
  const [creationSource,setCreationSource]=useCrashDraft('app:source','',draftOwner);
  const [creationSourceMode,setCreationSourceMode]=useCrashDraft<'paste'|'library'|undefined>('app:source-mode',undefined,draftOwner);
+ const [focusMode,setFocusMode]=useState(false);
  const [showAbout,setShowAbout]=useState(false);const [showSounds,setShowSounds]=useState(false);const [zen,setZen]=useState(false);
  const [openingReplayRequest,setOpeningReplayRequest]=useState<{owner:string;version:number}|null>(null);
  const [openingHostPending,setOpeningHostPending]=useState(0);
@@ -478,23 +480,21 @@ function WorkspaceApp(){
   return()=>cancelAnimationFrame(frame);
  },[openingReplayRequest,showAbout]);
  const workBackdrop=useWorkspaceBackdropDismiss(page==='home'&&!!active,dismissActiveWork,showFocus||showSounds||showPeople||showCollection||showToday||showNooks||showPersonalize||showSettings||showAccount||showAbout||showShare||showCreate||showNookCreator||showIdentity||!!portal||!!celebration||!!handoff);
- const roomJourney=activeDraft?<section className="room-journey-widget nooks-draft-collection"><span>YOUR FUTURE COLLECTION</span><RewardDrawing art={getRoomRewards(currentRoomId).rewards[0].art} size={86}/><h3>A fresh little start.</h3><p>Custom keepsakes and focus tracking come with publishing. This nook is a local preview.</p></section>:<RoomJourney key={currentRoomId} roomId={currentRoomId} progress={roomProgress} liveFocusSeconds={focusSession?.roomId===currentRoomId?Math.max(0,focusSession.targetMinutes*60-remaining-Math.floor((focusSession.roomCreditOffsetMilliseconds||0)/1000)):0} focusState={completionRetry?'retry':focusPending?'saving':running?'running':'paused'} onPlace={async(rewardId,placed)=>{await perform('room_reward_place',{roomId:currentRoomId,rewardId,placed});}} onFocus={()=>changePage('focus')} onUsePerk={useRoomPerk}/>;
- return <DraftRecoveryScope value={draftOwner}><WorkspaceLayoutProvider value={workspace.workspaceLayout} scopeKey={workspaceReady?draftOwner:undefined} onChange={async change=>{await perform('workspace_layout_update',change);}}><div {...workBackdrop} className={`app lofi-world unified-workspace ${isEmbedded?'in-chatgpt':''} ${isEmbedded?'host-chat-layout':''} ${zen?'zen-mode':''} ${worldMotion&&space.decorations.includes('sparkles')?'motion-on':'ambient-motion-off'} ${space.decorations.includes('stickers')?'':'no-reminder'} space-layout-${space.layout} ${page==='home'&&!active?'is-room':'is-tool'} theme-${space.theme} weather-${secret?'none':roomScene.mood} ${compact?'is-compact':''}`} style={isEmbedded?hostLayout.style:undefined} data-host-display={isEmbedded?hostLayout.displayMode:undefined}>
+ const roomJourney=activeDraft?<section className="room-journey-widget nooks-draft-collection"><span>YOUR FUTURE COLLECTION</span><RewardDrawing art={getRoomRewards(currentRoomId).rewards[0].art} size={86}/><h3>A fresh little start.</h3><p>Custom keepsakes and focus tracking come with publishing. This nook is a local preview.</p></section>:<RoomJourney music={<SpotifyCard/>} key={currentRoomId} roomId={currentRoomId} progress={roomProgress} liveFocusSeconds={focusSession?.roomId===currentRoomId?Math.max(0,focusSession.targetMinutes*60-remaining-Math.floor((focusSession.roomCreditOffsetMilliseconds||0)/1000)):0} focusState={completionRetry?'retry':focusPending?'saving':running?'running':'paused'} onPlace={async(rewardId,placed)=>{await perform('room_reward_place',{roomId:currentRoomId,rewardId,placed});}} onFocus={()=>changePage('focus')} onUsePerk={useRoomPerk}/>;
+ return <DraftRecoveryScope value={draftOwner}><WorkspaceLayoutProvider value={{version:1,positions:{...workspace.workspaceLayout?.positions,...(nextRewardPosition?{'collection-next':nextRewardPosition}:{})}}} scopeKey={workspaceReady?draftOwner:undefined} onChange={async change=>{if('id' in change&&change.id==='collection-next'){setNextRewardPosition(change.position);return;}await perform('workspace_layout_update',change);if('reset' in change)setNextRewardPosition(null);}}><div {...workBackdrop} className={`app lofi-world unified-workspace ${isEmbedded?'in-chatgpt':''} ${isEmbedded?'host-chat-layout':''} ${zen?'zen-mode':''} ${focusMode?'nooks-focus-mode':''} ${worldMotion&&space.decorations.includes('sparkles')?'motion-on':'ambient-motion-off'} ${space.decorations.includes('stickers')?'':'no-reminder'} space-layout-${space.layout} ${page==='home'&&!active?'is-room':'is-tool'} theme-${space.theme} weather-${secret?'none':roomScene.mood} ${compact?'is-compact':''}`} style={isEmbedded?hostLayout.style:undefined} data-host-display={isEmbedded?hostLayout.displayMode:undefined}>
   <div className="world-backdrop" style={{backgroundImage:`url("${sceneImage}")`}} aria-hidden="true"/>{rainyLibraryFilm&&<RainyLibraryBackdrop motion={worldMotion&&space.decorations.includes('sparkles')}/> }<div className="world-shade" aria-hidden="true"/><div className="world-rain" aria-hidden="true">{Array.from({length:28},(_,i)=><i key={i} style={{left:`${8+i*3.1}%`,animationDelay:`-${i*.39}s`,animationDuration:`${1.1+i%4*.27}s`}}/>)}</div><div className="world-glow" aria-hidden="true"/>
   <main className="main world-main">
    <header className="nooks-shell-header">
     <button className="nooks-shell-brand" onClick={()=>changePage('home')} aria-label="Nooks Study"><img src="/images/nook-cat-logo.webp" alt=""/><img src="/images/nooks-wordmark.png" alt="Nooks"/></button>
     <nav className="nooks-shell-nav" aria-label="Workspace navigation">{navigation.map(item=><button key={item.id} aria-current={(item.id==='explore'?showNooks:!showNooks&&page===item.id)?'page':undefined} onClick={()=>{if(item.id==='explore')openUtility('explore');else{setShowNooks(false);changePage(item.id);}}}>{item.label}{item.id==='home'&&active&&<i aria-label="Work in progress"/>}</button>)}</nav>
-    <div className="nooks-shell-actions"><LayoutControls/><button className="nooks-shell-create" onClick={writeNote} aria-label="Write a note"><Plus size={17}/><span>Write note</span></button>{!isEmbedded&&isPublicPreview?<AccountButton compact onClick={()=>setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
+    <div className="nooks-shell-actions"><MovableWidget id="people" label="Study together" className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></MovableWidget><LayoutControls/>{!isEmbedded&&isPublicPreview?<AccountButton compact onClick={()=>setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
    </header>
    <div className="nooks-utility-bar">
-    <div className="nooks-place-and-people"><button className="nooks-current-place" onClick={()=>openUtility('explore')}><span className="nooks-place-dot"/><span>{sceneName}</span><ChevronRight size={13}/></button><MovableWidget id="people" label="Study together" className="nooks-people-position"><StudyPresencePill sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></MovableWidget></div>
+
     <div className="nooks-utility-actions">
-     <StudyFocusDock timer={{remaining,minutes:focusLength,running,active:!!focusSession,pending:focusPending,disabled:!!activeDraft&&!focusSession,onStart:startFocus,onPause:pauseFocus,onReset:resetFocus,onMinutes:m=>{setFocusLength(m);setRemaining(m*60);}}} open={showFocus} onOpenChange={value=>value?openUtility('focus'):setShowFocus(false)} workLabel={active?.title||'Independent study'} nookLabel={sceneName} earningNookLabel={focusSession?.roomId?getRoomRewards(focusSession.roomId).label:undefined} onFinish={finishFocus} retrySaving={!!completionRetry}/>
+     <StudyFocusDock focusMode={focusMode} onToggleFocusMode={()=>{setFocusMode(value=>!value);setShowFocus(false);setShowCollection(false);}} timer={{remaining,minutes:focusLength,running,active:!!focusSession,pending:focusPending,disabled:!!activeDraft&&!focusSession,onStart:startFocus,onPause:pauseFocus,onReset:resetFocus,onMinutes:m=>{setFocusLength(m);setRemaining(m*60);}}} open={showFocus} onOpenChange={value=>value?openUtility('focus'):setShowFocus(false)} workLabel={active?.title||'Independent study'} nookLabel={sceneName} earningNookLabel={focusSession?.roomId?getRoomRewards(focusSession.roomId).label:undefined} onFinish={finishFocus} retrySaving={!!completionRetry}/>
      <button data-sound-trigger aria-label="Music and sound" aria-expanded={showSounds} onClick={()=>openUtility('sounds')}><Headphones size={15}/><span>Music</span></button>
      
-     <button aria-label="Your collection" onClick={()=>{if(pendingReward){setCelebration(pendingReward);setPendingReward(null);}else openUtility('collection');}}><span className="nooks-collection-dot" aria-hidden="true"/><span>Collection</span><small>{pendingReward?'New':`${unlockedRewards(currentRoomId,roomProgress).length}/${getRoomRewards(currentRoomId).rewards.length}`}</small></button>
-     <button className="nooks-extra-control" aria-label="Today's study goals" onClick={()=>openUtility('today')}><Check size={15}/></button>
     </div>
    </div>
    <button type="button" className="nooks-watch-intro" aria-haspopup="dialog" disabled={!canReplayOpeningNow()||showAbout} onClick={requestOpeningReplay} title="Replay the full Nooks opening"><Play size={13} fill="currentColor" aria-hidden="true"/><span>Watch intro</span></button>
@@ -511,7 +511,7 @@ function WorkspaceApp(){
    <footer className="workspace-footer"><span><BookOpen size={13}/> Nooks · Your Study Nook in ChatGPT</span><span>{saving?'Saving…':pendingProgressCount?'Results waiting to save':isLive?'Saved to your account':'Saved on this device'}</span></footer>
    </div>}
   </main>
-  {showNooks&&<NookDiscovery onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=roomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
+  {showNooks&&<NookDiscovery favoritesScope={draftOwner} onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=roomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
   {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} onClose={()=>setShowPeople(false)}/>}
   {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=roomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
   {showIdentity&&!isLive&&<NookIdentityDialog profile={profile} onClose={()=>{setShowIdentity(false);setPendingJoin(null);}} onSave={saveNookProfile}/>}
@@ -523,8 +523,6 @@ function WorkspaceApp(){
   <OpeningFilm open={openingFilm.open} presentationId={openingFilm.presentationId} videoSrc="/media/opening-film/nooks-opening-v3.mp4" posterSrc="/media/opening-film/nooks-opening-poster-v2.jpg" endCardMode="baked-in" onDismiss={openingFilm.dismiss}/>
   {secret&&<button className="secret-room-return" onClick={()=>setSecretRoom(null)}>← Return to {roomScene.title}<span>Progress stays in this nook</span></button>}
   <EarnedSoundtrack track={earnedTrack} onClose={()=>setEarnedTrack(null)}/>
-  <SoundIsland roomId={secret&&secretRoom?secretRoom.id:currentRoomId} roomTitle={sceneName} mixerOpen={showSounds} onOpenMixer={()=>openUtility('sounds')}/>
-  <div className="nooks-scene-tools"><button aria-label="Customize this nook" onClick={()=>openUtility('personalize')}><SlidersHorizontal size={15}/></button><button aria-label={worldMotion?'Pause nook animation':'Resume nook animation'} onClick={()=>{setWorldMotion(!worldMotion);storageSet('notable-motion',worldMotion?'off':'on');}}>{worldMotion?<Pause size={13}/>:<Play size={13}/>}</button><button aria-label="About Nooks" onClick={()=>setShowAbout(true)}>i</button></div>
   <div className={`world-sound-panel ${showSounds?'open':''}`} aria-hidden={!showSounds} inert={!showSounds}><AmbientMixer roomId={secret&&secretRoom?secretRoom.id:currentRoomId} roomTitle={sceneName} open={showSounds} onClose={()=>setShowSounds(false)}/></div>
   {showCollection&&<RoomJourneyModal roomId={currentRoomId} progress={roomProgress} onClose={()=>setShowCollection(false)} onPlace={async(rewardId,placed)=>{await perform('room_reward_place',{roomId:currentRoomId,rewardId,placed});}} onFocus={()=>openUtility('focus')} onUsePerk={useRoomPerk}/>}
   {showToday&&<Modal title="Today" onClose={()=>setShowToday(false)}><StudyPlan tasks={workspace.plan.tasks} onSave={async tasks=>{await savePlan(tasks);}} artifacts={workspace.artifacts} onOpen={a=>{setShowToday(false);open(a);}}/></Modal>}

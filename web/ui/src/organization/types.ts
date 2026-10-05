@@ -2,7 +2,7 @@ import type { Artifact, ProgressEvent } from '../study/types';
 
 export type CourseColor = 'sand' | 'rose' | 'lavender' | 'sky' | 'sage' | 'clay';
 export type OrganizedArtifact = Artifact & { courseId?: string; topicId?: string; revision?: number };
-export interface Course { id: string; title: string; description: string; color: CourseColor; archived: boolean; examDate?: string; revision: number; createdAt: string; updatedAt: string }
+export interface Course { shared?: boolean; id: string; title: string; description: string; color: CourseColor; archived: boolean; examDate?: string; revision: number; createdAt: string; updatedAt: string }
 export interface Topic { id: string; courseId: string; title: string; description: string; revision: number; createdAt: string; updatedAt: string }
 export interface StudySession { id: string; title: string; summary: string; courseId?: string; topicId?: string; artifactIds: string[]; goals: string[]; nextSteps: string[]; openQuestions: string[]; nookId?: string; revision: number; createdAt: string; updatedAt: string; userConfirmedAt: string }
 export interface NoteRevision { id: string; artifactId: string; revision: number; title: string; characters: number; savedAt: string; supersededAt: string; source: string }

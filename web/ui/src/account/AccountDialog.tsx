@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowRight, Check, X } from 'lucide-react';
+import { ArrowRight, Check, UserRound, X } from 'lucide-react';
 import { nooksAccount } from './client';
 import { useNooksAccount } from './useNooksAccount';
 import { useBackdropDismiss } from '../world/useBackdropDismiss';
@@ -11,7 +11,7 @@ export function AccountButton({ onClick, compact = false }: { onClick: () => voi
  const account = useNooksAccount();
  const label = account.status === 'signed-in' ? 'Your account' : account.status === 'expired' ? 'Reconnect account' : 'Save to account';
  return <button type="button" className={`nooks-account-button${compact ? ' is-compact' : ''}`} aria-label={label} title={account.user?.email || label} onClick={onClick}>
-  {account.status === 'signed-in' ? <span className="nooks-account-initial" aria-hidden="true">{account.user?.email?.slice(0, 1).toUpperCase() || 'N'}</span> : <span>{compact ? 'Account' : label}</span>}
+  {account.status === 'signed-in' ? <span className="nooks-account-initial" aria-hidden="true">{account.user?.email?.slice(0, 1).toUpperCase() || 'N'}</span> : compact ? <UserRound size={18} aria-hidden="true"/> : <span>{label}</span>}
  </button>;
 }
 

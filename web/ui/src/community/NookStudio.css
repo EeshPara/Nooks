@@ -32,3 +32,11 @@
 .nooks-studio[open] { display:flex;flex-direction:column; }
 .nooks-studio-header,.nooks-studio-closing { flex-shrink:0; }
 .nooks-studio .nooks-studio-layout { flex:1;min-height:0;height:auto; }
+
+.nooks-studio-header .nooks-studio-icon{display:grid;place-items:center;width:33px;height:33px;min-width:33px;min-height:33px;border:0;border-radius:50%;background:#f2eee8;color:#635c55}
+.nooks-studio-header .nooks-studio-icon:hover{background:#e9e1d7}
+.nooks-studio-scene-tools>label{display:flex;align-items:center;gap:11px;padding:13px 16px;min-height:50px;border:1px solid #e9e2d9;border-radius:999px;background:#f5f2ed;color:#958677}
+.nooks-studio-scene-tools>label input{min-width:0;flex:1;padding:0;height:23px;border:0;background:transparent;box-shadow:none;font-size:13px;color:#493b2e}
+.nooks-studio-scene-tools>label:focus-within{border-color:#b8997d;box-shadow:0 0 0 3px #ba967014}
+.nooks-studio-setting textarea{border-radius:24px;background:#f5f2ed;border-color:#e9e2d9;padding:16px;color:#493b2e;font-size:13px;line-height:1.65}
+.nooks-studio-primary,.nooks-studio-secondary,.nooks-studio-footer button,.nooks-studio-review footer button,.nooks-studio-success button{border-radius:999px}
