@@ -22,6 +22,8 @@ export class SupabaseStore {
   async rpc(name, args) {
     const response=await this.fetch(`${this.origin}/rest/v1/rpc/${name}`,{method:'POST',redirect:'manual',signal:AbortSignal.timeout(15000),headers:{...this.headers,'Content-Type':'application/json'},body:JSON.stringify(args)});
     if(!response.ok){ let code; try { code=(await response.json()).code; } catch {}
+      if(name==='nooks_library_action' && code==='P0002') throw new InputError('This shared course or material is no longer available.','NOT_FOUND');
+      if(name==='nooks_library_action' && code==='40001') throw new InputError('This material changed. Refresh and retry; your draft is still here.','REVISION_CONFLICT');
       if(code==='42501') throw new InputError('You do not have access to this nook or study item.','FORBIDDEN');
       if(code==='22023'||code==='22P02') throw new InputError('Nooks could not use these details. Check the selected nook and try again.','INVALID_INPUT');
       if(code==='54000'&&name==='nooks_artwork_reserve')throw new InputError('Artwork uploads are limited to 100 new images per day and 128 pending or retained image uploads. Try again later; removed images remain retained until retention cleanup.','ARTWORK_LIMIT');

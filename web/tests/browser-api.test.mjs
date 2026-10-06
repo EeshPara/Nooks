@@ -18,6 +18,7 @@ function backend(extraEnv={}) {
    const old=records.get(args.p_account);if((old?.revision??0)!==args.p_expected_revision)return response({committed:false});
    records.set(args.p_account,{revision:args.p_expected_revision+1,workspace:structuredClone(args.p_workspace)});return response({committed:true});
   }
+  if(url.endsWith('nooks_library_action'))return response({actor:args.p_account,action:args.p_action,arguments:args.p_args,share:{id:BOB}});
   if(url.endsWith('nooks_community'))return response({actor:args.p_actor,arguments:args.p_args});
   throw new Error('Unexpected request '+url);
  };
@@ -106,4 +107,12 @@ test('layout route accepts account-bound patches and reports auth, quota and mis
  const unavailable=createBrowserApiHandler({env:{},allowedOrigins:['https://nooks.example'],logger:()=>{},fetchImpl:()=>assert.fail('An unconfigured save cannot contact a backend')});
  const blocked=await invoke(unavailable,path,{method:'POST',token:'alice',body});
  assert.equal(blocked.status,503);assert.equal(blocked.body.error.code,'BACKEND_UNAVAILABLE');assert.equal(blocked.body.workspace,undefined);
+});
+
+test('sharing routes require authentication and bind actor before RPC',async()=>{
+ const b=backend();
+ const unsigned=await invoke(b.handler,'/api/tools/library_share_list',{method:'POST',body:{}});assert.equal(unsigned.status,401);
+ const allowed=await invoke(b.handler,'/api/tools/library_share_list',{method:'POST',token:'alice',body:{}});assert.equal(allowed.status,200);assert.equal(allowed.body.actor,ALICE);
+ const forged=await invoke(b.handler,'/api/tools/library_share_get',{method:'POST',token:'alice',body:{shareId:BOB,accountId:BOB}});assert.equal(forged.status,400);
+ b.setLimited(true);const limited=await invoke(b.handler,'/api/tools/library_share_list',{method:'POST',token:'alice',body:{}});assert.equal(limited.status,429);
 });

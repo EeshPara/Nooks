@@ -1,3 +1,4 @@
+import { LibraryInvitation } from './organization/LibrarySharing';
 import { currentInvitation } from './community/inviteLinks';
 import { SpotifyCard } from './world/SpotifyCard';
 import { useEffect, useRef, useState } from 'react';
@@ -539,7 +540,7 @@ function WorkspaceApp(){
  </div></WorkspaceLayoutProvider></DraftRecoveryScope>;
 }
 
-export default function App(){const account=useNooksAccount(!isEmbedded&&isPublicPreview);if(isPublicPreview&&account.status==='loading')return <div className="loading-space"><p>Opening Nooks…</p></div>;const sharedId=new URLSearchParams(window.location.search).get('share');return sharedId&&!isPublicPreview?<SharedRoute id={sharedId}/>:<WorkspaceApp key={isPublicPreview?account.workspaceKey:'host'}/>;}
+export default function App(){const account=useNooksAccount(!isEmbedded&&isPublicPreview);if(isPublicPreview&&account.status==='loading')return <div className="loading-space"><p>Opening Nooks…</p></div>;const sharedId=new URLSearchParams(window.location.search).get('share');return sharedId&&!isPublicPreview?<SharedRoute id={sharedId}/>:<><WorkspaceApp key={isPublicPreview?account.workspaceKey:'host'}/><LibraryInvitation/></>;}
 function SharedRoute({id}:{id:string}){const [share,setShare]=useState<SharedSpace|null>(null);const [failed,setFailed]=useState(false);useEffect(()=>{let alive=true;fetch(`/api/shared/${encodeURIComponent(id)}`).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(alive)setShare(data.share||data);}).catch(()=>{if(alive)setFailed(true);});return()=>{alive=false;};},[id]);if(failed)return <div className="loading-space"><Leaf size={40}/><h2>This space is taking a little break.</h2><p>The link may have been unpublished.</p><a className="button primary" href="/">Open my workspace</a></div>;if(!share)return <div className="loading-space"><Sprout size={40}/><h2>Opening a little inspiration…</h2></div>;return <SharedSpaceView share={share} onOpenWorkspace={()=>{window.location.href=`/?template=${encodeURIComponent(id)}`;}}/>;}
 
 function CloudRainIcon(){return <Headphones size={13}/>;}

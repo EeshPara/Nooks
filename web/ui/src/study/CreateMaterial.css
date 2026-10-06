@@ -116,3 +116,14 @@
 @media(max-width:540px){.nooks-create-overlay{padding:12px}.nooks-create-dialog{border-radius:16px;max-height:94dvh}.nooks-create-dialog>header{padding:16px 18px 6px}.nooks-create-dialog .nooks-create-scroll{padding:0 18px 12px}.nooks-create-dialog footer{padding:14px 18px 17px;gap:8px}.nooks-create-dialog .nooks-create-formats{gap:24px}.nooks-create-dialog .nooks-create-tools{gap:0;flex-wrap:wrap}.nooks-create-dialog .nooks-create-request textarea{font-size:16px;min-height:145px}.nooks-create-dialog input,.nooks-create-dialog textarea{font-size:16px}.nooks-create-dialog .nooks-create-card-sides,.nooks-create-dialog .nooks-create-metadata{grid-template-columns:1fr}.nooks-create-dialog .nooks-create-submit{font-size:12px;padding:11px 14px}}
 @media(max-width:540px){.nooks-create-dialog h2{font-size:20px}.nooks-create-dialog .nooks-create-formats{gap:20px}.nooks-create-dialog .nooks-create-source-search>input,.nooks-create-dialog .nooks-create-paste textarea{font-size:16px}.nooks-create-dialog .nooks-create-footer-note{font-size:10px;max-width:120px}.nooks-create-dialog .nooks-create-source-chip>span{max-width:220px}}
 @media(prefers-reduced-motion:reduce){.nooks-create-dialog,.nooks-create-overlay.is-closing,.nooks-create-overlay.is-closing .nooks-create-dialog,.nooks-create-dialog .nooks-create-source-chip,.nooks-create-dialog .nooks-create-paste,.nooks-create-dialog .nooks-create-source-picker{animation:none}.nooks-create-dialog button,.nooks-create-dialog .nooks-create-source-row{transition:none}}
+
+.nooks-create-dialog .nooks-create-request textarea,
+.nooks-create-dialog .nooks-create-request textarea::placeholder { font-size:12px;line-height:1.7; }
+.nooks-create-dialog details summary { justify-content:center;min-height:44px;text-align:center; }
+.nooks-create-dialog details summary>span { margin-left:0; }
+.nooks-create-dialog button { border-radius:999px!important; }
+.nooks-create-dialog .nooks-create-formats { gap:7px;flex-wrap:wrap;padding-bottom:14px; }
+.nooks-create-dialog .nooks-create-formats button { border:1px solid var(--create-line);padding:9px 15px;background:#f6f1e7;min-height:38px;font-size:12px; }
+.nooks-create-dialog .nooks-create-formats button[aria-pressed=true] { background:#4c443a;color:#fffdf8;border-color:#4c443a; }
+
+.nooks-create-dialog .nooks-create-text { padding:8px 13px; border:1px solid var(--create-line); background:#fffdf9; text-align:center; }
