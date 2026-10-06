@@ -72,3 +72,34 @@
 
 .collection-components > .workspace-widget-slot:first-child { grid-column:2; }
 @media(min-width:681px) and (max-width:1100px){.collection-components > .workspace-widget-slot:first-child { grid-column:1; }}
+
+/* Make the next study action unmistakable while keeping the warm nook palette. */
+.room-journey-modal>footer>button {
+  border-radius:999px;
+  padding:12px 20px;
+  min-height:42px;
+  background:#ead6a8;
+  border:1px solid #f5e6c6;
+  color:#30271d;
+  font-size:12px;
+  font-weight:650;
+  box-shadow:0 4px 16px #0003;
+}
+.room-journey-modal>footer>button:hover:not(:disabled) { background:#fff0ca; }
+.room-journey-modal>footer>button:disabled { opacity:.5; }
+.room-journey-modal>footer>span { color:#d4c2a5; }
+.room-sealed-reward,
+.room-sealed-reward.is-small,
+.journey-reward-art .room-sealed-reward {
+  width:72px;
+  height:72px;
+  aspect-ratio:1;
+  border-radius:50%;
+  transform:none;
+}
+.room-sealed-reward.is-small { width:55px;height:55px; }
+@media(max-width:680px) {
+  .journey-reward-art .room-sealed-reward { width:56px;height:56px; }
+}
+.collection-stage>.room-sealed-reward.is-small { width:28px;height:28px; }
+.journey-detail-components .journey-reward-art .room-sealed-reward { width:56px;height:56px;flex-shrink:0; }
