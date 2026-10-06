@@ -10,7 +10,7 @@ import { Headphones, Music2, Eye, EyeOff, Compass, MessageCircle, SlidersHorizon
 import { StudyDrawing } from './world/StudyDrawing';
 import AboutNook from './world/AboutNotable';
 import { RoomHome } from './world/RoomHome';
-import { WorkspaceLayoutProvider, LayoutControls, MovableWidget } from './world/WorkspaceLayout';
+import { WorkspaceLayoutProvider, LayoutControls } from './world/WorkspaceLayout';
 import { StudyFocusDock } from './world/StudyFocusDock';
 import { useHostLayout } from './world/useHostLayout';
 import { buildChatContextPrompt } from './study/chatContext';
@@ -489,7 +489,7 @@ function WorkspaceApp(){
    <header className="nooks-shell-header">
     <button className="nooks-shell-brand" onClick={()=>changePage('home')} aria-label="Nooks Study"><img src="/images/nook-cat-logo.webp" alt=""/><img src="/images/nooks-wordmark.png" alt="Nooks"/></button>
     <nav className="nooks-shell-nav" aria-label="Workspace navigation">{navigation.map(item=><button key={item.id} aria-current={(item.id==='explore'?showNooks:!showNooks&&page===item.id)?'page':undefined} onClick={()=>{if(item.id==='explore')openUtility('explore');else{setShowNooks(false);changePage(item.id);}}}>{item.label}{item.id==='home'&&active&&<i aria-label="Work in progress"/>}</button>)}</nav>
-    <div className="nooks-shell-actions"><MovableWidget id="people" label="Study together" className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></MovableWidget>{!isEmbedded&&isPublicPreview?<AccountButton compact onClick={()=>setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
+    <div className="nooks-shell-actions"><div className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></div>{!isEmbedded&&isPublicPreview?<AccountButton compact onClick={()=>setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
    </header>
    <div className="nooks-utility-bar">
 
