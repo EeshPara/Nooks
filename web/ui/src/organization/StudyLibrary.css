@@ -102,5 +102,5 @@
 
 .nooks-library-shared-icon { flex:0 0 auto;color:inherit; }
 
-.nooks-library-heading > .nooks-org-primary { border-radius:999px; }
+.nooks-library-heading .nooks-org-primary { border-radius:999px; }
 .nooks-org-dialog .nooks-org-form button { border-radius:999px; }
