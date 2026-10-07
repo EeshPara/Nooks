@@ -34,7 +34,6 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  const [tour,setTour]=useState(replay),[step,setStep]=useState(0),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const panel=useRef<HTMLDivElement>(null), callbacks=useRef({onNavigate,onFinish,onProfile});callbacks.current={onNavigate,onFinish,onProfile};
  const [rect,setRect]=useState<{left:number;top:number;width:number;height:number}|null>(null);
- const [targetRects,setTargetRects]=useState<{left:number;top:number;width:number;height:number}[]>([]);
  const [viewport,setViewport]=useState({width:window.innerWidth,height:window.innerHeight});
  const stop=tourStops[step];
  async function finish(){if(busy)return;setBusy(true);setError('');try{await callbacks.current.onFinish({name:name.trim()||initialProfile.name,avatar});}catch(e){setError(e instanceof Error?e.message:'Please try again.');}finally{setBusy(false);}}
@@ -43,7 +42,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  useEffect(()=>{if(phase==='letter'&&!tour){panel.current?.querySelector<HTMLElement>('#welcome-letter-heading')?.focus({preventScroll:true});return;}panel.current?.querySelector<HTMLElement>('input,button:not([disabled])')?.focus();},[phase,tour,step]);
  useLayoutEffect(()=>{
   if(!tour)return;let frame=0,count=0;let element:Element|null=null;
-  const measure=()=>{const elements=[...document.querySelectorAll(stop.target)];element=elements[0]??null;if(element&&count===0){const r=element.getBoundingClientRect();if(r.bottom>window.innerHeight||r.top<0)element.scrollIntoView({block:'center',behavior:'instant'});}const bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);const targets=bounds.map(r=>({left:r.left-7,top:r.top-7,width:r.width+14,height:r.height+14}));setTargetRects(targets);if(bounds.length){const left=Math.min(...bounds.map(r=>r.left))-7,top=Math.min(...bounds.map(r=>r.top))-7;setRect({left,top,width:Math.max(...bounds.map(r=>r.right))+7-left,height:Math.max(...bounds.map(r=>r.bottom))+7-top});}else setRect(null);setViewport({width:window.innerWidth,height:window.innerHeight});};
+  const measure=()=>{const elements=[...document.querySelectorAll(stop.target)];element=elements[0]??null;if(element&&count===0){const r=element.getBoundingClientRect();if(r.bottom>window.innerHeight||r.top<0)element.scrollIntoView({block:'center',behavior:'instant'});}const bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);if(bounds.length){const left=Math.min(...bounds.map(r=>r.left))-7,top=Math.min(...bounds.map(r=>r.top))-7;setRect({left,top,width:Math.max(...bounds.map(r=>r.right))+7-left,height:Math.max(...bounds.map(r=>r.bottom))+7-top});}else setRect(null);setViewport({width:window.innerWidth,height:window.innerHeight});};
   const settle=()=>{measure();if(count++<12)frame=requestAnimationFrame(settle);};frame=requestAnimationFrame(settle);
   window.addEventListener('resize',measure);window.addEventListener('scroll',measure,true);
   return()=>{cancelAnimationFrame(frame);window.removeEventListener('resize',measure);window.removeEventListener('scroll',measure,true);};
@@ -52,11 +51,12 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  const cardWidth=Math.min(370,viewport.width-32);
  const below=rect&&rect.top+rect.height+310<viewport.height;
  const beside=rect&&!below&&rect.left+rect.width+cardWidth+32<viewport.width;
- const left=rect?Math.max(16,Math.min(beside?rect.left+rect.width+16:rect.left,viewport.width-cardWidth-16)):(viewport.width-cardWidth)/2;
- const top=rect&&below?rect.top+rect.height+16:rect&&beside?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&rect.top>320?rect.top-310:Math.max(16,viewport.height-320);
+ const collectionOnLeft=step===3&&rect&&rect.left>cardWidth+36;
+ const left=collectionOnLeft?rect.left-cardWidth-20:rect?Math.max(16,Math.min(beside?rect.left+rect.width+16:rect.left,viewport.width-cardWidth-16)):(viewport.width-cardWidth)/2;
+ const top=collectionOnLeft?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&below?rect.top+rect.height+16:rect&&beside?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&rect.top>320?rect.top-310:Math.max(16,viewport.height-320);
  function begin(){callbacks.current.onProfile({name:name.trim(),avatar});setTour(true);}
  return createPortal(tour?<div className="nooks-tour-overlay">
-  {rect?<><div className="nooks-tour-spotlight" style={rect}/>{targetRects.length>1&&targetRects.map((target,index)=><div key={index} className="nooks-tour-target-outline" style={target}/>)}</>:<div className="nooks-tour-shade"/>}
+  {rect?<div className="nooks-tour-spotlight" style={rect}/>:<div className="nooks-tour-shade"/>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="true" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
    <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span><button className="welcome-close" aria-label="Finish tour" disabled={busy} onClick={()=>void finish()}><X size={18}/></button></header>
    <h2 id="nooks-tour-heading">{stop.title}</h2><p>{stop.text}</p>
