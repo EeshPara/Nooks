@@ -98,3 +98,29 @@
 .envelope-paper{background-image:none;background-color:#fffdf8}
 
 .nooks-tour-target-outline{position:fixed;border-radius:18px;outline:2px solid #eed9b4;pointer-events:none}
+
+/* One mounted envelope and message sheet, matching the simple reference folds. */
+.welcome-mail-stage{position:relative;isolation:isolate;width:min(400px,80vw);height:300px;margin:55px auto 0;perspective:1400px;transition:width 1s cubic-bezier(.22,1,.36,1),height 1.2s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 12px 18px #48342115)}
+.mail-back,.mail-left,.mail-right,.mail-bottom,.mail-flap{position:absolute;left:0;right:0;bottom:0;height:300px;background:#c8a981;pointer-events:none}
+.mail-back{z-index:0}
+.mail-left{z-index:3;background:#c7a77d;clip-path:polygon(0 0,50% 54%,0 100%)}
+.mail-right{z-index:3;background:#c7a77d;clip-path:polygon(100% 0,50% 54%,100% 100%)}
+.mail-bottom{z-index:4;background:#ddbf96;clip-path:polygon(0 100%,37% 54%,63% 54%,100% 100%)}
+.mail-flap{z-index:5;top:auto;transform-origin:center top;background:#d5b58c;clip-path:polygon(0 0,100% 0,63% 54%,37% 54%);transition:transform 1.25s cubic-bezier(.4,0,.2,1) .9s}
+.mail-sheet{position:absolute;z-index:2;left:6%;width:88%;top:12%;height:85%;background:#fffdf8;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,64% 100%,36% 100%,0 88%);transition:top 1.8s cubic-bezier(.22,1,.36,1) 1.65s,height 1.8s cubic-bezier(.22,1,.36,1) 1.65s}
+.mail-sheet .welcome-letter{animation:none;padding:34px 36px 80px;box-shadow:none;background:transparent;opacity:0;transition:opacity .9s ease 2.5s}
+.nooks-welcome-content .mail-open-hit{position:absolute;inset:0;z-index:6;width:100%;height:100%;border:0;border-radius:0;background:transparent;padding:0}
+.nooks-welcome-content .mail-open-hit:hover{background:transparent}
+.welcome-mail-stage.is-unsealed{width:min(680px,calc(100vw - 48px));height:790px}
+.is-unsealed .mail-flap{transform:rotateX(180deg);z-index:1}
+.is-unsealed .mail-sheet{top:0;height:calc(100% - 108px)}
+.is-unsealed .mail-sheet .welcome-letter{opacity:1}
+.welcome-mail-intro{transition:opacity .65s,height .8s;margin:0 auto}
+.is-opening .welcome-mail-intro,.is-letter .welcome-mail-intro{opacity:0;height:0;overflow:hidden}
+.is-opening .welcome-mail-caption{opacity:0;transition:opacity .4s}
+.is-letter .nooks-welcome-content{animation:none}
+.nooks-welcome-screen.is-letter{background:#fff;padding:40px 24px}
+@media(max-width:600px){.welcome-mail-stage{height:240px;margin-top:35px}.mail-back,.mail-left,.mail-right,.mail-bottom,.mail-flap{height:240px}.welcome-mail-stage.is-unsealed{height:820px;width:calc(100vw - 40px)}.mail-sheet .welcome-letter{padding:28px 22px 65px}.mail-sheet .welcome-letter h1{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.welcome-mail-stage,.mail-flap,.mail-sheet,.mail-sheet .welcome-letter,.welcome-mail-intro{transition:none}}
+
+.mail-sheet .welcome-letter .welcome-primary{display:flex;width:fit-content;margin:26px auto 0}
