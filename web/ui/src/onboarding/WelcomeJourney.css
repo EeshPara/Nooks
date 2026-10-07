@@ -108,7 +108,7 @@
 .mail-bottom{z-index:4;background:#ddbf96;clip-path:polygon(0 100%,37% 54%,63% 54%,100% 100%)}
 .mail-flap{z-index:5;top:auto;transform-origin:center top;background:#d5b58c;clip-path:polygon(0 0,100% 0,63% 54%,37% 54%);transition:transform 1.25s cubic-bezier(.4,0,.2,1) .9s}
 .mail-sheet{position:absolute;z-index:2;left:6%;width:88%;top:12%;height:85%;background:#fffdf8;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,64% 100%,36% 100%,0 88%);transition:top 1.8s cubic-bezier(.22,1,.36,1) 1.65s,height 1.8s cubic-bezier(.22,1,.36,1) 1.65s}
-.mail-sheet .welcome-letter{animation:none;padding:34px 36px 80px;box-shadow:none;background:transparent;opacity:0;transition:opacity .9s ease 2.5s}
+.mail-sheet .welcome-letter{animation:none;padding:34px 36px 80px;box-shadow:none;background:transparent;opacity:0;transition:opacity .5s ease 1.35s}
 .nooks-welcome-content .mail-open-hit{position:absolute;inset:0;z-index:6;width:100%;height:100%;border:0;border-radius:0;background:transparent;padding:0}
 .nooks-welcome-content .mail-open-hit:hover{background:transparent}
 .welcome-mail-stage.is-unsealed{width:min(680px,calc(100vw - 48px));height:790px}
@@ -124,3 +124,10 @@
 @media(prefers-reduced-motion:reduce){.welcome-mail-stage,.mail-flap,.mail-sheet,.mail-sheet .welcome-letter,.welcome-mail-intro{transition:none}}
 
 .mail-sheet .welcome-letter .welcome-primary{display:flex;width:fit-content;margin:26px auto 0}
+
+/* Welcome typography follows the centered study-page hero. */
+.nooks-welcome-content>h1,.welcome-mail-intro>h1{margin:0 auto;max-width:610px;font:500 clamp(27px,2.55vw,39px)/1.22 var(--nook-font,Inter,sans-serif);letter-spacing:-1.2px;text-wrap:balance}
+.nooks-welcome-content>.welcome-kicker,.welcome-mail-intro>.welcome-kicker{font-size:12px;line-height:1.65;margin:0 0 12px}
+.nooks-welcome-content>.welcome-subtitle,.welcome-mail-intro>.welcome-subtitle{margin:15px auto 0;font-size:12px;line-height:1.65;letter-spacing:.08px}
+.nooks-welcome-content .welcome-name-form{margin-top:26px;gap:12px;max-width:450px}
+@media(max-width:600px){.nooks-welcome-content>h1,.welcome-mail-intro>h1{font-size:31px;letter-spacing:-1px;max-width:380px}.nooks-welcome-content>.welcome-kicker,.welcome-mail-intro>.welcome-kicker,.nooks-welcome-content>.welcome-subtitle,.welcome-mail-intro>.welcome-subtitle{font-size:11px}}
