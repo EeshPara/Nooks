@@ -152,7 +152,7 @@
 .welcome-name-form>.welcome-primary{margin-top:20px}
 
 /* A quick entrance settles into a twenty-degree, unhurried sway. */
-.is-envelope .welcome-mail-stage{transform-origin:50% 60%;animation:mail-rise-in .6s cubic-bezier(.16,1,.3,1) both,mail-resting-sway 8s ease-in-out .6s infinite}
+.is-envelope .welcome-mail-stage{transform-origin:50% 60%;animation:mail-rise-in 1.4s cubic-bezier(.25,.65,.3,1) both,mail-resting-sway 8s ease-in-out 1.4s infinite}
 @keyframes mail-rise-in{from{transform:translateY(100dvh);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes mail-resting-sway{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
 @media(prefers-reduced-motion:reduce){.is-envelope .welcome-mail-stage{animation:none}}
