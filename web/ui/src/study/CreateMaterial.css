@@ -127,3 +127,8 @@
 .nooks-create-dialog .nooks-create-formats button[aria-pressed=true] { background:#4c443a;color:#fffdf8;border-color:#4c443a; }
 
 .nooks-create-dialog .nooks-create-text { padding:8px 13px; border:1px solid var(--create-line); background:#fffdf9; text-align:center; }
+
+.nooks-create-dialog .nooks-create-request { margin-bottom:14px; }
+.nooks-create-dialog .nooks-create-source-chip { border-radius:999px; padding-left:13px; }
+.nooks-create-dialog .nooks-create-scroll { padding-bottom:0; }
+.nooks-create-dialog .nooks-create-details > summary { min-height:60px; padding:12px 0; align-items:center; justify-content:center; }
