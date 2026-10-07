@@ -17,3 +17,9 @@ Existing collections are preserved. Newly introduced IDs use the existing four-i
 The previous Rainy Library animation depicts a different composition and is deliberately not played over the new background. These new backgrounds are still images. Existing portal transitions remain in place.
 
 Integration target: Sam's designer branch, `web/ui` and its matching `web/server` validation. `app/` and `cloud/` remain independent snapshots. A Git push does not deploy either the public site or native plugin.
+
+## Verification
+
+After merging Sam's October 7 updates, `npm run designer:check` and all 61 web tests pass. The targeted background, thumbnail, legacy lookup, soundtrack and motion checks also pass. Engine checks save and reopen every new scene and verify isolated progress for new and retired nook IDs.
+
+Browser inspection at `http://127.0.0.1:5189/` confirms 50 catalog entries, four Hogwarts search results, successful portal entry into Gryffindor and Stardew, and selected-background persistence after refresh. The existing paused focus session remained associated with its original nook. `catalog-preview.png` captures the integrated gallery. The local preview is left on the new Rainy Library with the catalog open.
