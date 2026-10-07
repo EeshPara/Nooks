@@ -204,3 +204,6 @@
 
 .nooks-utility-actions > button[data-sound-trigger]{border-color:#ecd8b836;}
 .nooks-utility-actions .workspace-layout-controls{flex-shrink:0;}
+
+.unified-workspace .study-dismiss-toolbar { max-width:690px; }
+.unified-workspace .nooks-cards-rating .nooks-cards-button { border-radius:999px; }

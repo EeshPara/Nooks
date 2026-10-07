@@ -1,3 +1,4 @@
+import { librarySharingTools, invokeLibrarySharing } from './library-sharing.mjs';
 import { StudyEngine, InputError } from './engine.mjs';
 import { SupabaseStore } from './supabase-store.mjs';
 import { createSupabaseIdentityVerifier, supabaseOrigin, serviceHeaders, sha256 } from './supabase-auth.mjs';
@@ -77,12 +78,12 @@ export function createBrowserApiHandler({ env = process.env, fetchImpl = fetch, 
         backend: config ? 'supabase' : 'unconfigured',
         ...(config ? { supabaseUrl: config.url, publishableKey: config.publishableKey } : {}),
         generation: !!config?.openaiKey,
-        capabilities: { accountSync: !!config, community: !!config, generation: !!config?.openaiKey },
+        capabilities: { librarySharing: !!config, accountSync: !!config, community: !!config, generation: !!config?.openaiKey },
       });
       const name = path === '/api/workspace' ? 'workspace_get' : path.startsWith('/api/tools/') ? path.slice('/api/tools/'.length) : null;
       const generation = path === '/api/generate';
       monitor.setOperation(context, generation ? 'generate' : name);
-      if (!generation && (!name || (!toolNames.has(name) && !creatorToolNames.has(name) && !isCommunityTool(name)))) throw new InputError('This action is not available.', 'NOT_FOUND');
+      if (!generation && (!name || (!toolNames.has(name) && !creatorToolNames.has(name) && !isCommunityTool(name) && !librarySharingTools.has(name)))) throw new InputError('This action is not available.', 'NOT_FOUND');
       const method = path === '/api/workspace' ? 'GET' : 'POST';
       if (request.method !== method) return json(response, 405, { error: { code: 'METHOD_NOT_ALLOWED', message: `Use ${method} for this action.` } }, { Allow: method });
       context.phase = 'configuration';
@@ -111,6 +112,10 @@ export function createBrowserApiHandler({ env = process.env, fetchImpl = fetch, 
       context.phase = 'backend';
       const engine = new StudyEngine(store, { clock, shareBaseUrl: env.NOOKS_PUBLIC_URL ?? 'https://nooks-study-space.vercel.app' });
       let result;
+      if (librarySharingTools.has(name)) {
+        result = await invokeLibrarySharing(store, identity, name, args, env.NOOKS_PUBLIC_URL ?? 'https://nooks-study-space.vercel.app');
+        return json(response, 200, result);
+      }
       if (generation) {
         // A saved retry should remain recoverable even if the generation quota is now full.
         if (typeof args.requestId === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(args.requestId)) {

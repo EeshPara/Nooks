@@ -241,3 +241,6 @@
  .lofi-world.unified-workspace .study-home-timer-position,
  .lofi-world.unified-workspace .study-home-tasks-position{grid-area:auto;}
 }
+
+/* Bound the quick-action group to its pills for the onboarding spotlight. */
+.lofi-world.unified-workspace .study-home-quick-actions{width:fit-content;max-width:100%;margin-left:auto;margin-right:auto}

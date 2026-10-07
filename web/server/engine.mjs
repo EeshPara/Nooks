@@ -172,6 +172,12 @@ export class StudyEngine {
       return envelope({ workspace: value, ...(hasView ? { navigation: { view: args.view } } : {}) });
     }
     if (!user?.id) throw new InputError('Connect a Nooks account to save your study space.', 'AUTH_REQUIRED');
+    if (name === 'onboarding_complete') {
+      if (!user?.scopes?.includes('notable.read') || !user.scopes.includes('notable.write')) throw new InputError('Connect your account to save your profile.', 'INSUFFICIENT_SCOPE');
+      if (Object.keys(args).some(key => !['name','avatar'].includes(key))) throw new InputError('Unexpected profile field.');
+      const profile = { name: text(args.name, 'name', 28), avatar: integer(args.avatar, 'avatar', 0, 7), completedAt: now, version: 1 };
+      return envelope(await this.store.transact(user.id, workspace => { workspace.onboarding = profile; return { onboarding: profile }; }));
+    }
     if (name === 'workspace_layout_update') {
       if (!user.scopes?.includes('notable.read') || !user.scopes.includes('notable.write')) throw new InputError('Read and write permission required.', 'INSUFFICIENT_SCOPE');
       const input = validateWorkspaceLayoutChange(args);

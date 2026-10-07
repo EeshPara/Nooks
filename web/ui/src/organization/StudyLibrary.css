@@ -102,4 +102,9 @@
 
 .nooks-library-shared-icon { flex:0 0 auto;color:inherit; }
 
-.nooks-library-heading > .nooks-org-primary { border-radius:999px; }
+.nooks-library-heading .nooks-org-primary { border-radius:999px; }
+.nooks-org-dialog .nooks-org-form button { border-radius:999px; }
+
+.nooks-library-search { border-radius:999px; padding:0 10px; }
+.nooks-library-search:focus-within { outline:2px solid #d3b583; outline-offset:3px; }
+.nooks-library .nooks-library-search input:focus-visible { outline:none!important; }

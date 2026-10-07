@@ -1,3 +1,6 @@
+import { requestProfileLink, claimProfileLink, clearProfileLink } from './onboarding/profileLink';
+import { WelcomeJourney, TourReplayButton, type TourPage } from './onboarding/WelcomeJourney';
+import { LibraryInvitation } from './organization/LibrarySharing';
 import { currentInvitation } from './community/inviteLinks';
 import { SpotifyCard } from './world/SpotifyCard';
 import { useEffect, useRef, useState } from 'react';
@@ -10,7 +13,7 @@ import { Headphones, Music2, Eye, EyeOff, Compass, MessageCircle, SlidersHorizon
 import { StudyDrawing } from './world/StudyDrawing';
 import AboutNook from './world/AboutNotable';
 import { RoomHome } from './world/RoomHome';
-import { WorkspaceLayoutProvider, LayoutControls, MovableWidget } from './world/WorkspaceLayout';
+import { WorkspaceLayoutProvider, LayoutControls } from './world/WorkspaceLayout';
 import { StudyFocusDock } from './world/StudyFocusDock';
 import { useHostLayout } from './world/useHostLayout';
 import { buildChatContextPrompt } from './study/chatContext';
@@ -107,6 +110,11 @@ function WorkspaceApp(){
  const studioNavigationVersion=useRef(0);
  const [reportedStudioDraftId,setReportedStudioDraftId]=useState<string|undefined>();
  const [profile,setProfile]=useState<NookProfile>(()=>readNookProfile(localScope)??{name:'friend',avatar:0});
+ const [welcome,setWelcome]=useState<'first'|'replay'|null>(null);
+ const restartWelcome=useRef(new URLSearchParams(window.location.search).get('onboarding'));
+ const restartWelcomeStarted=useRef(false);
+ const profileLinkAttempt=useRef(false);
+ const tourReturn=useRef<{page:Page;active:Artifact|null}|null>(null);
  const [profileReady,setProfileReady]=useState(()=>readNookProfile(localScope)!==null);
  const [nookDrafts,setNookDrafts]=useState<NookDraft[]>(()=>readNookDrafts(localScope));
  const [activeDraftId,setActiveDraftId]=useState(()=>readLocalWorkspaceState(localScope,'active-draft')||'');
@@ -272,7 +280,7 @@ function WorkspaceApp(){
    if(scope&&progressOwner.current!=='host'&&progressOwner.current!==scope)throw new Error('This Nooks view belongs to another account. Your pending work is preserved in its original account.');
    if(scope&&progressOwner.current!==scope){
     setNativeRecoveryScope(scope);setVerifiedRecoveryScope(scope);setRecoverableDrafts(listRecoverableNotes(scope));
-    const savedProfile=readNookProfile(scope);setProfile(savedProfile??{name:'friend',avatar:0});setProfileReady(savedProfile!==null);setNookDrafts(readNookDrafts(scope));setActiveDraftId(readLocalWorkspaceState(scope,'active-draft')||'');
+    const savedProfile=readNookProfile(scope)??(raw.workspace?.onboarding?.version===1?{name:raw.workspace.onboarding.name,avatar:raw.workspace.onboarding.avatar}:null);setProfile(savedProfile??{name:'friend',avatar:0});setProfileReady(savedProfile!==null);setNookDrafts(readNookDrafts(scope));setActiveDraftId(readLocalWorkspaceState(scope,'active-draft')||'');
     const retained=createPendingStudyStore(scope,'results');progressRecoveryRef.current=retained;setProgressRecovery(retained);progressOwner.current=scope;
     pendingProgress.current=new Map(retained.entries().flatMap(([id,value])=>isPendingProgress(value)?[[id,value] as [string,ProgressEvent]]:[]));
     progressConflicts.current.clear();setProgressConflictCount(0);
@@ -445,7 +453,7 @@ function WorkspaceApp(){
  }
  // Explicit replay is a temporary overlay. Active material, unsaved writing,
  // hidden drafts, focus timers and autosave stay mounted and continue normally.
- // Automatic onboarding remains disabled; never infer first visits from these guards.
+ // The opening film remains replay-only. The welcome journey has a separate per-account completion record.
  const openingOwnerReady=!!localScope&&localScope===progressOwner.current&&(isPublicPreview
   ? account.status==='device'||account.status==='signed-out'&&account.workspaceKey==='device'||account.status==='signed-in'
   : !!readNativeRecoveryScope(localScope));
@@ -454,6 +462,29 @@ function WorkspaceApp(){
   &&!showFocus&&!showSounds&&!showCollection&&!showToday&&!showNooks&&!showPeople&&!showPersonalize&&!showSettings
   &&!showAccount&&!showShare&&!showCreate&&!showNookCreator&&!showIdentity&&!mobileNav&&!portal&&!celebration
   &&!pendingJoin&&!handoff;
+ useEffect(()=>{
+  if(!isPublicPreview||!workspaceReady||account.status!=='signed-in'||profileLinkAttempt.current)return;
+  if(isLive&&!live.enabled)return;const next=claimProfileLink(account.workspaceKey);if(!next)return;profileLinkAttempt.current=true;
+  void (async()=>{try{if(live.enabled)await live.updateProfile(next.name,next.avatar);await perform('onboarding_complete',next);saveNookProfile(next);writeLocalWorkspaceState(localScope,'onboarding','complete');clearProfileLink();setWelcome(null);}catch(e){notify(e instanceof Error?e.message:'Your profile could not be linked.');}})();
+ },[workspaceReady,account.status,account.workspaceKey,live.enabled,isLive]);
+ useEffect(()=>{
+  if(!openingWorkspaceReady||active||noteDirty||!localScope||welcome)return;
+  if(restartWelcome.current&&!restartWelcomeStarted.current){restartWelcomeStarted.current=true;interruptOpening();setWelcome('first');return;}
+  if(workspace.onboarding?.version===1||readLocalWorkspaceState(localScope,'onboarding')==='complete')return;
+  interruptOpening();setWelcome('first');
+ },[openingWorkspaceReady,active,noteDirty,localScope,workspace.onboarding,welcome]);
+ function navigateTour(next:TourPage){openUtility(null,false);setFocusMode(false);setActive(null);setPage(next==='library'?'library':'home');if(next==='nooks')openUtility('explore',false);if(next==='people')openUtility('people',false);}
+ function replayTour(){if(noteDirty||showCreate||showNookCreator||showAccount){notify('Close your current editor or popup before taking the tour.');return;}interruptOpening();tourReturn.current={page,active};setWelcome('replay');}
+ async function finishWelcome(next:NookProfile){
+  if(welcome==='first'){
+   if(live.enabled)await live.updateProfile(next.name,next.avatar);
+   await perform('onboarding_complete',next);
+   saveNookProfile(next);writeLocalWorkspaceState(localScope,'onboarding','complete');
+  }
+  openUtility(null,false);setWelcome(null);
+  if(restartWelcome.current){const url=new URL(window.location.href);url.searchParams.delete('onboarding');window.history.replaceState(null,'',url);}
+  if(tourReturn.current){setPage(tourReturn.current.page);setActive(tourReturn.current.active);tourReturn.current=null;}else{setPage('home');setActive(null);}
+ }
  const openingFilm=useOpeningFilm({scopeKey:localScope,version:'journey-v3',eligible:false,safeToOpen:openingWorkspaceReady&&!showAbout});
  dismissOpening.current=openingFilm.dismiss;
  function canReplayOpeningNow(){
@@ -488,8 +519,8 @@ function WorkspaceApp(){
   <main className="main world-main">
    <header className="nooks-shell-header">
     <button className="nooks-shell-brand" onClick={()=>changePage('home')} aria-label="Nooks Study"><img src="/images/nook-cat-logo.webp" alt=""/><img src="/images/nooks-wordmark.png" alt="Nooks"/></button>
-    <nav className="nooks-shell-nav" aria-label="Workspace navigation">{navigation.map(item=><button key={item.id} aria-current={(item.id==='explore'?showNooks:!showNooks&&page===item.id)?'page':undefined} onClick={()=>{if(item.id==='explore')openUtility('explore');else{setShowNooks(false);changePage(item.id);}}}>{item.label}{item.id==='home'&&active&&<i aria-label="Work in progress"/>}</button>)}</nav>
-    <div className="nooks-shell-actions"><MovableWidget id="people" label="Study together" className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></MovableWidget>{!isEmbedded&&isPublicPreview?<AccountButton compact onClick={()=>setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
+    <nav className="nooks-shell-nav" aria-label="Workspace navigation">{navigation.map(item=><button key={item.id} data-nooks-tab={item.id==='explore'?'':undefined} aria-current={(item.id==='explore'?showNooks:!showNooks&&page===item.id)?'page':undefined} onClick={()=>{if(item.id==='explore')openUtility('explore');else{setShowNooks(false);changePage(item.id);}}}>{item.label}</button>)}</nav>
+    <div className="nooks-shell-actions"><TourReplayButton onClick={replayTour}/><div className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></div>{!isEmbedded&&isPublicPreview?<AccountButton compact avatar={profileReady?profile.avatar:undefined} onClick={()=>setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
    </header>
    <div className="nooks-utility-bar">
 
@@ -521,8 +552,9 @@ function WorkspaceApp(){
   {studioLifetime.current.mounted&&<NookStudio key={draftOwner} open={showNookCreator} initialDraftId={studioDraftId} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}
   {celebration&&<RewardCelebration rewards={celebration.rewards} roomLabel={getRoomRewards(celebration.roomId).label} onClose={()=>setCelebration(null)} onPlace={async rewardId=>{await perform('room_reward_place',{roomId:celebration.roomId,rewardId,placed:true});}}/>}
   {portal&&<NookPortal title={portal.title} image={portal.image}/>}
-  {showAccount&&<AccountDialog onClose={()=>setShowAccount(false)} onBeforeAccountChange={()=>{if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}return canNavigate();}}/> }
+  {showAccount&&<AccountDialog onClose={()=>{setShowAccount(false);if(account.status!=='signed-in')clearProfileLink();}} onBeforeAccountChange={()=>{if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}return canNavigate();}}/> }
   {showAbout&&<AboutNook onClose={()=>setShowAbout(false)} onWatchOpening={canReplayOpeningNow()?requestOpeningReplay:undefined}/>}
+  {welcome&&localScope&&<WelcomeJourney key={`${localScope}:${welcome}`} scope={restartWelcome.current?`${localScope}:welcome-restart:${restartWelcome.current}`:localScope} initialProfile={profile} replay={welcome==='replay'} onNavigate={navigateTour} onFinish={finishWelcome} connected={live.enabled} onConnect={isPublicPreview&&account.status!=='signed-in'?async next=>{await finishWelcome(next);requestProfileLink(next,localScope);setShowAccount(true);}:undefined} onProfile={next=>{setProfile(next);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));}}/>}
   <OpeningFilm open={openingFilm.open} presentationId={openingFilm.presentationId} videoSrc="/media/opening-film/nooks-opening-v3.mp4" posterSrc="/media/opening-film/nooks-opening-poster-v2.jpg" endCardMode="baked-in" onDismiss={openingFilm.dismiss}/>
   {secret&&<button className="secret-room-return" onClick={()=>setSecretRoom(null)}>← Return to {roomScene.title}<span>Progress stays in this nook</span></button>}
   <EarnedSoundtrack track={earnedTrack} onClose={()=>setEarnedTrack(null)}/>
@@ -539,7 +571,7 @@ function WorkspaceApp(){
  </div></WorkspaceLayoutProvider></DraftRecoveryScope>;
 }
 
-export default function App(){const account=useNooksAccount(!isEmbedded&&isPublicPreview);if(isPublicPreview&&account.status==='loading')return <div className="loading-space"><p>Opening Nooks…</p></div>;const sharedId=new URLSearchParams(window.location.search).get('share');return sharedId&&!isPublicPreview?<SharedRoute id={sharedId}/>:<WorkspaceApp key={isPublicPreview?account.workspaceKey:'host'}/>;}
+export default function App(){const account=useNooksAccount(!isEmbedded&&isPublicPreview);if(isPublicPreview&&account.status==='loading')return <div className="loading-space"><p>Opening Nooks…</p></div>;const sharedId=new URLSearchParams(window.location.search).get('share');return sharedId&&!isPublicPreview?<SharedRoute id={sharedId}/>:<><WorkspaceApp key={isPublicPreview?account.workspaceKey:'host'}/><LibraryInvitation/></>;}
 function SharedRoute({id}:{id:string}){const [share,setShare]=useState<SharedSpace|null>(null);const [failed,setFailed]=useState(false);useEffect(()=>{let alive=true;fetch(`/api/shared/${encodeURIComponent(id)}`).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(alive)setShare(data.share||data);}).catch(()=>{if(alive)setFailed(true);});return()=>{alive=false;};},[id]);if(failed)return <div className="loading-space"><Leaf size={40}/><h2>This space is taking a little break.</h2><p>The link may have been unpublished.</p><a className="button primary" href="/">Open my workspace</a></div>;if(!share)return <div className="loading-space"><Sprout size={40}/><h2>Opening a little inspiration…</h2></div>;return <SharedSpaceView share={share} onOpenWorkspace={()=>{window.location.href=`/?template=${encodeURIComponent(id)}`;}}/>;}
 
 function CloudRainIcon(){return <Headphones size={13}/>;}
