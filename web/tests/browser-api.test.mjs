@@ -116,3 +116,17 @@ test('sharing routes require authentication and bind actor before RPC',async()=>
  const forged=await invoke(b.handler,'/api/tools/library_share_get',{method:'POST',token:'alice',body:{shareId:BOB,accountId:BOB}});assert.equal(forged.status,400);
  b.setLimited(true);const limited=await invoke(b.handler,'/api/tools/library_share_list',{method:'POST',token:'alice',body:{}});assert.equal(limited.status,429);
 });
+
+test('onboarding profile and completion are bound to the authenticated account',async()=>{
+ const api=backend();
+ assert.equal((await invoke(api.handler,'/api/tools/onboarding_complete',{method:'POST',body:{name:'Sam',avatar:1}})).status,401);
+ const saved=await invoke(api.handler,'/api/tools/onboarding_complete',{method:'POST',token:'alice',body:{name:'  Sam  ',avatar:1}});
+ assert.equal(saved.status,200);
+ const alice=await invoke(api.handler,'/api/workspace',{token:'alice'});
+ assert.equal(alice.body.workspace.onboarding.name,'Sam');
+ assert.equal(alice.body.workspace.onboarding.avatar,1);
+ assert.equal(alice.body.workspace.onboarding.version,1);
+ assert.equal((await invoke(api.handler,'/api/workspace',{token:'bob'})).body.workspace.onboarding,undefined);
+ for(const body of [{name:'Sam',avatar:8},{name:' ',avatar:0},{name:'Sam',avatar:0,accountId:BOB}])assert.equal((await invoke(api.handler,'/api/tools/onboarding_complete',{method:'POST',token:'alice',body})).status,400);
+ assert.equal(api.records.get(ALICE).workspace.onboarding.avatar,1);
+});

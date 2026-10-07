@@ -1,6 +1,6 @@
 type LocalStorage = Pick<Storage, 'getItem' | 'setItem'>;
-type LocalField = 'profile' | 'drafts' | 'active-draft' | 'last-opened';
-const legacy: Record<LocalField, string> = { profile: 'nooks:profile:v1', drafts: 'nooks:drafts:v1', 'active-draft': 'nooks:active-draft:v1', 'last-opened': 'notable-last-opened' };
+type LocalField = 'onboarding' | 'profile' | 'drafts' | 'active-draft' | 'last-opened';
+const legacy: Record<LocalField, string> = { onboarding:'nooks:onboarding:v1', profile: 'nooks:profile:v1', drafts: 'nooks:drafts:v1', 'active-draft': 'nooks:active-draft:v1', 'last-opened': 'notable-last-opened' };
 const validScope = (scope?: string) => scope === 'device' || /^account:[A-Za-z0-9_-]{1,128}$/.test(scope ?? '');
 function browserStorage() { try { return localStorage; } catch { return undefined; } }
 

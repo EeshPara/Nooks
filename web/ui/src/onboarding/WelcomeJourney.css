@@ -1,0 +1,63 @@
+.nooks-welcome-screen{position:fixed;inset:0;z-index:260;overflow:auto;display:grid;place-items:center;background:#fff;color:#171716;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:40px 24px;box-sizing:border-box}
+.nooks-welcome-content{width:min(800px,100%);text-align:center;animation:welcome-arrive .4s ease both}
+.welcome-kicker{font-size:clamp(16px,1.65vw,23px);font-weight:400;margin:0 0 34px;line-height:1.5}
+.nooks-welcome-content h1{font-size:clamp(36px,4.4vw,64px);line-height:1.15;letter-spacing:-2.1px;font-weight:650;margin:0 0 20px;overflow-wrap:anywhere}
+.welcome-subtitle{color:#797976;font-size:clamp(17px,1.7vw,23px);line-height:1.45;margin:0 auto;max-width:630px}
+.welcome-name-form{max-width:570px;margin:80px auto 0;display:grid;gap:20px;justify-items:center}
+.welcome-name-form input{box-sizing:border-box;width:100%;padding:23px 28px;border:1px solid transparent;border-radius:999px;background:#ececea;color:#343430;font:400 21px/1.5 inherit;font-family:inherit;font-size:21px;outline-offset:4px}
+.welcome-name-form input::placeholder{color:#7d7d79}
+.nooks-welcome-content button,.nooks-tour-card button{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;border:1px solid #e4dfd5;background:#fff;color:#6c6459;padding:12px 20px;font:500 13px/1.4 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;cursor:pointer;transition:background .18s,transform .18s}
+.nooks-welcome-content button:hover,.nooks-tour-card button:hover{background:#f2eee7}
+.nooks-welcome-content button:disabled,.nooks-tour-card button:disabled{opacity:.4;cursor:default}
+.nooks-welcome-content .welcome-primary,.nooks-tour-card .welcome-primary{background:#72624e;border-color:#72624e;color:#fffaf2}
+.nooks-welcome-content .welcome-primary:hover,.nooks-tour-card .welcome-primary:hover{background:#5d4d3a}
+.welcome-avatars{display:grid;grid-template-columns:repeat(4,100px);justify-content:center;gap:25px 35px;margin:55px auto 35px}
+.welcome-avatars button{position:relative;padding:4px;width:100px;height:100px;border-radius:50%;border:2px solid transparent;background:transparent}
+.welcome-avatars button[aria-pressed=true]{border-color:#9f8c71;background:#f8f4ec}
+.welcome-avatar-check{position:absolute;right:-1px;bottom:0;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#78684f;color:white;border:3px solid #fff}
+.welcome-actions{display:flex;justify-content:center;gap:14px}
+.nooks-welcome-content .welcome-envelope{border:0;background:transparent;padding:0;width:min(330px,70vw);margin:65px auto 12px;display:block;animation:welcome-bob 3.5s ease-in-out infinite;filter:drop-shadow(0 14px 10px #67533812)}
+.welcome-envelope svg{display:block;width:100%;height:auto}
+.welcome-envelope-hint{font-size:13px;color:#948b7d;margin-bottom:22px}
+.nooks-welcome-content .welcome-back{border:0;padding:5px 16px}
+.nooks-welcome-screen.is-letter{background:#f2f1ef;padding:60px 24px}
+.welcome-open-envelope{position:relative;padding-bottom:80px;margin:35px auto;max-width:680px;isolation:isolate}
+.welcome-open-envelope:before{content:'';position:absolute;inset:-40px -60px 0;z-index:-2;background:#c9c4bc;clip-path:polygon(0 45%,50% 0,100% 45%,100% 100%,0 100%)}
+.welcome-open-envelope:after{content:'';position:absolute;inset:55% -60px -25px;z-index:1;background:#dedad3;clip-path:polygon(0 0,50% 90%,100% 0,100% 100%,0 100%);pointer-events:none}
+.welcome-letter{position:relative;padding:45px 50px 65px;background:white;text-align:left;box-shadow:0 6px 35px #5c4c3510;animation:welcome-letter .55s ease both}
+.welcome-letter .welcome-kicker{font-size:10px;letter-spacing:1.5px;color:#93816a;margin-bottom:20px}
+.welcome-letter h1{font-size:35px;letter-spacing:-1px;margin-bottom:25px}
+.welcome-letter>p{font-size:16px;line-height:1.85;color:#676057;margin:0 0 18px}
+.welcome-letter strong{font-weight:500;color:#524739}
+.welcome-letter .welcome-primary{margin-top:8px;position:relative;z-index:2}
+.nooks-tour-info{width:33px;height:33px;min-width:33px;display:grid;place-items:center;border:1px solid #fff5;border-radius:50%;background:#201e1977;color:#fff3df;padding:0;cursor:pointer}
+.nooks-tour-info svg{width:17px;height:17px}
+.nooks-tour-overlay{position:fixed;inset:0;z-index:260;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.nooks-tour-spotlight{position:fixed;border-radius:18px;box-shadow:0 0 0 9999px #10120fe0;outline:2px solid #eed9b4;pointer-events:none;transition:top .18s,left .18s,width .18s,height .18s}
+.nooks-tour-shade{position:absolute;inset:0;background:#10120fbf}
+.nooks-tour-card{position:fixed;box-sizing:border-box;max-height:calc(100dvh - 32px);overflow:auto;background:#fcfaf5;color:#4d4439;border:1px solid #eee1cd;border-radius:22px;padding:23px;box-shadow:0 12px 45px #0004}
+.nooks-tour-card header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}
+.nooks-tour-card header>span{font-size:9px;letter-spacing:.8px;color:#93816c}
+.nooks-tour-card h2{font-size:22px;line-height:1.25;letter-spacing:-.6px;margin:0 0 13px;font-weight:600}
+.nooks-tour-card p{font-size:13px;line-height:1.75;color:#807566;margin:0 0 20px}
+.nooks-tour-card footer{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:18px}
+.nooks-tour-card .welcome-close{padding:0;width:30px;height:30px;border-radius:50%;border:0;background:#ede7dc;flex-shrink:0}
+.nooks-tour-card .welcome-connect{width:100%;background:#efe7da;margin-bottom:5px}
+.welcome-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.welcome-error{color:#9b4b38!important}
+@keyframes welcome-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes welcome-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes welcome-letter{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.nooks-welcome-screen{padding:35px 20px}.welcome-kicker{margin-bottom:23px}.nooks-welcome-content h1{letter-spacing:-1px}.welcome-name-form{margin-top:50px}.welcome-avatars{grid-template-columns:repeat(4,68px);gap:19px 10px;margin-top:35px}.welcome-avatars button{width:68px;height:68px}.welcome-avatars .nooks-member-avatar{width:56px!important;height:56px!important}.welcome-letter{padding:28px 25px 42px}.welcome-letter>p{font-size:14px}.welcome-open-envelope:before,.welcome-open-envelope:after{left:-12px;right:-12px}.welcome-letter h1{font-size:28px}.nooks-welcome-screen.is-letter{padding:30px 20px}.welcome-envelope{margin-top:40px!important}}
+@media(prefers-reduced-motion:reduce){.nooks-welcome-content,.welcome-letter,.nooks-welcome-content .welcome-envelope{animation:none}.nooks-tour-spotlight{transition:none}}
+
+.welcome-nook-cutout{position:fixed;left:0;right:0;bottom:0;height:50dvh;background:url('/images/lofi-rainy-library.webp') center 65%/cover;filter:grayscale(1) contrast(.78) brightness(1.45);opacity:.26;mask-image:linear-gradient(transparent 0%,#0005 20%,#000 55%);-webkit-mask-image:linear-gradient(transparent 0%,#0005 20%,#000 55%);pointer-events:none}
+.welcome-nook-cutout:after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.5' d='M0 0h180v180H0z'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.65}
+.nooks-welcome-content{position:relative;z-index:1}
+.nooks-tour-info>span{font:500 18px/1 Georgia,serif}
+
+.welcome-letter{z-index:2}
+.welcome-open-envelope:before{z-index:0}
+.welcome-open-envelope:after{z-index:1;top:82%}
+.nooks-welcome-screen .welcome-name-form input:focus-visible{outline:2px solid #bca687;border-color:transparent;box-shadow:none}
+.nooks-welcome-screen .welcome-kicker{color:#252520}

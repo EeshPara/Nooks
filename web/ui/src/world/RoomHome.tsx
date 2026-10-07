@@ -106,7 +106,7 @@ export function RoomHome(p: Props) {
    {!p.nativeChat && chatError && <p className="study-home-chat-error" role="alert">{chatError}</p>}
    {p.nativeChat && <p className="study-home-native-invitation">Ask ChatGPT, or choose something to study.</p>}
    <div className="study-home-quick-actions" aria-label="Create study material">
-    {([['note','Notes'],['flashcards','Flashcards'],['quiz','Quiz']] as const).map(([kind,label]) => <button key={kind} onClick={() => p.onCreateKind ? p.onCreateKind(kind,p.nativeChat ? '' : prompt) : p.onCreate()}>{label}<ArrowRight size={12} aria-hidden="true"/></button>)}
+    {([['note','Notes'],['flashcards','Flashcards'],['quiz','Quiz'],['exam','Test']] as const).map(([kind,label]) => <button key={kind} onClick={() => p.onCreateKind ? p.onCreateKind(kind,p.nativeChat ? '' : prompt) : p.onCreate()}>{label}<ArrowRight size={12} aria-hidden="true"/></button>)}
    </div>
    {continuing && <button className="study-home-resume-link" onClick={() => p.onOpen(continuing)} title={continuing.title}><span>Pick up where you left off</span><strong>{continuing.title || 'Untitled note'}</strong><ArrowRight size={13} aria-hidden="true"/></button>}
   </div></div>
