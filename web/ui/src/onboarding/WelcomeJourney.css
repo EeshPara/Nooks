@@ -135,3 +135,9 @@
 /* A separate grain layer stays visible above the softly faded nook image. */
 .nooks-welcome-screen::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath d='M0 0h160v160H0z' filter='url(%23grain)'/%3E%3C/svg%3E");opacity:.13;mix-blend-mode:multiply}
 .welcome-nook-cutout:after{opacity:.9}
+
+/* Printed backdrop: a fine halftone screen over the existing paper grain. */
+.nooks-welcome-screen::after{content:'';position:fixed;left:0;right:0;bottom:0;height:50dvh;z-index:0;pointer-events:none;background-image:radial-gradient(circle,#49443c 0 .7px,transparent .9px);background-size:3px 3px;opacity:.24;mix-blend-mode:multiply;mask-image:linear-gradient(transparent,#000 38%);-webkit-mask-image:linear-gradient(transparent,#000 38%)}
+.welcome-nook-cutout{filter:grayscale(1) contrast(1.05) brightness(1.4)}
+/* The message is printed on the sheet, with the folded pocket concealing it. */
+.mail-sheet .welcome-letter{opacity:1;transition:none}
