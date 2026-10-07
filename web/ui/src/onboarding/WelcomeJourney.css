@@ -149,4 +149,4 @@
 .welcome-mail-intro{transition:opacity .45s,height 1.4s cubic-bezier(.25,.65,.3,1)}
 @media(prefers-reduced-motion:reduce){.welcome-mail-stage,.mail-flap,.mail-sheet,.welcome-mail-intro{transition:none}}
 
-.welcome-name-form>.welcome-primary{margin-top:8px}
+.welcome-name-form>.welcome-primary{margin-top:20px}
