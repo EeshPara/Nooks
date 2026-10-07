@@ -38,7 +38,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  const stop=tourStops[step];
  async function finish(){if(busy)return;setBusy(true);setError('');try{await callbacks.current.onFinish({name:name.trim()||initialProfile.name,avatar});}catch(e){setError(e instanceof Error?e.message:'Please try again.');}finally{setBusy(false);}}
  useModalFocus(panel,()=>{if(tour&&!busy)void finish();});
- useEffect(()=>{if(!tour)return;const dissolve=['people','library','nooks'].includes(stop.page);let navigateTimer=0,clearTimer=0;if(dissolve){document.body.classList.add('nooks-tour-dissolving');navigateTimer=window.setTimeout(()=>{callbacks.current.onNavigate(stop.page);clearTimer=window.setTimeout(()=>{document.body.classList.remove('nooks-tour-dissolving');window.dispatchEvent(new Event('resize'));},180);},180);}else callbacks.current.onNavigate(stop.page);return()=>{window.clearTimeout(navigateTimer);window.clearTimeout(clearTimer);document.body.classList.remove('nooks-tour-dissolving');};},[tour,step]);
+ useEffect(()=>{if(!tour)return;callbacks.current.onNavigate(stop.page);const selector=stop.page==='people'?'.nooks-community,.nooks-live':stop.page==='library'?'.nooks-library':stop.page==='nooks'?'.nd-dialog':null;if(!selector)return;let frame=0,attempts=0,target:Element|null=null;const arrive=()=>{target=document.querySelector(selector);if(target){target.classList.add('nooks-tour-local-arrival');window.dispatchEvent(new Event('resize'));}else if(attempts++<20)frame=requestAnimationFrame(arrive);};frame=requestAnimationFrame(arrive);return()=>{cancelAnimationFrame(frame);target?.classList.remove('nooks-tour-local-arrival');};},[tour,step]);
  useEffect(()=>{if(phase==='letter'&&!tour){panel.current?.querySelector<HTMLElement>('#welcome-letter-heading')?.focus({preventScroll:true});return;}panel.current?.querySelector<HTMLElement>('input,button:not([disabled])')?.focus();},[phase,tour,step]);
  useLayoutEffect(()=>{
   if(!tour)return;let frame=0,count=0;let element:Element|null=null;
@@ -57,7 +57,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  function begin(){callbacks.current.onProfile({name:name.trim(),avatar});setTour(true);}
  return createPortal(tour?<div className="nooks-tour-overlay">
   {rect&&<div className="nooks-tour-background-blur" style={{clipPath:`polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,${rect.left}px ${rect.top}px,${rect.left}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top}px,${rect.left}px ${rect.top}px)`}}/>}
-  {rect?<div className="nooks-tour-spotlight" style={rect}/>:<div className="nooks-tour-shade"/>}
+  {rect?<div key={step} className="nooks-tour-spotlight" style={rect}/>:<div className="nooks-tour-shade"/>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="true" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
    <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span></header>
    <h2 id="nooks-tour-heading">{stop.title}</h2><p>{stop.text}</p>
