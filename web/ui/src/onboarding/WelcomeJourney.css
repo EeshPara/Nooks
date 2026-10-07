@@ -141,3 +141,10 @@
 .welcome-nook-cutout{filter:grayscale(1) contrast(1.05) brightness(1.4)}
 /* The message is printed on the sheet, with the folded pocket concealing it. */
 .mail-sheet .welcome-letter{opacity:1;transition:none}
+
+/* Open together in one short motion, without staged pauses. */
+.welcome-mail-stage{transition:width .75s cubic-bezier(.22,1,.36,1),height .75s cubic-bezier(.22,1,.36,1)}
+.mail-flap{transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.mail-sheet{transition:top .75s cubic-bezier(.22,1,.36,1),height .75s cubic-bezier(.22,1,.36,1)}
+.welcome-mail-intro{transition:opacity .2s,height .75s cubic-bezier(.22,1,.36,1)}
+@media(prefers-reduced-motion:reduce){.welcome-mail-stage,.mail-flap,.mail-sheet,.welcome-mail-intro{transition:none}}

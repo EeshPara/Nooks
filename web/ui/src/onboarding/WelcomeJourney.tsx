@@ -55,7 +55,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  const beside=rect&&!below&&rect.left+rect.width+cardWidth+32<viewport.width;
  const left=rect?Math.max(16,Math.min(beside?rect.left+rect.width+16:rect.left,viewport.width-cardWidth-16)):(viewport.width-cardWidth)/2;
  const top=rect&&below?rect.top+rect.height+16:rect&&beside?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&rect.top>320?rect.top-310:Math.max(16,viewport.height-320);
- useEffect(()=>{if(!opening)return;const timer=window.setTimeout(()=>{setPhase('letter');setOpening(false);},window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:3800);return()=>window.clearTimeout(timer);},[opening,setPhase]);
+ useEffect(()=>{if(!opening)return;const timer=window.setTimeout(()=>{setPhase('letter');setOpening(false);},window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:850);return()=>window.clearTimeout(timer);},[opening,setPhase]);
  function begin(){callbacks.current.onProfile({name:name.trim(),avatar});setTour(true);}
  return createPortal(tour?<div className="nooks-tour-overlay">
   {rect?<><div className="nooks-tour-spotlight" style={rect}/>{targetRects.length>1&&targetRects.map((target,index)=><div key={index} className="nooks-tour-target-outline" style={target}/>)}</>:<div className="nooks-tour-shade"/>}
