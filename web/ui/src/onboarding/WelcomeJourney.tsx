@@ -9,6 +9,14 @@ import { useCrashDraft } from '../WorkspaceErrorBoundary';
 import { useModalFocus } from '../personalization/PersonalizePanel';
 import './WelcomeJourney.css';
 
+
+/** Round each corner of a closed polygon, including the inner corner of the reward L. */
+function roundedSpotlight(points:[number,number][],radius:number){
+ if(points.length<3)return '';
+ const corners=points.map((point,i)=>{const before=points[(i+points.length-1)%points.length],after=points[(i+1)%points.length];const incoming=Math.hypot(before[0]-point[0],before[1]-point[1]),outgoing=Math.hypot(after[0]-point[0],after[1]-point[1]);const r=Math.min(radius,incoming/2,outgoing/2);return {point,start:[point[0]+(before[0]-point[0])*r/incoming,point[1]+(before[1]-point[1])*r/incoming],end:[point[0]+(after[0]-point[0])*r/outgoing,point[1]+(after[1]-point[1])*r/outgoing]};});
+ return `M${corners[0].start.join(' ')}${corners.map(c=>`L${c.start.join(' ')}Q${c.point.join(' ')} ${c.end.join(' ')}`).join('')}Z`;
+}
+
 export const tourStops = [
  {target:'.study-home-timer',page:'study',title:'Make a little time for focus.',text:'Your focus timer follows the Pomodoro rhythm: a focused stretch, then a well-earned break. Choose a duration, press Start, and build your day one session at a time.'},
  {target:'.study-home-tasks',page:'study',title:'One thing at a time.',text:'Keep a to-do list beside your timer. Add the things on your mind, then check them off as you go.'},
@@ -36,6 +44,7 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
  const [tipHidden,setTipHidden]=useState(false);
  const [tour,setTour]=useState(replay),[step,setStep]=useState(0),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const panel=useRef<HTMLDivElement>(null), callbacks=useRef({onNavigate,onFinish,onProfile});callbacks.current={onNavigate,onFinish,onProfile};
+ const [cornerRadius,setCornerRadius]=useState(24);
  const [rect,setRect]=useState<{left:number;top:number;width:number;height:number}|null>(null);
  const [points,setPoints]=useState<[number,number][]>([]),[holes,setHoles]=useState<{left:number;top:number;width:number;height:number}[]>([]);
  const [viewport,setViewport]=useState({width:window.innerWidth,height:window.innerHeight});
@@ -49,6 +58,7 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
   const measure=()=>{const elements=[...document.querySelectorAll(stop.target)];element=elements[0]??null;let bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);if(bounds.length&&count===0){const upper=Math.min(...bounds.map(r=>r.top)),lower=Math.max(...bounds.map(r=>r.bottom));if(lower-upper<window.innerHeight-32){const delta=upper<16?upper-16:lower>window.innerHeight-16?lower-window.innerHeight+16:0;if(delta)window.scrollBy({top:delta,behavior:'instant'});}else element?.scrollIntoView({block:'center',behavior:'instant'});bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);}
    const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
    let shape:[number,number][]=[];
+   if(element){const radius=parseFloat(getComputedStyle(element).borderTopLeftRadius);setCornerRadius(radius>0?radius+7:24);}
    if(bounds.length){const left=Math.min(...bounds.map(r=>r.left))-7,top=Math.min(...bounds.map(r=>r.top))-7,right=Math.max(...bounds.map(r=>r.right))+7,bottom=Math.max(...bounds.map(r=>r.bottom))+7;const next={left,top,width:right-left,height:bottom-top};setRect(old=>same(old,next)?old:next);
     const bar=elements.find(e=>e.matches('.collection-next-compact'))?.getBoundingClientRect(),track=elements.find(e=>e.matches('.collection-timeline-card'))?.getBoundingClientRect();
     shape=step===3&&bar&&track&&bar.top<track.top&&bar.left<track.left?[[left,top],[right,top],[right,bottom],[track.left-7,bottom],[track.left-7,bar.bottom+7],[left,bar.bottom+7]]:[[left,top],[right,top],[right,bottom],[left,bottom]];
@@ -74,11 +84,11 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
  const contains=(r:{left:number;top:number;width:number;height:number},p:[number,number])=>p[0]>=r.left&&p[0]<=r.left+r.width&&p[1]>=r.top&&p[1]<=r.top+r.height;
  const windows=holes.map(r=>[[r.left,r.top],[r.left+r.width,r.top],[r.left+r.width,r.top+r.height],[r.left,r.top+r.height]] as [number,number][]);
  if(points.length&&!holes.some(r=>points.every(p=>contains(r,p))))windows.push(points);
- const shadePath=`M0 0H${viewport.width}V${viewport.height}H0Z`+windows.map(p=>`M${p.map(v=>v.join(' ')).join('L')}Z`).join('');
+ const shadePath=`M0 0H${viewport.width}V${viewport.height}H0Z`+windows.map(p=>roundedSpotlight(p,cornerRadius)).join('');
  const cutout=`path(evenodd,"${shadePath}")`;
  return createPortal(tour&&!isTutorialPractice?<TutorialPractice error={error} workspace={workspace} profile={{name:name.trim()||initialProfile.name,avatar}} onFinish={()=>void finish()}/>:tour?<div className="nooks-tour-overlay">
   <div className="nooks-tour-interaction-shade" style={{clipPath:cutout}}/>
-  {points.length>0&&<svg className="nooks-tour-outline" width={viewport.width} height={viewport.height} aria-hidden="true"><path d={`M${points.map(p=>p.join(' ')).join('L')}Z`} fill="none" stroke="#eed9b4" strokeWidth="2" strokeLinejoin="round"/></svg>}
+  {points.length>0&&<svg className="nooks-tour-outline" width={viewport.width} height={viewport.height} aria-hidden="true"><path d={roundedSpotlight(points,cornerRadius)} fill="none" stroke="#eed9b4" strokeWidth="2" strokeLinejoin="round"/></svg>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="false" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
    <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span><button type="button" className="nooks-tour-tip-toggle" aria-expanded={!tipHidden} onClick={()=>setTipHidden(v=>!v)}>{tipHidden?'Show tip':'Hide tip'}</button></header>
    <h2 id="nooks-tour-heading">{stop.title}</h2>{!tipHidden&&<><p>{stop.text}</p><p className="nooks-tour-practice-hint">Try it out. Changes during this tour won’t be saved.</p></>}
