@@ -1,0 +1,460 @@
+[
+  {
+    "rank": 1,
+    "id": "rainy-library",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-847dc23a-9984-4961-8768-c61555e363f9.png",
+    "asset": "/images/nooks-50/rainy-library.webp",
+    "thumbnail": "/images/nooks-50/thumbs/rainy-library.webp",
+    "sha256": "35bd2a9a0af234ae6e59a576ce113d2900d8ecaee9f62c0a0589569edf83ccf1",
+    "bytes": 307782
+  },
+  {
+    "rank": 2,
+    "id": "howls-moving-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-cb39e669-3a94-42e7-bcd1-0851660c08fc.png",
+    "hint": "Generated images are saved to /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698 as /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-cb39e669-3a94-42e7-bcd1-0851660c08fc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "asset": "/images/nooks-50/howls-moving-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/howls-moving-study.webp",
+    "sha256": "44b17a12042c265521e2eb2757b3c9c37b37c73bd096b24a3335c5dfda5bf672",
+    "bytes": 324524
+  },
+  {
+    "rank": 3,
+    "id": "gryffindor-common-room",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-b513d771-1b68-4e85-a1a8-f5fe6c06fae8.png",
+    "hint": "Generated images are saved to /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698 as /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-b513d771-1b68-4e85-a1a8-f5fe6c06fae8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "asset": "/images/nooks-50/gryffindor-common-room.webp",
+    "thumbnail": "/images/nooks-50/thumbs/gryffindor-common-room.webp",
+    "sha256": "5b2b770aa5102faaa3c6cd9c6be30d0bca0948d2442aea0f012ecf97777fb64f",
+    "bytes": 290340
+  },
+  {
+    "rank": 4,
+    "id": "neon-tokyo",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-303c9dcb-d016-4401-8ed1-c9c873bc6a30.png",
+    "hint": "Generated images are saved to /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698 as /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-303c9dcb-d016-4401-8ed1-c9c873bc6a30.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "asset": "/images/nooks-50/neon-tokyo.webp",
+    "thumbnail": "/images/nooks-50/thumbs/neon-tokyo.webp",
+    "sha256": "4577e9bff147a4a429ada3ee8a33aee6a2118a808cbdadea5c672b4902629cef",
+    "bytes": 227876
+  },
+  {
+    "rank": 5,
+    "id": "alpine-cabin",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-595cf20c-9dff-4c9b-ab8f-81a1bd274303.png",
+    "hint": "Generated images are saved to /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698 as /Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-595cf20c-9dff-4c9b-ab8f-81a1bd274303.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "asset": "/images/nooks-50/alpine-cabin.webp",
+    "thumbnail": "/images/nooks-50/thumbs/alpine-cabin.webp",
+    "sha256": "4327f600d664a34ecf489636c18c6eeb8fd0d40f04187813012a1e2a941c284f",
+    "bytes": 322274
+  },
+  {
+    "rank": 6,
+    "id": "totoro-forest-window",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-154f350e-aed8-4190-bf2c-ffb506f6b5c3.png",
+    "asset": "/images/nooks-50/totoro-forest-window.webp",
+    "thumbnail": "/images/nooks-50/thumbs/totoro-forest-window.webp",
+    "sha256": "b279fe7d39aa10348774b9a74bdcaed267687e42c151911b88bb7f15953d6b25",
+    "bytes": 317606
+  },
+  {
+    "rank": 7,
+    "id": "slytherin-common-room",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-488eca82-e3c9-47cd-b34d-1b8de8a3be48.png",
+    "asset": "/images/nooks-50/slytherin-common-room.webp",
+    "thumbnail": "/images/nooks-50/thumbs/slytherin-common-room.webp",
+    "sha256": "cde2f47ab1601e2aa3661fe11fefadaea69b8817919032badf24eab30250086f",
+    "bytes": 299564
+  },
+  {
+    "rank": 8,
+    "id": "kikis-bakery-attic",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-b4dc49a4-a024-4b43-afac-165ff064ece7.png",
+    "asset": "/images/nooks-50/kikis-bakery-attic.webp",
+    "thumbnail": "/images/nooks-50/thumbs/kikis-bakery-attic.webp",
+    "sha256": "3a55fb7272ce00a3f19376219abfde7dc5dddaad163170413d8599262e2d086f",
+    "bytes": 259084
+  },
+  {
+    "rank": 9,
+    "id": "midnight-train",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-35575dd7-fd30-42cc-b14a-a935a852cc78.png",
+    "originalPath": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-cc60c074-4a8c-492e-97ac-fb9a2bf73ded.png",
+    "editPrompt": "Preserve this finished background exactly: composition, lighting, colors and every environmental detail. Remove only the tiny white lettering/signature-like mark near the bottom left corner, replacing it seamlessly with the existing surrounding scene texture. No text or signature anywhere. No other changes.",
+    "asset": "/images/nooks-50/midnight-train.webp",
+    "thumbnail": "/images/nooks-50/thumbs/midnight-train.webp",
+    "sha256": "e2b30eb970daab3c9f75426089b47ae56f06dd10de2f3a0f4fa68ec02e3df41e",
+    "bytes": 195460
+  },
+  {
+    "rank": 10,
+    "id": "hufflepuff-common-room",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-eb22765f-7bdd-4fbf-995f-a731ecb0a672.png",
+    "originalPath": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-e4384db7-8172-43d5-8ce2-661b2872670d.png",
+    "editPrompt": "Preserve this finished background exactly: composition, lighting, colors and every environmental detail. Remove only the tiny white lettering/signature-like mark near the bottom right corner, replacing it seamlessly with the existing surrounding scene texture. No text or signature anywhere. No other changes.",
+    "asset": "/images/nooks-50/hufflepuff-common-room.webp",
+    "thumbnail": "/images/nooks-50/thumbs/hufflepuff-common-room.webp",
+    "sha256": "e0db6c674a8dff229911f754cd2ca970d16c6319d56021a63938bd5b33e92d74",
+    "bytes": 335082
+  },
+  {
+    "rank": 11,
+    "id": "ravenclaw-tower",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-d299b470-e87f-4a33-b4a2-fa0fa3514e76.png",
+    "asset": "/images/nooks-50/ravenclaw-tower.webp",
+    "thumbnail": "/images/nooks-50/thumbs/ravenclaw-tower.webp",
+    "sha256": "5962f2f06e32a2cfaa5de5df4c27146125b4d742835cec904664e0742d1ce7a4",
+    "bytes": 298376
+  },
+  {
+    "rank": 12,
+    "id": "stardew-farmhouse",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-cb9e28da-5a4f-4713-8cea-f21537c067e4.png",
+    "asset": "/images/nooks-50/stardew-farmhouse.webp",
+    "thumbnail": "/images/nooks-50/thumbs/stardew-farmhouse.webp",
+    "sha256": "0c3aa332279dcb093eb9916fc842c728e70cd517eec5bdf74668bcc871cbdb18",
+    "bytes": 308072
+  },
+  {
+    "rank": 13,
+    "id": "spirited-bathhouse",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-97f6c832-ee96-4e38-a394-754d7f198d1e.png",
+    "asset": "/images/nooks-50/spirited-bathhouse.webp",
+    "thumbnail": "/images/nooks-50/thumbs/spirited-bathhouse.webp",
+    "sha256": "dd5e668ca93cfce3cd19c2b6fe1342372d689f08bb5bcbbf7348ae294ea23431",
+    "bytes": 187246
+  },
+  {
+    "rank": 14,
+    "id": "bookshop-cat",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-728fb4af-3669-4606-9383-bc67a0667082.png",
+    "asset": "/images/nooks-50/bookshop-cat.webp",
+    "thumbnail": "/images/nooks-50/thumbs/bookshop-cat.webp",
+    "sha256": "edc0a762aef628a14468cc4e4edcbed8ad695287296a2e5e922659d42c932b15",
+    "bytes": 333594
+  },
+  {
+    "rank": 15,
+    "id": "sunlit-greenhouse",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-fb51ffba-c26c-48ed-98d7-381f31095f8f.png",
+    "asset": "/images/nooks-50/sunlit-greenhouse.webp",
+    "thumbnail": "/images/nooks-50/thumbs/sunlit-greenhouse.webp",
+    "sha256": "73b06ad066e287475fbffbbab4b49569d26b26d56124f9f7b722c0c173aed73b",
+    "bytes": 474014
+  },
+  {
+    "rank": 16,
+    "id": "dragon-hatchery",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-ed252d35-71b2-43f7-9192-bbdb5d87ea29.png",
+    "asset": "/images/nooks-50/dragon-hatchery.webp",
+    "thumbnail": "/images/nooks-50/thumbs/dragon-hatchery.webp",
+    "sha256": "d2c610058fa102241c9de54dfcff7840c2c03bca2559ceec11723b9b04a8eb53",
+    "bytes": 289606
+  },
+  {
+    "rank": 17,
+    "id": "velaris-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-5afca4bc-0ed8-44ff-97d7-f403082d1788.png",
+    "asset": "/images/nooks-50/velaris-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/velaris-study.webp",
+    "sha256": "08d5a0a27e1ac42dbe3a1353831aceeff9439a261156ca60be35b4ceaf1fb697",
+    "bytes": 305546
+  },
+  {
+    "rank": 18,
+    "id": "dragon-rider-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-b7a5a616-0f62-4367-bbb1-be7d289ab668.png",
+    "asset": "/images/nooks-50/dragon-rider-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/dragon-rider-study.webp",
+    "sha256": "221eb579e62a1fce623fca61dd5f6ce458df9d98c2056feda7f23a5e3a873ca1",
+    "bytes": 294338
+  },
+  {
+    "rank": 19,
+    "id": "hobbit-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-24b6400e-c5c1-4a21-b2d8-2de067b4b7fe.png",
+    "asset": "/images/nooks-50/hobbit-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/hobbit-study.webp",
+    "sha256": "a286ccaceabf5cd4d79cf6d893d7e9670770a99b7c683f3c3bb23f14a359a633",
+    "bytes": 330848
+  },
+  {
+    "rank": 20,
+    "id": "animal-crossing-island",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-4f5f8e41-5828-4a60-9ffe-69750633af77.png",
+    "asset": "/images/nooks-50/animal-crossing-island.webp",
+    "thumbnail": "/images/nooks-50/thumbs/animal-crossing-island.webp",
+    "sha256": "4f8a88ce047373fc2e05d11cc04d744f7609cef36e6c564dca073e2aeac3f4a4",
+    "bytes": 184644
+  },
+  {
+    "rank": 21,
+    "id": "cinnamoroll-cloud-cafe",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-94e02b70-e568-434b-98c9-7948c6b22a9a.png",
+    "asset": "/images/nooks-50/cinnamoroll-cloud-cafe.webp",
+    "thumbnail": "/images/nooks-50/thumbs/cinnamoroll-cloud-cafe.webp",
+    "sha256": "4d2f9c1b9fbe073d4dc04ea175c9d953a12ba0f93f08aaebf60d1934d478ce2e",
+    "bytes": 196398
+  },
+  {
+    "rank": 22,
+    "id": "witch-apothecary",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-764514de-cde7-4cf3-9b11-cbab45324a01.png",
+    "asset": "/images/nooks-50/witch-apothecary.webp",
+    "thumbnail": "/images/nooks-50/thumbs/witch-apothecary.webp",
+    "sha256": "740b8b2949e231a4dcad48fb7d85378d49204cca65995d414931be28c3de6723",
+    "bytes": 330244
+  },
+  {
+    "rank": 23,
+    "id": "kyoto-teahouse",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-82f8c8df-7564-4207-b6b8-c8226b6b1be9.png",
+    "asset": "/images/nooks-50/kyoto-teahouse.webp",
+    "thumbnail": "/images/nooks-50/thumbs/kyoto-teahouse.webp",
+    "sha256": "06b94f00cf444501d702320467f609f633b27df35127198ef84f48cb820524c0",
+    "bytes": 335308
+  },
+  {
+    "rank": 24,
+    "id": "oxford-library",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-381f66d8-2f01-4470-9804-51ae7b3f3ebb.png",
+    "asset": "/images/nooks-50/oxford-library.webp",
+    "thumbnail": "/images/nooks-50/thumbs/oxford-library.webp",
+    "sha256": "8304d1bd962ec7e9fc740f2d71c67ff8deb050bd3e6af43d9a74e831960b9357",
+    "bytes": 254502
+  },
+  {
+    "rank": 25,
+    "id": "capybara-onsen",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-78ae1dc1-e8a4-4627-aa9f-7eb5c78ec7d1.png",
+    "asset": "/images/nooks-50/capybara-onsen.webp",
+    "thumbnail": "/images/nooks-50/thumbs/capybara-onsen.webp",
+    "sha256": "d9cc7211d876963ab7bbfd3214d098c469c80bd38aa69f5092f547ead008be03",
+    "bytes": 254122
+  },
+  {
+    "rank": 26,
+    "id": "pokemon-research-cottage",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-ecc2accc-0d36-4c16-ae29-56fe7faacb17.png",
+    "asset": "/images/nooks-50/pokemon-research-cottage.webp",
+    "thumbnail": "/images/nooks-50/thumbs/pokemon-research-cottage.webp",
+    "sha256": "882647bfb41fb98dbfb25e820063b119a5194f1f88d6db1771d16249eb2e7509",
+    "bytes": 334784
+  },
+  {
+    "rank": 27,
+    "id": "sakura-garden",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-16390904-f05a-40d6-83d6-e4851cfb6399.png",
+    "asset": "/images/nooks-50/sakura-garden.webp",
+    "thumbnail": "/images/nooks-50/thumbs/sakura-garden.webp",
+    "sha256": "369fa1f048350d3f18220d2c1604da68f9ce4f08782fac6e22d85981adbcb28f",
+    "bytes": 298094
+  },
+  {
+    "rank": 28,
+    "id": "paris-attic",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-63ef0b58-cda9-4f57-925a-6583a8c0ef2e.png",
+    "asset": "/images/nooks-50/paris-attic.webp",
+    "thumbnail": "/images/nooks-50/thumbs/paris-attic.webp",
+    "sha256": "3c9d654bfc3406d8e5eb83613b6c293ee467a062018da7de3346d1927f76799e",
+    "bytes": 294836
+  },
+  {
+    "rank": 29,
+    "id": "underwater-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-2600904a-1bd3-4046-9aee-63410f3e0008.png",
+    "asset": "/images/nooks-50/underwater-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/underwater-study.webp",
+    "sha256": "18d34d3b5229d0a9e0e77b56a978997725a0167999ab6df763fef47ae149c882",
+    "bytes": 301950
+  },
+  {
+    "rank": 30,
+    "id": "moonlit-observatory",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-654e1dd7-3f7e-4288-a7e6-22804910544a.png",
+    "asset": "/images/nooks-50/moonlit-observatory.webp",
+    "thumbnail": "/images/nooks-50/thumbs/moonlit-observatory.webp",
+    "sha256": "97879723c13a7b5d85593d83f5a264b97baeba63ab1a19e73a4c264c18489894",
+    "bytes": 263744
+  },
+  {
+    "rank": 31,
+    "id": "frog-pond-studio",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-03d7d3f7-e002-4e7d-a7a2-6ee593ab5654.png",
+    "asset": "/images/nooks-50/frog-pond-studio.webp",
+    "thumbnail": "/images/nooks-50/thumbs/frog-pond-studio.webp",
+    "sha256": "010f8538b727158e25232962bed74ae6e29094c08eeb613db1469bcfe9a4f82c",
+    "bytes": 352422
+  },
+  {
+    "rank": 32,
+    "id": "kuromi-midnight-desk",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-bc00eee8-6635-42e3-aba3-6a976ec0481f.png",
+    "asset": "/images/nooks-50/kuromi-midnight-desk.webp",
+    "thumbnail": "/images/nooks-50/thumbs/kuromi-midnight-desk.webp",
+    "sha256": "d4c5d67be47b751a95ce3ce89e02217774a843ee1abaefc13f38f96a0993a37d",
+    "bytes": 172042
+  },
+  {
+    "rank": 33,
+    "id": "antique-workshop",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-688f83d2-6d95-4121-8a92-54496c2cf7c2.png",
+    "asset": "/images/nooks-50/antique-workshop.webp",
+    "thumbnail": "/images/nooks-50/thumbs/antique-workshop.webp",
+    "sha256": "d7d5e307dbd60c1a6e16600e091c5f6e3868883195003085d24a8e157ca68f66",
+    "bytes": 253788
+  },
+  {
+    "rank": 34,
+    "id": "minecraft-cottage",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-c6e00343-6571-42df-ae45-ddd1a71501aa.png",
+    "asset": "/images/nooks-50/minecraft-cottage.webp",
+    "thumbnail": "/images/nooks-50/thumbs/minecraft-cottage.webp",
+    "sha256": "3d862638a81559967f3b930301aa65c8fe600e91d5158fa802e6931bf33d0aff",
+    "bytes": 191872
+  },
+  {
+    "rank": 35,
+    "id": "hateno-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-81050791-b5b0-4170-9a7c-6854a7a97ccd.png",
+    "asset": "/images/nooks-50/hateno-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/hateno-study.webp",
+    "sha256": "77f55f01d81556917ae184a35f1444c7fd340b86b4c38fb53f4917d1447d1b72",
+    "bytes": 254624
+  },
+  {
+    "rank": 36,
+    "id": "sumeru-akademiya",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-6dbdd2ea-107a-452a-bf98-c2bd433ce72d.png",
+    "asset": "/images/nooks-50/sumeru-akademiya.webp",
+    "thumbnail": "/images/nooks-50/thumbs/sumeru-akademiya.webp",
+    "sha256": "c4a52ca80a50ee546807e2c7e9d2e1d038181ff7b7ae2854386e98a8650be1b3",
+    "bytes": 308900
+  },
+  {
+    "rank": 37,
+    "id": "mage-archive",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-ef4e6767-c006-463a-8fdf-46ca2abf3a34.png",
+    "asset": "/images/nooks-50/mage-archive.webp",
+    "thumbnail": "/images/nooks-50/thumbs/mage-archive.webp",
+    "sha256": "c487ac189bde530d53484807ed72396e71c7bc83b83ca9aefaa200df64047379",
+    "bytes": 264688
+  },
+  {
+    "rank": 38,
+    "id": "cyberpunk-rain-loft",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-eea21caa-0fb6-498b-81bd-be149fac138f.png",
+    "asset": "/images/nooks-50/cyberpunk-rain-loft.webp",
+    "thumbnail": "/images/nooks-50/thumbs/cyberpunk-rain-loft.webp",
+    "sha256": "2222b8b20cad93101d439282d421690644a277c0dd75e80929d970627acf827b",
+    "bytes": 263040
+  },
+  {
+    "rank": 39,
+    "id": "secret-door-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-58af01dd-b31b-405b-92ec-7279ebe5e01e.png",
+    "asset": "/images/nooks-50/secret-door-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/secret-door-study.webp",
+    "sha256": "8987dd3ad9ff0aa1000f34f73b6d525983df68fe04c7d7ebd93a93c31d92ad1a",
+    "bytes": 212922
+  },
+  {
+    "rank": 40,
+    "id": "nevermore-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-6d82c395-3589-4189-9bb0-02787fdaba9b.png",
+    "asset": "/images/nooks-50/nevermore-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/nevermore-study.webp",
+    "sha256": "f89e52af333f73726a9e5abfa0a02e743c66ae2ddb75d3e7b4598da315dfd6d8",
+    "bytes": 210544
+  },
+  {
+    "rank": 41,
+    "id": "autumn-bakery",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-53f14c40-b685-47b8-a95b-fe02a59acbcc.png",
+    "asset": "/images/nooks-50/autumn-bakery.webp",
+    "thumbnail": "/images/nooks-50/thumbs/autumn-bakery.webp",
+    "sha256": "46ca602a7f118e5c2d2c748f3e3cc6eab9c822f75cdea021c85a18fb7896e55a",
+    "bytes": 371436
+  },
+  {
+    "rank": 42,
+    "id": "seoul-night-cafe",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-6b8ce0dc-0217-4206-a314-bc762f624049.png",
+    "asset": "/images/nooks-50/seoul-night-cafe.webp",
+    "thumbnail": "/images/nooks-50/thumbs/seoul-night-cafe.webp",
+    "sha256": "71031759fd010c945a8a50fab9a6fac4b357621670701dee0d88ad1dea28151a",
+    "bytes": 234728
+  },
+  {
+    "rank": 43,
+    "id": "cloud-cafe",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-e42aafc2-c039-40b1-9c54-768dd6d7dc29.png",
+    "asset": "/images/nooks-50/cloud-cafe.webp",
+    "thumbnail": "/images/nooks-50/thumbs/cloud-cafe.webp",
+    "sha256": "48f1074cd757c66af54fc936e1841f4873473437b561eff0310394159872e7fd",
+    "bytes": 212674
+  },
+  {
+    "rank": 44,
+    "id": "tiny-mouse-house",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-01f38ab5-46b3-4d95-a52c-36fb7a380c1b.png",
+    "asset": "/images/nooks-50/tiny-mouse-house.webp",
+    "thumbnail": "/images/nooks-50/thumbs/tiny-mouse-house.webp",
+    "sha256": "932be95c4d7253b75d22f10ad197213800d24029cd57986d79417733082ce07c",
+    "bytes": 313608
+  },
+  {
+    "rank": 45,
+    "id": "woodland-treehouse",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-7486c5a1-9480-4150-b566-8e96be1ed673.png",
+    "asset": "/images/nooks-50/woodland-treehouse.webp",
+    "thumbnail": "/images/nooks-50/thumbs/woodland-treehouse.webp",
+    "sha256": "6a627534b77d158db28ee582a37f8ddefa634077822f412bc65cf7c3c2b37217",
+    "bytes": 324186
+  },
+  {
+    "rank": 46,
+    "id": "aurora-cabin",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-b48992c1-f870-4e35-b6b8-d7c16bb0a3e7.png",
+    "asset": "/images/nooks-50/aurora-cabin.webp",
+    "thumbnail": "/images/nooks-50/thumbs/aurora-cabin.webp",
+    "sha256": "ded9c2d65df708d8b7e35aca707b7f1badc37d8aaa403d4fb259be9696a4eb52",
+    "bytes": 227304
+  },
+  {
+    "rank": 47,
+    "id": "lighthouse-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-0d3efc7a-0a5c-484e-a4ab-db1aa93d36e1.png",
+    "asset": "/images/nooks-50/lighthouse-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/lighthouse-study.webp",
+    "sha256": "3c3fd8b122553a014832e5054b36e414eaf6d71b490db8987ee20a99d662a7bf",
+    "bytes": 314918
+  },
+  {
+    "rank": 48,
+    "id": "desert-casita",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-29fac58c-32d4-4de2-b24b-3bf8793a67e5.png",
+    "asset": "/images/nooks-50/desert-casita.webp",
+    "thumbnail": "/images/nooks-50/thumbs/desert-casita.webp",
+    "sha256": "d52c94a072735e4e82561d08a0a9d5d183e1abd316505de14b04b3f23a3812c2",
+    "bytes": 357888
+  },
+  {
+    "rank": 49,
+    "id": "stationery-studio",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-f03645c0-59bf-40f3-a3af-12b573e22f79.png",
+    "asset": "/images/nooks-50/stationery-studio.webp",
+    "thumbnail": "/images/nooks-50/thumbs/stationery-studio.webp",
+    "sha256": "e5ce38056e9e42b9529cab3a1fd0244495f2cab50ee108e12f75819ed3899f25",
+    "bytes": 370158
+  },
+  {
+    "rank": 50,
+    "id": "thousand-sunny-study",
+    "path": "/Users/rparasu/.codex/generated_images/01a0f756-3b4a-7380-8ecd-5addaae1d698/exec-d60a3883-01ae-4316-97a8-577b9cace255.png",
+    "asset": "/images/nooks-50/thousand-sunny-study.webp",
+    "thumbnail": "/images/nooks-50/thumbs/thousand-sunny-study.webp",
+    "sha256": "da79a538c80f453e34482e121b838fb6798c236b1dba1e857e00edaa718340ab",
+    "bytes": 284514
+  }
+]

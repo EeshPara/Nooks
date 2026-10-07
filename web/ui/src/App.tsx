@@ -33,7 +33,7 @@ import { NookDiscovery } from './community/NookDiscovery';
 import { NookCommunity, NookPresenceTab, MemberAvatar, memberAvatarCount } from './community/NookCommunity';
 import { NookCreator, NookIdentityDialog, NookPortal, type NookProfile } from './community/NookCreator';
 import type { NookDraft } from './community/nookCatalog';
-import { roomScenes, type RoomScene } from './personalization/types';
+import { allRoomScenes, type RoomScene } from './personalization/types';
 import type { LucideIcon } from 'lucide-react';
 import CreateMaterial from './study/CreateMaterial';
 import { readCompleteMaterial } from './study/readMaterial';
@@ -72,7 +72,7 @@ const kindIcon:{[key:string]:LucideIcon}={note:FileText,quiz:Brain,flashcards:Co
 function storageGet(key:string){try{return localStorage.getItem(key);}catch{return null;}}
 function storageSet(key:string,value:string){try{localStorage.setItem(key,value);}catch{}}
 function readNookProfile(key?:string):NookProfile|null{try{const saved=JSON.parse(readLocalWorkspaceState(key,'profile')||'null');if(!saved||typeof saved.name!=='string'||!saved.name.trim()||!Number.isInteger(saved.avatar)||saved.avatar<0||saved.avatar>=memberAvatarCount)return null;return {name:saved.name.trim().slice(0,28),avatar:saved.avatar};}catch{return null;}}
-function readNookDrafts(key?:string):NookDraft[]{try{const value=JSON.parse(readLocalWorkspaceState(key,'drafts')||'[]');return Array.isArray(value)?value.filter(d=>d&&typeof d.id==='string'&&typeof d.name==='string'&&typeof d.description==='string'&&roomScenes.some(scene=>scene.id===d.sceneId)&&(d.visibility==='public'||d.visibility==='private')).slice(0,30):[];}catch{return [];}}
+function readNookDrafts(key?:string):NookDraft[]{try{const value=JSON.parse(readLocalWorkspaceState(key,'drafts')||'[]');return Array.isArray(value)?value.filter(d=>d&&typeof d.id==='string'&&typeof d.name==='string'&&typeof d.description==='string'&&allRoomScenes.some(scene=>scene.id===d.sceneId)&&(d.visibility==='public'||d.visibility==='private')).slice(0,30):[];}catch{return [];}}
 function focusTime(session:any){const end=Date.parse(session.startedAt)+(session.pausedMilliseconds||0)+session.targetMinutes*60000;const at=session.pausedAt?Date.parse(session.pausedAt):Date.now();return {end,remaining:Math.max(0,Math.ceil((end-at)/1000))};}
 function toneFor(a:Artifact){return ['mint','peach','lavender','sky'].includes(a.color)?a.color:({note:'mint',flashcards:'peach',quiz:'lavender',exam:'sky'}[a.kind]);}
 function searchable(a:Artifact){return [a.title,a.subject,a.description,a.content,a.source,...(a.cards||[]).flatMap(c=>[c.front,c.back,c.hint]),...(a.questions||[]).flatMap(q=>[q.prompt,q.answer,q.explanation,...(q.options||[]),...(q.acceptedAnswers||[])])].filter(Boolean).join(' ').toLowerCase();}
@@ -433,7 +433,7 @@ function WorkspaceApp(){
   void enterNook(scene,draft);
  }
  function saveNookProfile(next:NookProfile){setProfile(next);setProfileReady(true);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));setShowIdentity(false);if(pendingJoin)void enterNook(pendingJoin.scene,pendingJoin.draft);}
- function createNookDraft(draft:NookDraft){const next=[draft,...nookDrafts].slice(0,30);setNookDrafts(next);writeLocalWorkspaceState(localScope,'drafts',JSON.stringify(next));const scene=roomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}
+ function createNookDraft(draft:NookDraft){const next=[draft,...nookDrafts].slice(0,30);setNookDrafts(next);writeLocalWorkspaceState(localScope,'drafts',JSON.stringify(next));const scene=allRoomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}
  const useRoomPerk=(perk:RewardPerk)=>{if(!unlockedRewards(currentRoomId,roomProgress).some(r=>r.perk?.type===perk.type&&r.perk.id===perk.id))return;if(perk.type==='room'){setSecretRoom({id:perk.id,parent:currentRoomId});changePage('home');}else setEarnedTrack(perk.id);};
  function closeValidatedNote(){
   dirtyNote.current=false;setNoteDirty(false);setPendingChatArtifact(null);setPendingChatView(null);openChatView('study');
@@ -514,9 +514,9 @@ function WorkspaceApp(){
    <footer className="workspace-footer"><span><BookOpen size={13}/> Nooks · Your Study Nook in ChatGPT</span><span>{saving?'Saving…':pendingProgressCount?'Results waiting to save':isLive?'Saved to your account':'Saved on this device'}</span></footer>
    </div>}
   </main>
-  {showNooks&&<NookDiscovery favoritesScope={draftOwner} onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=roomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
+  {showNooks&&<NookDiscovery favoritesScope={draftOwner} onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=allRoomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
   {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} pendingInvite={!!currentInvitation()} onConnect={()=>{setShowPeople(false);setShowAccount(true);}} onClose={()=>setShowPeople(false)}/>}
-  {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=roomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
+  {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=allRoomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
   {showIdentity&&!isLive&&<NookIdentityDialog profile={profile} onClose={()=>{setShowIdentity(false);setPendingJoin(null);}} onSave={saveNookProfile}/>}
   {studioLifetime.current.mounted&&<NookStudio key={draftOwner} open={showNookCreator} initialDraftId={studioDraftId} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}
   {celebration&&<RewardCelebration rewards={celebration.rewards} roomLabel={getRoomRewards(celebration.roomId).label} onClose={()=>setCelebration(null)} onPlace={async rewardId=>{await perform('room_reward_place',{roomId:celebration.roomId,rewardId,placed:true});}}/>}

@@ -1,0 +1,804 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-07",
+  "assets": [
+    {
+      "rank": 1,
+      "title": "Rainy Library",
+      "type": "Original",
+      "category": "Cozy",
+      "evidence": "Strong adjacent",
+      "scene": "Amber desk lamps, enormous rain-streaked windows, blue city outside.",
+      "rationale": "Broad BookTok, study and cozy-desk appeal; instantly legible before/after shelf upgrades.",
+      "share_hook": "I studied here for a week. Look what appeared between the books.",
+      "source_ids": [
+        "P26",
+        "IGB",
+        "IGD"
+      ],
+      "id": "rainy-library",
+      "prompt": "Use case: stylized-concept. Generate one finished landscape background for Nooks, a cozy study workspace. Title: Rainy Library. Wide 16:9, preferably 2048x1152. Immersive hand-painted anime environment, sophisticated warm timber library with enormous rain-streaked windows overlooking a deep blue evening city, amber desk lamps and layered bookshelves. Seated first-person viewpoint, a handsome broad wooden desk along the lower edge, rain droplets on the glass, believable architectural perspective. Rich handcrafted detail around edges with calm blue window negative space in the middle for an interface overlay. Warm restrained light, inviting and cinematic, subtle painted texture, no harsh contrast. Full bleed scene only. No text, lettering, logos, watermark, UI, collage, borders, people, pets, or floating objects. This is the environment itself, not a screenshot of an app."
+    },
+    {
+      "rank": 2,
+      "title": "Howl’s Moving Castle — Moving Study",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Strong adjacent",
+      "scene": "A warm, cluttered castle study with a magical doorway and rolling hills outside.",
+      "rationale": "Cozy fantasy plus an immediately recognizable home; collecting transformations fits the setting.",
+      "share_hook": "My study desk has a door to another world now.",
+      "source_ids": [
+        "GH",
+        "PCOZY"
+      ],
+      "id": "howls-moving-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Howl’s Moving Castle — Moving Study. A warm, cluttered castle study with a magical doorway and rolling hills outside. Style/medium: lush hand-painted 2D fantasy anime background, intricate eccentric timber and brass castle architecture. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 3,
+      "title": "Hogwarts — Gryffindor Common Room",
+      "type": "Fandom",
+      "category": "Wizarding",
+      "evidence": "Strong adjacent",
+      "scene": "Scarlet armchairs, a huge fireplace, worn trunks and warm evening light.",
+      "rationale": "House identity gives friends an immediate answer to where they belong.",
+      "share_hook": "Come study in Gryffindor. Your desk grows with you.",
+      "source_ids": [
+        "HP",
+        "P25"
+      ],
+      "id": "gryffindor-common-room",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Hogwarts — Gryffindor Common Room. Scarlet armchairs, a huge fireplace, worn trunks and warm evening light. Style/medium: painterly cinematic fantasy interior, warm scarlet tapestry and firelit golden stone. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 4,
+      "title": "Tokyo Rain Apartment",
+      "type": "Original",
+      "category": "City",
+      "evidence": "Strong adjacent",
+      "scene": "A compact high-floor apartment, wet neon streets and a warm task lamp.",
+      "rationale": "Fits cozy-desk and anime-city aesthetics without needing a franchise.",
+      "share_hook": "I turned a blank desk into my Tokyo study apartment.",
+      "source_ids": [
+        "IGD",
+        "PCOZY"
+      ],
+      "id": "neon-tokyo",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Tokyo Rain Apartment. A compact high-floor apartment, wet neon streets and a warm task lamp. Style/medium: lofi Japanese anime background painting, blue wet night, restrained neon and amber. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 5,
+      "title": "Comfy Cabin",
+      "type": "Original",
+      "category": "Cozy",
+      "evidence": "Strong adjacent",
+      "scene": "A timber cabin, deep armchair, firelight and snow beyond the glass.",
+      "rationale": "Recognizable comfort with broad seasonal appeal and little explanation needed.",
+      "share_hook": "One hour of studying, one cozier cabin.",
+      "source_ids": [
+        "IGB",
+        "P26"
+      ],
+      "id": "alpine-cabin",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Comfy Cabin. A timber cabin, deep armchair, firelight and snow beyond the glass. Style/medium: warm storybook gouache illustration, tactile timber, soft snowy edges. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 6,
+      "title": "My Neighbor Totoro — Forest Window",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Strong adjacent",
+      "scene": "A countryside desk facing an enormous camphor tree and a soft rainy garden.",
+      "rationale": "Cute creatures and slow growth make the theme easy to recognize and revisit.",
+      "share_hook": "Every study session brings the forest a little closer.",
+      "source_ids": [
+        "GH",
+        "PCOZY"
+      ],
+      "id": "totoro-forest-window",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: My Neighbor Totoro — Forest Window. A countryside desk facing an enormous camphor tree and a soft rainy garden. Style/medium: hand-painted Japanese countryside anime background, watercolor foliage and dappled rainy light. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 7,
+      "title": "Hogwarts — Slytherin Common Room",
+      "type": "Fandom",
+      "category": "Wizarding",
+      "evidence": "Strong adjacent",
+      "scene": "An emerald-lit stone lounge under the lake, with silver details and passing silhouettes.",
+      "rationale": "Strong house identity plus an unusually distinct underwater environment.",
+      "share_hook": "The longer I study, the more of the lake I can see.",
+      "source_ids": [
+        "HP",
+        "P25"
+      ],
+      "id": "slytherin-common-room",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Hogwarts — Slytherin Common Room. An emerald-lit stone lounge under the lake, with silver details and passing silhouettes. Style/medium: painterly cinematic fantasy interior, cool emerald lake light and tiny warm candle accents. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 8,
+      "title": "Kiki’s Delivery Service — Bakery Attic",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Strong adjacent",
+      "scene": "A small attic desk above a seaside bakery, with bread baskets and rooftops.",
+      "rationale": "A particularly strong fit for students: a young person making a new place their own.",
+      "share_hook": "I earned my bakery attic one study session at a time.",
+      "source_ids": [
+        "GH",
+        "IGB"
+      ],
+      "id": "kikis-bakery-attic",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Kiki’s Delivery Service — Bakery Attic. A small attic desk above a seaside bakery, with bread baskets and rooftops. Style/medium: nostalgic hand-painted seaside anime background, pastel rooftops and honey-colored attic beams. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 9,
+      "title": "Midnight Sleeper Train",
+      "type": "Original",
+      "category": "Travel",
+      "evidence": "Adjacent",
+      "scene": "A lamplit sleeper compartment with rain sliding past and changing landscapes.",
+      "rationale": "The fantasy is understandable in one frame; destinations give progression a natural payoff.",
+      "share_hook": "Finish a study session. Wake up somewhere new.",
+      "source_ids": [
+        "P26",
+        "PCOZY"
+      ],
+      "id": "midnight-train",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Midnight Sleeper Train. A lamplit sleeper compartment with rain sliding past and changing landscapes. Style/medium: cinematic lo-fi anime background, close intimate train compartment with long horizontal window. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 10,
+      "title": "Hogwarts — Hufflepuff Common Room",
+      "type": "Fandom",
+      "category": "Wizarding",
+      "evidence": "Strong adjacent",
+      "scene": "Round windows, honey-colored wood, plants, copper kettles and a hearth.",
+      "rationale": "The strongest cozy-first house concept; gardening rewards feel natural.",
+      "share_hook": "My Hufflepuff study corner is becoming a greenhouse.",
+      "source_ids": [
+        "HP",
+        "P25"
+      ],
+      "id": "hufflepuff-common-room",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Hogwarts — Hufflepuff Common Room. Round windows, honey-colored wood, plants, copper kettles and a hearth. Style/medium: storybook fantasy illustration, honey-gold light, rounded architecture, lush small leaves. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 11,
+      "title": "Hogwarts — Ravenclaw Tower",
+      "type": "Fandom",
+      "category": "Wizarding",
+      "evidence": "Strong adjacent",
+      "scene": "Airy blue-and-bronze study, arched windows, stars and mountain views.",
+      "rationale": "Academic identity directly supports studying; astronomy gives clear visual rewards.",
+      "share_hook": "My Ravenclaw desk unlocks an observatory.",
+      "source_ids": [
+        "HP",
+        "P25"
+      ],
+      "id": "ravenclaw-tower",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Hogwarts — Ravenclaw Tower. Airy blue-and-bronze study, arched windows, stars and mountain views. Style/medium: painterly fantasy illustration, elegant blue and bronze, very tall airy arches. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 12,
+      "title": "Stardew Valley — Farmhouse Desk",
+      "type": "Fandom",
+      "category": "Cozy games",
+      "evidence": "Direct fandom",
+      "scene": "A pixel-art farmhouse desk beside crop plots and a snug kitchen.",
+      "rationale": "The farm’s grow-and-collect loop translates naturally to study time; large established audience.",
+      "share_hook": "My revision time grew this farm.",
+      "source_ids": [
+        "SV",
+        "PCOZY"
+      ],
+      "id": "stardew-farmhouse",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Stardew Valley — Farmhouse Desk. A pixel-art farmhouse desk beside crop plots and a snug kitchen. Style/medium: crisp deliberately crafted 16-bit pixel art, consistent pixel grid, charming detailed farm objects. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 13,
+      "title": "Spirited Away — Bathhouse Study",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Strong adjacent",
+      "scene": "A lantern-lit desk above a misty bathhouse courtyard, quieter than the busy film scenes.",
+      "rationale": "Unmistakable setting and a deep pool of characterful objects to collect.",
+      "share_hook": "I studied long enough to unlock the train across the water.",
+      "source_ids": [
+        "GH",
+        "PCOZY"
+      ],
+      "id": "spirited-bathhouse",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Spirited Away — Bathhouse Study. A lantern-lit desk above a misty bathhouse courtyard, quieter than the busy film scenes. Style/medium: rich hand-painted anime environment, vermilion lanterns, deep indigo dusk and pale steam. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 14,
+      "title": "Bookshop Cat",
+      "type": "Original",
+      "category": "Cozy",
+      "evidence": "Strong adjacent",
+      "scene": "A small independent bookshop after closing, lamps on and a cat at the counter.",
+      "rationale": "Bookstagram atmosphere plus a memorable mascot; ideal for creator book clubs.",
+      "share_hook": "I stayed after closing. The bookshop cat stayed too.",
+      "source_ids": [
+        "IGB",
+        "BT25"
+      ],
+      "id": "bookshop-cat",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Bookshop Cat. A small independent bookshop after closing, lamps on and a cat at the counter. Style/medium: tactile gouache picture-book environment, layered shelves, one small sleeping tabby integrated on counter. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 15,
+      "title": "Greenhouse Study",
+      "type": "Original",
+      "category": "Nature",
+      "evidence": "Strong adjacent",
+      "scene": "A glass conservatory desk surrounded by leaves, rain and warm terracotta.",
+      "rationale": "Clear growth metaphor, readable progress screenshots and easy color customization.",
+      "share_hook": "This empty shelf became a jungle while I studied.",
+      "source_ids": [
+        "P26",
+        "PIN",
+        "IGD"
+      ],
+      "id": "sunlit-greenhouse",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Greenhouse Study. A glass conservatory desk surrounded by leaves, rain and warm terracotta. Style/medium: botanical watercolor and gouache illustration, detailed translucent leaves, warm terracotta. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 16,
+      "title": "Dragon Hatchery",
+      "type": "Original",
+      "category": "Fantasy",
+      "evidence": "Strong adjacent",
+      "scene": "A quiet stone-and-timber study beside one warm dragon nest and a mountain window.",
+      "rationale": "Captures dragon-raising appeal with original creatures; the strongest single growth-story test.",
+      "share_hook": "I did my homework. My dragon grew wings.",
+      "source_ids": [
+        "BTROM",
+        "P26"
+      ],
+      "id": "dragon-hatchery",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Dragon Hatchery. A quiet stone-and-timber study beside one warm dragon nest and a mountain window. Style/medium: whimsical painterly fantasy environment, copper and warm stone, single quiet dragon egg nest. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 17,
+      "title": "ACOTAR — Velaris Study",
+      "type": "Fandom",
+      "category": "BookTok",
+      "evidence": "Direct fandom",
+      "scene": "A moonlit riverside study, mountain silhouettes, starlit windows and jewel colors.",
+      "rationale": "TikTok explicitly identifies ACOTAR as a driver of romantasy world-building.",
+      "share_hook": "My finals prep unlocked a balcony over Velaris.",
+      "source_ids": [
+        "BTROM"
+      ],
+      "id": "velaris-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: ACOTAR — Velaris Study. A moonlit riverside study, mountain silhouettes, starlit windows and jewel colors. Style/medium: romantic painterly fantasy cityscape, sapphire night, plum velvet, restrained starlight. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 18,
+      "title": "Fourth Wing — Dragon Rider Study",
+      "type": "Fandom",
+      "category": "BookTok",
+      "evidence": "Direct fandom",
+      "scene": "A stone academy study facing a mountain courtyard, with flight charts and a warm hearth.",
+      "rationale": "BookTok fantasy demand plus dragon-bond progression offers a strong reveal.",
+      "share_hook": "I studied for my exams and bonded with a dragon.",
+      "source_ids": [
+        "BTROM"
+      ],
+      "id": "dragon-rider-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Fourth Wing — Dragon Rider Study. A stone academy study facing a mountain courtyard, with flight charts and a warm hearth. Style/medium: cinematic fantasy environment painting, weathered stone, leather, warm hearth, distant mountain silhouettes. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 19,
+      "title": "The Shire — Hobbit Study",
+      "type": "Fandom",
+      "category": "Fantasy",
+      "evidence": "Adjacent",
+      "scene": "A round-door hillside study, abundant food, curved shelving and a green view.",
+      "rationale": "A recognizable comfort fantasy that naturally supports food, maps and garden rewards.",
+      "share_hook": "Your only quest today: study, eat second breakfast, watch the garden grow.",
+      "source_ids": [
+        "P25",
+        "PCOZY"
+      ],
+      "id": "hobbit-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: The Shire — Hobbit Study. A round-door hillside study, abundant food, curved shelving and a green view. Style/medium: rich hand-painted storybook environment, curved timber and earthy greens, charming architectural whimsy. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 20,
+      "title": "Animal Crossing — Island Study",
+      "type": "Fandom",
+      "category": "Cozy games",
+      "evidence": "Adjacent",
+      "scene": "A soft toy-like island cottage, custom furniture and a museum corner.",
+      "rationale": "Personalization and collection are the core attraction, with obvious makeover clips.",
+      "share_hook": "I built my dream study island by actually studying.",
+      "source_ids": [
+        "PCOZY",
+        "P25"
+      ],
+      "id": "animal-crossing-island",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Animal Crossing — Island Study. A soft toy-like island cottage, custom furniture and a museum corner. Style/medium: charming stylized clay-like 3D miniature environment, rounded furniture, soft indirect light, toy island cottage. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 21,
+      "title": "Cinnamoroll — Cloud Café",
+      "type": "Fandom",
+      "category": "Cute",
+      "evidence": "Adjacent",
+      "scene": "Cream-and-sky-blue café, fluffy cloud seats and tiny pastries.",
+      "rationale": "Distinctive cute identity and miniature accessories suit desk collectors.",
+      "share_hook": "My study café just got its cloud puppy.",
+      "source_ids": [
+        "SAN",
+        "P25"
+      ],
+      "id": "cinnamoroll-cloud-cafe",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Cinnamoroll — Cloud Café. Cream-and-sky-blue café, fluffy cloud seats and tiny pastries. Style/medium: soft kawaii 2D illustration, buttery cream and sky blue, cloud furniture and tiny pastries. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 22,
+      "title": "Witch’s Apothecary",
+      "type": "Original",
+      "category": "Fantasy",
+      "evidence": "Strong adjacent",
+      "scene": "A wooden desk between herb bundles, labeled glass bottles and a moonlit garden.",
+      "rationale": "Witchy/castle aesthetics with a satisfying collection system that can be entirely original.",
+      "share_hook": "I turned my study notes into a witch’s entire apothecary.",
+      "source_ids": [
+        "P25",
+        "P26"
+      ],
+      "id": "witch-apothecary",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Witch’s Apothecary. A wooden desk between herb bundles, labeled glass bottles and a moonlit garden. Style/medium: hand-painted witchy storybook background, muted herbs and amber bottles, smoky mauve night. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 23,
+      "title": "Kyoto Tea House",
+      "type": "Original",
+      "category": "Travel",
+      "evidence": "Adjacent",
+      "scene": "A low desk beside shoji doors, a moss garden and gentle rain.",
+      "rationale": "A calm alternative to neon Tokyo, with natural material and ritual rewards.",
+      "share_hook": "A little tea house that gets more peaceful the longer you study.",
+      "source_ids": [
+        "IGD",
+        "P26"
+      ],
+      "id": "kyoto-teahouse",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Kyoto Tea House. A low desk beside shoji doors, a moss garden and gentle rain. Style/medium: refined hand-painted anime background, natural timber, creamy shoji, quiet moss greens. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 24,
+      "title": "Dark Academia — Candlelit College",
+      "type": "Original",
+      "category": "Academia",
+      "evidence": "Strong adjacent",
+      "scene": "A stone college study with oak desks, old atlases and candlelight; no franchise symbols.",
+      "rationale": "Academia identity has a direct study connection and works across subjects.",
+      "share_hook": "Your academic comeback, but in a candlelit college.",
+      "source_ids": [
+        "PIN",
+        "P25"
+      ],
+      "id": "oxford-library",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Dark Academia — Candlelit College. A stone college study with oak desks, old atlases and candlelight; no franchise symbols. Style/medium: cinematic painterly environment, walnut, dark stone, ivory candlelight, subtle grain. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 25,
+      "title": "Capybara Onsen",
+      "type": "Original",
+      "category": "Cute",
+      "evidence": "Experimental",
+      "scene": "A sheltered study deck overlooking warm pools, stone, citrus and relaxed capybaras.",
+      "rationale": "A highly shareable animal-led idea; specific demand still needs testing.",
+      "share_hook": "My study buddy has done absolutely nothing except become cozier.",
+      "source_ids": [
+        "PCOZY",
+        "P25"
+      ],
+      "id": "capybara-onsen",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Capybara Onsen. A sheltered study deck overlooking warm pools, stone, citrus and relaxed capybaras. Style/medium: gentle Japanese picture-book illustration, warm mineral steam and two capybaras naturally resting in the pool. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 26,
+      "title": "Pokémon — Research Cottage",
+      "type": "Fandom",
+      "category": "Cozy games",
+      "evidence": "Adjacent",
+      "scene": "A warm field-research desk with notebooks, terrariums and a grassy outdoor view.",
+      "rationale": "Collecting is immediately understood; research framing keeps it connected to study.",
+      "share_hook": "Study, hatch, decorate. My research cottage is finally full.",
+      "source_ids": [
+        "PCOZY",
+        "SAN"
+      ],
+      "id": "pokemon-research-cottage",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Pokémon — Research Cottage. A warm field-research desk with notebooks, terrariums and a grassy outdoor view. Style/medium: colorful hand-painted anime adventure background, cozy field station with rounded scientific objects. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 27,
+      "title": "Cherry Blossom Study",
+      "type": "Original",
+      "category": "Nature",
+      "evidence": "Adjacent",
+      "scene": "An open window, drifting petals outside, cream stationery and a flowering courtyard.",
+      "rationale": "Seasonal color makes a strong saveable image; progresses visibly through a bloom cycle.",
+      "share_hook": "My desk blooms as I finish my study sessions.",
+      "source_ids": [
+        "P26",
+        "IGD"
+      ],
+      "id": "sakura-garden",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Cherry Blossom Study. An open window, drifting petals outside, cream stationery and a flowering courtyard. Style/medium: delicate watercolor-anime background, pale blossom pink and ivory, green courtyard. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 28,
+      "title": "Paris Attic",
+      "type": "Original",
+      "category": "Travel",
+      "evidence": "Adjacent",
+      "scene": "A small sloped-ceiling study above zinc roofs, with coffee and a balcony.",
+      "rationale": "Romanticized everyday life and writer identity fit both Pinterest and Bookstagram.",
+      "share_hook": "My little Paris attic, built one chapter at a time.",
+      "source_ids": [
+        "P26",
+        "IGB"
+      ],
+      "id": "paris-attic",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Paris Attic. A small sloped-ceiling study above zinc roofs, with coffee and a balcony. Style/medium: impressionistic gouache architectural illustration, soft Paris morning, cream and slate rooftops. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 29,
+      "title": "Underwater Library",
+      "type": "Original",
+      "category": "Dreamlike",
+      "evidence": "Experimental",
+      "scene": "A dry, warmly lit glass study inside a deep-blue ocean observatory.",
+      "rationale": "Strong visual contrast; sea-creature reveals make a clear shareable payoff.",
+      "share_hook": "I unlocked a whale outside my study window.",
+      "source_ids": [
+        "P26",
+        "P25"
+      ],
+      "id": "underwater-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Underwater Library. A dry, warmly lit glass study inside a deep-blue ocean observatory. Style/medium: dreamlike painterly ocean environment, deep turquoise and amber wood, soft rays through water. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 30,
+      "title": "Moon Observatory",
+      "type": "Original",
+      "category": "Dreamlike",
+      "evidence": "Adjacent",
+      "scene": "A circular observatory, warm desk pool of light and a huge calm night sky.",
+      "rationale": "Astronomy offers satisfying scale growth and dramatic but quiet visual milestones.",
+      "share_hook": "My exam prep unlocked Saturn.",
+      "source_ids": [
+        "P26",
+        "PIN"
+      ],
+      "id": "moonlit-observatory",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Moon Observatory. A circular observatory, warm desk pool of light and a huge calm night sky. Style/medium: cinematic painted astronomy interior, brass, ultramarine stars, warm desk light. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 31,
+      "title": "Frog Pond Studio",
+      "type": "Original",
+      "category": "Cute",
+      "evidence": "Experimental",
+      "scene": "A tiny wooden studio at pond level, lily pads outside and practical watercolor tools.",
+      "rationale": "A distinctive original mascot world; growth and creature visits are easy to show.",
+      "share_hook": "This frog has been supervising my homework for 12 hours.",
+      "source_ids": [
+        "P25",
+        "PCOZY"
+      ],
+      "id": "frog-pond-studio",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Frog Pond Studio. A tiny wooden studio at pond level, lily pads outside and practical watercolor tools. Style/medium: charming watercolor picture-book illustration, pond-level view, lilypads, reeds, one tiny frog on outside stone. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 32,
+      "title": "Kuromi — Midnight Desk",
+      "type": "Fandom",
+      "category": "Cute",
+      "evidence": "Adjacent",
+      "scene": "Lilac-and-black desk, soft plush shapes and a mischievous but cozy night palette.",
+      "rationale": "A distinct alternative to pastel-blue cute; identity and accessory collection lead.",
+      "share_hook": "Cute study setup, slightly villainous intentions.",
+      "source_ids": [
+        "SAN",
+        "P25"
+      ],
+      "id": "kuromi-midnight-desk",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Kuromi — Midnight Desk. Lilac-and-black desk, soft plush shapes and a mischievous but cozy night palette. Style/medium: stylized kawaii 3D illustration, lilac and muted charcoal, cute rounded furniture, soft fabric texture. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 33,
+      "title": "Whisper of the Heart — Antique Workshop",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Strong adjacent",
+      "scene": "A wooden writing desk above an antique shop, violins, clocks and city hills.",
+      "rationale": "The film’s creative-work setting fits studying more closely than generic fantasy scenes.",
+      "share_hook": "A writing desk that slowly becomes an antique workshop.",
+      "source_ids": [
+        "GH",
+        "P26"
+      ],
+      "id": "antique-workshop",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Whisper of the Heart — Antique Workshop. A wooden writing desk above an antique shop, violins, clocks and city hills. Style/medium: hand-painted nostalgic anime background, warm oak and violins, intricate clocks, hillside view. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 34,
+      "title": "Minecraft — Cottage Library",
+      "type": "Fandom",
+      "category": "Cozy games",
+      "evidence": "Adjacent",
+      "scene": "A block-built cottage with lanterns, bookshelves, a farm patch and rain outside.",
+      "rationale": "A familiar visual language makes every added block a readable sign of progress.",
+      "share_hook": "I built a whole study cottage without placing a single block.",
+      "source_ids": [
+        "PCOZY",
+        "PIN"
+      ],
+      "id": "minecraft-cottage",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Minecraft — Cottage Library. A block-built cottage with lanterns, bookshelves, a farm patch and rain outside. Style/medium: crafted voxel game environment, consistent cubic geometry and pixel textures, warm lanterns and rain. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 35,
+      "title": "Zelda — Hateno Study",
+      "type": "Fandom",
+      "category": "Cozy games",
+      "evidence": "Adjacent",
+      "scene": "A countryside research desk, weathered wood, blue ceramic details and green hills.",
+      "rationale": "Exploration and discovery translate to artifacts, plants and a secret destination.",
+      "share_hook": "My research nook just uncovered an ancient observatory.",
+      "source_ids": [
+        "PCOZY",
+        "P26"
+      ],
+      "id": "hateno-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Zelda — Hateno Study. A countryside research desk, weathered wood, blue ceramic details and green hills. Style/medium: hand-painted cel-shaded adventure environment, pastoral green hills and sun-worn timber. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 36,
+      "title": "Genshin Impact — Sumeru Akademiya",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Adjacent",
+      "scene": "A leafy scholarly terrace with geometric windows, manuscripts and hanging gardens.",
+      "rationale": "A fandom location already associated with scholarship; architecture distinguishes it.",
+      "share_hook": "Studying until my Sumeru terrace becomes a full archive.",
+      "source_ids": [
+        "PCOZY",
+        "P26"
+      ],
+      "id": "sumeru-akademiya",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Genshin Impact — Sumeru Akademiya. A leafy scholarly terrace with geometric windows, manuscripts and hanging gardens. Style/medium: lush cel-shaded fantasy environment, green turquoise and golden sandstone, elegant scholarly architecture. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 37,
+      "title": "Frieren — Mage’s Archive",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Direct fandom",
+      "scene": "An old inn study packed with spellbooks, meadow views and a gentle fantasy palette.",
+      "rationale": "Award-recognized background art and contemplative travel make a strong study fit.",
+      "share_hook": "Every study session adds a wonderfully unnecessary spell to my shelf.",
+      "source_ids": [
+        "AN",
+        "P26"
+      ],
+      "id": "mage-archive",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Frieren — Mage’s Archive. An old inn study packed with spellbooks, meadow views and a gentle fantasy palette. Style/medium: delicate hand-painted fantasy anime background, faded sage, old parchment, sunlit meadow. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 38,
+      "title": "Cyberpunk Rain Loft",
+      "type": "Original",
+      "category": "City",
+      "evidence": "Adjacent",
+      "scene": "A warm amber desk inside a dark loft, enormous wet neon city beyond.",
+      "rationale": "Keeps the cinematic city fantasy while avoiding the visual noise of an action game.",
+      "share_hook": "My quiet desk above a city that never sleeps.",
+      "source_ids": [
+        "P26",
+        "IGD"
+      ],
+      "id": "cyberpunk-rain-loft",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Cyberpunk Rain Loft. A warm amber desk inside a dark loft, enormous wet neon city beyond. Style/medium: cinematic anime background, ink-blue city, amber desk, sparing magenta and cyan neon. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 39,
+      "title": "Coraline — Secret Door Study",
+      "type": "Fandom",
+      "category": "Fantasy",
+      "evidence": "Adjacent",
+      "scene": "A blue-walled attic desk with handmade objects and a mysterious little door.",
+      "rationale": "Strong visual identity and curiosity; keep the study setting whimsical rather than frightening.",
+      "share_hook": "A hidden door unlocked while I was revising.",
+      "source_ids": [
+        "P25",
+        "P26"
+      ],
+      "id": "secret-door-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Coraline — Secret Door Study. A blue-walled attic desk with handmade objects and a mysterious little door. Style/medium: tactile stop-motion miniature look, handmade blue attic, whimsical skewed architecture, cozy not horror. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 40,
+      "title": "Wednesday — Nevermore Study",
+      "type": "Fandom",
+      "category": "Academia",
+      "evidence": "Adjacent",
+      "scene": "A gothic school writing desk with stained glass, black ink and a quieter monochrome palette.",
+      "rationale": "School identity plus a highly recognizable aesthetic; strongest as an autumn test.",
+      "share_hook": "My study desk has become suspiciously Nevermore.",
+      "source_ids": [
+        "P25",
+        "PIN"
+      ],
+      "id": "nevermore-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Wednesday — Nevermore Study. A gothic school writing desk with stained glass, black ink and a quieter monochrome palette. Style/medium: cinematic gothic illustration, charcoal and plum, intricate stained glass, calm and studious. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 41,
+      "title": "Autumn Bakery",
+      "type": "Original",
+      "category": "Cozy",
+      "evidence": "Strong adjacent",
+      "scene": "A small café desk by a bakery window, orange leaves and warm bread light.",
+      "rationale": "Seasonal comfort is immediately recognizable; food miniatures have strong collectible appeal.",
+      "share_hook": "My fall study desk now has its own tiny bakery.",
+      "source_ids": [
+        "P25",
+        "IGB"
+      ],
+      "id": "autumn-bakery",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Autumn Bakery. A small café desk by a bakery window, orange leaves and warm bread light. Style/medium: gouache storybook cafe, cinnamon and pumpkin foliage, afternoon honey light. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 42,
+      "title": "Seoul Late-Night Café",
+      "type": "Original",
+      "category": "City",
+      "evidence": "Adjacent",
+      "scene": "A clean cream-and-wood café desk, desserts, city rain and a little late-night neon.",
+      "rationale": "Studygram utility and café aesthetics offer broad appeal beyond fandom.",
+      "share_hook": "Your 2 a.m. study café, minus the closing time.",
+      "source_ids": [
+        "IGD",
+        "PIN"
+      ],
+      "id": "seoul-night-cafe",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Seoul Late-Night Café. A clean cream-and-wood café desk, desserts, city rain and a little late-night neon. Style/medium: polished contemporary anime background, warm cream and oak, plum blue rain and distant neon. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 43,
+      "title": "Cloud Café",
+      "type": "Original",
+      "category": "Dreamlike",
+      "evidence": "Adjacent",
+      "scene": "An original sky café with warm ivory clouds, peach light and a stable desk.",
+      "rationale": "A universal fantasy setting with cute silhouettes; easy to recognize without named characters.",
+      "share_hook": "I studied above the clouds and unlocked a little storm in a teacup.",
+      "source_ids": [
+        "P26",
+        "P25"
+      ],
+      "id": "cloud-cafe",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Cloud Café. An original sky café with warm ivory clouds, peach light and a stable desk. Style/medium: dreamlike pastel 3D illustration, sculptural ivory clouds, peach and lavender sky, inviting physical furniture. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 44,
+      "title": "Tiny Mouse House",
+      "type": "Original",
+      "category": "Cute",
+      "evidence": "Strong adjacent",
+      "scene": "A miniature desk built into a bookshelf, with spool stools and a teacup bed.",
+      "rationale": "Miniature scale creates an immediate visual hook; ordinary items become desirable furniture.",
+      "share_hook": "My study nook is inside a bookshelf. My roommate is a mouse.",
+      "source_ids": [
+        "P25",
+        "PCOZY"
+      ],
+      "id": "tiny-mouse-house",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Tiny Mouse House. A miniature desk built into a bookshelf, with spool stools and a teacup bed. Style/medium: tactile miniature storybook illustration, paper and cloth textures, human objects reused at mouse scale. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 45,
+      "title": "Fairy Treehouse",
+      "type": "Original",
+      "category": "Nature",
+      "evidence": "Strong adjacent",
+      "scene": "A sheltered desk within an enormous tree, warm windows and a misty canopy.",
+      "rationale": "Fairytale scenery and tiny-world collections fit Pinterest’s escapist direction.",
+      "share_hook": "My study time grew an entire treehouse village.",
+      "source_ids": [
+        "P26",
+        "P25"
+      ],
+      "id": "woodland-treehouse",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Fairy Treehouse. A sheltered desk within an enormous tree, warm windows and a misty canopy. Style/medium: lush whimsical storybook gouache, curved living timber, misty canopy, tiny warm windows. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 46,
+      "title": "Northern Lights Cabin",
+      "type": "Original",
+      "category": "Travel",
+      "evidence": "Adjacent",
+      "scene": "A compact warm cabin with a panoramic northern sky and deep snow.",
+      "rationale": "High-contrast scenery makes an effective reveal; distinct from a daytime cabin.",
+      "share_hook": "My cabin unlocked the northern lights during finals week.",
+      "source_ids": [
+        "P26",
+        "IGB"
+      ],
+      "id": "aurora-cabin",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Northern Lights Cabin. A compact warm cabin with a panoramic northern sky and deep snow. Style/medium: cinematic hand-painted winter environment, turquoise aurora, dark pines, honey timber. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 47,
+      "title": "Ocean Lighthouse",
+      "type": "Original",
+      "category": "Travel",
+      "evidence": "Adjacent",
+      "scene": "A curved coastal study with books, a lantern and a wide sea horizon.",
+      "rationale": "Quiet escapism for users who prefer air and daylight over dense interiors.",
+      "share_hook": "My study nook now has a lighthouse balcony.",
+      "source_ids": [
+        "P26",
+        "IGB"
+      ],
+      "id": "lighthouse-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Ocean Lighthouse. A curved coastal study with books, a lantern and a wide sea horizon. Style/medium: painterly coastal watercolor environment, ivory plaster, weathered oak, turquoise sea, late daylight. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 48,
+      "title": "Desert Courtyard",
+      "type": "Original",
+      "category": "Travel",
+      "evidence": "Experimental",
+      "scene": "A shaded riad-like study with terracotta, geometric tile, plants and a still fountain.",
+      "rationale": "Adds a warm, daylight option and architectural variety; exact demand is untested.",
+      "share_hook": "A study courtyard that turns into an oasis.",
+      "source_ids": [
+        "P26"
+      ],
+      "id": "desert-casita",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Desert Courtyard. A shaded riad-like study with terracotta, geometric tile, plants and a still fountain. Style/medium: architectural gouache illustration, dusty terracotta and cream, tile blue, soft shaded sunlight. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 49,
+      "title": "Vintage Stationery Studio",
+      "type": "Original",
+      "category": "Academia",
+      "evidence": "Direct aesthetic",
+      "scene": "A warm paper-focused desk with ink, stamps, envelopes and neatly kept tools.",
+      "rationale": "Pinterest explicitly identifies letter writing and poet aesthetics; rewards are small and personal.",
+      "share_hook": "Every study session adds something to my stationery collection.",
+      "source_ids": [
+        "P26"
+      ],
+      "id": "stationery-studio",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: Vintage Stationery Studio. A warm paper-focused desk with ink, stamps, envelopes and neatly kept tools. Style/medium: nostalgic editorial gouache illustration, warm ivory paper, honey wood, dusky blue ink, tactile printshop. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    },
+    {
+      "rank": 50,
+      "title": "One Piece — Thousand Sunny Study",
+      "type": "Fandom",
+      "category": "Anime",
+      "evidence": "Adjacent",
+      "scene": "A sheltered shipboard writing desk, maps, warm timber and a calm sea.",
+      "rationale": "Crew belonging and voyage milestones give a familiar fandom a study-specific purpose.",
+      "share_hook": "My study group has a ship now.",
+      "source_ids": [
+        "AN",
+        "PCOZY"
+      ],
+      "id": "thousand-sunny-study",
+      "prompt": "Use case: stylized-concept. Asset type: finished background illustration for the Nooks study workspace. Create ONE full-bleed wide 16:9 landscape image, preferably 2048x1152. Primary scene: One Piece — Thousand Sunny Study. A sheltered shipboard writing desk, maps, warm timber and a calm sea. Style/medium: bright hand-painted anime nautical environment, rounded timber ship architecture, saturated blue ocean. Composition: immersive seated eye-level study environment with a believable desk at the lower edge; individual architecture specific to this place, not the same generic room. Detailed atmospheric surroundings with a calm center region for an interface overlay. Show inviting spatial depth, carefully designed lighting, restrained highlights and a quiet focus-friendly mood. Visually polished, distinct, handcrafted. The setting is the subject. No people, no typography or readable labels, no logo, watermark, UI, borders, collage or panels. No ungrounded floating decorations. Do not render a screenshot; render only the actual illustrated place."
+    }
+  ]
+}
