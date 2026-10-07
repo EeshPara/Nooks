@@ -111,6 +111,8 @@ function WorkspaceApp(){
  const [reportedStudioDraftId,setReportedStudioDraftId]=useState<string|undefined>();
  const [profile,setProfile]=useState<NookProfile>(()=>readNookProfile(localScope)??{name:'friend',avatar:0});
  const [welcome,setWelcome]=useState<'first'|'replay'|null>(null);
+ const restartWelcome=useRef(new URLSearchParams(window.location.search).get('onboarding'));
+ const restartWelcomeStarted=useRef(false);
  const profileLinkAttempt=useRef(false);
  const tourReturn=useRef<{page:Page;active:Artifact|null}|null>(null);
  const [profileReady,setProfileReady]=useState(()=>readNookProfile(localScope)!==null);
@@ -467,6 +469,7 @@ function WorkspaceApp(){
  },[workspaceReady,account.status,account.workspaceKey,live.enabled,isLive]);
  useEffect(()=>{
   if(!openingWorkspaceReady||active||noteDirty||!localScope||welcome)return;
+  if(restartWelcome.current&&!restartWelcomeStarted.current){restartWelcomeStarted.current=true;interruptOpening();setWelcome('first');return;}
   if(workspace.onboarding?.version===1||readLocalWorkspaceState(localScope,'onboarding')==='complete')return;
   interruptOpening();setWelcome('first');
  },[openingWorkspaceReady,active,noteDirty,localScope,workspace.onboarding,welcome]);
@@ -479,6 +482,7 @@ function WorkspaceApp(){
    saveNookProfile(next);writeLocalWorkspaceState(localScope,'onboarding','complete');
   }
   openUtility(null,false);setWelcome(null);
+  if(restartWelcome.current){const url=new URL(window.location.href);url.searchParams.delete('onboarding');window.history.replaceState(null,'',url);}
   if(tourReturn.current){setPage(tourReturn.current.page);setActive(tourReturn.current.active);tourReturn.current=null;}else{setPage('home');setActive(null);}
  }
  const openingFilm=useOpeningFilm({scopeKey:localScope,version:'journey-v3',eligible:false,safeToOpen:openingWorkspaceReady&&!showAbout});
@@ -550,7 +554,7 @@ function WorkspaceApp(){
   {portal&&<NookPortal title={portal.title} image={portal.image}/>}
   {showAccount&&<AccountDialog onClose={()=>{setShowAccount(false);if(account.status!=='signed-in')clearProfileLink();}} onBeforeAccountChange={()=>{if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}return canNavigate();}}/> }
   {showAbout&&<AboutNook onClose={()=>setShowAbout(false)} onWatchOpening={canReplayOpeningNow()?requestOpeningReplay:undefined}/>}
-  {welcome&&localScope&&<WelcomeJourney key={`${localScope}:${welcome}`} scope={localScope} initialProfile={profile} replay={welcome==='replay'} onNavigate={navigateTour} onFinish={finishWelcome} connected={live.enabled} onConnect={isPublicPreview&&account.status!=='signed-in'?async next=>{await finishWelcome(next);requestProfileLink(next,localScope);setShowAccount(true);}:undefined} onProfile={next=>{setProfile(next);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));}}/>}
+  {welcome&&localScope&&<WelcomeJourney key={`${localScope}:${welcome}`} scope={restartWelcome.current?`${localScope}:welcome-restart:${restartWelcome.current}`:localScope} initialProfile={profile} replay={welcome==='replay'} onNavigate={navigateTour} onFinish={finishWelcome} connected={live.enabled} onConnect={isPublicPreview&&account.status!=='signed-in'?async next=>{await finishWelcome(next);requestProfileLink(next,localScope);setShowAccount(true);}:undefined} onProfile={next=>{setProfile(next);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));}}/>}
   <OpeningFilm open={openingFilm.open} presentationId={openingFilm.presentationId} videoSrc="/media/opening-film/nooks-opening-v3.mp4" posterSrc="/media/opening-film/nooks-opening-poster-v2.jpg" endCardMode="baked-in" onDismiss={openingFilm.dismiss}/>
   {secret&&<button className="secret-room-return" onClick={()=>setSecretRoom(null)}>← Return to {roomScene.title}<span>Progress stays in this nook</span></button>}
   <EarnedSoundtrack track={earnedTrack} onClose={()=>setEarnedTrack(null)}/>
