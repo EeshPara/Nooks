@@ -131,3 +131,7 @@
 .nooks-welcome-content>.welcome-subtitle,.welcome-mail-intro>.welcome-subtitle{margin:15px auto 0;font-size:12px;line-height:1.65;letter-spacing:.08px}
 .nooks-welcome-content .welcome-name-form{margin-top:26px;gap:12px;max-width:450px}
 @media(max-width:600px){.nooks-welcome-content>h1,.welcome-mail-intro>h1{font-size:31px;letter-spacing:-1px;max-width:380px}.nooks-welcome-content>.welcome-kicker,.welcome-mail-intro>.welcome-kicker,.nooks-welcome-content>.welcome-subtitle,.welcome-mail-intro>.welcome-subtitle{font-size:11px}}
+
+/* A separate grain layer stays visible above the softly faded nook image. */
+.nooks-welcome-screen::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath d='M0 0h160v160H0z' filter='url(%23grain)'/%3E%3C/svg%3E");opacity:.13;mix-blend-mode:multiply}
+.welcome-nook-cutout:after{opacity:.9}
