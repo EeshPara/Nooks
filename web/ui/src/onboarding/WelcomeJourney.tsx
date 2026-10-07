@@ -1,3 +1,5 @@
+import { isTutorialPractice } from './tutorialSession';
+import { TutorialPractice } from './TutorialPractice';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
@@ -27,40 +29,59 @@ export function TourReplayButton({onClick}:{onClick:()=>void}) {
  return <button className="nooks-tour-info" data-tour-replay type="button" aria-label="Replay Nooks tour" title="Take a tour of Nooks" onClick={onClick}><span aria-hidden="true">i</span></button>;
 }
 
-export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,connected,onConnect,onProfile}:{scope:string;initialProfile:NookProfile;replay:boolean;onNavigate:(page:TourPage)=>void;onFinish:(profile:NookProfile)=>Promise<void>;connected:boolean;onConnect?:(profile:NookProfile)=>Promise<void>;onProfile:(profile:NookProfile)=>void}) {
+export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate,onFinish,connected,onConnect,onProfile}:{workspace:Record<string,any>;scope:string;initialProfile:NookProfile;replay:boolean;onNavigate:(page:TourPage)=>void;onFinish:(profile:NookProfile)=>Promise<void>;connected:boolean;onConnect?:(profile:NookProfile)=>Promise<void>;onProfile:(profile:NookProfile)=>void}) {
  const [phase,setPhase]=useCrashDraft<'name'|'avatar'|'envelope'|'letter'>('welcome:phase','name',scope);
  const [name,setName]=useCrashDraft('welcome:name',initialProfile.name==='friend'?'':initialProfile.name,scope);
  const [avatar,setAvatar]=useCrashDraft('welcome:avatar',initialProfile.avatar,scope);
+ const [tipHidden,setTipHidden]=useState(false);
  const [tour,setTour]=useState(replay),[step,setStep]=useState(0),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const panel=useRef<HTMLDivElement>(null), callbacks=useRef({onNavigate,onFinish,onProfile});callbacks.current={onNavigate,onFinish,onProfile};
  const [rect,setRect]=useState<{left:number;top:number;width:number;height:number}|null>(null);
+ const [points,setPoints]=useState<[number,number][]>([]),[holes,setHoles]=useState<{left:number;top:number;width:number;height:number}[]>([]);
  const [viewport,setViewport]=useState({width:window.innerWidth,height:window.innerHeight});
  const stop=tourStops[step];
  async function finish(){if(busy)return;setBusy(true);setError('');try{await callbacks.current.onFinish({name:name.trim()||initialProfile.name,avatar});}catch(e){setError(e instanceof Error?e.message:'Please try again.');}finally{setBusy(false);}}
- useModalFocus(panel,()=>{if(tour&&!busy)void finish();});
- useEffect(()=>{if(!tour)return;callbacks.current.onNavigate(stop.page);const selector=stop.page==='people'?'.nooks-community,.nooks-live':stop.page==='library'?'.nooks-library':stop.page==='nooks'?'.nd-dialog':null;if(!selector)return;let frame=0,attempts=0,target:Element|null=null;const arrive=()=>{target=document.querySelector(selector);if(target){target.classList.add('nooks-tour-local-arrival');window.dispatchEvent(new Event('resize'));}else if(attempts++<20)frame=requestAnimationFrame(arrive);};frame=requestAnimationFrame(arrive);return()=>{cancelAnimationFrame(frame);target?.classList.remove('nooks-tour-local-arrival');};},[tour,step]);
+ useModalFocus(panel,()=>{if(tour&&!busy)void finish();},!tour);
+ useLayoutEffect(()=>{if(!tour||!isTutorialPractice)return;callbacks.current.onNavigate(stop.page);const selector=stop.page==='people'?'.nooks-community,.nooks-live':stop.page==='library'?'.nooks-library':stop.page==='nooks'?'.nd-dialog':null;if(!selector)return;let frame=0,attempts=0,target:Element|null=null;const arrive=()=>{target=document.querySelector(selector);if(target){target.classList.add('nooks-tour-local-arrival');window.dispatchEvent(new Event('resize'));}else if(attempts++<20)frame=requestAnimationFrame(arrive);};frame=requestAnimationFrame(arrive);return()=>{cancelAnimationFrame(frame);target?.classList.remove('nooks-tour-local-arrival');};},[tour,step]);
  useEffect(()=>{if(phase==='letter'&&!tour){panel.current?.querySelector<HTMLElement>('#welcome-letter-heading')?.focus({preventScroll:true});return;}panel.current?.querySelector<HTMLElement>('input,button:not([disabled])')?.focus();},[phase,tour,step]);
  useLayoutEffect(()=>{
-  if(!tour)return;let frame=0,count=0;let element:Element|null=null;
-  const measure=()=>{const elements=[...document.querySelectorAll(stop.target)];element=elements[0]??null;if(element&&count===0){const r=element.getBoundingClientRect();if(r.bottom>window.innerHeight||r.top<0)element.scrollIntoView({block:'center',behavior:'instant'});}const bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);if(bounds.length){const left=Math.min(...bounds.map(r=>r.left))-7,top=Math.min(...bounds.map(r=>r.top))-7;setRect({left,top,width:Math.max(...bounds.map(r=>r.right))+7-left,height:Math.max(...bounds.map(r=>r.bottom))+7-top});}else setRect(null);setViewport({width:window.innerWidth,height:window.innerHeight});};
+  if(!tour||!isTutorialPractice)return;let frame=0,count=0;let element:Element|null=null;
+  const measure=()=>{const elements=[...document.querySelectorAll(stop.target)];element=elements[0]??null;let bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);if(bounds.length&&count===0){const upper=Math.min(...bounds.map(r=>r.top)),lower=Math.max(...bounds.map(r=>r.bottom));if(lower-upper<window.innerHeight-32){const delta=upper<16?upper-16:lower>window.innerHeight-16?lower-window.innerHeight+16:0;if(delta)window.scrollBy({top:delta,behavior:'instant'});}else element?.scrollIntoView({block:'center',behavior:'instant'});bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);}
+   const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
+   let shape:[number,number][]=[];
+   if(bounds.length){const left=Math.min(...bounds.map(r=>r.left))-7,top=Math.min(...bounds.map(r=>r.top))-7,right=Math.max(...bounds.map(r=>r.right))+7,bottom=Math.max(...bounds.map(r=>r.bottom))+7;const next={left,top,width:right-left,height:bottom-top};setRect(old=>same(old,next)?old:next);
+    const bar=elements.find(e=>e.matches('.collection-next-compact'))?.getBoundingClientRect(),track=elements.find(e=>e.matches('.collection-timeline-card'))?.getBoundingClientRect();
+    shape=step===3&&bar&&track&&bar.top<track.top&&bar.left<track.left?[[left,top],[right,top],[right,bottom],[track.left-7,bottom],[track.left-7,bar.bottom+7],[left,bar.bottom+7]]:[[left,top],[right,top],[right,bottom],[left,bottom]];
+   }else setRect(null);
+   setPoints(old=>same(old,shape)?old:shape);
+   const extra=[...document.querySelectorAll('[role="dialog"]:not(.nooks-tour-card),.world-sound-panel.open,.nooks-active-work,.nooks-library'+(step===2?',.spotify-card':''))].filter(e=>!e.closest('[hidden],[inert],[aria-hidden="true"]')&&getComputedStyle(e).visibility!=='hidden').map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height).map(r=>({left:r.left-3,top:r.top-3,width:r.width+6,height:r.height+6}));
+   const filtered=extra.filter((r,i)=>!extra.some((o,j)=>j!==i&&o.left<=r.left&&o.top<=r.top&&o.left+o.width>=r.left+r.width&&o.top+o.height>=r.top+r.height&&(o.width*o.height>r.width*r.height||j<i)));
+   setHoles(old=>same(old,filtered)?old:filtered);setViewport(old=>old.width===window.innerWidth&&old.height===window.innerHeight?old:{width:window.innerWidth,height:window.innerHeight});};
   const settle=()=>{measure();if(count++<12)frame=requestAnimationFrame(settle);};frame=requestAnimationFrame(settle);
+  const observer=new MutationObserver(()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(measure);});observer.observe(document.body,{childList:true,subtree:true,attributes:true});
   window.addEventListener('resize',measure);window.addEventListener('scroll',measure,true);
-  return()=>{cancelAnimationFrame(frame);window.removeEventListener('resize',measure);window.removeEventListener('scroll',measure,true);};
+  return()=>{observer.disconnect();cancelAnimationFrame(frame);window.removeEventListener('resize',measure);window.removeEventListener('scroll',measure,true);};
  },[tour,step]);
  async function connect(){if(!onConnect||busy)return;setBusy(true);setError('');try{await onConnect({name:name.trim(),avatar});}catch(e){setError(e instanceof Error?e.message:'Please try connecting again.');}finally{setBusy(false);}}
  const cardWidth=Math.min(370,viewport.width-32);
  const below=rect&&rect.top+rect.height+310<viewport.height;
  const beside=rect&&!below&&rect.left+rect.width+cardWidth+32<viewport.width;
+ const freeLeft=holes.filter(r=>r.width*r.height>viewport.width*viewport.height*.1&&r.left>cardWidth+36).sort((a,b)=>b.width*b.height-a.width*a.height)[0];
  const collectionOnLeft=step===3&&rect&&rect.left>cardWidth+36;
- const left=collectionOnLeft?rect.left-cardWidth-20:rect?Math.max(16,Math.min(beside?rect.left+rect.width+16:rect.left,viewport.width-cardWidth-16)):(viewport.width-cardWidth)/2;
- const top=collectionOnLeft?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&below?rect.top+rect.height+16:rect&&beside?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&rect.top>320?rect.top-310:Math.max(16,viewport.height-320);
+ const left=freeLeft?freeLeft.left-cardWidth-20:collectionOnLeft?rect.left-cardWidth-20:rect?Math.max(16,Math.min(beside?rect.left+rect.width+16:rect.left,viewport.width-cardWidth-16)):(viewport.width-cardWidth)/2;
+ const top=freeLeft?Math.max(16,Math.min(freeLeft.top,viewport.height-320)):collectionOnLeft?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&below?rect.top+rect.height+16:rect&&beside?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&rect.top>320?rect.top-310:Math.max(16,viewport.height-320);
  function begin(){callbacks.current.onProfile({name:name.trim(),avatar});setTour(true);}
- return createPortal(tour?<div className="nooks-tour-overlay">
-  {rect&&<div className="nooks-tour-background-blur" style={{clipPath:`polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,${rect.left}px ${rect.top}px,${rect.left}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top}px,${rect.left}px ${rect.top}px)`}}/>}
-  {rect?<div key={step} className="nooks-tour-spotlight" style={rect}/>:<div className="nooks-tour-shade"/>}
-  <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="true" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
-   <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span></header>
-   <h2 id="nooks-tour-heading">{stop.title}</h2><p>{stop.text}</p>
+ const contains=(r:{left:number;top:number;width:number;height:number},p:[number,number])=>p[0]>=r.left&&p[0]<=r.left+r.width&&p[1]>=r.top&&p[1]<=r.top+r.height;
+ const windows=holes.map(r=>[[r.left,r.top],[r.left+r.width,r.top],[r.left+r.width,r.top+r.height],[r.left,r.top+r.height]] as [number,number][]);
+ if(points.length&&!holes.some(r=>points.every(p=>contains(r,p))))windows.push(points);
+ const shadePath=`M0 0H${viewport.width}V${viewport.height}H0Z`+windows.map(p=>`M${p.map(v=>v.join(' ')).join('L')}Z`).join('');
+ const cutout=`path(evenodd,"${shadePath}")`;
+ return createPortal(tour&&!isTutorialPractice?<TutorialPractice error={error} workspace={workspace} profile={{name:name.trim()||initialProfile.name,avatar}} onFinish={()=>void finish()}/>:tour?<div className="nooks-tour-overlay">
+  <div className="nooks-tour-interaction-shade" style={{clipPath:cutout}}/>
+  {points.length>0&&<svg className="nooks-tour-outline" width={viewport.width} height={viewport.height} aria-hidden="true"><path d={`M${points.map(p=>p.join(' ')).join('L')}Z`} fill="none" stroke="#eed9b4" strokeWidth="2" strokeLinejoin="round"/></svg>}
+  <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="false" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
+   <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span><button type="button" className="nooks-tour-tip-toggle" aria-expanded={!tipHidden} onClick={()=>setTipHidden(v=>!v)}>{tipHidden?'Show tip':'Hide tip'}</button></header>
+   <h2 id="nooks-tour-heading">{stop.title}</h2>{!tipHidden&&<><p>{stop.text}</p><p className="nooks-tour-practice-hint">Try it out. Changes during this tour won’t be saved.</p></>}
    {step===tourStops.length-1&&!replay&&onConnect&&!connected&&<button className="welcome-connect" disabled={busy} onClick={()=>void connect()}>Connect my account</button>}
    {error&&<p role="alert" className="welcome-error">{error}</p>}
    <footer><button disabled={busy} onClick={()=>step?setStep(step-1):void finish()}>{step?'Back':'Finish later'}</button><button className="welcome-primary" disabled={busy} onClick={()=>step===tourStops.length-1?void finish():setStep(step+1)}>{busy?'Saving…':step===tourStops.length-1?'Enjoy Nooks':'Next'}<ArrowRight size={16}/></button></footer>

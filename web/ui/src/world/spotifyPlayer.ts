@@ -1,3 +1,4 @@
+import { isTutorialPractice } from '../onboarding/tutorialSession';
 import { useEffect, useRef, useState } from 'react';
 import type { SpotifyLink } from './spotifyLink';
 const key='nooks:spotify-player:v1';
@@ -12,7 +13,8 @@ export function useSpotifyPlayer(link:SpotifyLink|null){
  const [clientId,setClientId]=useState(()=>localStorage.getItem(clientKey)||'');
  const [token,setToken]=useState<Token|null>(readToken);
  const tokenRef=useRef(token);tokenRef.current=token;
- const player=useRef<any>(null),device=useRef('');
+ const player=useRef<any>(null),device=useRef(''),practiceTrack=useRef(1);
+ const showPracticeTrack=(offset=0)=>{practiceTrack.current=Math.max(1,practiceTrack.current+offset);setTrack({id:`practice-${practiceTrack.current}`,name:`Practice track ${practiceTrack.current}`,artists:[{name:'Tutorial preview'}],album:{images:[]},uri:''});};
  const [ready,setReady]=useState(false),[paused,setPaused]=useState(true),[volume,setVolumeState]=useState(.5),[track,setTrack]=useState<SpotifyTrack|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
  const selected=useRef('');
  function saveToken(next:Token){sessionStorage.setItem(key,JSON.stringify(next));tokenRef.current=next;setToken(next);}
@@ -31,6 +33,7 @@ export function useSpotifyPlayer(link:SpotifyLink|null){
  },[!!token,clientId,!!link]);
  async function run(action:()=>Promise<unknown>){setError('');setBusy(true);try{await action();}catch(e){setError(e instanceof Error?e.message:'Spotify could not complete that action.');}finally{setBusy(false);}}
  async function connect(){if(!/^[a-f0-9]{32}$/i.test(clientId.trim())){setError('Enter the Client ID from your Spotify Developer app.');return;}localStorage.setItem(clientKey,clientId.trim());const bytes=crypto.getRandomValues(new Uint8Array(64));const verifier=Array.from(bytes,b=>('0'+b.toString(16)).slice(-2)).join('');const state=crypto.randomUUID();sessionStorage.setItem('nooks:spotify-verifier',verifier);sessionStorage.setItem('nooks:spotify-state',state);const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(verifier));const challenge=btoa(String.fromCharCode(...new Uint8Array(digest))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');const query=new URLSearchParams({client_id:clientId.trim(),response_type:'code',redirect_uri:redirect(),code_challenge_method:'S256',code_challenge:challenge,state,scope:'streaming user-read-email user-read-private user-read-playback-state user-modify-playback-state'});window.location.assign(`https://accounts.spotify.com/authorize?${query}`);}
+ if(isTutorialPractice)return {ready:!!link,paused,volume,track,error:'',busy:false,clientId,setClientId,connect:async()=>{},stop:async()=>{setPaused(true);setTrack(null);},toggle:async()=>{showPracticeTrack();setPaused(v=>!v);},previous:async()=>{showPracticeTrack(-1);},next:async()=>{showPracticeTrack(1);},setVolume:(v:number)=>setVolumeState(Math.min(1,Math.max(0,v))),queue:async()=>({queue:[]}),redirectUrl:redirect()};
  return {ready,paused,volume,track,error,busy,clientId,setClientId,connect,
  stop:async()=>{const instance=player.current;selected.current='';try{await instance?.pause();}finally{instance?.disconnect();player.current=null;device.current='';setTrack(null);setPaused(true);setReady(false);setError('');}},
  toggle:()=>run(async()=>{if(!link||!device.current)throw new Error('Connect Spotify first.');await player.current.activateElement();if(selected.current!==link.uri){await api(`me/player/play?device_id=${encodeURIComponent(device.current)}`,'PUT',link.kind==='track'?{uris:[link.uri]}:{context_uri:link.uri});selected.current=link.uri;}else await player.current.togglePlay();}),

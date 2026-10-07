@@ -1,3 +1,4 @@
+import { isTutorialPractice } from '../onboarding/tutorialSession';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Music2, Pause, Play, SkipBack, SkipForward, Volume1, Volume2, X } from 'lucide-react';
 import { MovableWidget } from './WorkspaceLayout';
@@ -49,7 +50,7 @@ export function SpotifyCard({roomId,roomTitle,onOpenMusic}:{roomId:string;roomTi
  <div className="spotify-card-controls" role="group" aria-label="Playback controls"><button aria-label="Previous song" disabled={!player.ready||player.busy} onClick={player.previous}><SkipBack fill="currentColor"/></button><button aria-label={player.paused?'Play Spotify':'Pause Spotify'} disabled={player.busy} onClick={()=>player.ready?void player.toggle():openPlaylist()}>{player.paused?<Play fill="currentColor"/>:<Pause fill="currentColor"/>}</button><button aria-label="Next song" disabled={!player.ready||player.busy} onClick={player.next}><SkipForward fill="currentColor"/></button></div>
  <div className="spotify-card-volume"><Volume1 size={15}/><input type="range" aria-label="Spotify volume" aria-valuetext={`${Math.round(player.volume*100)} percent`} min="0" max="1" step=".01" value={player.volume} disabled={!player.ready} onChange={e=>player.setVolume(Number(e.target.value))} style={{background:`linear-gradient(to right,#e9d9bc ${player.volume*100}%,#e9d9bc33 ${player.volume*100}%)`}}/><Volume2 size={15}/></div>
  <button className="spotify-card-stop" disabled={player.busy} onClick={()=>void stopListening()}>Stop listening</button>
- <button className="spotify-card-queue" onClick={openPlaylist}>Open playlist</button>
+ <button className="spotify-card-queue" onClick={isTutorialPractice?()=>setOverlay('queue'):openPlaylist}>Open playlist</button>
  <a className="spotify-card-connect" href={link.url} target="_blank" rel="noopener noreferrer">Listen on Spotify</a>
  {player.ready&&<button className="spotify-card-connect" onClick={()=>void viewQueue()}>View queue</button>}
  {link.url!==recommended.url&&<button className="spotify-card-connect" onClick={()=>selectLink(recommended)}>Use nook playlist</button>}

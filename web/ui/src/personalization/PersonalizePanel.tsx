@@ -41,9 +41,10 @@ export async function optimizeRoomImage(file: File): Promise<string> {
     throw new Error('This image couldn’t be optimized. Try a simpler image.');
   } finally { if ('close' in source) source.close(); }
 }
-export function useModalFocus(ref: React.RefObject<HTMLDivElement | null>, onClose: () => void) {
+export function useModalFocus(ref: React.RefObject<HTMLDivElement | null>, onClose: () => void, enabled = true) {
   const close = useRef(onClose); close.current = onClose;
   useEffect(() => {
+    if(!enabled)return;
     const previous = document.activeElement as HTMLElement | null;
     const overflow = document.body.style.overflow; document.body.style.overflow = 'hidden';
     ref.current?.querySelector<HTMLElement>('button,input')?.focus();
@@ -61,7 +62,7 @@ export function useModalFocus(ref: React.RefObject<HTMLDivElement | null>, onClo
       document.body.style.overflow = overflow; window.removeEventListener('keydown', key);
       requestAnimationFrame(() => { if (previous?.isConnected && isTopmostDismissTarget(previous)) previous.focus({ preventScroll: true }); });
     };
-  }, [ref]);
+  }, [ref, enabled]);
 }
 
 // Failed saves may be dismissed, but must reopen with the student's work intact.
