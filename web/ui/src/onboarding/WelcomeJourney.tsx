@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { MemberAvatar, memberAvatarNames } from '../community/NookCommunity';
 import type { NookProfile } from '../community/NookCreator';
 import { useCrashDraft } from '../WorkspaceErrorBoundary';
@@ -59,7 +59,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
   {rect&&<div className="nooks-tour-background-blur" style={{clipPath:`polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,${rect.left}px ${rect.top}px,${rect.left}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top}px,${rect.left}px ${rect.top}px)`}}/>}
   {rect?<div className="nooks-tour-spotlight" style={rect}/>:<div className="nooks-tour-shade"/>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="true" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
-   <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span><button className="welcome-close" aria-label="Finish tour" disabled={busy} onClick={()=>void finish()}><X size={18}/></button></header>
+   <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span></header>
    <h2 id="nooks-tour-heading">{stop.title}</h2><p>{stop.text}</p>
    {step===tourStops.length-1&&!replay&&onConnect&&!connected&&<button className="welcome-connect" disabled={busy} onClick={()=>void connect()}>Connect my account</button>}
    {error&&<p role="alert" className="welcome-error">{error}</p>}
