@@ -20,7 +20,7 @@ function roundedSpotlight(points:[number,number][],radius:number){
 export const tourStops = [
  {target:'.study-home-timer',page:'study',title:'Make a little time for focus.',text:'Your focus timer follows the Pomodoro rhythm: a focused stretch, then a well-earned break. Choose a duration, press Start, and build your day one session at a time.'},
  {target:'.study-home-tasks',page:'study',title:'One thing at a time.',text:'Keep a to-do list beside your timer. Add the things on your mind, then check them off as you go.'},
- {target:'[data-sound-trigger]',page:'study',title:'Set the mood.',text:'Open Music here to choose ambient sounds or a Spotify playlist. Your music card also gives you a quick way back to your listening controls.'},
+ {target:'[data-sound-trigger],.spotify-card',page:'study',title:'Set the mood.',text:'Open Music here to choose ambient sounds or a Spotify playlist. Your music card also gives you a quick way back to your listening controls.'},
  {target:'.collection-timeline-card,.collection-next-compact',page:'study',title:'A little reward for showing up.',text:'Every nook has its own collection of keepsakes. Saved focus time fills the timeline and brings you closer to your next reward.'},
  {target:'.study-focus-trigger',page:'study',title:'Time to lock in.',text:'Focus mode clears the surrounding cards so you can settle into your nook. Your mini timer stays visible. Click again whenever you want your tools back.'},
  {target:'.nooks-people-position',page:'study',title:'You have company.',text:'The people counter opens your nook’s community: see what others are studying and explore the leaderboard. In a connected room, you can make your nook private and invite friends with a shareable link.'},
@@ -44,6 +44,7 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
  const [tour,setTour]=useState(replay),[step,setStep]=useState(0),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const panel=useRef<HTMLDivElement>(null), callbacks=useRef({onNavigate,onFinish,onProfile});callbacks.current={onNavigate,onFinish,onProfile};
  const [cornerRadius,setCornerRadius]=useState(24);
+ const [additionalOutlines,setAdditionalOutlines]=useState<{points:[number,number][];radius:number}[]>([]);
  const [rect,setRect]=useState<{left:number;top:number;width:number;height:number}|null>(null);
  const [points,setPoints]=useState<[number,number][]>([]),[holes,setHoles]=useState<{left:number;top:number;width:number;height:number}[]>([]);
  const [viewport,setViewport]=useState({width:window.innerWidth,height:window.innerHeight});
@@ -51,10 +52,14 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
  async function finish(){if(busy)return;setBusy(true);setError('');try{await callbacks.current.onFinish({name:name.trim()||initialProfile.name,avatar});}catch(e){setError(e instanceof Error?e.message:'Please try again.');}finally{setBusy(false);}}
  useModalFocus(panel,()=>{if(tour&&!busy)void finish();},!tour);
  useLayoutEffect(()=>{if(!tour||!isTutorialPractice)return;callbacks.current.onNavigate(stop.page);const selector=stop.page==='people'?'.nooks-community,.nooks-live':stop.page==='library'?'.nooks-library':stop.page==='nooks'?'.nd-dialog':null;if(!selector)return;let frame=0,attempts=0,target:Element|null=null;const arrive=()=>{target=document.querySelector(selector);if(target){target.classList.add('nooks-tour-local-arrival');window.dispatchEvent(new Event('resize'));}else if(attempts++<20)frame=requestAnimationFrame(arrive);};frame=requestAnimationFrame(arrive);return()=>{cancelAnimationFrame(frame);target?.classList.remove('nooks-tour-local-arrival');};},[tour,step]);
- useEffect(()=>{if(phase==='letter'&&!tour){panel.current?.querySelector<HTMLElement>('#welcome-letter-heading')?.focus({preventScroll:true});return;}panel.current?.querySelector<HTMLElement>('input,button:not([disabled])')?.focus();},[phase,tour,step]);
+ useEffect(()=>{if(tour){panel.current?.querySelector<HTMLElement>('#nooks-tour-heading')?.focus({preventScroll:true});return;}if(phase==='letter'&&!tour){panel.current?.querySelector<HTMLElement>('#welcome-letter-heading')?.focus({preventScroll:true});return;}panel.current?.querySelector<HTMLElement>('input,button:not([disabled])')?.focus();},[phase,tour,step]);
  useLayoutEffect(()=>{
   if(!tour||!isTutorialPractice)return;let frame=0,count=0;let element:Element|null=null;
-  const measure=()=>{const elements=[...document.querySelectorAll(stop.target)];element=elements[0]??null;let bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);if(bounds.length&&count===0){const upper=Math.min(...bounds.map(r=>r.top)),lower=Math.max(...bounds.map(r=>r.bottom));if(lower-upper<window.innerHeight-32){const delta=upper<16?upper-16:lower>window.innerHeight-16?lower-window.innerHeight+16:0;if(delta)window.scrollBy({top:delta,behavior:'instant'});}else element?.scrollIntoView({block:'center',behavior:'instant'});bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);}
+  const measure=()=>{const visible=(e:Element)=>!e.closest('[hidden],[inert],[aria-hidden="true"]')&&getComputedStyle(e).visibility!=='hidden'&&e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0;
+   const opened=[...document.querySelectorAll('[role="dialog"]:not(.nooks-tour-card),.world-sound-panel.open,.nooks-active-work')].filter(visible);
+   const panels=opened.filter(e=>!opened.some(other=>other!==e&&other.contains(e)));
+   const adaptive=panels.length>0;
+   const elements=adaptive?panels:[...document.querySelectorAll(stop.target)].filter(visible);element=elements[0]??null;let bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);if(bounds.length&&count===0){const upper=Math.min(...bounds.map(r=>r.top)),lower=Math.max(...bounds.map(r=>r.bottom));if(lower-upper<window.innerHeight-32){const delta=upper<16?upper-16:lower>window.innerHeight-16?lower-window.innerHeight+16:0;if(delta)window.scrollBy({top:delta,behavior:'instant'});}else element?.scrollIntoView({block:'center',behavior:'instant'});bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);}
    const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
    let shape:[number,number][]=[];
    if(element){const radius=parseFloat(getComputedStyle(element).borderTopLeftRadius);setCornerRadius(radius>0?radius+7:24);}
@@ -62,39 +67,53 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
     const bar=elements.find(e=>e.matches('.collection-next-compact'))?.getBoundingClientRect(),track=elements.find(e=>e.matches('.collection-timeline-card'))?.getBoundingClientRect();
     shape=step===3&&bar&&track&&bar.top<track.top&&bar.left<track.left?[[left,top],[right,top],[right,bottom],[track.left-7,bottom],[track.left-7,bar.bottom+7],[left,bar.bottom+7]]:[[left,top],[right,top],[right,bottom],[left,bottom]];
    }else setRect(null);
+   const separate=(adaptive||step===2)&&elements.length>1;
+   const individual=elements.map(e=>{const r=e.getBoundingClientRect(),radius=parseFloat(getComputedStyle(e).borderTopLeftRadius)||17;return {points:[[r.left-7,r.top-7],[r.right+7,r.top-7],[r.right+7,r.bottom+7],[r.left-7,r.bottom+7]] as [number,number][],radius:radius+7};});
+   if(separate){shape=individual[0].points;setCornerRadius(individual[0].radius);}
+   setAdditionalOutlines(old=>same(old,separate?individual.slice(1):[])?old:separate?individual.slice(1):[]);
    setPoints(old=>same(old,shape)?old:shape);
    const extra=[...document.querySelectorAll('[role="dialog"]:not(.nooks-tour-card),.world-sound-panel.open,.nooks-active-work,.nooks-library'+(step===2?',.spotify-card':'')+(step===10?',.nooks-shell-header':''))].filter(e=>!e.closest('[hidden],[inert],[aria-hidden="true"]')&&getComputedStyle(e).visibility!=='hidden').map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height).map(r=>({left:r.left-3,top:r.top-3,width:r.width+6,height:r.height+6}));
    const filtered=extra.filter((r,i)=>!extra.some((o,j)=>j!==i&&o.left<=r.left&&o.top<=r.top&&o.left+o.width>=r.left+r.width&&o.top+o.height>=r.top+r.height&&(o.width*o.height>r.width*r.height||j<i)));
    setHoles(old=>same(old,filtered)?old:filtered);setViewport(old=>old.width===window.innerWidth&&old.height===window.innerHeight?old:{width:window.innerWidth,height:window.innerHeight});};
   const settle=()=>{measure();if(count++<12)frame=requestAnimationFrame(settle);};frame=requestAnimationFrame(settle);
-  const observer=new MutationObserver(()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(measure);});observer.observe(document.body,{childList:true,subtree:true,attributes:true});
+  const observer=new MutationObserver(records=>{if(records.every(r=>(r.target instanceof Element?r.target:r.target.parentElement)?.closest('.nooks-tour-overlay')))return;cancelAnimationFrame(frame);count=1;frame=requestAnimationFrame(settle);});observer.observe(document.body,{childList:true,subtree:true,attributes:true});
   window.addEventListener('resize',measure);window.addEventListener('scroll',measure,true);
   return()=>{observer.disconnect();cancelAnimationFrame(frame);window.removeEventListener('resize',measure);window.removeEventListener('scroll',measure,true);};
  },[tour,step]);
+ useEffect(()=>{
+  if(!tour||!isTutorialPractice)return;
+  const tab=document.querySelector('[data-nooks-tab]');
+  if(step===9)tab?.classList.add('nooks-tour-selected');
+  const block=(event:Event)=>{if(step===5&&event.target instanceof Element&&event.target.closest('.nooks-people-position')){event.preventDefault();event.stopImmediatePropagation();}};
+  document.addEventListener('click',block,true);
+  return()=>{tab?.classList.remove('nooks-tour-selected');document.removeEventListener('click',block,true);};
+ },[tour,step]);
  async function connect(){if(!onConnect||busy)return;setBusy(true);setError('');try{await onConnect({name:name.trim(),avatar});}catch(e){setError(e instanceof Error?e.message:'Please try connecting again.');}finally{setBusy(false);}}
- const cardWidth=Math.min(370,viewport.width-32);
+ const sidePanel=holes.filter(r=>r.width*r.height>viewport.width*viewport.height*.1&&r.left>280).sort((a,b)=>b.width*b.height-a.width*a.height)[0];
+ const cardWidth=Math.min(370,viewport.width-32,sidePanel?sidePanel.left-40:370);
  const below=rect&&rect.top+rect.height+310<viewport.height;
  const beside=rect&&!below&&rect.left+rect.width+cardWidth+32<viewport.width;
  const freeLeft=holes.filter(r=>r.width*r.height>viewport.width*viewport.height*.1&&r.left>cardWidth+36).sort((a,b)=>b.width*b.height-a.width*a.height)[0];
- const collectionOnLeft=step===3&&rect&&rect.left>cardWidth+36;
+ const collectionOnLeft=(step===3||step===2)&&rect&&rect.left>cardWidth+36;
  const left=freeLeft?freeLeft.left-cardWidth-20:collectionOnLeft?rect.left-cardWidth-20:rect?Math.max(16,Math.min(beside?rect.left+rect.width+16:rect.left,viewport.width-cardWidth-16)):(viewport.width-cardWidth)/2;
  const top=freeLeft?Math.max(16,Math.min(freeLeft.top,viewport.height-320)):collectionOnLeft?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&below?rect.top+rect.height+16:rect&&beside?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&rect.top>320?rect.top-310:Math.max(16,viewport.height-320);
  function begin(){callbacks.current.onProfile({name:name.trim(),avatar});setTour(true);}
  const contains=(r:{left:number;top:number;width:number;height:number},p:[number,number])=>p[0]>=r.left&&p[0]<=r.left+r.width&&p[1]>=r.top&&p[1]<=r.top+r.height;
  const windows=holes.map(r=>[[r.left,r.top],[r.left+r.width,r.top],[r.left+r.width,r.top+r.height],[r.left,r.top+r.height]] as [number,number][]);
  if(points.length&&!holes.some(r=>points.every(p=>contains(r,p))))windows.push(points);
- const clearPaths=windows.map((p,i)=>roundedSpotlight(p,i<holes.length?28:cornerRadius));
+ const clearPaths=windows.map((p,i)=>roundedSpotlight(p,i<holes.length?28:cornerRadius)).concat(additionalOutlines.map(o=>roundedSpotlight(o.points,o.radius)));
  const maskSvg=`<svg xmlns="http://www.w3.org/2000/svg" width="${viewport.width}" height="${viewport.height}"><defs><mask id="clear" maskUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="white"/>${clearPaths.map(d=>`<path d="${d}" fill="black"/>`).join('')}</mask></defs><rect width="100%" height="100%" fill="white" mask="url(#clear)"/></svg>`;
  const shadeMask=`url("data:image/svg+xml,${encodeURIComponent(maskSvg)}")`;
+ windows.push(...additionalOutlines.filter(o=>!holes.some(r=>o.points.every(p=>contains(r,p)))).map(o=>o.points));
  const hitWindows=windows.filter((p,i)=>i<holes.length||!holes.some(r=>p.some(v=>contains(r,v))));
  const shadePath=`M0 0H${viewport.width}V${viewport.height}H0Z`+hitWindows.map((p,i)=>roundedSpotlight(p,i<holes.length?28:cornerRadius)).join('');
  const cutout=`path(evenodd,"${shadePath}")`;
  return createPortal(tour&&!isTutorialPractice?<TutorialPractice error={error} workspace={workspace} profile={{name:name.trim()||initialProfile.name,avatar}} onFinish={()=>void finish()}/>:tour?<div className="nooks-tour-overlay">
   <div className="nooks-tour-interaction-shade" style={{maskImage:shadeMask,WebkitMaskImage:shadeMask,pointerEvents:'none'}}/><div className="nooks-tour-click-shield" style={{clipPath:cutout}}/>
-  {points.length>0&&<svg className="nooks-tour-outline" width={viewport.width} height={viewport.height} aria-hidden="true"><path d={roundedSpotlight(points,cornerRadius)} fill="none" stroke="#eed9b4" strokeWidth="2" strokeLinejoin="round"/></svg>}
+  {points.length>0&&<svg className="nooks-tour-outline" width={viewport.width} height={viewport.height} aria-hidden="true"><path d={roundedSpotlight(points,cornerRadius)} fill="none" stroke="#eed9b4" strokeWidth="2" strokeLinejoin="round"/>{additionalOutlines.map((o,i)=><path key={i} d={roundedSpotlight(o.points,o.radius)} fill="none" stroke="#eed9b4" strokeWidth="2"/>)}</svg>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="false" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
    <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span></header>
-   <h2 id="nooks-tour-heading">{stop.title}</h2><p>{stop.text}</p><p className="nooks-tour-practice-hint">Try it out. Changes during this tour won’t be saved.</p>
+   <h2 id="nooks-tour-heading" tabIndex={-1}>{stop.title}</h2><p>{stop.text}</p><p className="nooks-tour-practice-hint">Try it out. Changes during this tour won’t be saved.</p>
    {step===tourStops.length-1&&!replay&&onConnect&&!connected&&<button className="welcome-connect" disabled={busy} onClick={()=>void connect()}>Connect my account</button>}
    {error&&<p role="alert" className="welcome-error">{error}</p>}
    <footer><button disabled={busy} onClick={()=>step?setStep(step-1):void finish()}>{step?'Back':'Skip tour'}</button><button className="welcome-primary" disabled={busy} onClick={()=>step===tourStops.length-1?void finish():setStep(step+1)}>{busy?'Saving…':step===tourStops.length-1?'Enjoy Nooks':'Next'}<ArrowRight size={16}/></button></footer>
