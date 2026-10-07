@@ -16,7 +16,7 @@ export const tourStops = [
  {target:'.nooks-people-position',page:'study',title:'You have company.',text:'The people counter opens your nook’s community: see what others are studying and explore the leaderboard. In a connected room, you can make your nook private and invite friends with a shareable link.'},
  {target:'.nooks-community-cover,.nooks-live>header',page:'people',title:'A nook for your people.',text:'Explore People and Leaderboard here. In a connected nook you own, Public can become Private; Invite then gives you a link to copy and send to friends. Preview profiles are examples until your account is connected.'},
  {target:'.study-home-quick-actions',page:'study',title:'Turn curiosity into understanding.',text:'Create notes, flashcards, quizzes, and tests right here. Each gives you a different way to make sense of what you’re learning. In ChatGPT, describe what you want to study and Nooks can turn it into practice.'},
- {target:'.nooks-library',page:'library',title:'Everything you’re learning, together.',text:'Your Library holds your notes and practice. Bring in passages from the internet, create study materials, organize them into courses, and share files or folders with view, comment, or edit access when connected.'},
+ {target:'[data-library-tab]',page:'library',title:'Everything you’re learning, together.',text:'Your Library holds your notes and practice. Bring in passages from the internet, create study materials, organize them into courses, and share files or folders with view, comment, or edit access when connected.'},
  {target:'[data-nooks-tab]',page:'study',title:'A change of scenery.',text:'Open Nooks to switch the mood, join another study space, or create a nook of your own. Choose a soothing spot and make yourself at home.'},
  {target:'.nd-dialog',page:'nooks',title:'Find your next favorite spot.',text:'Browse the Nooks here, save a favorite with the heart, or use the plus beside search to describe and create a new setting.'},
  {target:'[data-tour-replay]',page:'study',title:'Thanks again. Enjoy your time in Nooks!',text:'This little corner is yours. Come back to the circled info button beside the people counter whenever you want to replay this tour.'},
@@ -38,7 +38,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  const stop=tourStops[step];
  async function finish(){if(busy)return;setBusy(true);setError('');try{await callbacks.current.onFinish({name:name.trim()||initialProfile.name,avatar});}catch(e){setError(e instanceof Error?e.message:'Please try again.');}finally{setBusy(false);}}
  useModalFocus(panel,()=>{if(tour&&!busy)void finish();});
- useEffect(()=>{if(!tour)return;callbacks.current.onNavigate(stop.page);},[tour,step]);
+ useEffect(()=>{if(!tour)return;const dissolve=['people','library','nooks'].includes(stop.page);let navigateTimer=0,clearTimer=0;if(dissolve){document.body.classList.add('nooks-tour-dissolving');navigateTimer=window.setTimeout(()=>{callbacks.current.onNavigate(stop.page);clearTimer=window.setTimeout(()=>{document.body.classList.remove('nooks-tour-dissolving');window.dispatchEvent(new Event('resize'));},180);},180);}else callbacks.current.onNavigate(stop.page);return()=>{window.clearTimeout(navigateTimer);window.clearTimeout(clearTimer);document.body.classList.remove('nooks-tour-dissolving');};},[tour,step]);
  useEffect(()=>{if(phase==='letter'&&!tour){panel.current?.querySelector<HTMLElement>('#welcome-letter-heading')?.focus({preventScroll:true});return;}panel.current?.querySelector<HTMLElement>('input,button:not([disabled])')?.focus();},[phase,tour,step]);
  useLayoutEffect(()=>{
   if(!tour)return;let frame=0,count=0;let element:Element|null=null;
@@ -56,6 +56,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  const top=collectionOnLeft?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&below?rect.top+rect.height+16:rect&&beside?Math.max(16,Math.min(rect.top,viewport.height-320)):rect&&rect.top>320?rect.top-310:Math.max(16,viewport.height-320);
  function begin(){callbacks.current.onProfile({name:name.trim(),avatar});setTour(true);}
  return createPortal(tour?<div className="nooks-tour-overlay">
+  {rect&&<div className="nooks-tour-background-blur" style={{clipPath:`polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,${rect.left}px ${rect.top}px,${rect.left}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top+rect.height}px,${rect.left+rect.width}px ${rect.top}px,${rect.left}px ${rect.top}px)`}}/>}
   {rect?<div className="nooks-tour-spotlight" style={rect}/>:<div className="nooks-tour-shade"/>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="true" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
    <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span><button className="welcome-close" aria-label="Finish tour" disabled={busy} onClick={()=>void finish()}><X size={18}/></button></header>

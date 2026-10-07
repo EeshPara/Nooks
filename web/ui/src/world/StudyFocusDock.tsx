@@ -102,7 +102,7 @@ export function StudyFocusDock({ focusMode = false, onToggleFocusMode, timer, op
       <p className="study-focus-state">{retrySaving ? 'Session finished · waiting to save' : breakDone ? 'Break complete' : ticking ? isFocus ? 'Focusing' : 'On a break' : isFocus && timer.active ? 'Paused' : isFocus ? 'Ready to begin' : 'A moment away from your work'}</p>
       {isFocus && !timer.active && !retrySaving && <div className="study-focus-presets" role="group" aria-label="Focus duration">
         {[15, 25, 50].map(minutes => <button key={minutes} disabled={controlsDisabled} aria-pressed={timer.minutes === minutes} onClick={() => timer.onMinutes(minutes)}>{minutes}<span> min</span></button>)}
-        <label className="study-focus-custom"><input aria-label="Custom focus minutes" type="number" inputMode="numeric" min="1" max="180" value={timer.minutes} disabled={controlsDisabled} onChange={event => timer.onMinutes(Math.max(1, Math.min(180, Number(event.target.value) || 1)))}/><span>min</span></label>
+        <label className="study-focus-custom"><span>Custom</span><input aria-label="Custom focus minutes" type="number" inputMode="numeric" min="1" max="180" value={timer.minutes} disabled={controlsDisabled} onChange={event => timer.onMinutes(Math.max(1, Math.min(180, Number(event.target.value) || 1)))}/><span>min</span></label>
       </div>}
       {isFocus && <div className="study-focus-work"><span>Working on</span><strong title={workLabel}>{workLabel}</strong><small>Time goes to {activeNook}</small></div>}
       {!isFocus && <p className="study-focus-break-note">Your work stays open. Breaks don’t add focus time.</p>}

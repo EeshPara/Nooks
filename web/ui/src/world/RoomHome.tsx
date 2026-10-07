@@ -118,7 +118,7 @@ export function RoomHome(p: Props) {
      <p className="study-home-timer-state">Ready to begin</p>
      <div className="study-home-timer-presets" role="group" aria-label="Focus duration">
       {[15,25,50].map(minutes => <button key={minutes} aria-pressed={p.timer.minutes === minutes} disabled={p.timer.pending || p.timer.disabled} onClick={() => p.timer.onMinutes(minutes)}>{minutes}<span> min</span></button>)}
-      <label className="study-home-timer-custom"><input aria-label="Custom focus minutes" type="number" inputMode="numeric" min="1" max="180" value={p.timer.minutes} disabled={p.timer.pending || p.timer.disabled} onChange={event => p.timer.onMinutes(Math.max(1,Math.min(180,Number(event.target.value) || 1)))}/><span>min</span></label>
+      <label className="study-home-timer-custom"><span>Custom</span><input aria-label="Custom focus minutes" type="number" inputMode="numeric" min="1" max="180" value={p.timer.minutes} disabled={p.timer.pending || p.timer.disabled} onChange={event => p.timer.onMinutes(Math.max(1,Math.min(180,Number(event.target.value) || 1)))}/><span>min</span></label>
      </div>
      <div className="study-home-timer-work"><span>Working on</span><strong>Independent study</strong><small>Time goes to {p.sceneName}</small></div>
     </>}
