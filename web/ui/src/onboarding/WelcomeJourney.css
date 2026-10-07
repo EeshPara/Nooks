@@ -79,15 +79,21 @@
 .envelope-paper span:last-child{font:10px/1.5 Inter,sans-serif;letter-spacing:.06em}
 .envelope-pocket{z-index:2;clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%);background-image:linear-gradient(32deg,transparent 49.5%,#b8a38466 50%,#fff7 50.5%,transparent 51%),linear-gradient(-32deg,#e1d4bf 49.5%,#c7b494 50%,#f7efdf 50.5%)}
 .envelope-flap{z-index:3;clip-path:polygon(0 0,100% 0,50% 63%);transform-origin:center top;backface-visibility:visible;transition:transform 1.3s cubic-bezier(.4,0,.2,1) .2s;filter:drop-shadow(0 3px 2px #5f4b3533)}
-.envelope-seal{position:absolute;z-index:4;left:calc(50% - 22px);top:117px;width:44px;height:44px;display:grid;place-items:center;border-radius:47% 53% 48% 52%;background:radial-gradient(circle at 35% 25%,#b99b78,#846548 65%,#6a4f38);box-shadow:inset 0 2px 3px #ead2ac88,inset 0 -3px 4px #49331d66,0 3px 6px #47311e33;border:3px double #c1a17a;color:#e1c8a1;font:italic 23px Georgia,serif;transition:opacity .35s,transform .65s}
 .is-opening .welcome-envelope{animation:envelope-present 2.6s cubic-bezier(.22,1,.36,1) both;pointer-events:none}
 .is-opening .envelope-flap{transform:rotateX(180deg);z-index:0}
-.is-opening .envelope-seal{opacity:0;transform:translateY(18px) scale(.75)}
 .is-opening .envelope-paper{transform:translateY(-150px)}
 .is-opening .welcome-envelope-hint,.is-opening .welcome-back{opacity:0;transition:opacity .5s}
 @keyframes envelope-present{0%{transform:translateY(0) scale(1)}35%,75%{transform:translateY(35px) scale(1.12)}100%{transform:translateY(20px) scale(1.2);opacity:0}}
 .is-letter .welcome-open-envelope{animation:letter-unfold 1.8s cubic-bezier(.16,1,.3,1) both;perspective:1200px}
 .is-letter .welcome-letter{background:linear-gradient(110deg,#fffefb,#faf7f0);border-radius:3px;box-shadow:0 18px 70px #614b3426,0 1px 2px #fff inset}
 @keyframes letter-unfold{from{opacity:0;transform:translateY(80px) scale(.78) rotateX(12deg)}to{opacity:1;transform:translateY(0) scale(1) rotateX(0)}}
-@media(max-width:600px){.welcome-envelope-scene{height:180px}.envelope-seal{top:100px}.is-opening .envelope-paper{transform:translateY(-115px)}}
-@media(prefers-reduced-motion:reduce){.is-opening .welcome-envelope,.is-letter .welcome-open-envelope{animation:none}.envelope-paper,.envelope-flap,.envelope-seal{transition:none}}
+@media(max-width:600px){.welcome-envelope-scene{height:180px}.is-opening .envelope-paper{transform:translateY(-115px)}}
+@media(prefers-reduced-motion:reduce){.is-opening .welcome-envelope,.is-letter .welcome-open-envelope{animation:none}.envelope-paper,.envelope-flap{transition:none}}
+
+/* Plain stationery: quiet paper tones and restrained fold depth. */
+.welcome-envelope-scene{filter:drop-shadow(0 10px 12px #56433018)}
+.envelope-back,.envelope-pocket,.envelope-flap{background-image:none;background-color:#e9e5de;box-shadow:inset 0 1px 1px #fff8,inset 0 -1px 2px #82776718}
+.envelope-back{background-color:#d9d4cb}
+.envelope-pocket{background-image:linear-gradient(32deg,transparent 49.7%,#c6beb333 50%,transparent 50.3%),linear-gradient(-32deg,#e4dfd6 49.7%,#c6beb344 50%,#eeebe4 50.3%)}
+.envelope-flap{background-image:linear-gradient(160deg,#f3f0e9,#e4dfd5);filter:drop-shadow(0 1px 1px #665c4920)}
+.envelope-paper{background-image:none;background-color:#fffdf8}
