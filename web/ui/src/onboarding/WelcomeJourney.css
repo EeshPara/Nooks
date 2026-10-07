@@ -96,3 +96,5 @@
 .envelope-pocket{background-image:linear-gradient(32deg,transparent 49.7%,#c6beb333 50%,transparent 50.3%),linear-gradient(-32deg,#e4dfd6 49.7%,#c6beb344 50%,#eeebe4 50.3%)}
 .envelope-flap{background-image:linear-gradient(160deg,#f3f0e9,#e4dfd5);filter:drop-shadow(0 1px 1px #665c4920)}
 .envelope-paper{background-image:none;background-color:#fffdf8}
+
+.nooks-tour-target-outline{position:fixed;border-radius:18px;outline:2px solid #eed9b4;pointer-events:none}

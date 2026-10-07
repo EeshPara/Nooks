@@ -11,7 +11,7 @@ export const tourStops = [
  {target:'.study-home-timer',page:'study',title:'Make a little time for focus.',text:'Your focus timer follows the Pomodoro rhythm: a focused stretch, then a well-earned break. Choose a duration, press Start, and build your day one session at a time.'},
  {target:'.study-home-tasks',page:'study',title:'One thing at a time.',text:'Keep a to-do list beside your timer. Add the things on your mind, then check them off as you go.'},
  {target:'[data-sound-trigger]',page:'study',title:'Set the mood.',text:'Open Music here to choose ambient sounds or a Spotify playlist. Your music card also gives you a quick way back to your listening controls.'},
- {target:'.room-journey-widget',page:'study',title:'A little reward for showing up.',text:'Every nook has its own collection of keepsakes. Saved focus time fills the timeline and brings you closer to your next reward.'},
+ {target:'.collection-timeline-card,.collection-next-compact',page:'study',title:'A little reward for showing up.',text:'Every nook has its own collection of keepsakes. Saved focus time fills the timeline and brings you closer to your next reward.'},
  {target:'.study-focus-trigger',page:'study',title:'Time to lock in.',text:'Focus mode clears the surrounding cards so you can settle into your nook. Your mini timer stays visible. Click again whenever you want your tools back.'},
  {target:'.nooks-people-position',page:'study',title:'You have company.',text:'The people counter opens your nook’s community: see what others are studying and explore the leaderboard. In a connected room, you can make your nook private and invite friends with a shareable link.'},
  {target:'.nooks-community-cover,.nooks-live>header',page:'people',title:'A nook for your people.',text:'Explore People and Leaderboard here. In a connected nook you own, Public can become Private; Invite then gives you a link to copy and send to friends. Preview profiles are examples until your account is connected.'},
@@ -35,6 +35,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  const [tour,setTour]=useState(replay),[step,setStep]=useState(0),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const panel=useRef<HTMLDivElement>(null), callbacks=useRef({onNavigate,onFinish,onProfile});callbacks.current={onNavigate,onFinish,onProfile};
  const [rect,setRect]=useState<{left:number;top:number;width:number;height:number}|null>(null);
+ const [targetRects,setTargetRects]=useState<{left:number;top:number;width:number;height:number}[]>([]);
  const [viewport,setViewport]=useState({width:window.innerWidth,height:window.innerHeight});
  const stop=tourStops[step];
  async function finish(){if(busy)return;setBusy(true);setError('');try{await callbacks.current.onFinish({name:name.trim()||initialProfile.name,avatar});}catch(e){setError(e instanceof Error?e.message:'Please try again.');}finally{setBusy(false);}}
@@ -43,7 +44,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  useEffect(()=>{panel.current?.querySelector<HTMLElement>('input,button:not([disabled])')?.focus();},[phase,tour,step]);
  useLayoutEffect(()=>{
   if(!tour)return;let frame=0,count=0;let element:Element|null=null;
-  const measure=()=>{element=document.querySelector(stop.target);if(element){let r=element.getBoundingClientRect();if(count===0&&(r.bottom>window.innerHeight||r.top<0)){element.scrollIntoView({block:'center',behavior:'instant'});r=element.getBoundingClientRect();}setRect(r.width&&r.height?{left:r.left-7,top:r.top-7,width:r.width+14,height:r.height+14}:null);}else setRect(null);setViewport({width:window.innerWidth,height:window.innerHeight});};
+  const measure=()=>{const elements=[...document.querySelectorAll(stop.target)];element=elements[0]??null;if(element&&count===0){const r=element.getBoundingClientRect();if(r.bottom>window.innerHeight||r.top<0)element.scrollIntoView({block:'center',behavior:'instant'});}const bounds=elements.map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);const targets=bounds.map(r=>({left:r.left-7,top:r.top-7,width:r.width+14,height:r.height+14}));setTargetRects(targets);if(bounds.length){const left=Math.min(...bounds.map(r=>r.left))-7,top=Math.min(...bounds.map(r=>r.top))-7;setRect({left,top,width:Math.max(...bounds.map(r=>r.right))+7-left,height:Math.max(...bounds.map(r=>r.bottom))+7-top});}else setRect(null);setViewport({width:window.innerWidth,height:window.innerHeight});};
   const settle=()=>{measure();if(count++<12)frame=requestAnimationFrame(settle);};frame=requestAnimationFrame(settle);
   window.addEventListener('resize',measure);window.addEventListener('scroll',measure,true);
   return()=>{cancelAnimationFrame(frame);window.removeEventListener('resize',measure);window.removeEventListener('scroll',measure,true);};
@@ -57,7 +58,7 @@ export function WelcomeJourney({scope,initialProfile,replay,onNavigate,onFinish,
  useEffect(()=>{if(!opening)return;const timer=window.setTimeout(()=>{setPhase('letter');setOpening(false);},window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:2600);return()=>window.clearTimeout(timer);},[opening,setPhase]);
  function begin(){callbacks.current.onProfile({name:name.trim(),avatar});setTour(true);}
  return createPortal(tour?<div className="nooks-tour-overlay">
-  {rect?<div className="nooks-tour-spotlight" style={rect}/>:<div className="nooks-tour-shade"/>}
+  {rect?<><div className="nooks-tour-spotlight" style={rect}/>{targetRects.length>1&&targetRects.map((target,index)=><div key={index} className="nooks-tour-target-outline" style={target}/>)}</>:<div className="nooks-tour-shade"/>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="true" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
    <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span><button className="welcome-close" aria-label="Finish tour" disabled={busy} onClick={()=>void finish()}><X size={18}/></button></header>
    <h2 id="nooks-tour-heading">{stop.title}</h2><p>{stop.text}</p>
