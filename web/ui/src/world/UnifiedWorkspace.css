@@ -207,3 +207,10 @@
 
 .unified-workspace .study-dismiss-toolbar { max-width:690px; }
 .unified-workspace .nooks-cards-rating .nooks-cards-button { border-radius:999px; }
+.lofi-world.unified-workspace .nooks-shell-nav button[data-nooks-tab][aria-current=page],
+.lofi-world.unified-workspace .nooks-shell-nav button[data-nooks-tab][aria-current=page]:hover{background:#fff;color:#393830;box-shadow:0 3px 12px #0002}
+/* Keep navigation visible above discovery so its selected Nooks pill is readable. */
+body:has(.nd-overlay) .unified-workspace .nooks-shell-header{z-index:150}
+body:has(.nd-overlay) .nd-overlay{padding-top:84px}
+body:has(.nd-overlay) .nd-dialog{height:min(900px,calc(100dvh - 116px))}
+@media(max-width:700px){body:has(.nd-overlay) .nd-overlay{padding-top:32px;padding-bottom:88px}body:has(.nd-overlay) .nd-dialog{height:min(900px,calc(100dvh - 120px))}}

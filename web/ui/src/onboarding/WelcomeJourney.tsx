@@ -24,7 +24,7 @@ export const tourStops = [
  {target:'.collection-timeline-card,.collection-next-compact',page:'study',title:'A little reward for showing up.',text:'Every nook has its own collection of keepsakes. Saved focus time fills the timeline and brings you closer to your next reward.'},
  {target:'.study-focus-trigger',page:'study',title:'Time to lock in.',text:'Focus mode clears the surrounding cards so you can settle into your nook. Your mini timer stays visible. Click again whenever you want your tools back.'},
  {target:'.nooks-people-position',page:'study',title:'You have company.',text:'The people counter opens your nook’s community: see what others are studying and explore the leaderboard. In a connected room, you can make your nook private and invite friends with a shareable link.'},
- {target:'.nooks-community-cover,.nooks-live>header',page:'people',title:'A nook for your people.',text:'Explore People and Leaderboard here. In a connected nook you own, Public can become Private; Invite then gives you a link to copy and send to friends. Preview profiles are examples until your account is connected.'},
+ {target:'.nooks-community,.nooks-live',page:'people',title:'A nook for your people.',text:'Explore People and Leaderboard here. In a connected nook you own, Public can become Private; Invite then gives you a link to copy and send to friends. Preview profiles are examples until your account is connected.'},
  {target:'.study-home-quick-actions',page:'study',title:'Turn curiosity into understanding.',text:'Create notes, flashcards, quizzes, and tests right here. Each gives you a different way to make sense of what you’re learning. In ChatGPT, describe what you want to study and Nooks can turn it into practice.'},
  {target:'[data-library-tab]',page:'library',title:'Everything you’re learning, together.',text:'Your Library holds your notes and practice. Bring in passages from the internet, create study materials, organize them into courses, and share files or folders with view, comment, or edit access when connected.'},
  {target:'[data-nooks-tab]',page:'study',title:'A change of scenery.',text:'Open Nooks to switch the mood, join another study space, or create a nook of your own. Choose a soothing spot and make yourself at home.'},
@@ -63,7 +63,7 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
     shape=step===3&&bar&&track&&bar.top<track.top&&bar.left<track.left?[[left,top],[right,top],[right,bottom],[track.left-7,bottom],[track.left-7,bar.bottom+7],[left,bar.bottom+7]]:[[left,top],[right,top],[right,bottom],[left,bottom]];
    }else setRect(null);
    setPoints(old=>same(old,shape)?old:shape);
-   const extra=[...document.querySelectorAll('[role="dialog"]:not(.nooks-tour-card),.world-sound-panel.open,.nooks-active-work,.nooks-library'+(step===2?',.spotify-card':''))].filter(e=>!e.closest('[hidden],[inert],[aria-hidden="true"]')&&getComputedStyle(e).visibility!=='hidden').map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height).map(r=>({left:r.left-3,top:r.top-3,width:r.width+6,height:r.height+6}));
+   const extra=[...document.querySelectorAll('[role="dialog"]:not(.nooks-tour-card),.world-sound-panel.open,.nooks-active-work,.nooks-library'+(step===2?',.spotify-card':'')+(step===10?',.nooks-shell-header':''))].filter(e=>!e.closest('[hidden],[inert],[aria-hidden="true"]')&&getComputedStyle(e).visibility!=='hidden').map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height).map(r=>({left:r.left-3,top:r.top-3,width:r.width+6,height:r.height+6}));
    const filtered=extra.filter((r,i)=>!extra.some((o,j)=>j!==i&&o.left<=r.left&&o.top<=r.top&&o.left+o.width>=r.left+r.width&&o.top+o.height>=r.top+r.height&&(o.width*o.height>r.width*r.height||j<i)));
    setHoles(old=>same(old,filtered)?old:filtered);setViewport(old=>old.width===window.innerWidth&&old.height===window.innerHeight?old:{width:window.innerWidth,height:window.innerHeight});};
   const settle=()=>{measure();if(count++<12)frame=requestAnimationFrame(settle);};frame=requestAnimationFrame(settle);
@@ -83,10 +83,14 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
  const contains=(r:{left:number;top:number;width:number;height:number},p:[number,number])=>p[0]>=r.left&&p[0]<=r.left+r.width&&p[1]>=r.top&&p[1]<=r.top+r.height;
  const windows=holes.map(r=>[[r.left,r.top],[r.left+r.width,r.top],[r.left+r.width,r.top+r.height],[r.left,r.top+r.height]] as [number,number][]);
  if(points.length&&!holes.some(r=>points.every(p=>contains(r,p))))windows.push(points);
- const shadePath=`M0 0H${viewport.width}V${viewport.height}H0Z`+windows.map(p=>roundedSpotlight(p,cornerRadius)).join('');
+ const clearPaths=windows.map((p,i)=>roundedSpotlight(p,i<holes.length?28:cornerRadius));
+ const maskSvg=`<svg xmlns="http://www.w3.org/2000/svg" width="${viewport.width}" height="${viewport.height}"><defs><mask id="clear" maskUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="white"/>${clearPaths.map(d=>`<path d="${d}" fill="black"/>`).join('')}</mask></defs><rect width="100%" height="100%" fill="white" mask="url(#clear)"/></svg>`;
+ const shadeMask=`url("data:image/svg+xml,${encodeURIComponent(maskSvg)}")`;
+ const hitWindows=windows.filter((p,i)=>i<holes.length||!holes.some(r=>p.some(v=>contains(r,v))));
+ const shadePath=`M0 0H${viewport.width}V${viewport.height}H0Z`+hitWindows.map((p,i)=>roundedSpotlight(p,i<holes.length?28:cornerRadius)).join('');
  const cutout=`path(evenodd,"${shadePath}")`;
  return createPortal(tour&&!isTutorialPractice?<TutorialPractice error={error} workspace={workspace} profile={{name:name.trim()||initialProfile.name,avatar}} onFinish={()=>void finish()}/>:tour?<div className="nooks-tour-overlay">
-  <div className="nooks-tour-interaction-shade" style={{clipPath:cutout}}/>
+  <div className="nooks-tour-interaction-shade" style={{maskImage:shadeMask,WebkitMaskImage:shadeMask,pointerEvents:'none'}}/><div className="nooks-tour-click-shield" style={{clipPath:cutout}}/>
   {points.length>0&&<svg className="nooks-tour-outline" width={viewport.width} height={viewport.height} aria-hidden="true"><path d={roundedSpotlight(points,cornerRadius)} fill="none" stroke="#eed9b4" strokeWidth="2" strokeLinejoin="round"/></svg>}
   <div className="nooks-tour-card" ref={panel} role="dialog" aria-modal="false" aria-labelledby="nooks-tour-heading" style={{left,top,width:cardWidth,maxHeight:Math.max(80,viewport.height-top-16)}}>
    <header><span>YOUR NOOKS TOUR · {step+1} / {tourStops.length}</span></header>
