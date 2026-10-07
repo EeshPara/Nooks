@@ -1,0 +1,452 @@
+[
+  {
+    "roomId": "rainy-library",
+    "title": "Reading lofi",
+    "curator": "Lofi Girl",
+    "vibe": "Soft lo-fi for rain-streaked windows and long chapters",
+    "url": "https://open.spotify.com/playlist/0wF5xUDywPJxS1OBwFmzxY",
+    "sourceUrl": "https://open.spotify.com/playlist/0wF5xUDywPJxS1OBwFmzxY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "howls-moving-study",
+    "title": "Ghibli Piano",
+    "curator": "Marcus Ding",
+    "vibe": "Ghibli piano for a warm, wandering castle study",
+    "url": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "sourceUrl": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "gryffindor-common-room",
+    "title": "Harry Potter lofi⚡",
+    "curator": "Chill Astronaut",
+    "vibe": "Familiar wizarding melodies beside the common-room fire",
+    "url": "https://open.spotify.com/playlist/7EEo7Ypc5Fy8yt0ljcmlkb",
+    "sourceUrl": "https://open.spotify.com/playlist/7EEo7Ypc5Fy8yt0ljcmlkb",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "neon-tokyo",
+    "title": "Lofi Girl - beats to relax/study to",
+    "curator": "Lofi Girl",
+    "vibe": "Late-night beats above Tokyo’s rainy streets",
+    "url": "https://open.spotify.com/playlist/0vvXsWCC9xrXsKd4FyS8kM",
+    "sourceUrl": "https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?nd=1",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "alpine-cabin",
+    "title": "Peaceful Piano",
+    "curator": "Spotify",
+    "vibe": "Quiet piano beside the fire and falling snow",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "totoro-forest-window",
+    "title": "Studio Ghibli Lofi",
+    "curator": "Slofi",
+    "vibe": "Totoro melodies and soft beats for a rainy forest window",
+    "url": "https://open.spotify.com/playlist/3pASaqQtpgNyJkpOTpCYMX",
+    "sourceUrl": "https://open.spotify.com/playlist/3pASaqQtpgNyJkpOTpCYMX",
+    "verificationNote": "Checked 2026-10-07. Spotify search exposed title, Slofi curator, and Totoro/Kiki lo-fi covers. Playback availability not tested."
+  },
+  {
+    "roomId": "slytherin-common-room",
+    "title": "dark academia / classical gothic",
+    "curator": "elisha",
+    "vibe": "Shadowy classical music beneath the lake",
+    "url": "https://open.spotify.com/playlist/5B5SXefpJijBzjKS1M94lG",
+    "sourceUrl": "https://open.spotify.com/playlist/5B5SXefpJijBzjKS1M94lG",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified. Mood match for Slytherin; not house-specific. Playback availability not tested."
+  },
+  {
+    "roomId": "kikis-bakery-attic",
+    "title": "Studio Ghibli Lofi",
+    "curator": "Slofi",
+    "vibe": "Ghibli lo-fi above a sunlit seaside bakery",
+    "url": "https://open.spotify.com/playlist/3pASaqQtpgNyJkpOTpCYMX",
+    "sourceUrl": "https://open.spotify.com/playlist/3pASaqQtpgNyJkpOTpCYMX",
+    "verificationNote": "Checked 2026-10-07. Spotify search exposed title, Slofi curator, and Totoro/Kiki lo-fi covers. Playback availability not tested."
+  },
+  {
+    "roomId": "midnight-train",
+    "title": "Deep Focus",
+    "curator": "Spotify",
+    "vibe": "Spacious instrumentals for the long night ride",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "hufflepuff-common-room",
+    "title": "Hufflepuff study session🦨",
+    "curator": "Chill Astronaut",
+    "vibe": "Warm wizarding beats among plants and copper kettles",
+    "url": "https://open.spotify.com/playlist/4fvrhvXA1mSTb4JLaWukxc",
+    "sourceUrl": "https://open.spotify.com/playlist/4fvrhvXA1mSTb4JLaWukxc",
+    "verificationNote": "Checked 2026-10-07. Spotify public search metadata exposed title, curator, and Harry Potter lo-fi tracks; fan playlist. Playback availability not tested."
+  },
+  {
+    "roomId": "ravenclaw-tower",
+    "title": "Studying in Hogwarts Library – Wizarding World Ambience",
+    "curator": "Biel",
+    "vibe": "Magical library ambience for a night of reading",
+    "url": "https://open.spotify.com/playlist/3OSRQroLYYTwzY0FVyfqx1",
+    "sourceUrl": "https://open.spotify.com/playlist/3OSRQroLYYTwzY0FVyfqx1",
+    "verificationNote": "Checked 2026-10-07. Spotify search metadata exposed title, curator, and library/rain ambience tracks; fan playlist. Playback availability not tested."
+  },
+  {
+    "roomId": "stardew-farmhouse",
+    "title": "Calming stardew valley songs",
+    "curator": "Finn",
+    "vibe": "Gentle Stardew soundtrack favorites after a day on the farm",
+    "url": "https://open.spotify.com/playlist/0qDW0TN6ZC5Kt5lsT299Iu",
+    "sourceUrl": "https://open.spotify.com/intl-es/playlist/0qDW0TN6ZC5Kt5lsT299Iu",
+    "verificationNote": "Checked 2026-10-07. Spotify search exposed the public playlist title, curator, and ConcernedApe soundtrack tracks. Playback availability not tested."
+  },
+  {
+    "roomId": "spirited-bathhouse",
+    "title": "Ghibli Piano",
+    "curator": "Marcus Ding",
+    "vibe": "Ghibli piano under lantern light and bathhouse steam",
+    "url": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "sourceUrl": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "bookshop-cat",
+    "title": "Jazz in the Background",
+    "curator": "Spotify",
+    "vibe": "Easy background jazz after the bookshop closes",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DWV7EzJMK2FUI",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DWV7EzJMK2FUI",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "sunlit-greenhouse",
+    "title": "lofi garden",
+    "curator": "Spotify",
+    "vibe": "Light lo-fi among leaves and terracotta pots",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX4t95PAs1EpY",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX4t95PAs1EpY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "dragon-hatchery",
+    "title": "Fantasy Ambience - Exploration",
+    "curator": "tektiv",
+    "vibe": "Fantasy soundscapes beside a warm dragon nest",
+    "url": "https://open.spotify.com/playlist/4bp6skcfDwT7APkLKJD3nZ",
+    "sourceUrl": "https://open.spotify.com/playlist/4bp6skcfDwT7APkLKJD3nZ",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "velaris-study",
+    "title": "✨ Acotar Ambience ✨",
+    "curator": "jasmineemilyw",
+    "vibe": "ACOTAR-inspired music beneath the city’s starlit sky",
+    "url": "https://open.spotify.com/playlist/6gmDVEzTtyoaezXbCJEbi2",
+    "sourceUrl": "https://open.spotify.com/embed/playlist/6gmDVEzTtyoaezXbCJEbi2",
+    "verificationNote": "Checked 2026-10-07. Spotify embed exposed title, curator, and ACOTAR-inspired instrumental tracks; fan playlist. Playback availability not tested."
+  },
+  {
+    "roomId": "dragon-rider-study",
+    "title": "Fantasy IRL: ACOTAR, TOG, Fourth Wing inspired",
+    "curator": "theriverfindsaway",
+    "vibe": "Bookish fantasy music for a dragon rider’s evening study",
+    "url": "https://open.spotify.com/playlist/7gzLq4i2AgDU7IRcvrUw76",
+    "sourceUrl": "https://open.spotify.com/playlist/7gzLq4i2AgDU7IRcvrUw76",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified; multi-series fan selection, not an official Fourth Wing soundtrack. Playback availability not tested."
+  },
+  {
+    "roomId": "hobbit-study",
+    "title": "Lord of the Rings lofi🌳",
+    "curator": "Chill Astronaut",
+    "vibe": "Middle-earth melodies for second breakfast and a good book",
+    "url": "https://open.spotify.com/playlist/4kFtXvEAAP7rVQuLa7PIhG",
+    "sourceUrl": "https://open.spotify.com/playlist/4kFtXvEAAP7rVQuLa7PIhG",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "animal-crossing-island",
+    "title": "Animal Crossing & Chill 📓 lofi beats",
+    "curator": "GameChops",
+    "vibe": "Island-life remixes for an unhurried study session",
+    "url": "https://open.spotify.com/playlist/79KjaLmT3p98Dmsph0sPo2",
+    "sourceUrl": "https://open.spotify.com/playlist/79KjaLmT3p98Dmsph0sPo2",
+    "verificationNote": "Checked 2026-10-07. Spotify public page exposed title, GameChops curator, and Animal Crossing remixes. Playback availability not tested."
+  },
+  {
+    "roomId": "cinnamoroll-cloud-cafe",
+    "title": "🌸aesthetic kawaii lofi🌸",
+    "curator": "katheryn",
+    "vibe": "Cute, gentle lo-fi for cloud seats and tiny pastries",
+    "url": "https://open.spotify.com/playlist/5wrWb8YOLBo893PRGaYidp",
+    "sourceUrl": "https://open.spotify.com/playlist/5wrWb8YOLBo893PRGaYidp",
+    "verificationNote": "Checked 2026-10-07. Spotify public/search metadata verified katheryn and the kawaii lo-fi title. Mood match; not Sanrio-specific. Playback availability not tested."
+  },
+  {
+    "roomId": "witch-apothecary",
+    "title": "🌿 magical worlds 🌳",
+    "curator": "Madi",
+    "vibe": "Woodland fantasy music among herbs and moonlit bottles",
+    "url": "https://open.spotify.com/playlist/66MezgCyl3KzWQbTRgEAkm",
+    "sourceUrl": "https://open.spotify.com/playlist/66MezgCyl3KzWQbTRgEAkm",
+    "verificationNote": "Checked 2026-10-07. Spotify public/search metadata verified title and curator; description identifies instrumental forest/fairytale/Celtic themes. Playback availability not tested."
+  },
+  {
+    "roomId": "kyoto-teahouse",
+    "title": "Music for Japanese Sweets and Tea",
+    "curator": "KITCHEN. LABEL",
+    "vibe": "A thoughtful tea-time selection for a quiet garden desk",
+    "url": "https://open.spotify.com/playlist/2TAMYV2q5p69MzVXKNfx5f",
+    "sourceUrl": "https://open.spotify.com/playlist/2TAMYV2q5p69MzVXKNfx5f",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified. Tea-time mood match; full tracklist not auditioned. Playback availability not tested."
+  },
+  {
+    "roomId": "oxford-library",
+    "title": "Classical Reading",
+    "curator": "Spotify",
+    "vibe": "Classical music for candlelit pages and old atlases",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DWYkztttC1w38",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DWYkztttC1w38",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "capybara-onsen",
+    "title": "Ambient Relaxation",
+    "curator": "Spotify",
+    "vibe": "Slow, spacious sounds for a warm-pool afternoon",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "pokemon-research-cottage",
+    "title": "Pokémon & Chill 🌆 lofi beats",
+    "curator": "GameChops",
+    "vibe": "Pokémon lo-fi for field notes and familiar places",
+    "url": "https://open.spotify.com/playlist/2Ryg9Mq25idinvrNCw4cK0",
+    "sourceUrl": "https://open.spotify.com/playlist/2Ryg9Mq25idinvrNCw4cK0",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified; embedded search metadata also identifies GameChops. Playback availability not tested."
+  },
+  {
+    "roomId": "sakura-garden",
+    "title": "Ghibli Piano",
+    "curator": "Marcus Ding",
+    "vibe": "Gentle piano beneath drifting cherry blossoms",
+    "url": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "sourceUrl": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "paris-attic",
+    "title": "Jazz in the Background",
+    "curator": "Spotify",
+    "vibe": "Easy jazz above the Paris rooftops",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DWV7EzJMK2FUI",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DWV7EzJMK2FUI",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "underwater-study",
+    "title": "Ambient Relaxation",
+    "curator": "Spotify",
+    "vibe": "Drifting ambient textures beneath the blue ocean",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "moonlit-observatory",
+    "title": "Ambient Relaxation",
+    "curator": "Spotify",
+    "vibe": "Spacious ambient music for a sky full of stars",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "frog-pond-studio",
+    "title": "lofi garden",
+    "curator": "Spotify",
+    "vibe": "Light beats beside lily pads and watercolor sketches",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX4t95PAs1EpY",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX4t95PAs1EpY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "kuromi-midnight-desk",
+    "title": "🌸aesthetic kawaii lofi🌸",
+    "curator": "katheryn",
+    "vibe": "Soft kawaii beats for a lilac midnight desk",
+    "url": "https://open.spotify.com/playlist/5wrWb8YOLBo893PRGaYidp",
+    "sourceUrl": "https://open.spotify.com/playlist/5wrWb8YOLBo893PRGaYidp",
+    "verificationNote": "Checked 2026-10-07. Spotify public/search metadata verified katheryn and the kawaii lo-fi title. Mood match; not Sanrio-specific. Playback availability not tested."
+  },
+  {
+    "roomId": "antique-workshop",
+    "title": "Ghibli Piano",
+    "curator": "Marcus Ding",
+    "vibe": "Ghibli piano among antique clocks and well-worn books",
+    "url": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "sourceUrl": "https://open.spotify.com/playlist/5vwNi0Km340HsC5UfwaaIa",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "minecraft-cottage",
+    "title": "Minecraft Soothing Scenes: Playlist",
+    "curator": "Samael Berg",
+    "vibe": "Familiar Minecraft calm beside lanterns and rainy windows",
+    "url": "https://open.spotify.com/playlist/5h9eMvU43GoTj3kS8tjWkO",
+    "sourceUrl": "https://open.spotify.com/playlist/5h9eMvU43GoTj3kS8tjWkO",
+    "verificationNote": "Checked 2026-10-07. Spotify page identifies Samael Berg as curator; Mojang Studios linked this URL in its Soothing Scenes post. Do not label it Spotify-curated or Mojang-owned. Playback availability not tested."
+  },
+  {
+    "roomId": "hateno-study",
+    "title": "Zelda & Chill (Complete)",
+    "curator": "GameChops",
+    "vibe": "Zelda lo-fi for research notes and green hills",
+    "url": "https://open.spotify.com/playlist/4XKH4rEyBy8kOXSPi3VVno",
+    "sourceUrl": "https://open.spotify.com/playlist/4XKH4rEyBy8kOXSPi3VVno",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified; GameChops also documents the playlist on its own site. Playback availability not tested."
+  },
+  {
+    "roomId": "sumeru-akademiya",
+    "title": "Vourukasha Oasis",
+    "curator": "falrasyid",
+    "vibe": "Sumeru oasis music for a leafy scholarly terrace",
+    "url": "https://open.spotify.com/playlist/2Qi0spej1g10ygUGEcQ08P",
+    "sourceUrl": "https://open.spotify.com/playlist/2Qi0spej1g10ygUGEcQ08P",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified; search metadata lists Sumeru Girdle of the Sands and HOYO-MiX soundtrack material. Regional rather than Akademiya-specific. Playback availability not tested."
+  },
+  {
+    "roomId": "mage-archive",
+    "title": "Frieren OST / Fantasy Ambient",
+    "curator": "Ouranio Recordings",
+    "vibe": "Frieren and fantasy ambience for a spellbook afternoon",
+    "url": "https://open.spotify.com/playlist/6mN7JOPU4jWwwwlbIQOcv2",
+    "sourceUrl": "https://open.spotify.com/playlist/6mN7JOPU4jWwwwlbIQOcv2",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified; independent fantasy/OST selection, not an official soundtrack claim. Playback availability not tested."
+  },
+  {
+    "roomId": "cyberpunk-rain-loft",
+    "title": "Synthwave - beats to chill/game to",
+    "curator": "Lofi Girl",
+    "vibe": "Soft synths above the wet neon skyline",
+    "url": "https://open.spotify.com/playlist/1YIe34rcmLjCYpY9wJoM2p",
+    "sourceUrl": "https://open.spotify.com/playlist/1YIe34rcmLjCYpY9wJoM2p",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "secret-door-study",
+    "title": "dark academia /royalcore/ classical /instrumental",
+    "curator": "Fyndswan",
+    "vibe": "Whimsical, shadowy instrumentals for a mysterious attic",
+    "url": "https://open.spotify.com/playlist/55Ugv6NeGULSE9i1pvemlE",
+    "sourceUrl": "https://open.spotify.com/embed/playlist/55Ugv6NeGULSE9i1pvemlE",
+    "verificationNote": "Checked 2026-10-07. Spotify embed exposed title, curator, and gothic film/classical selections, including a Wednesday Addams recording. Mood match; not an official franchise playlist. Playback availability not tested."
+  },
+  {
+    "roomId": "nevermore-study",
+    "title": "dark academia /royalcore/ classical /instrumental",
+    "curator": "Fyndswan",
+    "vibe": "Gothic piano and strings for stained glass and black ink",
+    "url": "https://open.spotify.com/playlist/55Ugv6NeGULSE9i1pvemlE",
+    "sourceUrl": "https://open.spotify.com/embed/playlist/55Ugv6NeGULSE9i1pvemlE",
+    "verificationNote": "Checked 2026-10-07. Spotify embed exposed title, curator, and gothic film/classical selections, including a Wednesday Addams recording. Mood match; not an official franchise playlist. Playback availability not tested."
+  },
+  {
+    "roomId": "autumn-bakery",
+    "title": "autumn lofi mix 🍂",
+    "curator": "Lofi Girl",
+    "vibe": "Warm autumn lo-fi with bread fresh from the oven",
+    "url": "https://open.spotify.com/playlist/74d3JOTVNyymjFuOjc2Jjm",
+    "sourceUrl": "https://open.spotify.com/playlist/74d3JOTVNyymjFuOjc2Jjm",
+    "verificationNote": "Checked 2026-10-07. Spotify search metadata verified title, curator and exact ID; direct page fetch returned cache miss. Playback availability not tested."
+  },
+  {
+    "roomId": "seoul-night-cafe",
+    "title": "korean jazz cafe",
+    "curator": "ChaeYeon ☽",
+    "vibe": "Korean café jazz for desserts and late-night city rain",
+    "url": "https://open.spotify.com/playlist/7i8gR2sTN3AmVk5moQw8KP",
+    "sourceUrl": "https://open.spotify.com/playlist/7i8gR2sTN3AmVk5moQw8KP",
+    "verificationNote": "Checked 2026-10-07. Spotify search exposed title, curator, café description and tracks. Includes vocals; not an instrumental-only claim. Playback availability not tested."
+  },
+  {
+    "roomId": "cloud-cafe",
+    "title": "Peaceful Piano",
+    "curator": "Spotify",
+    "vibe": "Gentle piano in peach light above the clouds",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "tiny-mouse-house",
+    "title": "🌸aesthetic kawaii lofi🌸",
+    "curator": "katheryn",
+    "vibe": "Tiny, cozy lo-fi for a teacup-sized study break",
+    "url": "https://open.spotify.com/playlist/5wrWb8YOLBo893PRGaYidp",
+    "sourceUrl": "https://open.spotify.com/playlist/5wrWb8YOLBo893PRGaYidp",
+    "verificationNote": "Checked 2026-10-07. Spotify public/search metadata verified katheryn and the kawaii lo-fi title. Mood match; not Sanrio-specific. Playback availability not tested."
+  },
+  {
+    "roomId": "woodland-treehouse",
+    "title": "🌿 magical worlds 🌳",
+    "curator": "Madi",
+    "vibe": "Fairytale forest music in a misty tree canopy",
+    "url": "https://open.spotify.com/playlist/66MezgCyl3KzWQbTRgEAkm",
+    "sourceUrl": "https://open.spotify.com/playlist/66MezgCyl3KzWQbTRgEAkm",
+    "verificationNote": "Checked 2026-10-07. Spotify public/search metadata verified title and curator; description identifies instrumental forest/fairytale/Celtic themes. Playback availability not tested."
+  },
+  {
+    "roomId": "aurora-cabin",
+    "title": "Ambient Relaxation",
+    "curator": "Spotify",
+    "vibe": "Slow ambient music under the northern lights",
+    "url": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "sourceUrl": "https://open.spotify.com/playlist/37i9dQZF1DX3Ogo9pFvBkY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "lighthouse-study",
+    "title": "This is James Shanon",
+    "curator": "Lark Recordings",
+    "vibe": "Gentle acoustic strings with a wide sea horizon",
+    "url": "https://open.spotify.com/playlist/11S3Z2t0En1Lbk7Rr5jP81",
+    "sourceUrl": "https://open.spotify.com/playlist/11S3Z2t0En1Lbk7Rr5jP81",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "desert-casita",
+    "title": "This is James Shanon",
+    "curator": "Lark Recordings",
+    "vibe": "Warm acoustic guitar for a shaded courtyard",
+    "url": "https://open.spotify.com/playlist/11S3Z2t0En1Lbk7Rr5jP81",
+    "sourceUrl": "https://open.spotify.com/playlist/11S3Z2t0En1Lbk7Rr5jP81",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "stationery-studio",
+    "title": "Reading lofi",
+    "curator": "Lofi Girl",
+    "vibe": "Calm lo-fi for ink, paper, and handwritten pages",
+    "url": "https://open.spotify.com/playlist/0wF5xUDywPJxS1OBwFmzxY",
+    "sourceUrl": "https://open.spotify.com/playlist/0wF5xUDywPJxS1OBwFmzxY",
+    "verificationNote": "Checked 2026-10-07. Spotify public-page metadata verified the title and curator; selected for the room’s mood. Playback availability not tested."
+  },
+  {
+    "roomId": "thousand-sunny-study",
+    "title": "one piece background music for reading one piece",
+    "curator": "PonderingAtlas",
+    "vibe": "One Piece reading music for maps and a calm sea",
+    "url": "https://open.spotify.com/playlist/4kF6SSxHMEnfNa37USPXfk",
+    "sourceUrl": "https://open.spotify.com/playlist/4kF6SSxHMEnfNa37USPXfk",
+    "verificationNote": "Checked 2026-10-07. Spotify public page title and curator verified; indexed metadata includes a One Piece lo-fi track. Entire playlist was not auditioned. Playback availability not tested."
+  }
+]

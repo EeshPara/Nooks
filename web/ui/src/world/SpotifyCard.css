@@ -37,3 +37,5 @@
 .spotify-card-stop:hover{background:#ffffff18}.spotify-card-blank .spotify-card-cover{color:#ddcdb766}.spotify-card-blank .spotify-card-label{padding-top:10px}
 
 .spotify-card-blank{display:block;text-align:left;font-family:inherit;cursor:pointer}.spotify-card-blank:hover{border-color:#ecd8b866}.spotify-card-blank:focus-visible{outline:2px solid #e4c392;outline-offset:3px}
+
+.spotify-card-picked{display:block;font-size:8px;opacity:.65;line-height:1.4;margin:3px 0 5px}.spotify-card a.spotify-card-connect{text-align:center}.spotify-dialog .spotify-playback-note{font-size:11px;color:#ded5c9;opacity:.85;margin-bottom:0}

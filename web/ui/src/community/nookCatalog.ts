@@ -1,4 +1,4 @@
-import { roomScenes, type RoomScene } from '../personalization/types';
+import { allRoomScenes, roomScenes, type RoomScene } from '../personalization/types';
 
 export interface PublicNook {
   id: string;
@@ -61,11 +61,11 @@ const creators: Record<string, PublicNook['owner']> = {
   Leo: { name: 'Leo makes things', handle: '@leomakes', isCreator: true },
 };
 
-export const publicNooks: PublicNook[] = roomScenes.map(scene => {
-  const [description, audiences, studyingNow, creator] = descriptions[scene.id] ?? [scene.caption, ['A little company'], 24];
+export const allPublicNooks: PublicNook[] = allRoomScenes.map(scene => {
+  const [description, audiences, studyingNow, creator] = descriptions[scene.id] ?? [scene.caption, [scene.collection ?? 'Cozy study', 'Study together'], 24];
   return {
     id: scene.id,
-    title: scene.id === 'oxford-library' ? 'The old reading nook' : scene.title,
+    title: scene.title,
     scene,
     description,
     audiences,
@@ -74,6 +74,8 @@ export const publicNooks: PublicNook[] = roomScenes.map(scene => {
   };
 });
 
+export const publicNooks = roomScenes.map(scene => allPublicNooks.find(nook => nook.id === scene.id)!);
+
 export function getPublicNook(id: string): PublicNook | undefined {
-  return publicNooks.find(nook => nook.id === id);
+  return allPublicNooks.find(nook => nook.id === id);
 }

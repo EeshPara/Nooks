@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCrashDraft } from '../WorkspaceErrorBoundary';
 import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react';
-import { roomScenes } from '../personalization/types';
+import { allRoomScenes, roomScenes } from '../personalization/types';
 import { useModalFocus } from '../personalization/PersonalizePanel';
 import { MemberAvatar, memberAvatarCount } from './NookCommunity';
 import type { NookDraft } from './nookCatalog';
@@ -36,7 +36,7 @@ export function NookCreator({ onClose, onCreate }: { onClose: () => void; onCrea
   const [description,setDescription]=useState('');
   const [sceneId,setSceneId]=useState('rainy-library');
   const [visibility,setVisibility]=useState<'public'|'private'>('public');
-  const scene=roomScenes.find(item=>item.id===sceneId)??roomScenes[0];
+  const scene=allRoomScenes.find(item=>item.id===sceneId)??roomScenes[0];
   useModalFocus(panel,onClose);
   function submit(){onCreate({id:crypto.randomUUID(),name:name.trim(),description:description.trim()||'A little corner to study together.',sceneId,visibility,createdAt:new Date().toISOString()});}
   return <div className="nooks-creator-overlay" onClick={onClose}><div className="nooks-creator" ref={panel} role="dialog" aria-modal="true" aria-labelledby="nooks-create-title" onClick={event=>event.stopPropagation()}>
