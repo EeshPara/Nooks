@@ -50,6 +50,7 @@ test('current native host can discover tools and read the UI without a legacy ha
  assert.ok(details.supportedVersions.includes(CURRENT_PROTOCOL_VERSION));
  assert.equal(details.resultType,'complete');
  assert.equal(details._meta['io.modelcontextprotocol/serverInfo'].name,'nooks');
+ assert.deepEqual(details._meta['io.modelcontextprotocol/serverInfo'].icons,[{src:ARTWORK_ORIGIN+'/images/nook-cat-logo.webp',mimeType:'image/webp',sizes:['1254x1254']}]);
  const listed = await worker.fetch(modernRequest('tools/list'),{});
  assert.equal(listed.status,200);
  assert.ok((await listed.json()).result.tools.some(tool=>tool.name==='workspace_render'));

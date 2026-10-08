@@ -8,7 +8,7 @@ import { createIntrospectionVerifier, requestIdentity } from './auth.mjs';
 import { NookCreator, creatorToolNames } from './nook-creator.mjs';
 import { listNookCreatorTools } from './nook-creator-tools.mjs';
 import { communityTools, isCommunityTool, invokeCommunity } from './community-tools.mjs';
-import { listTools, toolNames, UI_URI, LEGACY_UI_URI, UI_MIME, UI_ICON } from './tools.mjs';
+import { listTools, toolNames, UI_URI, LEGACY_UI_URI, UI_MIME, UI_ICONS } from './tools.mjs';
 import { studyInstructions } from './study-instructions.mjs';
 import { createRequestLimiter } from './request-limiter.mjs';
 import { createOperationalMonitor, failureStatus } from './operations.mjs';
@@ -182,7 +182,7 @@ export function createNotableServer(options = {}) {
     if (structuredContent.workspace) structuredContent.workspace.backend = options.storeForIdentity && user ? 'supabase' : demo ? 'local-demo' : 'local';
     return { structuredContent, content: [{ type: 'text', text: name === 'workspace_render' ? 'Your study nook is ready.' : name === 'workspace_get' ? `${structuredContent.workspace.artifacts.length} study items loaded${user ? '' : ' in read-only preview'}.` : 'Your study space is updated.' }] };
   };
-  const serverInfo = { name: 'notable-study-space', title: 'Nooks', version: '0.1.0', icons: [{ src: UI_ICON, mimeType: 'image/svg+xml' }] };
+  const serverInfo = { name: 'notable-study-space', title: 'Nooks', version: '0.1.0', icons: UI_ICONS };
   const capabilities = { tools: { listChanged: false }, resources: { subscribe: false, listChanged: false } };
   const instructions = studyInstructions({ connectedCommunity: !!options.storeForIdentity });
   const rpc = async (message, request, protocol) => {
@@ -202,7 +202,7 @@ export function createNotableServer(options = {}) {
         try { return reply(modelSafeResult(await invoke(message.params.name, message.params.arguments ?? {}, request))); }
         catch (error) { return reply(failure(error, request)); }
       }
-      case 'resources/list': return reply({ resources: [{ uri: UI_URI, name: 'notable-study-workspace', title: 'Nooks study space', description: 'Interactive notes, quizzes, flashcards, study games, planning and focus workspace.', mimeType: UI_MIME }] });
+      case 'resources/list': return reply({ resources: [{ uri: UI_URI, name: 'notable-study-workspace', title: 'Nooks study space', icons: UI_ICONS, description: 'Interactive notes, quizzes, flashcards, study games, planning and focus workspace.', mimeType: UI_MIME }] });
       case 'resources/templates/list': return reply({ resourceTemplates: [] });
       case 'resources/read': {
         const context = requestContexts.get(request); monitor.setOperation(context, 'resources_read'); context.phase = 'resource';

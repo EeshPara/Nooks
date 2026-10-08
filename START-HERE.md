@@ -13,7 +13,7 @@ For designer-led UI work, follow `DESIGNER-START.md`: the agent runs `npm run de
 | Folder | Meaning | Use |
 | --- | --- | --- |
 | `app/` | Latest development source from the original Mac | Main development, full tests, SQL migrations, research, creative assets. Includes unfinished backend/custom-art changes. |
-| `cloud/` | Published owner-private native Site/plugin source | Native MCP/server/Worker baseline, version40 source commit `a72d3fe9a695035f0ea4e525a00d02653ad138d4`. |
+| `cloud/` | Published owner-private native Site/plugin source | Native MCP/server/Worker baseline, version41 source commit `370f275af90c21b4613fa9f94f0c9a79e4064769`. |
 | `web/` | Published public Vercel source | Existing website release baseline and guarded deployment scripts. |
 
 The three folders intentionally preserve their differences. Do not overwrite a published baseline with the entire development folder: some backend work is not yet reviewed or deployed. Port selected changes and their tests, then verify the affected build. Git stores identical files efficiently; the folders are not three different products.
@@ -22,6 +22,7 @@ The three folders intentionally preserve their differences. Do not overwrite a p
 
 ## What was just completed
 
+- Native plugin version41 adds the existing sleeping-cat branding to MCP server, app-opening tool and workspace resource icons. Source `370f275af90c21b4613fa9f94f0c9a79e4064769`;45 affected checks and native build passed; connected status passed after deployment. Plugin-directory rendering is not visually verified. See `creative/nooks-release/plugin-branding-2026-10-08.md`.
 - Final hosted soak on c4t3ni42i passed exactly 15 minutes with 100 users in five rooms, 3,559 plateau requests, zero unexpected errors and 394 ms p95. Both reconnect rounds, room isolation, final integrity and unchanged release hashes passed. All test accounts/rooms/topics were removed and verified absent. This is bounded 100-user API/realtime evidence, not 1,000-user or browser-capacity proof; see `creative/nooks-release/deployed/soak-results-2026-10-08-final.md` and `creative/nooks-release/MORNING-HANDOFF.md`.
 - Public c4t3ni42i / private native40 publishes metadata-only Studio listing, protection for unsaved Studio work during account changes, and shared-library owner/target isolation. Independent source reviews, selective ports, affected tests/builds and mounted simulated-account browser checks passed. Deployed assets75/75, compatibility23/23 and one authenticated empty-list canary passed. Real email onboarding remains blocked by SMTP; see `creative/nooks-release/lifecycle-deployment-2026-10-08.md`.
 

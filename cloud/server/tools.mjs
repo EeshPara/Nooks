@@ -7,8 +7,10 @@ export const UI_URI = 'ui://notable/workspace-v2.html';
 export const LEGACY_UI_URI = 'ui://notable/workspace-v1.html';
 export const UI_MIME = 'text/html;profile=mcp-app';
 export const WORKSPACE_VIEWS = WORKSPACE_SESSION_VIEWS;
-// Native sidebar icons inherit the host's current theme instead of a brand fill.
-export const UI_ICON = 'data:image/svg+xml;base64,' + Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5c3-1 5-1 7 .5 2-1.5 4-1.5 7-.5v11c-3-1-5-1-7 .5-2-1.5-4-1.5-7-.5zM10 5v11"/></svg>').toString('base64');
+// Reuse the existing public Nooks brand asset; no account credentials are needed.
+export const UI_ICON = 'https://nooks-study-space.vercel.app/images/nook-cat-logo.webp';
+export const UI_ICON_MIME = 'image/webp';
+export const UI_ICONS = [{ src: UI_ICON, mimeType: UI_ICON_MIME, sizes: ['1254x1254'] }];
 const string = { type: 'string' };
 const artifactSchema = {
   type: 'object', required: ['kind', 'title', 'subject'], additionalProperties: false,
@@ -52,7 +54,7 @@ export function listTools({ demo = false, oauthConfigured = false } = {}) {
   return [...descriptors.map(([name, title, description, inputSchema, readOnly, render, destructive]) => {
     const securitySchemes = demo || !oauthConfigured ? [{ type: 'noauth' }] : readOnly ? [{ type: 'noauth' }, { type: 'oauth2', scopes: ['notable.read'] }] : [{ type: 'oauth2', scopes: ['notable.read', 'notable.write'] }];
     return {
-      name, title, description, inputSchema, ...(render ? { icons: [{ src: UI_ICON, mimeType: 'image/svg+xml' }] } : {}),
+      name, title, description, inputSchema, ...(render ? { icons: UI_ICONS } : {}),
       annotations: { readOnlyHint: !!readOnly, destructiveHint: !!destructive || ['artifact_save', 'plan_save', 'space_customize'].includes(name), idempotentHint: !['focus_start', 'artifact_save', 'space_share', 'workspace_navigate'].includes(name), openWorldHint: name === 'space_share' },
       securitySchemes,
       _meta: { securitySchemes, ...(['workspace_session_open', 'workspace_session_poll', 'workspace_layout_update', 'onboarding_complete'].includes(name) ? { ui: { visibility: ['app'] } } : {}), ...(render ? { ui: { resourceUri: UI_URI }, 'openai/ui': { entrypoints: [{ type: 'global' }, { type: 'thread' }] }, 'openai/outputTemplate': UI_URI } : {}), 'openai/widgetAccessible': true },

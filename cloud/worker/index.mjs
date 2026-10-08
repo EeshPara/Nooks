@@ -1,5 +1,5 @@
 import { StudyEngine, InputError } from '../server/engine.mjs';
-import { listTools, toolNames, UI_URI, LEGACY_UI_URI, UI_MIME, UI_ICON } from '../server/tools.mjs';
+import { listTools, toolNames, UI_URI, LEGACY_UI_URI, UI_MIME, UI_ICONS } from '../server/tools.mjs';
 import { SupabaseStore } from '../server/supabase-store.mjs';
 import { createSitesIdentityResolver } from '../server/supabase-auth.mjs';
 import { communityTools, isCommunityTool, invokeCommunity } from '../server/community-tools.mjs';
@@ -73,7 +73,7 @@ async function invoke(name, args, engine, user, store) {
   if (structuredContent.workspace) structuredContent.workspace.backend='supabase';
   return modelSafeResult({ structuredContent, content: [{ type: 'text', text: name === 'workspace_render' ? 'Your study nook is ready.' : name === 'workspace_get' ? `${structuredContent.workspace.artifacts.length} saved study items loaded.` : 'Your study nook is updated.' }] });
 }
-const serverDetails = { capabilities: { tools: { listChanged: false }, resources: { subscribe: false, listChanged: false } }, serverInfo: { name: 'nooks', title: 'Nooks', version: '0.2.0', icons: [{ src: UI_ICON, mimeType: 'image/svg+xml' }] }, instructions: studyInstructions({ connectedCommunity: true, accountRequired: true, privatePlugin: true }) };
+const serverDetails = { capabilities: { tools: { listChanged: false }, resources: { subscribe: false, listChanged: false } }, serverInfo: { name: 'nooks', title: 'Nooks', version: '0.2.1', icons: UI_ICONS }, instructions: studyInstructions({ connectedCommunity: true, accountRequired: true, privatePlugin: true }) };
 async function rpc(message, request, env, user, protocol, monitor, context) {
   const reply = result => json({ jsonrpc: '2.0', id: message.id, result: mcpResult(result, { version: protocol.version, serverInfo: serverDetails.serverInfo, method: message.method }) },200,{'X-Request-Id':context.requestId});
   const error = (code, text, status = 200) => json({ jsonrpc: '2.0', id: message?.id ?? null, error: { code, message: text, data:{requestId:context.requestId} } }, status, {'X-Request-Id':context.requestId});
@@ -86,7 +86,7 @@ async function rpc(message, request, env, user, protocol, monitor, context) {
   }
   if (message.method === 'ping') return reply({});
   if (message.method === 'tools/list') return reply({ tools: descriptors() });
-  if (message.method === 'resources/list') return reply({ resources: [{ uri: UI_URI, name: 'nooks-study-workspace', title: 'Nooks', mimeType: UI_MIME }] });
+  if (message.method === 'resources/list') return reply({ resources: [{ uri: UI_URI, name: 'nooks-study-workspace', title: 'Nooks', icons: UI_ICONS, mimeType: UI_MIME }] });
   if (message.method === 'resources/templates/list') return reply({ resourceTemplates: [] });
   if (message.method === 'resources/read') {
     if (![UI_URI, LEGACY_UI_URI].includes(message.params?.uri)) return error(-32602, 'Unknown resource');

@@ -285,7 +285,8 @@ test('HTTP MCP initializes, discovers tools, renders UI and rejects foreign orig
     { not: { required: ['view', 'artifact'] } },
     { not: { required: ['view', 'artifactId'] } },
   ]);
-  assert.match(entrypoint.icons[0].src, /^data:image\/svg\+xml;base64,/);
+  assert.deepEqual(entrypoint.icons, [{ src: 'https://nooks-study-space.vercel.app/images/nook-cat-logo.webp', mimeType: 'image/webp', sizes: ['1254x1254'] }]);
+  assert.deepEqual(initialized.result.serverInfo.icons, entrypoint.icons);
   const resource = await (await post('resources/read', { uri: UI_URI })).json();
   assert.match(resource.result.contents[0].text, /dataset.test/);
   assert.equal(resource.result.contents[0].text.includes('src="/assets/'), false);
