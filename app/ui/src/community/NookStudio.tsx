@@ -1,4 +1,4 @@
-import { useContext, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useContext, useEffect, useId, useImperativeHandle, useMemo, useRef, useState, type ReactNode, type Ref } from 'react';
 import { DraftRecoveryScope, useCrashDraft } from '../WorkspaceErrorBoundary';
 import { nooksAccount } from '../account/client';
 import { getNativeRecoveryScope } from '../study/studyRecoveryScope';
@@ -15,6 +15,7 @@ import { errorMessage, resultData, shortDate } from '../organization/types';
 import type { OrganizationTool } from '../organization/types';
 import { useSoftDismiss } from '../world/useSoftDismiss';
 import { useBackdropDismiss } from '../world/useBackdropDismiss';
+import { isTopmostDismissTarget } from '../world/dismissal';
 import './NookStudio.css';
 
 type ArtStyle = 'illustration' | 'anime' | 'watercolor' | 'pixel' | 'realistic' | 'cinematic';
@@ -24,7 +25,8 @@ type Draft = { id: string; title: string; description: string; revision: number;
 type DraftSummary = Pick<Draft, 'id' | 'title' | 'description' | 'revision' | 'style' | 'artworkMode' | 'visibility' | 'createdAt' | 'updatedAt'> & { roomId: string; hasArtwork: boolean };
 type Publication = { id: string; draftId: string; draftRevision: number; visibility: Visibility; status: 'prepared' | 'publishing' | 'retry-needed' | 'published' | 'failed' | 'discarded'; nookId?: string; createdAt?: string; manifest?: { title: string; description: string; roomId: string; visibility: Visibility } };
 type Readiness = { readyToPublish: boolean; blockers: { code: string; message: string }[] };
-export interface NookStudioProps { open?: boolean; onClose: () => void; onTool: OrganizationTool; onPublished?: (nook: any) => void; onPreview?: (space: WorkspaceSpace, presentation?: { isCurrent: () => boolean }) => void | Promise<void>; canPublish?: boolean; initialDraftId?: string; initialDraftRequest?: number; onDraftSelected?: (id: string) => void }
+export type StudioAccountGuard = { owner: string; canChangeAccount: () => boolean };
+export interface NookStudioProps { accountGuard?: Ref<StudioAccountGuard>;  open?: boolean; onClose: () => void; onTool: OrganizationTool; onPublished?: (nook: any) => void; onPreview?: (space: WorkspaceSpace, presentation?: { isCurrent: () => boolean }) => void | Promise<void>; canPublish?: boolean; initialDraftId?: string; initialDraftRequest?: number; onDraftSelected?: (id: string) => void }
 const styleLabels: Record<ArtStyle, string> = { illustration: 'Illustration', anime: 'Anime', watercolor: 'Watercolor', pixel: 'Pixel art', realistic: 'Realistic', cinematic: 'Cinematic' };
 const sceneStyle = (scene: RoomScene): ArtStyle => scene.style === 'illustrated' ? 'illustration' : scene.style === 'photoreal' ? 'realistic' : scene.style === 'dreamlike' ? 'cinematic' : scene.style;
 const newDraft = (): Draft => ({ id: crypto.randomUUID(), title: '', description: '', revision: 0, space: { ...defaultSpace, room: roomScenes[0].id, theme: roomScenes[0].theme, accent: '#e9ab86', companion: 'none', decorations: [] }, style: sceneStyle(roomScenes[0]), artworkMode: 'chatgpt', scenePrompt: '', visibility: 'private', pathTemplate: 'none' });
@@ -36,8 +38,10 @@ const snapshot = (draft: Draft) => JSON.stringify(payload(draft));
 function summarized(draft: Draft): DraftSummary { return { id: draft.id, title: draft.title, description: draft.description, revision: draft.revision, style: draft.style, artworkMode: draft.artworkMode, visibility: draft.visibility, createdAt: draft.createdAt, updatedAt: draft.updatedAt, roomId: draft.space.backgroundImage ? 'custom' : draft.space.room ?? roomScenes[0].id, hasArtwork: !!draft.space.backgroundImage }; }
 const publicationPending = (item: Publication) => ['prepared', 'publishing', 'retry-needed'].includes(item.status);
 
-export default function NookStudio({ open = true, onClose, onTool, onPublished, onPreview, canPublish = false, initialDraftId, initialDraftRequest = 0, onDraftSelected }: NookStudioProps) {
+export default function NookStudio({ open = true, onClose, onTool, onPublished, onPreview, canPublish = false, accountGuard, initialDraftId, initialDraftRequest = 0, onDraftSelected }: NookStudioProps) {
   const [draft, setDraft] = useCrashDraft<Draft>('nook-studio:draft', newDraft); const [savedSnapshot, setSavedSnapshot] = useCrashDraft('nook-studio:snapshot', () => '');
+  const pristineSnapshot = useRef<string | null>(null);
+  if (pristineSnapshot.current === null) pristineSnapshot.current = snapshot({ ...newDraft(), id: draft.id });
   const [drafts, setDrafts] = useState<DraftSummary[]>([]); const [publications, setPublications] = useState<Publication[]>([]);
   const [stage, setStage] = useState<'edit' | 'review' | 'confirm' | 'published'>('edit');
   const [review, setReview] = useState<Draft | null>(null); const [intent, setIntent] = useState<Publication | null>(null); const [readiness, setReadiness] = useState<Readiness | null>(null);
@@ -54,7 +58,12 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
   const currentDraft = useRef(draft); currentDraft.current = draft;
   const currentSnapshot = useRef(savedSnapshot); currentSnapshot.current = savedSnapshot;
   const currentBusy = useRef(busy); currentBusy.current = busy;
-  const [artworkState, setArtworkState] = useState<ArtworkImportState>({ phase: 'waiting' });
+  const [artworkState, setArtworkStateValue] = useState<ArtworkImportState>({ phase: 'waiting' });
+  const currentArtworkState = useRef(artworkState);
+  function setArtworkState(value: ArtworkImportState) { currentArtworkState.current = value; setArtworkStateValue(value); }
+  const [accountChangeNotice, setAccountChangeNotice] = useState(false);
+  const accountDiscardButton = useRef<HTMLButtonElement>(null);
+  const nookNameInput = useRef<HTMLInputElement>(null);
   const artworkController = useRef<ReturnType<typeof createArtworkRequestController<Draft>> | null>(null);
   const cancelingArtwork = useRef<Promise<unknown> | null>(null);
   const cancellationStore = useMemo(() => createArtworkCancellationStore(owner), [owner]);
@@ -64,7 +73,7 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
   const artworkRequestKeys = useRef(new Map<string, string>());
   const uploadInput = useRef<HTMLInputElement>(null); const promptField = useRef<HTMLTextAreaElement>(null); const tool = useRef(onTool); tool.current = onTool;
   const requests = useRef(new Map<string, string>()); const headingId = useId(); const mounted = useRef(true);
-  const dirty = savedSnapshot ? snapshot(draft) !== savedSnapshot : !!(draft.title.trim() || draft.description.trim() || draft.scenePrompt.trim() || draft.space.backgroundImage);
+  const dirty = snapshot(draft) !== (savedSnapshot || pristineSnapshot.current);
   const existingPending = publications.find(item => item.draftId === draft.id && item.draftRevision === draft.revision && publicationPending(item));
   const locked = existingPending && ['publishing', 'retry-needed'].includes(existingPending.status);
   const scene = allRoomScenes.find(item => item.id === draft.space.room) ?? roomScenes[0];
@@ -165,12 +174,47 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
     setPendingLeave(null);
     dismissRef.current?.();
   }
+  function accountWorkPending() {
+    return !!currentBusy.current || !!cancelingArtwork.current
+      || ['importing', 'saving'].includes(currentArtworkState.current.phase)
+      || pendingCancellation(currentDraft.current) && cancellationUnsafe.current;
+  }
+  function unsavedStudioChanges() {
+    const value = currentDraft.current, baseline = currentSnapshot.current;
+    return snapshot(value) !== (baseline || pristineSnapshot.current);
+  }
+  function canChangeAccount() {
+    if (!currentOwner()) return false;
+    if (!accountWorkPending() && !unsavedStudioChanges()) return true;
+    setAccountChangeNotice(true); return false;
+  }
+  useImperativeHandle(accountGuard, () => ({ owner, canChangeAccount }), [owner]);
+  function saveForAccountChange() { if (currentOwner() && !accountWorkPending()) void saveDraft(); }
+  function discardForAccountChange() {
+    if (!currentOwner() || accountWorkPending()) return;
+    leave(() => {
+      if (!currentOwner() || accountWorkPending()) return;
+      startNew(); setAccountChangeNotice(false); focusAfterAccountPrompt(nookNameInput);
+    });
+  }
   function currentPresentation(ticket: number, scope = owner) { return currentOwner(scope) && visibility.current.visible && visibility.current.epoch === ticket; }
   useEffect(() => {
     if (!pendingLeave) return;
     leavePrompt.current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
     leavePrompt.current?.focus({ preventScroll: true });
   }, [pendingLeave]);
+  function cancelLeave() {
+    setPendingLeave(null);
+    if (accountChangeNotice) focusAfterAccountPrompt(accountDiscardButton);
+  }
+  function focusAfterAccountPrompt(ref: { current: HTMLButtonElement | HTMLInputElement | null }) {
+    const ticket = visibility.current.epoch;
+    requestAnimationFrame(() => {
+      const target = ref.current, focused = document.activeElement;
+      if (currentPresentation(ticket) && target?.isConnected && !target.disabled && isTopmostDismissTarget(target)
+        && (focused === document.body || focused === target || focused?.matches('.nooks-studio'))) target.focus({ preventScroll: true });
+    });
+  }
   function completeLeave() {
     if (pendingCancellation(currentDraft.current) && cancellationUnsafe.current) {
       setError('Keep this editor open and retry cancellation before leaving; this browser could not retain that request.');
@@ -192,7 +236,7 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
     const scope = owner;
     await operate('load', async () => { const result = resultData(await onTool('nook_draft_get', { draftId: id })); if (!currentOwner(scope)) return; adopt(result.draft); setReadiness(result.readiness); setStage('edit'); setReview(null); setIntent(null); setDeleteConfirm(false); });
   }
-  function startNew() { artworkController.current?.stop(); const next = newDraft(); currentDraft.current = next; currentSnapshot.current = ''; setDraft(next); setSavedSnapshot(''); setStage('edit'); setReview(null); setIntent(null); setConflict(null); setDeleteConfirm(false); setError(''); setNotice(''); }
+  function startNew() { artworkController.current?.stop(); const next = newDraft(); pristineSnapshot.current = snapshot(next); currentDraft.current = next; currentSnapshot.current = ''; setDraft(next); setSavedSnapshot(''); setStage('edit'); setReview(null); setIntent(null); setConflict(null); setDeleteConfirm(false); setError(''); setNotice(''); }
   async function save(candidate = draft): Promise<Draft> {
     const scope = owner;
     if (!candidate.title.trim()) throw new Error('Give your nook a name before saving.');
@@ -343,7 +387,8 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
     <header className="nooks-studio-header"><div><h1 id={headingId}>Nook studio</h1><span>{stage === 'edit' ? 'A study place of your own' : stage === 'published' ? 'Your nook is published' : 'Review before sharing'}</span></div><button className="nooks-studio-icon" aria-label="Close nook studio" onClick={requestClose}><X size={19}/></button></header>
     <div className="nooks-studio-layout"><aside className="nooks-studio-drafts"><div className="nooks-studio-drafts-heading"><span>Your drafts</span><button aria-label="New nook draft" disabled={!!busy} onClick={() => leave(startNew)}><Plus size={16}/></button></div><button className="nooks-studio-new" disabled={!!busy} onClick={() => leave(startNew)}><Plus size={14}/> New nook</button>{loadingDrafts && <p role="status">Loading drafts…</p>}{listError && <div className="nooks-studio-list-error"><p>{listError}</p><button disabled={loadingDrafts} onClick={refreshDrafts}>Try again</button></div>}{drafts.map(item => <button key={item.id} disabled={!!busy} className={`nooks-studio-draft${item.id === draft.id ? ' is-selected' : ''}`} onClick={() => leave(() => { void load(item.id); })}><span className="nooks-studio-draft-thumbnail">{item.roomId === 'custom' ? <span>Custom</span> : <img src={(allRoomScenes.find(value => value.id === item.roomId) ?? roomScenes[0]).image} alt="" loading="lazy"/>}</span><span><strong>{item.title}</strong><small>{shortDate(item.updatedAt)} · Private draft</small></span></button>)}{!loadingDrafts && !drafts.length && !listError && <p className="nooks-studio-draft-empty">Saved drafts will be here when you return.</p>}{publications.some(item => item.status === 'published') && <p className="nooks-studio-published-count">{publications.filter(item => item.status === 'published').length} {publications.filter(item => item.status === 'published').length === 1 ? 'nook' : 'nooks'} published</p>}</aside>
     <main className="nooks-studio-main">
-      {pendingLeave && <section ref={leavePrompt} tabIndex={-1} className="nooks-studio-leave" aria-label="Unsaved changes"><p>You have changes that are not saved yet.</p><div><button disabled={!!busy} onClick={() => setPendingLeave(null)}>Keep editing</button><button disabled={!!busy} onClick={completeLeave}>Leave without saving</button><button className="is-primary" disabled={!!busy || !draft.title.trim()} onClick={() => operate('save', async () => { await save(); completeLeave(); })}>Save and continue</button></div></section>}
+      {accountChangeNotice && <section className="nooks-studio-leave" aria-label="Before switching accounts"><p role="status">{accountWorkPending() ? 'Your nook still has work in progress. Wait for it to finish, or retry the artwork cancellation, before switching accounts.' : dirty ? 'Save your nook draft before switching accounts, or discard its unsaved changes. Your saved drafts will stay available.' : 'Your nook draft is safe to leave. Close Studio, then switch accounts.'}</p>{dirty && <div><button ref={accountDiscardButton} disabled={accountWorkPending()} onClick={discardForAccountChange}>Discard unsaved changes</button><button className="is-primary" disabled={!!locked || !draft.title.trim()} aria-disabled={accountWorkPending()} aria-busy={busy === 'save'} onClick={saveForAccountChange}>Save draft before switching</button></div>}</section>}
+      {pendingLeave && <section ref={leavePrompt} tabIndex={-1} className="nooks-studio-leave" aria-label="Unsaved changes"><p>You have changes that are not saved yet.</p><div><button disabled={!!busy} onClick={cancelLeave}>Keep editing</button><button disabled={!!busy} onClick={completeLeave}>Leave without saving</button><button className="is-primary" disabled={!!busy || !draft.title.trim()} onClick={() => operate('save', async () => { await save(); completeLeave(); })}>Save and continue</button></div></section>}
       {(error || notice) && <div className={`nooks-studio-message${error ? ' is-error' : ''}`} role={error ? 'alert' : 'status'}><span>{error || notice}</span><button aria-label="Dismiss message" onClick={() => { setError(''); setNotice(''); }}><X size={14}/></button></div>}
       {isEmbedded && (awaitingArtwork(draft.artworkRequest) || artworkState.phase === 'error' || draft.artworkRequest?.status === 'expired') && <section className="nooks-studio-artwork-status" aria-label="Artwork request"><p role={artworkState.phase === 'error' ? 'alert' : 'status'}>{artworkState.message ?? (cancelPending ? 'Cancellation is waiting for confirmation. Automatic image import is paused.' : draft.artworkRequest?.status === 'expired' ? 'This artwork request expired. Ask ChatGPT for a new image when you are ready.' : artworkState.phase === 'importing' ? 'Importing your image…' : artworkState.phase === 'saving' ? 'Saving your image to this private draft…' : 'Waiting for ChatGPT’s image. Your draft is saved; you can keep editing its name and description.')}</p><div>{cancelPending ? <button type="button" disabled={!!busy || !!cancelingArtwork.current} onClick={() => cancelArtwork()}>Retry cancellation</button> : awaitingArtwork(draft.artworkRequest) && <><button type="button" disabled={!!busy || artworkState.phase === 'importing' || artworkState.phase === 'saving'} onClick={() => artworkController.current?.retry()}>{artworkState.phase === 'error' ? 'Retry image import' : 'Check for image'}</button><button type="button" disabled={!!busy} onClick={() => { cancelArtwork(); }}>Cancel image request</button>{draft.artworkRequest?.status === 'pending' && <button type="button" disabled={!!busy} onClick={askForArt}>Send prompt again</button>}</>}</div></section>}
       {conflict && <section className="nooks-studio-conflict"><p>A newer saved version is available. Your edits are still on this screen.</p><div><button disabled={!!busy} onClick={() => { adopt(conflict); setStage('edit'); setError(''); }}>Load saved version {conflict.revision}</button><button disabled={!!busy} onClick={() => { setDraft(value => ({ ...value, id: crypto.randomUUID(), revision: 0, createdAt: undefined, updatedAt: undefined })); setSavedSnapshot(''); setConflict(null); setError(''); setNotice('Your edits are now a separate draft. Save it when you are ready.'); }}>Keep my edits as a new draft</button></div></section>}
@@ -353,7 +398,7 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
       </div>
       {stage === 'edit' ? <>
         {existingPending && <div className="nooks-studio-pending"><p>{locked ? 'A publication needs to be finished before this draft can be edited.' : 'This version has a publication ready to review.'}</p><button disabled={!!busy || !canPublish} onClick={reviewPublication}>Review publication<ArrowRight size={14}/></button></div>}
-        <fieldset className="nooks-studio-editor" disabled={!!busy || !!locked}><div className="nooks-studio-fields"><label>Nook name<input maxLength={54} value={draft.title} placeholder="After-hours café" onChange={event => patch({ title: event.target.value })}/></label><label>Description <span>Optional</span><textarea rows={2} maxLength={220} value={draft.description} placeholder="A quiet place for late-night work and good company." onChange={event => patch({ description: event.target.value })}/></label></div>
+        <fieldset className="nooks-studio-editor" disabled={!!busy || !!locked}><div className="nooks-studio-fields"><label>Nook name<input ref={nookNameInput} maxLength={54} value={draft.title} placeholder="After-hours café" onChange={event => patch({ title: event.target.value })}/></label><label>Description <span>Optional</span><textarea rows={2} maxLength={220} value={draft.description} placeholder="A quiet place for late-night work and good company." onChange={event => patch({ description: event.target.value })}/></label></div>
         <div className="nooks-studio-source-tabs" aria-label="Choose nook artwork">{([['chatgpt', 'Generate with AI'], ['curated', 'Choose a scene'], ['upload', 'Upload']] as const).map(([value, label]) => <button type="button" key={value} aria-pressed={draft.artworkMode === value} className={draft.artworkMode === value ? 'is-active' : ''} onClick={() => patch({ artworkMode: value, ...(value === 'curated' ? { space: { ...draft.space, backgroundImage: '' } } : {}) })}>{label}</button>)}</div>
         {draft.artworkMode === 'curated' ? <section className="nooks-studio-scenes"><div className="nooks-studio-scene-tools"><div aria-label="Scene category"><button className={category === 'all' ? 'is-active' : ''} aria-pressed={category === 'all'} onClick={() => setCategory('all')}>All</button>{roomCategories.filter(item => item.id !== 'all').map(item => <button key={item.id} className={category === item.id ? 'is-active' : ''} aria-pressed={category === item.id} onClick={() => setCategory(item.id)}>{item.title}</button>)}</div><label><Search size={14}/><input type="search" aria-label="Search nook scenes" value={sceneSearch} onChange={event => setSceneSearch(event.target.value)} placeholder="Find a scene"/></label></div><div className="nooks-studio-scene-grid">{filteredScenes.map(item => <button key={item.id} className={item.id === scene.id ? 'is-selected' : ''} aria-pressed={item.id === scene.id} onClick={() => chooseScene(item)}><span><img src={item.thumbnail} alt="" loading="lazy" width={item.width} height={item.height}/>{item.id === scene.id && <i><Check size={13}/></i>}</span><strong>{item.title}</strong></button>)}</div>{!filteredScenes.length && <p className="nooks-studio-empty">No scenes match that search.</p>}</section> : <section className="nooks-studio-art">
           {draft.artworkMode === 'chatgpt' && <><div className="nooks-studio-styles" aria-label="Artwork style">{(Object.keys(styleLabels) as ArtStyle[]).map(value => <button key={value} className={draft.style === value ? 'is-active' : ''} aria-pressed={draft.style === value} onClick={() => patch({ style: value })}>{styleLabels[value]}</button>)}</div><label className="nooks-studio-setting">Describe your setting<textarea rows={3} maxLength={2000} value={draft.scenePrompt} onChange={event => patch({ scenePrompt: event.target.value })} placeholder="A tiny bookshop on a rainy street, warm desk lamps, a window seat…"/></label><div className="nooks-studio-generate-actions"><button className="nooks-studio-primary" disabled={!draft.scenePrompt.trim() || !!busy || isEmbedded && awaitingArtwork(draft.artworkRequest)} onClick={askForArt}>{busy === 'generate' ? isEmbedded ? 'Sending…' : 'Saving…' : isEmbedded ? 'Generate my nook' : 'Prepare drawing prompt'}</button><button className="nooks-studio-text-button" onClick={copyPrompt}><Copy size={13}/> Copy prompt</button></div><p className="nooks-studio-help">{isEmbedded ? 'ChatGPT creates the image in your conversation and returns its file to this private draft. Keep this Nooks tab open to import it. If your ChatGPT host cannot return a file, you can select an image instead.' : 'Copy a drawing prompt into ChatGPT, or upload an image here. Open Nooks inside ChatGPT to return artwork automatically.' + (isPublicPreview ? ' Website drafts stay in their separate library.' : '')}</p><details open={showPrompt} onToggle={event => setShowPrompt(event.currentTarget.open)}><summary>View the prompt</summary><textarea ref={promptField} readOnly value={generationPrompt} rows={5} aria-label="Image generation prompt" onFocus={event => event.target.select()}/></details></>}
@@ -375,9 +420,9 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
 function StudioSurface({ headingId, onClose, onRequestClose, dismissRef, children }: { headingId: string; onClose: () => void; onRequestClose: () => void; dismissRef: { current: (() => void) | null }; children: ReactNode }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const dismiss = useSoftDismiss(dialog, onClose);
-  dismissRef.current = dismiss;
   const backdrop = useBackdropDismiss<HTMLDialogElement>(onRequestClose, true);
   useEffect(() => {
+    dismissRef.current = dismiss;
     const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const element = dialog.current; element?.showModal();
     return () => {

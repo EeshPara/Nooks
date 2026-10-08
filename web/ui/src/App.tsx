@@ -31,7 +31,7 @@ import { useWorkspaceBackdropDismiss } from './world/useWorkspaceBackdropDismiss
 import { acceptWorkspace, type WorkspaceOrder } from './workspace-order';
 import { readWorkspaceView, panelForWorkspaceView, type WorkspaceView, type WorkspaceUtility } from './workspace-navigation';
 import { blankWorkspace as blank, normalizeWorkspace as normalize, type Workspace, type Task } from './workspace-normalize';
-import NookStudio from './community/NookStudio';
+import NookStudio, { type StudioAccountGuard } from './community/NookStudio';
 import { useLiveNooks, type LiveNook } from './community/useLiveNooks';
 import { LiveNookCommunity } from './community/LiveNookCommunity';
 import { StudyPresencePill } from './community/StudyPresencePill';
@@ -109,6 +109,7 @@ function WorkspaceApp(){
  if(showNookCreator)studioLifetime.current.mounted=true;
  const [studioDraftId,setStudioDraftId]=useState<string|undefined>();
  const [studioDraftRequest,setStudioDraftRequest]=useState(0);
+ const studioAccountGuard=useRef<StudioAccountGuard|null>(null);
  const [pendingStudioDraftId,setPendingStudioDraftId]=useState<string|undefined>();
  const studioNavigationVersion=useRef(0);
  const [reportedStudioDraftId,setReportedStudioDraftId]=useState<string|undefined>();
@@ -451,6 +452,14 @@ function WorkspaceApp(){
   void enterNook(scene,draft);
  }
  function saveNookProfile(next:NookProfile){setProfile(next);setProfileReady(true);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));setShowIdentity(false);if(pendingJoin)void enterNook(pendingJoin.scene,pendingJoin.draft);}
+ function beforeAccountChange(){
+  const studio=studioAccountGuard.current;
+  if(studio&&studio.owner===draftOwner&&!studio.canChangeAccount()){
+   setShowAccount(false);setShowNooks(false);setShowNookCreator(true);return false;
+  }
+  if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}
+  return canNavigate();
+ }
  function openStudioDraft(id:string,owner:string){
   if(owner!==progressOwner.current||!canFlushProgress())return;
   studioNavigationVersion.current++;setPendingStudioDraftId(undefined);
@@ -568,10 +577,10 @@ function WorkspaceApp(){
   {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} pendingInvite={!!currentInvitation()} onConnect={()=>{setShowPeople(false);setShowAccount(true);}} onClose={()=>setShowPeople(false)}/>}
   {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=allRoomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
   {showIdentity&&!isLive&&<NookIdentityDialog profile={profile} onClose={()=>{setShowIdentity(false);setPendingJoin(null);}} onSave={saveNookProfile}/>}
-  {studioLifetime.current.mounted&&<NookStudio key={`studio:${draftOwner}`} open={showNookCreator} initialDraftId={studioDraftId} initialDraftRequest={studioDraftRequest} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}
+  {studioLifetime.current.mounted&&<NookStudio key={`studio:${draftOwner}`} open={showNookCreator} accountGuard={studioAccountGuard} initialDraftId={studioDraftId} initialDraftRequest={studioDraftRequest} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}
   {celebration&&<RewardCelebration rewards={celebration.rewards} roomLabel={getRoomRewards(celebration.roomId).label} onClose={()=>setCelebration(null)} onPlace={async rewardId=>{await perform('room_reward_place',{roomId:celebration.roomId,rewardId,placed:true});}}/>}
   {portal&&<NookPortal title={portal.title} image={portal.image}/>}
-  {showAccount&&!isTutorialPractice&&<AccountDialog onClose={()=>{setShowAccount(false);if(account.status!=='signed-in')clearProfileLink();}} onBeforeAccountChange={()=>{if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}return canNavigate();}}/> }
+  {showAccount&&!isTutorialPractice&&<AccountDialog onClose={()=>{setShowAccount(false);if(account.status!=='signed-in')clearProfileLink();}} onBeforeAccountChange={beforeAccountChange}/> }
   {showAbout&&<AboutNook onClose={()=>setShowAbout(false)} onWatchOpening={canReplayOpeningNow()?requestOpeningReplay:undefined}/>}
   {welcome&&localScope&&<WelcomeJourney workspace={workspace} key={`${localScope}:${welcome}`} scope={restartWelcome.current?`${localScope}:welcome-restart:${restartWelcome.current}`:localScope} initialProfile={profile} replay={welcome==='replay'} onNavigate={navigateTour} onFinish={finishWelcome} connected={live.enabled} onConnect={!isTutorialPractice&&isPublicPreview&&account.status!=='signed-in'?async next=>{await finishWelcome(next);requestProfileLink(next,localScope);setShowAccount(true);}:undefined} onProfile={next=>{setProfile(next);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));}}/>}
   <OpeningFilm open={openingFilm.open} presentationId={openingFilm.presentationId} videoSrc="/media/opening-film/nooks-opening-v3.mp4" posterSrc="/media/opening-film/nooks-opening-poster-v2.jpg" endCardMode="baked-in" onDismiss={openingFilm.dismiss}/>
