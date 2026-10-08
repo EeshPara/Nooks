@@ -30,6 +30,10 @@ Authorized October 8, 2026: continue testing, fixing, grading, and making small 
 - Keep credentials and fixture secrets out of Git, logs, reports, and responses. Avoid changing unrelated data, billing, or access settings.
 - Caffeinate keeps the computer awake; it does not independently restart an ended agent session. Continue while this work session remains active and preserve checkpoints for resumption.
 
+## Latest source checkpoint
+
+Release commit `cd1cd9a` was pushed to the private GitHub repository through merge commit `058bfa5`, preserving the collaborator’s Nook Studio capitalization change. A public-only deferred editor/reference iteration is now deployed as9z41r5dtu. Its aggregate initial JS gzip is39.8% smaller; an initial retry approach failed real Chrome QA and was replaced before deployment. Actual failed-download retry, existing/new draft saving and reload persistence passed. All66assets and a fresh authenticated canary passed. Source checkpoint for this followup is pending.
+
 ## Morning handoff
 
 Report what changed and was deployed, actual checks and measured capacity, final grades with reasons, remaining reproducible issues, and the smallest owner action needed for any blocker. Link the exact reports and release commit.

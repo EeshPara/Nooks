@@ -1,0 +1,167 @@
+{
+  "startedAt": "2026-10-08T08:37:36.569Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "onlineThresholdSeconds": 90,
+  "heartbeatWriteMinimumSeconds": 15,
+  "thresholdSource": "cloud/supabase/migrations/20261004195006_community_management_pagination.sql and 20261008061924_scalable_community_snapshots.sql",
+  "samples": [
+    {
+      "label": "both_present",
+      "elapsedMs": 0,
+      "serverObservedAt": "2026-10-08T08:37:49.443404+00:00",
+      "memberCount": 2,
+      "onlineCount": 2,
+      "inactiveMemberStillPresent": true,
+      "inactiveMemberOnline": true,
+      "zeroFocusCredit": true
+    },
+    {
+      "label": "active_heartbeat_30s",
+      "elapsedMs": 30758,
+      "serverObservedAt": "2026-10-08T08:38:20.198521+00:00",
+      "memberCount": 2,
+      "onlineCount": 2,
+      "inactiveMemberStillPresent": true,
+      "inactiveMemberOnline": true,
+      "zeroFocusCredit": true
+    },
+    {
+      "label": "active_heartbeat_60s",
+      "elapsedMs": 60637,
+      "serverObservedAt": "2026-10-08T08:38:50.16345+00:00",
+      "memberCount": 2,
+      "onlineCount": 2,
+      "inactiveMemberStillPresent": true,
+      "inactiveMemberOnline": true,
+      "zeroFocusCredit": true
+    },
+    {
+      "label": "inactive_expired",
+      "elapsedMs": 95609,
+      "serverObservedAt": "2026-10-08T08:39:25.136008+00:00",
+      "memberCount": 2,
+      "onlineCount": 1,
+      "inactiveMemberStillPresent": true,
+      "inactiveMemberOnline": false,
+      "zeroFocusCredit": true
+    },
+    {
+      "label": "heartbeat_restored",
+      "elapsedMs": 96672,
+      "serverObservedAt": "2026-10-08T08:39:26.20075+00:00",
+      "memberCount": 2,
+      "onlineCount": 2,
+      "inactiveMemberStillPresent": true,
+      "inactiveMemberOnline": true,
+      "zeroFocusCredit": true
+    }
+  ],
+  "checks": [
+    "both members initially online",
+    "inactive member remains online at 60 seconds",
+    "inactive member expires beyond 90 seconds while active member remains online",
+    "membership and inactive timestamp persist without leave",
+    "returning heartbeat restores both online",
+    "no personal or shared focus credit"
+  ],
+  "cleanup": [
+    {
+      "type": "room",
+      "id": "858c9f59-3b67-42f7-9b13-2f8348d87e81",
+      "ok": true
+    },
+    {
+      "type": "session_revoke",
+      "id": "825eaddf-97b0-467f-a95f-08f8f0b077fd",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "18ea24c9-714c-40d3-be84-4c2ba28e2d9a",
+      "ok": true
+    },
+    {
+      "type": "auth",
+      "id": "825eaddf-97b0-467f-a95f-08f8f0b077fd",
+      "ok": true
+    },
+    {
+      "type": "session_revoke",
+      "id": "46119939-a11b-4b06-80e0-44df507aa65f",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "4cf56f7e-174b-47bf-b547-88de43a5ed93",
+      "ok": true
+    },
+    {
+      "type": "auth",
+      "id": "46119939-a11b-4b06-80e0-44df507aa65f",
+      "ok": true
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Actual deployed HTTPS; two admin-confirmed disposable accounts bypass email onboarding.",
+    "Presence inactivity is simulated by stopping one fixture heartbeats, not by browser suspension or network emulation.",
+    "Real elapsed time; no database timestamps are changed. GETs may perform normal identity/quota/legacy-hydration bookkeeping.",
+    "No load, browser rendering, or new deployment readiness claim."
+  ],
+  "buildStart": {
+    "sampledAt": "2026-10-08T08:37:37.881Z",
+    "htmlSha256": "c32271aa0236082fab3477700ae78292e32b31f3f016a8a409f3d9ff7cb25f91",
+    "entryAssets": [
+      "/assets/index-DECl8W_L.js",
+      "/assets/index-BcKeIWXw.css"
+    ]
+  },
+  "fixtures": {
+    "users": [
+      {
+        "id": "825eaddf-97b0-467f-a95f-08f8f0b077fd",
+        "account": "18ea24c9-714c-40d3-be84-4c2ba28e2d9a"
+      },
+      {
+        "id": "46119939-a11b-4b06-80e0-44df507aa65f",
+        "account": "4cf56f7e-174b-47bf-b547-88de43a5ed93"
+      }
+    ],
+    "rooms": [
+      "858c9f59-3b67-42f7-9b13-2f8348d87e81"
+    ]
+  },
+  "fixtureThrottleTopics": [
+    "account:18ea24c9-714c-40d3-be84-4c2ba28e2d9a",
+    "account:4cf56f7e-174b-47bf-b547-88de43a5ed93",
+    "nook:858c9f59-3b67-42f7-9b13-2f8348d87e81"
+  ],
+  "apiRequests": 18,
+  "inactiveLastSeen": "2026-10-08T08:37:48.785993+00:00",
+  "inactiveLastHeartbeatObservedAt": "2026-10-08T08:37:49.443404+00:00",
+  "inactiveTimestampUnchanged": true,
+  "expiryServerAgeMs": 96351,
+  "buildEnd": {
+    "sampledAt": "2026-10-08T08:39:27.074Z",
+    "htmlSha256": "c32271aa0236082fab3477700ae78292e32b31f3f016a8a409f3d9ff7cb25f91",
+    "entryAssets": [
+      "/assets/index-DECl8W_L.js",
+      "/assets/index-BcKeIWXw.css"
+    ]
+  },
+  "entryAssetsUnchanged": true,
+  "cleanupVerification": {
+    "accountsRemaining": 0,
+    "roomsRemaining": 0,
+    "queryOk": true
+  },
+  "finishedAt": "2026-10-08T08:39:28.560Z",
+  "privateThrottleCleanup": {
+    "performedBy": "root",
+    "completed": true,
+    "deletedExactFixtureTopics": 3,
+    "guards": "Corresponding fixture account/room absent; shared nooks:directory preserved",
+    "evidence": "Root reported successful guarded exact-topic SQL cleanup after verifying fixture absence"
+  }
+}

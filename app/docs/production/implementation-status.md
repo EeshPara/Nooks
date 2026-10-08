@@ -1,5 +1,7 @@
 # Nooks implementation status — October 4, 2026
 
+Historical snapshot. For the October 8 deployed backend, 50 reviewed films, capacity evidence and remaining launch gates, read [the current handoff](../../../START-HERE.md) and [the latest independent grade](../../../creative/nooks-release/final-independent-grade.md). The unconfigured-public-backend statements below describe October 4, not the current deployment.
+
 The current release supports controlled owner/developer testing. The independent judge has **not approved a student pilot or public production launch**. See [the release judge](../release-judge-oct4.md) for the current scope and [deployment status](../plugin-setup-status.json) for exact deployed versions. This page supersedes the October 1 prototype status.
 
 ## Deployment and identity

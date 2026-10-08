@@ -1,8 +1,8 @@
 {
-  "sampledAt": "2026-10-08T08:26:16.824Z",
+  "sampledAt": "2026-10-08T09:01:55.206Z",
   "origin": "https://nooks-study-space.vercel.app",
   "passed": true,
-  "scope": "Deployed exact bytes, media types and public audio CORS; not continuous playback or listening",
+  "scope": "Deployed exact bytes for all films, audio, entry and deferred JS/CSS, media types and public audio CORS; not continuous playback or listening",
   "rows": [
     {
       "path": "/assets/forest-bed-D1heS7ny.mp3",
@@ -27,23 +27,34 @@
       "passed": true
     },
     {
-      "path": "/assets/index-BcKeIWXw.css",
-      "sha256": "2036638e2d1256751183345ce2e425f88a04cc682ccae704187168de0689f242",
+      "path": "/assets/index-BlI9WeLm.js",
+      "sha256": "ab6b720972a398657fc7c69afbe8e1c8eb394b43cb36f5761dabf0e73c668ae2",
+      "kind": "deferred",
+      "status": 200,
+      "bytes": 228238,
+      "actualSha256": "ab6b720972a398657fc7c69afbe8e1c8eb394b43cb36f5761dabf0e73c668ae2",
+      "contentType": "application/javascript; charset=utf-8",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DAeI1hYC.css",
+      "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
       "kind": "entry",
       "status": 200,
-      "bytes": 532724,
-      "actualSha256": "2036638e2d1256751183345ce2e425f88a04cc682ccae704187168de0689f242",
+      "bytes": 334969,
+      "actualSha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
       "contentType": "text/css; charset=utf-8",
       "cors": "*",
       "passed": true
     },
     {
-      "path": "/assets/index-DECl8W_L.js",
-      "sha256": "41f83b28b28dde45592e44733ccf55f71e61c53cda58aae0f11997cca8a9ad06",
+      "path": "/assets/index-DcI4F0F4.js",
+      "sha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
       "kind": "entry",
       "status": 200,
-      "bytes": 1410244,
-      "actualSha256": "41f83b28b28dde45592e44733ccf55f71e61c53cda58aae0f11997cca8a9ad06",
+      "bytes": 516086,
+      "actualSha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
       "contentType": "application/javascript; charset=utf-8",
       "cors": "*",
       "passed": true
@@ -56,6 +67,28 @@
       "bytes": 564916,
       "actualSha256": "2c6f737732b64ae43ff0723827f613f0303b91b27aa1a8ab05f24413761a6463",
       "contentType": "audio/mpeg",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BITgdhqM.js",
+      "sha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
+      "kind": "entry",
+      "status": 200,
+      "bytes": 352623,
+      "actualSha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
+      "contentType": "application/javascript; charset=utf-8",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BxXvaAxM.css",
+      "sha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
+      "kind": "entry",
+      "status": 200,
+      "bytes": 198266,
+      "actualSha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
+      "contentType": "text/css; charset=utf-8",
       "cors": "*",
       "passed": true
     },
@@ -100,6 +133,17 @@
       "bytes": 516956,
       "actualSha256": "97d1c2401c2e969dd9ac33d5350f5eaf96b69f92b80eace90b36b245bf3ce4f0",
       "contentType": "audio/mpeg",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-CAoZffAd.js",
+      "sha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "kind": "deferred",
+      "status": 200,
+      "bytes": 543864,
+      "actualSha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "contentType": "application/javascript; charset=utf-8",
       "cors": "*",
       "passed": true
     },

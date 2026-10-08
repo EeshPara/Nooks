@@ -12,8 +12,8 @@ const assets = manifest.clips.map(clip => ({ path: clip.video, sha256: clip.qa.v
 const built = resolve(root, 'web/dist-preview');
 const html = await readFile(resolve(built, 'index.html'), 'utf8');
 const entries = [...html.matchAll(/(?:src|href)=["'](\/assets\/[^"']+)["']/g)].map(match => match[1]);
-for (const path of new Set([...entries, ...(await readdir(resolve(built, 'assets'))).filter(name => name.endsWith('.mp3')).map(name => `/assets/${name}`)])) {
-  assets.push({ path, sha256: hash(await readFile(resolve(built, path.slice(1)))), kind: path.endsWith('.mp3') ? 'audio' : 'entry' });
+for (const path of new Set([...entries, ...(await readdir(resolve(built, 'assets'))).filter(name => /\.(mp3|js|css)$/.test(name)).map(name => `/assets/${name}`)])) {
+  assets.push({ path, sha256: hash(await readFile(resolve(built, path.slice(1)))), kind: path.endsWith('.mp3') ? 'audio' : entries.includes(path) ? 'entry' : 'deferred' });
 }
 const rows = [];
 let cursor = 0;
@@ -26,7 +26,7 @@ await Promise.all(Array.from({ length: 3 }, async () => {
       const digest = hash(bytes);
       const type = response.headers.get('content-type') || '';
       const cors = response.headers.get('access-control-allow-origin');
-      const mediaType = asset.kind === 'video' ? type.startsWith('video/mp4') : asset.kind === 'audio' ? type.startsWith('audio/mpeg') : true;
+      const mediaType = asset.kind === 'video' ? type.startsWith('video/mp4') : asset.kind === 'audio' ? type.startsWith('audio/mpeg') : asset.path.endsWith('.js') ? /^(text|application)\/javascript/.test(type) : asset.path.endsWith('.css') ? type.startsWith('text/css') : true;
       rows.push({ ...asset, status: response.status, bytes: bytes.length, actualSha256: digest,
         contentType: type, cors, passed: response.ok && digest === asset.sha256 && mediaType && (asset.kind !== 'audio' || cors === '*') });
     } catch {
@@ -36,7 +36,7 @@ await Promise.all(Array.from({ length: 3 }, async () => {
 }));
 rows.sort((a, b) => a.path.localeCompare(b.path));
 const report = { sampledAt: new Date().toISOString(), origin, passed: rows.every(row => row.passed),
-  scope: 'Deployed exact bytes, media types and public audio CORS; not continuous playback or listening', rows };
+  scope: 'Deployed exact bytes for all films, audio, entry and deferred JS/CSS, media types and public audio CORS; not continuous playback or listening', rows };
 await writeFile(new URL('public-asset-verification.json', import.meta.url), JSON.stringify(report, null, 2) + '\n');
 console.log({ passed: report.passed, assets: rows.length, videos: rows.filter(row => row.kind === 'video').length,
   audio: rows.filter(row => row.kind === 'audio').length, failed: rows.filter(row => !row.passed).map(row => row.path) });

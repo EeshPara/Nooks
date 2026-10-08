@@ -1,0 +1,5 @@
+.nooks-deferred-study{min-width:0;padding:28px;border:1px solid #fff9e15c;border-radius:16px;background:#f8f3e9f2;color:#403a31;box-shadow:0 12px 38px #1c160c26;font-family:var(--nook-font,Inter,sans-serif)}
+.nooks-deferred-study h2{margin:0 0 12px;font:550 18px/1.4 var(--nook-font,Inter,sans-serif)}
+.nooks-deferred-study p{margin:0 0 18px;color:#655947;font:14px/1.7 var(--nook-font,Inter,sans-serif)}
+.nooks-deferred-study>div{display:flex;flex-wrap:wrap;gap:10px}
+.nooks-deferred-study button{min-height:44px}

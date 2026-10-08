@@ -21,3 +21,7 @@ Public followup `https://nooks-study-space-8hblkfqz7-eeshpara-1663s-projects.ver
 - Mobile discovery showed50 rooms; unmatched search showed0 with a recovery action; Clear returned50. Closing returned focus to Change nook.
 - Mobile bottom navigation opened Library, then the seeded note editor. A disposable QA sentence was added, Saved appeared, and reload followed by Pick up where you left off preserved the sentence. No real account or original user material was edited.
 - No application console errors were observed during the desktop media flow.
+
+## Account entry validation
+
+The configured public account dialog explains that website, device and ChatGPT plugin libraries remain separate. Empty email disables Continue. Submitting `invalid-email` displayed the browser’s missing-@ validation message locally. The dialog closed normally; no email request was sent. This does not lift the SMTP launch blocker.
