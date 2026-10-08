@@ -1,6 +1,6 @@
 # Studio draft metadata read — next iteration
 
-Initial read-only source assessment, 2026-10-08. The subsequent implementation now passes independent source review and selective web/app/cloud tests; the Site candidate builds. It is not yet deployed or benchmarked, and remains separate from the live My Nooks/save-focus release while the fixed-release soak runs. See studio-draft-metadata-independent-review.md.
+Initial read-only source assessment, 2026-10-08. The subsequent implementation now passes independent source review and selective web/app/cloud tests; the Site candidate builds. It is now deployed in public c4t3ni42i and private native40; hosted image-download savings were not benchmarked. See lifecycle-deployment-2026-10-08.md. See studio-draft-metadata-independent-review.md.
 
 ## Finding
 

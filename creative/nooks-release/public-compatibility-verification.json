@@ -1,11 +1,15 @@
 {
-  "sampledAt": "2026-10-08T10:33:14.312Z",
+  "sampledAt": "2026-10-08T12:00:57.857Z",
   "origin": "https://nooks-study-space.vercel.app",
-  "current": "d03cf6fb1687397f7f16feb1",
+  "current": "640128902cacc8f377e1a477",
   "retained": [
     {
       "id": "3c3d4164950ace2411497a8b",
       "retainUntil": "2026-10-10T09:52:09.393Z"
+    },
+    {
+      "id": "d03cf6fb1687397f7f16feb1",
+      "retainUntil": "2026-10-10T11:58:21.377Z"
     },
     {
       "id": "df2d810df2a8f0b88e19f23b",
@@ -29,7 +33,16 @@
     {
       "path": "/",
       "status": 200,
-      "sha256": "d03cf6fb1687397f7f16feb11bbe60ff45c2bea0740a13fbfb0efeba6cd8a41d",
+      "sha256": "640128902cacc8f377e1a477d7c9a041a89a1a406d6ab91d1028cf281a5ea521",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BeCvaTc7.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 354280,
+      "sha256": "fe64db4a9000800d6796a97ee9d6471c7947f0ae6dffc9b4e1efab83c82fd488",
       "passed": true
     },
     {
@@ -39,15 +52,6 @@
       "cache": "public, max-age=31536000, immutable",
       "bytes": 198266,
       "sha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
-      "passed": true
-    },
-    {
-      "path": "/assets/NoteAppearance-CQlKYQkf.js",
-      "status": 200,
-      "type": "application/javascript; charset=utf-8",
-      "cache": "public, max-age=31536000, immutable",
-      "bytes": 352541,
-      "sha256": "abc883fb6edb3a9dc1d58d866a81a1cb6b4d2dada4baf0cc8e9c63362a94e121",
       "passed": true
     },
     {
@@ -69,21 +73,30 @@
       "passed": true
     },
     {
-      "path": "/assets/index-xOPmcwTP.js",
+      "path": "/assets/index-JcQqudl0.js",
       "status": 200,
       "type": "application/javascript; charset=utf-8",
       "cache": "public, max-age=31536000, immutable",
-      "bytes": 519322,
-      "sha256": "a7a4428b796de3b63f4895a179c4d0c071171360aafaea9862f92d9986882555",
+      "bytes": 521055,
+      "sha256": "5677a5127fbf86c045df1c738e213b5e8f21e67562f4fafe99f61049589e792b",
       "passed": true
     },
     {
-      "path": "/assets/study-content-h8ACpf3x.js",
+      "path": "/assets/study-content-DtGBrsQ6.js",
       "status": 200,
       "type": "application/javascript; charset=utf-8",
       "cache": "public, max-age=31536000, immutable",
       "bytes": 543864,
-      "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
+      "sha256": "bc0e1f9bee3d3fcc3394aa9ac849d9155b66b7ea017f7e5d741fc7c6d205d2be",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-CQlKYQkf.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 352541,
+      "sha256": "abc883fb6edb3a9dc1d58d866a81a1cb6b4d2dada4baf0cc8e9c63362a94e121",
       "passed": true
     },
     {
@@ -102,6 +115,24 @@
       "cache": "public, max-age=31536000, immutable",
       "bytes": 334969,
       "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-h8ACpf3x.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 543864,
+      "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-xOPmcwTP.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 519322,
+      "sha256": "a7a4428b796de3b63f4895a179c4d0c071171360aafaea9862f92d9986882555",
       "passed": true
     },
     {
@@ -138,6 +169,15 @@
       "cache": "public, max-age=31536000, immutable",
       "bytes": 543864,
       "sha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-h8ACpf3x.js?nooks_retry=1",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 543864,
+      "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
       "passed": true
     },
     {

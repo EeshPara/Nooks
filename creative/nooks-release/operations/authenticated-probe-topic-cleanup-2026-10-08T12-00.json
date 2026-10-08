@@ -1,0 +1,13 @@
+{
+  "run": "2026-10-08T12-00-59.252Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "topic": "account:a59a1c17-ff34-428e-88d4-ac5c4601dc3f",
+  "removedFixtureTopics": 0,
+  "accountAbsentVerified": true,
+  "guards": [
+    "exact_fixture_topic",
+    "no_matching_account",
+    "no_matching_room"
+  ],
+  "preservedSharedDirectory": true
+}

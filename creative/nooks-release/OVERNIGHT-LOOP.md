@@ -1,55 +1,42 @@
 # Nooks overnight improvement loop
 
-Authorized October 8, 2026: continue testing, fixing, grading, and making small improvements to product functionality and experience. Preserve the existing Nooks services and user work. Mac idle-sleep prevention is running for 12 hours.
+Authorized October 8, 2026: keep testing, fixing, independently grading and making small, justified product improvements. Preserve the existing Nooks services and user work.
 
-## Repeat this loop
+## The loop
 
-1. **Test like a student.** Walk through onboarding, notes/autosave, practice, timers/rewards, room switching, ambience, accounts, and community. Include keyboard/mobile layouts, failed requests, reloads, reconnects, and account isolation. Record reproducible failures and the exact build tested.
-2. **Grade independently.** Assess functionality, experience, visual/audio quality, performance, security, and production readiness. Separate observed results from assumptions. Passing code tests alone does not approve a visual asset or a public launch.
-3. **Fix the highest-impact issue.** Prioritize data loss, authorization, broken journeys, resource problems, confusing behavior, then polish. Keep edits focused and assign agents non-overlapping ownership.
-4. **Add a small improvement when justified.** Prefer clearer saving/reconnecting feedback, useful recovery actions, accessible controls, smoother scene/sound transitions, or reduced friction. Preserve the cozy design. Avoid speculative large features, new paid services, and unrelated changes.
-5. **Verify and checkpoint.** Reproduce the original case, run affected checks, review final media hashes, and record before/after evidence. Commit and push coherent reviewed changes. Publish through the existing guarded release paths when the relevant checks pass; verify the actual deployed build.
-6. **Regrade and repeat.** Maintain an honest issue list and current grade. Move to the next supported improvement; do not rerun unchanged checks merely to stay busy. Leave a clear handoff for any dependency that requires the owner.
+1. **Test like a student.** Exercise onboarding, notes, practice, timers, rooms, ambience, account changes and sharing. Include reloads, failed requests, reconnects, keyboard use and narrow layouts. Record the exact build and a reproducible failure.
+2. **Grade independently.** Assess functionality, experience, media, performance, security and production readiness. Separate observed behavior from source inspection and untested assumptions.
+3. **Fix the most consequential issue.** Prioritize data loss, access isolation, broken journeys and resource problems before cosmetic improvements. Give agents separate file ownership.
+4. **Add small improvements when evidence supports them.** Favor clearer saving/recovery feedback, accessible controls, calm transitions and fewer unnecessary downloads. Avoid speculative large features and new paid services.
+5. **Verify and checkpoint.** Reproduce the original case, run affected tests, review the result independently and commit/push a coherent change. Publish through the existing guarded release paths and verify the actual deployment.
+6. **Regrade and repeat.** Keep failures and limitations visible. Move to the next supported improvement; unchanged tests do not become stronger evidence through repetition. Leave a clear owner action for external dependencies.
 
-## Current priorities
+## Current checkpoint
 
-- All50 final animations have independent exact-SHA approvals, full decode checks and source parity; all50 are deployed. Do not regenerate approved clips without a specific defect.
-- Public browser acceptance verified scene switching, ambience startup/mute persistence and independent motion control. A 390 × 844 mobile browser viewport also passed home/library/note/discovery layout, search recovery and note-save/reload checks without page overflow. Continuous full-film playback, headphone listening, physical-device performance and actual native iframe acceptance remain unproven.
-- Actual deployed capacity passed100 distinct identities,100 sockets/300 channels,873 HTTP requests with zero errors, p95 364ms and100/100 pre/post invalidation delivery. The120.605s wall interval included10.642s reconnect pause. Fixtures and105 exact orphan topics from successful smoke/capacity runs were cleaned. This is not a1,000-user capacity claim.
-- Truthful guest header/share copy is published to public and native. Native version 38 also contains truthful custom-art publication guidance and the studio keyboard-focus fix. The actual public header now says Study together.
-- Authenticated operator probe is implemented, covered by six new failure/success tests and passed a live disposable-account check. No persistent canary credentials, schedules or alert recipients have been configured.
-- Public email signup remains blocked by missing SMTP configuration; the owner has been asked for the existing provider/domain. Do not disable verification to work around this.
-- Check remaining recovery, error states, responsive accessibility and resource use. Keep improvements focused and checkpoint reviewed source to GitHub.
+- Live public release: `c4t3ni42i` at https://nooks-study-space.vercel.app, HTML/manifest `640128902cacc8f377e1a477`. Native version 40 remains owner-private, source `a72d3fe9a695035f0ea4e525a00d02653ad138d4`.
+- All 50 final animations and their ambience presets are deployed. Exact hashes, full decode checks, sampled motion/seams and source parity passed. Public browser checks cover scene changes, audio controls, motion preference and narrow layouts. Continuous playback, headphone listening and physical-phone performance remain unproven.
+- The public release includes deferred editor loading/retry, bounded retention of prior frontend assets, truthful guest copy, current Studio drafts in My Nooks, Save focus preservation and defensive Node disconnect handling. Current asset checks passed 75/75; compatibility checks passed 23/23. Hosted cancellation savings are not claimed.
+- Metadata-only Studio listing, hidden unsaved Studio account-change protection and shared-library owner/invitation lifecycle protection are now published. Affected tests, builds and independent review passed; mounted simulated-account browser tests cover delayed failures, pending saves, discard/focus, StrictMode and stale private responses. Actual public 390-pixel rendering, saved-draft discovery and close/focus passed. Real email/authenticated sharing and native iframe acceptance remain separate gates.
+- A fresh disposable authenticated probe passed configuration, workspace and owner-scoped empty draft listing on this release; account/Auth/session cleanup and guarded topic cleanup completed.
+- The previous bounded public test passed 100 identities, 100 sockets/300 channels and 873 requests without errors; p95 was 364 ms. Its 120.605-second wall window included a reconnect pause. It is not a 1,000-user or long-duration result.
+- Two longer attempts are preserved as incomplete. The first stopped in channel setup because a sessionless test-client token was replaced; a corrected two-account hosted proof passed heartbeat, reconnect, denial and cleanup. The second reached 6 minutes 15 seconds with 100 sockets/300 channels before the test scheduler clipped a profile request against its own quiet deadline. Local reproduction and independent tests support the scheduler correction. Both runs removed all 100 accounts and five rooms, followed by guarded removal/verification of their exact 105 throttle topics.
+- One final corrected 15-minute, five-room soak started at 12:02:56 UTC on the fixed release. Enrollment completed and the first measured minute passed with zero unexpected errors. The run is still active; no final result is claimed. Keep publishing frozen through cleanup; no further retry is authorized.
 
-## Evidence and boundaries
+## Grades and external gates
 
-- Current independent grade: product quality 7.5/10; production readiness 6.5/10. Regrade after fixes; do not treat the old grade as final.
-- Existing evidence: real two-account hosted correctness checks, 100-socket delivery, SQL fixtures with 1,000 members, broad automated tests, and actual device-mode browser flows. Each has its own documented limits.
-- Agents run in batches within the available concurrency limit. Record actual agents/reviews completed; never claim forty concurrent agents.
-- Use existing Higgsfield assets and credits. All 47 new generations are finished; no further paid generation is necessary for the current plan.
-- Keep credentials and fixture secrets out of Git, logs, reports, and responses. Avoid changing unrelated data, billing, or access settings.
-- Caffeinate keeps the computer awake; it does not independently restart an ended agent session. Continue while this work session remains active and preserve checkpoints for resumption.
+Current independent grade: **7.5/10 product quality; 6.5/10 production readiness**. Email onboarding still blocks a public launch: custom SMTP is not configured, and the owner has been asked for the existing provider/domain. Do not disable verification to bypass this dependency.
 
-## Completed deployment compatibility fix
+Actual native iframe acceptance, public signed-in browser journeys, sensory/physical-device review, scheduled authenticated alerts and isolated hosted recovery remain open. Existing database backups do not establish Storage-byte backup or a successful restore. The authenticated probe is implemented and passed disposable-account checks; persistent scheduling and alert delivery are not configured.
 
-Public release `iebenwu3j` fixes the independently reproduced missing-editor/immutable-HTML bug. The guarded workflow retains exact prior JS/CSS graphs for 48 hours from capture, supporting a conservative minimum 24-hour open-page window, within 16 prior graphs/32 MiB. It stops rather than evict unexpired assets. Actual deployed checks passed 16/16, including genuine 404/no-store misses; all 70 current/retained/media assets passed. A real old tab and a fresh-origin earlier release both opened their old editor, saved and restored notes. See `deployment-compatibility-browser-qa.md` and the independent skew review.
+## Operating boundaries
 
-The same public release fixes deeply nested preparsed JSON reporting a false backend outage. Local regressions and one fresh deployed fixture verified 400 INVALID_INPUT with the profile unchanged. The current public studio also restores focus to Nooks on close. Native version 38 publishes that selected focus fix; its audience stays owner-private.
+- Agents work in batches within the available concurrency limit. Do not claim forty simultaneous agents.
+- Use existing Nooks hosting, Supabase and plugin identities. Never touch unrelated projects, buy upgrades or change audiences without an explicit request.
+- Keep credentials and fixture secrets out of Git and reports. Clean only exact disposable fixture resources with ownership/absence guards; preserve the shared directory topic.
+- Caffeinate started around 02:01 Chicago time for 12 hours and remains active. It keeps the Mac awake; it does not restart an ended agent session. Preserve resumable checkpoints.
 
-A private Storage isolation check denied foreign/anonymous reads while preserving the exact existing QA object. Physical deletion and backup restore remain unverified. No additional upload or persistent fixture was created.
+## Evidence and handoff
 
-## Latest source checkpoint
+See [independent grade](final-independent-grade.md), [Studio browser acceptance](studio-account-switch-browser-qa.md), [metadata review](studio-draft-metadata-independent-review.md), [failed soak evidence](deployed/soak-results-2026-10-08.md), [corrected realtime proof](deployed/realtime-auth-diagnosis-2026-10-08.md) and the timestamped deployed reports. `START-HERE.md` records service identities and publishing instructions.
 
-Release commit `cd1cd9a` was pushed to the private GitHub repository through merge commit `058bfa5`, preserving the collaborator’s Nook Studio capitalization change. A public-only deferred editor/reference iteration is now deployed as9z41r5dtu. Its aggregate initial JS gzip is39.8% smaller; an initial retry approach failed real Chrome QA and was replaced before deployment. Actual failed-download retry, existing/new draft saving and reload persistence passed. All66assets and a fresh authenticated canary passed. This followup is committed and pushed as `8f548b9`.
-
-## Morning handoff
-
-Report what changed and was deployed, actual checks and measured capacity, final grades with reasons, remaining reproducible issues, and the smallest owner action needed for any blocker. Link the exact reports and release commit.
-
-## Saved drafts and request lifecycle iteration
-
-Release f2z3aj98o / native39 connects current Studio drafts to My Nooks, preserves Save focus, guards owner changes and makes canceled draft switches retryable. Browser QA caught duplicate sibling keys after initial source acceptance; those were namespaced and the mounted repeated-dialog journey passed before publishing. Public mobile-size acceptance closes the original missing-card/focus issues. Asset checks72/72, compatibility19/19 and one authenticated canary plus empty owner-scoped draft list passed; all disposable account/Auth fixtures are gone and exact-topic cleanup found0.
-
-The public handler also has independently reviewed Node disconnect hardening. Hosted propagation/compute savings remain unproven; no Vercel cancellation opt-in was enabled. The next bounded performance opportunity is metadata-only private draft listing, documented in studio-draft-metadata-read.md. SMTP, native iframe, sensory review, physical-device and operator recovery gates remain open.
-
-Prior compatibility source checkpoint: be6199c is pushed to the existing private repository.
+The morning handoff should identify the latest deployed builds, what changed, measured results with their limits, final grades, remaining reproducible defects and the smallest owner action needed to unblock launch.
