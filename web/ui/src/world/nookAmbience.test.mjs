@@ -22,9 +22,15 @@ test('changing nooks restores each saved mix, including silence, without carryin
   assert.deepEqual(loadAmbience('rainy-library', storage), rain);
   values.clear();
 });
-test('legacy mixes remain available elsewhere but do not override matching pilot presets', () => {
-  values.set('notable:ambient-levels:v1', JSON.stringify({ master: .2, levels: { rain: 0, warm: .8 } }));
-  assert.equal(loadAmbience('other-nook', storage).levels.warm, .8);
+test('unconfigured nooks stay quiet instead of inheriting global or auto-saved ambient mixes', () => {
+  const old = { rain: .38, brown: .12, fire: .2, warm: .16 };
+  values.set('notable:ambient-levels:v1', JSON.stringify({ master: .2, levels: old }));
+  assert.deepEqual(loadAmbience('other-nook', storage).levels, { rain: 0, brown: 0, fire: 0, warm: 0 });
+  values.set(ambienceKey('other-nook'), JSON.stringify({ levels: old }));
+  assert.deepEqual(loadAmbience('other-nook', storage).levels, { rain: 0, brown: 0, fire: 0, warm: 0 });
+  values.set(ambienceKey('other-nook'), JSON.stringify({ levels: old, customized: true }));
+  assert.deepEqual(loadAmbience('other-nook', storage).levels, old);
+  for (const id of ['constructor', '__proto__', 'toString']) assert.deepEqual(defaultAmbience(id).levels, { rain: 0, brown: 0, fire: 0, warm: 0 });
   assert.equal(loadAmbience('rainy-library', storage).levels.warm, 0);
   values.clear();
 });

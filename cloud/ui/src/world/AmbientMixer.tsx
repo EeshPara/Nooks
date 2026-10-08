@@ -4,7 +4,7 @@ import { parseSpotifyLink, savedSpotifyLink, withSpotifyMetadata } from './spoti
 import { useSoundPlayback } from './soundPlayback';
 import { getNookPlaylist, type NookPlaylist } from './nookPlaylists';
 import { consumeDismissEscape, isTopmostDismissTarget } from './dismissal';
-import { ambienceKey, ambiencePresets, defaultAmbience, loadAmbience, safeVolume, type Channel, type Preferences } from './nookAmbience';
+import { ambienceKey, getAmbiencePreset, defaultAmbience, loadAmbience, safeVolume, type Channel, type Preferences } from './nookAmbience';
 export { safeVolume } from './nookAmbience';
 import './ambient.css';
 
@@ -105,10 +105,12 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
   const recommendation = getNookPlaylist(roomId);
   const [mix, setMix] = useState(() => ({ roomId, preferences: loadPreferences(roomId) }));
   const preferences = mix.preferences;
-  const preset = ambiencePresets[roomId];
-  const setPreferences = (update: (value: Preferences) => Preferences) => setMix(value => ({ ...value, preferences: update(value.preferences) }));
+  const preset = getAmbiencePreset(roomId);
+  const customized = useRef(false);
+  const setPreferences = (update: (value: Preferences) => Preferences) => { customized.current = true; setMix(value => ({ ...value, preferences: update(value.preferences) })); };
   useEffect(() => {
     setMix(value => value.roomId === roomId ? value : { roomId, preferences: loadPreferences(roomId) });
+    customized.current = false;
     previousLevels.current = { ...defaultAmbience(roomId).levels };
   }, [roomId]);
   const [running, setRunning] = useState(false);
@@ -193,7 +195,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
 
   useEffect(() => {
     if (mix.roomId !== roomId) return;
-    try { localStorage.setItem(ambienceKey(roomId), JSON.stringify(preferences)); } catch { /* Private browsing may disable harmless preferences. */ }
+    try { if (customized.current) localStorage.setItem(ambienceKey(roomId), JSON.stringify({ ...preferences, customized: true })); } catch { /* Private browsing may disable harmless preferences. */ }
     const current = engine.current;
     if (!current) return;
     for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context, .45);

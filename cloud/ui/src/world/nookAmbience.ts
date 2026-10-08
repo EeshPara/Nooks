@@ -9,17 +9,23 @@ export const ambiencePresets: Record<string, { label: string; levels: Levels }> 
   'howls-moving-study': { label: 'A softly crackling stove', levels: { rain: 0, brown: 0, fire: .42, warm: 0 } },
   'gryffindor-common-room': { label: 'Fire by the armchair', levels: { rain: 0, brown: 0, fire: .58, warm: 0 } },
 };
+export function getAmbiencePreset(roomId: string) { return Object.hasOwn(ambiencePresets, roomId) ? ambiencePresets[roomId] : undefined; }
 export function defaultAmbience(roomId: string): Preferences {
-  return { levels: { ...(ambiencePresets[roomId]?.levels ?? { rain: .38, brown: .12, fire: .2, warm: .16 }) }, master: .45, local: .35 };
+  return { levels: { ...(getAmbiencePreset(roomId)?.levels ?? { rain: 0, brown: 0, fire: 0, warm: 0 }) }, master: .45, local: .35 };
 }
 export function ambienceKey(roomId: string): string { return `nooks:ambience:v2:${encodeURIComponent(roomId)}`; }
 export function loadAmbience(roomId: string, storage: Pick<Storage, 'getItem'>): Preferences {
   const defaults = defaultAmbience(roomId);
   try {
     const raw = storage.getItem(ambienceKey(roomId));
-    // Keep prior mixes for other nooks; the three pilot nooks start with their matching soundscape.
-    const stored = JSON.parse(raw ?? (ambiencePresets[roomId] ? 'null' : storage.getItem('notable:ambient-levels:v1') ?? 'null'));
+    const stored = JSON.parse(raw ?? 'null');
     if (!stored || typeof stored !== 'object' || Array.isArray(stored)) return defaults;
+    // Older releases automatically cached the global mix for every visited nook.
+    // Ignore those uncustomized defaults so rain/fire don't leak into unrelated scenes.
+    let legacy: { levels?: Levels } | null = null;
+    try { legacy = JSON.parse(storage.getItem('notable:ambient-levels:v1') || 'null'); } catch { /* Ignore corrupt legacy settings. */ }
+    const generic: Levels = { rain: .38, brown: .12, fire: .2, warm: .16 };
+    if (!getAmbiencePreset(roomId) && !stored.customized && [generic, legacy?.levels].some(levels => levels && (Object.keys(generic) as Channel[]).every(key => stored.levels?.[key] === levels[key]))) return defaults;
     return {
       master: stored.master === undefined ? defaults.master : safeVolume(stored.master),
       local: stored.local === undefined ? defaults.local : safeVolume(stored.local),
