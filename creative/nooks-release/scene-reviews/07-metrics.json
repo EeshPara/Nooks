@@ -1,0 +1,26 @@
+{
+  "dragon-hatchery": {
+    "videoSha256": "ab622ff3f6fdcc0d9cf06008cd4838fc8b40bbcb7c16cf997e787e968486c4d2",
+    "frames": 84,
+    "meanFrameChange": 0.007741743885263275,
+    "seamChange": 0.01905852141203704,
+    "seamVsTypical": 2.4617866070609375,
+    "insideMaskChange": 0.30763174145290767,
+    "outsideMaskChange": 4.7122142421189134e-05,
+    "peakBrightnessChange": 0.011423972800912452,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "velaris-study": {
+    "videoSha256": "0733031191ebd466e3e30084f48a741dee69def5dec28f09364a3bd1a267515f",
+    "frames": 84,
+    "meanFrameChange": 0.016288539574966534,
+    "seamChange": 0.043074363425925924,
+    "seamVsTypical": 2.644458284776241,
+    "insideMaskChange": 0.3382593297590543,
+    "outsideMaskChange": 7.661198004847911e-05,
+    "peakBrightnessChange": 0.008653428819442865,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

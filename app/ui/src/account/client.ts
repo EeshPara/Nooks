@@ -1,4 +1,4 @@
-import type { Session, SupabaseClient } from '@supabase/supabase-js';
+import type { RealtimeChannel, Session, SupabaseClient } from '@supabase/supabase-js';
 
 export type PublicBackendConfig = {
  backend: 'supabase' | 'unconfigured';
@@ -27,6 +27,7 @@ export function createAccountController(options: Options = {}) {
  const request = options.fetch ?? ((...args: Parameters<typeof fetch>) => fetch(...args));
  const storage = options.storage ?? (() => { try { return localStorage; } catch { return undefined; } })();
  const listeners = new Set<() => void>();
+ const realtimeCleanups = new Set<() => void>();
  let config: PublicBackendConfig | undefined;
  let client: SupabaseClient | undefined;
  let subscription: { unsubscribe(): void } | undefined;
@@ -146,6 +147,58 @@ export function createAccountController(options: Options = {}) {
   if (response.status === 401) { expire(); throw new Error(reconnectMessage); }
   return response;
  }
+ /** Receive only lossy invalidation hints; authorization and data stay on the server. */
+ function subscribeCommunity(recoveryScope: string, nookId: string | undefined, invalidate: (topic: string) => void) {
+  const uuid = '[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+  if (!new RegExp(`^account:${uuid}$`, 'i').test(recoveryScope) || (nookId && !new RegExp(`^${uuid}$`, 'i').test(nookId)) || snapshot.status !== 'signed-in') return () => {};
+  // This is the browser auth workspace, deliberately NOT the server account ID.
+  const workspaceKey = snapshot.workspaceKey;
+  let stopped = false, revision = 0, attempt = 0, failures = 0, token: string | undefined;
+  let channels: RealtimeChannel[] = [], retryTimer: ReturnType<typeof setTimeout> | undefined;
+  const current = () => !stopped && snapshot.status === 'signed-in' && snapshot.workspaceKey === workspaceKey;
+  const remove = () => { const old = channels; channels = []; for (const channel of old) void client?.removeChannel(channel).catch(() => {}); };
+  function stop() { if (stopped) return; stopped = true; revision++; attempt++; clearTimeout(retryTimer); remove(); listeners.delete(onAccount); realtimeCleanups.delete(stop); }
+  function retry() {
+   if (!current() || retryTimer) return;
+   revision++; attempt++; remove(); token = undefined;
+   // Quota/authorization/network failures must not become a channel-join storm.
+   const delay = Math.min(120000, 15000 * 2 ** Math.min(failures++, 3)) + Math.random() * 5000;
+   retryTimer = setTimeout(() => { retryTimer = undefined; void connect(); }, delay);
+  }
+  async function connect() {
+   const stamp = ++attempt;
+   try {
+    const authorization = await transport();
+    if (!current() || stamp !== attempt || authorization.mode !== 'account' || authorization.workspaceKey !== workspaceKey || !client) return;
+    if (token === authorization.token && channels.length) return;
+    // Rejoin on JWT refresh so channel RLS is recalculated, including revocations.
+    const channelRevision = ++revision;
+    remove(); await client.realtime.setAuth(authorization.token);
+    if (!current() || stamp !== attempt) return;
+    token = authorization.token;
+    const topics = ['nooks:directory', recoveryScope.toLowerCase(), ...(nookId ? [`nook:${nookId.toLowerCase()}`] : [])];
+    const ready = new Set<string>();
+    for (const topic of topics) {
+     if (!current() || stamp !== attempt) break;
+     const channel = client.channel(topic, { config: { private: true } }); channels.push(channel);
+     channel.on('broadcast', { event: 'invalidate' }, message => {
+      if (current() && channelRevision === revision && message?.payload?.v === 1) invalidate(topic);
+     }).subscribe(status => {
+      if (!current() || channelRevision !== revision) return;
+      if (status === 'SUBSCRIBED') { ready.add(topic); if (ready.size === topics.length) failures = 0; invalidate(topic); }
+      else if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED') retry();
+     });
+    }
+   } catch { if (current() && stamp === attempt) retry(); }
+  }
+  function onAccount() {
+   if (!current()) { stop(); return; }
+   // Never acquire the Supabase auth lock from inside onAuthStateChange.
+   queueMicrotask(() => { if (current() && !retryTimer) void connect(); });
+  }
+  listeners.add(onAccount); realtimeCleanups.add(stop); void connect();
+  return stop;
+ }
  function onStorage(event: StorageEvent) {
   if (event.key !== selectionKey) return;
   selected = readSelection();
@@ -156,9 +209,9 @@ export function createAccountController(options: Options = {}) {
  return {
   getSnapshot: () => snapshot,
   subscribe: (listener: () => void) => { listeners.add(listener); return () => { listeners.delete(listener); }; },
-  initialize, sendCode, verifyCode, signOut, transport, authenticatedFetch,
-  retry: async () => { subscription?.unsubscribe(); client = undefined; loading = undefined; update({ status: 'loading', configError: null }); await initialize(); },
-  destroy: () => { subscription?.unsubscribe(); if (typeof window !== 'undefined') window.removeEventListener('storage', onStorage); listeners.clear(); },
+  initialize, sendCode, verifyCode, signOut, transport, authenticatedFetch, subscribeCommunity,
+  retry: async () => { realtimeCleanups.forEach(stop => stop()); subscription?.unsubscribe(); client = undefined; loading = undefined; update({ status: 'loading', configError: null }); await initialize(); },
+  destroy: () => { realtimeCleanups.forEach(stop => stop()); subscription?.unsubscribe(); if (typeof window !== 'undefined') window.removeEventListener('storage', onStorage); listeners.clear(); },
  };
 }
 

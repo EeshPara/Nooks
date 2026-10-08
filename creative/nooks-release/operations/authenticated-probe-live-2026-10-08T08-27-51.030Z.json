@@ -1,0 +1,26 @@
+{
+  "sampledAt": "2026-10-08T08:27:59.312Z",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "pass": true,
+  "checks": [
+    {
+      "label": "public_config",
+      "pass": true,
+      "status": 200,
+      "durationMs": 159,
+      "code": "ok"
+    },
+    {
+      "label": "authenticated_workspace",
+      "pass": true,
+      "status": 200,
+      "durationMs": 587,
+      "code": "ok"
+    }
+  ],
+  "limits": [
+    "One authenticated workspace GET for an operator-managed dedicated canary; no writes invoked by this probe.",
+    "Normal server identity/quota bookkeeping and legacy hydration may write; use an already initialized empty canary account.",
+    "No email onboarding, save/recovery, Realtime, load, scheduled monitoring, or alert delivery proof."
+  ]
+}

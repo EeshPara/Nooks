@@ -1,0 +1,179 @@
+{
+  "before": {
+    "mode": "before scalable snapshot migration",
+    "measuredAt": "2026-10-08T06:25:29.428Z",
+    "environment": "Disposable local PostgreSQL, Unix socket, fsync disabled; synthetic data, not production/network/WebSocket capacity evidence",
+    "limits": {
+      "members": 1000,
+      "completedFocusRows": 100000,
+      "simultaneousSqlClients": 32,
+      "transactionsPerPhase": 640,
+      "statementTimeoutSeconds": 8,
+      "lockTimeoutSeconds": 3
+    },
+    "concurrentJoins": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 29.535,
+        "p95": 130.768,
+        "p99": 203.208,
+        "max": 236.833
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 41.983 ms\ninitial connection time = 49.310 ms\ntps = 762.212369 (without initial connection time)"
+    },
+    "snapshots": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 329.621,
+        "p95": 396.912,
+        "p99": 432.415,
+        "max": 479.012
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 340.909 ms\ninitial connection time = 59.425 ms\ntps = 93.866623 (without initial connection time)"
+    },
+    "heartbeat": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 7.825,
+        "p95": 21.818,
+        "p99": 47.703,
+        "max": 53.953
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 12.407 ms\ninitial connection time = 51.897 ms\ntps = 2579.126804 (without initial connection time)"
+    },
+    "correctness": {
+      "memberCount": 1000,
+      "boundedMembers": 50,
+      "boundedLeaderboard": 50,
+      "aggregateCreditExact": true
+    },
+    "responseBytes": 13542,
+    "productionGates": [
+      "hosted multi-account authorization and actual WebSocket delivery/reconnect/revocation test",
+      "hosted 1000 simultaneous browser sessions and sustained workload within existing plan quotas",
+      "production database query latency, lock waits and API auth/quota overhead",
+      "backup/restore and public account sign-in verification"
+    ]
+  },
+  "after": {
+    "measuredAt": "2026-10-08T06:24:39.849Z",
+    "environment": "Disposable local PostgreSQL, Unix socket, fsync disabled; synthetic data, not production/network/WebSocket capacity evidence",
+    "limits": {
+      "members": 1000,
+      "completedFocusRows": 100000,
+      "simultaneousSqlClients": 32,
+      "transactionsPerPhase": 640,
+      "statementTimeoutSeconds": 8,
+      "lockTimeoutSeconds": 3
+    },
+    "concurrentJoins": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 33.452,
+        "p95": 131.854,
+        "p99": 199.246,
+        "max": 232.102
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 45.096 ms\ninitial connection time = 52.238 ms\ntps = 709.603598 (without initial connection time)"
+    },
+    "snapshots": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 289.581,
+        "p95": 345.917,
+        "p99": 358.154,
+        "max": 363.619
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 296.962 ms\ninitial connection time = 54.967 ms\ntps = 107.757768 (without initial connection time)"
+    },
+    "heartbeat": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 6.575,
+        "p95": 39.994,
+        "p99": 78.279,
+        "max": 97.313
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 14.064 ms\ninitial connection time = 82.982 ms\ntps = 2275.240056 (without initial connection time)"
+    },
+    "correctness": {
+      "memberCount": 1000,
+      "boundedMembers": 50,
+      "boundedLeaderboard": 50,
+      "aggregateCreditExact": true
+    },
+    "responseBytes": 13542,
+    "productionGates": [
+      "hosted multi-account authorization and actual WebSocket delivery/reconnect/revocation test",
+      "hosted 1000 simultaneous browser sessions and sustained workload within existing plan quotas",
+      "production database query latency, lock waits and API auth/quota overhead",
+      "backup/restore and public account sign-in verification"
+    ],
+    "mode": "after scalable snapshot migration"
+  },
+  "cloudBaselineAfter": {
+    "mode": "after scalable snapshot migration",
+    "measuredAt": "2026-10-08T06:29:44.327Z",
+    "environment": "Disposable local PostgreSQL, Unix socket, fsync disabled; synthetic data, not production/network/WebSocket capacity evidence",
+    "limits": {
+      "members": 1000,
+      "completedFocusRows": 100000,
+      "simultaneousSqlClients": 32,
+      "transactionsPerPhase": 640,
+      "statementTimeoutSeconds": 8,
+      "lockTimeoutSeconds": 3
+    },
+    "concurrentJoins": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 39.419,
+        "p95": 229.673,
+        "p99": 357.754,
+        "max": 433.922
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 66.313 ms\ninitial connection time = 229.176 ms\ntps = 482.558161 (without initial connection time)"
+    },
+    "snapshots": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 271.522,
+        "p95": 339.368,
+        "p99": 370.062,
+        "max": 408.761
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 281.770 ms\ninitial connection time = 43.028 ms\ntps = 113.567824 (without initial connection time)"
+    },
+    "heartbeat": {
+      "sqlClients": 32,
+      "transactions": 640,
+      "latencyMs": {
+        "p50": 6.948,
+        "p95": 21.378,
+        "p99": 46.225,
+        "max": 59.605
+      },
+      "output": "pgbench (14.20 (Homebrew))\nscaling factor: 1\nquery mode: simple\nnumber of clients: 32\nnumber of threads: 4\nnumber of transactions per client: 20\nnumber of transactions actually processed: 640/640\nlatency average = 11.674 ms\ninitial connection time = 48.823 ms\ntps = 2741.051964 (without initial connection time)"
+    },
+    "correctness": {
+      "memberCount": 1000,
+      "boundedMembers": 50,
+      "boundedLeaderboard": 50,
+      "aggregateCreditExact": true
+    },
+    "responseBytes": 13542,
+    "productionGates": [
+      "hosted multi-account authorization and actual WebSocket delivery/reconnect/revocation test",
+      "hosted 1000 simultaneous browser sessions and sustained workload within existing plan quotas",
+      "production database query latency, lock waits and API auth/quota overhead",
+      "backup/restore and public account sign-in verification"
+    ]
+  }
+}

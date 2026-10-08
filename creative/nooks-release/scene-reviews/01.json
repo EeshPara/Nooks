@@ -1,0 +1,106 @@
+{
+  "reviewId": "01",
+  "reviewedAtUtc": "2026-10-08T06:36:03.272550+00:00",
+  "reviewer": "scene_review_01",
+  "method": "Direct visual inspection with view_image of both existing full-scene/cropped contact sheets and masks, plus new ffmpeg half-second crop sequences. SHA-256 computed independently. QA numbers are reported from existing qa.json, not independently recomputed.",
+  "audioVerdict": "not_reviewed; files contain no audio tracks, ambience integration requires separate review",
+  "scenes": [
+    {
+      "sceneId": "alpine-cabin",
+      "videoPath": "creative/nooks-animated-all/jobs/alpine-cabin/finished.mp4",
+      "videoSha256": "3ea7e2e2c1a719e803861ad578fa1834be247c466c2da2005aa4f910f5eb0d0f",
+      "qaMatchesVideo": false,
+      "verdict": "approved",
+      "scope": "Visual frame sampling and existing quantitative QA; no real-time motion playback or ambience audition",
+      "scoresOutOf10": {
+        "naturalMotionPlausibility": 8,
+        "stableFurnitureAndCamera": 9,
+        "effectContainment": 9,
+        "artifactControl": 8,
+        "loopSeam": 8
+      },
+      "evidence": [
+        "creative/nooks-animated-all/jobs/alpine-cabin/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/alpine-cabin/review-contact.jpg",
+        "creative/nooks-release/scene-reviews/01-alpine-fire-sequence.jpg"
+      ],
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 620786,
+        "frameChangeMean": 0.18172583563420347,
+        "seamChangeMean": 0.22472583912037036,
+        "seamVsTypical": 1.2366201995225474,
+        "insideMaskChange": 5.39294755545357,
+        "outsideMaskChange": 0.0011025378606058368,
+        "peakBrightnessChange": 0.11885308159722285,
+        "motionMaskCoverage": 0.033499348958333335,
+        "videoSha256": "6b62a3e14ea300c705423a111978a61904e66ea896f2fa1f802cead9af89f1ee",
+        "sourceArtworkSha256": "4327f600d664a34ecf489636c18c6eeb8fd0d40f04187813012a1e2a941c284f",
+        "technicalPass": true
+      },
+      "findings": [
+        "Hearth flames change shape over seven half-second samples; smoke/light stays within the fireplace opening.",
+        "Hearth stone arch, grate, potted plant, furniture, snowy mountain and window geometry remain aligned in sampled frames.",
+        "Warm smoke haze grows on the hearth right side mid-loop but does not visibly enter the room; acceptable at normal scene size.",
+        "Mug steam is extremely subtle; temporal realism of that effect was not established from samples.",
+        "Seam change 0.2247 versus typical 0.1817 (1.2366x) supports a low seam risk; full-speed loop playback remains desirable."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "sceneId": "neon-tokyo",
+      "videoPath": "creative/nooks-animated-all/jobs/neon-tokyo/finished.mp4",
+      "videoSha256": "bca8ed8f0ce04a586ab15d65a1a096bdbcda1b620f85f0bfea5b28f3e48aa73d",
+      "qaMatchesVideo": true,
+      "verdict": "needs_fix",
+      "scope": "Visual frame sampling and existing quantitative QA; no real-time motion playback or ambience audition",
+      "scoresOutOf10": {
+        "naturalMotionPlausibility": 6,
+        "stableFurnitureAndCamera": 9,
+        "effectContainment": 8,
+        "artifactControl": 8,
+        "loopSeam": 4
+      },
+      "evidence": [
+        "creative/nooks-animated-all/jobs/neon-tokyo/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/neon-tokyo/review-contact.jpg",
+        "creative/nooks-release/scene-reviews/01-tokyo-glass-sequence.jpg"
+      ],
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 584362,
+        "frameChangeMean": 0.055669614220771976,
+        "seamChangeMean": 0.31433955439814815,
+        "seamVsTypical": 5.646519358865231,
+        "insideMaskChange": 0.34885277128994036,
+        "outsideMaskChange": 0.003735360645176133,
+        "peakBrightnessChange": 0.04513093171296134,
+        "motionMaskCoverage": 0.15048285590277777,
+        "videoSha256": "bca8ed8f0ce04a586ab15d65a1a096bdbcda1b620f85f0bfea5b28f3e48aa73d",
+        "sourceArtworkSha256": "4577e9bff147a4a429ada3ee8a33aee6a2118a808cbdadea5c672b4902629cef",
+        "technicalPass": false
+      },
+      "findings": [
+        "Rain-glass mask stops before central and horizontal mullions; desk, mug, bedding and camera remain visually stable.",
+        "Window rain is extremely subtle in six half-second samples. Building, train and sign geometry appear stable at this sampling interval.",
+        "Current clip has a 5.3162x seam change relative to typical adjacent change (0.2886 versus 0.0543); existing technicalPass is false. Absolute change is small, but this fails the loop gate and needs correction.",
+        "Steam is not clearly discernible in the supplied full-scene contact sheet.",
+        "Recompute QA and review newly rendered first/last frames after the loop repair; this review does not approve a future SHA."
+      ],
+      "requiredChanges": [
+        "Repair final-to-first temporal discontinuity and regenerate QA.",
+        "Review repaired loop at playback speed for rain drift/reset, especially within the upper window panes."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-10-08T06:52:55.794Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "transport": "Loopback HTTP using actual web browser API; real hosted Supabase Auth, DB and WebSockets. Not Vercel/browser/email verification.",
+  "bound": {
+    "users": 100,
+    "sockets": 100,
+    "privateChannelsPerSocket": 3,
+    "durationSeconds": 120,
+    "scheduledApiPerSecond": 8,
+    "absoluteApiPerSecond": 12
+  },
+  "phases": [],
+  "cleanup": [],
+  "socketFailures": [],
+  "delivery": [],
+  "limitations": [
+    "Admin-confirmed fixtures bypass email onboarding",
+    "Single generator and private room; no browser rendering",
+    "Short bounded sample, not 1000-user or production readiness proof"
+  ],
+  "passed": false,
+  "failure": {
+    "phase": "setup",
+    "message": "Command failed: supabase projects api-keys --project-ref lcfcjglybfeozyrjjikk --output json\n\u001b[31mTimeout while shutting down PostHog. Some events may not have been sent.\u001b[39m\nTry rerunning the command with --debug to troubleshoot the error.\n",
+    "name": "Error"
+  },
+  "finishedAt": "2026-10-08T06:53:04.401Z"
+}

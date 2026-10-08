@@ -1,0 +1,92 @@
+{
+  "cyberpunk-rain-loft": {
+    "videoSha256": "0389200150e27037dfce24928469c2958b06a37b81a9fe43cb7b5bd73e04041b",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.030484276515785363,
+    "seamChange": 0.07374240451388889,
+    "seamVsTypical": 2.419030823175469,
+    "insideMaskChange": 0.27731263093956526,
+    "outsideMaskChange": 0.0001666200073887628,
+    "peakBrightnessChange": 0.019467592592590677,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "central-rain": {
+        "box": [
+          500,
+          0,
+          650,
+          330
+        ],
+        "minBrightnessFrame": 81,
+        "maxBrightnessFrame": 31,
+        "brightnessRange": 0.5754814814814821,
+        "maxPixelRange": 64
+      },
+      "right-rain": {
+        "box": [
+          740,
+          0,
+          960,
+          290
+        ],
+        "minBrightnessFrame": 80,
+        "maxBrightnessFrame": 36,
+        "brightnessRange": 1.1086990595611184,
+        "maxPixelRange": 75
+      },
+      "canal": {
+        "box": [
+          550,
+          325,
+          955,
+          455
+        ],
+        "minBrightnessFrame": 76,
+        "maxBrightnessFrame": 59,
+        "brightnessRange": 0.14114593225704652,
+        "maxPixelRange": 54
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-central-rain-motion.png",
+      "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-central-rain-source-seam.png",
+      "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-right-rain-motion.png",
+      "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-right-rain-source-seam.png",
+      "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-canal-motion.png",
+      "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-canal-source-seam.png"
+    ]
+  },
+  "secret-door-study": {
+    "videoSha256": "f2bc48a5469c83fb79bba6889baa380b351e940f99a6b65a5c7aa39e1ab70b47",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.005572114848282016,
+    "seamChange": 0.007038483796296296,
+    "seamVsTypical": 1.263162010823662,
+    "insideMaskChange": 0.8318403836476126,
+    "outsideMaskChange": 6.212540975978255e-05,
+    "peakBrightnessChange": 0.008940610532405913,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "steam": {
+        "box": [
+          195,
+          400,
+          305,
+          565
+        ],
+        "minBrightnessFrame": 80,
+        "maxBrightnessFrame": 15,
+        "brightnessRange": 3.2323599632690616,
+        "maxPixelRange": 47
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/20-secret-door-study-steam-motion.png",
+      "creative/nooks-release/scene-reviews/20-secret-door-study-steam-source-seam.png"
+    ]
+  }
+}

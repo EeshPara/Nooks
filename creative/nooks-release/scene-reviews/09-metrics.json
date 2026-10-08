@@ -1,0 +1,55 @@
+{
+  "velaris-study": {
+    "videoSha256": "beec126210620e09ef348e0446dafc44e9a87f2d59bbdcc36cf1471d3c4a79eb",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.012002266880020079,
+    "seamChange": 0.036545500578703705,
+    "seamVsTypical": 3.044883182821091,
+    "insideMaskChange": 0.28098872321291696,
+    "outsideMaskChange": 5.527954921744075e-05,
+    "peakBrightnessChange": 0.007158203125001705,
+    "qaMatchesVideo": true,
+    "regionFrameChange": {
+      "left-candle": 0.0,
+      "right-candle": 0.0,
+      "river": 0.13462600248834658
+    }
+  },
+  "animal-crossing-island": {
+    "videoSha256": "5d84b0e92fa74f71cd007aabe6617433708a7c2d468b12a5eedc01590ebe25fe",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.012139491124219099,
+    "seamChange": 0.02475296585648148,
+    "seamVsTypical": 2.0390447674612697,
+    "insideMaskChange": 0.3749147962569949,
+    "outsideMaskChange": 0.000108350628306006,
+    "peakBrightnessChange": 0.012953559027778283,
+    "qaMatchesVideo": true,
+    "regionFrameChange": {
+      "left-sea": 0.11065656913367757,
+      "door-sea": 0.0884516314595251,
+      "steam": 0.2935385291164659
+    }
+  },
+  "cinnamoroll-cloud-cafe": {
+    "videoSha256": "dbf78fa5659789764f5ebe6a088b9c5b01dcfdf6e38f69abdf0a64445074e396",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.0045727005243195,
+    "seamChange": 0.013994502314814816,
+    "seamVsTypical": 3.060445843847919,
+    "insideMaskChange": 0.16833781722540045,
+    "outsideMaskChange": 6.478729075118909e-05,
+    "peakBrightnessChange": 0.0035434751157481514,
+    "qaMatchesVideo": true,
+    "regionFrameChange": {
+      "steam": 0.1390345219260882,
+      "clouds": 0.03373418423842342
+    }
+  }
+}

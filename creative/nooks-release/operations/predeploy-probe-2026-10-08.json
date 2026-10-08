@@ -1,0 +1,76 @@
+{
+  "sampledAt": "2026-10-08T07:54:23.723Z",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "nativeOrigin": "https://nooks-study-space.eeshwarpara.chatgpt.site",
+  "requireAccounts": true,
+  "pass": false,
+  "rows": [
+    {
+      "label": "public_html",
+      "status": 200,
+      "durationMs": 511,
+      "pass": true,
+      "sha256": "1b4dea83ab59d6e8d6090de8b8117aa49b5e35efdcebcd44a064f03841231c35"
+    },
+    {
+      "label": "public_asset",
+      "path": "/assets/index-B7O18sup.js",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "label": "public_asset",
+      "path": "/assets/index-BqIuCww7.css",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "label": "entry_assets_discovered",
+      "pass": true,
+      "count": 2
+    },
+    {
+      "label": "public_health",
+      "status": 200,
+      "durationMs": 300,
+      "pass": false,
+      "alive": true,
+      "configured": false,
+      "observation": "unknown",
+      "scope": "this-instance",
+      "readinessProven": false
+    },
+    {
+      "label": "public_config",
+      "status": 200,
+      "durationMs": 229,
+      "pass": false,
+      "backend": "unconfigured",
+      "expectedDatabase": false,
+      "publicKeyValid": false,
+      "accountSync": false,
+      "community": false
+    },
+    {
+      "label": "public_anonymous_boundary",
+      "status": 503,
+      "durationMs": 158,
+      "pass": false,
+      "errorCode": "BACKEND_UNAVAILABLE"
+    },
+    {
+      "label": "native_anonymous_gate",
+      "status": 401,
+      "durationMs": 338,
+      "pass": true,
+      "accessGated": true,
+      "nativeHealthProven": false
+    }
+  ],
+  "limits": [
+    "One unauthenticated HTTP sample; no database operation or user journey.",
+    "Native 401/403 proves an access gate only.",
+    "Health observations are per-instance and expire; unknown is not database readiness.",
+    "No email, realtime, save/recovery, load, backup restore, or alert-delivery proof."
+  ]
+}

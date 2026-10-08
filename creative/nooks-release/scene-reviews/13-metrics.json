@@ -1,0 +1,26 @@
+{
+  "paris-attic": {
+    "videoSha256": "41bb0bce500dab4a80fa5557ecbf630b53ee968d74d055c0a178e7dd591ceae0",
+    "frames": 84,
+    "meanFrameChange": 0.016757198063085673,
+    "seamChange": 0.03348198784722222,
+    "seamVsTypical": 1.9980660084802293,
+    "insideMaskChange": 1.2104410707141304,
+    "outsideMaskChange": 9.391165450436953e-05,
+    "peakBrightnessChange": 0.007804542824075611,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "underwater-study": {
+    "videoSha256": "6819c12313c179b272adb0d203630e786e5b7206a93ae2e8ced62b0fd39555b4",
+    "frames": 84,
+    "meanFrameChange": 0.014055488446842927,
+    "seamChange": 0.02907515914351852,
+    "seamVsTypical": 2.068598274153129,
+    "insideMaskChange": 0.2714524483067405,
+    "outsideMaskChange": 0.00011158286146048323,
+    "peakBrightnessChange": 0.00897931134258556,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

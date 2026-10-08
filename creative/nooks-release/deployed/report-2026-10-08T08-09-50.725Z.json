@@ -1,0 +1,151 @@
+{
+  "startedAt": "2026-10-08T08:09:50.726Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "transport": "Actual deployed HTTPS https://nooks-study-space.vercel.app; real hosted Supabase Auth/DB and direct Supabase WebSockets; no browser or email onboarding proof",
+  "realtime": true,
+  "load": 0,
+  "checks": [
+    {
+      "name": "two distinct confirmed ephemeral users with real JWTs",
+      "passed": true,
+      "ms": 2767
+    },
+    {
+      "name": "unauthenticated HTTP request denied",
+      "passed": true,
+      "ms": 147
+    },
+    {
+      "name": "private notes isolated between authenticated accounts",
+      "passed": true,
+      "ms": 1602
+    },
+    {
+      "name": "concurrent compare-and-swap accepts one edit, preserves loser",
+      "passed": true,
+      "ms": 1405
+    },
+    {
+      "name": "authenticated Data API cannot read other account notes",
+      "passed": true,
+      "ms": 131
+    },
+    {
+      "name": "private room create retry creates exactly one room",
+      "passed": true,
+      "ms": 713
+    },
+    {
+      "name": "private room requires invite for join and snapshot",
+      "passed": true,
+      "ms": 1015
+    },
+    {
+      "name": "nonmember denied private Realtime subscription",
+      "passed": true,
+      "ms": 5149
+    },
+    {
+      "name": "invitation acceptance and retry consume one use",
+      "passed": true,
+      "ms": 1520
+    },
+    {
+      "name": "member receives content-free invalidation after other user changes profile",
+      "passed": true,
+      "ms": 2990
+    },
+    {
+      "name": "presence updates online count without study credits",
+      "passed": true,
+      "ms": 570
+    },
+    {
+      "name": "leaving private room immediately forbids fetch and presence",
+      "passed": true,
+      "ms": 781
+    },
+    {
+      "name": "removed member denied a fresh subscription",
+      "passed": true,
+      "ms": 5398
+    },
+    {
+      "name": "public directory membership and owner-only controls",
+      "passed": true,
+      "ms": 2471
+    },
+    {
+      "name": "server-clock focus completion retry awards credit once",
+      "passed": true,
+      "ms": 63872
+    },
+    {
+      "name": "archive retry preserves closure and removes access",
+      "passed": true,
+      "ms": 974
+    }
+  ],
+  "cleanup": [
+    {
+      "type": "fixture-room",
+      "id": "25c56489-97f1-488e-bd9e-43869f75cfb1",
+      "ok": true
+    },
+    {
+      "type": "fixture-room",
+      "id": "c7aef10c-1c66-4b42-8444-aeab18d6c456",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "c444d4ed-cba4-4d39-ad65-b4ebd1f07dbf",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "1e39f10d-45e9-4dab-9014-13338af4f388",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "9786d8a2-f92d-4ef3-8824-ea74505d314e",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "9786d8a2-f92d-4ef3-8824-ea74505d314e",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "0d3485bf-8f73-4891-86a8-b62e25377eca",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "0d3485bf-8f73-4891-86a8-b62e25377eca",
+      "ok": true
+    }
+  ],
+  "deployedConfig": {
+    "origin": "https://nooks-study-space.vercel.app",
+    "supabaseUrl": "https://lcfcjglybfeozyrjjikk.supabase.co",
+    "backend": "supabase",
+    "community": true
+  },
+  "passed": true,
+  "fixtureThrottleTopics": [
+    "account:c444d4ed-cba4-4d39-ad65-b4ebd1f07dbf",
+    "account:1e39f10d-45e9-4dab-9014-13338af4f388",
+    "nook:25c56489-97f1-488e-bd9e-43869f75cfb1",
+    "nook:c7aef10c-1c66-4b42-8444-aeab18d6c456"
+  ],
+  "throttleCleanup": "Exact owned fixture topics only; shared nooks:directory must be preserved.",
+  "cleanupVerification": {
+    "accountsRemaining": 0,
+    "roomsRemaining": 0,
+    "queryOk": true
+  },
+  "finishedAt": "2026-10-08T08:11:29.676Z"
+}

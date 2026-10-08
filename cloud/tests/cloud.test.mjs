@@ -28,7 +28,7 @@ test('cloud current UI uses the restored fullscreen layout and a bounded public 
  const response=await worker.fetch(request('resources/read',{uri:'ui://notable/workspace-v2.html'}),env);
  const resource=(await response.json()).result.contents[0];
  assert.deepEqual(resource._meta.ui.csp.resourceDomains,[ARTWORK_ORIGIN]);
- assert.deepEqual(resource._meta.ui.csp.connectDomains,['https://files.oaiusercontent.com','https://sdmntprwestus.oaiusercontent.com','https://sdmntprcentralus.oaiusercontent.com']);
+ assert.deepEqual(resource._meta.ui.csp.connectDomains,[ARTWORK_ORIGIN,'https://files.oaiusercontent.com','https://sdmntprwestus.oaiusercontent.com','https://sdmntprcentralus.oaiusercontent.com']);
  assert.deepEqual(resource._meta['openai/widgetCSP'].connect_domains,resource._meta.ui.csp.connectDomains);
  assert.deepEqual(resource._meta['openai/ui'].availableDisplayModes,['fullscreen']);
  assert.equal(resource._meta['openai/ui'].preferredDisplayMode,undefined);

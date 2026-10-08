@@ -1,0 +1,24 @@
+{
+  "frog-pond-studio": {
+    "videoSha256": "134ea0623e4511c33492987cf63229a206e8bf8a786ff216d12e76e49f7e7d68",
+    "frames": 84,
+    "meanFrameChange": 0.09560565613147033,
+    "seamChange": 0.048194806134259256,
+    "seamVsTypical": 0.5040999464297914,
+    "insideMaskChange": 2.2805520228823597,
+    "outsideMaskChange": 7.866618428140388e-05,
+    "peakBrightnessChange": 0.015996455439818646,
+    "qaMatchesVideo": true
+  },
+  "kuromi-midnight-desk": {
+    "videoSha256": "518038931ae5f2a34738f559e68800a02c913e0c839e682ad8a60c6ff917b047",
+    "frames": 84,
+    "meanFrameChange": 0.00876872943161535,
+    "seamChange": 0.032836371527777776,
+    "seamVsTypical": 3.7447125930682015,
+    "insideMaskChange": 1.0408804736832244,
+    "outsideMaskChange": 5.4522575334449215e-05,
+    "peakBrightnessChange": 0.015278501157403923,
+    "qaMatchesVideo": true
+  }
+}

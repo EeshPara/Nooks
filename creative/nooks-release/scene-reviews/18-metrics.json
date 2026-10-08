@@ -1,0 +1,165 @@
+{
+  "sakura-garden": {
+    "videoSha256": "6eb196a6d82e7ab4e6bd05a8942c112471212469fc4fbcb1708853822a2dfa3f",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.0069231613955823305,
+    "seamChange": 0.01853660300925926,
+    "seamVsTypical": 2.6774766541030615,
+    "insideMaskChange": 0.3142893707156018,
+    "outsideMaskChange": 5.368842342467747e-05,
+    "peakBrightnessChange": 0.013597728587967595,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "blossoms": {
+        "box": [
+          360,
+          0,
+          600,
+          150
+        ],
+        "minBrightnessFrame": 0,
+        "maxBrightnessFrame": 0,
+        "brightnessRange": 0.0,
+        "maxPixelRange": 0
+      },
+      "pond": {
+        "box": [
+          455,
+          350,
+          800,
+          450
+        ],
+        "minBrightnessFrame": 65,
+        "maxBrightnessFrame": 44,
+        "brightnessRange": 0.4862028985507152,
+        "maxPixelRange": 90
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/18-sakura-garden-blossoms-motion.png",
+      "creative/nooks-release/scene-reviews/18-sakura-garden-blossoms-source-seam.png",
+      "creative/nooks-release/scene-reviews/18-sakura-garden-pond-motion.png",
+      "creative/nooks-release/scene-reviews/18-sakura-garden-pond-source-seam.png"
+    ]
+  },
+  "autumn-bakery": {
+    "videoSha256": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.008972051400044622,
+    "seamChange": 0.015787760416666668,
+    "seamVsTypical": 1.7596600501629034,
+    "insideMaskChange": 0.8268505473506932,
+    "outsideMaskChange": 7.270658626080312e-05,
+    "peakBrightnessChange": 0.012479745370370665,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "candle": {
+        "box": [
+          204,
+          466,
+          277,
+          564
+        ],
+        "minBrightnessFrame": 54,
+        "maxBrightnessFrame": 25,
+        "brightnessRange": 0.9203242941012064,
+        "maxPixelRange": 8
+      },
+      "steam": {
+        "box": [
+          385,
+          390,
+          491,
+          540
+        ],
+        "minBrightnessFrame": 75,
+        "maxBrightnessFrame": 19,
+        "brightnessRange": 4.86626834381552,
+        "maxPixelRange": 41
+      },
+      "leaves": {
+        "box": [
+          160,
+          0,
+          345,
+          112
+        ],
+        "minBrightnessFrame": 0,
+        "maxBrightnessFrame": 0,
+        "brightnessRange": 0.0,
+        "maxPixelRange": 0
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/18-autumn-bakery-candle-motion.png",
+      "creative/nooks-release/scene-reviews/18-autumn-bakery-candle-source-seam.png",
+      "creative/nooks-release/scene-reviews/18-autumn-bakery-steam-motion.png",
+      "creative/nooks-release/scene-reviews/18-autumn-bakery-steam-source-seam.png",
+      "creative/nooks-release/scene-reviews/18-autumn-bakery-leaves-motion.png",
+      "creative/nooks-release/scene-reviews/18-autumn-bakery-leaves-source-seam.png"
+    ]
+  },
+  "seoul-night-cafe": {
+    "videoSha256": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.004637307912204373,
+    "seamChange": 0.00881004050925926,
+    "seamVsTypical": 1.8998178848709126,
+    "insideMaskChange": 0.5062394064779372,
+    "outsideMaskChange": 6.825648337980356e-05,
+    "peakBrightnessChange": 0.003895037615734509,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "candle": {
+        "box": [
+          1111,
+          572,
+          1180,
+          647
+        ],
+        "minBrightnessFrame": 5,
+        "maxBrightnessFrame": 47,
+        "brightnessRange": 1.184798711755235,
+        "maxPixelRange": 10
+      },
+      "steam": {
+        "box": [
+          364,
+          378,
+          484,
+          538
+        ],
+        "minBrightnessFrame": 74,
+        "maxBrightnessFrame": 4,
+        "brightnessRange": 1.3548263888888883,
+        "maxPixelRange": 24
+      },
+      "rain": {
+        "box": [
+          510,
+          10,
+          930,
+          280
+        ],
+        "minBrightnessFrame": 0,
+        "maxBrightnessFrame": 49,
+        "brightnessRange": 7.936507936534554e-05,
+        "maxPixelRange": 2
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/18-seoul-night-cafe-candle-motion.png",
+      "creative/nooks-release/scene-reviews/18-seoul-night-cafe-candle-source-seam.png",
+      "creative/nooks-release/scene-reviews/18-seoul-night-cafe-steam-motion.png",
+      "creative/nooks-release/scene-reviews/18-seoul-night-cafe-steam-source-seam.png",
+      "creative/nooks-release/scene-reviews/18-seoul-night-cafe-rain-motion.png",
+      "creative/nooks-release/scene-reviews/18-seoul-night-cafe-rain-source-seam.png"
+    ]
+  }
+}

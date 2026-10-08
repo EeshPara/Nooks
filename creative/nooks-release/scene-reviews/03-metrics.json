@@ -1,0 +1,23 @@
+{
+  "midnight-train": {
+    "videoSha256": "345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a",
+    "independentMeanFrameChange": 0.0010702140157853636,
+    "independentSeamChange": 0.002085865162037037,
+    "independentSeamVsTypical": 1.94901686136707,
+    "qaMatchesVideo": true
+  },
+  "kikis-bakery-attic": {
+    "videoSha256": "ba5febe2d519fcad575eeae8fd78daaae9917c471d94518700e49695bf2c9a6e",
+    "independentMeanFrameChange": 0.036999212126282904,
+    "independentSeamChange": 0.06883318865740741,
+    "independentSeamVsTypical": 1.8603960652586653,
+    "qaMatchesVideo": true
+  },
+  "midnight-train-rejected-original": {
+    "videoSha256": "fb276a4f6aeb190ce52ce5d33dac8398557002e013a1d448a819742208f6777d",
+    "independentMeanFrameChange": 0.051281632606816153,
+    "independentSeamChange": 0.14907877604166667,
+    "independentSeamVsTypical": 2.9070598665349765,
+    "qaMatchesVideo": true
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "reviewId": "18",
+  "reviewer": "scene_review_18",
+  "reviewedAtUtc": "2026-10-08T07:35:10.878959+00:00",
+  "method": "Read prior review 12 and 14 defects. Independently decoded every frame of each exact corrected candidate, recomputed motion/seam/brightness metrics, viewed source artwork, full-frame contacts, masks, eight native-resolution motion crops, brightness extrema and last-two/first-two boundary crops. Smaller crops enlarged 2x for inspection. Verified candidate hashes before/after decode and again at report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to sampled visual integrity of the exact hashes and full-decode metrics, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "sakura-garden",
+      "videoPath": "creative/nooks-animated-all/jobs/sakura-garden/finished.mp4",
+      "videoSha256": "6eb196a6d82e7ab4e6bd05a8942c112471212469fc4fbcb1708853822a2dfa3f",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 846774,
+        "frameChangeMean": 0.0069231613955823305,
+        "seamChangeMean": 0.01853660300925926,
+        "seamVsTypical": 2.6774766541030615,
+        "insideMaskChange": 0.3142893707156018,
+        "outsideMaskChange": 5.368842342467747e-05,
+        "peakBrightnessChange": 0.013597728587967595,
+        "motionMaskCoverage": 0.021860894097222222,
+        "videoSha256": "6eb196a6d82e7ab4e6bd05a8942c112471212469fc4fbcb1708853822a2dfa3f",
+        "sourceArtworkSha256": "369fa1f048350d3f18220d2c1604da68f9ce4f08782fac6e22d85981adbcb28f",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "6eb196a6d82e7ab4e6bd05a8942c112471212469fc4fbcb1708853822a2dfa3f",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.0069231613955823305,
+        "seamChange": 0.01853660300925926,
+        "seamVsTypical": 2.6774766541030615,
+        "insideMaskChange": 0.3142893707156018,
+        "outsideMaskChange": 5.368842342467747e-05,
+        "peakBrightnessChange": 0.013597728587967595,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "blossoms": {
+            "box": [
+              360,
+              0,
+              600,
+              150
+            ],
+            "minBrightnessFrame": 0,
+            "maxBrightnessFrame": 0,
+            "brightnessRange": 0.0,
+            "maxPixelRange": 0
+          },
+          "pond": {
+            "box": [
+              455,
+              350,
+              800,
+              450
+            ],
+            "minBrightnessFrame": 65,
+            "maxBrightnessFrame": 44,
+            "brightnessRange": 0.4862028985507152,
+            "maxPixelRange": 90
+          }
+        }
+      },
+      "findings": [
+        "The previously doubled blossom petals and branch outlines are removed. The original singular blossoms remain intact in source comparison, eight sampled frames and boundary crops; the independently decoded blossom crop is pixel-identical across all 84 frames.",
+        "The pond retains subtle varying ripples and reflections. Pond banks, bridge, rocks, windows, desk and objects retain stable silhouettes in examined full-scene and crop samples. No obvious hard mask boundary or extra spatial jump appears in last-two/first-two samples.",
+        "Independent full decode reproduces seam ratio 2.6775 and outside-mask change 0.000054. This numeric pass and sample review do not establish imperceptible looping at full speed."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/18-sakura-garden-blossoms-motion.png",
+        "creative/nooks-release/scene-reviews/18-sakura-garden-blossoms-source-seam.png",
+        "creative/nooks-release/scene-reviews/18-sakura-garden-pond-motion.png",
+        "creative/nooks-release/scene-reviews/18-sakura-garden-pond-source-seam.png",
+        "creative/nooks-animated-all/jobs/sakura-garden/review-contact.jpg",
+        "creative/nooks-animated-all/jobs/sakura-garden/mask-review.jpg",
+        "web/ui/public/images/nooks-50/sakura-garden.webp"
+      ]
+    },
+    {
+      "sceneId": "autumn-bakery",
+      "videoPath": "creative/nooks-animated-all/jobs/autumn-bakery/finished.mp4",
+      "videoSha256": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 886353,
+        "frameChangeMean": 0.008972051400044622,
+        "seamChangeMean": 0.015787760416666668,
+        "seamVsTypical": 1.7596600501629034,
+        "insideMaskChange": 0.8268505473506932,
+        "outsideMaskChange": 7.270658626080312e-05,
+        "peakBrightnessChange": 0.012479745370370665,
+        "motionMaskCoverage": 0.010763888888888889,
+        "videoSha256": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a",
+        "sourceArtworkSha256": "46ca602a7f118e5c2d2c748f3e3cc6eab9c822f75cdea021c85a18fb7896e55a",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.008972051400044622,
+        "seamChange": 0.015787760416666668,
+        "seamVsTypical": 1.7596600501629034,
+        "insideMaskChange": 0.8268505473506932,
+        "outsideMaskChange": 7.270658626080312e-05,
+        "peakBrightnessChange": 0.012479745370370665,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "candle": {
+            "box": [
+              204,
+              466,
+              277,
+              564
+            ],
+            "minBrightnessFrame": 54,
+            "maxBrightnessFrame": 25,
+            "brightnessRange": 0.9203242941012064,
+            "maxPixelRange": 8
+          },
+          "steam": {
+            "box": [
+              385,
+              390,
+              491,
+              540
+            ],
+            "minBrightnessFrame": 75,
+            "maxBrightnessFrame": 19,
+            "brightnessRange": 4.86626834381552,
+            "maxPixelRange": 41
+          },
+          "leaves": {
+            "box": [
+              160,
+              0,
+              345,
+              112
+            ],
+            "minBrightnessFrame": 0,
+            "maxBrightnessFrame": 0,
+            "brightnessRange": 0.0,
+            "maxPixelRange": 0
+          }
+        }
+      },
+      "findings": [
+        "The previously doubled diagonal branch, translucent leaves and shifted building are removed. Original foliage and distant window geometry remain singular; the independently decoded foliage crop is pixel-identical across all 84 frames.",
+        "Coffee vapor remains faint and transparent against a stable cup and sill. The glass candle retains its original single main flame and wick; small aligned reflections above the flame also exist in source artwork. Light intensity varies subtly without displaced candle geometry in brightness-extreme and boundary samples.",
+        "Independent full decode reproduces seam ratio 1.7597 and outside-mask change 0.000073. Candle crop mean brightness range is 0.92 on the 0\u2013255 scale; this is subtle luminance modulation, not moving flame shape."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/18-autumn-bakery-candle-motion.png",
+        "creative/nooks-release/scene-reviews/18-autumn-bakery-candle-source-seam.png",
+        "creative/nooks-release/scene-reviews/18-autumn-bakery-steam-motion.png",
+        "creative/nooks-release/scene-reviews/18-autumn-bakery-steam-source-seam.png",
+        "creative/nooks-release/scene-reviews/18-autumn-bakery-leaves-motion.png",
+        "creative/nooks-release/scene-reviews/18-autumn-bakery-leaves-source-seam.png",
+        "creative/nooks-animated-all/jobs/autumn-bakery/review-contact.jpg",
+        "creative/nooks-animated-all/jobs/autumn-bakery/mask-review.jpg",
+        "web/ui/public/images/nooks-50/autumn-bakery.webp"
+      ]
+    },
+    {
+      "sceneId": "seoul-night-cafe",
+      "videoPath": "creative/nooks-animated-all/jobs/seoul-night-cafe/finished.mp4",
+      "videoSha256": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 699274,
+        "frameChangeMean": 0.004637307912204373,
+        "seamChangeMean": 0.00881004050925926,
+        "seamVsTypical": 1.8998178848709126,
+        "insideMaskChange": 0.5062394064779372,
+        "outsideMaskChange": 6.825648337980356e-05,
+        "peakBrightnessChange": 0.003895037615734509,
+        "motionMaskCoverage": 0.009026692708333334,
+        "videoSha256": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab",
+        "sourceArtworkSha256": "71031759fd010c945a8a50fab9a6fac4b357621670701dee0d88ad1dea28151a",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.004637307912204373,
+        "seamChange": 0.00881004050925926,
+        "seamVsTypical": 1.8998178848709126,
+        "insideMaskChange": 0.5062394064779372,
+        "outsideMaskChange": 6.825648337980356e-05,
+        "peakBrightnessChange": 0.003895037615734509,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "candle": {
+            "box": [
+              1111,
+              572,
+              1180,
+              647
+            ],
+            "minBrightnessFrame": 5,
+            "maxBrightnessFrame": 47,
+            "brightnessRange": 1.184798711755235,
+            "maxPixelRange": 10
+          },
+          "steam": {
+            "box": [
+              364,
+              378,
+              484,
+              538
+            ],
+            "minBrightnessFrame": 74,
+            "maxBrightnessFrame": 4,
+            "brightnessRange": 1.3548263888888883,
+            "maxPixelRange": 24
+          },
+          "rain": {
+            "box": [
+              510,
+              10,
+              930,
+              280
+            ],
+            "minBrightnessFrame": 0,
+            "maxBrightnessFrame": 49,
+            "brightnessRange": 7.936507936534554e-05,
+            "maxPixelRange": 2
+          }
+        }
+      },
+      "findings": [
+        "The previously doubled tower antenna, observation deck, shaft and city building edges are removed. Original skyline geometry is singular in source, extrema and boundary comparisons. Broad city/rain animation is gone; remaining maximum per-channel change of 2 in the skyline crop is negligible codec-level variation, with mean brightness range 0.000079.",
+        "Coffee vapor stays subtle and transparent while mug, chair and table remain stable. Candle wick, flame silhouette and ribbed glass retain original geometry; the slight light modulation does not create a displaced second flame in examined samples.",
+        "Independent full decode reproduces seam ratio 1.8998 and outside-mask change 0.000068. Candle crop mean brightness range is 1.18 on the 0\u2013255 scale. The scene retains steam and subtle candle intensity motion; rain streaks and city remain visually still."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/18-seoul-night-cafe-candle-motion.png",
+        "creative/nooks-release/scene-reviews/18-seoul-night-cafe-candle-source-seam.png",
+        "creative/nooks-release/scene-reviews/18-seoul-night-cafe-steam-motion.png",
+        "creative/nooks-release/scene-reviews/18-seoul-night-cafe-steam-source-seam.png",
+        "creative/nooks-release/scene-reviews/18-seoul-night-cafe-rain-motion.png",
+        "creative/nooks-release/scene-reviews/18-seoul-night-cafe-rain-source-seam.png",
+        "creative/nooks-animated-all/jobs/seoul-night-cafe/review-contact.jpg",
+        "creative/nooks-animated-all/jobs/seoul-night-cafe/mask-review.jpg",
+        "web/ui/public/images/nooks-50/seoul-night-cafe.webp"
+      ]
+    }
+  ]
+}

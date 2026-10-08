@@ -1,0 +1,26 @@
+{
+  "dragon-rider-study": {
+    "videoSha256": "66ccd01e767e3d1e435403d14a1e1d36d9908029220ca9f330c7fdbec07a0823",
+    "frames": 84,
+    "meanFrameChange": 0.13122659474704373,
+    "seamChange": 0.15872938368055556,
+    "seamVsTypical": 1.2095824324827373,
+    "insideMaskChange": 6.818143779543051,
+    "outsideMaskChange": 0.00014886703455951872,
+    "peakBrightnessChange": 0.104415870949083,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "hobbit-study": {
+    "videoSha256": "8299b13c6d2c3e8c50a3e0f2333bcfb6836d4ffd9ea5a6dcce389ed220ac11f8",
+    "frames": 84,
+    "meanFrameChange": 0.003915314033913431,
+    "seamChange": 0.011647858796296297,
+    "seamVsTypical": 2.974948802421869,
+    "insideMaskChange": 0.290424891749408,
+    "outsideMaskChange": 4.611769560978264e-05,
+    "peakBrightnessChange": 0.013550708912035248,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

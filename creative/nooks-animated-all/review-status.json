@@ -1,0 +1,963 @@
+{
+  "scope": "Independent exact-SHA frame sampling; does not imply real-time playback/audio or production readiness",
+  "scenes": [
+    {
+      "roomId": "rainy-library",
+      "currentVideoSha256": "d915555624575c5c1355bd2055bcbf3b7217f9532c332d96cae84057ec04b093",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/28.json",
+          "reviewer": "scene_review_28",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "d915555624575c5c1355bd2055bcbf3b7217f9532c332d96cae84057ec04b093"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/24.json",
+          "reviewer": "scene_review_24",
+          "verdict": "needs_revision",
+          "videoSha256": "9e72b3e52637ccec2bda95f3cf9cfbd447914ab46afaf3c16d6712d90c12c355"
+        }
+      ]
+    },
+    {
+      "roomId": "howls-moving-study",
+      "currentVideoSha256": "aaa752b280a9e5b2589e322adea960be8b2625acf839b7604be4d8423be14431",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/28.json",
+          "reviewer": "scene_review_28",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "aaa752b280a9e5b2589e322adea960be8b2625acf839b7604be4d8423be14431"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/24.json",
+          "reviewer": "scene_review_24",
+          "verdict": "needs_revision",
+          "videoSha256": "d9e3d7664770e5e98bf678e099dce7f113fd5233a0a43646adf5919547eb34d5"
+        }
+      ]
+    },
+    {
+      "roomId": "gryffindor-common-room",
+      "currentVideoSha256": "daeea4dd5d26b2724f6e757af7ccf4042665745df019f21f6a5238913891eac7",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/28.json",
+          "reviewer": "scene_review_28",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "daeea4dd5d26b2724f6e757af7ccf4042665745df019f21f6a5238913891eac7"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/24.json",
+          "reviewer": "scene_review_24",
+          "verdict": "needs_revision",
+          "videoSha256": "1ada672679da343f6a1bd1330313f098548288032094ca37691db94d8fe8744f"
+        }
+      ]
+    },
+    {
+      "roomId": "neon-tokyo",
+      "currentVideoSha256": "1b784cacfcc6d631843a29edfa917b8aeec8e7d1678aa2a302b5919dbeb5af6b",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/26.json",
+          "reviewer": "scene_review_26",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "1b784cacfcc6d631843a29edfa917b8aeec8e7d1678aa2a302b5919dbeb5af6b"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/01.json",
+          "reviewer": "scene_review_01",
+          "verdict": "needs_fix",
+          "videoSha256": "bca8ed8f0ce04a586ab15d65a1a096bdbcda1b620f85f0bfea5b28f3e48aa73d"
+        },
+        {
+          "report": "creative/nooks-release/scene-reviews/24.json",
+          "reviewer": "scene_review_24",
+          "verdict": "needs_revision",
+          "videoSha256": "571cbc6963922e1ca5dfb60c9f687e789dd6f3d64aa45e9baab59f31580e3ed9"
+        }
+      ]
+    },
+    {
+      "roomId": "alpine-cabin",
+      "currentVideoSha256": "3ea7e2e2c1a719e803861ad578fa1834be247c466c2da2005aa4f910f5eb0d0f",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/01.json",
+          "reviewer": "scene_review_01",
+          "verdict": "approved",
+          "videoSha256": "3ea7e2e2c1a719e803861ad578fa1834be247c466c2da2005aa4f910f5eb0d0f"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "totoro-forest-window",
+      "currentVideoSha256": "0479ba4ce3322d476ab73529d1f5db3fadc78ed83c18ab8926965f836bd5ad4c",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/02.json",
+          "reviewer": "scene_review_02",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "0479ba4ce3322d476ab73529d1f5db3fadc78ed83c18ab8926965f836bd5ad4c"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "slytherin-common-room",
+      "currentVideoSha256": "02f77614ff872ecc10e2f9ea11301302b382533dff91444bfdd85183539a4fd1",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/02.json",
+          "reviewer": "scene_review_02",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "02f77614ff872ecc10e2f9ea11301302b382533dff91444bfdd85183539a4fd1"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "kikis-bakery-attic",
+      "currentVideoSha256": "ba5febe2d519fcad575eeae8fd78daaae9917c471d94518700e49695bf2c9a6e",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/03.json",
+          "reviewer": "scene_review_03",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "ba5febe2d519fcad575eeae8fd78daaae9917c471d94518700e49695bf2c9a6e"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "midnight-train",
+      "currentVideoSha256": "345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/03.json",
+          "reviewer": "scene_review_03",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "hufflepuff-common-room",
+      "currentVideoSha256": "a6d8c12f87c63ff14a1f01069a95c9dd928e09d930af7c01e0361a4c11f63095",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/04.json",
+          "reviewer": "scene_review_04",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "a6d8c12f87c63ff14a1f01069a95c9dd928e09d930af7c01e0361a4c11f63095"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "ravenclaw-tower",
+      "currentVideoSha256": "4ce46802b728a268c549a8d070343cb294dd8f7f698f0ea71ead0358bbd90a84",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/04.json",
+          "reviewer": "scene_review_04",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "4ce46802b728a268c549a8d070343cb294dd8f7f698f0ea71ead0358bbd90a84"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "stardew-farmhouse",
+      "currentVideoSha256": "ace64b3020c2c7720b5e4815aed85e91577d1e353162b8329e3ac4a76b211fa5",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/05.json",
+          "reviewer": "scene_review_05",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "ace64b3020c2c7720b5e4815aed85e91577d1e353162b8329e3ac4a76b211fa5"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "spirited-bathhouse",
+      "currentVideoSha256": "d477d0d8d05eb815fe722c93cc27dd0bf164d33411ff4e2b301666e1dca9d780",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/05.json",
+          "reviewer": "scene_review_05",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "d477d0d8d05eb815fe722c93cc27dd0bf164d33411ff4e2b301666e1dca9d780"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "bookshop-cat",
+      "currentVideoSha256": "9c145ead038bf9686bfb94f270d11cb1ca1b56e05eac8495872b065162183fc9",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/06.json",
+          "reviewer": "scene_review_06",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "9c145ead038bf9686bfb94f270d11cb1ca1b56e05eac8495872b065162183fc9"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "sunlit-greenhouse",
+      "currentVideoSha256": "329c877ab03151ee14e322c4416c5df6509364206ce5b0b4eace269bb238fc9b",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/06.json",
+          "reviewer": "scene_review_06",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "329c877ab03151ee14e322c4416c5df6509364206ce5b0b4eace269bb238fc9b"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "dragon-hatchery",
+      "currentVideoSha256": "ab622ff3f6fdcc0d9cf06008cd4838fc8b40bbcb7c16cf997e787e968486c4d2",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/07.json",
+          "reviewer": "scene_review_07",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "ab622ff3f6fdcc0d9cf06008cd4838fc8b40bbcb7c16cf997e787e968486c4d2"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "velaris-study",
+      "currentVideoSha256": "beec126210620e09ef348e0446dafc44e9a87f2d59bbdcc36cf1471d3c4a79eb",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/09.json",
+          "reviewer": "scene_review_09",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "beec126210620e09ef348e0446dafc44e9a87f2d59bbdcc36cf1471d3c4a79eb"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/07.json",
+          "reviewer": "scene_review_07",
+          "verdict": "changes_required",
+          "videoSha256": "0733031191ebd466e3e30084f48a741dee69def5dec28f09364a3bd1a267515f"
+        }
+      ]
+    },
+    {
+      "roomId": "dragon-rider-study",
+      "currentVideoSha256": "66ccd01e767e3d1e435403d14a1e1d36d9908029220ca9f330c7fdbec07a0823",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/08.json",
+          "reviewer": "scene_review_08",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "66ccd01e767e3d1e435403d14a1e1d36d9908029220ca9f330c7fdbec07a0823"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "hobbit-study",
+      "currentVideoSha256": "8299b13c6d2c3e8c50a3e0f2333bcfb6836d4ffd9ea5a6dcce389ed220ac11f8",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/08.json",
+          "reviewer": "scene_review_08",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "8299b13c6d2c3e8c50a3e0f2333bcfb6836d4ffd9ea5a6dcce389ed220ac11f8"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "animal-crossing-island",
+      "currentVideoSha256": "17e636e8be9aa00f11c37a56ab29e5ef20fd51a2584f1f24bed25dc758a849a0",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/corrections-01.json",
+          "reviewer": "corrected_scene_judge",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "17e636e8be9aa00f11c37a56ab29e5ef20fd51a2584f1f24bed25dc758a849a0"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/09.json",
+          "reviewer": "scene_review_09",
+          "verdict": "changes_required",
+          "videoSha256": "5d84b0e92fa74f71cd007aabe6617433708a7c2d468b12a5eedc01590ebe25fe"
+        }
+      ]
+    },
+    {
+      "roomId": "cinnamoroll-cloud-cafe",
+      "currentVideoSha256": "dbf78fa5659789764f5ebe6a088b9c5b01dcfdf6e38f69abdf0a64445074e396",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/09.json",
+          "reviewer": "scene_review_09",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "dbf78fa5659789764f5ebe6a088b9c5b01dcfdf6e38f69abdf0a64445074e396"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "witch-apothecary",
+      "currentVideoSha256": "0ed9d16d268ecf61726f2c6133b9f9e96a26b356186c6781f6a49f295554d9ba",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/corrections-01.json",
+          "reviewer": "corrected_scene_judge",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "0ed9d16d268ecf61726f2c6133b9f9e96a26b356186c6781f6a49f295554d9ba"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/10.json",
+          "reviewer": "scene_review_10",
+          "verdict": "requires_changes",
+          "videoSha256": "e77431500cee42c10ed2aec2f483f40bc797096ae765a6ce0559fc1276ab1fec"
+        }
+      ]
+    },
+    {
+      "roomId": "kyoto-teahouse",
+      "currentVideoSha256": "9a11c431c68a986ceb08c2079473467af58bb56586caa06a23c2872e8731c74e",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/10.json",
+          "reviewer": "scene_review_10",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "9a11c431c68a986ceb08c2079473467af58bb56586caa06a23c2872e8731c74e"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "oxford-library",
+      "currentVideoSha256": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/14.json",
+          "reviewer": "scene_review_14",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/11.json",
+          "reviewer": "scene_review_11",
+          "verdict": "needs_revision",
+          "videoSha256": "9a153b3e74cd00004d03cd9d2f297e137025fd7befc0bc5cfc669cdef89a98bd"
+        }
+      ]
+    },
+    {
+      "roomId": "capybara-onsen",
+      "currentVideoSha256": "2c5c965b9c2f417afa143469c84e39e208d426fbeb2944a76de3050fd8c51a48",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/11.json",
+          "reviewer": "scene_review_11",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "2c5c965b9c2f417afa143469c84e39e208d426fbeb2944a76de3050fd8c51a48"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "pokemon-research-cottage",
+      "currentVideoSha256": "532d99a6c24e6193a2b0acad9db763c11fc475830e1d145e280c4b67e2f8c1ae",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/12.json",
+          "reviewer": "scene_review_12",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "532d99a6c24e6193a2b0acad9db763c11fc475830e1d145e280c4b67e2f8c1ae"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "sakura-garden",
+      "currentVideoSha256": "6eb196a6d82e7ab4e6bd05a8942c112471212469fc4fbcb1708853822a2dfa3f",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/18.json",
+          "reviewer": "scene_review_18",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "6eb196a6d82e7ab4e6bd05a8942c112471212469fc4fbcb1708853822a2dfa3f"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/12.json",
+          "reviewer": "scene_review_12",
+          "verdict": "needs_revision",
+          "videoSha256": "a18af1bde51976ce9cc6948e0e872357b0a8d915c01a1d79e3009149799b4d7d"
+        }
+      ]
+    },
+    {
+      "roomId": "paris-attic",
+      "currentVideoSha256": "41bb0bce500dab4a80fa5557ecbf630b53ee968d74d055c0a178e7dd591ceae0",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/13.json",
+          "reviewer": "scene_review_13",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "41bb0bce500dab4a80fa5557ecbf630b53ee968d74d055c0a178e7dd591ceae0"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "underwater-study",
+      "currentVideoSha256": "6819c12313c179b272adb0d203630e786e5b7206a93ae2e8ced62b0fd39555b4",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/13.json",
+          "reviewer": "scene_review_13",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "6819c12313c179b272adb0d203630e786e5b7206a93ae2e8ced62b0fd39555b4"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "moonlit-observatory",
+      "currentVideoSha256": "be83ce5dae6ad1feabce951dcf61a481431651a649543cead6770ea5c2c74918",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/15.json",
+          "reviewer": "scene_review_15",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "be83ce5dae6ad1feabce951dcf61a481431651a649543cead6770ea5c2c74918"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "frog-pond-studio",
+      "currentVideoSha256": "166cd92997997861e546ff6f25fc8e4e948e683ac6287ff8100c6f6f3751b96d",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/25.json",
+          "reviewer": "scene_review_25",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "166cd92997997861e546ff6f25fc8e4e948e683ac6287ff8100c6f6f3751b96d"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/16.json",
+          "reviewer": "scene_review_16",
+          "verdict": "needs_correction",
+          "videoSha256": "134ea0623e4511c33492987cf63229a206e8bf8a786ff216d12e76e49f7e7d68"
+        }
+      ]
+    },
+    {
+      "roomId": "kuromi-midnight-desk",
+      "currentVideoSha256": "518038931ae5f2a34738f559e68800a02c913e0c839e682ad8a60c6ff917b047",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/16.json",
+          "reviewer": "scene_review_16",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "518038931ae5f2a34738f559e68800a02c913e0c839e682ad8a60c6ff917b047"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "antique-workshop",
+      "currentVideoSha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/25.json",
+          "reviewer": "scene_review_25",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc"
+        },
+        {
+          "report": "creative/nooks-release/scene-reviews/rigid-corrections.json",
+          "reviewer": null,
+          "verdict": null,
+          "videoSha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/17.json",
+          "reviewer": "scene_review_17",
+          "verdict": "needs_correction",
+          "videoSha256": "41e7cfb06c80e428c250756ac0441351afea0535e2e69aee338a8114c6514e8d"
+        }
+      ]
+    },
+    {
+      "roomId": "minecraft-cottage",
+      "currentVideoSha256": "890b936e711542e0fb4ec700437cede5dae657f81d78fad392522f65fcce7e11",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/15.json",
+          "reviewer": "scene_review_15",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "890b936e711542e0fb4ec700437cede5dae657f81d78fad392522f65fcce7e11"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "hateno-study",
+      "currentVideoSha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/25.json",
+          "reviewer": "scene_review_25",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8"
+        },
+        {
+          "report": "creative/nooks-release/scene-reviews/rigid-corrections.json",
+          "reviewer": null,
+          "verdict": null,
+          "videoSha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/17.json",
+          "reviewer": "scene_review_17",
+          "verdict": "needs_correction",
+          "videoSha256": "2950dbbc90e21a402eb7856c6f6e7e5d0f214cf683235bfeeb0fa34758e17bf6"
+        }
+      ]
+    },
+    {
+      "roomId": "sumeru-akademiya",
+      "currentVideoSha256": "59fd09b9c0919d258433e798564865d8c8bbaf359173bde28420d537a5131291",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/26.json",
+          "reviewer": "scene_review_26",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "59fd09b9c0919d258433e798564865d8c8bbaf359173bde28420d537a5131291"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/19.json",
+          "reviewer": "scene_review_19",
+          "verdict": "needs_revision",
+          "videoSha256": "74ff8e54cf8276d78afe9f0c9844532da6865086d650a27374a0453f1fefa08b"
+        }
+      ]
+    },
+    {
+      "roomId": "mage-archive",
+      "currentVideoSha256": "55525c6907c74897d6b64dc0d0c74ecb1d1c542f4f58e3c1fe294f5f0792eea7",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/19.json",
+          "reviewer": "scene_review_19",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "55525c6907c74897d6b64dc0d0c74ecb1d1c542f4f58e3c1fe294f5f0792eea7"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "cyberpunk-rain-loft",
+      "currentVideoSha256": "59ded8e2a4a4763462bbabff70ab17c12c878c86c580ef1b36bc1795afbb4e2d",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/26.json",
+          "reviewer": "scene_review_26",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "59ded8e2a4a4763462bbabff70ab17c12c878c86c580ef1b36bc1795afbb4e2d"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/20.json",
+          "reviewer": "scene_review_20",
+          "verdict": "needs_revision",
+          "videoSha256": "0389200150e27037dfce24928469c2958b06a37b81a9fe43cb7b5bd73e04041b"
+        }
+      ]
+    },
+    {
+      "roomId": "secret-door-study",
+      "currentVideoSha256": "f2bc48a5469c83fb79bba6889baa380b351e940f99a6b65a5c7aa39e1ab70b47",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/20.json",
+          "reviewer": "scene_review_20",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "f2bc48a5469c83fb79bba6889baa380b351e940f99a6b65a5c7aa39e1ab70b47"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "nevermore-study",
+      "currentVideoSha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/14.json",
+          "reviewer": "scene_review_14",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "autumn-bakery",
+      "currentVideoSha256": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/18.json",
+          "reviewer": "scene_review_18",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/14.json",
+          "reviewer": "scene_review_14",
+          "verdict": "needs_revision",
+          "videoSha256": "149b1ad042465b04e6dd1dd475f13018884d8d6d63d5042e5afe598b656bd57c"
+        }
+      ]
+    },
+    {
+      "roomId": "seoul-night-cafe",
+      "currentVideoSha256": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/18.json",
+          "reviewer": "scene_review_18",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/14.json",
+          "reviewer": "scene_review_14",
+          "verdict": "needs_revision",
+          "videoSha256": "c198f3557c42e3dbf7304fa569b560d088dde174e5b12a88badc2d08d6ca562f"
+        }
+      ]
+    },
+    {
+      "roomId": "cloud-cafe",
+      "currentVideoSha256": "35ec9f16845a1ea8361933f81c7b044f5d09538b9c4dc3b013d99cbecdb960b2",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/21.json",
+          "reviewer": "scene_review_21",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "35ec9f16845a1ea8361933f81c7b044f5d09538b9c4dc3b013d99cbecdb960b2"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "tiny-mouse-house",
+      "currentVideoSha256": "83ee2b83842ded38aa91e9a2cafab5bf6797a117599b33e427c211870c679bce",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/21.json",
+          "reviewer": "scene_review_21",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "83ee2b83842ded38aa91e9a2cafab5bf6797a117599b33e427c211870c679bce"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "woodland-treehouse",
+      "currentVideoSha256": "0d47988831420a567777c5c18debd9c8b7b3df943c6908a75875e29e0f718128",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/22.json",
+          "reviewer": "scene_review_22",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "0d47988831420a567777c5c18debd9c8b7b3df943c6908a75875e29e0f718128"
+        }
+      ],
+      "staleReviews": []
+    },
+    {
+      "roomId": "aurora-cabin",
+      "currentVideoSha256": "0b1b2a9ef34b95e944d94bb4ad0b2604e11668d4c10d322da3cdfceb30df3cbf",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/26.json",
+          "reviewer": "scene_review_26",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "0b1b2a9ef34b95e944d94bb4ad0b2604e11668d4c10d322da3cdfceb30df3cbf"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/22.json",
+          "reviewer": "scene_review_22",
+          "verdict": "needs_revision",
+          "videoSha256": "50df02ecab1fa943906ebc934957054628a9da37125b6fd234713cf0fc3ce51d"
+        }
+      ]
+    },
+    {
+      "roomId": "lighthouse-study",
+      "currentVideoSha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/27.json",
+          "reviewer": "scene_review_27",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/23.json",
+          "reviewer": "scene_review_23",
+          "verdict": "needs_revision",
+          "videoSha256": "1a0886e741aba2c66c73afbc268508a0f9a220727ed409e7e0b970c9d8bd8b06"
+        }
+      ]
+    },
+    {
+      "roomId": "desert-casita",
+      "currentVideoSha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/27.json",
+          "reviewer": "scene_review_27",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/23.json",
+          "reviewer": "scene_review_23",
+          "verdict": "needs_revision",
+          "videoSha256": "5216bb6d656e1e4bfd31eb4a1a077fedd48ac5163f85d1a663c4fc185c136795"
+        }
+      ]
+    },
+    {
+      "roomId": "stationery-studio",
+      "currentVideoSha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/27.json",
+          "reviewer": "scene_review_27",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547"
+        }
+      ],
+      "staleReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/23.json",
+          "reviewer": "scene_review_23",
+          "verdict": "needs_revision",
+          "videoSha256": "9e6fbb179ae589db1ef9eb146531a3436b804030ad17d60121e169c9d3cdf76e"
+        }
+      ]
+    },
+    {
+      "roomId": "thousand-sunny-study",
+      "currentVideoSha256": "27afda1e1d953fc66951a57b7900263f79d228c7bf099722aaabdd6ff7e11f19",
+      "published": true,
+      "publishedBytesMatch": true,
+      "independentVisualSamples": "approved_exact_sha",
+      "currentReviews": [
+        {
+          "report": "creative/nooks-release/scene-reviews/15.json",
+          "reviewer": "scene_review_15",
+          "verdict": "approved_visual_samples",
+          "videoSha256": "27afda1e1d953fc66951a57b7900263f79d228c7bf099722aaabdd6ff7e11f19"
+        }
+      ],
+      "staleReviews": []
+    }
+  ]
+}

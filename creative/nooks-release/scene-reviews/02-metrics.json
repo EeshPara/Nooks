@@ -1,0 +1,56 @@
+[
+  {
+    "sceneId": "totoro-forest-window",
+    "sha256": "0479ba4ce3322d476ab73529d1f5db3fadc78ed83c18ab8926965f836bd5ad4c",
+    "frameCount": 84,
+    "independentMeanFrameChange": 0.059774671603078984,
+    "independentSeamChange": 0.2022583912037037,
+    "independentSeamVsTypical": 3.383680508472846,
+    "qa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 1305853,
+      "frameChangeMean": 0.059774671603078984,
+      "seamChangeMean": 0.2022583912037037,
+      "seamVsTypical": 3.383680508472846,
+      "insideMaskChange": 0.42028476395732656,
+      "outsideMaskChange": 0.00019494003212483768,
+      "peakBrightnessChange": 0.025181929976852757,
+      "motionMaskCoverage": 0.141826171875,
+      "videoSha256": "0479ba4ce3322d476ab73529d1f5db3fadc78ed83c18ab8926965f836bd5ad4c",
+      "sourceArtworkSha256": "b279fe7d39aa10348774b9a74bdcaed267687e42c151911b88bb7f15953d6b25",
+      "technicalPass": true
+    }
+  },
+  {
+    "sceneId": "slytherin-common-room",
+    "sha256": "02f77614ff872ecc10e2f9ea11301302b382533dff91444bfdd85183539a4fd1",
+    "frameCount": 84,
+    "independentMeanFrameChange": 0.04259717690205265,
+    "independentSeamChange": 0.10881438078703703,
+    "independentSeamVsTypical": 2.5544974737937047,
+    "qa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 917324,
+      "frameChangeMean": 0.04259717690205265,
+      "seamChangeMean": 0.10881438078703703,
+      "seamVsTypical": 2.5544974737937047,
+      "insideMaskChange": 0.6242774770834543,
+      "outsideMaskChange": 0.0002963188009036599,
+      "peakBrightnessChange": 0.03237883391203411,
+      "motionMaskCoverage": 0.06779188368055555,
+      "videoSha256": "02f77614ff872ecc10e2f9ea11301302b382533dff91444bfdd85183539a4fd1",
+      "sourceArtworkSha256": "cde2f47ab1601e2aa3661fe11fefadaea69b8817919032badf24eab30250086f",
+      "technicalPass": true
+    }
+  }
+]

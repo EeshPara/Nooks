@@ -14,8 +14,6 @@ export interface StudyPresencePillProps {
   sceneTitle: string;
   members?: StudyPresenceMember[];
   onlineCount?: number;
-  /** Designer-provided example count; never used for connected room presence. */
-  previewCount?: number;
   connected: boolean;
   communityAvailable?: boolean;
   onClick: () => void;
@@ -25,7 +23,7 @@ export interface StudyPresencePillProps {
 const sampleAvatars = [0, 1, 2];
 
 /** A compact entry to the community. Sample portraits never imply live presence. */
-export function StudyPresencePill({ sceneTitle, members = [], onlineCount, previewCount, connected, communityAvailable = false, onClick, motion = true }: StudyPresencePillProps) {
+export function StudyPresencePill({ sceneTitle, members = [], onlineCount, connected, communityAvailable = false, onClick, motion = true }: StudyPresencePillProps) {
   const onlineMembers = useMemo(() => {
     const seen = new Set<string>();
     return members.filter(member => member.online && !seen.has(member.id) && seen.add(member.id));
@@ -69,14 +67,13 @@ export function StudyPresencePill({ sceneTitle, members = [], onlineCount, previ
   const visibleMembers = (faceIds.length ? faceIds : onlineMembers.slice(0, 3).map(member => member.id))
     .map(id => onlineMembers.find(member => member.id === id)).filter((member): member is StudyPresenceMember => !!member);
   const count = Number.isFinite(onlineCount) && onlineCount! >= 0 ? Math.floor(onlineCount!) : onlineMembers.length;
-  const displayedCount = connected ? count : Number.isFinite(previewCount) && previewCount! >= 0 ? Math.floor(previewCount!) : undefined;
-  const label = displayedCount === undefined ? 'People unavailable' : `${displayedCount.toLocaleString()} ${displayedCount === 1 ? 'person' : 'people'}`;
+  const displayedCount = connected ? count : undefined;
+  const label = displayedCount === undefined ? 'Study together' : `${displayedCount.toLocaleString()} ${displayedCount === 1 ? 'person' : 'people'}`;
 
   return <button
     type="button"
     className={`study-presence-pill${connected ? ' is-connected' : ' is-preview'}${motion ? '' : ' is-still'}`}
     onClick={onClick}
-    title={!connected && displayedCount !== undefined ? 'Example room count in this design preview' : undefined}
     aria-label={connected ? `See people in ${sceneTitle}, ${label}` : communityAvailable ? 'Find a study nook to join' : `Explore the community preview for ${sceneTitle}`}
     aria-haspopup="dialog"
   >

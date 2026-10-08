@@ -1,0 +1,179 @@
+{
+  "reviewId": "21",
+  "reviewer": "scene_review_21",
+  "reviewedAtUtc": "2026-10-08T07:38:41.082322+00:00",
+  "instructionsRead": [
+    "AGENTS.md",
+    "START-HERE.md"
+  ],
+  "method": "Independent full ffmpeg decode, ffprobe inspection, SHA-256 checks before/after decode and report generation, per-frame inside/outside-mask/brightness/seam metrics, full-scene contacts and native-resolution or enlarged motion/source/boundary crops inspected with view_image.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval covers only sampled visuals for the exact video hash, not complete product experience or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "cloud-cafe",
+      "videoPath": "creative/nooks-animated-all/jobs/cloud-cafe/finished.mp4",
+      "videoSha256": "35ec9f16845a1ea8361933f81c7b044f5d09538b9c4dc3b013d99cbecdb960b2",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full decode; no continuous playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 718284,
+        "frameChangeMean": 0.008797451089078536,
+        "seamChangeMean": 0.018626663773148148,
+        "seamVsTypical": 2.117279605711243,
+        "insideMaskChange": 0.38123950199198237,
+        "outsideMaskChange": 0.00010488543654074558,
+        "peakBrightnessChange": 0.010987774884256396,
+        "motionMaskCoverage": 0.022807074652777776,
+        "videoSha256": "35ec9f16845a1ea8361933f81c7b044f5d09538b9c4dc3b013d99cbecdb960b2",
+        "sourceArtworkSha256": "48f1074cd757c66af54fc936e1841f4873473437b561eff0310394159872e7fd",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "35ec9f16845a1ea8361933f81c7b044f5d09538b9c4dc3b013d99cbecdb960b2",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.008797451089078536,
+        "seamChange": 0.018626663773148148,
+        "seamVsTypical": 2.117279605711243,
+        "insideMaskChange": 0.38123950199198237,
+        "outsideMaskChange": 0.00010488543654074558,
+        "peakBrightnessChange": 0.010987774884256396,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "steam": {
+            "box": [
+              325,
+              390,
+              420,
+              580
+            ],
+            "minBrightnessFrame": 80,
+            "maxBrightnessFrame": 7,
+            "brightnessRange": 3.466352723915051,
+            "maxPixelRange": 38
+          },
+          "clouds": {
+            "box": [
+              620,
+              275,
+              925,
+              410
+            ],
+            "minBrightnessFrame": 4,
+            "maxBrightnessFrame": 35,
+            "brightnessRange": 0.08404776361061295,
+            "maxPixelRange": 7
+          }
+        },
+        "evidence": [
+          "creative/nooks-release/scene-reviews/21-cloud-cafe-steam-motion.png",
+          "creative/nooks-release/scene-reviews/21-cloud-cafe-steam-source-seam.png",
+          "creative/nooks-release/scene-reviews/21-cloud-cafe-clouds-motion.png",
+          "creative/nooks-release/scene-reviews/21-cloud-cafe-clouds-source-seam.png"
+        ]
+      },
+      "findings": [
+        "Inspected full-scene contact views, eight native-resolution motion samples and original-art/minimum/maximum-brightness/last-two/first-two boundary comparisons. Cup, pencils, table, railing, cat, lamps and distant building silhouettes remain stable in the inspected views.",
+        "Soft white steam rises from the tea cup. It is visibly stronger than the still artwork but remains translucent, locally confined and correctly anchored to the liquid surface. No displaced cup edge, doubled flame or detached vapor source was observed.",
+        "The distant cloud contour variation is extremely subtle (sample crop maximum pixel range 7/255). It preserves the soft cloud appearance without moving the railing or distant rigid geometry. It should not be described as broad cloud travel.",
+        "No obvious mask boundary or abrupt sampled loop-boundary geometry change was seen; seam ratio is 2.117. Continuous playback is still necessary to judge the short steam cycle rhythm."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition the integrated ambience before final experience sign-off."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/21-cloud-cafe-steam-motion.png",
+        "creative/nooks-release/scene-reviews/21-cloud-cafe-steam-source-seam.png",
+        "creative/nooks-release/scene-reviews/21-cloud-cafe-clouds-motion.png",
+        "creative/nooks-release/scene-reviews/21-cloud-cafe-clouds-source-seam.png",
+        "creative/nooks-animated-all/jobs/cloud-cafe/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/cloud-cafe/review-contact.jpg"
+      ]
+    },
+    {
+      "sceneId": "tiny-mouse-house",
+      "videoPath": "creative/nooks-animated-all/jobs/tiny-mouse-house/finished.mp4",
+      "videoSha256": "83ee2b83842ded38aa91e9a2cafab5bf6797a117599b33e427c211870c679bce",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full decode; no continuous playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 817275,
+        "frameChangeMean": 0.004396579373047746,
+        "seamChangeMean": 0.007956452546296296,
+        "seamVsTypical": 1.8096915513618526,
+        "insideMaskChange": 0.5605818023629974,
+        "outsideMaskChange": 3.923677334694736e-05,
+        "peakBrightnessChange": 0.004671947337968163,
+        "motionMaskCoverage": 0.0077734375,
+        "videoSha256": "83ee2b83842ded38aa91e9a2cafab5bf6797a117599b33e427c211870c679bce",
+        "sourceArtworkSha256": "932be95c4d7253b75d22f10ad197213800d24029cd57986d79417733082ce07c",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "83ee2b83842ded38aa91e9a2cafab5bf6797a117599b33e427c211870c679bce",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.004396579373047746,
+        "seamChange": 0.007956452546296296,
+        "seamVsTypical": 1.8096915513618526,
+        "insideMaskChange": 0.5605818023629974,
+        "outsideMaskChange": 3.923677334694736e-05,
+        "peakBrightnessChange": 0.004671947337968163,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "steam": {
+            "box": [
+              1075,
+              420,
+              1235,
+              590
+            ],
+            "minBrightnessFrame": 82,
+            "maxBrightnessFrame": 35,
+            "brightnessRange": 1.7337745098039221,
+            "maxPixelRange": 26
+          }
+        },
+        "evidence": [
+          "creative/nooks-release/scene-reviews/21-tiny-mouse-house-steam-motion.png",
+          "creative/nooks-release/scene-reviews/21-tiny-mouse-house-steam-source-seam.png"
+        ]
+      },
+      "findings": [
+        "Inspected full-scene contact views, eight native-resolution motion samples and original-art/minimum/maximum-brightness/last-two/first-two boundary comparisons. Cup rim, vase, flowers, wicker baskets, room furniture, sleeping mouse, ladder and lamps remain stable in the inspected views.",
+        "The thin low-contrast steam rises from the foreground tea cup, in front of the wicker basket. It does not originate from the vase or the distant teapot. The basket weave remains a singular stable structure beneath the translucent vapor.",
+        "No doubled candles, moving rigid geometry, hard mask edge or conspicuous graphic effect was observed. The very restrained motion suits the room and seam ratio is 1.810; full-speed playback is still needed to judge repetition."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition the integrated ambience before final experience sign-off."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/21-tiny-mouse-house-steam-motion.png",
+        "creative/nooks-release/scene-reviews/21-tiny-mouse-house-steam-source-seam.png",
+        "creative/nooks-animated-all/jobs/tiny-mouse-house/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/tiny-mouse-house/review-contact.jpg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+[
+  {
+    "sceneId": "rainy-library",
+    "regions": {
+      "steam": {
+        "box": [
+          85,
+          475,
+          165,
+          558
+        ],
+        "meanFrameChange": 0.536643279705649,
+        "maxTemporalPixelRange": 46,
+        "cropEvidence": "creative/nooks-release/pilot-correction-rainy-library-steam.png"
+      },
+      "skyline": {
+        "box": [
+          405,
+          240,
+          680,
+          480
+        ],
+        "meanFrameChange": 0.0004168632432105486,
+        "maxTemporalPixelRange": 2,
+        "cropEvidence": "creative/nooks-release/pilot-correction-rainy-library-skyline.png"
+      }
+    }
+  },
+  {
+    "sceneId": "howls-moving-study",
+    "regions": {
+      "steam": {
+        "box": [
+          315,
+          490,
+          395,
+          585
+        ],
+        "meanFrameChange": 0.32046617291732327,
+        "maxTemporalPixelRange": 43,
+        "cropEvidence": "creative/nooks-release/pilot-correction-howls-moving-study-steam.png"
+      },
+      "stove": {
+        "box": [
+          618,
+          317,
+          691,
+          393
+        ],
+        "meanFrameChange": 0.1280690241722755,
+        "maxTemporalPixelRange": 17,
+        "cropEvidence": "creative/nooks-release/pilot-correction-howls-moving-study-stove.png"
+      },
+      "cat": {
+        "box": [
+          715,
+          425,
+          825,
+          475
+        ],
+        "meanFrameChange": 0.00017855198693522047,
+        "maxTemporalPixelRange": 1,
+        "cropEvidence": "creative/nooks-release/pilot-correction-howls-moving-study-cat.png"
+      },
+      "lantern": {
+        "box": [
+          425,
+          25,
+          481,
+          100
+        ],
+        "meanFrameChange": 0.0,
+        "maxTemporalPixelRange": 0,
+        "cropEvidence": "creative/nooks-release/pilot-correction-howls-moving-study-lantern.png"
+      }
+    }
+  },
+  {
+    "sceneId": "gryffindor-common-room",
+    "regions": {
+      "upper-fire": {
+        "box": [
+          212,
+          280,
+          344,
+          375
+        ],
+        "meanFrameChange": 4.828758909612991,
+        "maxTemporalPixelRange": 146,
+        "cropEvidence": "creative/nooks-release/pilot-correction-gryffindor-common-room-upper-fire.png"
+      },
+      "screen": {
+        "box": [
+          176,
+          370,
+          438,
+          450
+        ],
+        "meanFrameChange": 0.0001058950800688699,
+        "maxTemporalPixelRange": 2,
+        "cropEvidence": "creative/nooks-release/pilot-correction-gryffindor-common-room-screen.png"
+      },
+      "left-post": {
+        "box": [
+          178,
+          334,
+          219,
+          428
+        ],
+        "meanFrameChange": 0.0,
+        "maxTemporalPixelRange": 0,
+        "cropEvidence": "creative/nooks-release/pilot-correction-gryffindor-common-room-left-post.png"
+      },
+      "right-post": {
+        "box": [
+          405,
+          336,
+          435,
+          439
+        ],
+        "meanFrameChange": 0.0,
+        "maxTemporalPixelRange": 0,
+        "cropEvidence": "creative/nooks-release/pilot-correction-gryffindor-common-room-right-post.png"
+      },
+      "left-candle": {
+        "box": [
+          929,
+          171,
+          958,
+          225
+        ],
+        "meanFrameChange": 0.0,
+        "maxTemporalPixelRange": 0,
+        "cropEvidence": "creative/nooks-release/pilot-correction-gryffindor-common-room-left-candle.png"
+      },
+      "right-candle": {
+        "box": [
+          1190,
+          110,
+          1237,
+          175
+        ],
+        "meanFrameChange": 1.9600733067416722e-06,
+        "maxTemporalPixelRange": 1,
+        "cropEvidence": "creative/nooks-release/pilot-correction-gryffindor-common-room-right-candle.png"
+      },
+      "cat": {
+        "box": [
+          511,
+          390,
+          605,
+          440
+        ],
+        "meanFrameChange": 0.0,
+        "maxTemporalPixelRange": 0,
+        "cropEvidence": "creative/nooks-release/pilot-correction-gryffindor-common-room-cat.png"
+      }
+    }
+  }
+]

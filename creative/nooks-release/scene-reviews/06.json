@@ -1,0 +1,126 @@
+{
+  "reviewId": "06",
+  "reviewer": "scene_review_06",
+  "reviewedAtUtc": "2026-10-08T06:58:35.493023+00:00",
+  "method": "Viewed source artwork, producer masks/contact sheets, independently extracted native-resolution motion crops and last-two/first-two seam frames. Fully decoded all 84 frames of each video and independently recomputed adjacent-frame, seam, inside/outside-mask and brightness metrics. Verified SHA-256 before/after decode and at report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to these exact visual hashes, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "bookshop-cat",
+      "videoPath": "creative/nooks-animated-all/jobs/bookshop-cat/finished.mp4",
+      "videoSha256": "9c145ead038bf9686bfb94f270d11cb1ca1b56e05eac8495872b065162183fc9",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 941468,
+        "frameChangeMean": 0.040670821306057564,
+        "seamChangeMean": 0.0671922019675926,
+        "seamVsTypical": 1.6520984777257228,
+        "insideMaskChange": 1.4449606532772958,
+        "outsideMaskChange": 0.00021609242436180078,
+        "peakBrightnessChange": 0.03726888020833741,
+        "motionMaskCoverage": 0.028001302083333332,
+        "videoSha256": "9c145ead038bf9686bfb94f270d11cb1ca1b56e05eac8495872b065162183fc9",
+        "sourceArtworkSha256": "edc0a762aef628a14468cc4e4edcbed8ad695287296a2e5e922659d42c932b15",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "9c145ead038bf9686bfb94f270d11cb1ca1b56e05eac8495872b065162183fc9",
+        "frames": 84,
+        "meanFrameChange": 0.040670821306057564,
+        "seamChange": 0.0671922019675926,
+        "seamVsTypical": 1.6520984777257228,
+        "outsideMaskChange": 0.00021609242436180078,
+        "insideMaskChange": 1.4449606532772958,
+        "peakBrightnessChange": 0.03726888020833741,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, mask/contact sheet, eight native-resolution cat and fire samples, and last-two/first-two seam crops. Furniture, book spines, stove body, counter, cat face and paws preserve their geometry.",
+        "Torso movement is small and consistent with a sleeping cat breathing in sampled frames; fire flicker stays within the stove opening. No obvious duplicate features, rectangular mask boundary or scene-wide light breathing appears in the inspected samples. Fine fur movement remains subtle rather than demanding attention.",
+        "Independent full decode reproduces seam ratio 1.6521 and outside-mask change 0.000216 on a 0\u2013255 channel scale. Cat seam samples preserve the resting pose; changing flame shape resembles normal flicker."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/06-bookshop-cat-fire-seam.jpg",
+        "creative/nooks-release/scene-reviews/06-bookshop-cat-fire.jpg",
+        "creative/nooks-release/scene-reviews/06-bookshop-cat-motion.jpg",
+        "creative/nooks-release/scene-reviews/06-bookshop-cat-seam.jpg",
+        "creative/nooks-animated-all/jobs/bookshop-cat/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/bookshop-cat/review-contact.jpg",
+        "web/ui/public/images/nooks-50/bookshop-cat.webp"
+      ]
+    },
+    {
+      "sceneId": "sunlit-greenhouse",
+      "videoPath": "creative/nooks-animated-all/jobs/sunlit-greenhouse/finished.mp4",
+      "videoSha256": "329c877ab03151ee14e322c4416c5df6509364206ce5b0b4eace269bb238fc9b",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1273609,
+        "frameChangeMean": 0.016292596601684514,
+        "seamChangeMean": 0.044067925347222224,
+        "seamVsTypical": 2.704782204124908,
+        "insideMaskChange": 0.33086829218380437,
+        "outsideMaskChange": 0.00012168586592345323,
+        "peakBrightnessChange": 0.008428457754632745,
+        "motionMaskCoverage": 0.04889214409722222,
+        "videoSha256": "329c877ab03151ee14e322c4416c5df6509364206ce5b0b4eace269bb238fc9b",
+        "sourceArtworkSha256": "73b06ad066e287475fbffbbab4b49569d26b26d56124f9f7b722c0c173aed73b",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "329c877ab03151ee14e322c4416c5df6509364206ce5b0b4eace269bb238fc9b",
+        "frames": 84,
+        "meanFrameChange": 0.016292596601684514,
+        "seamChange": 0.044067925347222224,
+        "seamVsTypical": 2.704782204124908,
+        "outsideMaskChange": 0.00012168586592345323,
+        "insideMaskChange": 0.33086829218380437,
+        "peakBrightnessChange": 0.008428457754632745,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, mask/contact sheet, eight native-resolution central-window, foliage and mug samples, and last-two/first-two window seam crops. Glass bars, pots, mug rim, books, table and architecture remain stable.",
+        "Motion behind the central glass is restrained; foliage and mug effects are very subtle. The sampled window and mask edges show no obvious rectangle, doubled structure or exposure jump. The composed scene remains calm, though full-speed viewing is needed to judge whether rain movement reads naturally rather than as a subtle animated texture.",
+        "Independent full decode reproduces seam ratio 2.7048 and outside-mask change 0.000122 on a 0\u2013255 channel scale. Last/first window samples show no obvious geometry reset or framing jump."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/06-sunlit-greenhouse-fern.jpg",
+        "creative/nooks-release/scene-reviews/06-sunlit-greenhouse-motion.jpg",
+        "creative/nooks-release/scene-reviews/06-sunlit-greenhouse-mug.jpg",
+        "creative/nooks-release/scene-reviews/06-sunlit-greenhouse-seam.jpg",
+        "creative/nooks-animated-all/jobs/sunlit-greenhouse/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/sunlit-greenhouse/review-contact.jpg",
+        "web/ui/public/images/nooks-50/sunlit-greenhouse.webp"
+      ]
+    }
+  ]
+}

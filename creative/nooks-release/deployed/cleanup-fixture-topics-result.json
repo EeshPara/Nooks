@@ -1,0 +1,9 @@
+{
+  "project": "lcfcjglybfeozyrjjikk",
+  "removed_fixture_topics": 105,
+  "reports": [
+    "report-2026-10-08T08-09-50.725Z.json",
+    "report-2026-10-08T08-11-42.801Z.json"
+  ],
+  "guards": "Exact completed fixture topic IDs; no corresponding account or room; shared directory preserved"
+}

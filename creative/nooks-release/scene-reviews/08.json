@@ -1,0 +1,126 @@
+{
+  "reviewId": "08",
+  "reviewer": "scene_review_08",
+  "reviewedAtUtc": "2026-10-08T07:04:57.890576+00:00",
+  "method": "Viewed source artwork, full-resolution poster, producer masks/contact sheets, independently extracted native-resolution motion crops and last-two/first-two seam frames. Fully decoded all 84 frames of each video and independently recomputed adjacent-frame, seam, inside/outside-mask and brightness metrics. Verified SHA-256 before/after decode and at report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to exact visual hashes, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "dragon-rider-study",
+      "videoPath": "creative/nooks-animated-all/jobs/dragon-rider-study/finished.mp4",
+      "videoSha256": "66ccd01e767e3d1e435403d14a1e1d36d9908029220ca9f330c7fdbec07a0823",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 908364,
+        "frameChangeMean": 0.13122659474704373,
+        "seamChangeMean": 0.15872938368055556,
+        "seamVsTypical": 1.2095824324827373,
+        "insideMaskChange": 6.818143779543051,
+        "outsideMaskChange": 0.00014886703455951872,
+        "peakBrightnessChange": 0.104415870949083,
+        "motionMaskCoverage": 0.019225260416666667,
+        "videoSha256": "66ccd01e767e3d1e435403d14a1e1d36d9908029220ca9f330c7fdbec07a0823",
+        "sourceArtworkSha256": "221eb579e62a1fce623fca61dd5f6ce458df9d98c2056feda7f23a5e3a873ca1",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "66ccd01e767e3d1e435403d14a1e1d36d9908029220ca9f330c7fdbec07a0823",
+        "frames": 84,
+        "meanFrameChange": 0.13122659474704373,
+        "seamChange": 0.15872938368055556,
+        "seamVsTypical": 1.2095824324827373,
+        "insideMaskChange": 6.818143779543051,
+        "outsideMaskChange": 0.00014886703455951872,
+        "peakBrightnessChange": 0.104415870949083,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, full-resolution poster, producer mask/contact sheet, eight native-resolution fire and mantel-candle samples, and last-two/first-two seam crops. Stone hearth, logs, tools, dragon statue, banners, furniture and distant architecture retain stable geometry.",
+        "Fire changes naturally within the hearth. Inspected samples do not show doubled flames, a visible rectangular mask edge or displaced logs. Mantel candle flame remains singular and subtle. Source dragons and distant braziers remain still as intended.",
+        "Independent full decode reproduces seam ratio 1.2096, outside-mask change 0.000149 and peak brightness change 0.104416 on a 0\u2013255 scale. Hearth motion is considerably stronger than the Hobbit scene, but localized; perceived speed still requires full-speed playback."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/08-dragon-rider-study-candles-motion.jpg",
+        "creative/nooks-release/scene-reviews/08-dragon-rider-study-candles-seam.jpg",
+        "creative/nooks-release/scene-reviews/08-dragon-rider-study-fire-motion.jpg",
+        "creative/nooks-release/scene-reviews/08-dragon-rider-study-fire-seam.jpg",
+        "creative/nooks-animated-all/jobs/dragon-rider-study/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/dragon-rider-study/review-contact.jpg",
+        "web/ui/public/images/nooks-50/dragon-rider-study.webp"
+      ]
+    },
+    {
+      "sceneId": "hobbit-study",
+      "videoPath": "creative/nooks-animated-all/jobs/hobbit-study/finished.mp4",
+      "videoSha256": "8299b13c6d2c3e8c50a3e0f2333bcfb6836d4ffd9ea5a6dcce389ed220ac11f8",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 835568,
+        "frameChangeMean": 0.003915314033913431,
+        "seamChangeMean": 0.011647858796296297,
+        "seamVsTypical": 2.974948802421869,
+        "insideMaskChange": 0.290424891749408,
+        "outsideMaskChange": 4.611769560978264e-05,
+        "peakBrightnessChange": 0.013550708912035248,
+        "motionMaskCoverage": 0.013324652777777777,
+        "videoSha256": "8299b13c6d2c3e8c50a3e0f2333bcfb6836d4ffd9ea5a6dcce389ed220ac11f8",
+        "sourceArtworkSha256": "a286ccaceabf5cd4d79cf6d893d7e9670770a99b7c683f3c3bb23f14a359a633",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "8299b13c6d2c3e8c50a3e0f2333bcfb6836d4ffd9ea5a6dcce389ed220ac11f8",
+        "frames": 84,
+        "meanFrameChange": 0.003915314033913431,
+        "seamChange": 0.011647858796296297,
+        "seamVsTypical": 2.974948802421869,
+        "insideMaskChange": 0.290424891749408,
+        "outsideMaskChange": 4.611769560978264e-05,
+        "peakBrightnessChange": 0.013550708912035248,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, full-resolution poster, producer mask/contact sheet, eight native-resolution mug/steam and doorway-leaf samples, and last-two/first-two seam crops. Round doorway, chair back, mug rim/handle, flooring, countryside and furniture retain stable geometry.",
+        "Steam is restrained and transparent, with no opaque smoke plume or obvious cutout boundary. Leaf movement is very slight. No duplicated objects, doubled flame tips or mask ghosts are visible in sampled regions.",
+        "Independent full decode reproduces seam ratio 2.9749, outside-mask change 0.000046 and peak brightness change 0.013551 on a 0\u2013255 scale. Last/first crops show no obvious geometry reset."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/08-hobbit-study-leaves-motion.jpg",
+        "creative/nooks-release/scene-reviews/08-hobbit-study-leaves-seam.jpg",
+        "creative/nooks-release/scene-reviews/08-hobbit-study-steam-motion.jpg",
+        "creative/nooks-release/scene-reviews/08-hobbit-study-steam-seam.jpg",
+        "creative/nooks-animated-all/jobs/hobbit-study/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/hobbit-study/review-contact.jpg",
+        "web/ui/public/images/nooks-50/hobbit-study.webp"
+      ]
+    }
+  ]
+}

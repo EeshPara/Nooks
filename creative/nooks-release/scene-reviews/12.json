@@ -1,0 +1,129 @@
+{
+  "reviewId": "12",
+  "reviewer": "scene_review_12",
+  "reviewedAtUtc": "2026-10-08T07:18:45.285045+00:00",
+  "method": "Viewed actual source artwork, producer masks/contact sheets, independently extracted native-resolution motion and last-two/first-two seam crops. Fully decoded all 84 frames per video and independently recomputed adjacent-frame, seam, inside/outside-mask and brightness metrics. Compared Sakura source and video blossom cluster at 3x enlargement. Verified SHA-256 before/after decode and at report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to exact visual hashes, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "pokemon-research-cottage",
+      "videoPath": "creative/nooks-animated-all/jobs/pokemon-research-cottage/finished.mp4",
+      "videoSha256": "532d99a6c24e6193a2b0acad9db763c11fc475830e1d145e280c4b67e2f8c1ae",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 868009,
+        "frameChangeMean": 0.013216999944221333,
+        "seamChangeMean": 0.024189091435185186,
+        "seamVsTypical": 1.830149923376599,
+        "insideMaskChange": 1.5513131811131995,
+        "outsideMaskChange": 5.419036561224434e-05,
+        "peakBrightnessChange": 0.01717809606481069,
+        "motionMaskCoverage": 0.008485243055555555,
+        "videoSha256": "532d99a6c24e6193a2b0acad9db763c11fc475830e1d145e280c4b67e2f8c1ae",
+        "sourceArtworkSha256": "882647bfb41fb98dbfb25e820063b119a5194f1f88d6db1771d16249eb2e7509",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "532d99a6c24e6193a2b0acad9db763c11fc475830e1d145e280c4b67e2f8c1ae",
+        "frames": 84,
+        "meanFrameChange": 0.013216999944221333,
+        "seamChange": 0.024189091435185186,
+        "seamVsTypical": 1.830149923376599,
+        "insideMaskChange": 1.5513131811131995,
+        "outsideMaskChange": 5.419036561224434e-05,
+        "peakBrightnessChange": 0.01717809606481069,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, motion mask, producer contact sheet, eight native-resolution samples of stove fire and mug steam, and last-two/first-two seam crops. Sleeping creature, ears, face, stove door, mug, crates, terrariums and landscape remain stable.",
+        "Stove flame changes stay inside the firebox without displaced duplicate flames or movement across the creature silhouette. Mug vapor is faint and transparent in sampled frames; the cup rim and background crates remain legible.",
+        "Independent full decode of all 84 frames reproduces seam ratio 1.8301 and outside-mask change 0.000054. Boundary samples show no obvious additional geometry jump."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/12-pokemon-research-cottage-fire-motion.jpg",
+        "creative/nooks-release/scene-reviews/12-pokemon-research-cottage-fire-seam.jpg",
+        "creative/nooks-release/scene-reviews/12-pokemon-research-cottage-steam-motion.jpg",
+        "creative/nooks-release/scene-reviews/12-pokemon-research-cottage-steam-seam.jpg",
+        "creative/nooks-animated-all/jobs/pokemon-research-cottage/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/pokemon-research-cottage/review-contact.jpg",
+        "web/ui/public/images/nooks-50/pokemon-research-cottage.webp"
+      ]
+    },
+    {
+      "sceneId": "sakura-garden",
+      "videoPath": "creative/nooks-animated-all/jobs/sakura-garden/finished.mp4",
+      "videoSha256": "a18af1bde51976ce9cc6948e0e872357b0a8d915c01a1d79e3009149799b4d7d",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1143768,
+        "frameChangeMean": 0.034950178317436416,
+        "seamChangeMean": 0.03792426215277778,
+        "seamVsTypical": 1.0850949545472737,
+        "insideMaskChange": 0.9289932762414597,
+        "outsideMaskChange": 0.00014979128165392864,
+        "peakBrightnessChange": 0.01295862268517567,
+        "motionMaskCoverage": 0.03746636284722222,
+        "videoSha256": "a18af1bde51976ce9cc6948e0e872357b0a8d915c01a1d79e3009149799b4d7d",
+        "sourceArtworkSha256": "369fa1f048350d3f18220d2c1604da68f9ce4f08782fac6e22d85981adbcb28f",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "a18af1bde51976ce9cc6948e0e872357b0a8d915c01a1d79e3009149799b4d7d",
+        "frames": 84,
+        "meanFrameChange": 0.034950178317436416,
+        "seamChange": 0.03792426215277778,
+        "seamVsTypical": 1.0850949545472737,
+        "insideMaskChange": 0.9289932762414597,
+        "outsideMaskChange": 0.00014979128165392864,
+        "peakBrightnessChange": 0.01295862268517567,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, motion mask, producer contact sheet, eight native-resolution samples of blossom and pond regions, and last-two/first-two seam crops. Desk, book, brush, mug, buildings, bridge, pond edges and loose desk petals retain their source geometry.",
+        "Animated blossom cluster produces persistent translucent duplicate petals and branch outlines where the generated image moves against the retained source. This is visible in native-resolution samples and confirmed by a 3x source/frame-12 comparison. The cluster looks softly doubled rather than like singular flowers swaying.",
+        "Pond ripples and reflected light vary gently without obvious hard mask boundaries. Independent full decode of all 84 frames reproduces seam ratio 1.0851 and outside-mask change 0.000150; passing technical metrics do not detect the blossom compositing defect."
+      ],
+      "requiredChanges": [
+        "Disable the misaligned blossom animation while preserving the pond motion, or repair blossom compositing so each flower and branch remains singular. Re-render and independently review the new hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/12-sakura-garden-blossoms-motion.jpg",
+        "creative/nooks-release/scene-reviews/12-sakura-garden-blossoms-seam.jpg",
+        "creative/nooks-release/scene-reviews/12-sakura-garden-pond-motion.jpg",
+        "creative/nooks-release/scene-reviews/12-sakura-garden-pond-seam.jpg",
+        "creative/nooks-release/scene-reviews/12-sakura-garden-source-compare.jpg",
+        "creative/nooks-animated-all/jobs/sakura-garden/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/sakura-garden/review-contact.jpg",
+        "web/ui/public/images/nooks-50/sakura-garden.webp"
+      ]
+    }
+  ]
+}

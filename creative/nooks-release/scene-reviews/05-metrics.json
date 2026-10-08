@@ -1,0 +1,26 @@
+{
+  "stardew-farmhouse": {
+    "videoSha256": "ace64b3020c2c7720b5e4815aed85e91577d1e353162b8329e3ac4a76b211fa5",
+    "frames": 84,
+    "meanFrameChange": 0.043844958828369036,
+    "seamChange": 0.0732787181712963,
+    "seamVsTypical": 1.6713145622543661,
+    "outsideMaskChange": 0.00024050885905666376,
+    "insideMaskChange": 2.381624869849769,
+    "peakBrightnessChange": 0.03846643518518533,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "spirited-bathhouse": {
+    "videoSha256": "d477d0d8d05eb815fe722c93cc27dd0bf164d33411ff4e2b301666e1dca9d780",
+    "frames": 84,
+    "meanFrameChange": 0.016571864715807676,
+    "seamChange": 0.058481264467592595,
+    "seamVsTypical": 3.5289489427106,
+    "outsideMaskChange": 0.00018616937776363442,
+    "insideMaskChange": 0.3863333252204872,
+    "peakBrightnessChange": 0.008984736689811257,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

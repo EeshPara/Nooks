@@ -1,0 +1,102 @@
+{
+  "forest-bed.mp3": {
+    "seconds": 43.0,
+    "bytes": 516956,
+    "lufs": -23.57,
+    "true_peak_db": -12.06,
+    "lra": 1.5,
+    "seam_jump": 0.002153,
+    "near_seam_max_sample_jump": 0.024498,
+    "clipped_samples": 0
+  },
+  "hearth-fire.mp3": {
+    "seconds": 34.0,
+    "bytes": 408809,
+    "lufs": -21.13,
+    "true_peak_db": -5.1,
+    "lra": 1.4,
+    "seam_jump": 0.000911,
+    "near_seam_max_sample_jump": 0.019862,
+    "clipped_samples": 0
+  },
+  "night-bed.mp3": {
+    "seconds": 47.0,
+    "bytes": 564916,
+    "lufs": -25.8,
+    "true_peak_db": -14.12,
+    "lra": 1.7,
+    "seam_jump": 0.019218,
+    "near_seam_max_sample_jump": 0.035056,
+    "clipped_samples": 0
+  },
+  "rain-window.mp3": {
+    "seconds": 34.0,
+    "bytes": 408809,
+    "lufs": -20.62,
+    "true_peak_db": -5.28,
+    "lra": 2.0,
+    "seam_jump": 0.055206,
+    "near_seam_max_sample_jump": 0.139184,
+    "clipped_samples": 0
+  },
+  "room-bed.mp3": {
+    "seconds": 35.0,
+    "bytes": 420720,
+    "lufs": -27.69,
+    "true_peak_db": -12.07,
+    "lra": 1.3,
+    "seam_jump": 0.001934,
+    "near_seam_max_sample_jump": 0.012112,
+    "clipped_samples": 0
+  },
+  "stove-fire.mp3": {
+    "seconds": 34.0,
+    "bytes": 408809,
+    "lufs": -21.08,
+    "true_peak_db": -5.19,
+    "lra": 2.5,
+    "seam_jump": 0.007634,
+    "near_seam_max_sample_jump": 0.01153,
+    "clipped_samples": 0
+  },
+  "stream-bed.mp3": {
+    "seconds": 43.0,
+    "bytes": 516956,
+    "lufs": -23.72,
+    "true_peak_db": -6.54,
+    "lra": 1.5,
+    "seam_jump": 0.006046,
+    "near_seam_max_sample_jump": 0.056909,
+    "clipped_samples": 0
+  },
+  "train-bed.mp3": {
+    "seconds": 29.0,
+    "bytes": 348936,
+    "lufs": -24.74,
+    "true_peak_db": -11.71,
+    "lra": 1.8,
+    "seam_jump": 0.002887,
+    "near_seam_max_sample_jump": 0.010256,
+    "clipped_samples": 0
+  },
+  "waves-bed.mp3": {
+    "seconds": 51.0,
+    "bytes": 612877,
+    "lufs": -23.18,
+    "true_peak_db": -10.04,
+    "lra": 3.8,
+    "seam_jump": 0.002666,
+    "near_seam_max_sample_jump": 0.029156,
+    "clipped_samples": 0
+  },
+  "wind-bed.mp3": {
+    "seconds": 43.0,
+    "bytes": 516956,
+    "lufs": -24.7,
+    "true_peak_db": -6.42,
+    "lra": 6.6,
+    "seam_jump": 0.009917,
+    "near_seam_max_sample_jump": 0.08051,
+    "clipped_samples": 0
+  }
+}

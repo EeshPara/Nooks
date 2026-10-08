@@ -1,0 +1,38 @@
+{
+  "startedAt": "2026-10-08T08:27:51.031Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "fixtureCount": 1,
+  "passed": true,
+  "cleanup": [
+    {
+      "type": "session_revoke",
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "ok": true
+    }
+  ],
+  "limits": [
+    "Admin-confirmed disposable identity bypasses email onboarding; no persistent canary setup or scheduling.",
+    "Workspace GET is read-oriented but invokes normal identity/quota bookkeeping and may hydrate legacy state."
+  ],
+  "fixtureAuthId": "ade35b62-2f64-4ac8-ae35-4e4987fd55ac",
+  "fixtureAccountId": "d4ace0b3-6877-4367-8d05-a5234c1e935a",
+  "fixtureThrottleTopics": [
+    "account:d4ace0b3-6877-4367-8d05-a5234c1e935a"
+  ],
+  "probeReport": "authenticated-probe-live-2026-10-08T08-27-51.030Z.json",
+  "probePassed": true,
+  "cleanupVerification": {
+    "accountsRemaining": 0,
+    "accountQueryOk": true,
+    "authAbsent": true
+  },
+  "finishedAt": "2026-10-08T08:28:01.046Z"
+}

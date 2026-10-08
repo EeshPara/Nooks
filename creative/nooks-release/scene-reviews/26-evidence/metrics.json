@@ -1,0 +1,230 @@
+{
+  "neon-tokyo": {
+    "videoSha256": "1b784cacfcc6d631843a29edfa917b8aeec8e7d1678aa2a302b5919dbeb5af6b",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.001488619408188309,
+    "seamChange": 0.0008998842592592592,
+    "seamVsTypical": 0.6045092884785396,
+    "insideMaskChange": 0.4468301096621033,
+    "outsideMaskChange": 0.00026560638053784103,
+    "peakBrightnessChange": 0.009168113425928937,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "skyline": {
+        "box": [
+          260,
+          70,
+          770,
+          470
+        ],
+        "minBrightnessFrame": 4,
+        "maxBrightnessFrame": 1,
+        "brightnessRange": 0.00010784313725764605,
+        "meanTemporalRange": 0.0004754901960784314,
+        "maxPixelRange": 2
+      },
+      "steam": {
+        "box": [
+          825,
+          495,
+          900,
+          590
+        ],
+        "minBrightnessFrame": 81,
+        "maxBrightnessFrame": 18,
+        "brightnessRange": 3.5920467836257295,
+        "meanTemporalRange": 4.120654970760234,
+        "maxPixelRange": 21
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/26-evidence/neon-tokyo-skyline-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/neon-tokyo-skyline-source-seam.png",
+      "creative/nooks-release/scene-reviews/26-evidence/neon-tokyo-steam-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/neon-tokyo-steam-source-seam.png"
+    ],
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ]
+  },
+  "cyberpunk-rain-loft": {
+    "videoSha256": "59ded8e2a4a4763462bbabff70ab17c12c878c86c580ef1b36bc1795afbb4e2d",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.005666786067882642,
+    "seamChange": 0.021313295717592592,
+    "seamVsTypical": 3.7610905833182735,
+    "insideMaskChange": 0.23626671067832977,
+    "outsideMaskChange": 5.3650190402601844e-05,
+    "peakBrightnessChange": 0.004489293981478681,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "skyline": {
+        "box": [
+          510,
+          20,
+          1040,
+          340
+        ],
+        "minBrightnessFrame": 78,
+        "maxBrightnessFrame": 0,
+        "brightnessRange": 9.237421383545552e-05,
+        "meanTemporalRange": 0.0007173742138364779,
+        "maxPixelRange": 4
+      },
+      "canal": {
+        "box": [
+          560,
+          330,
+          940,
+          450
+        ],
+        "minBrightnessFrame": 76,
+        "maxBrightnessFrame": 59,
+        "brightnessRange": 0.15679093567251812,
+        "meanTemporalRange": 2.1778728070175437,
+        "maxPixelRange": 54
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/26-evidence/cyberpunk-rain-loft-skyline-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/cyberpunk-rain-loft-skyline-source-seam.png",
+      "creative/nooks-release/scene-reviews/26-evidence/cyberpunk-rain-loft-canal-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/cyberpunk-rain-loft-canal-source-seam.png"
+    ],
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ]
+  },
+  "sumeru-akademiya": {
+    "videoSha256": "59fd09b9c0919d258433e798564865d8c8bbaf359173bde28420d537a5131291",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.003293129113676929,
+    "seamChange": 0.007664207175925926,
+    "seamVsTypical": 2.3273327316852415,
+    "insideMaskChange": 0.5454258262707249,
+    "outsideMaskChange": 2.046019615045815e-05,
+    "peakBrightnessChange": 0.0017296006944320652,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "leaves": {
+        "box": [
+          1060,
+          25,
+          1155,
+          155
+        ],
+        "minBrightnessFrame": 0,
+        "maxBrightnessFrame": 0,
+        "brightnessRange": 0.0,
+        "meanTemporalRange": 0.00016194331983805668,
+        "maxPixelRange": 1
+      },
+      "waterfall": {
+        "box": [
+          825,
+          245,
+          915,
+          365
+        ],
+        "minBrightnessFrame": 72,
+        "maxBrightnessFrame": 47,
+        "brightnessRange": 0.38398148148147015,
+        "meanTemporalRange": 4.422253086419753,
+        "maxPixelRange": 65
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/26-evidence/sumeru-akademiya-leaves-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/sumeru-akademiya-leaves-source-seam.png",
+      "creative/nooks-release/scene-reviews/26-evidence/sumeru-akademiya-waterfall-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/sumeru-akademiya-waterfall-source-seam.png"
+    ],
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ]
+  },
+  "aurora-cabin": {
+    "videoSha256": "0b1b2a9ef34b95e944d94bb4ad0b2604e11668d4c10d322da3cdfceb30df3cbf",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.03472253161953368,
+    "seamChange": 0.02897316261574074,
+    "seamVsTypical": 0.8344196481180955,
+    "insideMaskChange": 5.120138668851159,
+    "outsideMaskChange": 7.767445694436933e-05,
+    "peakBrightnessChange": 0.0690129484953701,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "aurora": {
+        "box": [
+          450,
+          30,
+          1050,
+          290
+        ],
+        "minBrightnessFrame": 4,
+        "maxBrightnessFrame": 0,
+        "brightnessRange": 1.9230769225941913e-05,
+        "meanTemporalRange": 7.051282051282051e-05,
+        "maxPixelRange": 2
+      },
+      "stove": {
+        "box": [
+          0,
+          350,
+          120,
+          475
+        ],
+        "minBrightnessFrame": 47,
+        "maxBrightnessFrame": 53,
+        "brightnessRange": 5.043488888888888,
+        "meanTemporalRange": 11.578577777777777,
+        "maxPixelRange": 159
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/26-evidence/aurora-cabin-aurora-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/aurora-cabin-aurora-source-seam.png",
+      "creative/nooks-release/scene-reviews/26-evidence/aurora-cabin-stove-motion.png",
+      "creative/nooks-release/scene-reviews/26-evidence/aurora-cabin-stove-source-seam.png"
+    ],
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "reviewId": "16",
+  "reviewer": "scene_review_16",
+  "reviewedAtUtc": "2026-10-08T07:31:27.558529+00:00",
+  "method": "Viewed actual source artwork, producer mask/contact sheets, independently extracted native-resolution source/motion/last-two-first-two seam crops; fully decoded all 84 frames and independently recomputed adjacent/seam/mask/brightness metrics. SHA checked before decode and report creation.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to exact-hash sampled visual evidence, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "frog-pond-studio",
+      "videoPath": "creative/nooks-animated-all/jobs/frog-pond-studio/finished.mp4",
+      "videoSha256": "134ea0623e4511c33492987cf63229a206e8bf8a786ff216d12e76e49f7e7d68",
+      "qaMatchesVideo": true,
+      "verdict": "needs_correction",
+      "scope": "Exact-SHA sampled visuals and independent full decode; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1335975,
+        "frameChangeMean": 0.09560565613147033,
+        "seamChangeMean": 0.048194806134259256,
+        "seamVsTypical": 0.5040999464297914,
+        "insideMaskChange": 2.2805520228823597,
+        "outsideMaskChange": 7.866618428140388e-05,
+        "peakBrightnessChange": 0.015996455439818646,
+        "motionMaskCoverage": 0.04188910590277778,
+        "videoSha256": "134ea0623e4511c33492987cf63229a206e8bf8a786ff216d12e76e49f7e7d68",
+        "sourceArtworkSha256": "010f8538b727158e25232962bed74ae6e29094c08eeb613db1469bcfe9a4f82c",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "134ea0623e4511c33492987cf63229a206e8bf8a786ff216d12e76e49f7e7d68",
+        "frames": 84,
+        "meanFrameChange": 0.09560565613147033,
+        "seamChange": 0.048194806134259256,
+        "seamVsTypical": 0.5040999464297914,
+        "insideMaskChange": 2.2805520228823597,
+        "outsideMaskChange": 7.866618428140388e-05,
+        "peakBrightnessChange": 0.015996455439818646,
+        "qaMatchesVideo": true
+      },
+      "findings": [
+        "Actual source art and independently extracted native-resolution samples retain the bridge, studio, frog, flower stems, furniture and broad lily-pad silhouettes. Full decode completed for all 84 frames; outside-mask movement is negligible.",
+        "The intended small water ripples become thick, pale concentric bands around frames 40\u201368. At frames 48, 56, 60 and 68, the right arc visibly passes over the right foreground lily pad instead of being occluded by its surface. The new rings read as a graphic overlay, weakening the realistic, restful motion requested.",
+        "Last-two/first-two crops show no obvious geometric seam jump; the measured seam ratio is 0.5041. A numerical seam pass does not resolve the visible water/leaf compositing problem. The front cup is stationary; tea steam mentioned in the prompt was not included in the final motion mask."
+      ],
+      "requiredChanges": [
+        "Remove rings from the solid lily-pad surfaces and reduce the broad pale bands to restrained, believable water motion. Preserve source geometry and independently review the corrected exact hash before publishing."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/16-evidence/frog-pond-studio-motion.png",
+        "creative/nooks-release/scene-reviews/16-evidence/frog-pond-studio-seam.png",
+        "creative/nooks-release/scene-reviews/16-evidence/frog-pond-studio-source-compare.png",
+        "creative/nooks-release/scene-reviews/16-evidence/frog-ring-detail.png",
+        "creative/nooks-animated-all/jobs/frog-pond-studio/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/frog-pond-studio/review-contact.jpg",
+        "web/ui/public/images/nooks-50/frog-pond-studio.webp"
+      ]
+    },
+    {
+      "sceneId": "kuromi-midnight-desk",
+      "videoPath": "creative/nooks-animated-all/jobs/kuromi-midnight-desk/finished.mp4",
+      "videoSha256": "518038931ae5f2a34738f559e68800a02c913e0c839e682ad8a60c6ff917b047",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full decode; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 610856,
+        "frameChangeMean": 0.00876872943161535,
+        "seamChangeMean": 0.032836371527777776,
+        "seamVsTypical": 3.7447125930682015,
+        "insideMaskChange": 1.0408804736832244,
+        "outsideMaskChange": 5.4522575334449215e-05,
+        "peakBrightnessChange": 0.015278501157403923,
+        "motionMaskCoverage": 0.008372395833333334,
+        "videoSha256": "518038931ae5f2a34738f559e68800a02c913e0c839e682ad8a60c6ff917b047",
+        "sourceArtworkSha256": "d4c5d67be47b751a95ce3ce89e02217774a843ee1abaefc13f38f96a0993a37d",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "518038931ae5f2a34738f559e68800a02c913e0c839e682ad8a60c6ff917b047",
+        "frames": 84,
+        "meanFrameChange": 0.00876872943161535,
+        "seamChange": 0.032836371527777776,
+        "seamVsTypical": 3.7447125930682015,
+        "insideMaskChange": 1.0408804736832244,
+        "outsideMaskChange": 5.4522575334449215e-05,
+        "peakBrightnessChange": 0.015278501157403923,
+        "qaMatchesVideo": true
+      },
+      "findings": [
+        "Actual source art and eight native-resolution motion samples retain the mug rim, bedspread texture, furniture, plush characters, notebook and background architecture without visible doubled or shifted rigid geometry.",
+        "The sole moving region is a restrained translucent steam wisp immediately above the mug. It changes gently in the sampled frames without an opaque smoke plume or altered mug silhouette. Intentional stillness of the plush toys, lamp and sleeping cat is consistent with this scene.",
+        "Full decode completed for all 84 frames. The seam ratio is 3.7447, close to but below the producer threshold of 4; last-two/first-two crops show only a small steam/exposure difference rather than a hard geometric jump. Repeated full-speed viewing remains needed to assess perceived seam smoothness."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/16-evidence/kuromi-midnight-desk-motion.png",
+        "creative/nooks-release/scene-reviews/16-evidence/kuromi-midnight-desk-seam.png",
+        "creative/nooks-release/scene-reviews/16-evidence/kuromi-midnight-desk-source-compare.png",
+        "creative/nooks-animated-all/jobs/kuromi-midnight-desk/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/kuromi-midnight-desk/review-contact.jpg",
+        "web/ui/public/images/nooks-50/kuromi-midnight-desk.webp"
+      ]
+    }
+  ]
+}

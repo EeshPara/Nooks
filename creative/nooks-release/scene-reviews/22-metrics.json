@@ -1,0 +1,92 @@
+{
+  "woodland-treehouse": {
+    "videoSha256": "0d47988831420a567777c5c18debd9c8b7b3df943c6908a75875e29e0f718128",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.016706927536535028,
+    "seamChange": 0.025170355902777778,
+    "seamVsTypical": 1.5065819761134873,
+    "insideMaskChange": 0.49374149089593794,
+    "outsideMaskChange": 7.79216290690184e-05,
+    "peakBrightnessChange": 0.04332465277778397,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "mist": {
+        "box": [
+          565,
+          290,
+          835,
+          470
+        ],
+        "minBrightnessFrame": 76,
+        "maxBrightnessFrame": 27,
+        "brightnessRange": 9.219533607681754,
+        "maxPixelRange": 43
+      },
+      "steam": {
+        "box": [
+          800,
+          440,
+          880,
+          575
+        ],
+        "minBrightnessFrame": 80,
+        "maxBrightnessFrame": 27,
+        "brightnessRange": 0.9030246913580271,
+        "maxPixelRange": 22
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/22-woodland-treehouse-mist-motion.png",
+      "creative/nooks-release/scene-reviews/22-woodland-treehouse-mist-source-seam.png",
+      "creative/nooks-release/scene-reviews/22-woodland-treehouse-steam-motion.png",
+      "creative/nooks-release/scene-reviews/22-woodland-treehouse-steam-source-seam.png"
+    ]
+  },
+  "aurora-cabin": {
+    "videoSha256": "50df02ecab1fa943906ebc934957054628a9da37125b6fd234713cf0fc3ce51d",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.11281729783718207,
+    "seamChange": 0.11073603877314815,
+    "seamVsTypical": 0.981551950774095,
+    "insideMaskChange": 1.1262125250437414,
+    "outsideMaskChange": 0.00023954830529463388,
+    "peakBrightnessChange": 0.08297272858796134,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "aurora": {
+        "box": [
+          450,
+          30,
+          1050,
+          290
+        ],
+        "minBrightnessFrame": 78,
+        "maxBrightnessFrame": 24,
+        "brightnessRange": 3.3589935897435765,
+        "maxPixelRange": 91
+      },
+      "stove": {
+        "box": [
+          0,
+          350,
+          120,
+          475
+        ],
+        "minBrightnessFrame": 47,
+        "maxBrightnessFrame": 53,
+        "brightnessRange": 5.033022222222222,
+        "maxPixelRange": 158
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/22-aurora-cabin-aurora-motion.png",
+      "creative/nooks-release/scene-reviews/22-aurora-cabin-aurora-source-seam.png",
+      "creative/nooks-release/scene-reviews/22-aurora-cabin-stove-motion.png",
+      "creative/nooks-release/scene-reviews/22-aurora-cabin-stove-source-seam.png"
+    ]
+  }
+}

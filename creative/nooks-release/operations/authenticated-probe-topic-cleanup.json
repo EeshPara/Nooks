@@ -1,0 +1,8 @@
+{
+  "project": "lcfcjglybfeozyrjjikk",
+  "topic": "account:d4ace0b3-6877-4367-8d05-a5234c1e935a",
+  "guardedDeleteRemoved": 0,
+  "verifiedFixtureAccounts": 0,
+  "verifiedFixtureTopics": 0,
+  "note": "Read-only canary initialization left no private throttle topic; absence verified."
+}

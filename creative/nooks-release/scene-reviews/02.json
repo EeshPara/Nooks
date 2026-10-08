@@ -1,0 +1,126 @@
+{
+  "reviewId": "02",
+  "reviewedAtUtc": "2026-10-08T06:41:56.961763+00:00",
+  "reviewer": "scene_review_02",
+  "method": "Inspected original source art, producer masks/contact sheets, and independently extracted half-second crop sequences plus final/first full-scene pairs with view_image. Independently decoded every video frame and recomputed mean adjacent-frame difference, seam difference and seam ratio. SHA-256 checked before and after decode and again before report write.",
+  "limitations": [
+    "No real-time motion playback or ambience audition performed.",
+    "Approval is limited to the exact visual assets below, not integrated product or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "totoro-forest-window",
+      "videoPath": "creative/nooks-animated-all/jobs/totoro-forest-window/finished.mp4",
+      "videoSha256": "0479ba4ce3322d476ab73529d1f5db3fadc78ed83c18ab8926965f836bd5ad4c",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA frame sampling and full-decode technical QA only",
+      "scoresOutOf10": {
+        "naturalMotionPlausibility": 7,
+        "stableFurnitureAndCamera": 9,
+        "effectContainment": 9,
+        "artifactControl": 8,
+        "loopSeam": 7
+      },
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1305853,
+        "frameChangeMean": 0.059774671603078984,
+        "seamChangeMean": 0.2022583912037037,
+        "seamVsTypical": 3.383680508472846,
+        "insideMaskChange": 0.42028476395732656,
+        "outsideMaskChange": 0.00019494003212483768,
+        "peakBrightnessChange": 0.025181929976852757,
+        "motionMaskCoverage": 0.141826171875,
+        "videoSha256": "0479ba4ce3322d476ab73529d1f5db3fadc78ed83c18ab8926965f836bd5ad4c",
+        "sourceArtworkSha256": "b279fe7d39aa10348774b9a74bdcaed267687e42c151911b88bb7f15953d6b25",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "independentMeanFrameChange": 0.059774671603078984,
+        "independentSeamChange": 0.2022583912037037,
+        "independentSeamVsTypical": 3.383680508472846
+      },
+      "evidence": [
+        "creative/nooks-release/scene-reviews/02-original-art.jpg",
+        "creative/nooks-release/scene-reviews/02-totoro-forest-window-sequence.jpg",
+        "creative/nooks-release/scene-reviews/02-totoro-forest-window-seam.jpg",
+        "creative/nooks-animated-all/jobs/totoro-forest-window/mask-review.jpg"
+      ],
+      "findings": [
+        "Original composition, sleeping cat, desk objects, window frame, tree trunk and roof edges remain aligned in sampled frames.",
+        "Rain/light changes are very subdued and remain in the garden. No obvious drifting mask boundary or room spill appears in first/middle/last or half-second samples.",
+        "Mug steam and leaf movement are too subtle to judge convincingly from sampled frames; this is an intentionally quiet effect, not evidence of full environmental motion.",
+        "Independent full decode confirms the repaired 3.3837x seam ratio passes the existing less-than-4 gate; absolute full-frame seam difference is 0.2023 on a 0\u2013255 channel scale. This is a narrower margin than Alpine and should still receive repeated playback review."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Check repeated full-speed playback for a faint garden reset every 3.5 seconds.",
+        "Audition integrated forest/rain ambience and verify it feels consistent with an open garden window."
+      ]
+    },
+    {
+      "sceneId": "slytherin-common-room",
+      "videoPath": "creative/nooks-animated-all/jobs/slytherin-common-room/finished.mp4",
+      "videoSha256": "02f77614ff872ecc10e2f9ea11301302b382533dff91444bfdd85183539a4fd1",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA frame sampling and full-decode technical QA only",
+      "scoresOutOf10": {
+        "naturalMotionPlausibility": 7,
+        "stableFurnitureAndCamera": 9,
+        "effectContainment": 9,
+        "artifactControl": 8,
+        "loopSeam": 8
+      },
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 917324,
+        "frameChangeMean": 0.04259717690205265,
+        "seamChangeMean": 0.10881438078703703,
+        "seamVsTypical": 2.5544974737937047,
+        "insideMaskChange": 0.6242774770834543,
+        "outsideMaskChange": 0.0002963188009036599,
+        "peakBrightnessChange": 0.03237883391203411,
+        "motionMaskCoverage": 0.06779188368055555,
+        "videoSha256": "02f77614ff872ecc10e2f9ea11301302b382533dff91444bfdd85183539a4fd1",
+        "sourceArtworkSha256": "cde2f47ab1601e2aa3661fe11fefadaea69b8817919032badf24eab30250086f",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "independentMeanFrameChange": 0.04259717690205265,
+        "independentSeamChange": 0.10881438078703703,
+        "independentSeamVsTypical": 2.5544974737937047
+      },
+      "evidence": [
+        "creative/nooks-release/scene-reviews/02-original-art.jpg",
+        "creative/nooks-release/scene-reviews/02-slytherin-common-room-sequence.jpg",
+        "creative/nooks-release/scene-reviews/02-slytherin-common-room-seam.jpg",
+        "creative/nooks-animated-all/jobs/slytherin-common-room/mask-review.jpg"
+      ],
+      "findings": [
+        "Window arches, furniture, stairs, balcony, floor reflections and camera remain aligned across sampled frames.",
+        "Hearth flame shapes vary subtly and remain inside the opening; sampled frames do not show smoke crossing the stone frame.",
+        "The shark silhouette is deliberately preserved by the revised mask and shows no sampled shape distortion. Underwater window light changes are very subdued.",
+        "Independent full decode confirms a 2.5545x seam ratio and small absolute seam difference of 0.1088, passing the existing technical gate.",
+        "The prominent waterfall on the right and shark remain frozen, limiting the requested sense that everything feels real. This is a product-quality opportunity, not a newly introduced geometry defect."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Review candle/light/fire motion in repeated full-speed playback; samples cannot establish natural timing.",
+        "Consider adding localized downward waterfall motion in a later polish pass while keeping stonework fixed.",
+        "Audition integrated quiet water/fire ambience; sound should not imply a rushing waterfall if the visual remains static."
+      ]
+    }
+  ]
+}

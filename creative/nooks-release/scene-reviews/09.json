@@ -1,0 +1,207 @@
+{
+  "reviewId": "09",
+  "reviewer": "scene_review_09",
+  "reviewedAtUtc": "2026-10-08T07:09:07.538052+00:00",
+  "method": "Viewed source artwork and producer masks/contact sheets; independently extracted source-plus-eight native-resolution motion crops and last-two/first-two seam crops. Decoded all frames and independently recomputed motion/seam/brightness metrics. SHA verified before/after decode and at report writing. One 2x diagnostic comparison explicitly labelled.",
+  "limitations": [
+    "Full-speed playback and audio audition unassessed.",
+    "Approval covers exact-SHA sampled visuals and full-decode metrics only, not integrated product experience or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "velaris-study",
+      "videoPath": "creative/nooks-animated-all/jobs/velaris-study/finished.mp4",
+      "videoSha256": "beec126210620e09ef348e0446dafc44e9a87f2d59bbdcc36cf1471d3c4a79eb",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; full-speed playback and audio unassessed",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1048301,
+        "frameChangeMean": 0.012002266880020079,
+        "seamChangeMean": 0.036545500578703705,
+        "seamVsTypical": 3.044883182821091,
+        "insideMaskChange": 0.28098872321291696,
+        "outsideMaskChange": 5.527954921744075e-05,
+        "peakBrightnessChange": 0.007158203125001705,
+        "motionMaskCoverage": 0.04252604166666667,
+        "videoSha256": "beec126210620e09ef348e0446dafc44e9a87f2d59bbdcc36cf1471d3c4a79eb",
+        "sourceArtworkSha256": "08d5a0a27e1ac42dbe3a1353831aceeff9439a261156ca60be35b4ceaf1fb697",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "beec126210620e09ef348e0446dafc44e9a87f2d59bbdcc36cf1471d3c4a79eb",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.012002266880020079,
+        "seamChange": 0.036545500578703705,
+        "seamVsTypical": 3.044883182821091,
+        "insideMaskChange": 0.28098872321291696,
+        "outsideMaskChange": 5.527954921744075e-05,
+        "peakBrightnessChange": 0.007158203125001705,
+        "qaMatchesVideo": true,
+        "regionFrameChange": {
+          "left-candle": 0.0,
+          "right-candle": 0.0,
+          "river": 0.13462600248834658
+        }
+      },
+      "findings": [
+        "Reviewed corrected source artwork, mask/contact sheet, eight native-resolution samples and last-two/first-two seam crops for both foreground candles and the river. Each candle now has exactly one original flame; both candle crop temporal differences are exactly zero across all 84 decoded frames.",
+        "Only the distant river carries intended visible motion. Sampled bridge, city, foreground furniture and mountain geometry remain stable. The duplicated flames documented in review 07 are resolved for this exact SHA.",
+        "Independent full decode: seam ratio 3.044883, outside-mask change 0.0000553, peak brightness step 0.007158 on a 0\u2013255 scale. River crop mean adjacent-frame change 0.134626 confirms retained motion."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/09-velaris-study-left-candle-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-velaris-study-left-candle-seam.jpg",
+        "creative/nooks-release/scene-reviews/09-velaris-study-right-candle-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-velaris-study-right-candle-seam.jpg",
+        "creative/nooks-release/scene-reviews/09-velaris-study-river-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-velaris-study-river-seam.jpg",
+        "creative/nooks-animated-all/jobs/velaris-study/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/velaris-study/review-contact.jpg",
+        "web/ui/public/images/nooks-50/velaris-study.webp"
+      ]
+    },
+    {
+      "sceneId": "animal-crossing-island",
+      "videoPath": "creative/nooks-animated-all/jobs/animal-crossing-island/finished.mp4",
+      "videoSha256": "5d84b0e92fa74f71cd007aabe6617433708a7c2d468b12a5eedc01590ebe25fe",
+      "qaMatchesVideo": true,
+      "verdict": "changes_required",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; full-speed playback and audio unassessed",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 798213,
+        "frameChangeMean": 0.012139491124219099,
+        "seamChangeMean": 0.02475296585648148,
+        "seamVsTypical": 2.0390447674612697,
+        "insideMaskChange": 0.3749147962569949,
+        "outsideMaskChange": 0.000108350628306006,
+        "peakBrightnessChange": 0.012953559027778283,
+        "motionMaskCoverage": 0.032099609375,
+        "videoSha256": "5d84b0e92fa74f71cd007aabe6617433708a7c2d468b12a5eedc01590ebe25fe",
+        "sourceArtworkSha256": "4f8a88ce047373fc2e05d11cc04d744f7609cef36e6c564dca073e2aeac3f4a4",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "5d84b0e92fa74f71cd007aabe6617433708a7c2d468b12a5eedc01590ebe25fe",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.012139491124219099,
+        "seamChange": 0.02475296585648148,
+        "seamVsTypical": 2.0390447674612697,
+        "insideMaskChange": 0.3749147962569949,
+        "outsideMaskChange": 0.000108350628306006,
+        "peakBrightnessChange": 0.012953559027778283,
+        "qaMatchesVideo": true,
+        "regionFrameChange": {
+          "left-sea": 0.11065656913367757,
+          "door-sea": 0.0884516314595251,
+          "steam": 0.2935385291164659
+        }
+      },
+      "findings": [
+        "Viewed source artwork, producer mask/contact sheet, eight native-resolution ocean/pier, doorway/fence and cup/steam samples, and last-two/first-two seam crops.",
+        "BLOCKER: the left-window pier posts and cliff edge are doubled/ghosted relative to the source. The broad sea mask includes static pier and cliff geometry, allowing shifted generated structures to be blended with the original. This persists in motion and seam samples; the paired source/frame-0 diagnostic makes it clear.",
+        "Cup steam is subtle and transparent and interior furniture is stable. Independent metrics pass (seam ratio 2.039045, outside-mask change 0.0001084), but do not detect this within-mask compositing defect."
+      ],
+      "requiredChanges": [
+        "Restrict ocean masks to open water and exclude pier posts, cliff boundaries, fence and other rigid geometry. Preserve the original single outlines. Refinish and independently review the new SHA before publishing."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/09-animal-crossing-island-door-sea-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-animal-crossing-island-door-sea-seam.jpg",
+        "creative/nooks-release/scene-reviews/09-animal-crossing-island-island-detail.jpg",
+        "creative/nooks-release/scene-reviews/09-animal-crossing-island-left-sea-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-animal-crossing-island-left-sea-seam.jpg",
+        "creative/nooks-release/scene-reviews/09-animal-crossing-island-steam-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-animal-crossing-island-steam-seam.jpg",
+        "creative/nooks-animated-all/jobs/animal-crossing-island/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/animal-crossing-island/review-contact.jpg",
+        "web/ui/public/images/nooks-50/animal-crossing-island.webp"
+      ]
+    },
+    {
+      "sceneId": "cinnamoroll-cloud-cafe",
+      "videoPath": "creative/nooks-animated-all/jobs/cinnamoroll-cloud-cafe/finished.mp4",
+      "videoSha256": "dbf78fa5659789764f5ebe6a088b9c5b01dcfdf6e38f69abdf0a64445074e396",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; full-speed playback and audio unassessed",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 690017,
+        "frameChangeMean": 0.0045727005243195,
+        "seamChangeMean": 0.013994502314814816,
+        "seamVsTypical": 3.060445843847919,
+        "insideMaskChange": 0.16833781722540045,
+        "outsideMaskChange": 6.478729075118909e-05,
+        "peakBrightnessChange": 0.0035434751157481514,
+        "motionMaskCoverage": 0.02678927951388889,
+        "videoSha256": "dbf78fa5659789764f5ebe6a088b9c5b01dcfdf6e38f69abdf0a64445074e396",
+        "sourceArtworkSha256": "4d2f9c1b9fbe073d4dc04ea175c9d953a12ba0f93f08aaebf60d1934d478ce2e",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "dbf78fa5659789764f5ebe6a088b9c5b01dcfdf6e38f69abdf0a64445074e396",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.0045727005243195,
+        "seamChange": 0.013994502314814816,
+        "seamVsTypical": 3.060445843847919,
+        "insideMaskChange": 0.16833781722540045,
+        "outsideMaskChange": 6.478729075118909e-05,
+        "peakBrightnessChange": 0.0035434751157481514,
+        "qaMatchesVideo": true,
+        "regionFrameChange": {
+          "steam": 0.1390345219260882,
+          "clouds": 0.03373418423842342
+        }
+      },
+      "findings": [
+        "Viewed source artwork, producer mask/contact sheet, eight native-resolution latte/steam and cloud samples, and last-two/first-two seam crops.",
+        "Latte steam stays faint and transparent. Cup rim, latte art, plush characters, seats, railings and distant castle retain their shapes in inspected samples. Cloud change is very restrained; no obvious doubled hard edges, displaced geometry or exposed rectangular mask boundary is visible.",
+        "Independent full decode: seam ratio 3.060446, outside-mask change 0.0000648, peak brightness step 0.003543 on a 0\u2013255 scale. Last/first samples show no obvious geometry reset."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/09-cinnamoroll-cloud-cafe-clouds-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-cinnamoroll-cloud-cafe-clouds-seam.jpg",
+        "creative/nooks-release/scene-reviews/09-cinnamoroll-cloud-cafe-steam-motion.jpg",
+        "creative/nooks-release/scene-reviews/09-cinnamoroll-cloud-cafe-steam-seam.jpg",
+        "creative/nooks-animated-all/jobs/cinnamoroll-cloud-cafe/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/cinnamoroll-cloud-cafe/review-contact.jpg",
+        "web/ui/public/images/nooks-50/cinnamoroll-cloud-cafe.webp"
+      ]
+    }
+  ]
+}

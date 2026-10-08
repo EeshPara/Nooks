@@ -1,0 +1,98 @@
+[
+  {
+    "sceneId": "rainy-library",
+    "videoPath": "web/ui/public/videos/nooks-animated-pilot/rainy-library.mp4",
+    "videoSha256": "9e72b3e52637ccec2bda95f3cf9cfbd447914ab46afaf3c16d6712d90c12c355",
+    "independentMetrics": {
+      "frames": 168,
+      "durationSeconds": 7.0,
+      "audioTracks": 0,
+      "meanFrameChange": 0.18636507150629297,
+      "seamChange": 0.8011027922453704,
+      "seamVsTypical": 4.2985672463754545,
+      "insideMaskChange": 0.43217400195877703,
+      "outsideMaskChange": 0.0016702909185951425,
+      "peakBrightnessChange": 0.3117871093749969
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/24-rainy-library-full.png",
+      "creative/nooks-release/scene-reviews/24-rainy-library-skyline-motion.png",
+      "creative/nooks-release/scene-reviews/24-rainy-library-skyline-seam.png",
+      "creative/nooks-release/scene-reviews/24-rainy-library-steam-motion.png",
+      "creative/nooks-release/scene-reviews/24-rainy-library-steam-seam.png"
+    ]
+  },
+  {
+    "sceneId": "howls-moving-study",
+    "videoPath": "web/ui/public/videos/nooks-animated-pilot/howls-moving-study.mp4",
+    "videoSha256": "d9e3d7664770e5e98bf678e099dce7f113fd5233a0a43646adf5919547eb34d5",
+    "independentMetrics": {
+      "frames": 168,
+      "durationSeconds": 7.0,
+      "audioTracks": 0,
+      "meanFrameChange": 0.01977671826485917,
+      "seamChange": 0.051775173611111114,
+      "seamVsTypical": 2.6179861045555426,
+      "insideMaskChange": 1.0464418461863483,
+      "outsideMaskChange": 0.0012615119533488073,
+      "peakBrightnessChange": 0.030331669560183627
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/24-howls-moving-study-full.png",
+      "creative/nooks-release/scene-reviews/24-howls-moving-study-stove-cat-motion.png",
+      "creative/nooks-release/scene-reviews/24-howls-moving-study-stove-cat-seam.png",
+      "creative/nooks-release/scene-reviews/24-howls-moving-study-steam-motion.png",
+      "creative/nooks-release/scene-reviews/24-howls-moving-study-steam-seam.png",
+      "creative/nooks-release/scene-reviews/24-howls-moving-study-lantern-motion.png",
+      "creative/nooks-release/scene-reviews/24-howls-moving-study-lantern-seam.png"
+    ]
+  },
+  {
+    "sceneId": "gryffindor-common-room",
+    "videoPath": "web/ui/public/videos/nooks-animated-pilot/gryffindor-common-room.mp4",
+    "videoSha256": "1ada672679da343f6a1bd1330313f098548288032094ca37691db94d8fe8744f",
+    "independentMetrics": {
+      "frames": 168,
+      "durationSeconds": 7.0,
+      "audioTracks": 0,
+      "meanFrameChange": 0.20422562860390336,
+      "seamChange": 0.23798828125,
+      "seamVsTypical": 1.1653203512061625,
+      "insideMaskChange": 5.231094074055515,
+      "outsideMaskChange": 0.0007672783138211299,
+      "peakBrightnessChange": 0.33110134548611114
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/24-gryffindor-common-room-full.png",
+      "creative/nooks-release/scene-reviews/24-gryffindor-common-room-hearth-motion.png",
+      "creative/nooks-release/scene-reviews/24-gryffindor-common-room-hearth-seam.png",
+      "creative/nooks-release/scene-reviews/24-gryffindor-common-room-cat-motion.png",
+      "creative/nooks-release/scene-reviews/24-gryffindor-common-room-cat-seam.png",
+      "creative/nooks-release/scene-reviews/24-gryffindor-common-room-candles-motion.png",
+      "creative/nooks-release/scene-reviews/24-gryffindor-common-room-candles-seam.png"
+    ]
+  },
+  {
+    "sceneId": "neon-tokyo",
+    "videoPath": "web/ui/public/videos/nooks-animated-all/neon-tokyo.mp4",
+    "videoSha256": "571cbc6963922e1ca5dfb60c9f687e789dd6f3d64aa45e9baab59f31580e3ed9",
+    "independentMetrics": {
+      "frames": 84,
+      "durationSeconds": 3.5,
+      "audioTracks": 0,
+      "meanFrameChange": 0.062330994986892006,
+      "seamChange": 0.21929144965277778,
+      "seamVsTypical": 3.5181766262337706,
+      "insideMaskChange": 0.41223430695055513,
+      "outsideMaskChange": 0.0003493739684153806,
+      "peakBrightnessChange": 0.039076244212964184
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/24-neon-tokyo-full.png",
+      "creative/nooks-release/scene-reviews/24-neon-tokyo-skyline-motion.png",
+      "creative/nooks-release/scene-reviews/24-neon-tokyo-skyline-seam.png",
+      "creative/nooks-release/scene-reviews/24-neon-tokyo-steam-motion.png",
+      "creative/nooks-release/scene-reviews/24-neon-tokyo-steam-seam.png"
+    ]
+  }
+]

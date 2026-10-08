@@ -1,0 +1,78 @@
+{
+  "cloud-cafe": {
+    "videoSha256": "35ec9f16845a1ea8361933f81c7b044f5d09538b9c4dc3b013d99cbecdb960b2",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.008797451089078536,
+    "seamChange": 0.018626663773148148,
+    "seamVsTypical": 2.117279605711243,
+    "insideMaskChange": 0.38123950199198237,
+    "outsideMaskChange": 0.00010488543654074558,
+    "peakBrightnessChange": 0.010987774884256396,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "steam": {
+        "box": [
+          325,
+          390,
+          420,
+          580
+        ],
+        "minBrightnessFrame": 80,
+        "maxBrightnessFrame": 7,
+        "brightnessRange": 3.466352723915051,
+        "maxPixelRange": 38
+      },
+      "clouds": {
+        "box": [
+          620,
+          275,
+          925,
+          410
+        ],
+        "minBrightnessFrame": 4,
+        "maxBrightnessFrame": 35,
+        "brightnessRange": 0.08404776361061295,
+        "maxPixelRange": 7
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/21-cloud-cafe-steam-motion.png",
+      "creative/nooks-release/scene-reviews/21-cloud-cafe-steam-source-seam.png",
+      "creative/nooks-release/scene-reviews/21-cloud-cafe-clouds-motion.png",
+      "creative/nooks-release/scene-reviews/21-cloud-cafe-clouds-source-seam.png"
+    ]
+  },
+  "tiny-mouse-house": {
+    "videoSha256": "83ee2b83842ded38aa91e9a2cafab5bf6797a117599b33e427c211870c679bce",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.004396579373047746,
+    "seamChange": 0.007956452546296296,
+    "seamVsTypical": 1.8096915513618526,
+    "insideMaskChange": 0.5605818023629974,
+    "outsideMaskChange": 3.923677334694736e-05,
+    "peakBrightnessChange": 0.004671947337968163,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "steam": {
+        "box": [
+          1075,
+          420,
+          1235,
+          590
+        ],
+        "minBrightnessFrame": 82,
+        "maxBrightnessFrame": 35,
+        "brightnessRange": 1.7337745098039221,
+        "maxPixelRange": 26
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/21-tiny-mouse-house-steam-motion.png",
+      "creative/nooks-release/scene-reviews/21-tiny-mouse-house-steam-source-seam.png"
+    ]
+  }
+}

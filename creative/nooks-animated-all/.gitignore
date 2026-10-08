@@ -1,0 +1,8 @@
+jobs/
+__pycache__/
+.queue.lock
+budget-ledger.json
+art-review-*.jpg
+mask-review-*.jpg
+
+.finish.lock

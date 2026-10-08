@@ -1,0 +1,26 @@
+{
+  "oxford-library": {
+    "videoSha256": "9a153b3e74cd00004d03cd9d2f297e137025fd7befc0bc5cfc669cdef89a98bd",
+    "frames": 84,
+    "meanFrameChange": 0.052863180278295493,
+    "seamChange": 0.04726128652691841,
+    "seamVsTypical": 0.8940303303379366,
+    "insideMaskChange": 5.725094335624971,
+    "outsideMaskChange": 7.321791353129504e-05,
+    "peakBrightnessChange": 0.06317997685184906,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "capybara-onsen": {
+    "videoSha256": "2c5c965b9c2f417afa143469c84e39e208d426fbeb2944a76de3050fd8c51a48",
+    "frames": 84,
+    "meanFrameChange": 0.08740873239844678,
+    "seamChange": 0.09887080639600754,
+    "seamVsTypical": 1.1311319096278811,
+    "insideMaskChange": 1.3666679830436248,
+    "outsideMaskChange": 0.0004233016072511561,
+    "peakBrightnessChange": 0.010706741898147243,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

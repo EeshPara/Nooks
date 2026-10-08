@@ -1,0 +1,120 @@
+{
+  "reviewId": "03",
+  "reviewer": "scene_review_03",
+  "reviewedAtUtc": "2026-10-08T06:47:11.877220+00:00",
+  "method": "Viewed actual source art, producer contacts and masks, independent frame sequences/native-resolution crops. Fully decoded each asset independently; recomputed seam metrics and checked SHA-256 before/after and at report write.",
+  "limitations": [
+    "No full-speed playback or audio audition.",
+    "Original Midnight failure evidence remains labeled with the original hash; final approval applies only to revised hash.",
+    "The independent revised steam crop missed the lower cup area, so steam assessment uses the producer contact and independent full-frame view."
+  ],
+  "rejectedAssets": [
+    {
+      "sceneId": "midnight-train",
+      "videoSha256": "fb276a4f6aeb190ce52ce5d33dac8398557002e013a1d448a819742208f6777d",
+      "verdict": "needs_visual_revision",
+      "reason": "Disconnected moving tree silhouettes and rectangular sky haze inside the rain masks.",
+      "evidence": "creative/nooks-release/scene-reviews/03-midnight-train-mask-artifact.jpg",
+      "status": "Producer replaced exterior motion with static artwork; revised exact hash reviewed above."
+    }
+  ],
+  "scenes": [
+    {
+      "sceneId": "midnight-train",
+      "videoPath": "creative/nooks-animated-all/jobs/midnight-train/finished.mp4",
+      "videoSha256": "345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Sampled visuals and full-decode technical metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 576650,
+        "frameChangeMean": 0.0010702140157853638,
+        "seamChangeMean": 0.002085865162037037,
+        "seamVsTypical": 1.9490168613670695,
+        "insideMaskChange": 0.5116448229801754,
+        "outsideMaskChange": 5.881024494814145e-05,
+        "peakBrightnessChange": 0.0017245370370417845,
+        "motionMaskCoverage": 0.0019769965277777776,
+        "videoSha256": "345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a",
+        "sourceArtworkSha256": "e2b30eb970daab3c9f75426089b47ae56f06dd10de2f3a0f4fa68ec02e3df41e",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a",
+        "independentMeanFrameChange": 0.0010702140157853636,
+        "independentSeamChange": 0.002085865162037037,
+        "independentSeamVsTypical": 1.94901686136707,
+        "qaMatchesVideo": true
+      },
+      "findings": [
+        "Original candidate fb276a4f6aeb190ce52ce5d33dac8398557002e013a1d448a819742208f6777d was rejected: frames 36/48/60 show disconnected generated trees and rectangular haze inside sky/mountain masks despite technical seam passing 2.9071x. Exact adverse evidence retained in 03-midnight-train-mask-artifact.jpg and original sequence/seam sheets.",
+        "Producer removed the exterior motion masks. Revised hash 345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a preserves the exterior and room, retaining a tiny local steam wisp above the cup. Revised producer contact, mask, and independent full-frame sample inspected. No prior landscape ghosting remains in these samples.",
+        "Revised asset independently passes the unchanged seam gate at 1.9490x. Motion covers only 0.20% of pixels: suitable quiet minimal animation, but cannot be described as realistic moving train scenery or animated rainfall."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience.",
+        "For Midnight, prefer a subdued stationary train-cabin sound bed; the scenery is static."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/03-midnight-train-revised-full.jpg",
+        "creative/nooks-animated-all/jobs/midnight-train/review-contact.jpg",
+        "creative/nooks-animated-all/jobs/midnight-train/mask-review.jpg"
+      ]
+    },
+    {
+      "sceneId": "kikis-bakery-attic",
+      "videoPath": "creative/nooks-animated-all/jobs/kikis-bakery-attic/finished.mp4",
+      "videoSha256": "ba5febe2d519fcad575eeae8fd78daaae9917c471d94518700e49695bf2c9a6e",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Sampled visuals and full-decode technical metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 451182,
+        "frameChangeMean": 0.03699921212628291,
+        "seamChangeMean": 0.06883318865740741,
+        "seamVsTypical": 1.8603960652586649,
+        "insideMaskChange": 1.7551017842889551,
+        "outsideMaskChange": 0.0017437014568362935,
+        "peakBrightnessChange": 0.014669777199074474,
+        "motionMaskCoverage": 0.020107421875,
+        "videoSha256": "ba5febe2d519fcad575eeae8fd78daaae9917c471d94518700e49695bf2c9a6e",
+        "sourceArtworkSha256": "3a55fb7272ce00a3f19376219abfde7dc5dddaad163170413d8599262e2d086f",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "ba5febe2d519fcad575eeae8fd78daaae9917c471d94518700e49695bf2c9a6e",
+        "independentMeanFrameChange": 0.036999212126282904,
+        "independentSeamChange": 0.06883318865740741,
+        "independentSeamVsTypical": 1.8603960652586653,
+        "qaMatchesVideo": true
+      },
+      "findings": [
+        "Window, roof lines, church, sleeping cat, basket, cloth, books, mug and desk stay stable in sampled frames.",
+        "Upper-right foliage changes gently without an obvious hard mask edge or indoor spill in native-resolution extracted crops. Mug steam is subtle; boats, sea and most foliage remain static.",
+        "Independent full decode confirms seam ratio 1.8604x and absolute seam difference 0.0688 on a 0\u2013255 channel scale."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/03-kikis-bakery-attic-motion.jpg",
+        "creative/nooks-animated-all/jobs/kikis-bakery-attic/review-contact.jpg",
+        "creative/nooks-animated-all/jobs/kikis-bakery-attic/mask-review.jpg"
+      ]
+    }
+  ]
+}

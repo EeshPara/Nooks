@@ -1,0 +1,224 @@
+{
+  "oxford-library": {
+    "videoSha256": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.051668723505131645,
+    "seamChange": 0.044579716435185185,
+    "seamVsTypical": 0.8627988734956382,
+    "insideMaskChange": 7.8228895846544075,
+    "outsideMaskChange": 5.977685646465623e-05,
+    "peakBrightnessChange": 0.0649457465277763,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "candle": {
+        "box": [
+          158,
+          324,
+          239,
+          458
+        ],
+        "minBrightnessFrame": 0,
+        "maxBrightnessFrame": 0,
+        "brightnessRange": 0.0,
+        "maxPixelRange": 0
+      },
+      "fire": {
+        "box": [
+          1130,
+          326,
+          1280,
+          470
+        ],
+        "minBrightnessFrame": 51,
+        "maxBrightnessFrame": 47,
+        "brightnessRange": 3.926651234567906,
+        "maxPixelRange": 188
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/14-oxford-library-candle-motion.png",
+      "creative/nooks-release/scene-reviews/14-oxford-library-candle-source-seam.png",
+      "creative/nooks-release/scene-reviews/14-oxford-library-fire-motion.png",
+      "creative/nooks-release/scene-reviews/14-oxford-library-fire-source-seam.png"
+    ]
+  },
+  "nevermore-study": {
+    "videoSha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.0003795389892904953,
+    "seamChange": 0.0008391203703703704,
+    "seamVsTypical": 2.210893726462754,
+    "insideMaskChange": 0.05184971814970727,
+    "outsideMaskChange": 8.115071868110845e-05,
+    "peakBrightnessChange": 0.003299334490741046,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "right": {
+        "box": [
+          1157,
+          332,
+          1216,
+          427
+        ],
+        "minBrightnessFrame": 76,
+        "maxBrightnessFrame": 32,
+        "brightnessRange": 0.5441570026761866,
+        "maxPixelRange": 4
+      },
+      "back": {
+        "box": [
+          1098,
+          281,
+          1152,
+          361
+        ],
+        "minBrightnessFrame": 70,
+        "maxBrightnessFrame": 8,
+        "brightnessRange": 0.5081018518518547,
+        "maxPixelRange": 3
+      },
+      "shelf": {
+        "box": [
+          20,
+          243,
+          83,
+          310
+        ],
+        "minBrightnessFrame": 58,
+        "maxBrightnessFrame": 83,
+        "brightnessRange": 0.5064360736002484,
+        "maxPixelRange": 4
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/14-nevermore-study-right-motion.png",
+      "creative/nooks-release/scene-reviews/14-nevermore-study-right-source-seam.png",
+      "creative/nooks-release/scene-reviews/14-nevermore-study-back-motion.png",
+      "creative/nooks-release/scene-reviews/14-nevermore-study-back-source-seam.png",
+      "creative/nooks-release/scene-reviews/14-nevermore-study-shelf-motion.png",
+      "creative/nooks-release/scene-reviews/14-nevermore-study-shelf-source-seam.png"
+    ]
+  },
+  "autumn-bakery": {
+    "videoSha256": "149b1ad042465b04e6dd1dd475f13018884d8d6d63d5042e5afe598b656bd57c",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.023999748995983932,
+    "seamChange": 0.027842881944444446,
+    "seamVsTypical": 1.1601322142620583,
+    "insideMaskChange": 0.9859749031970176,
+    "outsideMaskChange": 0.000123664304044753,
+    "peakBrightnessChange": 0.011911168981484366,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "candle": {
+        "box": [
+          204,
+          466,
+          277,
+          564
+        ],
+        "minBrightnessFrame": 53,
+        "maxBrightnessFrame": 25,
+        "brightnessRange": 0.9186935047991795,
+        "maxPixelRange": 8
+      },
+      "steam": {
+        "box": [
+          385,
+          390,
+          491,
+          540
+        ],
+        "minBrightnessFrame": 75,
+        "maxBrightnessFrame": 19,
+        "brightnessRange": 4.863312368972743,
+        "maxPixelRange": 41
+      },
+      "leaves": {
+        "box": [
+          160,
+          0,
+          345,
+          112
+        ],
+        "minBrightnessFrame": 12,
+        "maxBrightnessFrame": 41,
+        "brightnessRange": 1.068355855855856,
+        "maxPixelRange": 63
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/14-autumn-bakery-candle-motion.png",
+      "creative/nooks-release/scene-reviews/14-autumn-bakery-candle-source-seam.png",
+      "creative/nooks-release/scene-reviews/14-autumn-bakery-steam-motion.png",
+      "creative/nooks-release/scene-reviews/14-autumn-bakery-steam-source-seam.png",
+      "creative/nooks-release/scene-reviews/14-autumn-bakery-leaves-motion.png",
+      "creative/nooks-release/scene-reviews/14-autumn-bakery-leaves-source-seam.png"
+    ]
+  },
+  "seoul-night-cafe": {
+    "videoSha256": "c198f3557c42e3dbf7304fa569b560d088dde174e5b12a88badc2d08d6ca562f",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.05498849129155511,
+    "seamChange": 0.0959523292824074,
+    "seamVsTypical": 1.7449529352179798,
+    "insideMaskChange": 0.46984416638188914,
+    "outsideMaskChange": 0.00029140257830195815,
+    "peakBrightnessChange": 0.015223885995368391,
+    "qaMatchesVideo": true,
+    "cropMetrics": {
+      "candle": {
+        "box": [
+          1111,
+          572,
+          1180,
+          647
+        ],
+        "minBrightnessFrame": 8,
+        "maxBrightnessFrame": 42,
+        "brightnessRange": 1.1828663446054861,
+        "maxPixelRange": 10
+      },
+      "steam": {
+        "box": [
+          364,
+          378,
+          484,
+          538
+        ],
+        "minBrightnessFrame": 74,
+        "maxBrightnessFrame": 4,
+        "brightnessRange": 1.3567013888888937,
+        "maxPixelRange": 24
+      },
+      "rain": {
+        "box": [
+          510,
+          10,
+          930,
+          280
+        ],
+        "minBrightnessFrame": 76,
+        "maxBrightnessFrame": 19,
+        "brightnessRange": 0.3026072898295169,
+        "maxPixelRange": 68
+      }
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/14-seoul-night-cafe-candle-motion.png",
+      "creative/nooks-release/scene-reviews/14-seoul-night-cafe-candle-source-seam.png",
+      "creative/nooks-release/scene-reviews/14-seoul-night-cafe-steam-motion.png",
+      "creative/nooks-release/scene-reviews/14-seoul-night-cafe-steam-source-seam.png",
+      "creative/nooks-release/scene-reviews/14-seoul-night-cafe-rain-motion.png",
+      "creative/nooks-release/scene-reviews/14-seoul-night-cafe-rain-source-seam.png"
+    ]
+  }
+}

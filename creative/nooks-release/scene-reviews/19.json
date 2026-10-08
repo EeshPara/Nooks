@@ -1,0 +1,130 @@
+{
+  "reviewId": "19",
+  "reviewer": "scene_review_19",
+  "reviewedAtUtc": "2026-10-08T07:36:29.256058+00:00",
+  "method": "Inspected source artwork crops, masks and full-scene contact views; independently fully decoded all frames, calculated seam/inside/outside-mask/brightness metrics, and viewed native-resolution motion crops plus enlarged source and boundary comparisons. SHA-256 checked before/after decode and before report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to sampled visuals of the exact hash, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "sumeru-akademiya",
+      "videoPath": "creative/nooks-animated-all/jobs/sumeru-akademiya/finished.mp4",
+      "videoSha256": "74ff8e54cf8276d78afe9f0c9844532da6865086d650a27374a0453f1fefa08b",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 861243,
+        "frameChangeMean": 0.009254213032686302,
+        "seamChangeMean": 0.013177083333333334,
+        "seamVsTypical": 1.423901015331209,
+        "insideMaskChange": 0.9124411438858885,
+        "outsideMaskChange": 6.711342035979765e-05,
+        "peakBrightnessChange": 0.0029893663194400233,
+        "motionMaskCoverage": 0.010069444444444445,
+        "videoSha256": "74ff8e54cf8276d78afe9f0c9844532da6865086d650a27374a0453f1fefa08b",
+        "sourceArtworkSha256": "c4a52ca80a50ee546807e2c7e9d2e1d038181ff7b7ae2854386e98a8650be1b3",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "74ff8e54cf8276d78afe9f0c9844532da6865086d650a27374a0453f1fefa08b",
+        "frames": 84,
+        "meanFrameChange": 0.009254213032686302,
+        "seamChange": 0.013177083333333334,
+        "seamVsTypical": 1.423901015331209,
+        "insideMaskChange": 0.9124411438858885,
+        "outsideMaskChange": 6.711342035979765e-05,
+        "peakBrightnessChange": 0.0029893663194400233,
+        "qaMatchesVideo": true,
+        "audioTracks": 0
+      },
+      "findings": [
+        "Native-source crops, eight motion samples, last-two/first-two seam samples and full-scene contact views were inspected. Columns, arches, lamps, manuscripts and foreground furniture retain stable geometry.",
+        "The hanging leaf mask introduces faint offset translucent leaf silhouettes in the blue-sky gaps beside the original dark leaves. In enlarged source/frame comparisons, the retained crisp leaves coexist with a softer moving foliage layer. This reads as ghosted foliage rather than singular leaves swaying.",
+        "The distant waterfall changes gently within its existing drop; surrounding structures and waterfall lip remain coherent in the sampled frames. No obvious hard mask edge or large seam jump was seen. Passing seam and outside-mask metrics do not detect the foliage compositing defect."
+      ],
+      "requiredChanges": [
+        "Freeze the hanging leaf mask while retaining the distant waterfall, or repair foliage compositing so each leaf is singular; independently review the new hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/19-evidence/sumeru-akademiya-leaves-motion.png",
+        "creative/nooks-release/scene-reviews/19-evidence/sumeru-akademiya-leaves-seam.png",
+        "creative/nooks-release/scene-reviews/19-evidence/sumeru-akademiya-leaves-source-compare.png",
+        "creative/nooks-release/scene-reviews/19-evidence/sumeru-akademiya-waterfall-motion.png",
+        "creative/nooks-release/scene-reviews/19-evidence/sumeru-akademiya-waterfall-seam.png",
+        "creative/nooks-release/scene-reviews/19-evidence/sumeru-akademiya-waterfall-source-compare.png",
+        "creative/nooks-animated-all/jobs/sumeru-akademiya/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/sumeru-akademiya/review-contact.jpg"
+      ]
+    },
+    {
+      "sceneId": "mage-archive",
+      "videoPath": "creative/nooks-animated-all/jobs/mage-archive/finished.mp4",
+      "videoSha256": "55525c6907c74897d6b64dc0d0c74ecb1d1c542f4f58e3c1fe294f5f0792eea7",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 810297,
+        "frameChangeMean": 0.018814001666387775,
+        "seamChangeMean": 0.011371889467592593,
+        "seamVsTypical": 0.6044375709772092,
+        "insideMaskChange": 1.7325701442223678,
+        "outsideMaskChange": 6.39838237051996e-05,
+        "peakBrightnessChange": 0.01781901041667311,
+        "motionMaskCoverage": 0.01082248263888889,
+        "videoSha256": "55525c6907c74897d6b64dc0d0c74ecb1d1c542f4f58e3c1fe294f5f0792eea7",
+        "sourceArtworkSha256": "c487ac189bde530d53484807ed72396e71c7bc83b83ca9aefaa200df64047379",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "55525c6907c74897d6b64dc0d0c74ecb1d1c542f4f58e3c1fe294f5f0792eea7",
+        "frames": 84,
+        "meanFrameChange": 0.018814001666387775,
+        "seamChange": 0.011371889467592593,
+        "seamVsTypical": 0.6044375709772092,
+        "insideMaskChange": 1.7325701442223678,
+        "outsideMaskChange": 6.39838237051996e-05,
+        "peakBrightnessChange": 0.01781901041667311,
+        "qaMatchesVideo": true,
+        "audioTracks": 0
+      },
+      "findings": [
+        "Native-source crops, eight motion samples, last-two/first-two seam samples and full-scene contact views were inspected. Books, chair, cup rim, fireplace grate, ladder, window and meadow retain stable geometry.",
+        "Fire variation remains inside the hearth opening behind the grate and foreground books. Samples show a coherent flame mass without an offset duplicate candle or detached flame. The hearth brightness and scale suit the room.",
+        "Tea steam is fine and low contrast; it does not visibly distort the chair or book edges behind the cup. Sampled loop-boundary frames have no obvious extra geometry discontinuity."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/19-evidence/mage-archive-fire-motion.png",
+        "creative/nooks-release/scene-reviews/19-evidence/mage-archive-fire-seam.png",
+        "creative/nooks-release/scene-reviews/19-evidence/mage-archive-fire-source-compare.png",
+        "creative/nooks-release/scene-reviews/19-evidence/mage-archive-steam-motion.png",
+        "creative/nooks-release/scene-reviews/19-evidence/mage-archive-steam-seam.png",
+        "creative/nooks-release/scene-reviews/19-evidence/mage-archive-steam-source-compare.png",
+        "creative/nooks-animated-all/jobs/mage-archive/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/mage-archive/review-contact.jpg"
+      ]
+    }
+  ]
+}

@@ -20,7 +20,7 @@ try {
   run('initdb', ['-D', data, '--auth=trust', '--no-locale', '-E', 'UTF8']);
   run('pg_ctl', ['-D', data, '-l', join(temporary, 'postgres.log'), '-o', `-k ${temporary} -h '' -p 5432 -F`, '-w', 'start']);
   started = true;
-  const files = [join(here, 'bootstrap.sql'), ...(await readdir(join(root, 'migrations'))).filter(f => f.endsWith('.sql')).sort().map(f => join(root, 'migrations', f)), join(here, 'permissions.sql'), join(here, 'hosted-smoke.sql'), join(here,'production-hardening.sql'), join(here,'community-management.sql'), join(here,'nook-privacy.sql'), join(here,'artwork-inventory.sql'), join(here,'artwork-lifecycle.sql'), join(here,'custom-art-publication.sql')];
+  const files = [join(here, 'bootstrap.sql'), ...(await readdir(join(root, 'migrations'))).filter(f => f.endsWith('.sql')).sort().map(f => join(root, 'migrations', f)), join(here, 'permissions.sql'), join(here, 'hosted-smoke.sql'), join(here,'production-hardening.sql'), join(here,'community-management.sql'), join(here,'nook-privacy.sql'), join(here,'artwork-inventory.sql'), join(here,'artwork-lifecycle.sql'), join(here,'custom-art-publication.sql'), join(here,'library-collaboration.sql'), join(here,'realtime-scale.sql')];
   for (const file of files) {
     const output = run('psql', ['-X', '-v', 'ON_ERROR_STOP=1', '-h', temporary, '-p', '5432', '-d', 'postgres', '-f', file]);
     console.log(`Passed ${file.slice(root.length + 1)}`);

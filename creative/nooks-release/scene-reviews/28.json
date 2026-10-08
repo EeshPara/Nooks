@@ -1,0 +1,259 @@
+{
+  "reviewId": "28",
+  "reviewer": "scene_review_28",
+  "reviewedAtUtc": "2026-10-08T07:53:04.414945+00:00",
+  "method": "Read AGENTS.md, START-HERE.md, pilot-corrections.md and prior review24. Independently decoded all 168 frames of each supplied candidate, recomputed frame/seam and rigidity metrics, and verified SHA-256 before and after. Inspected native-source full scenes and source/motion/seam detail crops with view_image; smaller details enlarged 2x.",
+  "limitations": [
+    "Sampled still-frame review, not continuous full-speed viewing or subjective sound audition.",
+    "Verdicts apply only to listed hashes and do not constitute integrated product or production-readiness approval."
+  ],
+  "scenes": [
+    {
+      "sceneId": "rainy-library",
+      "videoPath": "creative/nooks-animated-all/jobs/rainy-library/finished.mp4",
+      "videoSha256": "d915555624575c5c1355bd2055bcbf3b7217f9532c332d96cae84057ec04b093",
+      "independentMetrics": {
+        "frames": 168,
+        "durationSeconds": 7.0,
+        "audioTracks": 0,
+        "meanFrameChange": 0.004159049522482812,
+        "seamChange": 0.001365379050925926,
+        "seamVsTypical": 0.3282911260241116
+      },
+      "regions": {
+        "steam": {
+          "box": [
+            85,
+            475,
+            165,
+            558
+          ],
+          "meanFrameChange": 0.536643279705649,
+          "maxTemporalPixelRange": 46
+        },
+        "skyline": {
+          "box": [
+            405,
+            240,
+            680,
+            480
+          ],
+          "meanFrameChange": 0.0004168632432105486,
+          "maxTemporalPixelRange": 2
+        }
+      },
+      "evidence": [
+        "creative/nooks-release/scene-reviews/28-rainy-library-full.png",
+        "creative/nooks-release/scene-reviews/28-rainy-library-steam-motion.png",
+        "creative/nooks-release/scene-reviews/28-rainy-library-steam-seam.png",
+        "creative/nooks-release/scene-reviews/28-rainy-library-skyline-motion.png",
+        "creative/nooks-release/scene-reviews/28-rainy-library-skyline-seam.png"
+      ],
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visual inspection and full decode only; no continuous playback or audio audition.",
+      "findings": [
+        "Original skyline, cathedral spires, bridge and window geometry remain crisp and stationary in sampled source/motion crops. The previous displaced skyline overlay is absent; the rain-filled exterior is intentionally static.",
+        "Only restrained steam above the cup changes. The sampled rim and background book edges remain stable, without obvious ghost outlines or mask boundaries. Seam endpoints show matching steam intensity.",
+        "All 168 frames decode. Independently measured seam-to-typical ratio is 0.3283, versus 4.2986 for the rejected original. Skyline temporal range is at most two RGB code values, consistent with codec variation."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed integrated playback and audition the selected ambience in the product."
+      ],
+      "sourceArtworkPath": "web/ui/public/images/nooks-50/rainy-library.webp"
+    },
+    {
+      "sceneId": "howls-moving-study",
+      "videoPath": "creative/nooks-animated-all/jobs/howls-moving-study/finished.mp4",
+      "videoSha256": "aaa752b280a9e5b2589e322adea960be8b2625acf839b7604be4d8423be14431",
+      "independentMetrics": {
+        "frames": 168,
+        "durationSeconds": 7.0,
+        "audioTracks": 0,
+        "meanFrameChange": 0.0035714465166888443,
+        "seamChange": 0.0018091724537037037,
+        "seamVsTypical": 0.5065657417098945
+      },
+      "regions": {
+        "steam": {
+          "box": [
+            315,
+            490,
+            395,
+            585
+          ],
+          "meanFrameChange": 0.32046617291732327,
+          "maxTemporalPixelRange": 43
+        },
+        "stove": {
+          "box": [
+            618,
+            317,
+            691,
+            393
+          ],
+          "meanFrameChange": 0.1280690241722755,
+          "maxTemporalPixelRange": 17
+        },
+        "cat": {
+          "box": [
+            715,
+            425,
+            825,
+            475
+          ],
+          "meanFrameChange": 0.00017855198693522047,
+          "maxTemporalPixelRange": 1
+        },
+        "lantern": {
+          "box": [
+            425,
+            25,
+            481,
+            100
+          ],
+          "meanFrameChange": 0.0,
+          "maxTemporalPixelRange": 0
+        }
+      },
+      "evidence": [
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-full.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-steam-motion.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-steam-seam.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-stove-motion.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-stove-seam.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-cat-motion.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-cat-seam.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-lantern-motion.png",
+        "creative/nooks-release/scene-reviews/28-howls-moving-study-lantern-seam.png"
+      ],
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visual inspection and full decode only; no continuous playback or audio audition.",
+      "findings": [
+        "The sleeping cat retains the original crisp silhouette, paws and face in native detail crops. Its all-frame temporal range is one RGB code value; the sampled translucent alternate cat shape from the rejected original is absent.",
+        "Lantern and stove bars retain their original geometry. The stove treatment varies existing light with fixed flame shapes; this is restrained light modulation, not freely moving fire. Cup steam remains subtle and localized.",
+        "All 168 frames decode. Seam ratio is 0.5066. Source, motion and endpoint crops do not show a doubled lantern, displaced stove frame, or visible seam intensity jump."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed integrated playback and audition the selected ambience in the product."
+      ],
+      "sourceArtworkPath": "web/ui/public/images/nooks-50/howls-moving-study.webp"
+    },
+    {
+      "sceneId": "gryffindor-common-room",
+      "videoPath": "creative/nooks-animated-all/jobs/gryffindor-common-room/finished.mp4",
+      "videoSha256": "daeea4dd5d26b2724f6e757af7ccf4042665745df019f21f6a5238913891eac7",
+      "independentMetrics": {
+        "frames": 168,
+        "durationSeconds": 7.0,
+        "audioTracks": 0,
+        "meanFrameChange": 0.0658902940646485,
+        "seamChange": 0.07159505208333333,
+        "seamVsTypical": 1.086579641200077
+      },
+      "regions": {
+        "hearth": {
+          "box": [
+            150,
+            265,
+            440,
+            455
+          ],
+          "meanFrameChange": 1.0990611155185093,
+          "maxTemporalPixelRange": 146
+        },
+        "screen": {
+          "box": [
+            176,
+            370,
+            438,
+            450
+          ],
+          "meanFrameChange": 0.0001058950800688699,
+          "maxTemporalPixelRange": 2
+        },
+        "left-post": {
+          "box": [
+            178,
+            334,
+            219,
+            428
+          ],
+          "meanFrameChange": 0.0,
+          "maxTemporalPixelRange": 0
+        },
+        "right-post": {
+          "box": [
+            405,
+            336,
+            435,
+            439
+          ],
+          "meanFrameChange": 0.0,
+          "maxTemporalPixelRange": 0
+        },
+        "left-candle": {
+          "box": [
+            929,
+            171,
+            958,
+            225
+          ],
+          "meanFrameChange": 0.0,
+          "maxTemporalPixelRange": 0
+        },
+        "right-candle": {
+          "box": [
+            1186,
+            110,
+            1237,
+            175
+          ],
+          "meanFrameChange": 1.8063420669972272e-06,
+          "maxTemporalPixelRange": 1
+        },
+        "cat": {
+          "box": [
+            511,
+            390,
+            605,
+            440
+          ],
+          "meanFrameChange": 0.0,
+          "maxTemporalPixelRange": 0
+        }
+      },
+      "evidence": [
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-full.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-hearth-motion.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-hearth-seam.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-screen-motion.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-screen-seam.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-left-post-motion.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-left-post-seam.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-right-post-motion.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-right-post-seam.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-left-candle-motion.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-left-candle-seam.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-right-candle-motion.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-right-candle-seam.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-cat-motion.png",
+        "creative/nooks-release/scene-reviews/28-gryffindor-common-room-cat-seam.png"
+      ],
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visual inspection and full decode only; no continuous playback or audio audition.",
+      "findings": [
+        "Both wall candles retain one crisp original flame and shaft. The sleeping cat also remains the original single silhouette. Left candle and cat inspected crops have zero all-frame temporal range; the right candle has at most one code value.",
+        "Generated fire now stays above the rigid fire screen. Both ornamental posts are visually unchanged and have zero all-frame temporal range. Screen bars and mesh remain crisp in source/motion/seam comparisons, with at most two code values of codec variation.",
+        "Upper flame shapes vary substantially but remain contained within the open hearth, without a second rigid post, shifted grate or obvious rectangular mask edge in sampled frames. The rest of the warm room stays still.",
+        "All 168 frames decode. Seam ratio is 1.0866. The last two and first two flame crops have coherent flame placement and brightness; continuous playback smoothness was not assessed."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed integrated playback and audition the selected ambience in the product."
+      ],
+      "sourceArtworkPath": "web/ui/public/images/nooks-50/gryffindor-common-room.webp"
+    }
+  ]
+}

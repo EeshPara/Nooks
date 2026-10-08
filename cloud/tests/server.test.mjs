@@ -398,8 +398,8 @@ test('hosted widget images use only the configured HTTPS origin and public build
   assert.deepEqual(resource._meta['openai/widgetCSP'].resource_domains, ['https://nook.example']);
   assert.deepEqual(resource._meta.ui.csp.frameDomains, ['https://open.spotify.com']);
   assert.deepEqual(resource._meta['openai/widgetCSP'].frame_domains, ['https://open.spotify.com']);
-  assert.deepEqual(resource._meta.ui.csp.connectDomains, ['https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
-  assert.deepEqual(resource._meta['openai/widgetCSP'].connect_domains, ['https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
+  assert.deepEqual(resource._meta.ui.csp.connectDomains, ['https://nook.example', 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
+  assert.deepEqual(resource._meta['openai/widgetCSP'].connect_domains, ['https://nook.example', 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
   assert.match(resource.text, /https:\/\/nook\.example\/images\/room\.png/);
   assert.match(resource.text, /data:font\/ttf;base64/);
   assert.equal(resource.text.includes('untrusted.example'), false);
@@ -434,4 +434,27 @@ test('opening movies use the trusted media origin without embedding bytes or rew
   const local = await widgetHtml(dist);
   assert.ok(local.includes('"/media/opening-film/nooks-opening-v3.mp4"'));
   assert.ok(!local.includes('data:video'));
+});
+
+
+test('recordings stream from the trusted asset origin with CORS while private API remains closed', async t => {
+  const { directory } = await fixture(t);
+  const dist = join(directory, 'audio-dist');
+  await mkdir(join(dist, 'assets'), { recursive: true });
+  await writeFile(join(dist, 'index.html'), '<html><script type="module" src="/assets/entry.js"></script></html>');
+  await writeFile(join(dist, 'assets/entry.js'), 'const rain="/assets/rain-123.mp3"; const unknown="/assets/unknown.mp3";');
+  await writeFile(join(dist, 'assets/rain-123.mp3'), 'trusted-audio-bytes');
+  const hosted = await widgetHtml(dist, { assetOrigin: 'https://nook.example' });
+  assert.ok(hosted.includes('"https://nook.example/assets/rain-123.mp3"'));
+  assert.ok(hosted.includes('"/assets/unknown.mp3"'));
+  assert.ok(!hosted.includes('data:audio'));
+  const { server } = createNotableServer({ publicUrl:'https://nook.example/mcp',dataDirectory:join(directory,'data'),distDirectory:dist });
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  t.after(()=>new Promise(resolve=>server.close(resolve)));
+  const response=await new Promise((resolve,reject)=>{
+    const req=httpRequest(`http://127.0.0.1:${server.address().port}/assets/rain-123.mp3`, {headers:{Host:'nook.example',Origin:'https://web-sandbox.oaiusercontent.com'}}, incoming=>{
+      const chunks=[];incoming.on('data',chunk=>chunks.push(chunk));incoming.on('end',()=>resolve({status:incoming.statusCode,headers:incoming.headers,body:Buffer.concat(chunks).toString()}));
+    });req.on('error',reject);req.end();
+  });
+  assert.equal(response.status,200);assert.equal(response.headers['access-control-allow-origin'],'*');assert.equal(response.headers['content-type'],'audio/mpeg');assert.equal(response.body,'trusted-audio-bytes');
 });

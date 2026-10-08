@@ -1,0 +1,114 @@
+{
+  "reviewId": "04",
+  "reviewer": "scene_review_04",
+  "reviewedAtUtc": "2026-10-08T06:53:15.529326+00:00",
+  "method": "Viewed original source artwork, producer masks/contact sheets, independent native-resolution motion crops, enlarged steam crops and last/first frame pairs. Fully decoded all 84 frames of each video and independently recomputed adjacent-frame and seam metrics. Checked SHA-256 before/after decode and again at report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to these exact visual hashes, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "ravenclaw-tower",
+      "videoPath": "creative/nooks-animated-all/jobs/ravenclaw-tower/finished.mp4",
+      "videoSha256": "4ce46802b728a268c549a8d070343cb294dd8f7f698f0ea71ead0358bbd90a84",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 798308,
+        "frameChangeMean": 0.004400126547858099,
+        "seamChangeMean": 0.007354600694444445,
+        "seamVsTypical": 1.6714520854007096,
+        "insideMaskChange": 0.4050426520075879,
+        "outsideMaskChange": 2.9180379440614767e-05,
+        "peakBrightnessChange": 0.006005497685180217,
+        "motionMaskCoverage": 0.010792100694444445,
+        "videoSha256": "4ce46802b728a268c549a8d070343cb294dd8f7f698f0ea71ead0358bbd90a84",
+        "sourceArtworkSha256": "5962f2f06e32a2cfaa5de5df4c27146125b4d742835cec904664e0742d1ce7a4",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "4ce46802b728a268c549a8d070343cb294dd8f7f698f0ea71ead0358bbd90a84",
+        "frames": 84,
+        "meanFrameChange": 0.004400126547858099,
+        "seamChange": 0.007354600694444445,
+        "seamVsTypical": 1.6714520854007096,
+        "qaMatchesVideo": true
+      },
+      "findings": [
+        "Source artwork, producer mask/contact, eight independently extracted candle-region samples, four enlarged mug-region samples, and last/first frame pairs inspected. Window mullions, mountain skyline, stars, telescope, stairs, table, books and mug remain stable in these samples.",
+        "Table candle/lamp flames vary gently and locally. The mug wisp is very faint and stays immediately above the cup; stair edges behind it remain recognizable without an obvious rectangular mask boundary. This is intentionally minimal motion, not an animated night sky.",
+        "Independent full decode reproduces a seam ratio of 1.6715\u00d7 against the unchanged threshold of 4; absolute seam change is 0.00735 on a 0\u2013255 channel scale. No abrupt exposure or framing jump apparent in sampled seam frames."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/04-ravenclaw-tower-motion.jpg",
+        "creative/nooks-release/scene-reviews/04-ravenclaw-tower-steam.jpg",
+        "creative/nooks-release/scene-reviews/04-ravenclaw-tower-seam.jpg",
+        "creative/nooks-animated-all/jobs/ravenclaw-tower/mask-review.jpg",
+        "web/ui/public/images/nooks-50/ravenclaw-tower.webp"
+      ]
+    },
+    {
+      "sceneId": "hufflepuff-common-room",
+      "videoPath": "creative/nooks-animated-all/jobs/hufflepuff-common-room/finished.mp4",
+      "videoSha256": "a6d8c12f87c63ff14a1f01069a95c9dd928e09d930af7c01e0361a4c11f63095",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 556806,
+        "frameChangeMean": 0.08781249564229139,
+        "seamChangeMean": 0.13064199942129628,
+        "seamVsTypical": 1.4877381455308254,
+        "insideMaskChange": 3.924764129036727,
+        "outsideMaskChange": 0.0009225665990756873,
+        "peakBrightnessChange": 0.1075018084490722,
+        "motionMaskCoverage": 0.02214409722222222,
+        "videoSha256": "a6d8c12f87c63ff14a1f01069a95c9dd928e09d930af7c01e0361a4c11f63095",
+        "sourceArtworkSha256": "e0db6c674a8dff229911f754cd2ca970d16c6319d56021a63938bd5b33e92d74",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "a6d8c12f87c63ff14a1f01069a95c9dd928e09d930af7c01e0361a4c11f63095",
+        "frames": 84,
+        "meanFrameChange": 0.08781249564229138,
+        "seamChange": 0.13064199942129628,
+        "seamVsTypical": 1.4877381455308256,
+        "qaMatchesVideo": true
+      },
+      "findings": [
+        "Source artwork, producer mask/contact, eight independently extracted hearth samples, four enlarged mug-region samples, and last/first frame pairs inspected. Round windows, hanging leaves, furniture, rug pattern, fire tools, logs and foreground mug preserve their geometry.",
+        "The right hearth has clearly visible, plausible flame variation contained inside the fireplace. Stone edges, fire-tool silhouettes and foreground leaves show no evident motion spill in sampled crops. Mug steam is low-contrast and restrained, with the carpet pattern behind it stable.",
+        "Independent full decode reproduces a seam ratio of 1.4877\u00d7 against the unchanged threshold of 4; absolute seam change is 0.13064 on a 0\u2013255 channel scale. The flame silhouette differs modestly at the seam, comparable to ordinary flicker rather than a frame-wide reset."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/04-hufflepuff-common-room-motion.jpg",
+        "creative/nooks-release/scene-reviews/04-hufflepuff-common-room-steam.jpg",
+        "creative/nooks-release/scene-reviews/04-hufflepuff-common-room-seam.jpg",
+        "creative/nooks-animated-all/jobs/hufflepuff-common-room/mask-review.jpg",
+        "web/ui/public/images/nooks-50/hufflepuff-common-room.webp"
+      ]
+    }
+  ]
+}

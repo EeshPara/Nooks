@@ -1,0 +1,147 @@
+{
+  "reviewId": "corrections-01",
+  "reviewer": "corrected_scene_judge",
+  "reviewedAtUtc": "2026-10-08T07:14:57.700744+00:00",
+  "method": "Viewed original source artwork, corrected producer masks/native crops, independently extracted source-plus-eight native-resolution motion samples and last-two/first-two seam crops. Fully decoded all 84 frames per video and independently recomputed adjacent-frame, seam, inside/outside-mask, regional and brightness metrics. SHA-256 verified before/after decode and at report writing.",
+  "limitations": [
+    "Full-speed playback and audio audition unassessed.",
+    "Approval covers exact-SHA sampled visuals and full-decode metrics only, not integrated product experience or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "witch-apothecary",
+      "videoPath": "creative/nooks-animated-all/jobs/witch-apothecary/finished.mp4",
+      "videoSha256": "0ed9d16d268ecf61726f2c6133b9f9e96a26b356186c6781f6a49f295554d9ba",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; full-speed playback and audio unassessed",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 940728,
+        "frameChangeMean": 0.016113425054384206,
+        "seamChangeMean": 0.027650824652777777,
+        "seamVsTypical": 1.71601162133152,
+        "insideMaskChange": 1.0129733924758115,
+        "outsideMaskChange": 4.0143993395874714e-05,
+        "peakBrightnessChange": 0.00365451388888971,
+        "motionMaskCoverage": 0.015868055555555555,
+        "videoSha256": "0ed9d16d268ecf61726f2c6133b9f9e96a26b356186c6781f6a49f295554d9ba",
+        "sourceArtworkSha256": "740b8b2949e231a4dcad48fb7d85378d49204cca65995d414931be28c3de6723",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "0ed9d16d268ecf61726f2c6133b9f9e96a26b356186c6781f6a49f295554d9ba",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.016113425054384206,
+        "seamChange": 0.027650824652777777,
+        "seamVsTypical": 1.71601162133152,
+        "insideMaskChange": 1.0129733924758115,
+        "outsideMaskChange": 4.0143993395874714e-05,
+        "peakBrightnessChange": 0.00365451388888971,
+        "qaMatchesVideo": true,
+        "regionFrameChange": {
+          "front-candle": 0.0,
+          "shelf-candle": 0.0,
+          "vapor": 0.47584118525383584
+        }
+      },
+      "findings": [
+        "Review 10 duplicated front-candle flame is resolved. Source artwork, corrected masks, eight native-resolution samples and seam crops show exactly one original front flame and one original shelf flame. Both candle regions have exactly zero temporal change across all 84 decoded frames.",
+        "Only the existing right-side incense vapor changes. It stays transparent and anchored near its source; door hardware, botanical strands, burner and surrounding geometry remain stable in inspected samples. No exposed mask edge or doubled rigid object is visible.",
+        "Independent full decode reproduces the producer metrics: seam ratio 1.716012, outside-mask change 0.00004014 and peak brightness step 0.003655 on a 0\u2013255 scale. Vapor region mean adjacent-frame change 0.475841 confirms retained motion."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-front-candle-motion.png",
+        "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-front-candle-seam.png",
+        "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-shelf-candle-motion.png",
+        "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-shelf-candle-seam.png",
+        "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-vapor-motion.png",
+        "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-vapor-seam.png",
+        "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-full.png",
+        "creative/nooks-animated-all/jobs/witch-apothecary/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/witch-apothecary/correction-native-crops.png",
+        "web/ui/public/images/nooks-50/witch-apothecary.webp"
+      ]
+    },
+    {
+      "sceneId": "animal-crossing-island",
+      "videoPath": "creative/nooks-animated-all/jobs/animal-crossing-island/finished.mp4",
+      "videoSha256": "17e636e8be9aa00f11c37a56ab29e5ef20fd51a2584f1f24bed25dc758a849a0",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; full-speed playback and audio unassessed",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 660045,
+        "frameChangeMean": 0.006415444765171797,
+        "seamChangeMean": 0.005959924768518519,
+        "seamVsTypical": 0.9289963496956272,
+        "insideMaskChange": 0.6680197459554595,
+        "outsideMaskChange": 7.811663279618162e-05,
+        "peakBrightnessChange": 0.011891637731480387,
+        "motionMaskCoverage": 0.009487847222222222,
+        "videoSha256": "17e636e8be9aa00f11c37a56ab29e5ef20fd51a2584f1f24bed25dc758a849a0",
+        "sourceArtworkSha256": "4f8a88ce047373fc2e05d11cc04d744f7609cef36e6c564dca073e2aeac3f4a4",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "17e636e8be9aa00f11c37a56ab29e5ef20fd51a2584f1f24bed25dc758a849a0",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.006415444765171797,
+        "seamChange": 0.005959924768518519,
+        "seamVsTypical": 0.9289963496956272,
+        "insideMaskChange": 0.6680197459554595,
+        "outsideMaskChange": 7.811663279618162e-05,
+        "peakBrightnessChange": 0.011891637731480387,
+        "qaMatchesVideo": true,
+        "regionFrameChange": {
+          "left-sea": 0.00523192088080212,
+          "door-sea": 0.0029086345381526104,
+          "steam": 0.3953245148425871,
+          "tiny-water": 0.01890227576974565
+        }
+      },
+      "findings": [
+        "Review 09 ghosted pier posts and cliff edge are resolved. Source artwork, revised masks, eight native-resolution samples and last-two/first-two seam crops preserve the original single pier, cliff, fence and doorway outlines.",
+        "The revised water regions are small and confined to open water. Inspected the tiny doorway-water region and surrounding railing at native resolution: no visible rectangular boundary, duplicated railing or displacement appears. Water movement is extremely restrained; cup steam supplies most visible motion. Full-speed review should assess whether this feels sufficiently alive.",
+        "Independent full decode reproduces seam ratio 0.928996, outside-mask change 0.00007812 and peak brightness step 0.011892 on a 0\u2013255 scale. Tiny-water region mean adjacent-frame change 0.018902 and steam region 0.395325 confirm nonzero intended motion."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-left-sea-motion.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-left-sea-seam.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-door-sea-motion.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-door-sea-seam.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-steam-motion.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-steam-seam.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-tiny-water-motion.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-tiny-water-seam.png",
+        "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-full.png",
+        "creative/nooks-animated-all/jobs/animal-crossing-island/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/animal-crossing-island/correction-native-crops.png",
+        "web/ui/public/images/nooks-50/animal-crossing-island.webp"
+      ]
+    }
+  ]
+}

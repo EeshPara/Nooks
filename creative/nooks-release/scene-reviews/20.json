@@ -1,0 +1,185 @@
+{
+  "reviewId": "20",
+  "reviewer": "scene_review_20",
+  "reviewedAtUtc": "2026-10-08T07:37:40.424485+00:00",
+  "method": "Read project instructions; inspected source artwork and producer mask/contact sheets using view_image. Independently decoded every frame, checked pre/post SHA-256 against qa.json, recomputed adjacent-frame/seam/inside/outside-mask/brightness metrics, and inspected extracted native crops and enlarged source comparisons.",
+  "limitations": [
+    "Sampled still frames only; no continuous full-speed playback or audio audition.",
+    "Approval is specific to listed hashes and does not establish integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "cyberpunk-rain-loft",
+      "videoPath": "creative/nooks-animated-all/jobs/cyberpunk-rain-loft/finished.mp4",
+      "videoSha256": "0389200150e27037dfce24928469c2958b06a37b81a9fe43cb7b5bd73e04041b",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-hash sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1428472,
+        "frameChangeMean": 0.030484276515785363,
+        "seamChangeMean": 0.07374240451388889,
+        "seamVsTypical": 2.419030823175469,
+        "insideMaskChange": 0.27731263093956526,
+        "outsideMaskChange": 0.0001666200073887628,
+        "peakBrightnessChange": 0.019467592592590677,
+        "motionMaskCoverage": 0.10939236111111111,
+        "videoSha256": "0389200150e27037dfce24928469c2958b06a37b81a9fe43cb7b5bd73e04041b",
+        "sourceArtworkSha256": "2222b8b20cad93101d439282d421690644a277c0dd75e80929d970627acf827b",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "0389200150e27037dfce24928469c2958b06a37b81a9fe43cb7b5bd73e04041b",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.030484276515785363,
+        "seamChange": 0.07374240451388889,
+        "seamVsTypical": 2.419030823175469,
+        "insideMaskChange": 0.27731263093956526,
+        "outsideMaskChange": 0.0001666200073887628,
+        "peakBrightnessChange": 0.019467592592590677,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "central-rain": {
+            "box": [
+              500,
+              0,
+              650,
+              330
+            ],
+            "minBrightnessFrame": 81,
+            "maxBrightnessFrame": 31,
+            "brightnessRange": 0.5754814814814821,
+            "maxPixelRange": 64
+          },
+          "right-rain": {
+            "box": [
+              740,
+              0,
+              960,
+              290
+            ],
+            "minBrightnessFrame": 80,
+            "maxBrightnessFrame": 36,
+            "brightnessRange": 1.1086990595611184,
+            "maxPixelRange": 75
+          },
+          "canal": {
+            "box": [
+              550,
+              325,
+              955,
+              455
+            ],
+            "minBrightnessFrame": 76,
+            "maxBrightnessFrame": 59,
+            "brightnessRange": 0.14114593225704652,
+            "maxPixelRange": 54
+          }
+        }
+      },
+      "findings": [
+        "The broad central and right rain masks overlap rigid tower faces and window grids. Compared with the original artwork, sampled frames have faint extra/offset window rows, softened parallel tower edges and an altered flying-vehicle silhouette. This looks like crossblending displaced architecture rather than only rain on glass. Enlarged source/frame 36/frame 80 crops make the defect visible.",
+        "The canal reflection samples retain coherent water reflections; the foreground bridge looks stable in the examined native crops. Interior props, lamps, desk and framing remain still in the producer contact sheet.",
+        "All 84 frames fully decode and numerical seam gates pass, but those metrics do not excuse the skyline ghosting."
+      ],
+      "requiredChanges": [
+        "Keep skyline, window grids and vehicles fixed to original artwork. Restrict rain animation to regions without rigid geometry or use only the clean canal region, then independently review the new hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-central-rain-motion.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-central-rain-source-seam.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-right-rain-motion.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-right-rain-source-seam.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-canal-motion.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-canal-source-seam.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-central-enlarged.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-bridge-enlarged.png",
+        "creative/nooks-release/scene-reviews/20-cyberpunk-rain-loft-skyline-enlarged.png",
+        "creative/nooks-animated-all/jobs/cyberpunk-rain-loft/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/cyberpunk-rain-loft/review-contact.jpg",
+        "web/ui/public/images/nooks-50/cyberpunk-rain-loft.webp"
+      ]
+    },
+    {
+      "sceneId": "secret-door-study",
+      "videoPath": "creative/nooks-animated-all/jobs/secret-door-study/finished.mp4",
+      "videoSha256": "f2bc48a5469c83fb79bba6889baa380b351e940f99a6b65a5c7aa39e1ab70b47",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 666052,
+        "frameChangeMean": 0.005572114848282016,
+        "seamChangeMean": 0.007038483796296296,
+        "seamVsTypical": 1.263162010823662,
+        "insideMaskChange": 0.8318403836476126,
+        "outsideMaskChange": 6.212540975978255e-05,
+        "peakBrightnessChange": 0.008940610532405913,
+        "motionMaskCoverage": 0.006624348958333333,
+        "videoSha256": "f2bc48a5469c83fb79bba6889baa380b351e940f99a6b65a5c7aa39e1ab70b47",
+        "sourceArtworkSha256": "8987dd3ad9ff0aa1000f34f73b6d525983df68fe04c7d7ebd93a93c31d92ad1a",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "f2bc48a5469c83fb79bba6889baa380b351e940f99a6b65a5c7aa39e1ab70b47",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.005572114848282016,
+        "seamChange": 0.007038483796296296,
+        "seamVsTypical": 1.263162010823662,
+        "insideMaskChange": 0.8318403836476126,
+        "outsideMaskChange": 6.212540975978255e-05,
+        "peakBrightnessChange": 0.008940610532405913,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "steam": {
+            "box": [
+              195,
+              400,
+              305,
+              565
+            ],
+            "minBrightnessFrame": 80,
+            "maxBrightnessFrame": 15,
+            "brightnessRange": 3.2323599632690616,
+            "maxPixelRange": 47
+          }
+        }
+      },
+      "findings": [
+        "Viewed original artwork, producer mask/contact sheet, eight native-resolution steam-region samples and source/brightness-extreme/last-two/first-two seam comparisons. Transparent steam changes gently just above the foreground cat mug.",
+        "Mug rim and handle, doll, miniature house, desk and nearby background retain their original edges in the sampled crops. No doubled mug, opaque plume, displaced doll or phantom prop is apparent. The door stays closed and the room remains visually quiet.",
+        "All 84 frames fully decode. The sampled last/first transition does not show a geometry jump; subjective smoothness at full playback speed remains unverified."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/20-secret-door-study-steam-motion.png",
+        "creative/nooks-release/scene-reviews/20-secret-door-study-steam-source-seam.png",
+        "creative/nooks-animated-all/jobs/secret-door-study/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/secret-door-study/review-contact.jpg",
+        "web/ui/public/images/nooks-50/secret-door-study.webp"
+      ]
+    }
+  ]
+}
