@@ -24,7 +24,7 @@ type Draft = { id: string; title: string; description: string; revision: number;
 type DraftSummary = Pick<Draft, 'id' | 'title' | 'description' | 'revision' | 'style' | 'artworkMode' | 'visibility' | 'createdAt' | 'updatedAt'> & { roomId: string; hasArtwork: boolean };
 type Publication = { id: string; draftId: string; draftRevision: number; visibility: Visibility; status: 'prepared' | 'publishing' | 'retry-needed' | 'published' | 'failed' | 'discarded'; nookId?: string; createdAt?: string; manifest?: { title: string; description: string; roomId: string; visibility: Visibility } };
 type Readiness = { readyToPublish: boolean; blockers: { code: string; message: string }[] };
-export interface NookStudioProps { open?: boolean; onClose: () => void; onTool: OrganizationTool; onPublished?: (nook: any) => void; onPreview?: (space: WorkspaceSpace, presentation?: { isCurrent: () => boolean }) => void | Promise<void>; canPublish?: boolean; initialDraftId?: string; onDraftSelected?: (id: string) => void }
+export interface NookStudioProps { open?: boolean; onClose: () => void; onTool: OrganizationTool; onPublished?: (nook: any) => void; onPreview?: (space: WorkspaceSpace, presentation?: { isCurrent: () => boolean }) => void | Promise<void>; canPublish?: boolean; initialDraftId?: string; initialDraftRequest?: number; onDraftSelected?: (id: string) => void }
 const styleLabels: Record<ArtStyle, string> = { illustration: 'Illustration', anime: 'Anime', watercolor: 'Watercolor', pixel: 'Pixel art', realistic: 'Realistic', cinematic: 'Cinematic' };
 const sceneStyle = (scene: RoomScene): ArtStyle => scene.style === 'illustrated' ? 'illustration' : scene.style === 'photoreal' ? 'realistic' : scene.style === 'dreamlike' ? 'cinematic' : scene.style;
 const newDraft = (): Draft => ({ id: crypto.randomUUID(), title: '', description: '', revision: 0, space: { ...defaultSpace, room: roomScenes[0].id, theme: roomScenes[0].theme, accent: '#e9ab86', companion: 'none', decorations: [] }, style: sceneStyle(roomScenes[0]), artworkMode: 'chatgpt', scenePrompt: '', visibility: 'private', pathTemplate: 'none' });
@@ -36,7 +36,7 @@ const snapshot = (draft: Draft) => JSON.stringify(payload(draft));
 function summarized(draft: Draft): DraftSummary { return { id: draft.id, title: draft.title, description: draft.description, revision: draft.revision, style: draft.style, artworkMode: draft.artworkMode, visibility: draft.visibility, createdAt: draft.createdAt, updatedAt: draft.updatedAt, roomId: draft.space.backgroundImage ? 'custom' : draft.space.room ?? roomScenes[0].id, hasArtwork: !!draft.space.backgroundImage }; }
 const publicationPending = (item: Publication) => ['prepared', 'publishing', 'retry-needed'].includes(item.status);
 
-export default function NookStudio({ open = true, onClose, onTool, onPublished, onPreview, canPublish = false, initialDraftId, onDraftSelected }: NookStudioProps) {
+export default function NookStudio({ open = true, onClose, onTool, onPublished, onPreview, canPublish = false, initialDraftId, initialDraftRequest = 0, onDraftSelected }: NookStudioProps) {
   const [draft, setDraft] = useCrashDraft<Draft>('nook-studio:draft', newDraft); const [savedSnapshot, setSavedSnapshot] = useCrashDraft('nook-studio:snapshot', () => '');
   const [drafts, setDrafts] = useState<DraftSummary[]>([]); const [publications, setPublications] = useState<Publication[]>([]);
   const [stage, setStage] = useState<'edit' | 'review' | 'confirm' | 'published'>('edit');
@@ -48,7 +48,7 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
   const visibility = useRef({ propOpen: open, visible: open, epoch: 0 });
   if (visibility.current.propOpen !== open) { visibility.current = { propOpen: open, visible: open, epoch: visibility.current.epoch + 1 }; }
   const dismissRef = useRef<(() => void) | null>(null);
-  const handledInitialDraft = useRef<string | undefined>(undefined);
+  const handledInitialDraft = useRef<{ id?: string; request: number }>({ request: -1 });
   const leavePrompt = useRef<HTMLElement>(null);
   const owner = useContext(DraftRecoveryScope), ownerRef = useRef(owner); ownerRef.current = owner;
   const currentDraft = useRef(draft); currentDraft.current = draft;
@@ -89,10 +89,10 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
     return () => { mounted.current = false; };
   }, []);
   useEffect(() => {
-    if (!open || busy || handledInitialDraft.current === initialDraftId) return;
-    handledInitialDraft.current = initialDraftId;
+    if (!open || busy || (handledInitialDraft.current.id === initialDraftId && handledInitialDraft.current.request === initialDraftRequest)) return;
+    handledInitialDraft.current = { id: initialDraftId, request: initialDraftRequest };
     if (initialDraftId && initialDraftId !== currentDraft.current.id) leave(() => { void load(initialDraftId); });
-  }, [initialDraftId, open, busy]);
+  }, [initialDraftId, initialDraftRequest, open, busy]);
   useEffect(() => {
     if (!isEmbedded) return;
     const request = draft.artworkRequest; if (!request || !awaitingArtwork(request)) return;
@@ -182,6 +182,12 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
   function adopt(value: Draft) { currentDraft.current = value; currentSnapshot.current = snapshot(value); setDraft(value); setSavedSnapshot(currentSnapshot.current); setDrafts(items => [summarized(value), ...items.filter(item => item.id !== value.id)]); setConflict(null); }
   async function refreshDrafts() { const scope = owner; setLoadingDrafts(true); setListError(''); try { const value = resultData(await onTool('nook_drafts_list', {})); if (!currentOwner(scope)) return; setDrafts(value.drafts ?? []); setPublications(value.publications ?? []); } catch (reason) { if (currentOwner(scope)) setListError(errorMessage(reason)); } finally { if (currentOwner(scope)) setLoadingDrafts(false); } }
   async function operate(key: string, work: () => Promise<void>) { currentBusy.current = key; setBusy(key); setError(''); setNotice(''); try { await work(); } catch (reason) { if (mounted.current) setError(errorMessage(reason)); } finally { currentBusy.current = ''; if (mounted.current) setBusy(''); } }
+  async function saveDraft() {
+    // Keep the focused button mounted and enabled, while synchronously rejecting
+    // repeated activation before React has committed the busy presentation.
+    if (currentBusy.current || locked || !currentDraft.current.title.trim()) return;
+    await operate('save', async () => { await save(currentDraft.current); setNotice('Private draft saved.'); });
+  }
   async function load(id: string) {
     const scope = owner;
     await operate('load', async () => { const result = resultData(await onTool('nook_draft_get', { draftId: id })); if (!currentOwner(scope)) return; adopt(result.draft); setReadiness(result.readiness); setStage('edit'); setReview(null); setIntent(null); setDeleteConfirm(false); });
@@ -357,7 +363,7 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
         </fieldset>
         {!canPublish && <p className="nooks-studio-availability">Publishing needs the connected community backend. You can save a private draft now.</p>}
         {deleteConfirm && <section className="nooks-studio-delete"><p>Delete this private draft? Any nook already published from it will stay available.</p><div><button disabled={!!busy} onClick={() => setDeleteConfirm(false)}>Keep draft</button><button disabled={!!busy} onClick={discardDraft}>{busy === 'delete' ? 'Deleting…' : 'Delete draft'}</button></div></section>}
-        <footer className="nooks-studio-footer"><div><span>{busy === 'save' ? 'Saving…' : dirty ? 'Unsaved changes' : draft.revision ? `Saved · Version ${draft.revision}` : 'Private draft'}</span>{draft.revision > 0 && !locked && <button disabled={!!busy} onClick={() => setDeleteConfirm(true)}>Delete draft</button>}</div><button className="nooks-studio-secondary" disabled={!!busy || !!locked || !draft.title.trim()} onClick={() => operate('save', async () => { await save(); setNotice('Private draft saved.'); })}>Save draft</button>{onPreview && <button className="nooks-studio-secondary" disabled={!!busy || !draft.title.trim() || custom && !draft.space.backgroundImage} onClick={preview}>{busy === 'preview' ? 'Opening…' : 'Use this look'}</button>}<button className="nooks-studio-primary" disabled={!!busy || !draft.title.trim() || custom && !draft.space.backgroundImage || !canPublish} onClick={reviewPublication}>{busy === 'review' ? 'Opening…' : existingPending ? 'Review publication' : 'Review & publish'}<ArrowRight size={14}/></button></footer>
+        <footer className="nooks-studio-footer"><div><span>{busy === 'save' ? 'Saving…' : dirty ? 'Unsaved changes' : draft.revision ? `Saved · Version ${draft.revision}` : 'Private draft'}</span>{draft.revision > 0 && !locked && <button disabled={!!busy} onClick={() => setDeleteConfirm(true)}>Delete draft</button>}</div><button className="nooks-studio-secondary" disabled={!!locked || !draft.title.trim()} aria-disabled={!!busy || !!locked || !draft.title.trim()} aria-busy={busy === 'save'} onClick={saveDraft}>Save draft</button>{onPreview && <button className="nooks-studio-secondary" disabled={!!busy || !draft.title.trim() || custom && !draft.space.backgroundImage} onClick={preview}>{busy === 'preview' ? 'Opening…' : 'Use this look'}</button>}<button className="nooks-studio-primary" disabled={!!busy || !draft.title.trim() || custom && !draft.space.backgroundImage || !canPublish} onClick={reviewPublication}>{busy === 'review' ? 'Opening…' : existingPending ? 'Review publication' : 'Review & publish'}<ArrowRight size={14}/></button></footer>
       </> : stage === 'published' ? <section className="nooks-studio-success"><h2>{published?.title ?? displayDraft.title} is ready.</h2><p>{displayDraft.visibility === 'public' ? 'People can discover and join this nook.' : 'Your nook is private. Invite people from its community panel.'}</p><button className="nooks-studio-primary" onClick={requestClose}>Done</button>{onPublished && published?.id && <button className="nooks-studio-secondary" onClick={() => onPublished(published)}>Study here</button>}</section> : <section className="nooks-studio-review"><h2>{stage === 'confirm' ? 'Publish this nook?' : 'Check your nook'}</h2><dl><div><dt>Name</dt><dd>{displayDraft.title}</dd></div><div><dt>Description</dt><dd>{displayDraft.description || 'No description'}</dd></div><div><dt>Scene</dt><dd>{displayDraft.artworkMode === 'curated' ? displayScene.title : 'Your selected artwork'}</dd></div><div><dt>Audience</dt><dd>{displayDraft.visibility === 'public' ? 'Anyone can discover and join' : 'Only invited people can join'}</dd></div></dl><p>{displayDraft.visibility === 'public' ? 'Publishing makes this name, description, and artwork publicly discoverable.' : 'Publishing creates an invitation-only study nook. It will not appear in public discovery.'} Your private notes, quizzes, flashcards, and artwork prompt stay private.</p><p className="nooks-studio-help">This creates a new community. Changes to this draft do not update an already published nook. Creator reward paths are not available yet.</p>{!readiness?.readyToPublish && <div className="nooks-studio-message is-error" role="alert">{readiness?.blockers.length ? <ul>{readiness.blockers.map(item => <li key={item.code}>{item.message}</li>)}</ul> : <p>This draft is not ready to publish. Return to your draft and try reviewing it again.</p>}</div>}{!canPublish && <p className="nooks-studio-availability">Publishing needs the connected community backend.</p>}<footer><button className="nooks-studio-secondary" disabled={!!busy} onClick={() => setStage(stage === 'confirm' ? 'review' : 'edit')}>Back</button><button className="nooks-studio-primary" disabled={!!busy || !readiness?.readyToPublish || !canPublish} onClick={stage === 'confirm' ? publish : prepare}>{busy === 'publish' ? 'Publishing…' : busy === 'prepare' ? 'Preparing…' : stage === 'confirm' ? displayDraft.visibility === 'public' ? 'Publish publicly' : 'Publish invitation-only' : 'I reviewed these details'}</button></footer>{stage === 'confirm' && <small>If a connection fails, retry here to recover this same publication.</small>}</section>}
       <input type="file" accept="image/png,image/jpeg,image/webp" hidden ref={uploadInput} onChange={event => { void upload(event.target.files?.[0]); event.target.value = ''; }}/>
     </main></div>

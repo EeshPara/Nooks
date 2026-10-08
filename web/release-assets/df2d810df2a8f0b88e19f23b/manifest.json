@@ -1,0 +1,98 @@
+{
+  "graph": {
+    "id": "df2d810df2a8f0b88e19f23b",
+    "indexSha256": "df2d810df2a8f0b88e19f23bbc96f4ec1ba115d4dcda0be50b606eee6ebd54aa",
+    "assets": [
+      {
+        "path": "assets/NoteAppearance-BxXvaAxM.css",
+        "bytes": 198266,
+        "sha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560"
+      },
+      {
+        "path": "assets/NoteAppearance-CQlKYQkf.js",
+        "bytes": 352541,
+        "sha256": "abc883fb6edb3a9dc1d58d866a81a1cb6b4d2dada4baf0cc8e9c63362a94e121"
+      },
+      {
+        "path": "assets/index-BHG_76oL.js",
+        "bytes": 516023,
+        "sha256": "0539901ed9ad08682dd7e0d46a802e88dec97f8b3c5f08de14e63fb26f7c2ee6"
+      },
+      {
+        "path": "assets/index-BlI9WeLm.js",
+        "bytes": 228238,
+        "sha256": "ab6b720972a398657fc7c69afbe8e1c8eb394b43cb36f5761dabf0e73c668ae2"
+      },
+      {
+        "path": "assets/index-DAeI1hYC.css",
+        "bytes": 334969,
+        "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80"
+      },
+      {
+        "path": "assets/study-content-h8ACpf3x.js",
+        "bytes": 543864,
+        "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756"
+      }
+    ],
+    "dependencies": [
+      {
+        "path": "assets/forest-bed-D1heS7ny.mp3",
+        "bytes": 516956,
+        "sha256": "7347b37e8c5eadb11ac846d82342e3a690879215b3774dbde30b01debf5e7f97"
+      },
+      {
+        "path": "assets/hearth-fire-sTiOGGr4.mp3",
+        "bytes": 408809,
+        "sha256": "67a84d4805ac9d7ce8d8619e8abdb18257994477bc64db1ffa2087882e133091"
+      },
+      {
+        "path": "assets/night-bed-BIyOY-Ow.mp3",
+        "bytes": 564916,
+        "sha256": "2c6f737732b64ae43ff0723827f613f0303b91b27aa1a8ab05f24413761a6463"
+      },
+      {
+        "path": "assets/rain-window-BcBehBhv.mp3",
+        "bytes": 408809,
+        "sha256": "7f7be3dd0d6ec2eb0b8ee2235e6c75a929cec3b46102535fd5d9ea64b204f357"
+      },
+      {
+        "path": "assets/room-bed-l--56okB.mp3",
+        "bytes": 420720,
+        "sha256": "b59705358b09a14b1b6722d1ab903d5a3abe8979c287f38b87feb147555f95d7"
+      },
+      {
+        "path": "assets/stove-fire-BLhLmdK3.mp3",
+        "bytes": 408809,
+        "sha256": "8b143f0a236571dff947a44c89b7b433f1db05bce2f1bc6961de98a71cb93fad"
+      },
+      {
+        "path": "assets/stream-bed-CBNKcOmx.mp3",
+        "bytes": 516956,
+        "sha256": "97d1c2401c2e969dd9ac33d5350f5eaf96b69f92b80eace90b36b245bf3ce4f0"
+      },
+      {
+        "path": "assets/train-bed-ibeD_qOz.mp3",
+        "bytes": 348936,
+        "sha256": "f5bf649ec4605f42517848271067685e8dfcb2721835f5c17d5648ad3bd08f12"
+      },
+      {
+        "path": "assets/waves-bed-8YP6h-76.mp3",
+        "bytes": 612877,
+        "sha256": "3cd2c85bcfb8f28744cdd28a1f20eec184a7718c4439cf18ab23430681066622"
+      },
+      {
+        "path": "assets/wind-bed-DJ-Q0NWz.mp3",
+        "bytes": 516956,
+        "sha256": "2a7573840ae6700a858deea369ba7acfdd41dceb7ef308707f96e8fe942030c2"
+      }
+    ]
+  },
+  "capturedAt": "2026-10-08T10:31:31.710Z",
+  "retainUntil": "2026-10-10T10:31:31.710Z",
+  "provenance": {
+    "kind": "verified-public-manifest",
+    "url": "https://nooks-study-space.vercel.app/nooks-release.json",
+    "manifestSha256": "ee836e202f695127e58bd8325dbbf486fc6059ac78a710aecdbf76ac02ebf199",
+    "indexSha256": "df2d810df2a8f0b88e19f23bbc96f4ec1ba115d4dcda0be50b606eee6ebd54aa"
+  }
+}

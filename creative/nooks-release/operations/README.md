@@ -1,6 +1,12 @@
 # Nooks operations acceptance — October 8, 2026
 
-## Latest release canary and invalid-input check
+## Latest release canary and empty draft-list check
+
+At **10:33:08–10:33:17 UTC**, after root deployed release `f2z3aj98o` to the stable public alias, one disposable initialized empty fixture passed: config 200/114 ms; authenticated workspace 200/365 ms; authenticated `nook_drafts_list` 200/368 ms, exact fixture recovery scope matched in memory, with zero drafts and zero publications. Session revocation and account/Auth deletion all succeeded; verification found zero account rows and Auth absent. Root’s exact-topic cleanup with an account-absence guard found zero remaining fixture topics and zero fixture accounts; see authenticated-probe-topic-cleanup-2026-10-08T10-33.json. Evidence: [canary](authenticated-probe-live-2026-10-08T10-33-08.718Z.json), [fixture and empty draft-list result](authenticated-probe-fixture-2026-10-08T10-33-08.718Z.json).
+
+This used `--verify-draft-list` on the existing one-fixture harness. No artwork, draft or publication was created, no deep-input or load test was repeated, and no additional live fixture was used. The listing validates the authenticated empty response contract only; it does not prove populated summaries, browser rendering, SMTP or hosted disconnect propagation. Normal identity/quota bookkeeping can write.
+
+## Earlier release canary and invalid-input check
 
 At **09:56:16–09:56:24 UTC**, after root deployed `nooks-study-space-iebenwu3j-eeshpara-1663s-projects.vercel.app` to the stable alias, one disposable initialized empty fixture passed the authenticated canary: config 200/125 ms; workspace 200/393 ms. The same fixture's depth-10,000, 20,028-byte invalid profile request returned **400 `INVALID_INPUT`**, and scoped before/after reads showed its profile unchanged. Session revocation and account/Auth deletion all succeeded, with zero account rows and Auth absent verified. The exact orphan throttle topic was handed to root for guarded cleanup. Evidence: [canary](authenticated-probe-live-2026-10-08T09-56-16.062Z.json), [fixture and malformed-input check](authenticated-probe-fixture-2026-10-08T09-56-16.062Z.json). No broad smoke/load test was repeated.
 

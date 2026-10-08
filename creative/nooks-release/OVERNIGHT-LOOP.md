@@ -45,3 +45,11 @@ Release commit `cd1cd9a` was pushed to the private GitHub repository through mer
 ## Morning handoff
 
 Report what changed and was deployed, actual checks and measured capacity, final grades with reasons, remaining reproducible issues, and the smallest owner action needed for any blocker. Link the exact reports and release commit.
+
+## Saved drafts and request lifecycle iteration
+
+Release f2z3aj98o / native39 connects current Studio drafts to My Nooks, preserves Save focus, guards owner changes and makes canceled draft switches retryable. Browser QA caught duplicate sibling keys after initial source acceptance; those were namespaced and the mounted repeated-dialog journey passed before publishing. Public mobile-size acceptance closes the original missing-card/focus issues. Asset checks72/72, compatibility19/19 and one authenticated canary plus empty owner-scoped draft list passed; all disposable account/Auth fixtures are gone and exact-topic cleanup found0.
+
+The public handler also has independently reviewed Node disconnect hardening. Hosted propagation/compute savings remain unproven; no Vercel cancellation opt-in was enabled. The next bounded performance opportunity is metadata-only private draft listing, documented in studio-draft-metadata-read.md. SMTP, native iframe, sensory review, physical-device and operator recovery gates remain open.
+
+Prior compatibility source checkpoint: be6199c is pushed to the existing private repository.

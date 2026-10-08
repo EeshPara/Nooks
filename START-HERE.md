@@ -13,7 +13,7 @@ For designer-led UI work, follow `DESIGNER-START.md`: the agent runs `npm run de
 | Folder | Meaning | Use |
 | --- | --- | --- |
 | `app/` | Latest development source from the original Mac | Main development, full tests, SQL migrations, research, creative assets. Includes unfinished backend/custom-art changes. |
-| `cloud/` | Published owner-private native Site/plugin source | Native MCP/server/Worker baseline, version38 source commit `8b065b240aaf1b971bb293b8bf0b5fe40a114543`. |
+| `cloud/` | Published owner-private native Site/plugin source | Native MCP/server/Worker baseline, version39 source commit `19fed5461a56a45df18fc60cd6fd27f265a562ff`. |
 | `web/` | Published public Vercel source | Existing website release baseline and guarded deployment scripts. |
 
 The three folders intentionally preserve their differences. Do not overwrite a published baseline with the entire development folder: some backend work is not yet reviewed or deployed. Port selected changes and their tests, then verify the affected build. Git stores identical files efficiently; the folders are not three different products.
@@ -21,6 +21,8 @@ The three folders intentionally preserve their differences. Do not overwrite a p
 `SOURCE-SNAPSHOT.json` records source paths, hashes and provenance. Creative Python tools were adjusted to use PATH/relative assets instead of the original Mac's binary locations. Rebuilding media also requires ffmpeg/ffprobe on PATH and Python Pillow/NumPy; the intro reuses its bundled title overlays, with `NOOKS_FONT` available for new typography. Historical reports may still contain that Mac's absolute paths; use the repository-relative equivalent.
 
 ## What was just completed
+
+- Public f2z3aj98o / native39 fixes My Nooks missing current Studio drafts and preserves Save-button focus. Owner guards, canceled-switch retry and repeated modal journeys passed; browser QA caught and fixed duplicate sibling keys before release. Current assets72/72, compatibility19/19 and one authenticated empty-list canary pass. Public Node disconnect hardening is included; hosted cancellation propagation is not proven.
 
 - The accepted Nooks intro is `ui/public/media/opening-film/nooks-opening-v3.mp4`, with warm ambience and the native same-workspace replay overlay. The visible **Watch intro** button is retained.
 - All 50 curated rooms now have exact-art Higgsfield animations, independently reviewed by final SHA and decoded completely. Original three clips were corrected using existing source assets; their historical files remain untouched. New final filenames are under `ui/public/videos/nooks-animated-all/`. The final media release gate confirms all four source targets match.
@@ -30,7 +32,7 @@ The three folders intentionally preserve their differences. Do not overwrite a p
 - A visible Motion control persists the animation preference; playback stops while hidden and respects reduced motion. Task entry now keeps keyboard focus while saving. Actual browser checks verified notes/autosave, quiz grading and persistence, focus credit, task persistence, discovery recovery, ambience controls, and animation pause/reload/resume.
 - Dedicated hosted Supabase has the two additive October 8 realtime/scale migrations. Public signed-in clients use private content-free invalidations with authorization on each data read; native clients reconcile by polling.
 - A bounded hosted test used 100 distinct identities, 100 sockets/300 private channels and 869 requests with zero errors (p95 706ms). All fixture accounts/rooms/topics were cleaned. This does not establish 1,000-user capacity or uninterrupted production HTTP load; see the exact capacity report.
-- All50 reviewed clips and new ambience are deployed to the existing public URL and owner-private native version38. Public deployed acceptance passed16/16 checks. A second actual Vercel-path capacity run passed100 identities/100 sockets/300 private channels,873 requests with zero errors and p95 364ms; all fixtures/topics were cleaned. See `deployed/`. The truthful guest header/share-copy followup is published; the public header was verified in the browser. Public email onboarding remains blocked by missing custom SMTP/provider configuration; verification was not disabled.
+- All50 reviewed clips and new ambience are deployed to the existing public URL and owner-private native version39. Public deployed acceptance passed16/16 checks. A second actual Vercel-path capacity run passed100 identities/100 sockets/300 private channels,873 requests with zero errors and p95 364ms; all fixtures/topics were cleaned. See `deployed/`. The truthful guest header/share-copy followup is published; the public header was verified in the browser. Public email onboarding remains blocked by missing custom SMTP/provider configuration; verification was not disabled.
 - Independent grade after deployed acceptance: quality 7.5/10, readiness 6.5/10; see `final-independent-grade.md`. No continuous playback or subjective audio audition is claimed. See `OVERNIGHT-LOOP.md`, browser QA, scene reviews and operations reports under `creative/nooks-release/`.
 
 ## Existing services — reuse them

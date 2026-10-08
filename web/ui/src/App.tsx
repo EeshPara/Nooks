@@ -108,6 +108,7 @@ function WorkspaceApp(){
  if(studioLifetime.current.owner!==draftOwner)studioLifetime.current={owner:draftOwner,mounted:false};
  if(showNookCreator)studioLifetime.current.mounted=true;
  const [studioDraftId,setStudioDraftId]=useState<string|undefined>();
+ const [studioDraftRequest,setStudioDraftRequest]=useState(0);
  const [pendingStudioDraftId,setPendingStudioDraftId]=useState<string|undefined>();
  const studioNavigationVersion=useRef(0);
  const [reportedStudioDraftId,setReportedStudioDraftId]=useState<string|undefined>();
@@ -450,6 +451,11 @@ function WorkspaceApp(){
   void enterNook(scene,draft);
  }
  function saveNookProfile(next:NookProfile){setProfile(next);setProfileReady(true);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));setShowIdentity(false);if(pendingJoin)void enterNook(pendingJoin.scene,pendingJoin.draft);}
+ function openStudioDraft(id:string,owner:string){
+  if(owner!==progressOwner.current||!canFlushProgress())return;
+  studioNavigationVersion.current++;setPendingStudioDraftId(undefined);
+  setStudioDraftId(id);setStudioDraftRequest(value=>value+1);setShowNooks(false);setShowNookCreator(true);
+ }
  function createNookDraft(draft:NookDraft){const next=[draft,...nookDrafts].slice(0,30);setNookDrafts(next);writeLocalWorkspaceState(localScope,'drafts',JSON.stringify(next));const scene=allRoomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}
  const useRoomPerk=(perk:RewardPerk)=>{if(!unlockedRewards(currentRoomId,roomProgress).some(r=>r.perk?.type===perk.type&&r.perk.id===perk.id))return;if(perk.type==='room'){setSecretRoom({id:perk.id,parent:currentRoomId});changePage('home');}else setEarnedTrack(perk.id);};
  function closeValidatedNote(){
@@ -558,11 +564,11 @@ function WorkspaceApp(){
    <footer className="workspace-footer"><span><BookOpen size={13}/> Nooks · Your Study Nook in ChatGPT</span><span>{saving?'Saving…':pendingProgressCount?'Results waiting to save':isLive?'Saved to your account':'Saved on this device'}</span></footer>
    </div>}
   </main>
-  {showNooks&&<NookDiscovery favoritesScope={draftOwner} onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=allRoomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
+  {showNooks&&<NookDiscovery key={`discovery:${draftOwner}`} favoritesScope={draftOwner} onTool={perform} isCurrentOwner={()=>draftOwner===progressOwner.current&&canFlushProgress()} onOpenStudioDraft={id=>openStudioDraft(id,draftOwner)} onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=allRoomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
   {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} pendingInvite={!!currentInvitation()} onConnect={()=>{setShowPeople(false);setShowAccount(true);}} onClose={()=>setShowPeople(false)}/>}
   {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=allRoomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
   {showIdentity&&!isLive&&<NookIdentityDialog profile={profile} onClose={()=>{setShowIdentity(false);setPendingJoin(null);}} onSave={saveNookProfile}/>}
-  {studioLifetime.current.mounted&&<NookStudio key={draftOwner} open={showNookCreator} initialDraftId={studioDraftId} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}
+  {studioLifetime.current.mounted&&<NookStudio key={`studio:${draftOwner}`} open={showNookCreator} initialDraftId={studioDraftId} initialDraftRequest={studioDraftRequest} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}
   {celebration&&<RewardCelebration rewards={celebration.rewards} roomLabel={getRoomRewards(celebration.roomId).label} onClose={()=>setCelebration(null)} onPlace={async rewardId=>{await perform('room_reward_place',{roomId:celebration.roomId,rewardId,placed:true});}}/>}
   {portal&&<NookPortal title={portal.title} image={portal.image}/>}
   {showAccount&&!isTutorialPractice&&<AccountDialog onClose={()=>{setShowAccount(false);if(account.status!=='signed-in')clearProfileLink();}} onBeforeAccountChange={()=>{if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}return canNavigate();}}/> }

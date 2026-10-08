@@ -8,9 +8,11 @@ import { toolNames } from './tools.mjs';
 import { generateStudyMaterial } from './study-generation.mjs';
 import { createRequestLimiter } from './request-limiter.mjs';
 import { createOperationalMonitor, failureStatus } from './operations.mjs';
+import { createRequestLifetime } from './request-lifetime.mjs';
 
 const MAX_BODY_BYTES = 2 * 1024 * 1024;
 const json = (response, status, body, headers = {}) => {
+  if (response.destroyed || response.writableEnded) return;
   response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', 'Vary': 'Origin', ...headers });
   response.end(JSON.stringify(body));
 };
@@ -74,13 +76,16 @@ export function createBrowserApiHandler({ env = process.env, fetchImpl = fetch, 
   const earlyRequests = createRequestLimiter({ limit: 600 });
   return async (request, response) => {
     const context = monitor.start();
+    const lifetime = createRequestLifetime(request, response, fetchImpl);
+    const reply = (status, body, headers) => { if (!lifetime.disconnected) return json(response, status, body, headers); };
     try {
+      if (lifetime.disconnected) return;
       const origin = request.headers.origin;
-      if (origin && !origins.has(origin)) return json(response, 403, { error: { code: 'FORBIDDEN', message: 'Open Nooks to use this feature.' } });
-      if (request.headers['sec-fetch-site'] === 'cross-site') return json(response, 403, { error: { code: 'FORBIDDEN', message: 'Open Nooks to use this feature.' } });
+      if (origin && !origins.has(origin)) return reply(403, { error: { code: 'FORBIDDEN', message: 'Open Nooks to use this feature.' } });
+      if (request.headers['sec-fetch-site'] === 'cross-site') return reply(403, { error: { code: 'FORBIDDEN', message: 'Open Nooks to use this feature.' } });
       const path = new URL(request.url ?? '/', 'https://nooks.invalid').pathname;
-      if (path === '/api/health' && request.method === 'GET') return json(response, 200, monitor.health());
-      if (path === '/api/config' && request.method === 'GET') return json(response, 200, {
+      if (path === '/api/health' && request.method === 'GET') return reply(200, monitor.health());
+      if (path === '/api/config' && request.method === 'GET') return reply(200, {
         backend: config ? 'supabase' : 'unconfigured',
         ...(config ? { supabaseUrl: config.url, publishableKey: config.publishableKey } : {}),
         generation: !!config?.openaiKey,
@@ -91,10 +96,10 @@ export function createBrowserApiHandler({ env = process.env, fetchImpl = fetch, 
       monitor.setOperation(context, generation ? 'generate' : name);
       if (!generation && (!name || (!toolNames.has(name) && !creatorToolNames.has(name) && !isCommunityTool(name) && !librarySharingTools.has(name)))) throw new InputError('This action is not available.', 'NOT_FOUND');
       const method = path === '/api/workspace' ? 'GET' : 'POST';
-      if (request.method !== method) return json(response, 405, { error: { code: 'METHOD_NOT_ALLOWED', message: `Use ${method} for this action.` } }, { Allow: method });
+      if (request.method !== method) return reply(405, { error: { code: 'METHOD_NOT_ALLOWED', message: `Use ${method} for this action.` } }, { Allow: method });
       context.phase = 'configuration';
       if (!config) throw new InputError('Account sync is not connected yet. Your work on this device is still available.', 'BACKEND_UNAVAILABLE');
-      const observedFetch = monitor.wrapFetch(context, fetchImpl, config.url);
+      const observedFetch = monitor.wrapFetch(context, lifetime.fetch, config.url);
       const verify = createSupabaseIdentityVerifier({ ...config, fetchImpl: observedFetch });
       context.phase = 'authentication';
       const match = /^Bearer ([^\s]+)$/i.exec(request.headers.authorization ?? '');
@@ -108,7 +113,7 @@ export function createBrowserApiHandler({ env = process.env, fetchImpl = fetch, 
       const identity = await verify(match[1]);
       if (!identity) throw new InputError('Your sign-in has expired. Sign in again to continue.', 'AUTH_REQUIRED');
       context.phase = 'quota';
-      const store = new SupabaseStore({ ...config, identity, fetchImpl: observedFetch, clock, onArtworkUnavailable: details => monitor.artworkUnavailable(context, details) });
+      const store = new SupabaseStore({ ...config, identity, fetchImpl: observedFetch, clock, onArtworkUnavailable: details => { if (!lifetime.disconnected) monitor.artworkUnavailable(context, details); } });
       const limit = await store.rpc('nooks_request_limit', { p_account: identity.id, p_bucket: 'api', p_limit: 180, p_window_seconds: 60 });
       if (typeof limit?.allowed !== 'boolean') throw new Error('Invalid account quota response.');
       monitor.success();
@@ -120,14 +125,14 @@ export function createBrowserApiHandler({ env = process.env, fetchImpl = fetch, 
       let result;
       if (librarySharingTools.has(name)) {
         result = await invokeLibrarySharing(store, identity, name, args, env.NOOKS_PUBLIC_URL ?? 'https://nooks-study-space.vercel.app');
-        return json(response, 200, result);
+        return reply(200, result);
       }
       if (generation) {
         // A saved retry should remain recoverable even if the generation quota is now full.
         if (typeof args.requestId === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(args.requestId)) {
           const savedWorkspace = await store.read(identity.id);
           const savedArtifact = savedWorkspace.artifacts.find(item => item.id === `generated-${args.requestId}`);
-          if (savedArtifact) { savedWorkspace.backend = 'supabase'; return json(response, 200, { artifact: savedArtifact, workspace: savedWorkspace, authenticated: true, duplicate: true }); }
+          if (savedArtifact) { savedWorkspace.backend = 'supabase'; return reply(200, { artifact: savedArtifact, workspace: savedWorkspace, authenticated: true, duplicate: true }); }
         }
         context.phase = 'generation';
         if (!config.openaiKey) throw new InputError('AI generation is not connected on the website yet. You can still create material in ChatGPT.', 'GENERATION_UNAVAILABLE');
@@ -139,7 +144,9 @@ export function createBrowserApiHandler({ env = process.env, fetchImpl = fetch, 
         result = await generateStudyMaterial({ args, engine, store, identity, apiKey: config.openaiKey, model: config.model, fetchImpl: observedFetch });
       } else result = creatorToolNames.has(name) ? await new NookCreator(store, { clock }).call(name, args, identity) : isCommunityTool(name) ? await invokeCommunity(store, name, args) : await engine.call(name, args, identity);
       if (result?.workspace) result.workspace.backend = 'supabase';
-      return json(response, 200, result);
-    } catch (error) { return failure(response, error, monitor, context); }
+      return reply(200, result);
+    } catch (error) {
+      if (!lifetime.disconnected && !response.destroyed && !response.writableEnded) return failure(response, error, monitor, context);
+    } finally { lifetime.dispose(); }
   };
 }

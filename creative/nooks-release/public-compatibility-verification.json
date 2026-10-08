@@ -1,11 +1,15 @@
 {
-  "sampledAt": "2026-10-08T09:54:03.879Z",
+  "sampledAt": "2026-10-08T10:33:14.312Z",
   "origin": "https://nooks-study-space.vercel.app",
-  "current": "df2d810df2a8f0b88e19f23b",
+  "current": "d03cf6fb1687397f7f16feb1",
   "retained": [
     {
       "id": "3c3d4164950ace2411497a8b",
       "retainUntil": "2026-10-10T09:52:09.393Z"
+    },
+    {
+      "id": "df2d810df2a8f0b88e19f23b",
+      "retainUntil": "2026-10-10T10:31:31.710Z"
     },
     {
       "id": "ed6bf3dc9e61cab97c10b615",
@@ -25,7 +29,7 @@
     {
       "path": "/",
       "status": 200,
-      "sha256": "df2d810df2a8f0b88e19f23bbc96f4ec1ba115d4dcda0be50b606eee6ebd54aa",
+      "sha256": "d03cf6fb1687397f7f16feb11bbe60ff45c2bea0740a13fbfb0efeba6cd8a41d",
       "passed": true
     },
     {
@@ -47,12 +51,12 @@
       "passed": true
     },
     {
-      "path": "/assets/index-BHG_76oL.js",
+      "path": "/assets/index-BH9UjyLN.css",
       "status": 200,
-      "type": "application/javascript; charset=utf-8",
+      "type": "text/css; charset=utf-8",
       "cache": "public, max-age=31536000, immutable",
-      "bytes": 516023,
-      "sha256": "0539901ed9ad08682dd7e0d46a802e88dec97f8b3c5f08de14e63fb26f7c2ee6",
+      "bytes": 335352,
+      "sha256": "5e5b97fd7bc506c9fe417b522e7baaa3297a2bc0ae5031fc61833db6780098c4",
       "passed": true
     },
     {
@@ -65,12 +69,12 @@
       "passed": true
     },
     {
-      "path": "/assets/index-DAeI1hYC.css",
+      "path": "/assets/index-xOPmcwTP.js",
       "status": 200,
-      "type": "text/css; charset=utf-8",
+      "type": "application/javascript; charset=utf-8",
       "cache": "public, max-age=31536000, immutable",
-      "bytes": 334969,
-      "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
+      "bytes": 519322,
+      "sha256": "a7a4428b796de3b63f4895a179c4d0c071171360aafaea9862f92d9986882555",
       "passed": true
     },
     {
@@ -89,6 +93,24 @@
       "cache": "public, max-age=31536000, immutable",
       "bytes": 516041,
       "sha256": "fa4ef246123c8136a667aedff22cb19a321138e8c7dceaf495a3989ca977a8ca",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DAeI1hYC.css",
+      "status": 200,
+      "type": "text/css; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 334969,
+      "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-BHG_76oL.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 516023,
+      "sha256": "0539901ed9ad08682dd7e0d46a802e88dec97f8b3c5f08de14e63fb26f7c2ee6",
       "passed": true
     },
     {
@@ -116,6 +138,15 @@
       "cache": "public, max-age=31536000, immutable",
       "bytes": 543864,
       "sha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-h8ACpf3x.js?nooks_retry=1",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 543864,
+      "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
       "passed": true
     },
     {
