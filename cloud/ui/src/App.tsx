@@ -14,11 +14,12 @@ import { Headphones, Music2, Eye, EyeOff, Compass, MessageCircle, SlidersHorizon
 import { StudyDrawing } from './world/StudyDrawing';
 import AboutNook from './world/AboutNotable';
 import { RoomHome } from './world/RoomHome';
-import { WorkspaceLayoutProvider, LayoutControls } from './world/WorkspaceLayout';
+import { WorkspaceLayoutProvider, LayoutControls, MovableWidget } from './world/WorkspaceLayout';
 import { StudyFocusDock } from './world/StudyFocusDock';
 import { useHostLayout } from './world/useHostLayout';
 import { buildChatContextPrompt } from './study/chatContext';
 import { AmbientMixer } from './world/AmbientMixer';
+import { AmbientQuickControl } from './world/AmbientQuickControl';
 import { RoomJourney, RoomJourneyModal, RoomRewardShelf, emptyRoomProgress, unlockedRewards, getRoomRewards, type RoomProgress, type RewardPerk } from './world/RoomJourney';
 import { RewardDrawing } from './world/RewardDrawing';
 import { EarnedSoundtrack } from './world/EarnedSoundtrack';
@@ -529,12 +530,13 @@ function WorkspaceApp(){
    <header className="nooks-shell-header">
     <button className="nooks-shell-brand" onClick={()=>changePage('home')} aria-label="Nooks Study"><img className="nooks-custom-wordmark" src="/images/nooks-cat-wordmark-white.svg" alt="Nooks"/></button>
     <nav className="nooks-shell-nav" aria-label="Workspace navigation">{navigation.map(item=><button key={item.id} data-library-tab={item.id==='library'?'':undefined} data-nooks-tab={item.id==='explore'?'':undefined} aria-current={(item.id==='explore'?showNooks:!showNooks&&page===item.id)?'page':undefined} onClick={()=>{if(item.id==='explore')openUtility('explore');else{setShowNooks(false);changePage(item.id);}}}>{item.label}</button>)}</nav>
-    <div className="nooks-shell-actions"><TourReplayButton onClick={replayTour}/><div className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></div>{!isEmbedded&&isPublicPreview?<AccountButton compact avatar={profileReady?profile.avatar:undefined} onClick={()=>isTutorialPractice?notify('Account connection is available after the tour.'):setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
+    <div className="nooks-shell-actions"><TourReplayButton onClick={replayTour}/><MovableWidget id="people" label="People studying" className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></MovableWidget>{!isEmbedded&&isPublicPreview?<AccountButton compact avatar={profileReady?profile.avatar:undefined} onClick={()=>isTutorialPractice?notify('Account connection is available after the tour.'):setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
    </header>
    <div className="nooks-utility-bar">
 
     <div className="nooks-utility-actions">
      <StudyFocusDock focusMode={focusMode} onToggleFocusMode={()=>{setFocusMode(value=>!value);setShowFocus(false);setShowCollection(false);}} timer={{remaining,minutes:focusLength,running,active:!!focusSession,pending:focusPending,disabled:!!activeDraft&&!focusSession,onStart:startFocus,onPause:pauseFocus,onReset:resetFocus,onMinutes:m=>{setFocusLength(m);setRemaining(m*60);}}} open={showFocus} onOpenChange={value=>value?openUtility('focus'):setShowFocus(false)} workLabel={active?.title||'Independent study'} nookLabel={sceneName} earningNookLabel={focusSession?.roomId?getRoomRewards(focusSession.roomId).label:undefined} onFinish={finishFocus} retrySaving={!!completionRetry}/>
+     <AmbientQuickControl onOpen={()=>openUtility('sounds')}/>
      <button data-sound-trigger aria-label="Music and sound" aria-expanded={showSounds} onClick={()=>openUtility('sounds')}><Music2 size={15}/><span>Music</span></button>
      <LayoutControls/>
      

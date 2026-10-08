@@ -97,7 +97,7 @@ export function RoomHome(p: Props) {
   finally { taskBusyRef.current = false; setPendingTask(null); }
  };
  return <section className={`study-home study-home-welcome${p.nativeChat ? ' study-home-native' : ''}`} aria-label="Your study nook">
-  <div className="study-home-welcome-position"><div className="study-home-content">
+  <MovableWidget id="welcome" label="Welcome and study shortcuts" className="study-home-welcome-position"><div className="study-home-content">
    <header className="study-home-heading">
     {firstName && <p className="study-home-greeting">Hi, {firstName}.</p>}
     <h1>Welcome to <span>{p.sceneName || 'your nook'}.</span></h1>
@@ -118,7 +118,7 @@ export function RoomHome(p: Props) {
     {([['note','Notes'],['flashcards','Flashcards'],['quiz','Quiz'],['exam','Test']] as const).map(([kind,label]) => <button key={kind} onClick={() => p.onCreateKind ? p.onCreateKind(kind,p.nativeChat ? '' : prompt) : p.onCreate()}>{label}<ArrowRight size={12} aria-hidden="true"/></button>)}
    </div>
    {continuing && <button className="study-home-resume-link" onClick={() => p.onOpen(continuing)} title={continuing.title}><span>Pick up where you left off</span><strong>{continuing.title || 'Untitled note'}</strong><ArrowRight size={13} aria-hidden="true"/></button>}
-  </div></div>
+  </div></MovableWidget>
   <aside className="study-home-tools" aria-label="Focus and to-do">
    <MovableWidget id="timer" label="Pomodoro timer" className="study-home-timer-position"><section className={`study-home-timer study-home-widget ${p.timer.active ? 'is-active' : 'is-ready'}`} aria-label="Pomodoro timer">
     <div className="study-home-widget-heading"><h2>{p.timer.active ? 'Pomodoro' : 'Focus timer'}</h2><span>{p.timer.pending ? 'Saving…' : p.timer.active ? p.timer.running ? 'Focusing' : 'Paused' : `${p.timer.minutes} min`}</span></div>

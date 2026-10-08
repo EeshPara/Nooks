@@ -57,14 +57,11 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
   function freePosition(point: {x:number;y:number}) {
     const element=surface.current;
     if(!element)return null;
-    const root=element.closest('.lofi-world') as HTMLElement | null;
-    const obstacles=Array.from(root?.querySelectorAll<HTMLElement>('.workspace-widget-surface, .study-home-welcome-position, button, input, textarea, select, nav, [role="dialog"]') ?? [])
-      .filter(node=>node!==element && !element.contains(node) && !node.closest('[data-workspace-layout-control]') && (!node.closest('.workspace-widget-surface') || node.classList.contains('workspace-widget-surface')))
-      .map(node=>{const r=node.getBoundingClientRect();return {x:r.left+(window.scrollX||0),y:r.top+(window.scrollY||0),width:r.width,height:r.height};})
-      .filter(r=>r.width>0&&r.height>0);
-    const pixels=snapWidget(point,viewportFor(element),element.getBoundingClientRect(),obstacles);
-    return pixels ? widgetPosition(pixels,viewportFor(element),element.getBoundingClientRect()) : null;
+    // Free placement: clamp to the visible workspace, without rejecting overlap.
+    // The handle remains reachable so students can move overlapping widgets again.
+    return widgetPosition(point, viewportFor(element), element.getBoundingClientRect());
   }
+
   function paint(point: WorkspaceWidgetPosition) {
     const outer = slot.current, element = surface.current; if (!outer || !element) return;
     const viewport = viewportFor(element), bounds = widgetBounds(viewport, { width: 0, height: 0 });
@@ -151,7 +148,7 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
     <div className="workspace-widget-surface" ref={surface}>
       {children}
       {enabled && <div className="workspace-widget-controls" data-workspace-layout-control onClick={event => event.stopPropagation()}>
-        <button type="button" ref={handle} className="workspace-widget-handle" aria-label={`Move ${label}`} title="Drag to snap to a free space. Arrow keys move between grid cells. Escape cancels." onPointerDown={start} onPointerMove={move} onPointerUp={event => { event.stopPropagation(); finish(); }} onPointerCancel={cancel} onLostPointerCapture={() => { if (drag.current?.pointer !== null) cancel(); }} onKeyDown={key} onKeyUp={event => { if (event.key.startsWith('Arrow')) { event.preventDefault(); event.stopPropagation(); finish(); } }} onBlur={() => { if (drag.current?.pointer === null) finish(); }}><Grip size={14}/><span>{label}</span></button>
+        <button type="button" ref={handle} className="workspace-widget-handle" aria-label={`Move ${label}`} title="Drag anywhere in your workspace. Arrow keys move; Shift moves farther. Escape cancels." onPointerDown={start} onPointerMove={move} onPointerUp={event => { event.stopPropagation(); finish(); }} onPointerCancel={cancel} onLostPointerCapture={() => { if (drag.current?.pointer !== null) cancel(); }} onKeyDown={key} onKeyUp={event => { if (event.key.startsWith('Arrow')) { event.preventDefault(); event.stopPropagation(); finish(); } }} onBlur={() => { if (drag.current?.pointer === null) finish(); }}><Grip size={14}/><span>{label}</span></button>
         {position && <button type="button" className="workspace-widget-reset" aria-label={`Reset ${label} position`} title="Return to the original position" onPointerDown={event => event.stopPropagation()} onClick={() => layout?.change({ id, position: null })}><RotateCcw size={13}/></button>}
       </div>}
     </div>

@@ -89,6 +89,7 @@ function changeGain(gain: GainNode, value: number, context: AudioContext, fade =
   gain.gain.setTargetAtTime(safeVolume(value), context.currentTime, fade);
 }
 function dispose(engine: Engine) {
+  engine.context.onstatechange = null;
   engine.audio.pause(); engine.audio.removeAttribute('src'); engine.audio.load();
   engine.localSource.disconnect();
   for (const source of engine.sources) { try { source.stop(); } catch { /* Already stopped. */ } source.disconnect(); }
@@ -212,7 +213,15 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
         engine.current.audio.pause(); await engine.current.context.suspend();
         if (mounted.current && token === epoch.current) setRunning(false);
       } else {
+        if (!trackRef.current && !Object.values(preferences.levels).some(level => level > 0)) {
+          setError('Choose a sound below, then press Play.'); return;
+        }
         const current = engine.current ??= createEngine();
+        current.context.onstatechange = () => {
+          if (mounted.current && engine.current === current) setRunning(current.context.state === 'running');
+        };
+        setMuted(false);
+        if (preferences.master === 0) setPreferences(value => ({ ...value, master: .45 }));
         for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context, .45);
         changeGain(current.master, muted ? 0 : preferences.master, current.context);
         changeGain(current.localGain, preferences.local, current.context);
@@ -220,7 +229,12 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
         // Both calls happen directly in the click handler, before awaiting user activation.
         const resume = current.context.resume();
         const localPlay = trackRef.current ? current.audio.play().catch(() => { if (mounted.current && token === epoch.current) setError('Your local track could not play. Try another audio file.'); }) : Promise.resolve();
-        await resume; await localPlay;
+        let timeout: ReturnType<typeof setTimeout> | undefined;
+        try {
+          await Promise.race([resume, new Promise<never>((_, reject) => { timeout = setTimeout(() => reject(new Error('Tap Play again to enable sound in this window.')), 4000); })]);
+          if (current.context.state !== 'running') throw new Error('Tap Play again to enable sound in this window.');
+          await localPlay;
+        } finally { clearTimeout(timeout); }
         if (mounted.current && token === epoch.current) setRunning(true);
       }
     } catch (problem) { if (mounted.current && token === epoch.current) setError(problem instanceof Error ? problem.message : 'Audio could not start. Please try again.'); }

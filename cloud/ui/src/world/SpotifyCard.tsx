@@ -38,7 +38,6 @@ export function SpotifyCard({roomId,roomTitle,onOpenMusic}:{roomId:string;roomTi
  useEffect(()=>{if(!link){setCover(null);return;}const controller=new AbortController();fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(link.url)}`,{signal:controller.signal,credentials:'omit'}).then(r=>r.ok?r.json():Promise.reject()).then(data=>{const image=new URL(data.thumbnail_url);if(image.protocol==='https:'&&(image.hostname.endsWith('.spotifycdn.com')||image.hostname.endsWith('.scdn.co')))setCover({url:link.url,image:image.href,title:data.title});}).catch(()=>{});return()=>controller.abort();},[link?.url]);
  async function viewQueue(){setOverlay('queue');setQueueError('');setQueue([]);if(!player.ready)return;setQueueLoading(true);try{const data=await player.queue();setQueue(data.queue||[]);}catch(e){setQueueError(e instanceof Error?e.message:'Could not load your queue.');}finally{setQueueLoading(false);}}
  async function stopListening(){
-   sources.forEach(source=>source.stop());
    try{await player.stop();}catch{/* Disconnect still stops this browser's Spotify output. */}
    selectLink(null);setCover(null);setQueue([]);setOverlay(null);setEmbedLoaded(false);
  }

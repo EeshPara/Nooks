@@ -32,7 +32,7 @@ test('invalid geometry stays finite and pointer noise does not count as a move',
   assert.deepEqual(math.widgetPixels({ x: NaN, y: Infinity }, { width: NaN, height: Infinity }, { width: NaN, height: NaN }), { x: 0, y: 0 });
   assert.equal(math.passedWidgetDragThreshold(2, 2), false);
   assert.equal(math.passedWidgetDragThreshold(3, 4), true);
-  assert.deepEqual(math.movedWidget({ x: 20, y: 30 }, 'ArrowLeft'), { x: -4, y: 30 });
+  assert.deepEqual(math.movedWidget({ x: 20, y: 30 }, 'ArrowLeft'), { x: 12, y: 30 });
   assert.deepEqual(math.movedWidget({ x: 20, y: 30 }, 'ArrowDown', true), { x: 20, y: 54 });
 });
 test('failed saves retain the exact draft and wait for explicit retry', async () => {
@@ -134,7 +134,7 @@ test('Escape restores the original flow and discards a pointer or keyboard gestu
 test('keyboard movement commits on release, while account changes cancel an active gesture', () => {
   const h = primitive(); h.button.props.onKeyDown(h.event({ key: 'ArrowRight', shiftKey: true })); h.frame();
   h.button.props.onKeyUp(h.event({ key: 'ArrowRight' })); assert.equal(h.changes.length, 1);
-  const expected = math.widgetPosition({ x: 136, y: 168 }, { width: 1200, height: 900, top: 96, bottom: 152, left: 16, right: 16 }, { width: 244, height: 180 });
+  const expected = math.widgetPosition({ x: 144, y: 160 }, { width: 1200, height: 900, top: 96, bottom: 152, left: 16, right: 16 }, { width: 244, height: 180 });
   assert.deepEqual(h.changes[0].position, expected);
   h.button.props.onPointerDown(h.event()); h.button.props.onPointerMove(h.event({ clientX: 500 }));
   h.context = { ...h.context, scope: 'bob', value: empty }; h.render(); h.frame(); h.button.props.onPointerUp(h.event());
@@ -144,7 +144,7 @@ test('expanding the existing music slot reclamps its width and height without ch
   const h = primitive(); h.context.value = changeLayout(empty, move('spotify', 1, 1)); h.render();
   assert.equal(h.surface.style.width, '244px'); const child = h.tree.children[0].children[0];
   h.outerWidth = 350; h.contentHeight = 420; h.observers.forEach(fn => fn());
-  assert.equal(h.surface.style.width, '350px'); assert.equal(h.surface.style.left, '832px'); assert.equal(h.surface.style.top, '312px');
+  assert.equal(h.surface.style.width, '350px'); assert.equal(h.surface.style.left, '834px'); assert.equal(h.surface.style.top, '328px');
   assert.equal(h.tree.children[0].children[0], child);
   h.context.compact = true; h.context.editing = false; h.render();
   assert.equal(h.surface.dataset.positioned, undefined); assert.equal(h.surface.style['--workspace-widget-max-height'], undefined);
@@ -175,3 +175,12 @@ test('positioned cards use document flow rather than viewport-fixed positioning'
  const h=primitive();h.context.value=changeLayout(empty,move('spotify',.5,.5));h.render();
  const top=h.surface.style.top;h.events.get('scroll')?.();assert.equal(h.surface.style.top,top);
 });
+
+ test('free placement does not reject a drop when the workspace is occupied', () => {
+  const h = primitive();
+  h.outer.querySelectorAll = () => [{ getBoundingClientRect: () => ({ left: 0, top: 0, width: 1200, height: 900 }) }];
+  h.button.props.onPointerDown(h.event()); h.button.props.onPointerMove(h.event({ clientX: 360, clientY: 300 })); h.frame();
+  h.button.props.onPointerUp(h.event());
+  assert.equal(h.changes.length, 1);
+  assert.ok(h.changes[0].position.x >= 0 && h.changes[0].position.x <= 1);
+ });
