@@ -65,7 +65,7 @@ export class NookCreator {
       ...(isVerifiedSupabaseIdentity(user) ? { recoveryScope: `account:${user.id}` } : {}),
     });
     if (reads.has(name)) {
-      const workspace = await this.store.read(user.id), state = stateOf(workspace);
+      const workspace = await this.store.read(user.id, { hydrateArtwork: name !== 'nook_drafts_list' }), state = stateOf(workspace);
       const now = this.clock().toISOString();
       if (name === 'nook_drafts_list') return envelope({ drafts: state.drafts.map(draft => summary(draft, now)), publications: state.publicationIntents.map(item => ({ id: item.id, draftId: item.draftId, draftRevision: item.draftRevision, status: item.status, visibility: item.visibility, nookId: item.nookId, createdAt: item.createdAt })) });
       const draft = getDraft(state, id(args.draftId, 'draftId'));
