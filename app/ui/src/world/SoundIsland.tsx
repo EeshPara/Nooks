@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import { ChevronDown, ExternalLink, Headphones, Link2, Music2, Pause, Play, SlidersHorizontal, Volume2, VolumeX, X } from 'lucide-react';
+import { ChevronDown, ExternalLink, Headphones, Link2, Music2, Pause, Play, SlidersHorizontal, Volume2, VolumeX, X, SkipBack, SkipForward } from 'lucide-react';
 import { useSoundSources } from './soundPlayback';
 import { parseSpotifyLink, savedSpotifyLink, spotifyKey, spotifyMetadataKey, withSpotifyMetadata, type SpotifyLink } from './spotifyLink';
 import { getNookPlaylist } from './nookPlaylists';
@@ -25,8 +25,36 @@ export function SoundIsland({ onOpenMixer, onClose, mixerOpen = false, roomId, r
   const linkInput = useRef<HTMLInputElement>(null);
   const panelId = useId();
   const source = sources.find(item => item.id === selected) ?? sources.find(item => item.playing) ?? sources[0];
-  const showingSpotify = addingSpotify || (!!spotify && (selected === 'spotify' || !source));
+  const showingSpotify = addingSpotify || (!!spotify && (selected === 'spotify' || !source || !selected && !sources.some(item=>item.playing)));
 
+  const [cover, setCover] = useState<{url:string;image:string;title:string}|null>(null);
+  useEffect(() => {
+    setCover(null);
+    if (!spotify) return;
+    const controller = new AbortController();
+    fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(spotify.url)}`, {signal:controller.signal, credentials:'omit'})
+      .then(response => { if (!response.ok) throw new Error('Artwork unavailable'); return response.json(); })
+      .then(data => { const image = new URL(data.thumbnail_url); if (image.protocol !== 'https:' || !(image.hostname === 'i.scdn.co' || image.hostname.endsWith('.scdn.co') || image.hostname.endsWith('.spotifycdn.com'))) return; setCover({url:spotify.url,image:image.href,title:typeof data.title === 'string' ? data.title : 'Spotify playlist'}); })
+      .catch(() => {});
+    return () => controller.abort();
+  }, [spotify?.url]);
+  const spotifyMount = useRef<HTMLDivElement>(null);
+  const spotifyController = useRef<any>(null);
+  const [spotifyPaused, setSpotifyPaused] = useState(true);
+  const [spotifyReady, setSpotifyReady] = useState(false);
+  useEffect(() => {
+    if (!spotify || !spotifyMount.current) return;
+    let alive = true;
+    const host = window as any;
+    const create = (api:any) => { if (!alive || !spotifyMount.current) return; const target = document.createElement('div'); spotifyMount.current.replaceChildren(target); api.createController(target, {uri:spotify.uri,width:320,height:152}, (controller:any) => { if (!alive) {controller.destroy();return;} spotifyController.current=controller; controller.addListener('ready',()=>{if(alive)setSpotifyReady(true);}); controller.addListener('playback_update',(event:any)=>{if(alive)setSpotifyPaused(event.data.isPaused);}); }); };
+    if (host.nooksSpotifyIframeApi) create(host.nooksSpotifyIframeApi);
+    else {
+      const previous = host.onSpotifyIframeApiReady;
+      host.onSpotifyIframeApiReady = (api:any) => {host.nooksSpotifyIframeApi=api;previous?.(api);create(api);};
+      if (!document.querySelector('script[data-nooks-spotify-api]')) { const script=document.createElement('script');script.src='https://open.spotify.com/embed/iframe-api/v1';script.dataset.nooksSpotifyApi='true';document.body.appendChild(script); }
+    }
+    return () => {alive=false;spotifyController.current?.destroy();spotifyController.current=null;setSpotifyReady(false);};
+  }, [spotify?.uri]);
   const changeSpotify = useCallback((link: SpotifyLink | null) => {
     setSpotify(link);
     try {
@@ -138,16 +166,20 @@ export function SoundIsland({ onOpenMixer, onClose, mixerOpen = false, roomId, r
   const title = showingSpotify ? addingSpotify ? 'Spotify' : spotify?.title ?? 'Your Spotify music' : source?.kind === 'ambient' ? 'Nook sounds' : source?.title ?? 'Your audio';
   const kind = showingSpotify ? 'spotify' : source?.kind;
 
-  return <MovableWidget id="spotify" label="Music player" className={`sound-island-position ${expanded ? 'is-expanded' : ''}`}>
-    <aside ref={root} className={`sound-island ${expanded ? 'is-expanded' : ''} ${audible ? 'is-playing' : ''}`} aria-label="Audio player">
-    <button ref={trigger} type="button" className="sound-island-trigger" style={expanded ? { paddingRight: 58 } : undefined} onClick={() => { if (!expanded && spotify && showingSpotify) setSpotifyActivated(true); setExpanded(value => !value); }} aria-expanded={expanded} aria-controls={panelId} aria-label={`${title}. ${status}. ${expanded ? 'Hide' : 'Show'} playback controls`}>
+  return <MovableWidget id="spotify" label="Music player" className={`sound-island-position ${expanded ? 'is-expanded' : ''} ${showingSpotify ? 'is-spotify-dock' : ''}`}>
+    <aside ref={root} className={`sound-island ${expanded ? 'is-expanded' : ''} ${audible ? 'is-playing' : ''} ${showingSpotify && !addingSpotify ? 'is-artwork-only' : ''}`} aria-label="Audio player">
+    {showingSpotify && !addingSpotify && <div className="sound-island-artwork">{cover && cover.url === spotify?.url ? <img src={cover.image} alt={`${cover.title} cover`}/> : <div role="status"><Music2 size={32}/><span>Playlist artwork</span></div>}</div>}
+    {showingSpotify && !addingSpotify && <div className="sound-artwork-transport" role="group" aria-label="Spotify playback controls"><button type="button" aria-label="Restart current song" title="Restart current song" disabled={!spotifyReady} onClick={()=>spotifyController.current?.restart()}><SkipBack size={24} fill="currentColor"/></button><button type="button" className="sound-artwork-play" aria-label={spotifyPaused ? 'Play Spotify' : 'Pause Spotify'} disabled={!spotifyReady} onClick={()=>spotifyController.current?.togglePlay()}>{spotifyPaused ? <Play size={30} fill="currentColor"/> : <Pause size={30} fill="currentColor"/>}</button><button type="button" aria-label="Open Spotify skip controls" title="Open Spotify playback controls" onClick={()=>setExpanded(value=>!value)}><SkipForward size={24} fill="currentColor"/></button></div>}
+    {showingSpotify && !addingSpotify && sources.find(item=>item.id==='ambient') && <div className="sound-artwork-volume"><VolumeX size={14} aria-hidden="true"/><input type="range" min="0" max="1" step=".01" value={sources.find(item=>item.id==='ambient')!.volume} onChange={event=>sources.find(item=>item.id==='ambient')!.setVolume(Number(event.currentTarget.value))} aria-label="Nook sounds volume"/><Volume2 size={16} aria-hidden="true"/><small>Nook sounds</small></div>}
+
+    {(!showingSpotify || addingSpotify) && <button ref={trigger} type="button" className="sound-island-trigger" style={expanded ? { paddingRight: 58 } : undefined} onClick={() => { if (!expanded && spotify && showingSpotify) setSpotifyActivated(true); setExpanded(value => !value); }} aria-expanded={expanded} aria-controls={panelId} aria-label={`${title}. ${status}. ${expanded ? 'Hide' : 'Show'} playback controls`}>
       <span className={`sound-island-cover is-${kind}`} aria-hidden="true">{kind === 'ambient' ? <Headphones size={16}/> : <Music2 size={16}/>}</span>
       <span className="sound-island-label"><strong>{title}</strong><small aria-hidden={!expanded}>{status}</small></span>
       {!showingSpotify && <span className="sound-island-wave" aria-hidden="true"><i/><i/><i/><i/><i/></span>}
       {!expanded && <ChevronDown size={14} className="sound-island-chevron" aria-hidden="true"/>}
-    </button>
+    </button>}
     {expanded && <button type="button" className="sound-island-icon" style={{ position: 'absolute', top: 10, right: 10, width: 40, height: 40 }} aria-label="Close music controls" title="Close controls · music keeps playing" onClick={() => { setExpanded(false); trigger.current?.focus({ preventScroll: true }); }}><X size={18}/></button>}
-    <div className={`sound-island-panel ${expanded ? '' : 'is-collapsed'}`} id={panelId} aria-hidden={!expanded} inert={!expanded}>
+    <div className={`sound-island-panel ${expanded || showingSpotify ? '' : 'is-collapsed'}`} id={panelId} aria-hidden={!expanded && !showingSpotify} inert={!expanded && !showingSpotify}>
       <div className="sound-island-panel-clip"><div className="sound-island-panel-body">
       {sources.length + (spotify || addingSpotify ? 1 : 0) > 1 && <div className="sound-island-sources" role="group" aria-label="Choose audio player">{sources.map(item => <button type="button" key={item.id} onClick={() => { setSelected(item.id); setAddingSpotify(false); }} aria-pressed={!showingSpotify && item.id === source?.id}><span className={item.playing && !item.muted && item.volume > 0 ? 'is-active' : ''}/>{item.kind === 'ambient' ? 'Sounds' : 'Audio file'}</button>)}{(spotify || addingSpotify) && <button type="button" onClick={() => { setSelected('spotify'); setSpotifyActivated(true); }} aria-pressed={showingSpotify}>Spotify</button>}</div>}
       {showingSpotify && addingSpotify && <form className="sound-island-spotify-form" onSubmit={saveSpotify}>
@@ -157,8 +189,8 @@ export function SoundIsland({ onOpenMixer, onClose, mixerOpen = false, roomId, r
         <div className="sound-island-form-actions"><button className="sound-island-cancel" type="button" onClick={() => { setAddingSpotify(false); setSelected(spotify ? 'spotify' : null); if (spotify) setSpotifyActivated(true); }}>Cancel</button><button className="sound-island-save" type="submit" disabled={!spotifyInput.trim()}>Add to nook</button></div>
       </form>}
       {/* Collapse the UI, not the iframe: closing a popup must not restart music. */}
-      {spotify && spotifyActivated && <div className={`sound-island-spotify-player ${showingSpotify && !addingSpotify ? '' : 'is-concealed'}`} inert={!showingSpotify || addingSpotify} aria-hidden={!showingSpotify || addingSpotify}>
-        <iframe key={spotify.uri} src={spotify.embed} title={spotify.title ? `${spotify.title} — Spotify music player` : 'Spotify music player'} width="100%" height="152" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen loading="eager"/>
+      {spotify && <div className={`sound-island-spotify-player ${showingSpotify && !addingSpotify ? '' : 'is-concealed'}`} inert={!showingSpotify || addingSpotify} aria-hidden={!showingSpotify || addingSpotify}>
+        <div ref={spotifyMount}/>
         <div className="sound-island-spotify-caption"><span>Playback by Spotify</span><a href={spotify.url} target="_blank" rel="noopener noreferrer">Open Spotify <ExternalLink size={12}/></a></div>
       </div>}
       {showingSpotify && !addingSpotify && spotify?.url !== recommendation.url && <button type="button" className="sound-island-recommendation" onClick={() => { setExpanded(false); onOpenMixer(); }}><span>For {roomTitle}</span><strong>{recommendation.title}</strong><ChevronDown size={13}/></button>}

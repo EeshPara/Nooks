@@ -14,7 +14,7 @@ const compiled = Object.fromEntries(paths.map(path => [path, ts.transpileModule(
 const copy = value => JSON.parse(JSON.stringify(value));
 const tick = async () => { for (let n = 0; n < 12; n++) await Promise.resolve(); };
 
-function harness(openai) {
+function harness(openai, practice = false) {
   const listeners = new Map(), timers = new Map(), sent = [], events = [], modules = new Map();
   let timerId = 0;
   const parent = { postMessage(message, origin) { sent.push({ message: copy(message), origin }); } };
@@ -33,6 +33,8 @@ function harness(openai) {
   function load(path) {
     if (modules.has(path)) return modules.get(path);
     if (path === './account/client') return { nooksAccount: {} };
+    if (path === './onboarding/tutorialSession') return { isTutorialPractice: practice, tutorialSeed: practice ? { workspace: {revision:0} } : null };
+    if (path === './preview/tutorial-tools.mjs') return { createTutorialTools: () => async () => ({ practice: true }) };
     assert.ok(compiled[path], `Unexpected import: ${path}`);
     const exports = {}; modules.set(path, exports);
     vm.runInContext(`(function(require,exports){${compiled[path]}\n})`, context)(load, exports);
@@ -173,3 +175,11 @@ test('clearing selected study context retains session routing and chat messages 
   h.reply(message); assert.equal(await chat, true);
   assert.equal(h.timers.size, 0);
 });
+
+ test('tutorial transport cannot send tool writes or generation requests to the host', async () => {
+  const h=harness(undefined,true);
+  assert.equal((await h.bridge.callTool('artifact_save',{artifact:{id:'trial'}})).practice,true);
+  assert.equal(await h.bridge.requestChatGPT('Create trial notes'),false);
+  assert.deepEqual(h.outgoing('tools/call'),[]);
+  assert.deepEqual(h.outgoing('ui/message'),[]);
+ });

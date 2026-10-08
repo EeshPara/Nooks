@@ -120,3 +120,57 @@
 .lofi-world.host-chat-layout .sound-island-position { --sound-bottom-clearance: calc(14px + var(--nooks-composer-reserve, 0px) + var(--nooks-host-safe-bottom, 0px)); }
 .lofi-world.motion-off .sound-island, .lofi-world.motion-off .sound-island * { animation: none!important; transition: none!important; }
 @media (prefers-reduced-motion: reduce) { .sound-island, .sound-island * { animation: none!important; transition: none!important; } }
+
+/* A compact control-center card beside the collection, using the same player. */
+@media(min-width:1101px){
+.lofi-world.is-room .sound-island-position.is-spotify-dock{--sound-width:174px;left:auto;right:218px;top:316px;bottom:auto;width:var(--sound-width)}
+.lofi-world.is-room .sound-island-position.is-spotify-dock.is-expanded{--sound-width:350px;right:32px}
+.lofi-world.is-room .is-spotify-dock .sound-island{border-radius:24px;background:linear-gradient(145deg,#332e28e0,#292b2bd0);backdrop-filter:blur(26px)}
+.lofi-world.is-room .is-spotify-dock:not(.is-expanded) .sound-island-trigger{min-height:112px;flex-wrap:wrap;gap:8px;padding:15px;border-radius:24px}
+.lofi-world.is-room .is-spotify-dock:not(.is-expanded) .sound-island-cover{width:38px;height:38px;border-radius:12px}
+.lofi-world.is-room .is-spotify-dock:not(.is-expanded) .sound-island-label{flex-basis:100%;order:2}
+.lofi-world.is-room .is-spotify-dock:not(.is-expanded) .sound-island-label strong{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:11px}
+.lofi-world.is-room .is-spotify-dock:not(.is-expanded) .sound-island-chevron{margin-left:auto}
+}
+.lofi-world .sound-island-icon{border-radius:50%;background:#f2eee8;color:#635c55}
+
+@media(min-width:1101px){
+.lofi-world.is-room .sound-island-position.is-spotify-dock{--sound-width:360px;right:32px}
+.lofi-world.is-room .is-spotify-dock:not(.is-expanded) .sound-island-trigger{min-height:58px;flex-wrap:nowrap;padding:12px 15px}
+.lofi-world.is-room .is-spotify-dock:not(.is-expanded) .sound-island-label{flex-basis:auto;order:0}
+.lofi-world.is-room:has(.is-spotify-dock) .collection-components>.workspace-widget-slot:first-child{margin-top:280px}
+}
+.is-spotify-dock:not(.is-expanded) .sound-island-footer,.is-spotify-dock:not(.is-expanded) .sound-island-recommendation,.is-spotify-dock:not(.is-expanded) .sound-island-sources{display:none}
+.is-spotify-dock .sound-island-spotify-player iframe{border-radius:16px}
+
+@media(min-width:1101px){
+.lofi-world.is-room .sound-island-position.is-spotify-dock,.lofi-world.is-room .sound-island-position.is-spotify-dock.is-expanded{--sound-width:174px;right:218px;left:auto;width:174px;top:316px;bottom:auto}
+.lofi-world.is-room:has(.is-spotify-dock) .collection-components>.workspace-widget-slot:first-child{margin-top:0}
+.lofi-world.is-room .is-spotify-dock .sound-island{border-radius:28px;background:linear-gradient(145deg,#b4b7ad30,#766d6045);border:1px solid #fff5da66;backdrop-filter:blur(32px) saturate(.8);box-shadow:inset 0 1px 1px #fff3,0 12px 30px #0002}
+.lofi-world.is-room .is-spotify-dock .sound-island-trigger{padding:12px;min-height:60px}
+.lofi-world.is-room .is-spotify-dock .sound-island-panel-body{padding:0 8px 12px}
+.lofi-world.is-room .is-spotify-dock .sound-island-spotify-player iframe{height:352px}
+.lofi-world.is-room .is-spotify-dock .sound-island-spotify-caption{flex-wrap:wrap;gap:6px;font-size:9px}
+.lofi-world.is-room .is-spotify-dock .sound-island-footer{flex-wrap:wrap}
+}
+
+@media(min-width:1101px){.lofi-world.is-room .is-spotify-dock .sound-island-spotify-player iframe{width:320px!important;max-width:none;height:352px;transform:scale(.49);transform-origin:top left;margin-bottom:-179px}.lofi-world.is-room .is-spotify-dock .sound-island-spotify-player{overflow:hidden}}
+
+.lofi-world .sound-island.is-artwork-only{padding:10px;border-radius:24px}.sound-island.is-artwork-only>.sound-island-panel{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden;visibility:hidden!important;pointer-events:none;opacity:0!important}.sound-island-artwork{aspect-ratio:1;border-radius:17px;overflow:hidden;width:100%}.sound-island-artwork>img{display:block;width:100%;height:100%;object-fit:cover}.sound-island-artwork>div{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#e9decc;background:#ffffff0b;font-size:10px}
+
+/* Expose Spotify's own transport row below the cover, keeping its playlist hidden. */
+.lofi-world .sound-island.is-artwork-only>.sound-island-panel{position:relative!important;width:100%!important;height:26px!important;visibility:visible!important;opacity:1!important;pointer-events:auto;display:block;margin-top:10px;overflow:hidden;border-radius:12px;background:#181818}
+.sound-island.is-artwork-only .sound-island-panel-body{padding:0!important;overflow:hidden;max-height:none}
+.sound-island.is-artwork-only .sound-island-spotify-player{position:relative;height:26px;overflow:hidden}
+.sound-island.is-artwork-only .sound-island-spotify-player iframe{position:absolute;left:0;top:-72px;width:320px!important;max-width:none;height:352px!important;transform:scale(.48);transform-origin:top left;margin:0}
+.sound-island.is-artwork-only .sound-island-spotify-caption,.sound-island.is-artwork-only .sound-island-footer,.sound-island.is-artwork-only .sound-island-sources,.sound-island.is-artwork-only .sound-island-recommendation{display:none}
+
+.lofi-world .sound-island.is-artwork-only>.sound-island-panel{position:absolute!important;width:1px!important;height:1px!important;visibility:hidden!important;pointer-events:none;opacity:0!important;overflow:hidden}
+.sound-artwork-transport{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 0 5px;color:#f6eee0}.sound-artwork-transport button{display:grid;place-items:center;width:40px;height:44px;flex:1;padding:0;border:0;border-radius:999px;color:inherit;background:none}.sound-artwork-transport .sound-artwork-play{height:48px}.sound-artwork-transport button:disabled{opacity:.35}.sound-artwork-transport button:hover:not(:disabled){background:#ffffff15}
+
+.sound-artwork-volume{display:flex;align-items:center;gap:8px;margin:10px 2px 7px;color:#f2e8d9}.sound-artwork-volume input{appearance:none;-webkit-appearance:none;min-width:0;flex:1;height:5px;border-radius:999px;background:linear-gradient(to right,#eee3d1 50%,#eee3d140 50%);padding:0;opacity:.5}.sound-artwork-volume input::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:#f3e9db}.sound-artwork-volume input::-moz-range-thumb{width:12px;height:12px;border:0;border-radius:50%;background:#f3e9db}
+
+.sound-artwork-volume{flex-wrap:wrap}.sound-artwork-volume small{width:100%;text-align:center;font-size:9px;color:#d7c8b0}.sound-artwork-volume input{opacity:1;cursor:pointer}
+.lofi-world .sound-island.is-artwork-only.is-expanded>.sound-island-panel{position:absolute!important;top:100%;left:0;margin-top:10px;width:320px!important;height:auto!important;visibility:visible!important;opacity:1!important;pointer-events:auto;overflow:visible;border-radius:20px;background:#292622;box-shadow:0 10px 35px #0006;z-index:80}
+.sound-island.is-artwork-only.is-expanded .sound-island-spotify-player{height:152px;overflow:visible}.sound-island.is-artwork-only.is-expanded .sound-island-spotify-player iframe{position:static!important;top:auto;left:auto;width:320px!important;height:152px!important;transform:none!important;margin:0!important}.sound-island.is-artwork-only.is-expanded .sound-island-panel-body{padding:0!important}.sound-island.is-artwork-only.is-expanded .sound-island-spotify-caption{display:flex;padding:8px}
+@media(min-width:1101px){.lofi-world .sound-island.is-artwork-only.is-expanded>.sound-island-panel{left:-146px}}

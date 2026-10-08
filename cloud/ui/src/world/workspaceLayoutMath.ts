@@ -20,7 +20,20 @@ export function widgetPosition(point: { x: number; y: number }, viewport: Widget
   return { x: bounds.spanX ? unit((point.x - bounds.left) / bounds.spanX) : 0, y: bounds.spanY ? unit((point.y - bounds.top) / bounds.spanY) : 0 };
 }
 export function movedWidget(point: { x: number; y: number }, key: string, fine = false) {
-  const distance = fine ? 1 : 10;
+  const distance = fine ? 24 : 24;
   return { x: point.x + (key === 'ArrowRight' ? distance : key === 'ArrowLeft' ? -distance : 0), y: point.y + (key === 'ArrowDown' ? distance : key === 'ArrowUp' ? -distance : 0) };
 }
 export const passedWidgetDragThreshold = (x: number, y: number) => Math.hypot(x, y) >= 5;
+
+export type WidgetObstacle = { x:number; y:number; width:number; height:number };
+/** Nearest free cell, with breathing room around every occupied surface. */
+export function snapWidget(point: {x:number;y:number}, viewport:WidgetViewport, size:WidgetSize, obstacles:WidgetObstacle[], step=24) {
+  const bounds=widgetBounds(viewport,size), candidates:{x:number;y:number;distance:number}[]=[];
+  for(let y=0;y<=bounds.spanY;y+=step) for(let x=0;x<=bounds.spanX;x+=step){
+    const cell={x:bounds.left+x,y:bounds.top+y};
+    if(obstacles.some(o=>cell.x<o.x+o.width+12 && cell.x+size.width+12>o.x && cell.y<o.y+o.height+12 && cell.y+size.height+12>o.y))continue;
+    candidates.push({...cell,distance:Math.hypot(cell.x-point.x,cell.y-point.y)});
+  }
+  candidates.sort((a,b)=>a.distance-b.distance);
+  return candidates[0] ? {x:candidates[0].x,y:candidates[0].y} : null;
+}

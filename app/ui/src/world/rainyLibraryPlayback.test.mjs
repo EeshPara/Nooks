@@ -104,7 +104,7 @@ test('late rejection after pause or disposal cannot erase a frame or restart pla
 test('the film is restricted to canonical Rainy Library artwork', () => {
   const scene = { workspaceReady: true, roomId: 'rainy-library', sceneImage: '/images/lofi-rainy-library.webp', customArtwork: false, alternateScene: false, customNook: false };
   assert.equal(usesRainyLibraryFilm(scene), true);
-  for (const change of [{ workspaceReady: false }, { roomId: 'midnight-train' }, { sceneImage: '/images/custom.webp' }, { customArtwork: true }, { alternateScene: true }, { customNook: true }]) {
+  for (const change of [{ workspaceReady: false }, { roomId: 'midnight-train' }, { sceneImage: '/images/custom.webp' }, { sceneImage: '/images/nooks-50/rainy-library.webp' }, { customArtwork: true }, { alternateScene: true }, { customNook: true }]) {
     assert.equal(usesRainyLibraryFilm({ ...scene, ...change }), false);
   }
 });

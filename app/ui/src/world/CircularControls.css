@@ -1,0 +1,25 @@
+/* Shared icon-only X treatment, matching the Nooks discovery close control.
+   Exclude text actions (Stop / Remove) that happen to contain an X icon. */
+button:not([aria-label="Remove Spotify player and stop its audio"]):not([aria-label="Stop audio and close player"]):has(> svg.lucide-x:only-child) {
+  display:inline-grid!important;
+  place-items:center!important;
+  width:33px!important;
+  height:33px!important;
+  min-width:33px!important;
+  min-height:33px!important;
+  flex:0 0 33px!important;
+  padding:0!important;
+  border-radius:50%!important;
+  border:0!important;
+  background:#f2eee8!important;
+  color:#635c55!important;
+  box-sizing:border-box;
+}
+button:not([aria-label="Remove Spotify player and stop its audio"]):not([aria-label="Stop audio and close player"]):has(> svg.lucide-x:only-child):hover:not(:disabled) { background:#e9e1d7!important; }
+button:not([aria-label="Remove Spotify player and stop its audio"]):not([aria-label="Stop audio and close player"]):has(> svg.lucide-x:only-child):focus-visible { outline:2px solid #95633f;outline-offset:4px; }
+button:not([aria-label="Remove Spotify player and stop its audio"]):not([aria-label="Stop audio and close player"]):has(> svg.lucide-x:only-child)>svg { width:21px!important;height:21px!important;flex-shrink:0; }
+@media(max-width:600px) {
+  button:not([aria-label="Remove Spotify player and stop its audio"]):not([aria-label="Stop audio and close player"]):has(> svg.lucide-x:only-child) {
+    width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important;flex-basis:30px!important;
+  }
+}

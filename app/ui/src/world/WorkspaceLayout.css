@@ -1,7 +1,7 @@
 .workspace-widget-slot { min-width: 0; }
 .workspace-widget-surface { position: relative; min-width: 0; }
 .workspace-widget-slot[data-positioned="true"] { transform: none !important; translate: none !important; }
-.workspace-widget-surface[data-positioned="true"] { position: fixed; z-index: 70; box-sizing: border-box; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.workspace-widget-surface[data-positioned="true"] { position: relative; z-index: 20; box-sizing: border-box; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .workspace-widget-surface[data-dragging="true"] { z-index: 90; user-select: none; cursor: grabbing; }
 .workspace-widget-slot[data-layout-editing="true"] .workspace-widget-surface { outline: 1px dashed #f1dbb580; outline-offset: 5px; border-radius: 16px; }
 .workspace-widget-controls { position: absolute; top: 5px; right: 5px; display: flex; gap: 2px; z-index: 95; border: 1px solid #f4dfbf65; background: #302a22f0; color: #f6e9d4; border-radius: 9px; box-shadow: 0 3px 14px #0003; }

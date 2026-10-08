@@ -1,0 +1,19 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import ts from 'typescript';
+const source=fs.readFileSync(new URL('./spotifyPlayer.ts',import.meta.url),'utf8').replace(/^import .*\n/gm,'').replace('export function useSpotifyPlayer','function useSpotifyPlayer').replace('export type SpotifyTrack','type SpotifyTrack');
+const code=ts.transpileModule(`export function create({useEffect,useRef,useState,localStorage,sessionStorage,window,fetch,history,crypto,btoa}){${source};return useSpotifyPlayer;}`,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
+const {create}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
+function harness(){
+ const states=[],effects=[],pending=[],requests=[],calls=[];let at=0;const store=new Map([['nooks:spotify-player:v1',JSON.stringify({access_token:'test-token',refresh_token:'test-refresh',expires:Date.now()+3600000})]]);
+ const storage={getItem:key=>store.get(key)||null,setItem:(key,value)=>store.set(key,value),removeItem:key=>store.delete(key)};
+ class Player{constructor(){this.listeners={};}addListener(name,fn){this.listeners[name]=fn;}async connect(){this.listeners.ready({device_id:'test-device'});return true;}disconnect(){calls.push(['disconnect']);}async pause(){calls.push(['pause']);}async activateElement(){}async setVolume(value){calls.push(['volume',value]);}async previousTrack(){calls.push(['previous']);}async nextTrack(){calls.push(['next']);}async togglePlay(){calls.push(['toggle']);}}
+ const hook=create({useState:initial=>{const i=at++;if(!(i in states))states[i]=typeof initial==='function'?initial():initial;return[states[i],value=>{states[i]=typeof value==='function'?value(states[i]):value;}];},useRef:initial=>{const i=at++;return states[i]??={current:initial};},useEffect:(fn,deps)=>{const i=at++;if(!effects[i]||deps.some((value,index)=>value!==effects[i].deps[index]))pending.push(()=>{effects[i]?.cleanup?.();effects[i]={deps,cleanup:fn()};});},localStorage:storage,sessionStorage:storage,window:{location:{origin:'http://127.0.0.1:5188',pathname:'/',search:''},Spotify:{Player}},history:{},crypto:{},btoa:()=>'',fetch:async(url,options)=>{requests.push([url,options]);return{ok:true,status:options.method==='GET'?200:204,json:async()=>({queue:[{name:'Real queued track'}]})};}});
+ const link={uri:'spotify:playlist:0vvXsWCC9xrXsKd4FyS8kM',kind:'playlist'};
+ const render=()=>{at=0;const result=hook(link);pending.splice(0).forEach(fn=>fn());return result;};render();return {player:render(),render,calls,requests};
+}
+test('volume controls Spotify SDK output and transport uses actual previous/next methods',async()=>{const h=harness();assert.equal(h.player.ready,true);h.player.setVolume(.23);await new Promise(r=>setImmediate(r));assert.deepEqual(h.calls,[['volume',.23]]);assert.equal(h.render().volume,.23);await h.player.previous();await h.player.next();assert.deepEqual(h.calls.slice(1),[['previous'],['next']]);});
+test('selected playlist starts on the Spotify device and queue comes from Spotify',async()=>{const h=harness();await h.player.toggle();const [url,request]=h.requests[0];assert.match(url,/me\/player\/play\?device_id=test-device/);assert.equal(request.method,'PUT');assert.deepEqual(JSON.parse(request.body),{context_uri:'spotify:playlist:0vvXsWCC9xrXsKd4FyS8kM'});await h.player.toggle();assert.deepEqual(h.calls,[['toggle']]);assert.deepEqual(await h.player.queue(),{queue:[{name:'Real queued track'}]});assert.match(h.requests.at(-1)[0],/me\/player\/queue$/);});
+
+test('stop pauses and disconnects Spotify, clears track state, and marks the player unavailable',async()=>{const h=harness();await h.player.stop();assert.deepEqual(h.calls,[['pause'],['disconnect']]);const state=h.render();assert.equal(state.ready,false);assert.equal(state.paused,true);assert.equal(state.track,null);});

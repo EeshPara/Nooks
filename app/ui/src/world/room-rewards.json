@@ -1,7 +1,7 @@
 {
   "rooms": {
     "rainy-library": {
-      "label": "Rainy library",
+      "label": "Rainy Library",
       "theme": "rainy reading nook",
       "progression": "collection",
       "rewards": [
@@ -38,7 +38,7 @@
       ]
     },
     "midnight-train": {
-      "label": "Midnight train",
+      "label": "Midnight Sleeper Train",
       "theme": "moonlit railway",
       "progression": "collection",
       "rewards": [
@@ -75,7 +75,7 @@
       ]
     },
     "sakura-garden": {
-      "label": "Sakura garden",
+      "label": "Cherry Blossom Study",
       "theme": "blossom garden",
       "progression": "growth",
       "rewards": [
@@ -150,7 +150,7 @@
       ]
     },
     "alpine-cabin": {
-      "label": "Snowbound cabin",
+      "label": "Comfy Cabin",
       "theme": "winter cabin",
       "progression": "collection",
       "rewards": [
@@ -224,7 +224,7 @@
       ]
     },
     "moonlit-observatory": {
-      "label": "Moonlit observatory",
+      "label": "Moon Observatory",
       "theme": "celestial study",
       "progression": "collection",
       "rewards": [
@@ -261,7 +261,7 @@
       ]
     },
     "sunlit-greenhouse": {
-      "label": "Sunlit greenhouse",
+      "label": "Greenhouse Study",
       "theme": "sunlit botanical garden",
       "progression": "growth",
       "rewards": [
@@ -299,7 +299,7 @@
       "growthArt": "plant"
     },
     "neon-tokyo": {
-      "label": "Tokyo after rain",
+      "label": "Tokyo Rain Apartment",
       "theme": "rainy rooftop city",
       "progression": "collection",
       "rewards": [
@@ -340,7 +340,7 @@
       ]
     },
     "paris-attic": {
-      "label": "Paris at dawn",
+      "label": "Paris Attic",
       "theme": "Paris morning attic",
       "progression": "collection",
       "rewards": [
@@ -381,7 +381,7 @@
       ]
     },
     "kyoto-teahouse": {
-      "label": "Kyoto teahouse",
+      "label": "Kyoto Tea House",
       "theme": "tea garden",
       "progression": "growth",
       "rewards": [
@@ -497,7 +497,7 @@
       ]
     },
     "oxford-library": {
-      "label": "The old reading nook",
+      "label": "Dark Academia — Candlelit College",
       "theme": "old academic library",
       "progression": "collection",
       "rewards": [
@@ -534,7 +534,7 @@
       ]
     },
     "lighthouse-study": {
-      "label": "Lighthouse lookout",
+      "label": "Ocean Lighthouse",
       "theme": "coastal lighthouse",
       "progression": "collection",
       "rewards": [
@@ -647,7 +647,7 @@
       "growthArt": "plant"
     },
     "aurora-cabin": {
-      "label": "Under the northern lights",
+      "label": "Northern Lights Cabin",
       "theme": "arctic night sky",
       "progression": "collection",
       "rewards": [
@@ -837,7 +837,7 @@
       ]
     },
     "desert-casita": {
-      "label": "Desert casita",
+      "label": "Desert Courtyard",
       "theme": "desert earthen retreat",
       "progression": "collection",
       "rewards": [
@@ -874,7 +874,7 @@
       ]
     },
     "underwater-study": {
-      "label": "Underwater study",
+      "label": "Underwater Library",
       "theme": "imagined ocean garden",
       "progression": "growth",
       "rewards": [
@@ -986,7 +986,7 @@
       ]
     },
     "woodland-treehouse": {
-      "label": "Woodland treehouse",
+      "label": "Fairy Treehouse",
       "theme": "storybook forest garden",
       "progression": "growth",
       "rewards": [
@@ -1214,6 +1214,1301 @@
             "type": "room",
             "id": "crystal-vault"
           }
+        }
+      ]
+    },
+    "howls-moving-study": {
+      "label": "Howl’s Moving Castle — Moving Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "howls-moving-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "howls-moving-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "howls-moving-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "howls-moving-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "gryffindor-common-room": {
+      "label": "Hogwarts — Gryffindor Common Room",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "gryffindor-common-room-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "gryffindor-common-room-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "gryffindor-common-room-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "gryffindor-common-room-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "totoro-forest-window": {
+      "label": "My Neighbor Totoro — Forest Window",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "totoro-forest-window-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "totoro-forest-window-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "totoro-forest-window-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "totoro-forest-window-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "slytherin-common-room": {
+      "label": "Hogwarts — Slytherin Common Room",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "slytherin-common-room-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "slytherin-common-room-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "slytherin-common-room-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "slytherin-common-room-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "kikis-bakery-attic": {
+      "label": "Kiki’s Delivery Service — Bakery Attic",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "kikis-bakery-attic-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "kikis-bakery-attic-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "kikis-bakery-attic-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "kikis-bakery-attic-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "hufflepuff-common-room": {
+      "label": "Hogwarts — Hufflepuff Common Room",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "hufflepuff-common-room-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "hufflepuff-common-room-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "hufflepuff-common-room-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "hufflepuff-common-room-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "ravenclaw-tower": {
+      "label": "Hogwarts — Ravenclaw Tower",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "ravenclaw-tower-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "ravenclaw-tower-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "ravenclaw-tower-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "ravenclaw-tower-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "stardew-farmhouse": {
+      "label": "Stardew Valley — Farmhouse Desk",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "stardew-farmhouse-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "stardew-farmhouse-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "stardew-farmhouse-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "stardew-farmhouse-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "spirited-bathhouse": {
+      "label": "Spirited Away — Bathhouse Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "spirited-bathhouse-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "spirited-bathhouse-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "spirited-bathhouse-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "spirited-bathhouse-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "bookshop-cat": {
+      "label": "Bookshop Cat",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "bookshop-cat-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "bookshop-cat-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "bookshop-cat-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "bookshop-cat-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "dragon-hatchery": {
+      "label": "Dragon Hatchery",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "dragon-hatchery-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "dragon-hatchery-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "dragon-hatchery-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "dragon-hatchery-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "velaris-study": {
+      "label": "ACOTAR — Velaris Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "velaris-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "velaris-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "velaris-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "velaris-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "dragon-rider-study": {
+      "label": "Fourth Wing — Dragon Rider Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "dragon-rider-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "dragon-rider-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "dragon-rider-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "dragon-rider-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "hobbit-study": {
+      "label": "The Shire — Hobbit Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "hobbit-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "hobbit-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "hobbit-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "hobbit-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "animal-crossing-island": {
+      "label": "Animal Crossing — Island Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "animal-crossing-island-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "animal-crossing-island-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "animal-crossing-island-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "animal-crossing-island-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "cinnamoroll-cloud-cafe": {
+      "label": "Cinnamoroll — Cloud Café",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "cinnamoroll-cloud-cafe-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "cinnamoroll-cloud-cafe-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "cinnamoroll-cloud-cafe-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "cinnamoroll-cloud-cafe-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "witch-apothecary": {
+      "label": "Witch’s Apothecary",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "witch-apothecary-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "witch-apothecary-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "witch-apothecary-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "witch-apothecary-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "capybara-onsen": {
+      "label": "Capybara Onsen",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "capybara-onsen-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "capybara-onsen-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "capybara-onsen-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "capybara-onsen-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "pokemon-research-cottage": {
+      "label": "Pokémon — Research Cottage",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "pokemon-research-cottage-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "pokemon-research-cottage-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "pokemon-research-cottage-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "pokemon-research-cottage-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "frog-pond-studio": {
+      "label": "Frog Pond Studio",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "frog-pond-studio-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "frog-pond-studio-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "frog-pond-studio-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "frog-pond-studio-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "kuromi-midnight-desk": {
+      "label": "Kuromi — Midnight Desk",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "kuromi-midnight-desk-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "kuromi-midnight-desk-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "kuromi-midnight-desk-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "kuromi-midnight-desk-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "antique-workshop": {
+      "label": "Whisper of the Heart — Antique Workshop",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "antique-workshop-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "antique-workshop-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "antique-workshop-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "antique-workshop-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "minecraft-cottage": {
+      "label": "Minecraft — Cottage Library",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "minecraft-cottage-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "minecraft-cottage-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "minecraft-cottage-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "minecraft-cottage-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "hateno-study": {
+      "label": "Zelda — Hateno Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "hateno-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "hateno-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "hateno-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "hateno-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "sumeru-akademiya": {
+      "label": "Genshin Impact — Sumeru Akademiya",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "sumeru-akademiya-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "sumeru-akademiya-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "sumeru-akademiya-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "sumeru-akademiya-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "mage-archive": {
+      "label": "Frieren — Mage’s Archive",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "mage-archive-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "mage-archive-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "mage-archive-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "mage-archive-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "cyberpunk-rain-loft": {
+      "label": "Cyberpunk Rain Loft",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "cyberpunk-rain-loft-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "cyberpunk-rain-loft-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "cyberpunk-rain-loft-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "cyberpunk-rain-loft-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "secret-door-study": {
+      "label": "Coraline — Secret Door Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "secret-door-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "secret-door-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "secret-door-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "secret-door-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "nevermore-study": {
+      "label": "Wednesday — Nevermore Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "nevermore-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "nevermore-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "nevermore-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "nevermore-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "autumn-bakery": {
+      "label": "Autumn Bakery",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "autumn-bakery-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "autumn-bakery-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "autumn-bakery-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "autumn-bakery-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "seoul-night-cafe": {
+      "label": "Seoul Late-Night Café",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "seoul-night-cafe-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "seoul-night-cafe-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "seoul-night-cafe-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "seoul-night-cafe-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "cloud-cafe": {
+      "label": "Cloud Café",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "cloud-cafe-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "cloud-cafe-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "cloud-cafe-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "cloud-cafe-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "tiny-mouse-house": {
+      "label": "Tiny Mouse House",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "tiny-mouse-house-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "tiny-mouse-house-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "tiny-mouse-house-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "tiny-mouse-house-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "stationery-studio": {
+      "label": "Vintage Stationery Studio",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "stationery-studio-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "stationery-studio-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "stationery-studio-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "stationery-studio-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
+        }
+      ]
+    },
+    "thousand-sunny-study": {
+      "label": "One Piece — Thousand Sunny Study",
+      "theme": "starter collection; themed reward artwork deferred",
+      "progression": "collection",
+      "rewards": [
+        {
+          "id": "thousand-sunny-study-starter-personal-pot",
+          "name": "Your nook’s first little plant",
+          "minutes": 15,
+          "description": "A potted plant begins a collection for your study nook.",
+          "art": "plant"
+        },
+        {
+          "id": "thousand-sunny-study-starter-personal-letter",
+          "name": "A note to your future self",
+          "minutes": 45,
+          "description": "A folded letter keepsake makes your own nook feel more personal.",
+          "art": "letter"
+        },
+        {
+          "id": "thousand-sunny-study-starter-personal-crystal",
+          "name": "A small unexpected treasure",
+          "minutes": 90,
+          "description": "A crystal ornament joins your creative desk display.",
+          "art": "crystal",
+          "surprise": true
+        },
+        {
+          "id": "thousand-sunny-study-starter-personal-retreat",
+          "name": "A retreat within your retreat",
+          "minutes": 180,
+          "description": "A miniature cottage completes your first collection without changing your uploaded background.",
+          "art": "tiny-house",
+          "surprise": true
         }
       ]
     }

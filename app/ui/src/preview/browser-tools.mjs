@@ -12,6 +12,7 @@ export function createPreviewTools({ store = new BrowserPreviewStore(), clock = 
   // This is a browser-local capability, not a signed-in account or public identity.
   const browserIdentity = Object.freeze({ id: 'this-browser-only', scopes: ['notable.read', 'notable.write'] });
   return async (name, args = {}) => {
+    if (name.startsWith('library_share_')) throw new InputError('Sign in to a connected Nooks account to share courses and materials with friends.', 'FEATURE_UNAVAILABLE');
     if (unavailable.has(name)) throw new InputError('Public sharing and publishing need the connected community service. Your private browser work stays saved here.', 'FEATURE_UNAVAILABLE');
     const result = creatorToolNames.has(name)
       ? await creator.call(name, args, browserIdentity)

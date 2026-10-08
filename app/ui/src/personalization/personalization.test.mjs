@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import ts from 'typescript';
 const source = fs.readFileSync(new URL('./types.ts', import.meta.url), 'utf8');
 const code = ts.transpileModule(source, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022 } }).outputText;
-const { safeBackgroundImage, getSpaceStyle, defaultSpace, themes, roomScenes, getRoomScene, getRoomImage } = await import('data:text/javascript;base64,' + Buffer.from(code).toString('base64'));
+const { safeBackgroundImage, getSpaceStyle, defaultSpace, themes, roomScenes, allRoomScenes, legacyRoomScenes, getRoomScene, getRoomImage } = await import('data:text/javascript;base64,' + Buffer.from(code).toString('base64'));
 
 // Decode dimensions from the actual runtime RIFF chunks, not the conversion manifest.
 // https://developers.google.com/speed/webp/docs/riff_container
@@ -35,16 +35,30 @@ function webpDimensions(data) {
   assert.fail('WebP image dimensions are missing');
 }
 
-test('all 31 distinct selectable room backgrounds exist with their declared dimensions', () => {
-  assert.equal(roomScenes.length, 31);
-  assert.equal(new Set(roomScenes.map(room => room.id)).size, 31);
-  assert.equal(new Set(roomScenes.map(room => room.image)).size, 31);
+test('all 50 distinct selectable room backgrounds exist with their declared dimensions', () => {
+  assert.equal(roomScenes.length, 50);
+  assert.equal(new Set(roomScenes.map(room => room.id)).size, 50);
+  assert.equal(new Set(roomScenes.map(room => room.image)).size, 50);
   for (const room of roomScenes) {
     const data = fs.readFileSync(new URL('../../public' + room.image, import.meta.url));
     assert.ok(room.image.endsWith('.webp'), room.id);
     assert.deepEqual(webpDimensions(data), [room.width, room.height], room.id);
+    const thumbnail = fs.readFileSync(new URL('../../public' + room.thumbnail, import.meta.url));
+    const [width, height] = webpDimensions(thumbnail);
+    assert.equal(width, 480, room.id);
+    assert.ok(Math.abs(width / height - room.width / room.height) < .01, room.id);
+    assert.ok(thumbnail.length < data.length / 2, 'catalog preview must be lighter than the background');
     assert.equal(getRoomScene({ ...defaultSpace, room: room.id }).title, room.title);
     assert.equal(getRoomImage({ ...defaultSpace, room: room.id }), room.image);
+  }
+});
+
+test('retired saved nooks resolve without appearing in the new discovery catalog', () => {
+  assert.equal(new Set(allRoomScenes.map(scene => scene.id)).size, allRoomScenes.length);
+  for (const legacy of legacyRoomScenes) {
+    const selected = getRoomScene({ ...defaultSpace, room: legacy.id });
+    assert.equal(selected.id, legacy.id);
+    if (!roomScenes.some(scene => scene.id === legacy.id)) assert.equal(selected.image, legacy.image);
   }
 });
 

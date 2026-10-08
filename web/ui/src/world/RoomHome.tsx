@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useCrashDraft } from '../WorkspaceErrorBoundary';
-import { ArrowRight, ArrowUp, Check, ChevronDown, Pause, Play, Plus, RotateCcw } from 'lucide-react';
+import { ArrowRight, ArrowUp, Check, ChevronDown, Pause, Play, Plus, RotateCcw, X } from 'lucide-react';
 import { useBreakTimer } from './useBreakTimer';
 import type { Artifact } from '../study/types';
 import './StudyHome.css';
@@ -24,6 +24,7 @@ interface Props {
  timer: RoomTimerProps;
  tasks: RoomTask[];
  onToggleTask: (id: string) => void | Promise<void>;
+ onDeleteTask: (id: string) => Promise<void>;
  onAddTask: (title: string) => Promise<void>;
  artifacts: Artifact[];
  onOpen: (artifact: Artifact) => void;
@@ -87,6 +88,13 @@ export function RoomHome(p: Props) {
   catch (error) { setTaskError(error instanceof Error ? error.message : 'Could not save. Try again.'); }
   finally { taskBusyRef.current = false; setPendingTask(null); }
  };
+ const deleteTask = async (id: string) => {
+  if (taskBusyRef.current) return;
+  taskBusyRef.current = true; setPendingTask(id); setTaskError('');
+  try { await p.onDeleteTask(id); }
+  catch (error) { setTaskError(error instanceof Error ? error.message : 'Could not delete. Try again.'); }
+  finally { taskBusyRef.current = false; setPendingTask(null); }
+ };
  return <section className={`study-home study-home-welcome${p.nativeChat ? ' study-home-native' : ''}`} aria-label="Your study nook">
   <div className="study-home-welcome-position"><div className="study-home-content">
    <header className="study-home-heading">
@@ -131,8 +139,8 @@ export function RoomHome(p: Props) {
    </section></MovableWidget>
    <MovableWidget id="tasks" label="To-do list" className="study-home-tasks-position"><section className="study-home-tasks study-home-widget" aria-label="To-do list">
     <div className="study-home-widget-heading"><h2>To-do</h2><span>{completed}/{p.tasks.length}</span></div>
-    {orderedTasks.length ? <ul>{orderedTasks.map(item => <li key={item.id}><button className={item.done ? 'is-done' : ''} aria-pressed={item.done} disabled={!!pendingTask || savingTask} onClick={() => void toggleTask(item.id)}><span className="study-home-task-check" aria-hidden="true">{item.done && <Check size={11}/>}</span><span>{item.title}</span></button></li>)}</ul> : <p className="study-home-tasks-empty">What would you like to finish?</p>}
-    <form onSubmit={event => { event.preventDefault(); void addTask(); }}><input ref={taskInput} aria-label="New task" placeholder="Add a task" value={task} maxLength={300} disabled={savingTask} onChange={event => setTask(event.target.value)} /><button type="submit" disabled={!task.trim() || savingTask || !!pendingTask} aria-label={savingTask ? 'Saving task' : 'Add task'}><Plus size={16} aria-hidden="true"/></button></form>
+    {orderedTasks.length ? <ul>{orderedTasks.map(item => <li key={item.id}><button className={item.done ? 'is-done' : ''} aria-pressed={item.done} disabled={!!pendingTask || savingTask} onClick={() => void toggleTask(item.id)}><span className="study-home-task-check" aria-hidden="true">{item.done && <Check size={11}/>}</span><span>{item.title}</span></button><button type="button" className="study-home-task-delete" aria-label={`Delete task: ${item.title}`} title="Delete task" disabled={!!pendingTask || savingTask} onClick={() => void deleteTask(item.id)}><X size={13} aria-hidden="true"/></button></li>)}</ul> : <p className="study-home-tasks-empty">What would you like to finish?</p>}
+    <form onSubmit={event => { event.preventDefault(); void addTask(); }}><input ref={taskInput} aria-label="New task" placeholder="Add a task" value={task} maxLength={300} onKeyDown={event=>{if(event.key==='Enter'&&!event.nativeEvent.isComposing){event.preventDefault();void addTask();}}} disabled={savingTask} onChange={event => setTask(event.target.value)} /><button type="button" onClick={() => void addTask()} disabled={!task.trim() || savingTask || !!pendingTask} aria-label={savingTask ? 'Saving task' : 'Add task'}><Plus size={16} aria-hidden="true"/></button></form>
     {taskError && <p className="study-home-task-error" role="alert">{taskError}</p>}
    </section></MovableWidget>
   </aside>

@@ -231,14 +231,14 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
     if (engine.current) { dispose(engine.current); engine.current = null; }
     setRunning(false); setStarted(false); setBusy(false); setError('');
   }
-  useSoundPlayback('ambient', started ? {
+  useSoundPlayback('ambient', {
     title: track?.name ?? 'Nook sounds',
     subtitle: track ? 'Your local track + nook sounds' : channels.filter(channel => preferences.levels[channel.id] > 0).map(channel => channel.name).join(' · ') || 'A quiet nook',
     kind: 'ambient', playing: running, muted, volume: preferences.master, busy, error,
     togglePlayback, toggleMuted: () => setMuted(value => !value),
     setVolume: value => { setPreferences(previous => ({ ...previous, master: safeVolume(value) })); if (value > 0) setMuted(false); },
     stop: stopPlayback,
-  } : null);
+  });
 
   function addTrack(file?: File) {
     if (!file) return;

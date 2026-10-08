@@ -13,6 +13,16 @@ const { roomScenes } = await load('../personalization/types.ts');
 const { parseSpotifyLink } = await load('./spotifyLink.ts');
 const names = JSON.parse(fs.readFileSync(new URL('./nook-names.json', import.meta.url), 'utf8'));
 
+test('all 50 public nooks use their researched Spotify recommendation', () => {
+  const research = JSON.parse(fs.readFileSync(new URL('../../../tests/fixtures/spotify-research.json', import.meta.url), 'utf8'));
+  assert.deepEqual(research.map(item => item.roomId).sort(), roomScenes.map(item => item.id).sort());
+  for (const item of research) {
+    const { title, curator, vibe, url } = item;
+    assert.deepEqual(getNookPlaylist(item.roomId), { title, curator, vibe, url });
+    assert.match(item.sourceUrl, /^https:\/\/open\.spotify\.com\//);
+  }
+});
+
 test('every built-in nook and unlockable annex has an explicit curated soundtrack', () => {
   const ids = new Set([...roomScenes.map(nook => nook.id), ...Object.keys(names), 'moonstone-annex', 'crystal-vault']);
   assert.deepEqual(Object.keys(nookPlaylists).sort(), [...ids].sort());
