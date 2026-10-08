@@ -5,7 +5,7 @@ import {readFile} from 'node:fs/promises';
 import {assert as check} from './soak-control.mjs';
 const source=await readFile(new URL('./verify-deployed-soak.mjs',import.meta.url),'utf8');
 const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
-const finalChecks=source.slice(source.indexOf(' report.releaseEnd=await releaseIdentity();'),source.indexOf('\n}catch(error){stop(safeCode(error));'));
+const finalChecks=source.slice(source.lastIndexOf(' report.releaseEnd=await releaseIdentity();'),source.indexOf('\n }\n}catch(error){stop(safeCode(error));'));
 const override=source.slice(source.indexOf(' if(abortReason){report.passed=false;report.failure='),source.indexOf('\n await saveReport();',source.indexOf(' if(abortReason){report.passed=false;report.failure=')));
 
 test('channel failure during final manifest response cannot become a pass',async()=>{

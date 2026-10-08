@@ -1,0 +1,12 @@
+{
+  "run": "2026-10-08T11-06-12.770Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "removedFixtureTopics": 105,
+  "guards": [
+    "exact105report/journaltopics",
+    "no_matching_account",
+    "no_matching_room"
+  ],
+  "preservedSharedDirectory": true,
+  "remainingFixtureTopics": 0
+}

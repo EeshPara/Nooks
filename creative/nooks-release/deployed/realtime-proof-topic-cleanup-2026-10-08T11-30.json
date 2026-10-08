@@ -1,0 +1,17 @@
+{
+  "run": "2026-10-08T11-30-18.987Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "exactFixtureTopics": [
+    "account:04890a6d-9d99-4257-84fc-f82b13cd3ba2",
+    "account:47443a1c-4628-4b1b-9d88-0203fac22fc3",
+    "nook:fa6cd9fd-2101-4b87-b148-37bea25e2da2"
+  ],
+  "removedFixtureTopics": 2,
+  "remainingFixtureTopics": 0,
+  "guards": [
+    "exact_report_topics",
+    "no_matching_account",
+    "no_matching_room"
+  ],
+  "preservedSharedDirectory": true
+}

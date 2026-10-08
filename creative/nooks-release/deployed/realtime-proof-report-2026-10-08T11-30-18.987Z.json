@@ -1,0 +1,409 @@
+{
+  "runId": "ef577aab-6408-4958-9646-992397e133b3",
+  "startedAt": "2026-10-08T11:30:18.990Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "bounds": {
+    "users": 2,
+    "rooms": 1,
+    "membersPerRoom": 1,
+    "sockets": 2,
+    "channels": 6,
+    "durationMs": 35000,
+    "publicCap": 40,
+    "adminCap": 6,
+    "cleanupCap": 30,
+    "minStartGapMs": 250,
+    "maxActive": 2,
+    "heartbeatMs": 40000,
+    "maxHeartbeatGapMs": 70000,
+    "cleanupDeadlineMs": 180000
+  },
+  "passed": true,
+  "phases": [],
+  "intervals": [],
+  "fanout": [],
+  "negativeChecks": [
+    {
+      "type": "foreign_snapshot",
+      "userIndex": 1,
+      "status": 403,
+      "denied": true
+    },
+    {
+      "type": "foreign_subscription",
+      "userIndex": 1,
+      "denied": true
+    }
+  ],
+  "reconnects": [],
+  "cleanup": [
+    {
+      "type": "room",
+      "roomIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 1,
+      "ok": true
+    }
+  ],
+  "limitations": [
+    "Two disposable identities/one private room only; no load or long-soak result.",
+    "Direct Supabase WebSockets with public HTTP verification; no browser/email onboarding.",
+    "Fixture JWT callback retained in memory; only token-equality booleans are reported."
+  ],
+  "releaseStart": {
+    "id": "d03cf6fb1687397f7f16feb1",
+    "htmlSha256": "d03cf6fb1687397f7f16feb11bbe60ff45c2bea0740a13fbfb0efeba6cd8a41d",
+    "manifestSha256": "06afe5173a3fa9a1d4e11ae9689d6a2065e9b98bee9b59437019dc9872686547"
+  },
+  "channelDiagnostics": {
+    "events": [
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_directory",
+        "userIndex": 0,
+        "phase": "diagnostic_join",
+        "elapsedMs": 12914,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      },
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_account",
+        "userIndex": 0,
+        "phase": "diagnostic_join",
+        "elapsedMs": 13100,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      },
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_room",
+        "userIndex": 0,
+        "phase": "diagnostic_join",
+        "elapsedMs": 13276,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      },
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_directory",
+        "userIndex": 1,
+        "phase": "diagnostic_join",
+        "elapsedMs": 13769,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      },
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_account",
+        "userIndex": 1,
+        "phase": "diagnostic_join",
+        "elapsedMs": 13948,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      },
+      {
+        "status": "CHANNEL_ERROR",
+        "category": "authorization",
+        "kind": "foreign_room",
+        "userIndex": 1,
+        "phase": "diagnostic_join",
+        "elapsedMs": 18145,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": true
+      },
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_directory",
+        "userIndex": 0,
+        "phase": "diagnostic_reconnect",
+        "elapsedMs": 54005,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      },
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_account",
+        "userIndex": 0,
+        "phase": "diagnostic_reconnect",
+        "elapsedMs": 54194,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      },
+      {
+        "status": "SUBSCRIBED",
+        "category": "none",
+        "kind": "own_room",
+        "userIndex": 0,
+        "phase": "diagnostic_reconnect",
+        "elapsedMs": 54458,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false,
+        "expectedDenial": false
+      }
+    ],
+    "failures": [],
+    "suppressedEvents": 0,
+    "suppressedFailures": 0
+  },
+  "heartbeatProof": {
+    "observedMs": 35150,
+    "users": [
+      {
+        "userIndex": 0,
+        "sent": 1,
+        "ok": 1,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false
+      },
+      {
+        "userIndex": 1,
+        "sent": 1,
+        "ok": 1,
+        "fixtureTokenCurrent": true,
+        "publishableKeyCurrent": false
+      }
+    ]
+  },
+  "profileHint": {
+    "ownRoomReceived": true,
+    "durationMs": 464
+  },
+  "releaseEnd": {
+    "id": "d03cf6fb1687397f7f16feb1",
+    "htmlSha256": "d03cf6fb1687397f7f16feb11bbe60ff45c2bea0740a13fbfb0efeba6cd8a41d",
+    "manifestSha256": "06afe5173a3fa9a1d4e11ae9689d6a2065e9b98bee9b59437019dc9872686547"
+  },
+  "finalIntegrity": {
+    "privateRoomMembers": 1,
+    "foreignReadDenied": true,
+    "foreignSubscriptionDenied": true,
+    "reconnectSucceeded": true,
+    "fixtureTokensRetained": true
+  },
+  "cleanupVerification": {
+    "plannedUsers": 2,
+    "identitiesVerifiedAbsent": 2,
+    "plannedRooms": 1,
+    "roomsVerifiedAbsent": 1,
+    "allAbsent": true
+  },
+  "fixtureThrottleTopics": [
+    "account:04890a6d-9d99-4257-84fc-f82b13cd3ba2",
+    "account:47443a1c-4628-4b1b-9d88-0203fac22fc3",
+    "nook:fa6cd9fd-2101-4b87-b148-37bea25e2da2"
+  ],
+  "throttleCleanup": "Root must delete only these exact topics after account/room absence guards, preserving nooks:directory. No private throttle SQL runs in this harness.",
+  "finalCheckReserve": 0,
+  "http": {
+    "counts": {
+      "public": 11,
+      "admin": 4,
+      "cleanup": 17
+    },
+    "peakActive": 1,
+    "requests": 11,
+    "unexpectedErrors": 0,
+    "expectedDenials": 1,
+    "p50Ms": 439,
+    "p95Ms": 837,
+    "p99Ms": 837,
+    "maxMs": 837,
+    "minimumStartGapMs": 250.07230800000252
+  },
+  "realtime": {
+    "peakSockets": 2,
+    "peakChannels": 6,
+    "finalSockets": 0,
+    "finalChannels": 0
+  },
+  "samples": [
+    {
+      "phase": "preflight",
+      "tool": "/",
+      "startedMs": 90,
+      "durationMs": 459,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 796
+    },
+    {
+      "phase": "preflight",
+      "tool": "/nooks-release.json",
+      "startedMs": 549,
+      "durationMs": 211,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 14796
+    },
+    {
+      "phase": "preflight",
+      "tool": "/api/config",
+      "startedMs": 800,
+      "durationMs": 725,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 258
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 8406,
+      "durationMs": 837,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 1,
+      "startedMs": 10757,
+      "durationMs": 420,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "diagnostic_join",
+      "tool": "nook_create",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 11257,
+      "durationMs": 439,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 323
+    },
+    {
+      "phase": "diagnostic_join",
+      "tool": "nook_snapshot",
+      "roomIndex": 0,
+      "userIndex": 1,
+      "startedMs": 11739,
+      "durationMs": 367,
+      "status": 403,
+      "ok": true,
+      "expectedDenial": true,
+      "responseBytes": 144
+    },
+    {
+      "phase": "diagnostic_reconnect",
+      "tool": "nook_snapshot",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 54458,
+      "durationMs": 584,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 659
+    },
+    {
+      "phase": "diagnostic_hint",
+      "tool": "profile_update",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 55042,
+      "durationMs": 467,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 161
+    },
+    {
+      "phase": "diagnostic_hint",
+      "tool": "/",
+      "startedMs": 55509,
+      "durationMs": 61,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 796
+    },
+    {
+      "phase": "diagnostic_hint",
+      "tool": "/nooks-release.json",
+      "startedMs": 55759,
+      "durationMs": 275,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 14796
+    }
+  ],
+  "finishedAt": "2026-10-08T11:31:19.651Z"
+}

@@ -1,6 +1,6 @@
 # Prepared multi-room soak — October 8, 2026
 
-**Preparation only. No live run has occurred.** Root must separately authorize execution after independent review. The existing public origin and dedicated Supabase project are fixed in source. This does not change hosting, billing, provider limits, schema, security policy, email settings or application code.
+**Prepared/reviewed plan; the one subsequently authorized attempt stopped before the measured plateau.** See [actual result](soak-results-2026-10-08.md). Any further execution requires root review and separate authorization. The existing public origin and dedicated Supabase project are fixed in source. This does not change hosting, billing, provider limits, schema, security policy, email settings or application code.
 
 ## Bounded scope
 

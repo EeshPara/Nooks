@@ -5,21 +5,26 @@ import {promisify} from 'node:util';
 import {createRequire} from 'node:module';
 import {randomUUID,randomBytes,createHash} from 'node:crypto';
 import {open,rename,writeFile} from 'node:fs/promises';
-import {SOAK,assert,sleep,statistics,createHttpGate,readBounded,checkSnapshot,runSettledBatch} from './soak-control.mjs';
+import {SOAK as SOAK_DEFAULT,assert,sleep,statistics,createHttpGate,readBounded,checkSnapshot,runSettledBatch} from './soak-control.mjs';
+import {createFixtureRealtimeClient,channelDiagnostic,recordChannelDiagnostic,isAuthorizationDenial} from './soak-realtime.mjs';
 const require=createRequire(new URL('../../../web/package.json',import.meta.url));
 const {createClient}=require('@supabase/supabase-js');
 const PROJECT='lcfcjglybfeozyrjjikk',DB=`https://${PROJECT}.supabase.co`,PUBLIC='https://nooks-study-space.vercel.app';
-if(process.argv.length!==3||process.argv[2]!=='--run-authorized-soak'){console.log('Prepared only: run requires separate approval and --run-authorized-soak.');process.exit(0);}
+const diagnostic=process.argv[2]==='--run-authorized-realtime-proof';
+if(process.argv.length!==3||!['--run-authorized-soak','--run-authorized-realtime-proof'].includes(process.argv[2])){console.log('Prepared only: each run requires separate approval and its explicit --run-authorized-soak or --run-authorized-realtime-proof flag.');process.exit(0);}
+const SOAK=diagnostic?Object.freeze({...SOAK_DEFAULT,users:2,rooms:1,membersPerRoom:1,sockets:2,channels:6,durationMs:35000,publicCap:40,adminCap:6,cleanupCap:30,maxActive:2,cleanupDeadlineMs:180000}):SOAK_DEFAULT;
 const runId=randomUUID(),stamp=new Date().toISOString().replaceAll(':','-'),started=performance.now();
-const reportPath=new URL(`./soak-report-${stamp}.json`,import.meta.url),manifestPath=new URL(`./soak-fixtures-${stamp}.json`,import.meta.url);
+const prefix=diagnostic?'realtime-proof':'soak';
+const reportPath=new URL(`./${prefix}-report-${stamp}.json`,import.meta.url),manifestPath=new URL(`./${prefix}-fixtures-${stamp}.json`,import.meta.url);
 const users=[],rooms=[],samples=[],pending=new Set(),background=new Set();
 const report={runId,startedAt:new Date().toISOString(),project:PROJECT,publicOrigin:PUBLIC,bounds:SOAK,passed:false,phases:[],intervals:[],fanout:[],negativeChecks:[],reconnects:[],cleanup:[],limitations:['Actual public HTTPS plus direct Supabase WebSockets; one generator, no browser/email onboarding.','Fifteen minutes at a lower rate is not overnight stability, multi-region performance, 1000-user capacity or production approval.','Lossy invalidation hints are not content delivery guarantees. Reconnect convergence is checked with authorized snapshots.','No hosted disconnect cancellation, token-refresh/expiry, upload, artwork or populated-library evidence.']};
+if(diagnostic)report.limitations=['Two disposable identities/one private room only; no load or long-soak result.','Direct Supabase WebSockets with public HTTP verification; no browser/email onboarding.','Fixture JWT callback retained in memory; only token-equality booleans are reported.'];
 let admin,publicKey,phase='preflight',abortReason=null,abortPhase=null,cleanupMode=false,cleanupDeadline=Infinity,plateauStart=null,plateauEnd=null,writeChain=Promise.resolve(),lastLogin=-Infinity;
 let channelCount=0,socketCount=0,peakChannels=0,peakSockets=0,profileRound=0,quietMutations=false,quietUntil=Infinity;
 const safeCode=error=>/^[a-z0-9_]{1,80}$/.test(error?.message??'')?error.message:'operation_failed';
 function stop(code){if(!abortReason){abortReason=safeCode({message:code});abortPhase=phase;}}
-function guard(bucket){if(bucket==='cleanup'){assert(performance.now()<cleanupDeadline,'cleanup_deadline');return;}assert(!abortReason,abortReason??'stopped');assert(performance.now()-started<30*60*1000,'work_wall_deadline');if(bucket==='public'&&phase==='plateau')assert(gate.counts.public<SOAK.publicCap-250,'final_check_reserve_reached');}
-const gate=createHttpGate({check:guard});
+function guard(bucket){if(bucket==='cleanup'){assert(performance.now()<cleanupDeadline,'cleanup_deadline');return;}assert(!abortReason,abortReason??'stopped');assert(performance.now()-started<(diagnostic?180000:30*60*1000),'work_wall_deadline');if(bucket==='public'&&phase==='plateau')assert(gate.counts.public<SOAK.publicCap-250,'final_check_reserve_reached');}
+const gate=createHttpGate({check:guard,maxActive:SOAK.maxActive,caps:{public:SOAK.publicCap,admin:SOAK.adminCap,cleanup:SOAK.cleanupCap}});
 function journal(){
  const value={runId,project:PROJECT,createdAt:report.startedAt,updatedAt:new Date().toISOString(),phase,users:users.map(u=>({id:u.id,email:u.email,creation:u.creation,account:u.account,roomIndex:u.roomIndex,cleaned:u.cleaned??false})),rooms:rooms.map(r=>({index:r.index,ownerAuthId:r.owner.id,ownerAccount:r.owner.account,requestId:r.requestId,id:r.id,cleaned:r.cleaned??false})),throttleTopics:[...users.filter(u=>u.account).map(u=>`account:${u.account}`),...rooms.filter(r=>r.id).map(r=>`nook:${r.id}`)],sharedDirectoryTopic:'nooks:directory (never delete)',containsCredentials:false};
  const text=JSON.stringify(value,null,2)+'\n';
@@ -71,17 +76,19 @@ async function subscribe(user,topic,{deny=false}={}){
  const channel=user.client.channel(topic,{config:{private:true}});record.channel=channel;
  return new Promise((resolve,reject)=>{
   let settled=false;const finish=(error,value)=>{if(settled)return;settled=true;clearTimeout(timer);error?reject(error):resolve(value);};
-  const timer=setTimeout(()=>{stop('subscription_timeout');finish(new Error('subscription_timeout'));},15000);
+  const diagnose=(status,error)=>recordChannelDiagnostic(report,channelDiagnostic({status,error,kind:topic==='nooks:directory'?'own_directory':topic===`account:${user.account}`?'own_account':deny?'foreign_room':'own_room',userIndex:user.index,phase,elapsedMs:performance.now()-started,tokenMatches:user.client.realtime.accessTokenValue===user.token,publicKeyMatches:user.client.realtime.accessTokenValue===publicKey,expectedDenial:deny&&isAuthorizationDenial(status,error)}));
+  const timer=setTimeout(()=>{diagnose('LOCAL_TIMEOUT');stop('subscription_timeout');finish(new Error('subscription_timeout'));},15000);
   channel.on('broadcast',{event:'invalidate'},event=>{
    const value=event.payload;if(!value||value.v!==1||Object.keys(value).some(k=>k!=='v'&&k!=='id')){stop('unexpected_broadcast_payload');return;}
    if(topic.startsWith('nook:')){
-    if(topic!==`nook:${rooms[user.roomIndex].id}`){stop('foreign_room_broadcast');return;}
+    if(deny||topic!==`nook:${rooms[user.roomIndex].id}`){stop('foreign_room_broadcast');return;}
     user.hints++;user.lastHint=performance.now();
    }
   }).subscribe((status,error)=>{
+   if(!record.closing&&!cleanupMode)diagnose(status,error);
    if(status==='SUBSCRIBED'){if(deny){stop('foreign_subscription_allowed');finish(new Error('foreign_subscription_allowed'));}else finish(null,record);}
    else if(['CHANNEL_ERROR','TIMED_OUT','CLOSED'].includes(status)&&!record.closing&&!cleanupMode){
-    if(deny&&status==='CHANNEL_ERROR'&&/unauthoriz|permission/i.test(error?.message??'')){finish(null,record);return;}
+    if(deny&&isAuthorizationDenial(status,error)){finish(null,record);return;}
     if(!deny||!settled)stop(deny?'foreign_denial_not_proven':'unexpected_channel_failure');
     finish(new Error(deny?'foreign_denial_not_proven':'unexpected_channel_failure'));
    }
@@ -94,7 +101,8 @@ async function removeChannel(user,record){
 }
 async function connect(user,{foreign=false}={}){
  assert(!user.connected&&user.channels.length===0,'duplicate_connection');
- if(!user.client)user.client=createClient(DB,publicKey,clientOptions);
+ if(!user.client)user.client=createFixtureRealtimeClient(createClient,DB,publicKey,user,clientOptions);
+ if(diagnostic&&!user.heartbeatObserver){user.heartbeatObserver=true;user.socketHeartbeats={sent:0,ok:0};user.client.realtime.onHeartbeat(status=>{if(status==='sent'||status==='ok')user.socketHeartbeats[status]++;else if(status==='error'||status==='timeout')stop('diagnostic_heartbeat_failed');});}
  socketCount++;peakSockets=Math.max(peakSockets,socketCount);assert(socketCount<=SOAK.sockets,'socket_bound');user.socketCounted=true;
  await user.client.realtime.setAuth(user.token);
  await subscribe(user,'nooks:directory');await subscribe(user,`account:${user.account}`);
@@ -189,6 +197,33 @@ async function plateau(){
  report.plateau={schedulerStopDelayMs:Math.round(drainStart-plateauEnd),drainMs,postWindowStarts:late.length,postWindow:statistics(late),wallMs:Math.round(plateauEnd-plateauStart),scheduledDurationMs:SOAK.durationMs,actualStartsPerSecond:rows.length/((plateauEnd-plateauStart)/1000),maxPublicStartGapMs:starts.slice(1).reduce((max,at,i)=>Math.max(max,at-starts[i]),0),intentionalApiPauses:0,reconnectRuns:report.reconnects.length,...statistics(rows)};
  assert(!abortReason,abortReason??'stopped');assert(report.reconnects.length===2,'reconnect_exercise_incomplete');
 }
+async function realtimeProof(){
+ const [owner,outsider]=users;phase='diagnostic_join';
+ const room={index:0,owner,members:[owner],requestId:randomUUID()};rooms.push(room);await journal();
+ const created=await api(owner,'nook_create',{requestId:room.requestId,title:`Private proof ${runId.slice(0,8)}`,roomId:'rainy-library',visibility:'private'});
+ assert(/^[a-f0-9-]{36}$/.test(created.nook?.id??''),'room_create_failed');room.id=created.nook.id;await journal();
+ await api(outsider,'nook_snapshot',{nookId:room.id},403);report.negativeChecks.push({type:'foreign_snapshot',userIndex:1,status:403,denied:true});
+ await connect(owner); // Sequential directory -> account -> own room with the corrected callback.
+ outsider.client=createFixtureRealtimeClient(createClient,DB,publicKey,outsider,clientOptions);
+ outsider.socketHeartbeats={sent:0,ok:0};outsider.client.realtime.onHeartbeat(status=>{if(status==='sent'||status==='ok')outsider.socketHeartbeats[status]++;else if(status==='error'||status==='timeout')stop('diagnostic_heartbeat_failed');});
+ outsider.socketCounted=true;socketCount++;peakSockets=Math.max(peakSockets,socketCount);assert(socketCount<=SOAK.sockets,'socket_bound');
+ await outsider.client.realtime.setAuth(outsider.token);await subscribe(outsider,'nooks:directory');await subscribe(outsider,`account:${outsider.account}`);
+ const denied=await subscribe(outsider,`nook:${room.id}`,{deny:true});await removeChannel(outsider,denied);outsider.connected=true;
+ report.negativeChecks.push({type:'foreign_subscription',userIndex:1,denied:true});
+ phase='diagnostic_heartbeat';const began=performance.now();
+ while(performance.now()-began<SOAK.durationMs){guard('public');await sleep(250);}
+ report.heartbeatProof={observedMs:Math.round(performance.now()-began),users:users.map(user=>({userIndex:user.index,...user.socketHeartbeats,fixtureTokenCurrent:user.client.realtime.accessTokenValue===user.token,publishableKeyCurrent:user.client.realtime.accessTokenValue===publicKey}))};
+ assert(report.heartbeatProof.users.every(user=>user.sent>=1&&user.ok>=1&&user.fixtureTokenCurrent&&!user.publishableKeyCurrent),'heartbeat_token_not_retained');
+ phase='diagnostic_reconnect';await disconnect(owner);await connect(owner);
+ const snapshot=await api(owner,'nook_snapshot',{nookId:room.id,limit:50});
+ assert(snapshot.nook?.id===room.id&&snapshot.memberCount===1&&snapshot.members?.length===1&&snapshot.members[0].id===owner.account&&snapshot.members[0].focusMinutes===0,'diagnostic_room_integrity');
+ phase='diagnostic_hint';const baseline=owner.hints,hintStart=performance.now();await api(owner,'profile_update',{displayName:'Proof student',avatar:0});
+ while(owner.hints<=baseline&&performance.now()-hintStart<10000){guard('public');await sleep(50);}
+ assert(owner.hints>baseline,'diagnostic_hint_missing');report.profileHint={ownRoomReceived:true,durationMs:Math.round(owner.lastHint-hintStart)};
+ report.releaseEnd=await releaseIdentity();assert(JSON.stringify(report.releaseStart)===JSON.stringify(report.releaseEnd),'release_changed_inconclusive');
+ report.finalIntegrity={privateRoomMembers:1,foreignReadDenied:true,foreignSubscriptionDenied:true,reconnectSucceeded:true,fixtureTokensRetained:users.every(user=>user.client.realtime.accessTokenValue===user.token)};
+ assert(report.finalIntegrity.fixtureTokensRetained,'diagnostic_token_changed');assert(!abortReason,abortReason??'stopped');report.passed=true;
+}
 async function cleanup(){
  cleanupMode=true;phase='cleanup';cleanupDeadline=performance.now()+SOAK.cleanupDeadlineMs;
  await Promise.allSettled([...pending,...background]);
@@ -252,7 +287,7 @@ try{
  phase='fixture_setup';const setupStart=performance.now();
  for(let index=0;index<SOAK.users;index++){
   guard('public');const id=randomUUID(),email=`nooks-soak-${runId}-${index}@example.invalid`,password=randomBytes(30).toString('base64url');
-  const user={index,id,email,roomIndex:Math.floor(index/SOAK.membersPerRoom),creation:'intended',channels:[],connected:false,hints:0,lastHint:0,lastHeartbeat:-Infinity,heartbeatPending:false};users.push(user);await journal();
+  const user={index,id,email,roomIndex:diagnostic?0:Math.floor(index/SOAK.membersPerRoom),creation:'intended',channels:[],connected:false,hints:0,lastHint:0,lastHeartbeat:-Infinity,heartbeatPending:false};users.push(user);await journal();
   // auth-js AdminUserAttributes explicitly supports a caller-provided UUID, journaled before create.
   const created=await admin.auth.admin.createUser({id,email,password,email_confirm:true,app_metadata:{nooks_qa_run:runId}});
   assert(!created.error&&created.data?.user?.id===id,'fixture_create_failed');user.creation='confirmed';await journal();
@@ -261,9 +296,12 @@ try{
   const claims=JSON.parse(Buffer.from(user.token.split('.')[1],'base64url'));assert(claims.sub===id&&claims.role==='authenticated'&&claims.iss===DB+'/auth/v1'&&claims.exp*1000>Date.now()+30*60*1000,'fixture_token_margin');
   const workspace=await api(user,'workspace');assert(workspace.authenticated===true&&workspace.mode==='connected'&&workspace.workspace?.artifacts?.length===0,'fixture_workspace_invalid');
   const account=workspace.recoveryScope?.slice(8);assert(/^account:[a-f0-9-]{36}$/.test(workspace.recoveryScope??''),'fixture_account_invalid');user.account=account;await journal();
-  if((index+1)%10===0)console.log(`Prepared ${index+1}/100 disposable identities`);
+  if((index+1)%10===0||diagnostic)console.log(`Prepared ${index+1}/${SOAK.users} disposable identities`);
  }
- assert(new Set(users.map(u=>u.account)).size===100,'duplicate_fixture_identity');
+ assert(new Set(users.map(u=>u.account)).size===SOAK.users,'duplicate_fixture_identity');
+ if(diagnostic){
+  await realtimeProof();
+ }else{
  for(let index=0;index<SOAK.rooms;index++){
   const members=users.filter(u=>u.roomIndex===index),owner=members[0],room={index,owner,members,requestId:randomUUID()};rooms.push(room);await journal();
   const created=await api(owner,'nook_create',{requestId:room.requestId,title:`Private soak ${runId.slice(0,8)} ${index}`,roomId:'rainy-library',visibility:'private'});
@@ -287,11 +325,12 @@ try{
  report.releaseEnd=await releaseIdentity();assert(JSON.stringify(report.releaseStart)===JSON.stringify(report.releaseEnd),'release_changed_inconclusive');
  report.finalIntegrity={rooms:5,membersPerRoom:20,allRoomMembersOwnedAndCorrect:true,allPresenceOnline:true,zeroPersonalAndRoomFocusCredit:true,releaseUnchanged:true};
  report.phases.push({name:'final_checks',durationMs:Math.round(performance.now()-finalStart)});assert(!abortReason,abortReason??'stopped');report.passed=true;
+ }
 }catch(error){stop(safeCode(error));report.failure={phase,code:safeCode(error)};report.passed=false;process.exitCode=1;console.log(`Soak stopped in ${phase}; cleaning fixture-only resources.`);}
 finally{
  try{await cleanup();}catch(error){report.cleanup.push({type:'cleanup_exception',ok:false,code:safeCode(error)});}
  if(report.journalFailed||report.cleanup.some(row=>!row.ok)||(users.length>0&&report.cleanupVerification?.allAbsent!==true)){report.passed=false;process.exitCode=1;}
- report.finalCheckReserve=250;report.http={counts:gate.counts,peakActive:gate.peak,...statistics(samples),minimumStartGapMs:gate.starts.slice(1).reduce((min,row,i)=>Math.min(min,row.at-gate.starts[i].at),Infinity)};
+ report.finalCheckReserve=diagnostic?0:250;report.http={counts:gate.counts,peakActive:gate.peak,...statistics(samples),minimumStartGapMs:gate.starts.slice(1).reduce((min,row,i)=>Math.min(min,row.at-gate.starts[i].at),Infinity)};
  report.realtime={peakSockets,peakChannels,finalSockets:socketCount,finalChannels:channelCount};report.samples=samples;report.finishedAt=new Date().toISOString();
  await journal().catch(()=>{report.passed=false;report.journalFailed=true;process.exitCode=1;});
  // A late socket callback or operator stop must override any tentative success, even after final HTTP admission.
