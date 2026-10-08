@@ -4,25 +4,16 @@ import { parseSpotifyLink, savedSpotifyLink, withSpotifyMetadata } from './spoti
 import { useSoundPlayback } from './soundPlayback';
 import { getNookPlaylist, type NookPlaylist } from './nookPlaylists';
 import { consumeDismissEscape, isTopmostDismissTarget } from './dismissal';
+import { ambienceKey, ambiencePresets, defaultAmbience, loadAmbience, safeVolume, type Channel, type Preferences } from './nookAmbience';
+export { safeVolume } from './nookAmbience';
 import './ambient.css';
 
-type Channel = 'rain' | 'brown' | 'fire' | 'warm';
-type Levels = Record<Channel, number>;
-interface Preferences { levels: Levels; master: number; local: number }
 interface Engine { context: AudioContext; master: GainNode; gains: Record<Channel, GainNode>; sources: AudioScheduledSourceNode[]; audio: HTMLAudioElement; localGain: GainNode; localSource: MediaElementAudioSourceNode }
 interface LocalTrack { url: string; name: string }
 export interface AmbientMixerProps { open: boolean; onClose: () => void; roomId: string; roomTitle: string }
 
-/** AudioParam never receives NaN, Infinity, or values outside the UI's safe range. */
-export function safeVolume(value: unknown): number { return typeof value === 'number' && Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0; }
-const defaults: Preferences = { levels: { rain: .38, brown: .12, fire: .2, warm: .16 }, master: .55, local: .35 };
-const preferenceKey = 'notable:ambient-levels:v1';
-function loadPreferences(): Preferences {
-  try {
-    const stored = JSON.parse(localStorage.getItem(preferenceKey) || 'null');
-    if (!stored || typeof stored !== 'object') return defaults;
-    return { master: stored.master === undefined ? defaults.master : safeVolume(stored.master), local: stored.local === undefined ? defaults.local : safeVolume(stored.local), levels: Object.fromEntries(Object.keys(defaults.levels).map(key => [key, stored.levels?.[key] === undefined ? defaults.levels[key as Channel] : safeVolume(stored.levels[key])])) as Levels };
-  } catch { return defaults; }
+function loadPreferences(roomId: string): Preferences {
+  try { return loadAmbience(roomId, localStorage); } catch { return defaultAmbience(roomId); }
 }
 
 function noise(context: AudioContext, kind: 'rain' | 'brown' | 'fire'): AudioBuffer {
@@ -92,10 +83,10 @@ function createEngine(): Engine {
   return { context, master, gains, sources, audio, localGain, localSource };
 }
 
-function changeGain(gain: GainNode, value: number, context: AudioContext) {
+function changeGain(gain: GainNode, value: number, context: AudioContext, fade = .08) {
   if (context.state === 'closed') return;
   gain.gain.cancelScheduledValues(context.currentTime);
-  gain.gain.setTargetAtTime(safeVolume(value), context.currentTime, .08);
+  gain.gain.setTargetAtTime(safeVolume(value), context.currentTime, fade);
 }
 function dispose(engine: Engine) {
   engine.audio.pause(); engine.audio.removeAttribute('src'); engine.audio.load();
@@ -112,7 +103,14 @@ const channels: { id: Channel; name: string }[] = [
 ];
 export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerProps) {
   const recommendation = getNookPlaylist(roomId);
-  const [preferences, setPreferences] = useState(loadPreferences);
+  const [mix, setMix] = useState(() => ({ roomId, preferences: loadPreferences(roomId) }));
+  const preferences = mix.preferences;
+  const preset = ambiencePresets[roomId];
+  const setPreferences = (update: (value: Preferences) => Preferences) => setMix(value => ({ ...value, preferences: update(value.preferences) }));
+  useEffect(() => {
+    setMix(value => value.roomId === roomId ? value : { roomId, preferences: loadPreferences(roomId) });
+    previousLevels.current = { ...defaultAmbience(roomId).levels };
+  }, [roomId]);
   const [running, setRunning] = useState(false);
   const [muted, setMuted] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -123,7 +121,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
   const [spotifyInput, setSpotifyInput] = useState('');
   const [spotifyError, setSpotifyError] = useState('');
   const panel = useRef<HTMLElement>(null);
-  const previousLevels = useRef({ ...defaults.levels });
+  const previousLevels = useRef({ ...defaultAmbience(roomId).levels });
   const engine = useRef<Engine | null>(null);
   const trackRef = useRef<LocalTrack | null>(null);
   const mounted = useRef(true);
@@ -194,13 +192,14 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
   }
 
   useEffect(() => {
-    try { localStorage.setItem(preferenceKey, JSON.stringify(preferences)); } catch { /* Private browsing may disable harmless preferences. */ }
+    if (mix.roomId !== roomId) return;
+    try { localStorage.setItem(ambienceKey(roomId), JSON.stringify(preferences)); } catch { /* Private browsing may disable harmless preferences. */ }
     const current = engine.current;
     if (!current) return;
-    for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context);
+    for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context, .45);
     changeGain(current.master, muted ? 0 : preferences.master, current.context);
     changeGain(current.localGain, preferences.local, current.context);
-  }, [preferences, muted]);
+  }, [preferences, muted, mix.roomId, roomId]);
 
   async function togglePlayback() {
     if (action.current) return;
@@ -212,7 +211,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
         if (mounted.current && token === epoch.current) setRunning(false);
       } else {
         const current = engine.current ??= createEngine();
-        for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context);
+        for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context, .45);
         changeGain(current.master, muted ? 0 : preferences.master, current.context);
         changeGain(current.localGain, preferences.local, current.context);
         if (trackRef.current && current.audio.src !== trackRef.current.url) current.audio.src = trackRef.current.url;
@@ -232,7 +231,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
     setRunning(false); setStarted(false); setBusy(false); setError('');
   }
   useSoundPlayback('ambient', {
-    title: track?.name ?? 'Nook sounds',
+    title: track?.name ?? `${roomTitle} ambience`,
     subtitle: track ? 'Your local track + nook sounds' : channels.filter(channel => preferences.levels[channel.id] > 0).map(channel => channel.name).join(' · ') || 'A quiet nook',
     kind: 'ambient', playing: running, muted, volume: preferences.master, busy, error,
     togglePlayback, toggleMuted: () => setMuted(value => !value),
@@ -278,13 +277,14 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
       {spotify && <div className="ambient-spotify-shortcuts"><button type="button" className="ambient-open-spotify" onClick={() => { window.dispatchEvent(new CustomEvent('nook:spotify-show')); onClose(); }}>Your player <ArrowUpRight size={13}/></button><span>{spotify.title ?? 'Your Spotify link'}</span></div>}
     </section>
     <section className="ambient-sound-section" aria-label="Ambient sound mixer">
-      <div className="ambient-section-heading"><h3>Ambient sounds</h3><button type="button" className={`ambient-play ${running ? 'ambient-playing' : ''}`} disabled={busy} onClick={togglePlayback}>{running ? <Pause size={13}/> : <Play size={13}/>} {busy ? 'Starting…' : running ? 'Pause sounds' : 'Play sounds'}</button></div>
+      <div className="ambient-section-heading"><h3>Nook ambience</h3><button type="button" className={`ambient-play ${running ? 'ambient-playing' : ''}`} disabled={busy} onClick={togglePlayback}>{running ? <Pause size={13}/> : <Play size={13}/>} {busy ? 'Starting…' : running ? 'Pause sounds' : 'Play sounds'}</button></div>
+      {preset && <p className="ambient-preset">{preset.label}<button type="button" onClick={() => setPreferences(value => ({ ...value, levels: { ...preset.levels } }))}>Reset mix</button></p>}
       <div className="ambient-channels">{channels.map(({ id, name }) => <div className={`ambient-channel ambient-${id}`} key={id}><button type="button" className="ambient-channel-toggle" role="switch" aria-label={name} aria-checked={preferences.levels[id] > 0} onClick={() => toggleChannel(id)}><span aria-hidden="true">{preferences.levels[id] > 0 && <Check size={10}/>}</span>{name}</button><input aria-label={`${name} volume`} className="ambient-slider" type="range" min="0" max="100" step="1" value={Math.round(preferences.levels[id] * 100)} onChange={event => setPreferences(value => ({ ...value, levels: { ...value.levels, [id]: safeVolume(Number(event.target.value) / 100) } }))}/><output className="ambient-percent">{Math.round(preferences.levels[id] * 100)}%</output></div>)}</div>
       <div className="ambient-master"><button type="button" className={`ambient-icon ${muted ? 'ambient-muted' : ''}`} aria-label={muted ? 'Unmute sounds' : 'Mute sounds'} aria-pressed={muted} onClick={() => setMuted(value => !value)}>{muted ? <VolumeX size={16}/> : <Volume2 size={16}/>}</button><span>{muted ? 'Muted' : 'Volume'}</span><input aria-label="Master volume" className="ambient-slider" type="range" min="0" max="100" step="1" value={Math.round(preferences.master * 100)} onChange={event => setPreferences(value => ({ ...value, master: safeVolume(Number(event.target.value) / 100) }))}/><output className="ambient-percent">{Math.round(preferences.master * 100)}%</output></div>
     </section>
     <details className="ambient-local"><summary><Upload size={14}/><span>Audio from your device</span><span className="ambient-local-expand">+</span></summary>{track ? <div className="ambient-local-track"><div className="ambient-file-name" title={track.name}>{track.name}</div><button type="button" className="ambient-icon" aria-label="Remove local audio track" onClick={removeTrack}><Trash2 size={15}/></button><input aria-label="Local audio track volume" className="ambient-slider" type="range" min="0" max="100" step="1" value={Math.round(preferences.local * 100)} onChange={event => setPreferences(value => ({ ...value, local: safeVolume(Number(event.target.value) / 100) }))}/><span className="ambient-local-note">Loops with your mix · {Math.round(preferences.local * 100)}%</span></div> : <button type="button" className="ambient-upload" onClick={() => upload.current?.click()}>Choose an audio file</button>}<input ref={upload} className="ambient-file-input" type="file" accept="audio/*" onChange={event => { addTrack(event.target.files?.[0]); event.currentTarget.value = ''; }}/><p className="ambient-privacy">Your file stays on this device.</p></details>
     {error && <p className="ambient-error" role="alert">{error}</p>}
-    <footer className="ambient-footer">Layer your music and sounds. Play when you’re ready.</footer>
+    <footer className="ambient-footer">Ambience follows your nook. Spotify plays on top.</footer>
   </section>;
 }
 export default AmbientMixer;
