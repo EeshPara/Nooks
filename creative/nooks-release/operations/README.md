@@ -2,6 +2,10 @@
 
 ## Latest release canary and empty draft-list check
 
+On public release `c4t3ni42i`, the **12:00:59 UTC** disposable fixture passed configuration 200/90 ms, authenticated workspace 200/486 ms and owner-scoped empty draft listing 200/350 ms. Session revocation and account/Auth deletion succeeded; account absence and Auth absence were verified. Root's exact account/room-absence-guarded throttle cleanup found no row. See [canary](authenticated-probe-live-2026-10-08T12-00-59.252Z.json), [fixture](authenticated-probe-fixture-2026-10-08T12-00-59.252Z.json) and [topic cleanup](authenticated-probe-topic-cleanup-2026-10-08T12-00.json). This is an admin-confirmed empty fixture, not email onboarding, populated artwork, scheduled alerts or a load test.
+
+## Previous release canary and empty draft-list check
+
 At **10:33:08–10:33:17 UTC**, after root deployed release `f2z3aj98o` to the stable public alias, one disposable initialized empty fixture passed: config 200/114 ms; authenticated workspace 200/365 ms; authenticated `nook_drafts_list` 200/368 ms, exact fixture recovery scope matched in memory, with zero drafts and zero publications. Session revocation and account/Auth deletion all succeeded; verification found zero account rows and Auth absent. Root’s exact-topic cleanup with an account-absence guard found zero remaining fixture topics and zero fixture accounts; see authenticated-probe-topic-cleanup-2026-10-08T10-33.json. Evidence: [canary](authenticated-probe-live-2026-10-08T10-33-08.718Z.json), [fixture and empty draft-list result](authenticated-probe-fixture-2026-10-08T10-33-08.718Z.json).
 
 This used `--verify-draft-list` on the existing one-fixture harness. No artwork, draft or publication was created, no deep-input or load test was repeated, and no additional live fixture was used. The listing validates the authenticated empty response contract only; it does not prove populated summaries, browser rendering, SMTP or hosted disconnect propagation. Normal identity/quota bookkeeping can write.
