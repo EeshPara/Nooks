@@ -1,0 +1,154 @@
+{
+  "sampledAt": "2026-10-08T09:54:03.879Z",
+  "origin": "https://nooks-study-space.vercel.app",
+  "current": "df2d810df2a8f0b88e19f23b",
+  "retained": [
+    {
+      "id": "3c3d4164950ace2411497a8b",
+      "retainUntil": "2026-10-10T09:52:09.393Z"
+    },
+    {
+      "id": "ed6bf3dc9e61cab97c10b615",
+      "retainUntil": "2026-10-10T09:33:29.482Z"
+    }
+  ],
+  "scope": "Actual public current/retained JS and CSS hashes, retry URLs, release registry, and missing-asset cache behavior. Browser behavior is separate.",
+  "passed": true,
+  "rows": [
+    {
+      "path": "/nooks-release.json",
+      "status": 200,
+      "type": "application/json; charset=utf-8",
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "df2d810df2a8f0b88e19f23bbc96f4ec1ba115d4dcda0be50b606eee6ebd54aa",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BxXvaAxM.css",
+      "status": 200,
+      "type": "text/css; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 198266,
+      "sha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-CQlKYQkf.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 352541,
+      "sha256": "abc883fb6edb3a9dc1d58d866a81a1cb6b4d2dada4baf0cc8e9c63362a94e121",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-BHG_76oL.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 516023,
+      "sha256": "0539901ed9ad08682dd7e0d46a802e88dec97f8b3c5f08de14e63fb26f7c2ee6",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-BlI9WeLm.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 228238,
+      "sha256": "ab6b720972a398657fc7c69afbe8e1c8eb394b43cb36f5761dabf0e73c668ae2",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DAeI1hYC.css",
+      "status": 200,
+      "type": "text/css; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 334969,
+      "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-h8ACpf3x.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 543864,
+      "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-3dqvx5TN.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 516041,
+      "sha256": "fa4ef246123c8136a667aedff22cb19a321138e8c7dceaf495a3989ca977a8ca",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BITgdhqM.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 352623,
+      "sha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DcI4F0F4.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 516086,
+      "sha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-CAoZffAd.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 543864,
+      "sha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-h8ACpf3x.js?nooks_retry=1",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 543864,
+      "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-CAoZffAd.js?nooks_retry=1",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "cache": "public, max-age=31536000, immutable",
+      "bytes": 543864,
+      "sha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "passed": true
+    },
+    {
+      "path": "/assets/nooks-confirmed-missing-release-20261008.js",
+      "status": 404,
+      "type": "text/plain; charset=utf-8",
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/assets/nooks-confirmed-missing-release-20261008.js?nooks_retry=1",
+      "status": 404,
+      "type": "text/plain; charset=utf-8",
+      "cache": "no-store",
+      "passed": true
+    }
+  ]
+}

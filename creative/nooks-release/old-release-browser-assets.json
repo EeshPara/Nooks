@@ -1,0 +1,118 @@
+{
+  "origin": "https://nooks-study-space.vercel.app",
+  "oldIndexSha256": "ed6bf3dc9e61cab97c10b615899864131ef4342af5226cf97addb6ce73cf291c",
+  "observations": [
+    {
+      "path": "/assets/NoteAppearance-BxXvaAxM.css",
+      "query": "",
+      "status": 200,
+      "bytes": 198266,
+      "sha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DAeI1hYC.css",
+      "query": "",
+      "status": 200,
+      "bytes": 334969,
+      "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BITgdhqM.js",
+      "query": "",
+      "status": 200,
+      "bytes": 352623,
+      "sha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DcI4F0F4.js",
+      "query": "",
+      "status": 200,
+      "bytes": 516086,
+      "sha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BxXvaAxM.css",
+      "query": "",
+      "status": 200,
+      "bytes": 198266,
+      "sha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BITgdhqM.js",
+      "query": "",
+      "status": 200,
+      "bytes": 352623,
+      "sha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DAeI1hYC.css",
+      "query": "",
+      "status": 200,
+      "bytes": 334969,
+      "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DcI4F0F4.js",
+      "query": "",
+      "status": 200,
+      "bytes": 516086,
+      "sha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-CAoZffAd.js",
+      "query": "",
+      "status": 200,
+      "bytes": 543864,
+      "sha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BxXvaAxM.css",
+      "query": "",
+      "status": 200,
+      "bytes": 198266,
+      "sha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-BITgdhqM.js",
+      "query": "",
+      "status": 200,
+      "bytes": 352623,
+      "sha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DAeI1hYC.css",
+      "query": "",
+      "status": 200,
+      "bytes": 334969,
+      "sha256": "9b60461ad21c34f43306c368a07dd0e07343ba7379de1b83b14cac046d80aa80",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-DcI4F0F4.js",
+      "query": "",
+      "status": 200,
+      "bytes": 516086,
+      "sha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-CAoZffAd.js",
+      "query": "",
+      "status": 200,
+      "bytes": 543864,
+      "sha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "passed": true
+    }
+  ]
+}

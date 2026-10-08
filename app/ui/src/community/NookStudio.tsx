@@ -380,7 +380,7 @@ function StudioSurface({ headingId, onClose, onRequestClose, dismissRef, childre
       window.requestAnimationFrame(() => {
         if (document.querySelector('dialog[open],[aria-modal="true"]')) return;
         const target = previous?.isConnected && previous !== document.body && !previous.matches(':disabled')
-          ? previous : document.querySelector<HTMLElement>('[aria-label="Explore public nooks"],[aria-label="Create something new"]');
+          ? previous : document.querySelector<HTMLElement>('[data-nooks-tab],[aria-label="Create study material"]');
         target?.focus({ preventScroll: true });
       });
     };

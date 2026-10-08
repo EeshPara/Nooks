@@ -8,3 +8,5 @@
 *.wav binary
 *.woff2 binary
 **/fonts/LICENSE.txt -text
+# Published compatibility assets must retain exact bytes on every checkout.
+web/release-assets/**/assets/* binary linguist-generated=true

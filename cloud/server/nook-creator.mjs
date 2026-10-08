@@ -28,7 +28,7 @@ function roomOf(space) { return ROOM_IDS.includes(space.room) ? space.room : ({ 
 export function nookDraftReadiness(draft) {
   const blockers = [];
   if (draft.artworkMode !== 'curated' && !draft.space.backgroundImage && !draft.space._storedBackground) blockers.push({ code: 'IMAGE_NOT_RECEIVED', message: 'Your custom image has not been saved yet. Complete the artwork handoff or choose an image before previewing this nook.' });
-  if (draft.space.backgroundImage || draft.space._storedBackground || draft.artworkMode !== 'curated') blockers.push({ code: 'CUSTOM_PUBLICATION_UNAVAILABLE', message: 'Your custom scene can be saved privately. Shared custom-art publication needs community-specific private asset references and access checks, which are not available yet.' });
+  if (draft.space.backgroundImage || draft.space._storedBackground || draft.artworkMode !== 'curated') blockers.push({ code: 'CUSTOM_PUBLICATION_UNAVAILABLE', message: 'Custom artwork can be saved privately. Choose a gallery scene to publish a shared nook.' });
   return { readyToPublish: blockers.length === 0, blockers, supportedAction: blockers.length ? null : 'curated_publish', createsNewNook: true, guidance: 'Publication creates a separate community from the reviewed curated backdrop. It never silently edits or unlists an existing community.' };
 }
 function canonical(value) { if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`; if (value && typeof value === 'object') return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`; return JSON.stringify(value); }

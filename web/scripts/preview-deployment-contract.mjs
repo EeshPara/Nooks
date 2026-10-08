@@ -11,7 +11,10 @@ export const previewProjectConfig = { version: 2, framework: null };
 export const previewOutputConfig = { version: 3, routes: [
   { src: '/(.*)', headers: { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Permissions-Policy': 'camera=(), microphone=(), geolocation=()' }, continue: true },
   { src: '/api(?:/.*)?', dest: '/api/index' },
+  { src: '/nooks-release\\.json', headers: { 'Cache-Control': 'no-store' }, continue: true },
   { src: '/assets/(.*)', headers: { 'Cache-Control': 'public, max-age=31536000, immutable', 'Access-Control-Allow-Origin': '*' }, continue: true },
   { handle: 'filesystem' },
+  // Missing immutable assets must never become a cacheable SPA document.
+  { src: '/assets(?:/.*)?', status: 404, headers: { 'Cache-Control': 'no-store', 'Content-Type': 'text/plain; charset=utf-8' } },
   { src: '/.*', dest: '/index.html' },
 ] };

@@ -1,0 +1,26 @@
+{
+  "sampledAt": "2026-10-08T09:11:25.400Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "documentedSha256": "f1f8ea3690fad0e8b7eb274bbcff6dbd5b8ace3b0da6b12183ff2e0f8d2010b2",
+  "documentedBytes": 173490,
+  "passed": true,
+  "mutations": 0,
+  "mode": "metadata_only",
+  "candidateCount": 1,
+  "shape": {
+    "ownerUuidValid": true,
+    "generationUuidValid": true,
+    "exactOwnedGenerationPath": true,
+    "allowedMime": true,
+    "ready": true,
+    "mime": "image/webp"
+  },
+  "object": {
+    "path": "35337a83-f132-4368-97ae-369ff143abd2/f1f8ea3690fad0e8b7eb274bbcff6dbd5b8ace3b0da6b12183ff2e0f8d2010b2/21f99023-26b0-4a93-847c-e0d6b2492032",
+    "ownerAccount": "35337a83-f132-4368-97ae-369ff143abd2",
+    "generation": "21f99023-26b0-4a93-847c-e0d6b2492032",
+    "state": "ready",
+    "createdAt": "2026-10-04T20:29:03.952455+00:00",
+    "mime": "image/webp"
+  }
+}

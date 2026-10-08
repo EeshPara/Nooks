@@ -2,11 +2,13 @@
 import { cp, mkdir, writeFile, readFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { previewApiEntry, previewFunctionConfig, previewProjectConfig, previewOutputConfig } from './preview-deployment-contract.mjs';
+import { prepareReleaseAssets } from './release-assets.mjs';
 const root = resolve(import.meta.dirname, '..');
 const source = resolve(root, 'dist-preview');
 const destination = resolve(root, 'deploy/vercel-preview');
 const output = resolve(destination, '.vercel/output');
 await readFile(resolve(source, 'index.html')); // Never replace a package without a successful build.
+await prepareReleaseAssets(root);
 await mkdir(destination, { recursive: true });
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });

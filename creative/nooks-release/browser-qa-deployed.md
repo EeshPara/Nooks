@@ -25,3 +25,17 @@ Public followup `https://nooks-study-space-8hblkfqz7-eeshpara-1663s-projects.ver
 ## Account entry validation
 
 The configured public account dialog explains that website, device and ChatGPT plugin libraries remain separate. Empty email disables Continue. Submitting `invalid-email` displayed the browser’s missing-@ validation message locally. The dialog closed normally; no email request was sent. This does not lift the SMTP launch blocker.
+
+## Custom-artwork copy correction
+
+Public followup `https://nooks-study-space-f4plfem4r-eeshpara-1663s-projects.vercel.app` and native version37/source `44f2dbebbc308e0e0029c87676aecf0aa8d7099d` deployed successfully. Native deployment `appgdep_6ac75f895b3c819181484f1d468f8cee` preserved owner-private access. The19 native creator tests and both builds passed. Public current-asset verification again passed66/66.
+
+Actual public Nooks → Create a nook initially reproduced the incorrect claim that published nooks retain selected custom artwork, although deployed custom-art publication is disabled. After deployment/reload, the same flow visibly says **Custom artwork is saved privately. Shared nooks currently use gallery scenes.** The account hint now says **Connect your account to publish a shared nook.** Server readiness gives the matching user action. The development app’s separate pending custom-publication implementation was not overwritten. No draft or upload was created in this browser check.
+
+This followup also exposed a separate deployment-skew bug affecting an already-open older deferred-editor build; see `deployment-skew-review.md`. Current-release asset success does not prove old-client compatibility. The later `iebenwu3j` release fixes it; see `deployment-compatibility-browser-qa.md` for exact deployed and old-client acceptance.
+
+## Nook Studio keyboard followup
+
+On the f4pl public release, closing the empty Nook Studio returned focus to the page body. Its fallback selectors referenced buttons no longer present; the previous Create a nook button had unmounted with discovery. A focused source fix now targets the existing Nooks navigation button, with the current Create study material button as a fallback. The same selected change is ported to all four source snapshots. Native version38/source `8b065b240aaf1b971bb293b8bf0b5fe40a114543`, deployment `appgdep_6ac76628f8048191957f061ed4e324a2`, succeeded at09:45:45UTC with owner-private access. Its build passed under Node22. Local Chrome acceptance on candidate HTML `df2d810df2a8f0b88e19f23b…` passed: Nooks → Create a nook → Close nook studio returned accessibility focus to the Nooks button. No draft was edited. Public release `iebenwu3j` then passed the same focus-return flow after deployment.
+
+A later attempt to check this dialog at390 ×844 did not apply the viewport override: the actual measured width remained1536. The override was reset, and no mobile-dialog pass is claimed from that attempt.

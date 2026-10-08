@@ -10,7 +10,8 @@ import {summarizeConfig} from './probe.mjs';
 const require=createRequire(new URL('../../../web/package.json',import.meta.url));
 const {createClient}=require('@supabase/supabase-js');
 const PROJECT='lcfcjglybfeozyrjjikk',DB=`https://${PROJECT}.supabase.co`,PUBLIC='https://nooks-study-space.vercel.app';
-if(process.argv.slice(2).join(' ')!=='--run-authorized-one-fixture'){console.log('Prepared only. Explicit authorization requires --run-authorized-one-fixture.');process.exit(0);}
+const flags=new Set(process.argv.slice(2));
+if(!flags.has('--run-authorized-one-fixture')||[...flags].some(value=>!['--run-authorized-one-fixture','--verify-deep-input'].includes(value))){console.log('Prepared only. Explicit authorization requires --run-authorized-one-fixture; optional --verify-deep-input checks malformed profile input with the same fixture.');process.exit(0);}
 const stamp=new Date().toISOString().replaceAll(':','-');
 const reportPath=new URL(`./authenticated-probe-fixture-${stamp}.json`,import.meta.url);
 const probePath=new URL(`./authenticated-probe-live-${stamp}.json`,import.meta.url);
@@ -34,8 +35,19 @@ try{
  phase='empty_initialization';const initialized=await fetch(`${PUBLIC}/api/workspace`,{method:'GET',redirect:'error',headers:{Origin:PUBLIC,Authorization:`Bearer ${accessToken}`,Accept:'application/json'},signal:AbortSignal.timeout(15000)});
  const workspace=await initialized.json();check(initialized.ok&&workspace.authenticated===true&&workspace.mode==='connected'&&workspace.workspace?.artifacts?.length===0&&workspace.workspace?.focusSessions?.length===0,'empty_initialization_failed');
  const mapped=await admin.from('nooks_accounts').select('id').eq('auth_user_id',userId).single();check(!mapped.error&&mapped.data?.id,'account_mapping_failed');accountId=mapped.data.id;report.fixtureAccountId=accountId;report.fixtureThrottleTopics=[`account:${accountId}`];await save();
- phase='authenticated_probe';const probe=await runAuthenticatedProbe({accessToken});await writeFile(probePath,JSON.stringify(probe,null,2)+'\n',{flag:'wx'});report.probeReport=probePath.pathname.split('/').at(-1);report.probePassed=probe.pass;check(probe.pass,'authenticated_probe_failed');report.passed=true;
-}catch(error){report.failure={phase,code:['configuration_mismatch','credential_unavailable','fixture_creation_failed','fixture_authentication_failed','empty_initialization_failed','account_mapping_failed','authenticated_probe_failed'].includes(error?.message)?error.message:'execution_failed'};process.exitCode=1;}
+ phase='authenticated_probe';const probe=await runAuthenticatedProbe({accessToken});await writeFile(probePath,JSON.stringify(probe,null,2)+'\n',{flag:'wx'});report.probeReport=probePath.pathname.split('/').at(-1);report.probePassed=probe.pass;check(probe.pass,'authenticated_probe_failed');
+ if(flags.has('--verify-deep-input')){
+  phase='malformed_profile_input';const before=await admin.from('nooks_profiles').select('display_name,avatar').eq('account_id',accountId).single();check(!before.error&&before.data,'profile_read_failed');
+  const raw='{"displayName":'+'['.repeat(10000)+'0'+']'.repeat(10000)+',"avatar":0}';
+  const response=await fetch(`${PUBLIC}/api/tools/profile_update`,{method:'POST',redirect:'error',headers:{Origin:PUBLIC,Authorization:`Bearer ${accessToken}`,'Content-Type':'application/json'},body:raw,signal:AbortSignal.timeout(15000)});
+  let body;try{body=await response.json();}catch{body=null;}
+  const after=await admin.from('nooks_profiles').select('display_name,avatar').eq('account_id',accountId).single();
+  const unchanged=!after.error&&!!after.data&&JSON.stringify(before.data)===JSON.stringify(after.data);
+  report.malformedProfileInput={bytes:Buffer.byteLength(raw),nestedArrayDepth:10000,status:response.status,code:/^[A-Z_]+$/.test(body?.error?.code??'')?body.error.code:'unexpected',profileUnchanged:unchanged};await save();
+  check(response.status===400&&body?.error?.code==='INVALID_INPUT'&&unchanged,'malformed_profile_check_failed');
+ }
+ report.passed=true;
+}catch(error){report.failure={phase,code:['configuration_mismatch','credential_unavailable','fixture_creation_failed','fixture_authentication_failed','empty_initialization_failed','account_mapping_failed','authenticated_probe_failed','profile_read_failed','malformed_profile_check_failed'].includes(error?.message)?error.message:'execution_failed'};process.exitCode=1;}
 finally{
  if(admin&&userId){
   if(accessToken)try{const r=await admin.auth.admin.signOut(accessToken,'global');report.cleanup.push({type:'session_revoke',ok:!r.error||r.error.status===404});}catch{report.cleanup.push({type:'session_revoke',ok:false});}

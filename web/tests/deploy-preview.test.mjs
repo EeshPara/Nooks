@@ -3,8 +3,11 @@ import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, writeFile, readFile, rm, cp, symlink, access } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { deployPreview, preflightPreview, runCommand } from '../scripts/deploy-preview.mjs';
+import { deployPreview as guardedDeployPreview, preflightPreview, runCommand } from '../scripts/deploy-preview.mjs';
+import { prepareReleaseAssets } from '../scripts/release-assets.mjs';
 import { previewProject, previewScope, previewApiEntry, previewFunctionConfig, previewProjectConfig, previewOutputConfig } from '../scripts/preview-deployment-contract.mjs';
+// Unit fixtures never contact or mutate the actual public service.
+const deployPreview = options => guardedDeployPreview({ retain: async () => ({}), verifyLive: async () => {}, ...options });
 
 async function fixture(t) {
   const root = await mkdtemp(join(tmpdir(), 'nooks-deploy-guard-'));
@@ -19,6 +22,7 @@ async function fixture(t) {
   await file(join(root, 'server/browser-api.mjs'), 'export function createBrowserApiHandler() { return () => {}; }');
   await file(join(root, 'ui/src/world/room-rewards.json'), { rooms: [] });
   async function packageOutput() {
+    await prepareReleaseAssets(root);
     await mkdir(output, { recursive: true });
     await cp(join(root, 'dist-preview'), join(output, 'static'), { recursive: true });
     await cp(join(root, 'server'), join(api, 'server'), { recursive: true });
@@ -50,6 +54,14 @@ test('deploy pipeline awaits packaging, checks import without secrets, and uses 
   assert.equal(logs.join('\n').includes(env.VERCEL_TOKEN), false);
   assert.equal(logs.join('\n').includes(env.SUPABASE_SERVICE_KEY), false);
   await assert.rejects(access(join(f.root, '.nooks-preview-deploy.lock')));
+});
+
+test('live release is retained before rebuilding and alias is rechecked before the only deployment command', async t => {
+  const f = await fixture(t), calls = [], capture = { indexSha256: 'fixture' };
+  await deployPreview({ root: f.root, env: {}, log() {}, retain: async root => { assert.equal(root, f.root); calls.push('retain'); return capture; }, verifyLive: async value => { assert.equal(value, capture); calls.push('verify-live'); }, run: async command => { calls.push(command); } });
+  assert.deepEqual(calls, ['retain', 'npm', process.execPath, 'verify-live', 'vercel']);
+  await assert.rejects(deployPreview({ root: f.root, env: {}, log() {}, retain: async () => { throw new Error('Unknown live graph'); }, run: () => assert.fail('must not build or publish') }), /Unknown live graph/);
+  await assert.rejects(deployPreview({ root: f.root, env: {}, log() {}, verifyLive: async () => { throw new Error('Alias changed'); }, run: async command => { assert.notEqual(command, 'vercel'); } }), /Alias changed/);
 });
 
 test('wrong linked project, organization, project name or environment target prevents even building', async t => {

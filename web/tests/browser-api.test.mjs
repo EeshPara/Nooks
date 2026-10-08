@@ -91,6 +91,28 @@ test('request media type must be JSON rather than a matching prefix',async()=>{
  assert.equal(valid.status,200);
 });
 
+test('deeply nested streamed and preparsed JSON both return a client input error without profile or tool mutation',async()=>{
+ const raw='{"displayName":'+'['.repeat(10000)+'0'+']'.repeat(10000)+',"avatar":0}';
+ assert.ok(Buffer.byteLength(raw)<21000);
+ for(const preparsed of [false,true]) {
+  const b=backend(),req=Readable.from(preparsed?[]:[Buffer.from(raw)]);
+  req.url='/api/tools/profile_update';req.method='POST';
+  req.headers={origin:'https://nooks.example',authorization:'Bearer alice','content-type':'application/json'};
+  if(preparsed)req.body=JSON.parse(raw);
+  let status,body;
+  await b.handler(req,{writeHead(value){status=value},end(value){body=JSON.parse(value)}});
+  assert.equal(status,400);assert.equal(body.error.code,'INVALID_INPUT');assert.equal(b.records.size,0);
+  assert.deepEqual(b.calls.map(call=>new URL(call.url).pathname),['/auth/v1/user','/rest/v1/rpc/nooks_resolve_identity','/rest/v1/rpc/nooks_request_limit']);
+ }
+ const b=backend(),req=Readable.from([]);
+ req.url='/api/tools/profile_update';req.method='POST';
+ req.headers={origin:'https://nooks.example',authorization:'Bearer alice','content-type':'application/json'};
+ req.body={displayName:'Cozy student',avatar:0};
+ let status,body;
+ await b.handler(req,{writeHead(value){status=value},end(value){body=JSON.parse(value)}});
+ assert.equal(status,200);assert.deepEqual(body.arguments,req.body);
+});
+
 test('layout route accepts account-bound patches and reports auth, quota and missing configuration failures',async()=>{
  const b=backend(),path='/api/tools/workspace_layout_update',body={id:'spotify',position:{x:0.25,y:0.75}};
  assert.equal((await invoke(b.handler,path,{method:'POST',body})).status,401);

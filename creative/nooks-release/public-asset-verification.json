@@ -1,5 +1,5 @@
 {
-  "sampledAt": "2026-10-08T09:01:55.206Z",
+  "sampledAt": "2026-10-08T09:54:08.070Z",
   "origin": "https://nooks-study-space.vercel.app",
   "passed": true,
   "scope": "Deployed exact bytes for all films, audio, entry and deferred JS/CSS, media types and public audio CORS; not continuous playback or listening",
@@ -23,6 +23,28 @@
       "bytes": 408809,
       "actualSha256": "67a84d4805ac9d7ce8d8619e8abdb18257994477bc64db1ffa2087882e133091",
       "contentType": "audio/mpeg",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-3dqvx5TN.js",
+      "sha256": "fa4ef246123c8136a667aedff22cb19a321138e8c7dceaf495a3989ca977a8ca",
+      "kind": "deferred",
+      "status": 200,
+      "bytes": 516041,
+      "actualSha256": "fa4ef246123c8136a667aedff22cb19a321138e8c7dceaf495a3989ca977a8ca",
+      "contentType": "application/javascript; charset=utf-8",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/index-BHG_76oL.js",
+      "sha256": "0539901ed9ad08682dd7e0d46a802e88dec97f8b3c5f08de14e63fb26f7c2ee6",
+      "kind": "entry",
+      "status": 200,
+      "bytes": 516023,
+      "actualSha256": "0539901ed9ad08682dd7e0d46a802e88dec97f8b3c5f08de14e63fb26f7c2ee6",
+      "contentType": "application/javascript; charset=utf-8",
       "cors": "*",
       "passed": true
     },
@@ -51,7 +73,7 @@
     {
       "path": "/assets/index-DcI4F0F4.js",
       "sha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
-      "kind": "entry",
+      "kind": "deferred",
       "status": 200,
       "bytes": 516086,
       "actualSha256": "38f37e140c9d03e0a66ee539be873a717dcfd1974125fd0a6d71b2142ea1882a",
@@ -73,7 +95,7 @@
     {
       "path": "/assets/NoteAppearance-BITgdhqM.js",
       "sha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
-      "kind": "entry",
+      "kind": "deferred",
       "status": 200,
       "bytes": 352623,
       "actualSha256": "e8ad1fc95046c90e73636a7050e2663de26fbc34c242ffd897b2d01170dd01f9",
@@ -89,6 +111,17 @@
       "bytes": 198266,
       "actualSha256": "a8ad222f882a67e514c17ba2cfbaada11110a65f90c2d8d4a8121b6c5b95b560",
       "contentType": "text/css; charset=utf-8",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/NoteAppearance-CQlKYQkf.js",
+      "sha256": "abc883fb6edb3a9dc1d58d866a81a1cb6b4d2dada4baf0cc8e9c63362a94e121",
+      "kind": "entry",
+      "status": 200,
+      "bytes": 352541,
+      "actualSha256": "abc883fb6edb3a9dc1d58d866a81a1cb6b4d2dada4baf0cc8e9c63362a94e121",
+      "contentType": "application/javascript; charset=utf-8",
       "cors": "*",
       "passed": true
     },
@@ -143,6 +176,17 @@
       "status": 200,
       "bytes": 543864,
       "actualSha256": "0303d418eedfa2c93486c4303c0b790592951a9e72826243d36634db81c28498",
+      "contentType": "application/javascript; charset=utf-8",
+      "cors": "*",
+      "passed": true
+    },
+    {
+      "path": "/assets/study-content-h8ACpf3x.js",
+      "sha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
+      "kind": "deferred",
+      "status": 200,
+      "bytes": 543864,
+      "actualSha256": "9d18a550112cf3272291a0a108a79d239c93cf6667205c1478a8ba53ca075756",
       "contentType": "application/javascript; charset=utf-8",
       "cors": "*",
       "passed": true

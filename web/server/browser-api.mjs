@@ -46,7 +46,13 @@ async function readBody(request) {
   if (Number.isFinite(size) && size > MAX_BODY_BYTES) throw new InputError('This material is too large. Use a smaller selection.', 'TOO_LARGE');
   let raw;
   // Vercel may parse JSON before dispatching; size is checked in either representation.
-  if (request.body !== undefined) raw = typeof request.body === 'string' ? request.body : JSON.stringify(request.body);
+  if (request.body !== undefined) {
+    try { raw = typeof request.body === 'string' ? request.body : JSON.stringify(request.body); }
+    catch (error) {
+      if (error instanceof RangeError) throw new InputError('The request is too deeply nested. Use a simpler JSON object.', 'INVALID_INPUT');
+      throw error;
+    }
+  }
   else {
     const chunks = []; let length = 0;
     for await (const chunk of request) { length += chunk.length; if (length > MAX_BODY_BYTES) throw new InputError('This material is too large. Use a smaller selection.', 'TOO_LARGE'); chunks.push(chunk); }
