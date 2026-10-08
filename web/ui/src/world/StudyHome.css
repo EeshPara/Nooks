@@ -250,3 +250,9 @@
 .lofi-world.unified-workspace .study-home-timer-custom>span:last-child{display:none}
 .lofi-world.unified-workspace .study-home-timer-custom:focus-within>input{opacity:1}
 .lofi-world.unified-workspace .study-home-timer-custom:focus-within>span:first-child{visibility:hidden}
+
+/* A separate, always reachable delete target; completion stays on the task label. */
+.lofi-world.unified-workspace .study-home-tasks li{display:flex;align-items:center;gap:5px}
+.lofi-world.unified-workspace .study-home-tasks li>button:first-child{flex:1;min-width:0}
+.lofi-world.unified-workspace .study-home-tasks li button.study-home-task-delete{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;padding:0;border-radius:50%;color:#d8c9b5;opacity:.75;transition:background .18s,opacity .18s}
+.lofi-world.unified-workspace .study-home-tasks li button.study-home-task-delete:hover,.lofi-world.unified-workspace .study-home-tasks li button.study-home-task-delete:focus-visible{background:#ffffff18;opacity:1}

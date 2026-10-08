@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useRef,
 import { Grip, LayoutGrid, RotateCcw, Check } from 'lucide-react';
 import type { WorkspaceLayoutChange, WorkspaceLayoutValue, WorkspaceWidgetId, WorkspaceWidgetPosition } from '../workspace-normalize';
 import { createWorkspaceLayoutStore } from './workspaceLayoutState';
-import { movedWidget, passedWidgetDragThreshold, widgetBounds, widgetPixels, widgetPosition, type WidgetViewport } from './workspaceLayoutMath';
+import { movedWidget, passedWidgetDragThreshold, widgetBounds, widgetPixels, widgetPosition, snapWidget, type WidgetViewport } from './workspaceLayoutMath';
 import './WorkspaceLayout.css';
 export type { WorkspaceLayoutChange, WorkspaceLayoutValue, WorkspaceWidgetId, WorkspaceWidgetPosition } from '../workspace-normalize';
 
@@ -35,7 +35,7 @@ export function LayoutControls({ className = '' }: { className?: string }) {
 function viewportFor(element: HTMLElement): WidgetViewport {
   const root = element.closest('.lofi-world') ?? element, css = getComputedStyle(root), viewport = window.visualViewport;
   const number = (name: string) => Math.max(0, Number.parseFloat(css.getPropertyValue(name)) || 0);
-  return { width: viewport?.width ?? window.innerWidth, height: viewport?.height ?? window.innerHeight, offsetX: viewport?.offsetLeft ?? 0, offsetY: viewport?.offsetTop ?? 0, left: 16 + number('--nooks-host-safe-left'), right: 16 + number('--nooks-host-safe-right'), top: 96 + number('--nooks-host-safe-top'), bottom: 32 + number('--nooks-host-safe-bottom') + number('--nooks-composer-reserve') };
+  return { width: viewport?.width ?? window.innerWidth, height: Math.max(window.innerHeight, ((root as HTMLElement).querySelector?.('.study-home')?.getBoundingClientRect().bottom || 0) + (window.scrollY||0) + 48), offsetX: 0, offsetY: 0, left: 16 + number('--nooks-host-safe-left'), right: 16 + number('--nooks-host-safe-right'), top: 96 + number('--nooks-host-safe-top'), bottom: 32 + number('--nooks-host-safe-bottom') + number('--nooks-composer-reserve') };
 }
 type Drag = { pointer: number | null; startX: number; startY: number; originX: number; originY: number; x: number; y: number; moved: boolean; scope?: string };
 
@@ -54,6 +54,14 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
     }
     paint(point);
   }
+  function freePosition(point: {x:number;y:number}) {
+    const element=surface.current;
+    if(!element)return null;
+    // Free placement: clamp to the visible workspace, without rejecting overlap.
+    // The handle remains reachable so students can move overlapping widgets again.
+    return widgetPosition(point, viewportFor(element), element.getBoundingClientRect());
+  }
+
   function paint(point: WorkspaceWidgetPosition) {
     const outer = slot.current, element = surface.current; if (!outer || !element) return;
     const viewport = viewportFor(element), bounds = widgetBounds(viewport, { width: 0, height: 0 });
@@ -67,8 +75,16 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
     const width = Math.min(outer.getBoundingClientRect().width || originalSize.current.width || bounds.width, bounds.width);
     element.style.width = `${width}px`; element.style.maxWidth = `${bounds.width}px`; element.style.maxHeight = `${bounds.height}px`;
     element.style.setProperty('--workspace-widget-max-height', `${bounds.height}px`);
-    const size = element.getBoundingClientRect(), pixels = widgetPixels(point, viewport, size);
-    element.style.left = `${pixels.x}px`; element.style.top = `${pixels.y}px`;
+    const size = element.getBoundingClientRect();
+    const safe = freePosition(widgetPixels(point, viewport, size));
+    if (!safe) {
+      delete outer.dataset.positioned; delete element.dataset.positioned;
+      for (const key of ['left','top','width','max-width','max-height','--workspace-widget-max-height']) element.style.removeProperty(key);
+      outer.style.removeProperty('min-height'); outer.style.removeProperty('min-width'); return;
+    }
+    const pixels = widgetPixels(safe, viewport, size);
+    const origin = outer.getBoundingClientRect();
+    element.style.left = `${pixels.x-origin.left-(window.scrollX||0)}px`; element.style.top = `${pixels.y-origin.top-(window.scrollY||0)}px`;
   }
   function cancel() {
     if (frame.current) cancelAnimationFrame(frame.current); frame.current = 0;
@@ -82,7 +98,8 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
     drag.current = null; delete element.dataset.dragging;
     if (active.pointer !== null) try { handle.current?.releasePointerCapture(active.pointer); } catch {}
     if (!active.moved || active.scope !== latest.current?.scope || latest.current?.compact) { restore(); return; }
-    const point = widgetPosition({ x: active.x, y: active.y }, viewportFor(element), element.getBoundingClientRect());
+    const point = freePosition({ x: active.x, y: active.y });
+    if (!point) { restore(); return; }
     paint(point); latest.current?.change({ id, position: point });
   }
   function schedule() {
@@ -90,14 +107,15 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
     frame.current = requestAnimationFrame(() => {
       frame.current = 0; const active = drag.current, element = surface.current; if (!active?.moved || !element) return;
       if (active.scope !== latest.current?.scope || latest.current?.compact) { cancel(); return; }
-      element.dataset.dragging = 'true'; paint(widgetPosition({ x: active.x, y: active.y }, viewportFor(element), element.getBoundingClientRect()));
+      const point = freePosition({x:active.x,y:active.y});
+      if(point){element.dataset.dragging = 'true'; paint(point);}
     });
   }
   function start(event: PointerEvent<HTMLButtonElement>) {
     if (!enabled || event.button !== 0 || drag.current || !surface.current) return;
     event.preventDefault(); event.stopPropagation(); event.currentTarget.focus();
     const bounds = surface.current.getBoundingClientRect();
-    drag.current = { pointer: event.pointerId, startX: event.clientX, startY: event.clientY, originX: bounds.left, originY: bounds.top, x: bounds.left, y: bounds.top, moved: false, scope: layout?.scope };
+    drag.current = { pointer: event.pointerId, startX: event.clientX, startY: event.clientY, originX: bounds.left+(window.scrollX||0), originY: bounds.top+(window.scrollY||0), x: bounds.left+(window.scrollX||0), y: bounds.top+(window.scrollY||0), moved: false, scope: layout?.scope };
     event.currentTarget.setPointerCapture(event.pointerId);
   }
   function move(event: PointerEvent<HTMLButtonElement>) {
@@ -109,7 +127,7 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
     if (event.key === 'Escape' && drag.current) { event.preventDefault(); event.stopPropagation(); cancel(); return; }
     if (!enabled || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key) || !surface.current) return;
     event.preventDefault(); event.stopPropagation(); const bounds = surface.current.getBoundingClientRect();
-    drag.current ??= { pointer: null, startX: 0, startY: 0, originX: bounds.left, originY: bounds.top, x: bounds.left, y: bounds.top, moved: true, scope: layout?.scope };
+    drag.current ??= { pointer: null, startX: 0, startY: 0, originX: bounds.left+(window.scrollX||0), originY: bounds.top+(window.scrollY||0), x: bounds.left+(window.scrollX||0), y: bounds.top+(window.scrollY||0), moved: true, scope: layout?.scope };
     if (drag.current.pointer !== null) return;
     Object.assign(drag.current, movedWidget(drag.current, event.key, event.shiftKey)); schedule();
   }
@@ -123,14 +141,14 @@ export function MovableWidget({ id, label, children, className = '', style }: { 
     };
     const resizedSurface = () => { if (drag.current) schedule(); else resize(); };
     const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(resizedSurface); observer?.observe(element); observer?.observe(outer);
-    window.addEventListener('resize', resize, { passive: true }); window.visualViewport?.addEventListener('resize', resize); window.visualViewport?.addEventListener('scroll', resize);
-    return () => { observer?.disconnect(); window.removeEventListener('resize', resize); window.visualViewport?.removeEventListener('resize', resize); window.visualViewport?.removeEventListener('scroll', resize); if (frame.current) cancelAnimationFrame(frame.current); };
+    window.addEventListener('resize', resize, { passive: true }); window.visualViewport?.addEventListener('resize', resize);
+    return () => { observer?.disconnect(); window.removeEventListener('resize', resize); window.visualViewport?.removeEventListener('resize', resize);  if (frame.current) cancelAnimationFrame(frame.current); };
   }, []);
   return <div className={`workspace-widget-slot ${className}`} style={style} ref={slot} data-workspace-widget={id} data-layout-editing={enabled || undefined}>
     <div className="workspace-widget-surface" ref={surface}>
       {children}
       {enabled && <div className="workspace-widget-controls" data-workspace-layout-control onClick={event => event.stopPropagation()}>
-        <button type="button" ref={handle} className="workspace-widget-handle" aria-label={`Move ${label}`} title="Drag to move. Arrow keys move 10 pixels; Shift moves 1 pixel. Escape cancels." onPointerDown={start} onPointerMove={move} onPointerUp={event => { event.stopPropagation(); finish(); }} onPointerCancel={cancel} onLostPointerCapture={() => { if (drag.current?.pointer !== null) cancel(); }} onKeyDown={key} onKeyUp={event => { if (event.key.startsWith('Arrow')) { event.preventDefault(); event.stopPropagation(); finish(); } }} onBlur={() => { if (drag.current?.pointer === null) finish(); }}><Grip size={14}/><span>{label}</span></button>
+        <button type="button" ref={handle} className="workspace-widget-handle" aria-label={`Move ${label}`} title="Drag anywhere in your workspace. Arrow keys move; Shift moves farther. Escape cancels." onPointerDown={start} onPointerMove={move} onPointerUp={event => { event.stopPropagation(); finish(); }} onPointerCancel={cancel} onLostPointerCapture={() => { if (drag.current?.pointer !== null) cancel(); }} onKeyDown={key} onKeyUp={event => { if (event.key.startsWith('Arrow')) { event.preventDefault(); event.stopPropagation(); finish(); } }} onBlur={() => { if (drag.current?.pointer === null) finish(); }}><Grip size={14}/><span>{label}</span></button>
         {position && <button type="button" className="workspace-widget-reset" aria-label={`Reset ${label} position`} title="Return to the original position" onPointerDown={event => event.stopPropagation()} onClick={() => layout?.change({ id, position: null })}><RotateCcw size={13}/></button>}
       </div>}
     </div>

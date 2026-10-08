@@ -274,7 +274,7 @@ test('HTTP MCP initializes, discovers tools, renders UI and rejects foreign orig
   assert.equal(entrypoint.title, 'Open Nooks study space');
   const customization = discovered.result.tools.find(tool => tool.name === 'space_customize').inputSchema.properties.space.properties;
   assert.equal(customization.room.enum.includes('neon-tokyo'), true);
-  assert.equal(customization.room.enum.length, 31);
+  assert.equal(customization.room.enum.length, 66);
   assert.equal(customization.room.enum.includes('night-campus'), true);
   assert.equal(customization.companion.enum.includes('ghost'), true);
   assert.deepEqual(entrypoint._meta['openai/ui'].entrypoints, [{ type: 'global' }, { type: 'thread' }]);

@@ -50,3 +50,9 @@
 @media(max-width:760px){.lofi-world .study-focus-trigger{min-height:35px;padding:0 10px;gap:6px;}.lofi-world .study-focus-trigger-label{display:none;}.lofi-world .study-focus-popover{position:fixed;top:112px;right:16px;width:314px;max-height:calc(100dvh - 144px);}}
 @media(max-width:420px){.lofi-world .study-focus-popover{right:12px;max-width:calc(100vw - 24px);padding:18px;}.lofi-world .study-focus-trigger{gap:5px;padding-inline:9px;}.lofi-world .study-focus-chevron{display:none;}}
 @media(prefers-reduced-motion:reduce){.lofi-world .study-focus-dock *{animation:none!important;transition:none!important;}}
+
+.lofi-world .study-focus-custom{position:relative;cursor:text}
+.lofi-world .study-focus-custom>input{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+.lofi-world .study-focus-custom>span:last-child{display:none}
+.lofi-world .study-focus-custom:focus-within>input{opacity:1}
+.lofi-world .study-focus-custom:focus-within>span:first-child{visibility:hidden}

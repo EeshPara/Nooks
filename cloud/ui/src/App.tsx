@@ -1,11 +1,16 @@
-import { currentInvitation } from './community/inviteLinks';
+import { nookAnimation } from './world/nookAnimation';
+import { isTutorialPractice, tutorialSeed, finishTutorialPractice } from './onboarding/tutorialSession';
+import { requestProfileLink, claimProfileLink, clearProfileLink } from './onboarding/profileLink';
+import { WelcomeJourney, TourReplayButton, type TourPage } from './onboarding/WelcomeJourney';
+import { LibraryInvitation } from './organization/LibrarySharing';
+import { SpotifyCard } from './world/SpotifyCard';
 import { useEffect, useRef, useState } from 'react';
 import { DraftRecoveryScope, useCrashDraft } from './WorkspaceErrorBoundary';
 import { readLocalWorkspaceState, writeLocalWorkspaceState } from './localWorkspaceState';
 import { verifiedInitialPresentation } from './initialWorkspacePresentation';
 import { useNooksAccount, AccountButton, AccountDialog, nooksAccount } from './account';
 import { ArrowUpRight, BookOpen, Brain, CalendarDays, Check, ChevronRight, Clock3, Copy, Download, FileText, Flower2, Gamepad2, GraduationCap, Grid2X2, LayoutDashboard, Leaf, List, Menu, Moon, Palette, Share2, MoreHorizontal, Pause, Pencil, Play, Plus, Search, Settings, Sparkles, Sprout, Star, Sun, Target, Trash2, Trophy, X, Zap } from 'lucide-react';
-import { Headphones, Eye, EyeOff, Compass, MessageCircle, SlidersHorizontal } from 'lucide-react';
+import { Headphones, Music2, Eye, EyeOff, Compass, MessageCircle, SlidersHorizontal } from 'lucide-react';
 import { StudyDrawing } from './world/StudyDrawing';
 import AboutNook from './world/AboutNotable';
 import { RoomHome } from './world/RoomHome';
@@ -14,10 +19,10 @@ import { StudyFocusDock } from './world/StudyFocusDock';
 import { useHostLayout } from './world/useHostLayout';
 import { buildChatContextPrompt } from './study/chatContext';
 import { AmbientMixer } from './world/AmbientMixer';
+import { AmbientQuickControl } from './world/AmbientQuickControl';
 import { RoomJourney, RoomJourneyModal, RoomRewardShelf, emptyRoomProgress, unlockedRewards, getRoomRewards, type RoomProgress, type RewardPerk } from './world/RoomJourney';
 import { RewardDrawing } from './world/RewardDrawing';
 import { EarnedSoundtrack } from './world/EarnedSoundtrack';
-import { SoundIsland } from './world/SoundIsland';
 import { useSoftDismiss } from './world/useSoftDismiss';
 import { useBackdropDismiss } from './world/useBackdropDismiss';
 import { consumeDismissEscape, isTopmostDismissTarget } from './world/dismissal';
@@ -33,7 +38,7 @@ import { NookDiscovery } from './community/NookDiscovery';
 import { NookCommunity, NookPresenceTab, MemberAvatar, memberAvatarCount } from './community/NookCommunity';
 import { NookCreator, NookIdentityDialog, NookPortal, type NookProfile } from './community/NookCreator';
 import type { NookDraft } from './community/nookCatalog';
-import { roomScenes, type RoomScene } from './personalization/types';
+import { allRoomScenes, type RoomScene } from './personalization/types';
 import type { LucideIcon } from 'lucide-react';
 import CreateMaterial from './study/CreateMaterial';
 import { readCompleteMaterial } from './study/readMaterial';
@@ -66,13 +71,13 @@ import { RainyLibraryBackdrop } from './world/RainyLibraryBackdrop';
 import { usesRainyLibraryFilm } from './world/rainyLibraryPlayback';
 
 type Page = 'home'|'library'|'practice'|'focus'|'plan';
-const navigation = [{id:'home',label:'Study'},{id:'library',label:'Library'},{id:'explore',label:'Explore'}] as const;
+const navigation = [{id:'home',label:'Study'},{id:'library',label:'Library'},{id:'explore',label:'Nooks'}] as const;
 const kindLabel={note:'Note',quiz:'Quiz',flashcards:'Flashcards',exam:'Practice exam'};
 const kindIcon:{[key:string]:LucideIcon}={note:FileText,quiz:Brain,flashcards:Copy,exam:GraduationCap};
 function storageGet(key:string){try{return localStorage.getItem(key);}catch{return null;}}
 function storageSet(key:string,value:string){try{localStorage.setItem(key,value);}catch{}}
 function readNookProfile(key?:string):NookProfile|null{try{const saved=JSON.parse(readLocalWorkspaceState(key,'profile')||'null');if(!saved||typeof saved.name!=='string'||!saved.name.trim()||!Number.isInteger(saved.avatar)||saved.avatar<0||saved.avatar>=memberAvatarCount)return null;return {name:saved.name.trim().slice(0,28),avatar:saved.avatar};}catch{return null;}}
-function readNookDrafts(key?:string):NookDraft[]{try{const value=JSON.parse(readLocalWorkspaceState(key,'drafts')||'[]');return Array.isArray(value)?value.filter(d=>d&&typeof d.id==='string'&&typeof d.name==='string'&&typeof d.description==='string'&&roomScenes.some(scene=>scene.id===d.sceneId)&&(d.visibility==='public'||d.visibility==='private')).slice(0,30):[];}catch{return [];}}
+function readNookDrafts(key?:string):NookDraft[]{try{const value=JSON.parse(readLocalWorkspaceState(key,'drafts')||'[]');return Array.isArray(value)?value.filter(d=>d&&typeof d.id==='string'&&typeof d.name==='string'&&typeof d.description==='string'&&allRoomScenes.some(scene=>scene.id===d.sceneId)&&(d.visibility==='public'||d.visibility==='private')).slice(0,30):[];}catch{return [];}}
 function focusTime(session:any){const end=Date.parse(session.startedAt)+(session.pausedMilliseconds||0)+session.targetMinutes*60000;const at=session.pausedAt?Date.parse(session.pausedAt):Date.now();return {end,remaining:Math.max(0,Math.ceil((end-at)/1000))};}
 function toneFor(a:Artifact){return ['mint','peach','lavender','sky'].includes(a.color)?a.color:({note:'mint',flashcards:'peach',quiz:'lavender',exam:'sky'}[a.kind]);}
 function searchable(a:Artifact){return [a.title,a.subject,a.description,a.content,a.source,...(a.cards||[]).flatMap(c=>[c.front,c.back,c.hint]),...(a.questions||[]).flatMap(q=>[q.prompt,q.answer,q.explanation,...(q.options||[]),...(q.acceptedAnswers||[])])].filter(Boolean).join(' ').toLowerCase();}
@@ -96,8 +101,7 @@ function WorkspaceApp(){
  const live=useLiveNooks({enabled:workspace.backend==='supabase',recoveryScope:isPublicPreview?communityRecoveryScope:nativeRecoveryScope,activeNookId:workspace.focusSessions.find(s=>!s.completedAt&&!s.cancelledAt)?.nookId});
  const isLive=workspace.backend==='supabase';
  const selectedLiveNook=live.snapshot?.nook.id===live.activeNookId?live.snapshot?.nook:live.nooks.find(n=>n.id===live.activeNookId);
- const [showNooks,setShowNooks]=useState(false),[showPeople,setShowPeople]=useState(()=>!!currentInvitation()),[showNookCreator,setShowNookCreator]=useCrashDraft('app:nook-creator',false,draftOwner),[showIdentity,setShowIdentity]=useCrashDraft('app:identity',false,draftOwner);
- useEffect(()=>{if(isLive&&currentInvitation()){setShowAccount(false);setShowPeople(true);}},[isLive]);
+ const [showNooks,setShowNooks]=useState(false),[showPeople,setShowPeople]=useState(false),[showNookCreator,setShowNookCreator]=useCrashDraft('app:nook-creator',false,draftOwner),[showIdentity,setShowIdentity]=useCrashDraft('app:identity',false,draftOwner);
  // Hiding the studio must not discard unsaved artwork prompts or pending saves.
  const studioLifetime=useRef({owner:draftOwner,mounted:false});
  if(studioLifetime.current.owner!==draftOwner)studioLifetime.current={owner:draftOwner,mounted:false};
@@ -106,7 +110,12 @@ function WorkspaceApp(){
  const [pendingStudioDraftId,setPendingStudioDraftId]=useState<string|undefined>();
  const studioNavigationVersion=useRef(0);
  const [reportedStudioDraftId,setReportedStudioDraftId]=useState<string|undefined>();
- const [profile,setProfile]=useState<NookProfile>(()=>readNookProfile(localScope)??{name:'friend',avatar:0});
+ const [profile,setProfile]=useState<NookProfile>(()=>tutorialSeed?.profile??readNookProfile(localScope)??{name:'friend',avatar:0});
+ const [welcome,setWelcome]=useState<'first'|'replay'|null>(null);
+ const restartWelcome=useRef(new URLSearchParams(window.location.search).get('onboarding'));
+ const restartWelcomeStarted=useRef(false);
+ const profileLinkAttempt=useRef(false);
+ const tourReturn=useRef<{page:Page;active:Artifact|null}|null>(null);
  const [profileReady,setProfileReady]=useState(()=>readNookProfile(localScope)!==null);
  const [nookDrafts,setNookDrafts]=useState<NookDraft[]>(()=>readNookDrafts(localScope));
  const [activeDraftId,setActiveDraftId]=useState(()=>readLocalWorkspaceState(localScope,'active-draft')||'');
@@ -116,11 +125,13 @@ function WorkspaceApp(){
  useEffect(()=>()=>{if(portalTimeout.current)clearTimeout(portalTimeout.current);},[]);
  const [secretRoom,setSecretRoom]=useState<{id:'moonstone-annex'|'crystal-vault';parent:string}|null>(null);
  const [earnedTrack,setEarnedTrack]=useState<'moonlit-piano'|'vinyl-evening'|null>(null);
+ const [nextRewardPosition,setNextRewardPosition]=useCrashDraft<{x:number;y:number}|null>('layout:collection-next',null,draftOwner);
  const [showFocus,setShowFocus]=useState(false),[showCollection,setShowCollection]=useState(false),[showToday,setShowToday]=useCrashDraft('app:today',false,draftOwner);
  const [handoff,setHandoff]=useState(''),[handoffCopied,setHandoffCopied]=useState(false);
  const [creationInstruction,setCreationInstruction]=useCrashDraft('app:instruction','',draftOwner);
  const [creationSource,setCreationSource]=useCrashDraft('app:source','',draftOwner);
  const [creationSourceMode,setCreationSourceMode]=useCrashDraft<'paste'|'library'|undefined>('app:source-mode',undefined,draftOwner);
+ const [focusMode,setFocusMode]=useState(false);
  const [showAbout,setShowAbout]=useState(false);const [showSounds,setShowSounds]=useState(false);const [zen,setZen]=useState(false);
  const [openingReplayRequest,setOpeningReplayRequest]=useState<{owner:string;version:number}|null>(null);
  const [openingHostPending,setOpeningHostPending]=useState(0);
@@ -184,6 +195,7 @@ function WorkspaceApp(){
  const [noteDirty,setNoteDirty]=useState(false);const internalToolCalls=useRef(0);
  const dirtyNote=useRef(false);const internalArtifactSave=useRef(false);const hydratedFocusId=useRef<string|null>(null);const [completionRetry,setCompletionRetry]=useState<string|null>(null);const initialized=useRef(false);const toastTimer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);
  const [focusLength,setFocusLength]=useState(25);const [focusSubject,setFocusSubject]=useState('Independent study');
+ const initialFocusSettled=useRef(false);
  const [focusSession,setFocusSession]=useState<any>(null);const [remaining,setRemaining]=useState(25*60);const [running,setRunning]=useState(false);
  const [focusPending,setFocusPending]=useState(false);const endRef=useRef(0);const completed=useRef(false);
  const canNavigate=()=>{if(!canLeaveStudyEditor())return false;if(dirtyNote.current&&!window.confirm('Leave without saving your note changes?'))return false;dirtyNote.current=false;return true;};
@@ -270,7 +282,7 @@ function WorkspaceApp(){
    if(scope&&progressOwner.current!=='host'&&progressOwner.current!==scope)throw new Error('This Nooks view belongs to another account. Your pending work is preserved in its original account.');
    if(scope&&progressOwner.current!==scope){
     setNativeRecoveryScope(scope);setVerifiedRecoveryScope(scope);setRecoverableDrafts(listRecoverableNotes(scope));
-    const savedProfile=readNookProfile(scope);setProfile(savedProfile??{name:'friend',avatar:0});setProfileReady(savedProfile!==null);setNookDrafts(readNookDrafts(scope));setActiveDraftId(readLocalWorkspaceState(scope,'active-draft')||'');
+    const savedProfile=readNookProfile(scope)??(raw.workspace?.onboarding?.version===1?{name:raw.workspace.onboarding.name,avatar:raw.workspace.onboarding.avatar}:null);setProfile(savedProfile??{name:'friend',avatar:0});setProfileReady(savedProfile!==null);setNookDrafts(readNookDrafts(scope));setActiveDraftId(readLocalWorkspaceState(scope,'active-draft')||'');
     const retained=createPendingStudyStore(scope,'results');progressRecoveryRef.current=retained;setProgressRecovery(retained);progressOwner.current=scope;
     pendingProgress.current=new Map(retained.entries().flatMap(([id,value])=>isPendingProgress(value)?[[id,value] as [string,ProgressEvent]]:[]));
     progressConflicts.current.clear();setProgressConflictCount(0);
@@ -299,6 +311,8 @@ function WorkspaceApp(){
  useEffect(()=>{const session=workspace.focusSessions.find(s=>!s.completedAt&&!s.cancelledAt);if(!session){if(hydratedFocusId.current){setRunning(false);setFocusSession(null);hydratedFocusId.current=null;}return;}const clock=focusTime(session);if(hydratedFocusId.current!==session.id){completed.current=false;hydratedFocusId.current=session.id;}setFocusSession(session);setFocusLength(session.targetMinutes);setFocusSubject(session.subject||'Personal');setRemaining(clock.remaining);endRef.current=clock.end;setRunning(!session.pausedAt&&!completed.current);},[workspace.focusSessions]);
  useEffect(()=>{const warn=(e:BeforeUnloadEvent)=>{if(dirtyNote.current||pendingProgress.current.size){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[]);
  useEffect(()=>{if(!running)return;const tick=()=>{const left=Math.max(0,Math.ceil((endRef.current-Date.now())/1000));setRemaining(left);if(left===0&&!completed.current){completed.current=true;setRunning(false);finishFocus();}};tick();const timer=setInterval(tick,250);return()=>clearInterval(timer);},[running,focusSession]);
+ async function settleRoomFocus(session:any){if(!session)return;await perform('focus_complete',{sessionId:session.id});setRunning(false);setFocusSession(null);hydratedFocusId.current=null;setFocusLength(25);setRemaining(25*60);setCompletionRetry(null);completed.current=false;}
+ useEffect(()=>{if(isEmbedded||!workspaceReady||initialFocusSettled.current)return;initialFocusSettled.current=true;const previous=workspace.focusSessions.find(s=>!s.completedAt&&!s.cancelledAt);if(previous){setFocusPending(true);void settleRoomFocus(previous).catch(()=>notify('Your previous focus session could not be saved. Retry saving before starting a new one.')).finally(()=>setFocusPending(false));}},[workspaceReady]);
  async function startFocus(){if(activeDraft&&!focusSession){notify('Focus tracking launches with custom nooks. For now, choose a public nook to record your session.');return;}if(completionRetry){await finishFocus();return;}setFocusPending(true);try{const r=focusSession?await perform('focus_update',{sessionId:focusSession.id,action:'resume'}):await perform('focus_start',{minutes:focusLength,subject:(active?.title||focusSubject).slice(0,80),...(active?.id&&workspace.artifacts.some(a=>a.id===active.id)?{artifactId:active.id}:{}),...(selectedLiveNook?.joined&&selectedLiveNook.roomId===currentRoomId?{nookId:selectedLiveNook.id}:{})});const session=r.focusSession||r.session;if(!session)throw new Error('No focus session was returned. Please retry.');const clock=focusTime(session);setFocusSession(session);setRemaining(clock.remaining);endRef.current=clock.end;completed.current=false;hydratedFocusId.current=session.id;setRunning(true);}catch{}finally{setFocusPending(false);}}
  async function pauseFocus(){if(!focusSession)return;setFocusPending(true);try{const r=await perform('focus_update',{sessionId:focusSession.id,action:'pause'});const session=r.focusSession||focusSession;setFocusSession(session);setRemaining(focusTime(session).remaining);setRunning(false);}catch{}finally{setFocusPending(false);}}
  async function resetFocus(){setFocusPending(true);try{if(focusSession)await perform('focus_update',{sessionId:focusSession.id,action:'cancel'});setRunning(false);setFocusSession(null);setRemaining(focusLength*60);setCompletionRetry(null);completed.current=false;hydratedFocusId.current=null;}catch{}finally{setFocusPending(false);}}
@@ -321,6 +335,7 @@ function WorkspaceApp(){
  function writeNote(){if(!canNavigate())return;const now=new Date().toISOString();setActive({id:crypto.randomUUID(),kind:'note',title:'Untitled note',subject:'General',color:'mint',content:'',createdAt:now,updatedAt:now});setPage('home');}
  function beginCreate(){if(!workspaceReady){notify('Reconnect your workspace before adding study material.');return;}setCreationMaterial(undefined);setCreationScope(undefined);setCreationInstruction('');setCreationSource('');setCreationSourceMode(undefined);setCreateKind('note');setShowCreate(true);}
  function createFromWelcome(kind:ArtifactKind,prompt=''){
+  if(isTutorialPractice){beginCreate();setCreateKind(kind);return;}
   void sendStudyRequest(buildChatContextPrompt({task:prompt.trim()||`Create ${kind} from the material we are studying in this conversation.`,createKind:kind,embedded:isEmbedded}));
  }
  async function createFromLibrary(kind:ArtifactKind,artifact:Artifact){
@@ -414,12 +429,15 @@ function WorkspaceApp(){
  const secret=secretRoom?.parent===currentRoomId?secretScenes[secretRoom.id]:null;
  const sceneImage=secret?.image||getRoomImage(space);
  const rainyLibraryFilm=usesRainyLibraryFilm({workspaceReady:!loading&&workspaceReady,roomId:currentRoomId,sceneImage,customArtwork:!!space.backgroundImage,alternateScene:!!secret,customNook:!!activeDraft});
+ const sceneFilm=nookAnimation({workspaceReady:!loading&&workspaceReady,roomId:currentRoomId,sceneImage,customArtwork:!!space.backgroundImage,alternateScene:!!secret,customNook:!!activeDraft});
  const sceneName=secret?.title||selectedLiveNook?.title||activeDraft?.name||(space.name&&space.name!==defaultSpace.name?space.name:roomScene.title);
  const communityScene:RoomScene={...roomScene,title:sceneName,image:sceneImage};
  async function enterNook(scene:RoomScene,draft?:NookDraft,communitySelection=false){
   setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);setPendingJoin(null);
   const started=Date.now();setPortal({title:draft?.name||scene.title,image:scene.image});
   try{
+   if(focusSession)await settleRoomFocus(focusSession);
+   setFocusLength(25);setRemaining(25*60);
    await perform('space_customize',{space:{...space,room:scene.id,theme:scene.theme,backgroundImage:'',name:draft?.name||scene.title}});
    setActiveDraftId(draft?.id||'');writeLocalWorkspaceState(localScope,'active-draft',draft?.id||'');
    if(!communitySelection&&selectedLiveNook?.roomId!==scene.id)live.select(undefined);setDark(scene.theme==='moonlight');setZen(false);setSecretRoom(null);
@@ -431,7 +449,7 @@ function WorkspaceApp(){
   void enterNook(scene,draft);
  }
  function saveNookProfile(next:NookProfile){setProfile(next);setProfileReady(true);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));setShowIdentity(false);if(pendingJoin)void enterNook(pendingJoin.scene,pendingJoin.draft);}
- function createNookDraft(draft:NookDraft){const next=[draft,...nookDrafts].slice(0,30);setNookDrafts(next);writeLocalWorkspaceState(localScope,'drafts',JSON.stringify(next));const scene=roomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}
+ function createNookDraft(draft:NookDraft){const next=[draft,...nookDrafts].slice(0,30);setNookDrafts(next);writeLocalWorkspaceState(localScope,'drafts',JSON.stringify(next));const scene=allRoomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}
  const useRoomPerk=(perk:RewardPerk)=>{if(!unlockedRewards(currentRoomId,roomProgress).some(r=>r.perk?.type===perk.type&&r.perk.id===perk.id))return;if(perk.type==='room'){setSecretRoom({id:perk.id,parent:currentRoomId});changePage('home');}else setEarnedTrack(perk.id);};
  function closeValidatedNote(){
   dirtyNote.current=false;setNoteDirty(false);setPendingChatArtifact(null);setPendingChatView(null);openChatView('study');
@@ -443,7 +461,7 @@ function WorkspaceApp(){
  }
  // Explicit replay is a temporary overlay. Active material, unsaved writing,
  // hidden drafts, focus timers and autosave stay mounted and continue normally.
- // Automatic onboarding remains disabled; never infer first visits from these guards.
+ // The opening film remains replay-only. The welcome journey has a separate per-account completion record.
  const openingOwnerReady=!!localScope&&localScope===progressOwner.current&&(isPublicPreview
   ? account.status==='device'||account.status==='signed-out'&&account.workspaceKey==='device'||account.status==='signed-in'
   : !!readNativeRecoveryScope(localScope));
@@ -452,6 +470,31 @@ function WorkspaceApp(){
   &&!showFocus&&!showSounds&&!showCollection&&!showToday&&!showNooks&&!showPeople&&!showPersonalize&&!showSettings
   &&!showAccount&&!showShare&&!showCreate&&!showNookCreator&&!showIdentity&&!mobileNav&&!portal&&!celebration
   &&!pendingJoin&&!handoff;
+ useEffect(()=>{
+  if(!isPublicPreview||!workspaceReady||account.status!=='signed-in'||profileLinkAttempt.current)return;
+  if(isLive&&!live.enabled)return;const next=claimProfileLink(account.workspaceKey);if(!next)return;profileLinkAttempt.current=true;
+  void (async()=>{try{if(live.enabled)await live.updateProfile(next.name,next.avatar);await perform('onboarding_complete',next);saveNookProfile(next);writeLocalWorkspaceState(localScope,'onboarding','complete');clearProfileLink();setWelcome(null);}catch(e){notify(e instanceof Error?e.message:'Your profile could not be linked.');}})();
+ },[workspaceReady,account.status,account.workspaceKey,live.enabled,isLive]);
+ useEffect(()=>{
+  if(!openingWorkspaceReady||active||noteDirty||!localScope||welcome)return;
+  if(isTutorialPractice){setWelcome('replay');return;}
+  if(restartWelcome.current&&!restartWelcomeStarted.current){restartWelcomeStarted.current=true;interruptOpening();setWelcome('first');return;}
+  if(workspace.onboarding?.version===1||readLocalWorkspaceState(localScope,'onboarding')==='complete')return;
+  interruptOpening();setWelcome('first');
+ },[openingWorkspaceReady,active,noteDirty,localScope,workspace.onboarding,welcome]);
+ function navigateTour(next:TourPage){if(isTutorialPractice){clearChatObstructions();dirtyNote.current=false;setNoteDirty(false);}openUtility(null,false);setFocusMode(false);setActive(null);setPage(next==='library'?'library':'home');if(next==='nooks')openUtility('explore',false);if(next==='people')openUtility('people',false);}
+ function replayTour(){if(noteDirty||showCreate||showNookCreator||showAccount){notify('Close your current editor or popup before taking the tour.');return;}interruptOpening();tourReturn.current={page,active};setWelcome('replay');}
+ async function finishWelcome(next:NookProfile){
+  if(isTutorialPractice){finishTutorialPractice();return;}
+  if(welcome==='first'){
+   await perform('onboarding_complete',next);
+   if(live.enabled){try{await live.updateProfile(next.name,next.avatar);}catch{notify('Welcome saved. Your community profile can be updated when the connection returns.');}}
+   saveNookProfile(next);writeLocalWorkspaceState(localScope,'onboarding','complete');
+  }
+  openUtility(null,false);setWelcome(null);
+  if(restartWelcome.current){const url=new URL(window.location.href);url.searchParams.delete('onboarding');window.history.replaceState(null,'',url);}
+  if(tourReturn.current){setPage(tourReturn.current.page);setActive(tourReturn.current.active);tourReturn.current=null;}else{setPage('home');setActive(null);}
+ }
  const openingFilm=useOpeningFilm({scopeKey:localScope,version:'journey-v3',eligible:false,safeToOpen:openingWorkspaceReady&&!showAbout});
  dismissOpening.current=openingFilm.dismiss;
  function canReplayOpeningNow(){
@@ -480,23 +523,23 @@ function WorkspaceApp(){
   return()=>cancelAnimationFrame(frame);
  },[openingReplayRequest,showAbout]);
  const workBackdrop=useWorkspaceBackdropDismiss(page==='home'&&!!active,dismissActiveWork,showFocus||showSounds||showPeople||showCollection||showToday||showNooks||showPersonalize||showSettings||showAccount||showAbout||showShare||showCreate||showNookCreator||showIdentity||!!portal||!!celebration||!!handoff);
- const roomJourney=activeDraft?<section className="room-journey-widget nooks-draft-collection"><span>YOUR FUTURE COLLECTION</span><RewardDrawing art={getRoomRewards(currentRoomId).rewards[0].art} size={86}/><h3>A fresh little start.</h3><p>Custom keepsakes and focus tracking come with publishing. This nook is a local preview.</p></section>:<RoomJourney key={currentRoomId} roomId={currentRoomId} progress={roomProgress} liveFocusSeconds={focusSession?.roomId===currentRoomId?Math.max(0,focusSession.targetMinutes*60-remaining-Math.floor((focusSession.roomCreditOffsetMilliseconds||0)/1000)):0} focusState={completionRetry?'retry':focusPending?'saving':running?'running':'paused'} onPlace={async(rewardId,placed)=>{await perform('room_reward_place',{roomId:currentRoomId,rewardId,placed});}} onFocus={()=>changePage('focus')} onUsePerk={useRoomPerk}/>;
- return <DraftRecoveryScope value={draftOwner}><WorkspaceLayoutProvider value={workspace.workspaceLayout} scopeKey={workspaceReady?draftOwner:undefined} onChange={async change=>{await perform('workspace_layout_update',change);}}><div {...workBackdrop} className={`app lofi-world unified-workspace ${isEmbedded?'in-chatgpt':''} ${isEmbedded?'host-chat-layout':''} ${zen?'zen-mode':''} ${worldMotion&&space.decorations.includes('sparkles')?'motion-on':'ambient-motion-off'} ${space.decorations.includes('stickers')?'':'no-reminder'} space-layout-${space.layout} ${page==='home'&&!active?'is-room':'is-tool'} theme-${space.theme} weather-${secret?'none':roomScene.mood} ${compact?'is-compact':''}`} style={isEmbedded?hostLayout.style:undefined} data-host-display={isEmbedded?hostLayout.displayMode:undefined}>
-  <div className="world-backdrop" style={{backgroundImage:`url("${sceneImage}")`}} aria-hidden="true"/>{rainyLibraryFilm&&<RainyLibraryBackdrop motion={worldMotion&&space.decorations.includes('sparkles')}/> }<div className="world-shade" aria-hidden="true"/><div className="world-rain" aria-hidden="true">{Array.from({length:28},(_,i)=><i key={i} style={{left:`${8+i*3.1}%`,animationDelay:`-${i*.39}s`,animationDuration:`${1.1+i%4*.27}s`}}/>)}</div><div className="world-glow" aria-hidden="true"/>
+ const roomJourney=activeDraft?<section className="room-journey-widget nooks-draft-collection"><span>YOUR FUTURE COLLECTION</span><RewardDrawing art={getRoomRewards(currentRoomId).rewards[0].art} size={86}/><h3>A fresh little start.</h3><p>Custom keepsakes and focus tracking come with publishing. This nook is a local preview.</p></section>:<RoomJourney music={<SpotifyCard roomId={secret&&secretRoom?secretRoom.id:currentRoomId} roomTitle={sceneName} onOpenMusic={()=>openUtility('sounds')}/>} key={currentRoomId} roomId={currentRoomId} progress={roomProgress} liveFocusSeconds={focusSession?.roomId===currentRoomId?Math.max(0,focusSession.targetMinutes*60-remaining-Math.floor((focusSession.roomCreditOffsetMilliseconds||0)/1000)):0} focusState={completionRetry?'retry':focusPending?'saving':running?'running':'paused'} onPlace={async(rewardId,placed)=>{await perform('room_reward_place',{roomId:currentRoomId,rewardId,placed});}} onFocus={()=>changePage('focus')} onUsePerk={useRoomPerk}/>;
+ return <DraftRecoveryScope value={draftOwner}><WorkspaceLayoutProvider value={{version:1,positions:{...workspace.workspaceLayout?.positions,...(nextRewardPosition?{'collection-next':nextRewardPosition}:{})}}} scopeKey={workspaceReady?draftOwner:undefined} onChange={async change=>{if('id' in change&&change.id==='collection-next'){setNextRewardPosition(change.position);return;}await perform('workspace_layout_update',change);if('reset' in change)setNextRewardPosition(null);}}><div {...workBackdrop} className={`app lofi-world unified-workspace ${isEmbedded?'in-chatgpt':''} ${isEmbedded?'host-chat-layout':''} ${zen?'zen-mode':''} ${focusMode?'nooks-focus-mode':''} ${worldMotion&&space.decorations.includes('sparkles')?'motion-on':'ambient-motion-off'} ${space.decorations.includes('stickers')?'':'no-reminder'} space-layout-${space.layout} ${page==='home'&&!active?'is-room':'is-tool'} theme-${space.theme} weather-${secret?'none':roomScene.mood} ${compact?'is-compact':''}`} style={isEmbedded?hostLayout.style:undefined} data-host-display={isEmbedded?hostLayout.displayMode:undefined}>
+  <div className="world-backdrop" style={{backgroundImage:`url("${sceneImage}")`}} aria-hidden="true"/>{(sceneFilm||rainyLibraryFilm)&&<RainyLibraryBackdrop key={sceneFilm||'legacy-rain'} src={sceneFilm} motion={worldMotion&&space.decorations.includes('sparkles')}/> }<div className="world-shade" aria-hidden="true"/><div className="world-rain" style={sceneFilm?{display:'none'}:undefined} aria-hidden="true">{Array.from({length:28},(_,i)=><i key={i} style={{left:`${8+i*3.1}%`,animationDelay:`-${i*.39}s`,animationDuration:`${1.1+i%4*.27}s`}}/>)}</div><div className="world-glow" aria-hidden="true"/>
   <main className="main world-main">
    <header className="nooks-shell-header">
     <button className="nooks-shell-brand" onClick={()=>changePage('home')} aria-label="Nooks Study"><img src="/images/nook-cat-logo.webp" alt=""/><img src="/images/nooks-wordmark.png" alt="Nooks"/></button>
-    <nav className="nooks-shell-nav" aria-label="Workspace navigation">{navigation.map(item=><button key={item.id} aria-current={(item.id==='explore'?showNooks:!showNooks&&page===item.id)?'page':undefined} onClick={()=>{if(item.id==='explore')openUtility('explore');else{setShowNooks(false);changePage(item.id);}}}>{item.label}{item.id==='home'&&active&&<i aria-label="Work in progress"/>}</button>)}</nav>
-    <div className="nooks-shell-actions"><LayoutControls/><button className="nooks-shell-create" onClick={writeNote} aria-label="Write a note"><Plus size={17}/><span>Write note</span></button>{!isEmbedded&&isPublicPreview?<AccountButton compact onClick={()=>setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
+    <nav className="nooks-shell-nav" aria-label="Workspace navigation">{navigation.map(item=><button key={item.id} data-library-tab={item.id==='library'?'':undefined} data-nooks-tab={item.id==='explore'?'':undefined} aria-current={(item.id==='explore'?showNooks:!showNooks&&page===item.id)?'page':undefined} onClick={()=>{if(item.id==='explore')openUtility('explore');else{setShowNooks(false);changePage(item.id);}}}>{item.label}</button>)}</nav>
+    <div className="nooks-shell-actions"><TourReplayButton onClick={replayTour}/><MovableWidget id="people" label="People studying" className="nooks-people-position"><StudyPresencePill previewCount={isPublicPreview&&!isLive?8:undefined} sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></MovableWidget>{!isEmbedded&&isPublicPreview?<AccountButton compact avatar={profileReady?profile.avatar:undefined} onClick={()=>isTutorialPractice?notify('Account connection is available after the tour.'):setShowAccount(true)}/>:<button className="nooks-shell-profile" aria-label="Workspace settings" onClick={()=>openUtility('settings')}><MemberAvatar index={profile.avatar} size={30}/></button>}</div>
    </header>
    <div className="nooks-utility-bar">
-    <div className="nooks-place-and-people"><button className="nooks-current-place" onClick={()=>openUtility('explore')}><span className="nooks-place-dot"/><span>{sceneName}</span><ChevronRight size={13}/></button><MovableWidget id="people" label="Study together" className="nooks-people-position"><StudyPresencePill sceneTitle={sceneName} members={live.snapshot?.members} onlineCount={live.snapshot?.onlineCount} communityAvailable={isLive} connected={isLive&&!!live.snapshot&&live.snapshot.nook.roomId===currentRoomId} onClick={()=>openUtility('people')} motion={worldMotion}/></MovableWidget></div>
+
     <div className="nooks-utility-actions">
-     <StudyFocusDock timer={{remaining,minutes:focusLength,running,active:!!focusSession,pending:focusPending,disabled:!!activeDraft&&!focusSession,onStart:startFocus,onPause:pauseFocus,onReset:resetFocus,onMinutes:m=>{setFocusLength(m);setRemaining(m*60);}}} open={showFocus} onOpenChange={value=>value?openUtility('focus'):setShowFocus(false)} workLabel={active?.title||'Independent study'} nookLabel={sceneName} earningNookLabel={focusSession?.roomId?getRoomRewards(focusSession.roomId).label:undefined} onFinish={finishFocus} retrySaving={!!completionRetry}/>
-     <button data-sound-trigger aria-label="Music and sound" aria-expanded={showSounds} onClick={()=>openUtility('sounds')}><Headphones size={15}/><span>Music</span></button>
+     <StudyFocusDock focusMode={focusMode} onToggleFocusMode={()=>{setFocusMode(value=>!value);setShowFocus(false);setShowCollection(false);}} timer={{remaining,minutes:focusLength,running,active:!!focusSession,pending:focusPending,disabled:!!activeDraft&&!focusSession,onStart:startFocus,onPause:pauseFocus,onReset:resetFocus,onMinutes:m=>{setFocusLength(m);setRemaining(m*60);}}} open={showFocus} onOpenChange={value=>value?openUtility('focus'):setShowFocus(false)} workLabel={active?.title||'Independent study'} nookLabel={sceneName} earningNookLabel={focusSession?.roomId?getRoomRewards(focusSession.roomId).label:undefined} onFinish={finishFocus} retrySaving={!!completionRetry}/>
+     <AmbientQuickControl onOpen={()=>openUtility('sounds')}/>
+     <button data-sound-trigger aria-label="Music and sound" aria-expanded={showSounds} onClick={()=>openUtility('sounds')}><Music2 size={15}/><span>Music</span></button>
+     <LayoutControls/>
      
-     <button aria-label="Your collection" onClick={()=>{if(pendingReward){setCelebration(pendingReward);setPendingReward(null);}else openUtility('collection');}}><span className="nooks-collection-dot" aria-hidden="true"/><span>Collection</span><small>{pendingReward?'New':`${unlockedRewards(currentRoomId,roomProgress).length}/${getRoomRewards(currentRoomId).rewards.length}`}</small></button>
-     <button className="nooks-extra-control" aria-label="Today's study goals" onClick={()=>openUtility('today')}><Check size={15}/></button>
     </div>
    </div>
    <button type="button" className="nooks-watch-intro" aria-haspopup="dialog" disabled={!canReplayOpeningNow()||showAbout} onClick={requestOpeningReplay} title="Replay the full Nooks opening"><Play size={13} fill="currentColor" aria-hidden="true"/><span>Watch intro</span></button>
@@ -507,26 +550,25 @@ function WorkspaceApp(){
    {loading||!workspaceReady?<div className="loading-space"><div className="loading-sprout"><Sprout size={38}/></div><h2>{loading?'Opening your study nook':'Your study nook is waiting'}</h2><p>{loading?'Your next little chapter awaits.':'Reconnect to open your saved work.'}</p>{!loading&&<button className="button primary" disabled={saving} onClick={retryUnsaved}>Retry</button>}</div>:<div className="page-content" ref={workspaceTransition}>
    {active&&<section hidden={page!=='home'} className="nooks-active-work" key={active.id}>{active.kind==='note'?<><NoteWorkspace onClose={closeValidatedNote} onContextChange={receiveEditorContext} recoveryScope={isPublicPreview&&(account.workspaceKey==='device'||account.status==='signed-in')?account.workspaceKey:nativeRecoveryScope} location={<fieldset disabled={noteDirty||!workspace.artifacts.some(a=>a.id===active.id)}><ArtifactLocation artifact={active} organization={workspace.organization} onTool={perform} onMoved={saved=>setActive(saved)}/></fieldset>} history={<NoteHistory artifact={active} disabled={noteDirty||!workspace.artifacts.some(a=>a.id===active.id)} onTool={perform} onApplied={saved=>setActive(saved)}/>} artifact={active} saved={workspace.artifacts.some(a=>a.id===active.id)} onDirtyChange={value=>{dirtyNote.current=value;setNoteDirty(value);}} onBack={()=>{setActive(null);setPage('library');}} onRead={(artifactId,offset)=>perform('artifact_get',{artifactId,offset,maxChars:40000})} onSave={saveArtifact} onCreate={beginCreate} onCreateFrom={createFromMaterial} onAsk={(prompt,context)=>askInWorkspace(prompt,context)}/></>:<div data-workspace-backdrop className={reference?.forArtifactId===active.id?"nooks-study-with-reference":undefined}><div className="nooks-study-primary"><StudyView onClose={dismissActiveWork} recoveryScope={isPublicPreview?account.workspaceKey:nativeRecoveryScope} onEditingChange={value=>{studyEditing.current=value;setStudyEditorOpen(value);}} saved={!previewArtifacts.current.has(active)&&workspace.artifacts.some(a=>a.id===active.id)} roomId={currentRoomId} artifact={active} onSave={saveArtifact} onExit={()=>{setActive(null);setPage('library');}} onProgress={recordProgress}/></div>{reference?.forArtifactId===active.id&&<StudyReference artifact={reference.artifact} onClose={()=>setReference(null)}/>}</div>}</section>}
    <>
-   {page==='home'&&!active&&<RoomHome nativeChat onCreateKind={createFromWelcome} resumeArtifactId={resume?.id} onWriteNote={writeNote} focusNotice={focusSession?.roomId&&(activeDraft||focusSession.roomId!==currentRoomId)?`Your current session counts toward ${getRoomRewards(focusSession.roomId).label}.${activeDraft?' Custom nook tracking comes later.':''}`:activeDraft?'Local preview · focus tracking comes later.':undefined} displayName={isLive?(live.profile?.displayName||''):profile.name} name={space.name} tagline={space.tagline} timer={{remaining,minutes:focusLength,running,active:!!focusSession,pending:focusPending,disabled:!!activeDraft&&!focusSession,onStart:startFocus,onPause:pauseFocus,onReset:resetFocus,onMinutes:(m)=>{setFocusLength(m);setRemaining(m*60);}}} tasks={workspace.plan.tasks} onToggleTask={async(id)=>{await savePlan(workspace.plan.tasks.map(t=>t.id===id?{...t,done:!t.done}:t));}} onAddTask={async title=>{await savePlan([...workspace.plan.tasks,{id:crypto.randomUUID(),title,subject:'Personal',done:false}]);}} artifacts={workspace.artifacts} onOpen={open} onCreate={beginCreate} onLibrary={()=>changePage('library')} onCustomize={()=>setShowNooks(true)} onPractice={()=>changePage('practice')} onFocus={()=>changePage('focus')} focusMinutes={workspace.stats.focusMinutes} xp={xp} companion="none" sceneName={sceneName} journey={roomJourney} rewardShelf={activeDraft?undefined:<RoomRewardShelf roomId={currentRoomId} progress={roomProgress}/>}/>}
+   {page==='home'&&!active&&<RoomHome nativeChat onCreateKind={createFromWelcome} resumeArtifactId={resume?.id} onWriteNote={writeNote} focusNotice={focusSession?.roomId&&(activeDraft||focusSession.roomId!==currentRoomId)?`Your current session counts toward ${getRoomRewards(focusSession.roomId).label}.${activeDraft?' Custom nook tracking comes later.':''}`:activeDraft?'Local preview · focus tracking comes later.':undefined} displayName={isLive?(live.profile?.displayName||''):profile.name} name={space.name} tagline={space.tagline} timer={{remaining,minutes:focusLength,running,active:!!focusSession,pending:focusPending,disabled:!!activeDraft&&!focusSession,onStart:startFocus,onPause:pauseFocus,onReset:resetFocus,onMinutes:(m)=>{setFocusLength(m);setRemaining(m*60);}}} tasks={workspace.plan.tasks} onToggleTask={async(id)=>{await savePlan(workspace.plan.tasks.map(t=>t.id===id?{...t,done:!t.done}:t));}} onDeleteTask={async id=>{await savePlan(workspace.plan.tasks.filter(t=>t.id!==id));}} onAddTask={async title=>{await savePlan([...workspace.plan.tasks,{id:crypto.randomUUID(),title,subject:'Personal',done:false}]);}} artifacts={workspace.artifacts} onOpen={open} onCreate={beginCreate} onLibrary={()=>changePage('library')} onCustomize={()=>setShowNooks(true)} onPractice={()=>changePage('practice')} onFocus={()=>changePage('focus')} focusMinutes={workspace.stats.focusMinutes} xp={xp} companion="none" sceneName={sceneName} journey={roomJourney} rewardShelf={activeDraft?undefined:<RoomRewardShelf roomId={currentRoomId} progress={roomProgress}/>}/>}
    {page==='library'&&<StudyLibrary workspace={workspace} initialViewState={libraryView.current} onViewStateChange={value=>{libraryView.current=value;}} searchQuery={query} onOpen={open} onTool={perform} onCreateFrom={createFromLibrary} onCreate={scope=>{beginCreate();setCreationScope(scope);}} onAsk={askInWorkspace}/>}
    </>
    <footer className="workspace-footer"><span><BookOpen size={13}/> Nooks · Your Study Nook in ChatGPT</span><span>{saving?'Saving…':pendingProgressCount?'Results waiting to save':isLive?'Saved to your account':'Saved on this device'}</span></footer>
    </div>}
   </main>
-  {showNooks&&<NookDiscovery onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=roomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
-  {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} pendingInvite={!!currentInvitation()} onConnect={()=>{setShowPeople(false);setShowAccount(true);}} onClose={()=>setShowPeople(false)}/>}
-  {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=roomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
+  {showNooks&&<NookDiscovery favoritesScope={draftOwner} onCommunity={isLive?()=>{setShowNooks(false);setShowPeople(true);}:undefined} currentNookId={activeDraft?'':currentRoomId} drafts={nookDrafts} onJoinDraft={draft=>{const scene=allRoomScenes.find(item=>item.id===draft.sceneId);if(scene)requestJoinNook(scene,draft);}} onClose={()=>setShowNooks(false)} onJoin={scene=>requestJoinNook(scene)} onCreate={()=>{setShowNooks(false);setShowNookCreator(true);}}/>}
+  {showPeople&&!isLive&&<NookCommunity scene={communityScene} profile={profile} localDraft={!!activeDraft} onClose={()=>setShowPeople(false)}/>}
+  {isLive&&(showPeople||showIdentity)&&<LiveNookCommunity live={live} onCreateNook={()=>{setShowPeople(false);setShowNooks(false);setShowNookCreator(true);}} onClose={()=>{setShowNooks(false);setShowPeople(false);setShowNookCreator(false);setShowIdentity(false);}} onSelectNook={nook=>{const scene=allRoomScenes.find(s=>s.id===nook.roomId);if(scene&&currentRoomId!==scene.id)void enterNook(scene,undefined,true);}}/>}
   {showIdentity&&!isLive&&<NookIdentityDialog profile={profile} onClose={()=>{setShowIdentity(false);setPendingJoin(null);}} onSave={saveNookProfile}/>}
   {studioLifetime.current.mounted&&<NookStudio key={draftOwner} open={showNookCreator} initialDraftId={studioDraftId} onDraftSelected={setReportedStudioDraftId} onClose={()=>setShowNookCreator(false)} onTool={perform} canPublish={isLive} onPreview={async(next,presentation)=>{if(!canNavigate()||!presentation?.isCurrent())return;await perform('space_customize',{space:next});if(!presentation?.isCurrent())return;setActiveDraftId('');writeLocalWorkspaceState(localScope,'active-draft','');setShowNookCreator(false);setPage('home');setActive(null);setZen(false);}} onPublished={nook=>{if(nook?.id)live.select(nook.id);void live.refresh();setShowNookCreator(false);setShowPeople(true);}}/>}
   {celebration&&<RewardCelebration rewards={celebration.rewards} roomLabel={getRoomRewards(celebration.roomId).label} onClose={()=>setCelebration(null)} onPlace={async rewardId=>{await perform('room_reward_place',{roomId:celebration.roomId,rewardId,placed:true});}}/>}
   {portal&&<NookPortal title={portal.title} image={portal.image}/>}
-  {showAccount&&<AccountDialog onClose={()=>setShowAccount(false)} onBeforeAccountChange={()=>{if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}return canNavigate();}}/> }
+  {showAccount&&!isTutorialPractice&&<AccountDialog onClose={()=>{setShowAccount(false);if(account.status!=='signed-in')clearProfileLink();}} onBeforeAccountChange={()=>{if(saving||focusSession||pendingProgress.current.size){notify('Finish saving your work and focus session before switching accounts.');return false;}return canNavigate();}}/> }
   {showAbout&&<AboutNook onClose={()=>setShowAbout(false)} onWatchOpening={canReplayOpeningNow()?requestOpeningReplay:undefined}/>}
+  {welcome&&localScope&&<WelcomeJourney workspace={workspace} key={`${localScope}:${welcome}`} scope={restartWelcome.current?`${localScope}:welcome-restart:${restartWelcome.current}`:localScope} initialProfile={profile} replay={welcome==='replay'} onNavigate={navigateTour} onFinish={finishWelcome} connected={live.enabled} onConnect={!isTutorialPractice&&isPublicPreview&&account.status!=='signed-in'?async next=>{await finishWelcome(next);requestProfileLink(next,localScope);setShowAccount(true);}:undefined} onProfile={next=>{setProfile(next);writeLocalWorkspaceState(localScope,'profile',JSON.stringify(next));}}/>}
   <OpeningFilm open={openingFilm.open} presentationId={openingFilm.presentationId} videoSrc="/media/opening-film/nooks-opening-v3.mp4" posterSrc="/media/opening-film/nooks-opening-poster-v2.jpg" endCardMode="baked-in" onDismiss={openingFilm.dismiss}/>
   {secret&&<button className="secret-room-return" onClick={()=>setSecretRoom(null)}>← Return to {roomScene.title}<span>Progress stays in this nook</span></button>}
   <EarnedSoundtrack track={earnedTrack} onClose={()=>setEarnedTrack(null)}/>
-  <SoundIsland roomId={secret&&secretRoom?secretRoom.id:currentRoomId} roomTitle={sceneName} mixerOpen={showSounds} onOpenMixer={()=>openUtility('sounds')}/>
-  <div className="nooks-scene-tools"><button aria-label="Customize this nook" onClick={()=>openUtility('personalize')}><SlidersHorizontal size={15}/></button><button aria-label={worldMotion?'Pause nook animation':'Resume nook animation'} onClick={()=>{setWorldMotion(!worldMotion);storageSet('notable-motion',worldMotion?'off':'on');}}>{worldMotion?<Pause size={13}/>:<Play size={13}/>}</button><button aria-label="About Nooks" onClick={()=>setShowAbout(true)}>i</button></div>
   <div className={`world-sound-panel ${showSounds?'open':''}`} aria-hidden={!showSounds} inert={!showSounds}><AmbientMixer roomId={secret&&secretRoom?secretRoom.id:currentRoomId} roomTitle={sceneName} open={showSounds} onClose={()=>setShowSounds(false)}/></div>
   {showCollection&&<RoomJourneyModal roomId={currentRoomId} progress={roomProgress} onClose={()=>setShowCollection(false)} onPlace={async(rewardId,placed)=>{await perform('room_reward_place',{roomId:currentRoomId,rewardId,placed});}} onFocus={()=>openUtility('focus')} onUsePerk={useRoomPerk}/>}
   {showToday&&<Modal title="Today" onClose={()=>setShowToday(false)}><StudyPlan tasks={workspace.plan.tasks} onSave={async tasks=>{await savePlan(tasks);}} artifacts={workspace.artifacts} onOpen={a=>{setShowToday(false);open(a);}}/></Modal>}
@@ -540,7 +582,7 @@ function WorkspaceApp(){
  </div></WorkspaceLayoutProvider></DraftRecoveryScope>;
 }
 
-export default function App(){const account=useNooksAccount(!isEmbedded&&isPublicPreview);if(isPublicPreview&&account.status==='loading')return <div className="loading-space"><p>Opening Nooks…</p></div>;const sharedId=new URLSearchParams(window.location.search).get('share');return sharedId&&!isPublicPreview?<SharedRoute id={sharedId}/>:<WorkspaceApp key={isPublicPreview?account.workspaceKey:'host'}/>;}
+export default function App(){const account=useNooksAccount(!isEmbedded&&isPublicPreview);if(isPublicPreview&&account.status==='loading')return <div className="loading-space"><p>Opening Nooks…</p></div>;const sharedId=new URLSearchParams(window.location.search).get('share');return sharedId&&!isPublicPreview?<SharedRoute id={sharedId}/>:<><WorkspaceApp key={isPublicPreview?account.workspaceKey:'host'}/>{!isEmbedded&&!isTutorialPractice&&<LibraryInvitation/>}</>;}
 function SharedRoute({id}:{id:string}){const [share,setShare]=useState<SharedSpace|null>(null);const [failed,setFailed]=useState(false);useEffect(()=>{let alive=true;fetch(`/api/shared/${encodeURIComponent(id)}`).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(alive)setShare(data.share||data);}).catch(()=>{if(alive)setFailed(true);});return()=>{alive=false;};},[id]);if(failed)return <div className="loading-space"><Leaf size={40}/><h2>This space is taking a little break.</h2><p>The link may have been unpublished.</p><a className="button primary" href="/">Open my workspace</a></div>;if(!share)return <div className="loading-space"><Sprout size={40}/><h2>Opening a little inspiration…</h2></div>;return <SharedSpaceView share={share} onOpenWorkspace={()=>{window.location.href=`/?template=${encodeURIComponent(id)}`;}}/>;}
 
 function CloudRainIcon(){return <Headphones size={13}/>;}

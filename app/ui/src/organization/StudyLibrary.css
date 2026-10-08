@@ -94,3 +94,23 @@
 @keyframes nooks-library-menu-in { from { opacity:0;transform:translateY(4px) scale(.98); } to { opacity:1;transform:none; } }
 @media(max-width:480px) { .nooks-library-create-from { width:34px;height:38px; }.nooks-library-create-menu>button { min-height:42px; } }
 @media(prefers-reduced-motion:reduce) { .nooks-library-create-menu { animation:none; }.nooks-library-create-menu>button { transition:none; } }
+
+.nooks-library-views button {display:inline-flex;align-items:center;gap:7px;}
+.nooks-library-views {overflow-x:auto;scrollbar-width:thin;min-width:0;}
+.nooks-library-search input:disabled {opacity:.6;}
+@media(max-width:480px){.nooks-library-views {gap:16px;}}
+
+.nooks-library-shared-icon { flex:0 0 auto;color:inherit; }
+
+.nooks-library-heading .nooks-org-primary { border-radius:999px; }
+.nooks-org-dialog .nooks-org-form button { border-radius:999px; }
+
+.nooks-library-search { border-radius:999px; padding:0 10px; }
+.nooks-library-search:focus-within { outline:2px solid #d3b583; outline-offset:3px; }
+.nooks-library .nooks-library-search input:focus-visible { outline:none!important; }
+
+/* Give material hover states breathing room around their labels. */
+.nooks-library-filters { gap:6px; }
+.nooks-library-filters button { padding:8px 13px;min-height:34px;border-radius:999px; }
+.nooks-library-row { padding:0 12px;border-radius:16px; }
+.nooks-library-item:hover { background:transparent; }

@@ -27,7 +27,7 @@
 .lofi-world .study-presence-pill__portrait > span { display: block; animation: study-presence-arrival .85s cubic-bezier(.2,.7,.2,1) both; }
 .lofi-world .study-presence-pill__portrait .nooks-member-avatar { display: inline-flex; border: 1.5px solid #766252; box-shadow: 0 1px 3px #20150c24; }
 .lofi-world .study-presence-pill__copy { display: flex; min-width: 0; flex-direction: column; gap: 3px; white-space: nowrap; }
-.lofi-world .study-presence-pill__copy strong { font-family: inherit; font-style: normal; font-size: 11px; font-weight: 550; letter-spacing: .02em; line-height: 1.2; }
+.lofi-world .study-presence-pill__copy strong { font-family: inherit; font-style: normal; font-size: 11px; font-weight: 650; letter-spacing: .02em; line-height: 1.2; }
 .lofi-world .study-presence-pill__copy small { display: block; font-size: 9px; font-weight: 400; letter-spacing: .01em; line-height: 1.2; color: rgb(255 244 228 / 68%); }
 .lofi-world .study-presence-pill > svg { display: block; flex: 0 0 auto; opacity: .6; }
 @keyframes study-presence-arrival { from { opacity: 0; transform: translateY(3px) scale(.93); } to { opacity: 1; transform: translateY(0) scale(1); } }

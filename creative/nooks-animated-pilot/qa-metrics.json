@@ -1,0 +1,50 @@
+{
+  "rainy-library": {
+    "file": "web/ui/public/videos/nooks-animated-pilot/rainy-library.mp4",
+    "bytes": 2495373,
+    "duration": 7.0,
+    "frames": 168,
+    "width": 1280,
+    "height": 720,
+    "video_codec": "h264",
+    "audio_tracks": 0,
+    "frame_change_mean": 0.18636507150629297,
+    "seam_change_mean": 0.8011027922453704,
+    "seam_vs_typical": 4.2985672463754545,
+    "outside_motion_mask_temporal_change": 0.0016702909185951425,
+    "inside_motion_mask_temporal_change": 0.43217400195877703,
+    "peak_frame_brightness_change": 0.3117871093749969
+  },
+  "howls-moving-study": {
+    "file": "web/ui/public/videos/nooks-animated-pilot/howls-moving-study.mp4",
+    "bytes": 578188,
+    "duration": 7.0,
+    "frames": 168,
+    "width": 1280,
+    "height": 720,
+    "video_codec": "h264",
+    "audio_tracks": 0,
+    "frame_change_mean": 0.01977671826485917,
+    "seam_change_mean": 0.051775173611111114,
+    "seam_vs_typical": 2.6179861045555426,
+    "outside_motion_mask_temporal_change": 0.0012615119533488073,
+    "inside_motion_mask_temporal_change": 1.0464418461863483,
+    "peak_frame_brightness_change": 0.030331669560183627
+  },
+  "gryffindor-common-room": {
+    "file": "web/ui/public/videos/nooks-animated-pilot/gryffindor-common-room.mp4",
+    "bytes": 844173,
+    "duration": 7.0,
+    "frames": 168,
+    "width": 1280,
+    "height": 720,
+    "video_codec": "h264",
+    "audio_tracks": 0,
+    "frame_change_mean": 0.20422562860390336,
+    "seam_change_mean": 0.23798828125,
+    "seam_vs_typical": 1.1653203512061625,
+    "outside_motion_mask_temporal_change": 0.0007672783138211299,
+    "inside_motion_mask_temporal_change": 5.231094074055515,
+    "peak_frame_brightness_change": 0.33110134548611114
+  }
+}

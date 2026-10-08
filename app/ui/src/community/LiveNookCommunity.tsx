@@ -1,7 +1,7 @@
 import { currentInvitation, invitationLink, invitationToken } from './inviteLinks';
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { ArrowLeft, ArrowRight, Check, Copy, KeyRound, LockKeyhole, Plus, RefreshCw, Users, UnlockKeyhole, X } from 'lucide-react';
-import { roomScenes } from '../personalization/types';
+import { allRoomScenes, roomScenes } from '../personalization/types';
 import { useModalFocus } from '../personalization/PersonalizePanel';
 import { MemberAvatar, memberAvatarNames } from './NookCommunity';
 import type { LiveInvite, LiveNook, LiveNooksState } from './useLiveNooks';
@@ -81,7 +81,7 @@ export function LiveNookCommunity({ live, onClose, onSelectNook, onCreateNook }:
             <div className="nooks-live-intro"><div><h3>Find a place to settle in.</h3><p>Public spaces and your invitation-only corners.</p></div><button type="button" className="nooks-live-primary" disabled={live.busy} onClick={() => onCreateNook ? onCreateNook() : setView('create')}><Plus size={14} />Make a nook</button></div>
             <div className="nooks-live-filters" aria-label="Filter study nooks"><button type="button" aria-pressed={!live.directory.joinedOnly} disabled={live.busy} onClick={() => live.browse(0, false)}>All nooks</button><button type="button" aria-pressed={live.directory.joinedOnly} disabled={live.busy} onClick={() => live.browse(0, true)}>Joined</button></div>
             {live.loading && !live.nooks.length ? <p className="nooks-live-empty">Looking for study company…</p> : !live.nooks.length ? <div className="nooks-live-empty"><Users size={27} /><h3>It starts with someone.</h3><p>No study nooks here yet. Create one, or accept an invitation from a friend.</p></div> : <div className="nooks-live-cards">{live.nooks.map(item => {
-              const art = roomScenes.find(candidate => candidate.id === item.roomId);
+              const art = allRoomScenes.find(candidate => candidate.id === item.roomId);
               return <button type="button" className="nooks-live-card" key={item.id} disabled={live.busy} onClick={() => void enter(item)}>
                 {art ? <img src={art.image} alt="" loading="lazy" /> : <div className="nooks-live-card-blank" />}
                 <span className="nooks-live-card-kind">{item.visibility === 'private' ? <><LockKeyhole size={11} />Private</> : item.joined ? 'Joined' : 'Public'}</span>

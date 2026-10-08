@@ -5,18 +5,18 @@ import type { Artifact, ProgressEvent } from './study/types';
 import type { RoomProgress } from './world/RoomJourney';
 
 export type Task = { id:string; title:string; subject:string; done:boolean; dueDate?:string };
-export type WorkspaceWidgetId = 'spotify'|'timer'|'tasks'|'collection'|'welcome'|'people';
+export type WorkspaceWidgetId = 'spotify'|'timer'|'tasks'|'collection'|'collection-next'|'welcome'|'people';
 export type WorkspaceWidgetPosition = { x:number; y:number };
 export type WorkspaceLayoutValue = { version:1; positions:Partial<Record<WorkspaceWidgetId,WorkspaceWidgetPosition>> };
 export type WorkspaceLayoutChange = { id:WorkspaceWidgetId; position:WorkspaceWidgetPosition|null }|{ reset:true };
-export type Workspace = { revision?:number; updatedAt?:string; backend?:string; workspaceLayout?:WorkspaceLayoutValue; artworkWarnings?:{code:string;message:string}[]; organization?:Organization; roomProgress?:Record<string,RoomProgress>; space?:WorkspaceSpace; shares?:{id:string;url?:string;createdAt:string}[]; artifacts:Artifact[]; progress:ProgressEvent[]; plan:{tasks:Task[]}; stats:{xp:number;level:number;streak:number;focusMinutes:number}; focusSessions:any[] };
+export type Workspace = { onboarding?:{name:string;avatar:number;version:number;completedAt:string}; revision?:number; updatedAt?:string; backend?:string; workspaceLayout?:WorkspaceLayoutValue; artworkWarnings?:{code:string;message:string}[]; organization?:Organization; roomProgress?:Record<string,RoomProgress>; space?:WorkspaceSpace; shares?:{id:string;url?:string;createdAt:string}[]; artifacts:Artifact[]; progress:ProgressEvent[]; plan:{tasks:Task[]}; stats:{xp:number;level:number;streak:number;focusMinutes:number}; focusSessions:any[] };
 export const blankWorkspace: Workspace = { workspaceLayout:{version:1,positions:{}}, artifacts:[], progress:[], plan:{tasks:[]}, stats:{xp:0,level:1,streak:0,focusMinutes:0}, focusSessions:[] };
 const record = (value: unknown): Record<string, any> => value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, any> : {};
 
 export function normalizeWorkspaceLayout(value:unknown):WorkspaceLayoutValue {
  const input=record(value), positions=record(input.positions), result:WorkspaceLayoutValue={version:1,positions:{}};
  if(input.version!==1)return result;
- for(const id of ['spotify','timer','tasks','collection','welcome','people'] as const) {
+ for(const id of ['spotify','timer','tasks','collection','collection-next','welcome','people'] as const) {
   if(!Object.hasOwn(positions,id))continue;
   const point=record(positions[id]);
   if(Object.hasOwn(point,'x')&&Object.hasOwn(point,'y')&&typeof point.x==='number'&&Number.isFinite(point.x)&&point.x>=0&&point.x<=1&&typeof point.y==='number'&&Number.isFinite(point.y)&&point.y>=0&&point.y<=1)result.positions[id]={x:point.x,y:point.y};

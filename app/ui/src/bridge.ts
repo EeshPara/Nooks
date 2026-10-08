@@ -1,3 +1,5 @@
+import { isTutorialPractice, tutorialSeed } from './onboarding/tutorialSession';
+import { createTutorialTools } from './preview/tutorial-tools.mjs';
 /** Host tools remain native; browser accounts authenticate through the account client. */
 import { nooksAccount } from './account/client';
 import { legacyLayoutUpdate, mergeHostContext, type HostDisplayMode, type HostInsets } from './world/hostLayout';
@@ -8,7 +10,7 @@ type RpcMessage = { jsonrpc: string; id?: number | string; method?: string; para
 export type AuthorizedFile = { fileId: string; fileName?: string; mimeType?: string };
 type LegacyOpenAI = { displayMode?: HostDisplayMode; maxHeight?: number; safeArea?: { insets: HostInsets }; toolOutput?: ToolData; toolResponseMetadata?: ToolData; callTool?: (name: string, args: object) => Promise<any>; sendFollowUpMessage?: (message: { prompt: string }) => Promise<unknown>; getFileDownloadUrl?: (args: { fileId: string }) => Promise<{ downloadUrl: string }>; selectFiles?: () => Promise<AuthorizedFile[]> };
 const legacy = () => (window as Window & { openai?: LegacyOpenAI }).openai;
-export const isPublicPreview = import.meta.env.VITE_NOOKS_PUBLIC_PREVIEW === '1';
+export const isPublicPreview = isTutorialPractice || import.meta.env.VITE_NOOKS_PUBLIC_PREVIEW === '1';
 export const isEmbedded = !isPublicPreview && (window.parent !== window || !!legacy());
 let hostOrigin: string | null = null;
 let sequence = 0;
@@ -101,8 +103,10 @@ const connection = isEmbedded && window.parent !== window ? rpc('ui/initialize',
 subscribeAppToolsChanged(() => { if (initialized) window.parent.postMessage({jsonrpc:'2.0',method:'notifications/tools/list_changed'},hostOrigin??'*'); });
 
 const flatten = readToolResult;
+const tutorialTools = tutorialSeed ? createTutorialTools(tutorialSeed.workspace) : null;
 
 export async function callTool(name: string, args: object = {}): Promise<ToolData> {
+  if(tutorialTools)return flatten(await tutorialTools(name,args));
   if (isPublicPreview) {
     const initialAccount = nooksAccount.getSnapshot();
     const startingKey = initialAccount.status === 'loading' ? undefined : initialAccount.workspaceKey;
@@ -148,9 +152,10 @@ export async function callTool(name: string, args: object = {}): Promise<ToolDat
 }
 
 export async function requestChatGPT(prompt: string): Promise<boolean> {
+  if(isTutorialPractice)return false;
   if (!isEmbedded) return false;
   await connection;
-  prompt += '\n\nKeep this interaction in the existing Nooks tab. If its app-provided nooks_present tool is available, use it to show the saved artifact or view. ' + (workspaceSessionId ? `Otherwise use workspace_navigate with sessionId ${JSON.stringify(workspaceSessionId)}. This is only a UI routing identifier, not study content. Do not call workspace_render again for this action.` : 'If the mounted app cannot be reached, explain that limitation rather than repeatedly opening new tabs.');
+  prompt += '\n\nKeep this interaction in the existing Nooks tab. For an explicit request to create study material, save it and immediately present the result without asking whether to create, save, or open it again. If its app-provided nooks_present tool is available, use it to show the saved artifact or view. ' + (workspaceSessionId ? `Otherwise use workspace_navigate with sessionId ${JSON.stringify(workspaceSessionId)}. This is only a UI routing identifier, not study content. Do not call workspace_render again for this action.` : 'If the mounted app cannot be reached, explain that limitation rather than repeatedly opening new tabs.');
   if (initialized) {
     await rpc('ui/message', { role: 'user', content: [{ type: 'text', text: prompt }] });
     return true;
@@ -202,7 +207,7 @@ export async function updateModelContext(context: { title: string; text: string;
   selectedModelContext = context;
   if (!isEmbedded) return false;
   await connection;
-  if (!initialized || !hostCapabilities.updateModelContext?.text) return false;
+  if (isTutorialPractice || !initialized || !hostCapabilities.updateModelContext?.text) return false;
   const content: ToolData[] = context ? [{ type: 'text', text: context.text, _meta: { 'openai/title': context.title } }] : [];
   if (workspaceSessionId) content.push({type:'text',text:`Nooks is already open in this conversation. Current UI destination: ${JSON.stringify({workspaceSessionId})}. Use the app-provided nooks_present tool when available, otherwise workspace_navigate with this sessionId to show saved material or a view in this same tab. workspace_render is only the initial opener. The session ID is routing metadata, not educational source material.`,annotations:{audience:['assistant']}});
   const params: ToolData = { content };

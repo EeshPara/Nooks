@@ -20,7 +20,7 @@ export function widgetPosition(point: { x: number; y: number }, viewport: Widget
   return { x: bounds.spanX ? unit((point.x - bounds.left) / bounds.spanX) : 0, y: bounds.spanY ? unit((point.y - bounds.top) / bounds.spanY) : 0 };
 }
 export function movedWidget(point: { x: number; y: number }, key: string, fine = false) {
-  const distance = fine ? 24 : 24;
+  const distance = fine ? 24 : 8;
   return { x: point.x + (key === 'ArrowRight' ? distance : key === 'ArrowLeft' ? -distance : 0), y: point.y + (key === 'ArrowDown' ? distance : key === 'ArrowUp' ? -distance : 0) };
 }
 export const passedWidgetDragThreshold = (x: number, y: number) => Math.hypot(x, y) >= 5;

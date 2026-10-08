@@ -1,0 +1,9 @@
+# Local generation responses, downloaded masters and intermediate review images.
+__pycache__/
+*/job.json
+*/generation.log
+*/generated.mp4
+*/poster.png
+*/motion-mask.png
+*/review-*.png
+*/review-contact.jpg

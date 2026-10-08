@@ -1,6 +1,7 @@
+import { CustomTimerInput } from './CustomTimerInput';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useCrashDraft } from '../WorkspaceErrorBoundary';
-import { ArrowRight, ArrowUp, Check, ChevronDown, Pause, Play, Plus, RotateCcw } from 'lucide-react';
+import { ArrowRight, ArrowUp, Check, ChevronDown, Pause, Play, Plus, RotateCcw, X } from 'lucide-react';
 import { useBreakTimer } from './useBreakTimer';
 import type { Artifact } from '../study/types';
 import './StudyHome.css';
@@ -24,6 +25,7 @@ interface Props {
  timer: RoomTimerProps;
  tasks: RoomTask[];
  onToggleTask: (id: string) => void | Promise<void>;
+ onDeleteTask: (id: string) => Promise<void>;
  onAddTask: (title: string) => Promise<void>;
  artifacts: Artifact[];
  onOpen: (artifact: Artifact) => void;
@@ -65,6 +67,7 @@ export function RoomHome(p: Props) {
  const firstName = p.displayName?.trim().split(/\s+/)[0];
  const orderedTasks = [...p.tasks].sort((a,b) => Number(a.done)-Number(b.done));
  const completed = p.tasks.filter(item => item.done).length;
+ const focusProgress = Math.max(0, Math.min(1, 1 - p.timer.remaining / Math.max(1,p.timer.minutes * 60))) * 100;
  const ask = async () => {
   if (!prompt.trim() || sendingRef.current || !p.onAsk) return;
   sendingRef.current = true; setSending(true); setChatError('');
@@ -86,8 +89,15 @@ export function RoomHome(p: Props) {
   catch (error) { setTaskError(error instanceof Error ? error.message : 'Could not save. Try again.'); }
   finally { taskBusyRef.current = false; setPendingTask(null); }
  };
+ const deleteTask = async (id: string) => {
+  if (taskBusyRef.current) return;
+  taskBusyRef.current = true; setPendingTask(id); setTaskError('');
+  try { await p.onDeleteTask(id); }
+  catch (error) { setTaskError(error instanceof Error ? error.message : 'Could not delete. Try again.'); }
+  finally { taskBusyRef.current = false; setPendingTask(null); }
+ };
  return <section className={`study-home study-home-welcome${p.nativeChat ? ' study-home-native' : ''}`} aria-label="Your study nook">
-  <MovableWidget id="welcome" label="Welcome" className="study-home-welcome-position"><div className="study-home-content">
+  <MovableWidget id="welcome" label="Welcome and study shortcuts" className="study-home-welcome-position"><div className="study-home-content">
    <header className="study-home-heading">
     {firstName && <p className="study-home-greeting">Hi, {firstName}.</p>}
     <h1>Welcome to <span>{p.sceneName || 'your nook'}.</span></h1>
@@ -105,16 +115,23 @@ export function RoomHome(p: Props) {
    {!p.nativeChat && chatError && <p className="study-home-chat-error" role="alert">{chatError}</p>}
    {p.nativeChat && <p className="study-home-native-invitation">Ask ChatGPT, or choose something to study.</p>}
    <div className="study-home-quick-actions" aria-label="Create study material">
-    {([['note','Notes'],['flashcards','Flashcards'],['quiz','Quiz']] as const).map(([kind,label]) => <button key={kind} onClick={() => p.onCreateKind ? p.onCreateKind(kind,p.nativeChat ? '' : prompt) : p.onCreate()}>{label}<ArrowRight size={12} aria-hidden="true"/></button>)}
+    {([['note','Notes'],['flashcards','Flashcards'],['quiz','Quiz'],['exam','Test']] as const).map(([kind,label]) => <button key={kind} onClick={() => p.onCreateKind ? p.onCreateKind(kind,p.nativeChat ? '' : prompt) : p.onCreate()}>{label}<ArrowRight size={12} aria-hidden="true"/></button>)}
    </div>
-   {p.nativeChat && p.onWriteNote && <button className="study-home-native-add" onClick={p.onWriteNote}><Plus size={14} aria-hidden="true"/>Write a note</button>}
    {continuing && <button className="study-home-resume-link" onClick={() => p.onOpen(continuing)} title={continuing.title}><span>Pick up where you left off</span><strong>{continuing.title || 'Untitled note'}</strong><ArrowRight size={13} aria-hidden="true"/></button>}
   </div></MovableWidget>
   <aside className="study-home-tools" aria-label="Focus and to-do">
-   <MovableWidget id="timer" label="Pomodoro timer" className="study-home-timer-position"><section className="study-home-timer study-home-widget" aria-label="Pomodoro timer">
-    <div className="study-home-widget-heading"><h2>Pomodoro</h2><button onClick={p.onFocus} aria-label="Pomodoro options">{p.timer.active ? p.timer.running ? 'Focusing' : 'Paused' : `${p.timer.minutes} min`}<ChevronDown size={11} aria-hidden="true"/></button></div>
+   <MovableWidget id="timer" label="Pomodoro timer" className="study-home-timer-position"><section className={`study-home-timer study-home-widget ${p.timer.active ? 'is-active' : 'is-ready'}`} aria-label="Pomodoro timer">
+    <div className="study-home-widget-heading"><h2>{p.timer.active ? 'Pomodoro' : 'Focus timer'}</h2><span>{p.timer.pending ? 'Saving…' : p.timer.active ? p.timer.running ? 'Focusing' : 'Paused' : `${p.timer.minutes} min`}</span></div>
     <div className="study-home-clock" role="timer" aria-label={`${Math.floor(p.timer.remaining / 60)} minutes ${p.timer.remaining % 60} seconds remaining`}>{String(Math.floor(p.timer.remaining / 60)).padStart(2,'0')}<span>:</span>{String(p.timer.remaining % 60).padStart(2,'0')}</div>
-    <div className="study-home-timer-buttons"><button className="study-home-timer-start" disabled={p.timer.pending || p.timer.disabled} onClick={p.timer.running ? p.timer.onPause : p.timer.onStart}>{p.timer.running ? <Pause size={13} aria-hidden="true"/> : <Play size={13} fill="currentColor" aria-hidden="true"/>}{p.timer.pending ? 'Saving…' : p.timer.running ? 'Pause' : p.timer.active ? 'Resume' : 'Start focus'}</button><button className="study-home-timer-reset" aria-label="Reset focus timer" disabled={p.timer.pending || p.timer.disabled || !p.timer.active} onClick={() => setConfirmReset(true)}><RotateCcw size={14} aria-hidden="true"/></button></div>
+    {p.timer.active ? <div className="study-home-timer-progress" role="progressbar" aria-label="Focus session progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(focusProgress)} aria-valuetext={`${Math.round(focusProgress)}% of session elapsed`}><span style={{width:`${focusProgress}%`}}/></div> : <>
+     <p className="study-home-timer-state">Ready to begin</p>
+     <div className="study-home-timer-presets" role="group" aria-label="Focus duration">
+      {[15,25,50].map(minutes => <button key={minutes} aria-pressed={p.timer.minutes === minutes} disabled={p.timer.pending || p.timer.disabled} onClick={() => p.timer.onMinutes(minutes)}>{minutes}<span> min</span></button>)}
+      <label className="study-home-timer-custom"><span>Custom</span><CustomTimerInput minutes={p.timer.minutes} disabled={p.timer.pending || p.timer.disabled} onMinutes={p.timer.onMinutes}/><span>min</span></label>
+     </div>
+     <div className="study-home-timer-work"><span>Working on</span><strong>Independent study</strong><small>Time goes to {p.sceneName}</small></div>
+    </>}
+    <div className="study-home-timer-buttons"><button className="study-home-timer-start" disabled={p.timer.pending || p.timer.disabled} onClick={p.timer.running ? p.timer.onPause : p.timer.onStart}>{p.timer.running ? <Pause size={13} fill="currentColor" aria-hidden="true"/> : <Play size={13} fill="currentColor" aria-hidden="true"/>}{p.timer.pending ? 'Saving…' : p.timer.running ? 'Pause' : p.timer.active ? 'Resume' : 'Start'}</button><button className="study-home-timer-reset" aria-label="Reset focus timer" disabled={p.timer.pending || p.timer.disabled || !p.timer.active} onClick={() => setConfirmReset(true)}><RotateCcw size={14} aria-hidden="true"/></button></div>
     {confirmReset && p.timer.active && <div className="study-home-reset-confirm" role="group" aria-label="Discard this focus session?">
      <p>Discard this session? Its focus time will not be saved.</p>
      <div><button onClick={() => setConfirmReset(false)} disabled={p.timer.pending}>Keep session</button><button aria-label="Discard focus session" onClick={() => { setConfirmReset(false); p.timer.onReset(); }} disabled={p.timer.pending}>Discard</button></div>
@@ -123,14 +140,14 @@ export function RoomHome(p: Props) {
    </section></MovableWidget>
    <MovableWidget id="tasks" label="To-do list" className="study-home-tasks-position"><section className="study-home-tasks study-home-widget" aria-label="To-do list">
     <div className="study-home-widget-heading"><h2>To-do</h2><span>{completed}/{p.tasks.length}</span></div>
-    {orderedTasks.length ? <ul>{orderedTasks.map(item => <li key={item.id}><button className={item.done ? 'is-done' : ''} aria-pressed={item.done} disabled={!!pendingTask || savingTask} onClick={() => void toggleTask(item.id)}><span className="study-home-task-check" aria-hidden="true">{item.done && <Check size={11}/>}</span><span>{item.title}</span></button></li>)}</ul> : <p className="study-home-tasks-empty">What would you like to finish?</p>}
-    <form onSubmit={event => { event.preventDefault(); void addTask(); }}><input ref={taskInput} aria-label="New task" placeholder="Add a task" value={task} maxLength={300} disabled={savingTask} onChange={event => setTask(event.target.value)} /><button type="submit" disabled={!task.trim() || savingTask || !!pendingTask} aria-label={savingTask ? 'Saving task' : 'Add task'}><Plus size={16} aria-hidden="true"/></button></form>
+    {orderedTasks.length ? <ul>{orderedTasks.map(item => <li key={item.id}><button className={item.done ? 'is-done' : ''} aria-pressed={item.done} disabled={!!pendingTask || savingTask} onClick={() => void toggleTask(item.id)}><span className="study-home-task-check" aria-hidden="true">{item.done && <Check size={11}/>}</span><span>{item.title}</span></button><button type="button" className="study-home-task-delete" aria-label={`Delete task: ${item.title}`} title="Delete task" disabled={!!pendingTask || savingTask} onClick={() => void deleteTask(item.id)}><X size={13} aria-hidden="true"/></button></li>)}</ul> : <p className="study-home-tasks-empty">What would you like to finish?</p>}
+    <form onSubmit={event => { event.preventDefault(); void addTask(); }}><input ref={taskInput} aria-label="New task" placeholder="Add a task" value={task} maxLength={300} onKeyDown={event=>{if(event.key==='Enter'&&!event.nativeEvent.isComposing){event.preventDefault();void addTask();}}} disabled={savingTask} onChange={event => setTask(event.target.value)} /><button type="button" onClick={() => void addTask()} disabled={!task.trim() || savingTask || !!pendingTask} aria-label={savingTask ? 'Saving task' : 'Add task'}><Plus size={16} aria-hidden="true"/></button></form>
     {taskError && <p className="study-home-task-error" role="alert">{taskError}</p>}
    </section></MovableWidget>
   </aside>
-  <MovableWidget id="collection" label="Collection" className="study-home-collection-position"><aside className="study-home-collection" aria-label="Your nook collection">
+  <div className="study-home-collection-position"><aside className="study-home-collection" aria-label="Your nook collection">
    {p.journey}
    {p.rewardShelf && <div className="study-home-shelf">{p.rewardShelf}</div>}
-  </aside></MovableWidget>
+  </aside></div>
  </section>;
 }

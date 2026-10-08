@@ -10,3 +10,22 @@
 /* Keep the first set of nooks in view on laptop-height displays. */
 @media(min-width:901px) and (max-height:850px){.nd-intro{padding-top:20px}.nd-intro>.nd-small-label{display:none}.nd-intro h1{font-size:31px;margin:4px 0 8px}.nd-search{margin:18px auto}.nd-categories{padding-bottom:15px}.nd-results-heading{padding-top:17px}.nd-card-image{aspect-ratio:1.85}}
 .lofi-world .nd-dialog select{background:#f5f1ea;color:#62513f;border:0;border-radius:6px;padding:5px 8px}
+
+/* The discovery controls use the same soft corners as the study workspace. */
+.nd-dialog {--nd-pill-radius:999px;--nd-card-radius:24px;}
+.nd-header {justify-content:flex-end;border-bottom:0;padding-bottom:0;}
+.nd-intro {padding-top:12px;}
+.nd-search-row {display:flex;align-items:center;gap:12px;max-width:674px;margin:24px auto 25px;}
+.nd-search-row .nd-search {flex:1;min-width:0;margin:0;border-radius:var(--nd-pill-radius);}
+.nd-create-circle {display:grid;place-items:center;flex:0 0 50px;width:50px;height:50px;border-radius:50%;border:1px solid #d8cab9;background:#eee7df;color:#594330;}
+.nd-create-circle:hover {background:#e5d9ca;}
+.nd-categories button,.nd-primary,.nd-current,.nd-audiences>span,.lofi-world .nd-dialog select {border-radius:var(--nd-pill-radius);}
+.nd-card-image,.nd-detail-image {border-radius:var(--nd-card-radius);}
+.nd-card-open {display:block;width:100%;padding:0;border:0;background:none;text-align:left;border-radius:var(--nd-card-radius);}
+.nd-card-open .nd-card-image {width:100%;}
+.nd-card-title {align-items:center;min-height:32px;}
+.nd-card-name {padding:0;border:0;background:none;color:inherit;text-align:left;}
+.nd-favorite {display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid #dfd4c7;background:#f5f0e9;color:#94755d;}
+.nd-favorite:hover {background:#eee2d6;border-color:#c8ac94;}
+.nd-favorite[aria-pressed=true] {background:#f0ddd2;color:#a36250;border-color:#d5a08d;}
+@media(max-width:600px){.nd-search-row {gap:9px;margin:20px 0;}.nd-create-circle {flex-basis:46px;width:46px;height:46px;}.nd-dialog .nd-detail-image {border-radius:var(--nd-card-radius);}}

@@ -18,7 +18,7 @@ let updateExpression;
 function findUpdate(node){if(ts.isVariableDeclaration(node)&&node.name.getText(appAst)==='update')updateExpression=node.initializer.getText(appAst);ts.forEachChild(node,findUpdate);}
 findUpdate(appAst);
 assert.ok(updateExpression);
-const dependencies='studioNavigationVersion={current:0},setPendingStudioDraftId=()=>{},isEmbedded=false,isPublicPreview=false,workspaceLoaded={current:true},pendingInitialPresentation={current:undefined},readNativeRecoveryScope=()=>undefined,progressOwner={current:"host"},setError=()=>{},workspaceOrder,acceptWorkspace,normalize,setWorkspace,dirtyNote,studyEditing,setPendingChatArtifact,setPendingChatView,pendingChatReference,notify,readWorkspaceView,openChatArtifact,openChatView,previewArtifacts';
+const dependencies='interruptOpening=()=>{},studioNavigationVersion={current:0},setPendingStudioDraftId=()=>{},isEmbedded=false,isPublicPreview=false,workspaceLoaded={current:true},pendingInitialPresentation={current:undefined},readNativeRecoveryScope=()=>undefined,progressOwner={current:"host"},setError=()=>{},workspaceOrder,acceptWorkspace,normalize,setWorkspace,dirtyNote,studyEditing,setPendingChatArtifact,setPendingChatView,pendingChatReference,notify,readWorkspaceView,openChatArtifact,openChatView,previewArtifacts';
 const { createUpdate }=await import(url(`export const createUpdate=({${dependencies}})=>(${updateExpression});`));
 function updater(workspace,active){
  const state={workspace,active,page:'home',navigations:0};

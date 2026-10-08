@@ -1,0 +1,3 @@
+/* Keep text-entry surfaces quiet while preserving focus cues on buttons. */
+:where(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=button]):not([type=submit]),textarea,[contenteditable=true],[role=textbox]):is(:focus,:focus-visible){outline:none!important;box-shadow:none!important}
+:where(.nooks-library-search,.nooks-create-source-search,.nd-search,.ambient-spotify-input,.nooks-studio-scene-tools>label,.study-home-composer,.nook-chat-composer):focus-within{outline:none!important;box-shadow:none!important}

@@ -25,11 +25,11 @@ const factory = async (name, dependencies) => {
 const panelSetters = ['setShowFocus', 'setShowSounds', 'setShowPeople', 'setShowCollection', 'setShowToday', 'setShowNooks', 'setShowPersonalize', 'setShowSettings'];
 const otherSetters = ['setShowCreate', 'setShowNookCreator', 'setShowIdentity', 'setShowAccount', 'setShowAbout', 'setShowShare', 'setHandoff', 'setMobileNav', 'setZen'];
 const createUtility = await factory('openUtility', panelSetters);
-const createClear = await factory('clearChatObstructions', [...otherSetters,'studioNavigationVersion={current:0}','setPendingStudioDraftId=()=>{}']);
+const createClear = await factory('clearChatObstructions', [...otherSetters,'interruptOpening=()=>{}','studioNavigationVersion={current:0}','setPendingStudioDraftId=()=>{}']);
 const createChangePage = await factory('changePage', ['openUtility', 'setPage', 'setQuery', 'setMobileNav', 'setFilter', 'setSubject']);
 const createOpenView = await factory('openChatView', ['clearChatObstructions', 'openUtility', 'panelForWorkspaceView', 'setActive', 'changePage']);
 const createOpenArtifact = await factory('openChatArtifact', ['clearChatObstructions', 'openUtility', 'setActive', 'setPage', 'setReference', 'writeLocalWorkspaceState', 'isPublicPreview=false', 'account={workspaceKey:"device"}', 'getNativeRecoveryScope=()=>"account:alice"']);
-const createUpdate = await factory('update', ['isEmbedded=false', 'isPublicPreview=false', 'workspaceLoaded={current:true}', 'pendingInitialPresentation={current:undefined}', 'readNativeRecoveryScope=()=>undefined', 'progressOwner={current:"host"}', 'setError=()=>{}', 'studioNavigationVersion={current:0}', 'setPendingStudioDraftId=()=>{}', 'workspaceOrder', 'acceptWorkspace', 'normalize', 'setWorkspace', 'dirtyNote', 'studyEditing', 'setPendingChatArtifact', 'setPendingChatView', 'pendingChatReference', 'notify', 'readWorkspaceView', 'openChatArtifact', 'openChatView', 'previewArtifacts']);
+const createUpdate = await factory('update', ['interruptOpening=()=>{}','isEmbedded=false', 'isPublicPreview=false', 'workspaceLoaded={current:true}', 'pendingInitialPresentation={current:undefined}', 'readNativeRecoveryScope=()=>undefined', 'progressOwner={current:"host"}', 'setError=()=>{}', 'studioNavigationVersion={current:0}', 'setPendingStudioDraftId=()=>{}', 'workspaceOrder', 'acceptWorkspace', 'normalize', 'setWorkspace', 'dirtyNote', 'studyEditing', 'setPendingChatArtifact', 'setPendingChatView', 'pendingChatReference', 'notify', 'readWorkspaceView', 'openChatArtifact', 'openChatView', 'previewArtifacts']);
 const createFlush = await factory('flush', ['pendingStudioDraftId', 'setStudioDraftId=()=>{}', 'setPendingStudioDraftId=()=>{}', 'setShowNookCreator=()=>{}', 'noteDirty', 'dirtyNote', 'studyEditing', 'pendingChatArtifact', 'pendingChatView', 'pendingChatReference', 'setPendingChatArtifact', 'setPendingChatView', 'openChatArtifact', 'openChatView']);
 
 function harness() {
@@ -131,7 +131,7 @@ test('the native bridge labels UI-initiated tool responses separately from host 
   const bridge = ts.createSourceFile('bridge.ts', fs.readFileSync(new URL('./bridge.ts', import.meta.url), 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
   const functions = {};
   for (const node of bridge.statements) if (ts.isFunctionDeclaration(node) && ['publish', 'callTool'].includes(node.name?.text)) functions[node.name.text] = node.getText(bridge).replace(/^export /, '');
-  const { create } = await load(`export const create=(window,CustomEvent,rpc)=>{let initialData;const isPublicPreview=false,isEmbedded=true,initialized=true,connection=Promise.resolve(),flatten=value=>value;${functions.publish};${functions.callTool};return {publish,callTool};};`);
+  const { create } = await load(`export const create=(window,CustomEvent,rpc)=>{let initialData;const tutorialTools=null;const isPublicPreview=false,isEmbedded=true,initialized=true,connection=Promise.resolve(),flatten=value=>value;${functions.publish};${functions.callTool};return {publish,callTool};};`);
   const events = [];
   const data = { workspace: { revision: 10, artifacts: [] }, artifact: { id: 'autosaved-note', kind: 'note' } };
   const bridgeHarness = create({ dispatchEvent: event => events.push(event) }, class { constructor(name, options) { this.name=name; this.detail=options.detail; } }, async () => data);
@@ -185,7 +185,7 @@ test('native navigation retains a study-set editor until saving or cancelling fi
  h.studyEditing.current=false;h.flush();assert.equal(h.state.active.id,'next-deck');
 });
 
-const createPresentDraft = await factory('presentAppTarget', ['isPublicPreview=false','readNativeRecoveryScope=()=>undefined','workspaceReady=true','studioNavigationVersion','progressOwner','setPendingStudioDraftId','presentInWorkspace','setPendingChatArtifact','setPendingChatView','callTool','progressMounted','dirtyNote','studyEditing','setStudioDraftId','setShowNookCreator','showNookCreator=false']);
+const createPresentDraft = await factory('presentAppTarget', ['interruptOpening=()=>{}','setOpeningHostPending=()=>{}','isPublicPreview=false','readNativeRecoveryScope=()=>undefined','workspaceReady=true','studioNavigationVersion','progressOwner','setPendingStudioDraftId','presentInWorkspace','setPendingChatArtifact','setPendingChatView','callTool','progressMounted','dirtyNote','studyEditing','setStudioDraftId','setShowNookCreator','showNookCreator=false']);
 test('a late draft read never opens over a newer app destination',async()=>{
  let resolve;const reads=new Promise(yes=>resolve=yes),state={};const version={current:0};
  const present=createPresentDraft({studioNavigationVersion:version,progressOwner:{current:'owner'},progressMounted:{current:true},dirtyNote:{current:false},studyEditing:{current:false},callTool:()=>reads,presentInWorkspace:async()=>({status:'presented'}),setPendingStudioDraftId:()=>{},setPendingChatArtifact:()=>{},setPendingChatView:()=>{},setStudioDraftId:value=>state.draftId=value,setShowNookCreator:value=>state.open=value});
@@ -196,3 +196,14 @@ test('a nook draft waits for writing then opens in the same app',()=>{
  const h=harness();h.dirtyNote.current=true;h.state.pendingStudioDraftId='draft-a';h.flush();assert.equal(h.state.showNookCreator,undefined);
  h.dirtyNote.current=false;h.flush();assert.equal(h.state.studioDraftId,'draft-a');assert.equal(h.state.showNookCreator,true);assert.equal(h.state.pendingStudioDraftId,undefined);
 });
+
+for (const kind of ['note', 'flashcards', 'quiz', 'exam']) {
+ test(`new ${kind} opens immediately in the current study surface`, () => {
+  const h = harness(); h.state.showCreate = true; h.state.showNooks = true;
+  const artifact = {id:`created-${kind}`,kind,title:'New study material',revision:1};
+  h.update({artifact,unsaved:false});
+  assert.equal(h.state.active,artifact); assert.equal(h.state.page,'home');
+  assert.equal(h.state.showCreate,false); assert.equal(h.state.showNooks,false);
+  assert.equal(h.state.lastOpened,artifact.id); assert.equal(h.state.pendingChatArtifact,null);
+ });
+}

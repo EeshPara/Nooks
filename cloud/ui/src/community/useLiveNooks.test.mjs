@@ -119,3 +119,17 @@ test('missing verified workspace scope disables community reads and never uses a
 test('unchanged authoritative profile keeps its identity so polling does not erase profile form edits', async () => {
   const h=harness(()=>({nooks:[]}));await h.tick();const profile=h.current.profile;await h.current.refresh();await h.tick();assert.equal(h.current.profile,profile);h.close();
 });
+
+test('privacy changes retain the selected lobby and reject unverified responses',{skip:'Website-only visibility controls are not exposed by the native community adapter.'},async()=>{
+ let visibility='public',fail=false;
+ const h=harness((name,args)=>{
+  if(name==='nooks_list')return {nooks:[{...nook(SELECTED),visibility}]};
+  if(name==='nook_snapshot')return {...snapshot(SELECTED),nook:{...nook(SELECTED),visibility}};
+  if(name==='nook_visibility_update'){if(fail)throw new Error('Owner required');visibility=args.visibility;return {nook:{...nook(SELECTED),visibility}};}
+  return {};
+ },{activeNookId:SELECTED});
+ await h.tick();await h.current.updateVisibility(SELECTED,'private');await h.tick();
+ assert.equal(h.current.activeNookId,SELECTED);assert.equal(h.current.snapshot.nook.visibility,'private');
+ assert.deepEqual(h.calls.find(c=>c.name==='nook_visibility_update').args,{nookId:SELECTED,visibility:'private'});
+ fail=true;await assert.rejects(h.current.updateVisibility(SELECTED,'public'),/Owner required/);await h.tick();assert.equal(h.current.snapshot.nook.visibility,'private');h.close();
+});
