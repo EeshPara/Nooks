@@ -33,20 +33,24 @@ function journal(){
 }
 async function saveReport(){await writeFile(reportPath,JSON.stringify(report,null,2)+'\n');}
 async function publicRequest(path,{user,tool=path,args,expected=200}={}){
- const requestPhase=phase;
+ const requestPhase=phase,queuedAt=performance.now(),quietDeadline=quietMutations&&tool==='profile_update'?quietUntil:null;
  return gate.run('public',async began=>{
-  let status=0,ok=false,bytes=0,requestId;
-  const timeout=quietMutations&&tool==='profile_update'?Math.min(15000,Math.floor(quietUntil-performance.now())):15000;
-  assert(timeout>0,'fanout_quiet_deadline');const signal=AbortSignal.timeout(timeout);
+  let status=0,ok=false,bytes=0,requestId,signal,requestBudgetMs=null,quietBudgetRemainingMs=null,failureCode;
   try{
+   quietBudgetRemainingMs=quietDeadline===null?null:Math.floor(quietDeadline-performance.now());
+   requestBudgetMs=quietBudgetRemainingMs===null?15000:Math.min(15000,quietBudgetRemainingMs);
+   assert(requestBudgetMs>0,'fanout_quiet_deadline');signal=AbortSignal.timeout(requestBudgetMs);
    const response=await fetch(PUBLIC+path,{redirect:'error',signal,method:args===undefined?'GET':'POST',headers:{Accept:'application/json',...(user?{Origin:PUBLIC,Authorization:`Bearer ${user.token}`} :{}),...(args===undefined?{}:{'Content-Type':'application/json'})},...(args===undefined?{}:{body:JSON.stringify(args)})});
    status=response.status;requestId=response.headers.get('x-request-id');const raw=await readBounded(response);bytes=raw.length;
    if(status!==expected){report.lastHttpFailure={tool,status,requestId:/^[a-f0-9-]{36}$/.test(requestId??'')?requestId:undefined};throw new Error('unexpected_http_status');}
    let body;if(path==='/')body=raw;else{try{body=JSON.parse(raw);}catch{throw new Error('malformed_public_response');}}
    if(expected===403)assert(body?.error?.code==='FORBIDDEN','wrong_denial_contract');
    ok=true;return body;
-  }catch(error){stop(safeCode(error));throw error;}
-  finally{samples.push({phase:requestPhase,tool,roomIndex:user?.roomIndex,userIndex:user?.index,startedMs:Math.round(began-started),durationMs:Math.round(performance.now()-began),status,ok,expectedDenial:expected===403,responseBytes:bytes});}
+  }catch(error){
+   failureCode=quietDeadline!==null&&signal?.aborted&&signal.reason?.name==='TimeoutError'?'fanout_quiet_deadline':safeCode(error);
+   stop(failureCode);throw new Error(failureCode);
+  }
+  finally{samples.push({phase:requestPhase,tool,roomIndex:user?.roomIndex,userIndex:user?.index,queuedMs:Math.round(queuedAt-started),startedMs:Math.round(began-started),queueWaitMs:Math.max(0,Math.round(began-queuedAt)),requestBudgetMs,quietBudgetRemainingMs,durationMs:Math.round(performance.now()-began),status,ok,expectedDenial:expected===403,responseBytes:bytes,...(failureCode?{failureCode}:{})});}
  });
 }
 const api=(user,tool,args={},expected=200)=>publicRequest(tool==='workspace'?'/api/workspace':`/api/tools/${tool}`,{user,tool,...(tool==='workspace'?{}:{args}),expected});
@@ -139,12 +143,13 @@ async function fanout(label){
   await Promise.allSettled([...pending]);guard('public');
   assert(users.every(user=>performance.now()-user.lastHeartbeat<=55000),'fanout_heartbeat_margin');
   const quietGuard=()=>{guard('public');assert(performance.now()<quietUntil,'fanout_quiet_deadline');};
-  // HTTP completion is not broadcast completion. Observe one second of room-hint silence, at most three seconds.
+  // Room invalidations throttle for two seconds. Wait beyond it after drain, plus one second of hint silence, within the same three-second settling bound.
   let lastChange=performance.now(),previous=users.map(user=>user.hints).join(','),settlingStart=performance.now();
-  while(performance.now()-lastChange<1000){
+  while(performance.now()-settlingStart<2100||performance.now()-lastChange<1000){
    quietGuard();assert(performance.now()-settlingStart<3000,'room_hints_unsettled_inconclusive');await sleep(50);
    const current=users.map(user=>user.hints).join(',');if(current!==previous){previous=current;lastChange=performance.now();}
   }
+  assert(users.every(user=>performance.now()-user.lastHeartbeat<=55000),'fanout_heartbeat_margin');
   for(const room of rooms){
    quietGuard();assert(users.every(u=>u.connected),'fanout_requires_all_connected');
    const before=users.map(u=>u.hints),began=performance.now();
@@ -183,7 +188,8 @@ async function plateau(){
   if(elapsed>=nextMinute){const value=intervalReport(Math.floor(nextMinute/60000)-1);report.intervals.push(value);console.log(`Soak minute ${nextMinute/60000}: ${JSON.stringify(value)}`);nextMinute+=60000;await saveReport();}
   if(!reconnectBusy&&!fanoutBusy&&reconnectRound<=2&&elapsed>=reconnectRound*300000){const round=reconnectRound++;reconnectBusy=true;launch(()=>reconnect(round).finally(()=>{reconnectBusy=false}),background);}
   if(!fanoutBusy&&!reconnectBusy&&elapsed>=nextFanout){const label=`minute-${Math.floor(nextFanout/60000)}`;nextFanout+=180000;fanoutBusy=true;launch(()=>fanout(label).finally(()=>{fanoutBusy=false}),background);}
-  if(pending.size<SOAK.maxActive){
+  // Keep reads flowing without filling the FIFO ahead of controlled profile writes.
+  if(pending.size<(quietMutations?1:SOAK.maxActive)){
    const due=users.filter(u=>!quietMutations&&!u.heartbeatPending&&now-u.lastHeartbeat>=SOAK.heartbeatMs).sort((a,b)=>a.lastHeartbeat-b.lastHeartbeat)[0];
    if(due){due.heartbeatPending=true;launch(()=>heartbeat(due));}
    else{const user=users[snapshotCursor++%users.length];launch(()=>snapshot(user));}
