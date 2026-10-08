@@ -155,7 +155,7 @@ export async function requestChatGPT(prompt: string): Promise<boolean> {
   if(isTutorialPractice)return false;
   if (!isEmbedded) return false;
   await connection;
-  prompt += '\n\nKeep this interaction in the existing Nooks tab. If its app-provided nooks_present tool is available, use it to show the saved artifact or view. ' + (workspaceSessionId ? `Otherwise use workspace_navigate with sessionId ${JSON.stringify(workspaceSessionId)}. This is only a UI routing identifier, not study content. Do not call workspace_render again for this action.` : 'If the mounted app cannot be reached, explain that limitation rather than repeatedly opening new tabs.');
+  prompt += '\n\nKeep this interaction in the existing Nooks tab. For an explicit request to create study material, save it and immediately present the result without asking whether to create, save, or open it again. If its app-provided nooks_present tool is available, use it to show the saved artifact or view. ' + (workspaceSessionId ? `Otherwise use workspace_navigate with sessionId ${JSON.stringify(workspaceSessionId)}. This is only a UI routing identifier, not study content. Do not call workspace_render again for this action.` : 'If the mounted app cannot be reached, explain that limitation rather than repeatedly opening new tabs.');
   if (initialized) {
     await rpc('ui/message', { role: 'user', content: [{ type: 'text', text: prompt }] });
     return true;

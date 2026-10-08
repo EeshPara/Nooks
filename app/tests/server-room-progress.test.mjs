@@ -27,11 +27,11 @@ async function complete(engine, advance, minutes, seconds = minutes * 60, user =
 }
 
 test('room catalog covers every curated room and custom artwork with unique milestones', () => {
-  assert.equal(ROOM_IDS.length, 31);
-  assert.equal(PROGRESS_ROOM_IDS.length, 32);
+  assert.equal(ROOM_IDS.length, 66);
+  assert.equal(PROGRESS_ROOM_IDS.length, 67);
   const rewards = Object.values(rewardCatalog.rooms).flatMap(room => room.rewards);
-  assert.equal(rewards.length, 128);
-  assert.equal(new Set(rewards.map(reward => reward.id)).size, 128);
+  assert.equal(rewards.length, 268);
+  assert.equal(new Set(rewards.map(reward => reward.id)).size, 268);
   for (const room of PROGRESS_ROOM_IDS) assert.deepEqual(rewardCatalog.rooms[room].rewards.map(reward => reward.minutes), [15, 45, 90, 180]);
   assert.equal(activeRoomId({ theme: 'sky' }), 'midnight-train');
   assert.equal(activeRoomId({ theme: 'lavender' }), 'sakura-garden');

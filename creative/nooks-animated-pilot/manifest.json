@@ -1,0 +1,60 @@
+{
+  "model": "Seedance 1.5 Pro",
+  "provider": "Higgsfield",
+  "totalCreditsUsed": 14.4,
+  "balanceBefore": 206.07,
+  "balanceAfter": 191.67,
+  "generationCount": 3,
+  "generatedDurationSeconds": 8,
+  "loopFinish": "1 second forward overlap, geometry-masked alpha composite on original still",
+  "clips": [
+    {
+      "roomId": "rainy-library",
+      "video": "/videos/nooks-animated-pilot/rainy-library.mp4",
+      "poster": "/images/nooks-50/rainy-library.webp",
+      "videoSha256": "9e72b3e52637ccec2bda95f3cf9cfbd447914ab46afaf3c16d6712d90c12c355",
+      "sourceArtworkSha256": "35bd2a9a0af234ae6e59a576ce113d2900d8ecaee9f62c0a0589569edf83ccf1",
+      "bytes": 2495373,
+      "width": 1280,
+      "height": 720,
+      "durationSeconds": 7,
+      "fps": 24,
+      "audio": false,
+      "fixedCamera": true,
+      "originalArtOutsideMotionRegions": true,
+      "qa": "Frame/contact-sheet inspection plus full decode and temporal metrics; host playback verified separately by integration task."
+    },
+    {
+      "roomId": "howls-moving-study",
+      "video": "/videos/nooks-animated-pilot/howls-moving-study.mp4",
+      "poster": "/images/nooks-50/howls-moving-study.webp",
+      "videoSha256": "d9e3d7664770e5e98bf678e099dce7f113fd5233a0a43646adf5919547eb34d5",
+      "sourceArtworkSha256": "44b17a12042c265521e2eb2757b3c9c37b37c73bd096b24a3335c5dfda5bf672",
+      "bytes": 578188,
+      "width": 1280,
+      "height": 720,
+      "durationSeconds": 7,
+      "fps": 24,
+      "audio": false,
+      "fixedCamera": true,
+      "originalArtOutsideMotionRegions": true,
+      "qa": "Frame/contact-sheet inspection plus full decode and temporal metrics; host playback verified separately by integration task."
+    },
+    {
+      "roomId": "gryffindor-common-room",
+      "video": "/videos/nooks-animated-pilot/gryffindor-common-room.mp4",
+      "poster": "/images/nooks-50/gryffindor-common-room.webp",
+      "videoSha256": "1ada672679da343f6a1bd1330313f098548288032094ca37691db94d8fe8744f",
+      "sourceArtworkSha256": "5b2b770aa5102faaa3c6cd9c6be30d0bca0948d2442aea0f012ecf97777fb64f",
+      "bytes": 844173,
+      "width": 1280,
+      "height": 720,
+      "durationSeconds": 7,
+      "fps": 24,
+      "audio": false,
+      "fixedCamera": true,
+      "originalArtOutsideMotionRegions": true,
+      "qa": "Frame/contact-sheet inspection plus full decode and temporal metrics; host playback verified separately by integration task."
+    }
+  ]
+}

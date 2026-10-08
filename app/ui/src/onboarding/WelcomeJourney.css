@@ -180,3 +180,11 @@
 .nooks-tour-card h2:focus{outline:none;box-shadow:none}
 .nooks-tour-card footer button:not(.welcome-primary):focus-visible{outline:2px solid #c7b89f;outline-offset:3px;box-shadow:none;background:#fff;color:#6c6459}
 .lofi-world.unified-workspace .nooks-shell-nav button[data-nooks-tab].nooks-tour-selected{background:#fff;color:#393830;box-shadow:0 3px 12px #0002}
+
+/* Move the printed sheet as one piece; never reflow the text during opening. */
+.welcome-mail-stage .mail-sheet{left:50%;top:0;width:min(598px,calc((100vw - 48px)*.88));height:682px;transform-origin:50% 100%;transform:translateX(-50%) translateY(-382px) scale(.59);transition:transform 1.4s cubic-bezier(.25,.65,.3,1);}
+.welcome-mail-stage.is-unsealed .mail-sheet{top:0;height:682px;transform:translateX(-50%) translateY(0) scale(1);}
+.is-envelope .welcome-mail-stage{overflow:hidden;}
+.mail-sheet .welcome-letter{animation:none;transform:none;opacity:1;transition:none;}
+@media(max-width:600px){.welcome-mail-stage .mail-sheet{width:calc((100vw - 40px)*.88);height:712px;transform:translateX(-50%) translateY(-472px) scale(.59)}.welcome-mail-stage.is-unsealed .mail-sheet{height:712px}}
+@media(prefers-reduced-motion:reduce){.welcome-mail-stage .mail-sheet{transition:none}}

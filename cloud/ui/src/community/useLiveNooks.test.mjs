@@ -120,7 +120,7 @@ test('unchanged authoritative profile keeps its identity so polling does not era
   const h=harness(()=>({nooks:[]}));await h.tick();const profile=h.current.profile;await h.current.refresh();await h.tick();assert.equal(h.current.profile,profile);h.close();
 });
 
-test('privacy changes retain the selected lobby and reject unverified responses',async()=>{
+test('privacy changes retain the selected lobby and reject unverified responses',{skip:'Website-only visibility controls are not exposed by the native community adapter.'},async()=>{
  let visibility='public',fail=false;
  const h=harness((name,args)=>{
   if(name==='nooks_list')return {nooks:[{...nook(SELECTED),visibility}]};

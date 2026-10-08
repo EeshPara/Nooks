@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import ts from 'typescript';
 const source=fs.readFileSync(new URL('./spotifyPlayer.ts',import.meta.url),'utf8').replace(/^import .*\n/gm,'').replace('export function useSpotifyPlayer','function useSpotifyPlayer').replace('export type SpotifyTrack','type SpotifyTrack');
-const code=ts.transpileModule(`export function create({useEffect,useRef,useState,localStorage,sessionStorage,window,fetch,history,crypto,btoa}){${source};return useSpotifyPlayer;}`,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
+const code=ts.transpileModule(`export function create({useEffect,useRef,useState,localStorage,sessionStorage,window,fetch,history,crypto,btoa}){const isTutorialPractice=false;${source};return useSpotifyPlayer;}`,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
 const {create}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
 function harness(){
  const states=[],effects=[],pending=[],requests=[],calls=[];let at=0;const store=new Map([['nooks:spotify-player:v1',JSON.stringify({access_token:'test-token',refresh_token:'test-refresh',expires:Date.now()+3600000})]]);

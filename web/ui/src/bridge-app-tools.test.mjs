@@ -171,6 +171,7 @@ test('clearing selected study context retains session routing and chat messages 
   assert.ok(message.params.content[0].text.includes(current));
   assert.equal(message.params.content[0].text.includes(session), false);
   assert.match(message.params.content[0].text, /Do not call workspace_render again/);
+  assert.match(message.params.content[0].text, /immediately present the result without asking/);
   assert.equal(h.bridge.getWorkspaceSessionId(), current);
   h.reply(message); assert.equal(await chat, true);
   assert.equal(h.timers.size, 0);

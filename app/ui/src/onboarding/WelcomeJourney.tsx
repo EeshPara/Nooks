@@ -84,9 +84,7 @@ export function WelcomeJourney({workspace,scope,initialProfile,replay,onNavigate
   if(!tour||!isTutorialPractice)return;
   const tab=document.querySelector('[data-nooks-tab]');
   if(step===9)tab?.classList.add('nooks-tour-selected');
-  const block=(event:Event)=>{if(step===5&&event.target instanceof Element&&event.target.closest('.nooks-people-position')){event.preventDefault();event.stopImmediatePropagation();}};
-  document.addEventListener('click',block,true);
-  return()=>{tab?.classList.remove('nooks-tour-selected');document.removeEventListener('click',block,true);};
+  return()=>{tab?.classList.remove('nooks-tour-selected');};
  },[tour,step]);
  async function connect(){if(!onConnect||busy)return;setBusy(true);setError('');try{await onConnect({name:name.trim(),avatar});}catch(e){setError(e instanceof Error?e.message:'Please try connecting again.');}finally{setBusy(false);}}
  const sidePanel=holes.filter(r=>r.width*r.height>viewport.width*viewport.height*.1&&r.left>280).sort((a,b)=>b.width*b.height-a.width*a.height)[0];

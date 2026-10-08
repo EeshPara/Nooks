@@ -5,7 +5,7 @@ import ts from 'typescript';
 const source = fs.readFileSync(new URL('./bridge.ts', import.meta.url), 'utf8');
 const ast = ts.createSourceFile('bridge.ts', source, ts.ScriptTarget.Latest, true);
 const declaration = ast.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === 'callTool').getText(ast).replace(/^export /, '');
-const code = ts.transpileModule(`export const create=(nooksAccount,publicPreview=true,fetch)=>{const isPublicPreview=publicPreview,isEmbedded=false,flatten=value=>value;${declaration};return callTool;};`, { compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 } }).outputText;
+const code = ts.transpileModule(`export const create=(nooksAccount,publicPreview=true,fetch)=>{const tutorialTools=null;const isPublicPreview=publicPreview,isEmbedded=false,flatten=value=>value;${declaration};return callTool;};`, { compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 } }).outputText;
 const { create } = await import('data:text/javascript;base64,' + Buffer.from(code).toString('base64'));
 function harness(response) {
   const state = { key: 'account:alice' };
