@@ -6,9 +6,10 @@ import { getNookPlaylist, type NookPlaylist } from './nookPlaylists';
 import { consumeDismissEscape, isTopmostDismissTarget } from './dismissal';
 import { ambienceKey, getAmbiencePreset, defaultAmbience, loadAmbience, safeVolume, type Channel, type Preferences } from './nookAmbience';
 export { safeVolume } from './nookAmbience';
+import { recordedAmbience, recordingBytes, fireVariant } from './recordedAmbience';
 import './ambient.css';
 
-interface Engine { context: AudioContext; master: GainNode; gains: Record<Channel, GainNode>; sources: AudioScheduledSourceNode[]; audio: HTMLAudioElement; localGain: GainNode; localSource: MediaElementAudioSourceNode }
+interface Engine { ready: Promise<void>; fireGains: Record<'stove'|'hearth', GainNode>; context: AudioContext; master: GainNode; gains: Record<Channel, GainNode>; sources: AudioScheduledSourceNode[]; audio: HTMLAudioElement; localGain: GainNode; localSource: MediaElementAudioSourceNode }
 interface LocalTrack { url: string; name: string }
 export interface AmbientMixerProps { open: boolean; onClose: () => void; roomId: string; roomTitle: string }
 
@@ -16,31 +17,18 @@ function loadPreferences(roomId: string): Preferences {
   try { return loadAmbience(roomId, localStorage); } catch { return defaultAmbience(roomId); }
 }
 
-function noise(context: AudioContext, kind: 'rain' | 'brown' | 'fire'): AudioBuffer {
+function brownNoise(context: AudioContext): AudioBuffer {
   const rate = context.sampleRate;
   const buffer = context.createBuffer(1, rate * 18, rate);
   const samples = buffer.getChannelData(0);
-  let lastBrown = 0;
+  let brown = 0;
   for (let i = 0; i < samples.length; i++) {
-    const white = Math.random() * 2 - 1;
-    lastBrown = (lastBrown + .02 * white) / 1.02;
-    samples[i] = kind === 'rain' ? white : lastBrown * (kind === 'fire' ? .9 : 3.2);
+    brown = (brown + .02 * (Math.random() * 2 - 1)) / 1.02;
+    samples[i] = brown * 3.2;
   }
-  if (kind === 'fire') {
-    // Small, irregular transients over a soft low-frequency bed, not a loud impulse.
-    for (let i = 0; i < samples.length - rate * .06; i++) {
-      if (Math.random() > 3.6 / rate) continue;
-      const length = Math.floor(rate * (.008 + Math.random() * .04));
-      const strength = .08 + Math.random() * .28;
-      for (let j = 0; j < length; j++) samples[i + j] += (Math.random() * 2 - 1) * strength * Math.exp(-7 * j / length);
-    }
-  }
-  // Crossfade loop edges to keep long-running procedural buffers click-free.
-  const fade = Math.min(Math.floor(rate * .12), samples.length / 2);
+  const fade = Math.floor(rate * .12);
   for (let i = 0; i < fade; i++) {
-    const amount = i / fade;
-    const beginning = samples[i]; const ending = samples[samples.length - fade + i];
-    const mixed = beginning * amount + ending * (1 - amount);
+    const mixed = samples[i] * i / fade + samples[samples.length - fade + i] * (1 - i / fade);
     samples[i] = mixed; samples[samples.length - fade + i] = mixed;
   }
   return buffer;
@@ -59,14 +47,19 @@ function createEngine(): Engine {
   for (const channel of ['rain', 'brown', 'fire', 'warm'] as Channel[]) {
     const gain = context.createGain(); gain.gain.value = 0; gain.connect(master); gains[channel] = gain;
   }
-  for (const channel of ['rain', 'brown', 'fire'] as const) {
-    const source = context.createBufferSource(); source.buffer = noise(context, channel); source.loop = true; source.loopEnd = source.buffer.duration - .12;
-    const filter = context.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = channel === 'rain' ? 6500 : channel === 'brown' ? 650 : 3000;
-    const highpass = context.createBiquadFilter(); highpass.type = 'highpass'; highpass.frequency.value = channel === 'rain' ? 180 : channel === 'brown' ? 24 : 80;
-    const trim = context.createGain(); trim.gain.value = channel === 'rain' ? .16 : channel === 'brown' ? .25 : .38;
-    source.connect(highpass); highpass.connect(filter); filter.connect(trim); trim.connect(gains[channel]);
+  const brown = context.createBufferSource(); brown.buffer = brownNoise(context); brown.loop = true; brown.loopEnd = brown.buffer.duration - .12;
+  const brownFilter = context.createBiquadFilter(); brownFilter.type = 'lowpass'; brownFilter.frequency.value = 650;
+  const brownTrim = context.createGain(); brownTrim.gain.value = .25;
+  brown.connect(brownFilter); brownFilter.connect(brownTrim); brownTrim.connect(gains.brown); brown.start(); sources.push(brown);
+  const fireGains = { stove: context.createGain(), hearth: context.createGain() };
+  for (const gain of Object.values(fireGains)) { gain.gain.value = 0; gain.connect(gains.fire); }
+  const ready = Promise.all(Object.entries(recordedAmbience).map(async ([kind, data]) => {
+    const buffer = await context.decodeAudioData(recordingBytes(data));
+    if (context.state === 'closed') return;
+    const source = context.createBufferSource(); source.buffer = buffer; source.loop = true;
+    source.connect(kind === 'rain' ? gains.rain : fireGains[kind as 'stove'|'hearth']);
     source.start(); sources.push(source);
-  }
+  })).then(() => {});
   // A quiet original three-note pad. No music files or external streaming services.
   const warmFilter = context.createBiquadFilter(); warmFilter.type = 'lowpass'; warmFilter.frequency.value = 550; warmFilter.connect(gains.warm);
   [130.81, 196, 261.63].forEach((frequency, index) => {
@@ -80,9 +73,12 @@ function createEngine(): Engine {
   const audio = new Audio(); audio.loop = true; audio.preload = 'metadata';
   const localSource = context.createMediaElementSource(audio);
   const localGain = context.createGain(); localGain.gain.value = 0; localSource.connect(localGain); localGain.connect(master);
-  return { context, master, gains, sources, audio, localGain, localSource };
+  return { ready, fireGains, context, master, gains, sources, audio, localGain, localSource };
 }
 
+function matchFireToNook(engine: Engine, roomId: string) {
+  for (const kind of ['stove', 'hearth'] as const) changeGain(engine.fireGains[kind], kind === fireVariant(roomId) ? 1 : 0, engine.context, .45);
+}
 function changeGain(gain: GainNode, value: number, context: AudioContext, fade = .08) {
   if (context.state === 'closed') return;
   gain.gain.cancelScheduledValues(context.currentTime);
@@ -199,6 +195,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
     try { if (customized.current) localStorage.setItem(ambienceKey(roomId), JSON.stringify({ ...preferences, customized: true })); } catch { /* Private browsing may disable harmless preferences. */ }
     const current = engine.current;
     if (!current) return;
+    matchFireToNook(current, roomId);
     for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context, .45);
     changeGain(current.master, muted ? 0 : preferences.master, current.context);
     changeGain(current.localGain, preferences.local, current.context);
@@ -217,6 +214,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
           setError('Choose a sound below, then press Play.'); return;
         }
         const current = engine.current ??= createEngine();
+        matchFireToNook(current, roomId);
         current.context.onstatechange = () => {
           if (mounted.current && engine.current === current) setRunning(current.context.state === 'running');
         };
@@ -231,7 +229,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
         const localPlay = trackRef.current ? current.audio.play().catch(() => { if (mounted.current && token === epoch.current) setError('Your local track could not play. Try another audio file.'); }) : Promise.resolve();
         let timeout: ReturnType<typeof setTimeout> | undefined;
         try {
-          await Promise.race([resume, new Promise<never>((_, reject) => { timeout = setTimeout(() => reject(new Error('Tap Play again to enable sound in this window.')), 4000); })]);
+          await Promise.race([Promise.all([resume, current.ready]), new Promise<never>((_, reject) => { timeout = setTimeout(() => reject(new Error('Tap Play again to enable sound in this window.')), 4000); })]);
           if (current.context.state !== 'running') throw new Error('Tap Play again to enable sound in this window.');
           await localPlay;
         } finally { clearTimeout(timeout); }
