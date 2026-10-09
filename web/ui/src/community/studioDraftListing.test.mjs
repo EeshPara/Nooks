@@ -78,8 +78,8 @@ test('current draft cards remain private, use neutral custom artwork and select 
 // These components coexist after Studio has mounted once. Equal sibling keys can
 // orphan a dismissed Discovery DOM node even though each component works alone.
 test('retained Studio and reopened Discovery have distinct owner-scoped sibling identities',()=>{
- const keyOf=name=>{let expression;function visit(node){if(ts.isJsxSelfClosingElement(node)&&node.tagName.getText(app)===name){const key=node.attributes.properties.find(prop=>ts.isJsxAttribute(prop)&&prop.name.getText(app)==='key');assert.ok(key&&ts.isJsxExpression(key.initializer));expression=key.initializer.expression.getText(app);}ts.forEachChild(node,visit);}visit(app);assert.ok(expression);return new Function('draftOwner',`return ${expression}`);};
+ const keyOf=name=>{let expression;function visit(node){if(ts.isJsxSelfClosingElement(node)&&node.tagName.getText(app)===name){const key=node.attributes.properties.find(prop=>ts.isJsxAttribute(prop)&&prop.name.getText(app)==='key');assert.ok(key&&ts.isJsxExpression(key.initializer));expression=key.initializer.expression.getText(app);}ts.forEachChild(node,visit);}visit(app);assert.ok(expression);return new Function('draftOwner','discoveryWorldId',`return ${expression}`);};
  const discoveryKey=keyOf('NookDiscovery'),studioKey=keyOf('NookStudio');
- for(const owner of ['device','account:alice']){assert.notEqual(discoveryKey(owner),studioKey(owner),'visible Discovery and retained Studio must never collide');}
+ for(const owner of ['device','account:alice']){for(const world of [undefined,'hogwarts'])assert.notEqual(discoveryKey(owner,world),studioKey(owner),'visible Discovery and retained Studio must never collide');assert.notEqual(discoveryKey(owner),discoveryKey(owner,'hogwarts'),'direct world entry must remount Discovery');}
  assert.notEqual(discoveryKey('account:alice'),discoveryKey('account:bob'));assert.notEqual(studioKey('account:alice'),studioKey('account:bob'));
 });

@@ -24,7 +24,7 @@ const factory = async (name, dependencies) => {
 };
 const panelSetters = ['setShowFocus', 'setShowSounds', 'setShowPeople', 'setShowCollection', 'setShowToday', 'setShowNooks', 'setShowPersonalize', 'setShowSettings'];
 const otherSetters = ['setShowCreate', 'setShowNookCreator', 'setShowIdentity', 'setShowAccount', 'setShowAbout', 'setShowShare', 'setHandoff', 'setMobileNav', 'setZen'];
-const createUtility = await factory('openUtility', panelSetters);
+const createUtility = await factory('openUtility', [...panelSetters, 'progressionWorld', 'setDiscoveryWorldId']);
 const createClear = await factory('clearChatObstructions', [...otherSetters,'interruptOpening=()=>{}','studioNavigationVersion={current:0}','setPendingStudioDraftId=()=>{}']);
 const createChangePage = await factory('changePage', ['openUtility', 'setPage', 'setQuery', 'setMobileNav', 'setFilter', 'setSubject']);
 const createOpenView = await factory('openChatView', ['clearChatObstructions', 'openUtility', 'panelForWorkspaceView', 'setActive', 'changePage']);
@@ -32,17 +32,17 @@ const createOpenArtifact = await factory('openChatArtifact', ['clearChatObstruct
 const createUpdate = await factory('update', ['interruptOpening=()=>{}','isEmbedded=false', 'isPublicPreview=false', 'workspaceLoaded={current:true}', 'pendingInitialPresentation={current:undefined}', 'readNativeRecoveryScope=()=>undefined', 'progressOwner={current:"host"}', 'setError=()=>{}', 'studioNavigationVersion={current:0}', 'setPendingStudioDraftId=()=>{}', 'workspaceOrder', 'acceptWorkspace', 'normalize', 'setWorkspace', 'dirtyNote', 'studyEditing', 'setPendingChatArtifact', 'setPendingChatView', 'pendingChatReference', 'notify', 'readWorkspaceView', 'openChatArtifact', 'openChatView', 'previewArtifacts']);
 const createFlush = await factory('flush', ['pendingStudioDraftId', 'setStudioDraftId=()=>{}', 'setPendingStudioDraftId=()=>{}', 'setShowNookCreator=()=>{}', 'noteDirty', 'dirtyNote', 'studyEditing', 'pendingChatArtifact', 'pendingChatView', 'pendingChatReference', 'setPendingChatArtifact', 'setPendingChatView', 'openChatArtifact', 'openChatView']);
 
-function harness() {
+function harness(progressionWorld) {
   const state = { page: 'home', active: { id: 'writing', kind: 'note', content: 'My draft' }, workspace: { revision: 9, artifacts: [] }, pendingChatArtifact: null, pendingChatView: null };
   const dirtyNote = { current: false }, studyEditing = { current: false };
   const pendingChatReference = { current: undefined };
   const workspaceOrder = { current: { revision: 9 } };
   const setters = {};
-  for (const name of [...panelSetters, ...otherSetters, 'setPage', 'setQuery', 'setFilter', 'setSubject', 'setActive', 'setWorkspace', 'setPendingChatArtifact', 'setPendingChatView', 'setPendingStudioDraftId', 'setStudioDraftId', 'setReference']) {
+  for (const name of [...panelSetters, ...otherSetters, 'setDiscoveryWorldId', 'setPage', 'setQuery', 'setFilter', 'setSubject', 'setActive', 'setWorkspace', 'setPendingChatArtifact', 'setPendingChatView', 'setPendingStudioDraftId', 'setStudioDraftId', 'setReference']) {
     const key = name.slice(3,4).toLowerCase() + name.slice(4);
     setters[name] = value => { state[key] = typeof value === 'function' ? value(state[key]) : value; };
   }
-  const openUtility = createUtility(setters);
+  const openUtility = createUtility({ ...setters, progressionWorld });
   const clearChatObstructions = createClear(setters);
   const changePage = createChangePage({ ...setters, openUtility });
   const openChatView = createOpenView({ ...setters, clearChatObstructions, openUtility, panelForWorkspaceView, changePage });
@@ -207,3 +207,11 @@ for (const kind of ['note', 'flashcards', 'quiz', 'exam']) {
   assert.equal(h.state.lastOpened,artifact.id); assert.equal(h.state.pendingChatArtifact,null);
  });
 }
+
+test('Hogwarts collection opens its journey while Explore resets to all worlds', () => {
+  const h = harness({id:'hogwarts'});
+  h.update(destination('collection'));
+  assert.equal(h.state.showNooks,true); assert.equal(h.state.showCollection,false); assert.equal(h.state.discoveryWorldId,'hogwarts');
+  h.update(destination('explore'));
+  assert.equal(h.state.showNooks,true); assert.equal(h.state.discoveryWorldId,undefined);
+});

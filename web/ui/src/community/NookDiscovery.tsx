@@ -10,9 +10,13 @@ import { consumeDismissEscape, isTopmostDismissTarget } from '../world/dismissal
 import { savedNooksLabel, useStudioDraftListing } from './studioDraftListing';
 import type { OrganizationTool } from '../organization/types';
 import './NookDiscovery.css';
+import { nookWorlds, getNookWorld, worldProgress, type NookWorld, type RoomFocusProgress } from './nookWorlds';
+import { NookWorldDetail } from './NookWorldDetail';
 
 export interface NookDiscoveryProps {
   currentNookId: string;
+  initialWorldId?: string;
+  roomProgress?: RoomFocusProgress;
   favoritesScope: string;
   onClose: () => void;
   onJoin: (scene: RoomScene) => void;
@@ -73,7 +77,7 @@ function NookDetail({ nook, current, onJoin, headingId }: { nook: PublicNook; cu
   </div>;
 }
 
-export function NookDiscovery({ favoritesScope, currentNookId, onClose, onJoin, onCreate, drafts = [], onJoinDraft, onCommunity, onTool, isCurrentOwner, onOpenStudioDraft }: NookDiscoveryProps) {
+export function NookDiscovery({ initialWorldId, roomProgress = {}, favoritesScope, currentNookId, onClose, onJoin, onCreate, drafts = [], onJoinDraft, onCommunity, onTool, isCurrentOwner, onOpenStudioDraft }: NookDiscoveryProps) {
   const studioDrafts = useStudioDraftListing(favoritesScope, onTool, isCurrentOwner);
   const favoritesKey = `nooks:favorites:v1:${encodeURIComponent(favoritesScope)}`;
   const [favorites, setFavorites] = useState<string[]>(() => readFavorites(favoritesKey));
@@ -88,7 +92,7 @@ export function NookDiscovery({ favoritesScope, currentNookId, onClose, onJoin, 
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState<(typeof categories)[number]['id']>('all');
   const [sort, setSort] = useState('popular');
-  const [selected, setSelected] = useState<PublicNook | null>(null);
+  const [selected, setSelected] = useState<PublicNook | NookWorld | null>(() => nookWorlds.find(world => world.id === initialWorldId) ?? null);
   const dialog = useRef<HTMLDivElement>(null), scroller = useRef<HTMLDivElement>(null), searchInput = useRef<HTMLInputElement>(null), backButton = useRef<HTMLButtonElement>(null);
   const dismiss = useSoftDismiss(dialog, onClose);
   const backdrop = useBackdropDismiss<HTMLDivElement>(() => dismiss());
@@ -120,15 +124,19 @@ export function NookDiscovery({ favoritesScope, currentNookId, onClose, onJoin, 
     else if (lastNookId.current) {
       scroller.current?.scrollTo({ top: gridScroll.current });
       const card = dialog.current?.querySelector<HTMLButtonElement>(`[data-nook-id="${lastNookId.current}"] button`);
-      card?.focus({ preventScroll: true });
-    }
+      if (card) card.focus({ preventScroll: true }); else searchInput.current?.focus({ preventScroll: true });
+    } else searchInput.current?.focus({ preventScroll: true });
   }, [selected]);
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();
-    return (category === 'mine' ? allPublicNooks : publicNooks).filter(nook => (category === 'all' || (category === 'mine' ? favorites.includes(nook.id) : category === 'creators' ? nook.owner.isCreator : nook.scene.category === category)) && (!term || [nook.title, nook.description, nook.scene.style, nook.scene.collection, nook.owner.name, nook.owner.handle, ...nook.audiences].join(' ').toLowerCase().includes(term)))
+    return (category === 'mine' ? allPublicNooks : publicNooks).filter(nook => (category === 'all' || (category === 'mine' ? favorites.includes(nook.id) : category === 'creators' ? nook.owner.isCreator : nook.scene.category === category)) && (!term || [getNookWorld(nook.id)?.title ?? '', nook.title, nook.description, nook.scene.style, nook.scene.collection, nook.owner.name, nook.owner.handle, ...nook.audiences].join(' ').toLowerCase().includes(term)))
       .sort((a, b) => sort === 'alphabetical' ? a.title.localeCompare(b.title) : 0);
   }, [search, category, sort, favorites]);
+  const filteredWorlds = useMemo(() => {
+    const term = search.trim().toLowerCase();
+    return nookWorlds.filter(world => (category === 'all' || world.category === category) && (!term || [world.title, world.description, ...world.rooms.flatMap(room => [room.title, getPublicNook(room.roomId)?.title ?? '', getPublicNook(room.roomId)?.scene.collection ?? ''])].join(' ').toLowerCase().includes(term))).sort((a,b) => sort === 'alphabetical' ? a.title.localeCompare(b.title) : 0);
+  }, [search,category,sort]);
   const filteredDrafts = useMemo(() => {
     const term = search.trim().toLowerCase();
     return drafts.filter(draft => !term || `${draft.name} ${draft.description}`.toLowerCase().includes(term))
@@ -141,24 +149,30 @@ export function NookDiscovery({ favoritesScope, currentNookId, onClose, onJoin, 
   }, [studioDrafts.drafts, search, sort]);
   const savedCount = filtered.length + filteredDrafts.length + filteredStudioDrafts.length;
   const isMine = category === 'mine';
-  const nookCards = filtered.map(nook => <div key={nook.id} data-nook-id={nook.id}><NookCard nook={nook} current={nook.id === currentNookId} favorite={favorites.includes(nook.id)} onFavorite={() => toggleFavorite(nook.id)} onSelect={() => { gridScroll.current = scroller.current?.scrollTop ?? 0; lastNookId.current = nook.id; setSelected(nook); }}/></div>);
+  const nookCards = filtered.map(nook => <div key={nook.id} data-nook-id={nook.id}><NookCard nook={nook} current={nook.id === currentNookId} favorite={favorites.includes(nook.id)} onFavorite={() => toggleFavorite(nook.id)} onSelect={() => { gridScroll.current = scroller.current?.scrollTop ?? 0; lastNookId.current = nook.id; setSelected(getNookWorld(nook.id) ?? nook); }}/></div>);
 
+  const worldCards = filteredWorlds.map(world => {
+    const cover = getPublicNook(world.coverRoomId)!.scene;
+    const current = world.rooms.some(room => room.roomId === currentNookId);
+    const visit = () => { gridScroll.current = scroller.current?.scrollTop ?? 0; lastNookId.current = world.id; setSelected(world); };
+    return <div key={world.id} data-nook-id={world.id} className="nd-card nw-world-card"><button type="button" className="nd-card-open" aria-label={`Explore ${world.title}`} onClick={visit}><span className="nd-card-image"><img src={cover.thumbnail ?? cover.image} alt="" loading="lazy"/>{current && <span className="nd-current"><Check size={11}/> You're studying here</span>}<span className="nw-card-count">{world.rooms.length} {world.rooms.length === 1 ? 'room' : 'rooms'} to explore</span><span className="nd-card-enter" aria-hidden="true"><ArrowRight size={19}/></span></span></button><div className="nd-card-title"><button type="button" className="nd-card-name" onClick={visit}><strong>{world.title}</strong></button><button type="button" className="nd-favorite" aria-label={`Favorite ${world.title}`} aria-pressed={favorites.includes(world.coverRoomId)} onClick={() => toggleFavorite(world.coverRoomId)}><Heart size={16} fill={favorites.includes(world.coverRoomId) ? 'currentColor' : 'none'}/></button></div><span className="nd-card-caption">{world.description}</span><span className="nd-card-bottom">{world.progression ? `${Math.floor(worldProgress(world,roomProgress)/60)} min studied · Keepsakes & hidden rooms` : 'Choose a room and settle in'}<span>by Nooks</span></span></div>;
+  });
   return <div className="nd-overlay" {...backdrop}>
     <div className="nd-dialog" ref={dialog} role="dialog" aria-modal="true" aria-labelledby={heading} aria-describedby={disclosure} tabIndex={-1}>
       <header className="nd-header"><div className="nd-header-actions">{onCommunity&&<button className="nd-create" type="button" onClick={()=>dismiss(onCommunity)}>Study together</button>}<button className="nd-close" type="button" onClick={() => dismiss()} aria-label="Close nook discovery"><X size={21}/></button></div></header>
       <div className="nd-scroll" ref={scroller}>
-        {selected ? <><div className="nd-back-row"><button ref={backButton} type="button" onClick={() => setSelected(null)}><ArrowLeft size={16} />All nooks</button><span>Your work comes with you.</span></div><NookDetail nook={selected} current={selected.id === currentNookId} headingId={heading} onJoin={() => onJoin(selected.scene)} /></> : <>
-          <div className="nd-intro"><h1 id={heading}>Find your next nook.</h1><p>Choose a soothing spot!</p></div>
-          <div className="nd-search-row"><div className="nd-search"><Search size={19} aria-hidden="true" /><input ref={searchInput} aria-label="Search public nooks" type="search" placeholder="Search rain, garden, anime…" value={search} onChange={event => setSearch(event.target.value)} />{search && <button type="button" aria-label="Clear nook search" onClick={() => { setSearch(''); searchInput.current?.focus(); }}><X size={17} /></button>}</div><button type="button" className="nd-create-circle" aria-label="Create a nook" title="Create a nook" onClick={() => dismiss(onCreate)}><Plus size={22} aria-hidden="true"/></button></div>
+        {selected ? <><div className="nd-back-row"><button ref={backButton} type="button" onClick={() => setSelected(null)}><ArrowLeft size={16} />All nooks</button><span>Your work comes with you.</span></div><>{'rooms' in selected ? <NookWorldDetail world={selected} progress={roomProgress} currentRoomId={currentNookId} headingId={heading} onJoin={onJoin}/> : <NookDetail nook={selected} current={selected.id === currentNookId} headingId={heading} onJoin={() => onJoin(selected.scene)} />}</></> : <>
+          <div className="nd-intro"><h1 id={heading}>Explore Nooks</h1><p>Find a world you love. Make yourself at home.</p></div>
+          <div className="nd-search-row"><div className="nd-search"><Search size={19} aria-hidden="true" /><input ref={searchInput} aria-label="Search public nooks" type="search" placeholder="Search Hogwarts, cozy cabins, gardens…" value={search} onChange={event => setSearch(event.target.value)} />{search && <button type="button" aria-label="Clear nook search" onClick={() => { setSearch(''); searchInput.current?.focus(); }}><X size={17} /></button>}</div><button type="button" className="nd-create-circle" aria-label="Create a nook" title="Create a nook" onClick={() => dismiss(onCreate)}><Plus size={22} aria-hidden="true"/></button></div>
           <nav className="nd-categories" aria-label="Nook categories">{categories.map(item => <button type="button" key={item.id} aria-pressed={item.id === category} onClick={() => setCategory(item.id)}>{item.label}</button>)}</nav>
-          <div className="nd-results-heading"><span aria-live="polite">{isMine ? savedNooksLabel(savedCount, studioDrafts.status) : `${filtered.length} ${filtered.length === 1 ? 'nook' : 'nooks'}`}</span><label>Sort by<select aria-label="Sort public nooks" value={sort} onChange={event => setSort(event.target.value)}><option value="popular">{isMine ? 'Recently created' : 'Curated'}</option><option value="alphabetical">Name</option></select></label></div>
+          <div className="nd-results-heading"><span aria-live="polite">{isMine ? savedNooksLabel(savedCount, studioDrafts.status) : `${filteredWorlds.length} ${filteredWorlds.length === 1 ? 'nook' : 'nooks'} · Every world is open to you`}</span><label>Sort by<select aria-label="Sort public nooks" value={sort} onChange={event => setSort(event.target.value)}><option value="popular">{isMine ? 'Recently created' : 'Curated'}</option><option value="alphabetical">Name</option></select></label></div>
           {isMine ? <><p className="nd-local-note">Private drafts for this workspace, alongside favorites and earlier nooks saved on this device.</p>{studioDrafts.status === 'loading' && <p className="nd-local-note" role="status">Loading your private drafts…</p>}{studioDrafts.status === 'error' && <div className="nd-drafts-status" role="alert"><p>{studioDrafts.error}</p><button type="button" onClick={studioDrafts.retry}>Retry saved drafts</button></div>}{savedCount ? <div className="nd-grid">{nookCards}{filteredStudioDrafts.map(draft => {
             const scene = draft.artworkMode === 'curated' && !draft.hasArtwork ? getPublicNook(draft.roomId)?.scene : undefined;
             return <button type="button" className="nd-card nd-draft" key={`studio:${draft.id}`} aria-label={`Open ${draft.title} in Studio`} onClick={() => dismiss(() => onOpenStudioDraft(draft.id))}><span className="nd-card-image">{scene ? <img src={scene.thumbnail ?? scene.image} alt="" loading="lazy" /> : <span className="nd-custom-art">Custom artwork</span>}<span className="nd-current">Private draft</span><span className="nd-card-enter" aria-hidden="true"><ArrowRight size={19}/></span></span><span className="nd-card-title"><strong>{draft.title}</strong></span><span className="nd-card-caption">{draft.description || 'Your own little study world.'}</span><span className="nd-card-bottom">Open in Studio</span></button>;
           })}{filteredDrafts.map(draft => {
             const base = getPublicNook(draft.sceneId) ?? publicNooks[0];
             return <button type="button" className="nd-card nd-draft" key={draft.id} aria-label={`Preview your nook ${draft.name}`} onClick={() => onJoinDraft ? onJoinDraft(draft) : onJoin(base.scene)}><span className="nd-card-image"><img src={base.scene.thumbnail ?? base.scene.image} alt="" loading="lazy" /><span className="nd-current">Private nook draft</span><span className="nd-card-enter" aria-hidden="true"><ArrowRight size={19} /></span></span><span className="nd-card-title"><strong>{draft.name}</strong><span className="nd-draft-label">Preview</span></span><span className="nd-card-caption">{draft.description || 'Your own little study world.'}</span><span className="nd-card-bottom">Created by you · Saved locally</span></button>;
-          })}</div> : studioDrafts.status === 'ready' ? <div className="nd-empty"><img src="/images/nook-cat-logo.webp" alt="" /><h2>{search ? 'No matching Nooks.' : 'Your favorite Nooks belong here.'}</h2><p>{search ? 'Try another name, or create a new nook.' : 'Tap a heart to save a favorite, or create a nook of your own.'}</p><button type="button" onClick={() => dismiss(onCreate)}>Create a nook<ArrowRight size={16} /></button></div> : null}</> : filtered.length ? <div className="nd-grid">{nookCards}</div> : <div className="nd-empty"><img src="/images/nook-cat-logo.webp" alt="" /><h2>No nooks found just yet.</h2><p>Try “rain,” “anime,” or a subject you love.</p><button type="button" onClick={() => { setSearch(''); setCategory('all'); searchInput.current?.focus(); }}>Show all nooks<ArrowRight size={16} /></button></div>}
+          })}</div> : studioDrafts.status === 'ready' ? <div className="nd-empty"><img src="/images/nook-cat-logo.webp" alt="" /><h2>{search ? 'No matching Nooks.' : 'Your favorite Nooks belong here.'}</h2><p>{search ? 'Try another name, or create a new nook.' : 'Tap a heart to save a favorite, or create a nook of your own.'}</p><button type="button" onClick={() => dismiss(onCreate)}>Create a nook<ArrowRight size={16} /></button></div> : null}</> : filteredWorlds.length ? <div className="nd-grid">{worldCards}</div> : <div className="nd-empty"><img src="/images/nook-cat-logo.webp" alt="" /><h2>No nooks found just yet.</h2><p>Try “rain,” “anime,” or a subject you love.</p><button type="button" onClick={() => { setSearch(''); setCategory('all'); searchInput.current?.focus(); }}>Show all nooks<ArrowRight size={16} /></button></div>}
           {favoriteNotice && <p className="nd-local-note" role="status">{favoriteNotice}</p>}
           <div className="nd-create-note"><span>Have a little world in mind?</span><button type="button" onClick={() => dismiss(onCreate)}>Create your own nook<ArrowRight size={15} /></button></div>
         </>}
