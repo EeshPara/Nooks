@@ -365,16 +365,19 @@ test('HTTP chat creation saves once and opens the verified owner’s item by id'
   assert.equal(preview.structuredContent.unsaved, true);
 });
 
-test('hosted widget images use only the configured HTTPS origin and public build registry', async t => {
+test('hosted widget images and fonts use only the configured HTTPS origin and public build registry', async t => {
   const { directory } = await fixture(t);
   const dist = join(directory, 'dist');
   await mkdir(join(dist, 'assets'), { recursive: true });
   await mkdir(join(dist, 'images'));
+  await mkdir(join(dist, 'fonts'));
   await writeFile(join(dist, 'index.html'), '<!doctype html><html><head><script type="module" src="/assets/main.js"></script><link rel="stylesheet" href="/assets/main.css"></head><body></body></html>');
   await writeFile(join(dist, 'assets/main.js'), 'const room="/images/room.png"; const repeated="/images/room.png";');
-  await writeFile(join(dist, 'assets/main.css'), 'body{background-image:url("/images/room.png")} @font-face{font-family:Test;src:url("/assets/font.ttf")}');
+  await writeFile(join(dist, 'assets/main.css'), 'body{background-image:url("/images/room.png")} @font-face{font-family:Test;src:url("/assets/font.ttf");font-display:swap} @font-face{font-family:Other;src:url("/fonts/font.woff2"),url("/fonts/font.otf"),url("/fonts/unknown.ttf")}');
   await writeFile(join(dist, 'images/room.png'), Buffer.from([137, 80, 78, 71]));
   await writeFile(join(dist, 'assets/font.ttf'), Buffer.from([0, 1, 2]));
+  await writeFile(join(dist, 'fonts/font.woff2'), Buffer.from([3, 4, 5]));
+  await writeFile(join(dist, 'fonts/font.otf'), Buffer.from([6, 7, 8]));
   for (const origin of ['http://nook.example', 'https://user:secret@nook.example', 'https://nook.example/path', 'https://nook.example?token=secret']) await assert.rejects(widgetHtml(dist, { assetOrigin: origin }), /configured HTTPS origin/);
   assert.throws(() => createNotableServer({ publicUrl: 'https://user:secret@nook.example/mcp' }), /without credentials/);
   const { server } = createNotableServer({ publicUrl: 'https://nook.example/mcp', dataDirectory: join(directory, 'data'), distDirectory: dist });
@@ -402,7 +405,12 @@ test('hosted widget images use only the configured HTTPS origin and public build
   assert.deepEqual(resource._meta.ui.csp.connectDomains, ['https://nook.example', 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
   assert.deepEqual(resource._meta['openai/widgetCSP'].connect_domains, ['https://nook.example', 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
   assert.match(resource.text, /https:\/\/nook\.example\/images\/room\.png/);
-  assert.match(resource.text, /data:font\/ttf;base64/);
+  assert.match(resource.text, /https:\/\/nook\.example\/assets\/font\.ttf/);
+  assert.match(resource.text, /https:\/\/nook\.example\/fonts\/font\.woff2/);
+  assert.match(resource.text, /https:\/\/nook\.example\/fonts\/font\.otf/);
+  assert.match(resource.text, /url\("\/fonts\/unknown\.ttf"\)/);
+  assert.match(resource.text, /font-display:swap/);
+  assert.equal(resource.text.includes('data:font/'), false);
   assert.equal(resource.text.includes('untrusted.example'), false);
   assert.equal(resource.text.includes('data:image/png'), false);
   assert.equal(resource.text.includes('src="/assets/main.js"'), false);
@@ -411,10 +419,20 @@ test('hosted widget images use only the configured HTTPS origin and public build
   assert.equal(image.headers.get('access-control-allow-origin'), '*');
   assert.equal(image.headers.get('content-type'), 'image/png');
   assert.deepEqual(Buffer.from(await image.arrayBuffer()), Buffer.from([137, 80, 78, 71]));
+  for (const [path, type, bytes] of [['/assets/font.ttf', 'font/ttf', [0, 1, 2]], ['/fonts/font.woff2', 'font/woff2', [3, 4, 5]], ['/fonts/font.otf', 'font/otf', [6, 7, 8]]]) {
+    const font = await request(path, { headers: { Origin: 'https://web-sandbox.oaiusercontent.com' } });
+    assert.equal(font.status, 200);
+    assert.equal(font.headers.get('access-control-allow-origin'), '*');
+    assert.equal(font.headers.get('content-type'), type);
+    assert.deepEqual(Buffer.from(await font.arrayBuffer()), Buffer.from(bytes));
+  }
+  const fontWrite = await request('/fonts/font.otf', { method: 'POST', headers: { Origin: 'https://untrusted.example' } });
+  assert.equal(fontWrite.status, 403);
   const blocked = await request('/mcp', { method: 'POST', headers: { Origin: 'https://untrusted.example', 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/list' }) });
   assert.equal(blocked.status, 403);
   const inline = await widgetHtml(dist);
   assert.match(inline, /data:image\/png;base64/);
+  for (const type of ['ttf', 'woff2', 'otf']) assert.ok(inline.includes(`data:font/${type};base64,`));
   assert.equal(inline.includes('https://nook.example'), false);
 });
 

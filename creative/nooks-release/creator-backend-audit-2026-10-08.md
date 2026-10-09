@@ -1,0 +1,53 @@
+# Make a Nook: backend behavior and remaining proof
+
+Read-only/local investigation on October 8, 2026, against public `web/` and native `cloud/` sources. No current user content, live fixture, Storage object, generation call, configuration change or deployment was used. `web/server/nook-creator.mjs` and `nook-artwork.mjs` are byte-identical to cloud; `supabase-store.mjs` has newer web library-error handling, so source parity is not claimed for the entire adapter.
+
+## Supported flow map
+
+| User step | Actual contract | Coverage / limit |
+| --- | --- | --- |
+| Start/create | UI supplies a stable draft UUID; `nook_draft_save` with revision 0 creates an owner-only draft | Auth/read-write scope enforced; public guest device-local behavior belongs to UI adapter |
+| Save/edit | Draft expected revision checked inside account-bound workspace CAS transaction | Stale save returns CONFLICT; five CAS attempts retain newer independent workspace changes; text-only edit preserves omitted scene/art fields |
+| List/reopen | `nook_drafts_list` returns metadata only; get/preview hydrates selected saved artwork through owned Storage reference | Metadata validation/source tests pass; prior hosted canary proved only empty list, not populated creator flow |
+| Preview | Returns exact draft and publication blockers; does not change active appearance or publish | Custom prompt without pixels gets IMAGE_NOT_RECEIVED; deployed custom art always blocks community publication |
+| Use this nook | UI reads saved preview, then calls separate `space_customize` with public appearance fields | This is a personal appearance save, not publication; concrete internal-reference forwarding defect described below |
+| Review/publish curated scene | `nook_publish_prepare` requires expected revision, reviewed=true, explicit audience and request ID; commit requires confirmed=true | Immutable manifest; stale reviewed draft rejected; new separate community created; repeated/lost-response commit reuses same community request key |
+| Edit/delete after publication | Editing draft does not edit existing community; deleting draft leaves published receipt/community | Pending publishing/retry-needed intent prevents edit/delete until recovery |
+| Generate picture on public website | Saves prompt/draft and exposes prompt to copy | No image-generation backend exists here; `/api/generate` creates study material, not scenery |
+| Generate picture in native host | Artwork request → real host file receive → UI download/optimize → complete | Backend does not generate or fetch host image itself; editor must remain available for import; actual host handoff remains separate acceptance gate |
+| Upload custom image | UI prepares PNG/JPEG/WebP ≤1 MiB data URL; server reserves immutable private generation, uploads without upsert, completes reservation and commits reference | Ordinary reopen verifies bytes/hash; unavailable bytes retain owned reference rather than erase it |
+| Cancel/retry artwork | Twelve-hour request, fingerprint/owner/draft binding, receipt-based retry, exact request completion/cancel | Text edits retained, superseded/expired/canceled results rejected; no speculative callback or automatic generation |
+| Share custom-image community | **Not supported in deployed web/cloud** | app-only custom-publication implementation/migration is pending; cannot be enabled by frontend copy or wholesale source port |
+| Creator rewards/path | **Not supported** (`pathTemplate: none`) | Explicitly rejected; existing focus credit remains server-owned |
+
+## Concrete findings
+
+**P1: reopened hosted custom-art draft cannot currently apply through the raw UI payload.** A hydrated get/preview returns both `space.backgroundImage` and internal `space._storedBackground`. `artworkDraftForUI` clones the reference unchanged. `NookStudio.preview` spreads the entire returned space into `onPreview`; App forwards it into `space_customize`. `StudyEngine.customizeSpace` correctly rejects unknown settings, including `_storedBackground`. A local real-adapter chain (mock-only Storage/Auth transport, actual SupabaseStore → NookCreator.preview → StudyEngine) returned `INVALID_INPUT: Space contains an unsupported setting.`, with zero workspace commits. The preview had valid-hydration and internal-reference booleans both true. Curated/local-only fixtures omit that field and miss this path. Root assigned the frontend agent to send only allowed public appearance fields, preserving the image; the server restriction must remain intact. This is a UI/backend contract mismatch, not a missing image store or justification to trust caller-supplied storage paths.
+
+**P2: publication-intent cap can become permanently exhausted by discarded reviews.** `enforceBudget` caps all publicationIntents at 100; draft deletion changes prepared intents to `discarded` but never removes them. An entirely in-memory reproduction prepared 100 different request IDs, deleted the draft, then saved a new draft. The new prepare returned STORAGE_FULL, “Remove old drafts before creating more,” despite all 100 retained records being discarded and only one new draft existing. No community creation is required to hit this state. There is no published operation that clears that historical budget. A fix needs an explicit bounded receipt-retention policy; blindly deleting published/retry-needed receipts could break idempotent recovery. At minimum the present recovery message is inaccurate. No source fix was made by this audit.
+
+**Production capability gap: custom-art publication.** Deployed readiness deliberately returns CUSTOM_PUBLICATION_UNAVAILABLE even after successful upload. `app/server/nook-creator.mjs`, `app/server/supabase-store.mjs` and the app-only custom-art publication migration implement a different contract with immutable generation-aware scene access and lifecycle references. Its independent authorization/cleanup/scene-revocation/focus acceptance must be reviewed before selective port/deployment. This audit does not silently narrow the original Make a Nook product requirement to curated scenes.
+
+**Production lifecycle gap: disposable upload cleanup/account erasure.** A new app upload creates a catalog generation whose account FK lacks cascade and whose service role lacks DELETE. Normal cleanup requires at least 24 hours unreferenced (30-day default), then retains permanent tombstones. Therefore a new upload test cannot honestly promise ordinary disposable-account cleanup. Existing Oct4 native upload/read and later exact-object foreign/anonymous denial evidence are useful, but they do not prove current public upload/apply/reopen/delete or physical Storage removal. Do not work around the retention/FK controls for QA. Full image lifecycle proof needs an agreed persistent QA fixture disposition or isolated existing test environment; neither is authorized here.
+
+**Evidence gaps distinct from defects.** Native host resource display, actual generated-file handoff, SMTP/account onboarding and browser-level populated Studio journeys are not proved by backend unit tests. No continuous image generation service or public custom-art moderation system was found in the deployed backend. Parent/other agents own native display and frontend continuity investigations.
+
+## Local tests and exact limits
+
+66 targeted tests passed: cloud creator (owner isolation, restart persistence, version conflict, budgets, review/commit idempotency, uncertain outcome/concurrent commit), artwork request lifecycle, generation catalog/Storage races and quotas, and web draft-metadata/hydration tests. Those suites use local/mocked storage; they are not a fresh hosted creator end-to-end result. Additional in-memory audit reproductions established the apply-payload failure and permanent discarded-intent cap. No application code was changed.
+
+## Proposed bounded hosted functional proof (not executed)
+
+This closes curated creator persistence/publication gaps without introducing permanent artwork generations. Use exactly two admin-confirmed `example.invalid` accounts with normal in-memory user JWTs. Validate dedicated project/config and capture current public HTML/manifest identity before creation. Journal exact planned identity UUID/email/run marker, draft UUIDs and community request ID before mutation. No real owner content or email.
+
+1. A saves one curated draft, lists it, gets it through a fresh HTTP request and previews it. B's list remains empty and B cannot get/preview A's UUID.
+2. A prepares a private publication at revision 1, saves revision 2, then verifies old-revision save and stale prepared commit return CONFLICT without overriding revision 2 or creating a community.
+3. A applies the curated public appearance with `space_customize`; a fresh workspace read must reopen that exact personal appearance. This proves API persistence, not actual browser reload/render.
+4. Prepare revision 2 twice with the same request ID; commit twice and verify the same single private community ID and reviewed title/backdrop. B's unaffiliated snapshot must remain denied. No public discovery publication or invite is needed.
+5. Edit A's draft after publication and confirm the community retains its reviewed snapshot. Delete draft and verify get returns NOT_FOUND while the published receipt/community persists until cleanup.
+6. Optional within the same two fixtures: one prompt-only ChatGPT draft, request/cancel/retry status and IMAGE_NOT_RECEIVED / CUSTOM_PUBLICATION_UNAVAILABLE readiness. No host file, pixel bytes, provider generation or Storage writes; delete this draft afterward.
+7. Compare release identity; revoke both sessions, delete only exact guarded room/accounts/Auth identities and verify absence in finally. Hand off at most three exact account/room throttle topics for root cleanup.
+
+Proposed ceilings: **60 public starts, six Auth/admin starts, 30 cleanup starts, at most two active requests, ≥250 ms between shared HTTP starts, ≥2.5 seconds between password grants, five-minute work and three-minute cleanup deadlines**. Normal public 15-second request deadline, no retry loop, no load phase, no WebSockets. Expected conflict/not-found/forbidden results counted separately from unexpected failures. Credentials and draft text stay out of reports; retain only safe status/count/revision/hash checks and cleanup identifiers. Normal authenticated GET identity/quota bookkeeping still applies.
+
+Root must review this concrete scope before fixture creation. A successful result would not prove custom-image upload/apply, actual ChatGPT generation/handoff, public custom-art publication or browser UX.

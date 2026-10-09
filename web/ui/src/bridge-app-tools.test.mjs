@@ -15,7 +15,7 @@ const copy = value => JSON.parse(JSON.stringify(value));
 const tick = async () => { for (let n = 0; n < 12; n++) await Promise.resolve(); };
 
 function harness(openai, practice = false) {
-  const listeners = new Map(), timers = new Map(), sent = [], events = [], modules = new Map();
+  const listeners = new Map(), timers = new Map(), timerDelays = new Map(), sent = [], events = [], modules = new Map();
   let timerId = 0;
   const parent = { postMessage(message, origin) { sent.push({ message: copy(message), origin }); } };
   const window = {
@@ -26,8 +26,8 @@ function harness(openai, practice = false) {
   };
   class FakeEvent { constructor(type, options = {}) { this.type = type; Object.assign(this, options); } }
   const context = vm.createContext({ window, Event: FakeEvent, CustomEvent: FakeEvent, console, structuredClone,
-    setTimeout(fn) { const id = ++timerId; timers.set(id, fn); return id; },
-    clearTimeout(id) { timers.delete(id); },
+    setTimeout(fn, delay) { const id = ++timerId; timers.set(id, fn); timerDelays.set(id, delay); return id; },
+    clearTimeout(id) { timers.delete(id); timerDelays.delete(id); },
     fetch() { throw new Error('Native bridge must not fall through to browser HTTP'); },
   });
   function load(path) {
@@ -52,7 +52,11 @@ function harness(openai, practice = false) {
     reply(outgoing('ui/initialize')[0], { hostCapabilities: { updateModelContext: { text: true, structuredContent: true } } });
     await tick();
   }
-  return { bridge, tools, sent, events, timers, receive, reply, outgoing, responses, request, initialize };
+  async function expireTimer(delay) {
+    const entry=[...timers].find(([id])=>timerDelays.get(id)===delay);assert.ok(entry,`Missing ${delay}ms timer`);
+    timers.delete(entry[0]);timerDelays.delete(entry[0]);entry[1]();await tick();
+  }
+  return { bridge, tools, sent, events, timers, receive, reply, outgoing, responses, request, initialize, expireTimer };
 }
 
 test('optional file helpers never invent transport methods or expose host failures', async () => {
@@ -184,3 +188,33 @@ test('clearing selected study context retains session routing and chat messages 
   assert.deepEqual(h.outgoing('tools/call'),[]);
   assert.deepEqual(h.outgoing('ui/message'),[]);
  });
+
+
+test('a matching late initialization enables explicit retry without replaying a failed action', async()=>{
+ const h=harness(),init=h.outgoing('ui/initialize')[0];await h.expireTimer(4000);
+ await assert.rejects(h.bridge.callTool('artifact_save',{artifact:{title:'Keep this draft'}}),/Connect Nooks/);
+ assert.equal(h.outgoing('tools/call').length,0);
+ h.reply(init,{hostCapabilities:{},hostContext:{displayMode:'fullscreen'}});await tick();
+ assert.equal(h.outgoing('ui/notifications/initialized').length,1);assert.equal(h.outgoing('tools/call').length,0);assert.equal(h.timers.size,0);
+ const retry=h.bridge.callTool('workspace_get',{});await tick();const request=h.outgoing('tools/call').at(-1);h.reply(request,{structuredContent:{workspace:{revision:1}}});await retry;
+ assert.deepEqual(h.outgoing('tools/call').map(x=>x.params.name),['workspace_get']);h.reply(init,{});await tick();assert.equal(h.outgoing('ui/notifications/initialized').length,1);
+});
+test('late initialization still rejects foreign source, pinned-origin mismatch and wrong request ID', async()=>{
+ const h=harness(),init=h.outgoing('ui/initialize')[0];h.receive({jsonrpc:'2.0',method:'ui/notifications/host-context-changed',params:{displayMode:'fullscreen'}});await h.expireTimer(4000);
+ for(const [message,options] of [[{...init,method:undefined,result:{}},{source:{},origin:'https://chatgpt.com'}],[{jsonrpc:'2.0',id:init.id,result:{}},{origin:'https://evil.example'}],[{jsonrpc:'2.0',id:init.id+99,result:{}},{}]])h.receive(message,options);
+ await tick();assert.equal(h.outgoing('ui/notifications/initialized').length,0);h.reply(init,{});await tick();assert.equal(h.outgoing('ui/notifications/initialized').length,1);
+});
+test('initialization grace expires and teardown prevents a late reply reviving the resource', async()=>{
+ for(const mode of ['expiry','teardown']){const h=harness(),init=h.outgoing('ui/initialize')[0];await h.expireTimer(4000);if(mode==='expiry')await h.expireTimer(30000);else h.request('teardown','ui/resource-teardown');h.reply(init,{});await tick();assert.equal(h.outgoing('ui/notifications/initialized').length,0);assert.equal(h.timers.size,0);}
+});
+test('legacy fallback write is not repeated when the MCP Apps handshake later succeeds',async()=>{
+ const calls=[],h=harness({callTool:async(name,args)=>{calls.push({name,args});return{structuredContent:{saved:true}};}}),init=h.outgoing('ui/initialize')[0];await h.expireTimer(4000);
+ assert.deepEqual(copy(await h.bridge.callTool('artifact_save',{artifact:{title:'One write'}})),{saved:true});h.reply(init,{});await tick();assert.equal(calls.length,1);assert.equal(h.outgoing('tools/call').length,0);
+});
+test('error or malformed late initialization does not mark the bridge ready',async()=>{
+ for(const result of [{error:{message:'Host declined'}},{result:null},{result:[]}]){const h=harness(),init=h.outgoing('ui/initialize')[0];await h.expireTimer(4000);h.receive({jsonrpc:'2.0',id:init.id,...result});await tick();assert.equal(h.outgoing('ui/notifications/initialized').length,0);assert.equal(h.timers.size,0);}
+});
+
+test('malformed on-time initialization follows the same readiness validation as late replies',async()=>{
+ for(const result of [null,[],false]){const h=harness(),init=h.outgoing('ui/initialize')[0];h.reply(init,result);await tick();assert.equal(h.outgoing('ui/notifications/initialized').length,0);assert.equal(h.timers.size,0);await assert.rejects(h.bridge.callTool('workspace_get',{}),/Connect Nooks/);}
+});

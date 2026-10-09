@@ -105,7 +105,7 @@ export async function widgetHtml(distDirectory, { assetOrigin = null } = {}) {
       else if (entry.isFile() && /\.(png|jpe?g|webp|svg|ico|woff2?|ttf|otf|mp4|mp3)$/i.test(entry.name)) {
         const url = '/' + relative;
         if (!html.includes(url)) continue;
-        if (assetOrigin && /\.(png|jpe?g|webp|svg|ico|mp4|mp3)$/i.test(entry.name)) {
+        if (assetOrigin && /\.(png|jpe?g|webp|svg|ico|woff2?|ttf|otf|mp4|mp3)$/i.test(entry.name)) {
           // Only files found in the trusted build registry are rewritten. No tool
           // argument or user-provided URL can broaden the widget's asset origin.
           html = html.split(url).join(assetOrigin + url);
@@ -226,11 +226,11 @@ export function createNotableServer(options = {}) {
       const allowedHost = publicUrl ? requestedHost === publicUrl.hostname : loopback(requestedHost);
       if (!allowedHost) return json(response, 403, { error: 'Invalid host.' });
       const requestedPath = new URL(request.url ?? '/', `http://${request.headers.host}`).pathname;
-      const publicMedia = !!publicUrl && request.method === 'GET' && (/^\/(?:images|assets)\/.+\.(?:png|jpe?g|webp|svg|ico|mp3)$/i.test(requestedPath) || /^\/media\/(?:opening-film|nooks)\/[a-z0-9-]+\.mp4$/i.test(requestedPath));
+      const publicMedia = !!publicUrl && request.method === 'GET' && (/^\/(?:images|assets)\/.+\.(?:png|jpe?g|webp|svg|ico|mp3)$/i.test(requestedPath) || /^\/(?:fonts|assets)\/.+\.(?:woff2?|ttf|otf)$/i.test(requestedPath) || /^\/media\/(?:opening-film|nooks)\/[a-z0-9-]+\.mp4$/i.test(requestedPath));
       const origin = request.headers.origin;
       if (origin && publicMedia) {
-        // Build images and the opening film are public. Sandbox media requests do not
-        // opening the authenticated API or MCP transport to other origins.
+        // Build media and fonts are public. Sandbox asset requests do not
+        // open the authenticated API or MCP transport to other origins.
         response.setHeader('Access-Control-Allow-Origin', '*');
       } else if (origin) {
         let url; try { url = new URL(origin); } catch { return json(response, 403, { error: 'Invalid origin.' }); }

@@ -26,7 +26,7 @@ type DraftSummary = Pick<Draft, 'id' | 'title' | 'description' | 'revision' | 's
 type Publication = { id: string; draftId: string; draftRevision: number; visibility: Visibility; status: 'prepared' | 'publishing' | 'retry-needed' | 'published' | 'failed' | 'discarded'; nookId?: string; createdAt?: string; manifest?: { title: string; description: string; roomId: string; visibility: Visibility } };
 type Readiness = { readyToPublish: boolean; blockers: { code: string; message: string }[] };
 export type StudioAccountGuard = { owner: string; canChangeAccount: () => boolean };
-export interface NookStudioProps { accountGuard?: Ref<StudioAccountGuard>;  open?: boolean; onClose: () => void; onTool: OrganizationTool; onPublished?: (nook: any) => void; onPreview?: (space: WorkspaceSpace, presentation?: { isCurrent: () => boolean }) => void | Promise<void>; canPublish?: boolean; initialDraftId?: string; initialDraftRequest?: number; onDraftSelected?: (id: string) => void }
+export interface NookStudioProps { accountGuard?: Ref<StudioAccountGuard>;  open?: boolean; onClose: () => void; onTool: OrganizationTool; onPublished?: (nook: any) => void; onPreview?: (space: WorkspaceSpace, presentation?: { isCurrent: () => boolean }) => boolean | Promise<boolean>; canPublish?: boolean; initialDraftId?: string; initialDraftRequest?: number; onDraftSelected?: (id: string) => void }
 const styleLabels: Record<ArtStyle, string> = { illustration: 'Illustration', anime: 'Anime', watercolor: 'Watercolor', pixel: 'Pixel art', realistic: 'Realistic', cinematic: 'Cinematic' };
 const sceneStyle = (scene: RoomScene): ArtStyle => scene.style === 'illustrated' ? 'illustration' : scene.style === 'photoreal' ? 'realistic' : scene.style === 'dreamlike' ? 'cinematic' : scene.style;
 const newDraft = (): Draft => ({ id: crypto.randomUUID(), title: '', description: '', revision: 0, space: { ...defaultSpace, room: roomScenes[0].id, theme: roomScenes[0].theme, accent: '#e9ab86', companion: 'none', decorations: [] }, style: sceneStyle(roomScenes[0]), artworkMode: 'chatgpt', scenePrompt: '', visibility: 'private', pathTemplate: 'none' });
@@ -35,6 +35,10 @@ function payload(draft: Draft) {
   return { id: draft.id, title: draft.title.trim(), description: draft.description.trim(), space: { theme, room, accent, companion, layout, decorations, ...(backgroundImage !== undefined ? { backgroundImage } : {}) }, style: draft.style, artworkMode: draft.artworkMode, scenePrompt: draft.scenePrompt.trim(), visibility: draft.visibility, pathTemplate: 'none' as const };
 }
 const snapshot = (draft: Draft) => JSON.stringify(payload(draft));
+function draftAppearance(draft: Draft): WorkspaceSpace {
+  const { theme, room, accent, companion, layout, decorations, backgroundImage } = draft.space;
+  return { name: draft.title, tagline: draft.description, theme, room, accent, companion, layout, decorations, ...(backgroundImage !== undefined ? { backgroundImage } : {}) };
+}
 function summarized(draft: Draft): DraftSummary { return { id: draft.id, title: draft.title, description: draft.description, revision: draft.revision, style: draft.style, artworkMode: draft.artworkMode, visibility: draft.visibility, createdAt: draft.createdAt, updatedAt: draft.updatedAt, roomId: draft.space.backgroundImage ? 'custom' : draft.space.room ?? roomScenes[0].id, hasArtwork: !!draft.space.backgroundImage }; }
 const publicationPending = (item: Publication) => ['prepared', 'publishing', 'retry-needed'].includes(item.status);
 
@@ -268,8 +272,8 @@ export default function NookStudio({ open = true, onClose, onTool, onPublished, 
       if (!currentPresentation(ticket, scope)) return;
       if (result.draft.revision !== saved.revision) { setConflict(result.draft); throw new Error('This draft changed on another screen. Review the saved version before using it.'); }
       if (result.draft.artworkMode !== 'curated' && !result.draft.space.backgroundImage) throw new Error('Choose your finished image first.');
-      await onPreview({ ...result.draft.space, name: result.draft.title, tagline: result.draft.description }, { isCurrent: () => currentPresentation(ticket, scope) });
-      if (currentOwner(scope)) setNotice('Your study backdrop is saved.');
+      const applied = await onPreview(draftAppearance(result.draft), { isCurrent: () => currentPresentation(ticket, scope) });
+      if (applied && currentPresentation(ticket, scope)) setNotice('Your study backdrop is saved.');
     });
   }
   async function reviewPublication() {

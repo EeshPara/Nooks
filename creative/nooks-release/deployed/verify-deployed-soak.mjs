@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 /** Prepared bounded public soak. Execution requires separate root authorization. */
+import {verifyCreatorFlow} from './creator-functional-flow.mjs';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 import {createRequire} from 'node:module';
@@ -10,23 +11,24 @@ import {createFixtureRealtimeClient,channelDiagnostic,recordChannelDiagnostic,is
 const require=createRequire(new URL('../../../web/package.json',import.meta.url));
 const {createClient}=require('@supabase/supabase-js');
 const PROJECT='lcfcjglybfeozyrjjikk',DB=`https://${PROJECT}.supabase.co`,PUBLIC='https://nooks-study-space.vercel.app';
-const diagnostic=process.argv[2]==='--run-authorized-realtime-proof';
-if(process.argv.length!==3||!['--run-authorized-soak','--run-authorized-realtime-proof'].includes(process.argv[2])){console.log('Prepared only: each run requires separate approval and its explicit --run-authorized-soak or --run-authorized-realtime-proof flag.');process.exit(0);}
-const SOAK=diagnostic?Object.freeze({...SOAK_DEFAULT,users:2,rooms:1,membersPerRoom:1,sockets:2,channels:6,durationMs:35000,publicCap:40,adminCap:6,cleanupCap:30,maxActive:2,cleanupDeadlineMs:180000}):SOAK_DEFAULT;
+const diagnostic=process.argv[2]==='--run-authorized-realtime-proof',creatorProof=process.argv[2]==='--run-authorized-creator-proof',smallProof=diagnostic||creatorProof;
+if(process.argv.length!==3||!['--run-authorized-soak','--run-authorized-realtime-proof','--run-authorized-creator-proof'].includes(process.argv[2])){console.log('Prepared only: each run requires separate approval and its explicit --run-authorized-soak, --run-authorized-realtime-proof, or --run-authorized-creator-proof flag.');process.exit(0);}
+const SOAK=creatorProof?Object.freeze({...SOAK_DEFAULT,users:2,rooms:1,membersPerRoom:1,sockets:0,channels:0,durationMs:0,publicCap:60,adminCap:6,cleanupCap:30,maxActive:2,cleanupDeadlineMs:180000}):diagnostic?Object.freeze({...SOAK_DEFAULT,users:2,rooms:1,membersPerRoom:1,sockets:2,channels:6,durationMs:35000,publicCap:40,adminCap:6,cleanupCap:30,maxActive:2,cleanupDeadlineMs:180000}):SOAK_DEFAULT;
 const runId=randomUUID(),stamp=new Date().toISOString().replaceAll(':','-'),started=performance.now();
-const prefix=diagnostic?'realtime-proof':'soak';
+const prefix=creatorProof?'creator-proof':diagnostic?'realtime-proof':'soak';
 const reportPath=new URL(`./${prefix}-report-${stamp}.json`,import.meta.url),manifestPath=new URL(`./${prefix}-fixtures-${stamp}.json`,import.meta.url);
 const users=[],rooms=[],samples=[],pending=new Set(),background=new Set();
 const report={runId,startedAt:new Date().toISOString(),project:PROJECT,publicOrigin:PUBLIC,bounds:SOAK,passed:false,phases:[],intervals:[],fanout:[],negativeChecks:[],reconnects:[],cleanup:[],limitations:['Actual public HTTPS plus direct Supabase WebSockets; one generator, no browser/email onboarding.','Fifteen minutes at a lower rate is not overnight stability, multi-region performance, 1000-user capacity or production approval.','Lossy invalidation hints are not content delivery guarantees. Reconnect convergence is checked with authorized snapshots.','No hosted disconnect cancellation, token-refresh/expiry, upload, artwork or populated-library evidence.']};
 if(diagnostic)report.limitations=['Two disposable identities/one private room only; no load or long-soak result.','Direct Supabase WebSockets with public HTTP verification; no browser/email onboarding.','Fixture JWT callback retained in memory; only token-equality booleans are reported.'];
+if(creatorProof)report.limitations=['Two disposable identities; curated API persistence/publication only, no browser or actual host generation proof.','No image bytes or Storage generations; custom-art apply and publication remain separate gates.'];
 let admin,publicKey,phase='preflight',abortReason=null,abortPhase=null,cleanupMode=false,cleanupDeadline=Infinity,plateauStart=null,plateauEnd=null,writeChain=Promise.resolve(),lastLogin=-Infinity;
 let channelCount=0,socketCount=0,peakChannels=0,peakSockets=0,profileRound=0,quietMutations=false,quietUntil=Infinity;
 const safeCode=error=>/^[a-z0-9_]{1,80}$/.test(error?.message??'')?error.message:'operation_failed';
 function stop(code){if(!abortReason){abortReason=safeCode({message:code});abortPhase=phase;}}
-function guard(bucket){if(bucket==='cleanup'){assert(performance.now()<cleanupDeadline,'cleanup_deadline');return;}assert(!abortReason,abortReason??'stopped');assert(performance.now()-started<(diagnostic?180000:30*60*1000),'work_wall_deadline');if(bucket==='public'&&phase==='plateau')assert(gate.counts.public<SOAK.publicCap-250,'final_check_reserve_reached');}
+function guard(bucket){if(bucket==='cleanup'){assert(performance.now()<cleanupDeadline,'cleanup_deadline');return;}assert(!abortReason,abortReason??'stopped');assert(performance.now()-started<(creatorProof?300000:diagnostic?180000:30*60*1000),'work_wall_deadline');if(bucket==='public'&&phase==='plateau')assert(gate.counts.public<SOAK.publicCap-250,'final_check_reserve_reached');}
 const gate=createHttpGate({check:guard,maxActive:SOAK.maxActive,caps:{public:SOAK.publicCap,admin:SOAK.adminCap,cleanup:SOAK.cleanupCap}});
 function journal(){
- const value={runId,project:PROJECT,createdAt:report.startedAt,updatedAt:new Date().toISOString(),phase,users:users.map(u=>({id:u.id,email:u.email,creation:u.creation,account:u.account,roomIndex:u.roomIndex,cleaned:u.cleaned??false})),rooms:rooms.map(r=>({index:r.index,ownerAuthId:r.owner.id,ownerAccount:r.owner.account,requestId:r.requestId,id:r.id,cleaned:r.cleaned??false})),throttleTopics:[...users.filter(u=>u.account).map(u=>`account:${u.account}`),...rooms.filter(r=>r.id).map(r=>`nook:${r.id}`)],sharedDirectoryTopic:'nooks:directory (never delete)',containsCredentials:false};
+ const value={runId,project:PROJECT,createdAt:report.startedAt,updatedAt:new Date().toISOString(),phase,...(creatorProof?{creatorDrafts:report.creatorDraftIds??[]}:{}),users:users.map(u=>({id:u.id,email:u.email,creation:u.creation,account:u.account,roomIndex:u.roomIndex,cleaned:u.cleaned??false})),rooms:rooms.map(r=>({index:r.index,ownerAuthId:r.owner.id,ownerAccount:r.owner.account,requestId:r.requestId,id:r.id,cleaned:r.cleaned??false})),throttleTopics:[...users.filter(u=>u.account).map(u=>`account:${u.account}`),...rooms.filter(r=>r.id).map(r=>`nook:${r.id}`)],sharedDirectoryTopic:'nooks:directory (never delete)',containsCredentials:false};
  const text=JSON.stringify(value,null,2)+'\n';
  const write=async()=>{const temp=new URL(manifestPath.href+'.tmp');const handle=await open(temp,'w',0o600);try{await handle.writeFile(text);await handle.sync();}finally{await handle.close();}await rename(temp,manifestPath);const directory=await open(new URL('.',manifestPath),'r');try{await directory.sync();}finally{await directory.close();}};
  writeChain=writeChain.catch(()=>{}).then(write);return writeChain;
@@ -50,7 +52,7 @@ async function publicRequest(path,{user,tool=path,args,expected=200}={}){
    failureCode=quietDeadline!==null&&signal?.aborted&&signal.reason?.name==='TimeoutError'?'fanout_quiet_deadline':safeCode(error);
    stop(failureCode);throw new Error(failureCode);
   }
-  finally{samples.push({phase:requestPhase,tool,roomIndex:user?.roomIndex,userIndex:user?.index,queuedMs:Math.round(queuedAt-started),startedMs:Math.round(began-started),queueWaitMs:Math.max(0,Math.round(began-queuedAt)),requestBudgetMs,quietBudgetRemainingMs,durationMs:Math.round(performance.now()-began),status,ok,expectedDenial:expected===403,responseBytes:bytes,...(failureCode?{failureCode}:{})});}
+  finally{samples.push({phase:requestPhase,tool,roomIndex:user?.roomIndex,userIndex:user?.index,queuedMs:Math.round(queuedAt-started),startedMs:Math.round(began-started),queueWaitMs:Math.max(0,Math.round(began-queuedAt)),requestBudgetMs,quietBudgetRemainingMs,durationMs:Math.round(performance.now()-began),status,ok,expectedDenial:expected>=400,responseBytes:bytes,...(failureCode?{failureCode}:{})});}
  });
 }
 const api=(user,tool,args={},expected=200)=>publicRequest(tool==='workspace'?'/api/workspace':`/api/tools/${tool}`,{user,tool,...(tool==='workspace'?{}:{args}),expected});
@@ -293,7 +295,7 @@ try{
  phase='fixture_setup';const setupStart=performance.now();
  for(let index=0;index<SOAK.users;index++){
   guard('public');const id=randomUUID(),email=`nooks-soak-${runId}-${index}@example.invalid`,password=randomBytes(30).toString('base64url');
-  const user={index,id,email,roomIndex:diagnostic?0:Math.floor(index/SOAK.membersPerRoom),creation:'intended',channels:[],connected:false,hints:0,lastHint:0,lastHeartbeat:-Infinity,heartbeatPending:false};users.push(user);await journal();
+  const user={index,id,email,roomIndex:smallProof?0:Math.floor(index/SOAK.membersPerRoom),creation:'intended',channels:[],connected:false,hints:0,lastHint:0,lastHeartbeat:-Infinity,heartbeatPending:false};users.push(user);await journal();
   // auth-js AdminUserAttributes explicitly supports a caller-provided UUID, journaled before create.
   const created=await admin.auth.admin.createUser({id,email,password,email_confirm:true,app_metadata:{nooks_qa_run:runId}});
   assert(!created.error&&created.data?.user?.id===id,'fixture_create_failed');user.creation='confirmed';await journal();
@@ -302,10 +304,12 @@ try{
   const claims=JSON.parse(Buffer.from(user.token.split('.')[1],'base64url'));assert(claims.sub===id&&claims.role==='authenticated'&&claims.iss===DB+'/auth/v1'&&claims.exp*1000>Date.now()+30*60*1000,'fixture_token_margin');
   const workspace=await api(user,'workspace');assert(workspace.authenticated===true&&workspace.mode==='connected'&&workspace.workspace?.artifacts?.length===0,'fixture_workspace_invalid');
   const account=workspace.recoveryScope?.slice(8);assert(/^account:[a-f0-9-]{36}$/.test(workspace.recoveryScope??''),'fixture_account_invalid');user.account=account;await journal();
-  if((index+1)%10===0||diagnostic)console.log(`Prepared ${index+1}/${SOAK.users} disposable identities`);
+  if((index+1)%10===0||smallProof)console.log(`Prepared ${index+1}/${SOAK.users} disposable identities`);
  }
  assert(new Set(users.map(u=>u.account)).size===SOAK.users,'duplicate_fixture_identity');
- if(diagnostic){
+ if(creatorProof){
+  phase='creator_functional';await verifyCreatorFlow({users,rooms,report,api,journal,randomUUID,assert,releaseIdentity});assert(!abortReason,abortReason??'stopped');report.passed=true;
+ }else if(diagnostic){
   await realtimeProof();
  }else{
  for(let index=0;index<SOAK.rooms;index++){
@@ -336,7 +340,7 @@ try{
 finally{
  try{await cleanup();}catch(error){report.cleanup.push({type:'cleanup_exception',ok:false,code:safeCode(error)});}
  if(report.journalFailed||report.cleanup.some(row=>!row.ok)||(users.length>0&&report.cleanupVerification?.allAbsent!==true)){report.passed=false;process.exitCode=1;}
- report.finalCheckReserve=diagnostic?0:250;report.http={counts:gate.counts,peakActive:gate.peak,...statistics(samples),minimumStartGapMs:gate.starts.slice(1).reduce((min,row,i)=>Math.min(min,row.at-gate.starts[i].at),Infinity)};
+ report.finalCheckReserve=smallProof?0:250;report.http={counts:gate.counts,peakActive:gate.peak,...statistics(samples),minimumStartGapMs:gate.starts.slice(1).reduce((min,row,i)=>Math.min(min,row.at-gate.starts[i].at),Infinity)};
  report.realtime={peakSockets,peakChannels,finalSockets:socketCount,finalChannels:channelCount};report.samples=samples;report.finishedAt=new Date().toISOString();
  await journal().catch(()=>{report.passed=false;report.journalFailed=true;process.exitCode=1;});
  // A late socket callback or operator stop must override any tentative success, even after final HTTP admission.
