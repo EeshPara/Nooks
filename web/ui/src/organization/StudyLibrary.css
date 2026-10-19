@@ -115,3 +115,7 @@
 .nooks-library-filters button { padding:8px 13px;min-height:34px;border-radius:999px; }
 .nooks-library-row { padding:0 12px;border-radius:16px; }
 .nooks-library-item:hover { background:transparent; }
+
+.nooks-library-history article.is-reopenable{cursor:pointer;border-radius:16px;padding-inline:12px;transition:background .15s}
+.nooks-library-history article.is-reopenable:hover,.nooks-library-history article.is-reopenable:focus-visible{background:#f1ece4}
+.nooks-library-history article>svg{color:#738168}
