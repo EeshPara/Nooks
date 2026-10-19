@@ -96,7 +96,8 @@
 @media(prefers-reduced-motion:reduce) { .nooks-library-create-menu { animation:none; }.nooks-library-create-menu>button { transition:none; } }
 
 .nooks-library-views button {display:inline-flex;align-items:center;gap:7px;}
-.nooks-library-views {overflow-x:auto;scrollbar-width:thin;min-width:0;}
+.nooks-library-views {overflow-x:auto;overflow-y:hidden;scrollbar-width:none;min-width:0;}
+.nooks-library-views::-webkit-scrollbar {display:none;}
 .nooks-library-search input:disabled {opacity:.6;}
 @media(max-width:480px){.nooks-library-views {gap:16px;}}
 
