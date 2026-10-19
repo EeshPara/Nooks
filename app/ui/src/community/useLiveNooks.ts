@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { callTool } from '../bridge';
+import { callTool, isEmbedded } from '../bridge';
+import { nooksAccount } from '../account/client';
+import { startLiveSync, type RefreshTarget } from './liveSync';
 
 export interface LiveNook {
   id: string; title: string; description: string; visibility: 'public' | 'private'; roomId: string;
@@ -44,9 +46,13 @@ export function useLiveNooks({ enabled, recoveryScope, activeNookId }: { enabled
   const [updatedAt, setUpdatedAt] = useState<number | null>(null);
   const live = useRef(false), mounted = useRef(false), generation = useRef(0), active = useRef<string | undefined>(undefined), owner = useRef<string | undefined>(undefined);
   const flight = useRef<Promise<void> | null>(null), pending = useRef(false), actionBusy = useRef(false);
+  const memberCount = useRef(0); memberCount.current = snapshot?.memberCount ?? 0;
+  const presenceAt = useRef<{ scope?: string; nookId?: string; at: number }>({ at: 0 });
+  const presenceFlights = useRef(new Set<string>());
+  const failures = useRef(0), retryAfter = useRef(0);
   const refreshRef = useRef<() => Promise<void>>(async () => {});
 
-  const refresh = useCallback((): Promise<void> => {
+  const refresh = useCallback((target: RefreshTarget = 'all'): Promise<void> => {
     if (!live.current || !mounted.current || document.hidden) return Promise.resolve();
     if (flight.current) { pending.current = true; return flight.current; }
     const stamp = generation.current, nookId = active.current, requestedPage = { ...page.current }, expectedOwner = owner.current!;
@@ -54,22 +60,24 @@ export function useLiveNooks({ enabled, recoveryScope, activeNookId }: { enabled
     setLoading(true);
     const request = (async () => {
       try {
-        const list = await callTool('nooks_list', { ...requestedPage, limit: 50 });
-        if (!current()) return;
-        requireOwner(list, expectedOwner);
-        if (!Array.isArray(list.nooks)) throw new Error('The study directory could not be loaded.');
-        const savedProfile = verifiedProfile(list.profile, expectedOwner);
-        if (!savedProfile) throw new Error('Your saved study profile could not be loaded.');
-        setProfile(previous => previous?.id === savedProfile.id && previous.displayName === savedProfile.displayName && previous.avatar === savedProfile.avatar ? previous : savedProfile);
-        // A removed last-page item must not strand the directory on an empty page.
-        if (!list.nooks.length && requestedPage.offset > 0) {
-          page.current = { ...requestedPage, offset: Math.max(0, requestedPage.offset - 50) };
-          generation.current++; pending.current = true;
-          setDirectory({ ...page.current, hasMore: false }); return;
+        if (target !== 'room') {
+          const list = await callTool('nooks_list', { ...requestedPage, limit: 50 });
+          if (!current()) return;
+          requireOwner(list, expectedOwner);
+          if (!Array.isArray(list.nooks)) throw new Error('The study directory could not be loaded.');
+          const savedProfile = verifiedProfile(list.profile, expectedOwner);
+          if (!savedProfile) throw new Error('Your saved study profile could not be loaded.');
+          setProfile(previous => previous?.id === savedProfile.id && previous.displayName === savedProfile.displayName && previous.avatar === savedProfile.avatar ? previous : savedProfile);
+          // A removed last-page item must not strand the directory on an empty page.
+          if (!list.nooks.length && requestedPage.offset > 0) {
+            page.current = { ...requestedPage, offset: Math.max(0, requestedPage.offset - 50) };
+            generation.current++; pending.current = true;
+            setDirectory({ ...page.current, hasMore: false }); return;
+          }
+          setNooks(list.nooks);
+          setDirectory({ ...requestedPage, hasMore: list.hasMore === true });
         }
-        setNooks(list.nooks);
-        setDirectory({ ...requestedPage, hasMore: list.hasMore === true });
-        if (nookId) {
+        if (nookId && target !== 'directory') {
           // A remembered identifier is a hint, never permission to rejoin. Read
           // membership first; the heartbeat independently rechecks it in SQL.
           const detail = await callTool('nook_snapshot', { nookId });
@@ -77,16 +85,24 @@ export function useLiveNooks({ enabled, recoveryScope, activeNookId }: { enabled
           requireOwner(detail, expectedOwner);
           if (detail.nook?.id !== nookId || detail.nook.joined !== true || !Array.isArray(detail.members) || !Array.isArray(detail.leaderboard)) throw new Error('This nook could not be loaded.');
           if (document.hidden) return;
-          const presence = await callTool('nook_presence', { nookId });
-          if (!current()) return;
-          requireOwner(presence, expectedOwner);
+          const presenceKey = `${expectedOwner}:${nookId}`;
+          if (!presenceFlights.current.has(presenceKey) && (presenceAt.current.scope !== expectedOwner || presenceAt.current.nookId !== nookId || Date.now() - presenceAt.current.at >= 45000)) {
+            presenceFlights.current.add(presenceKey);
+            try {
+              const presence = await callTool('nook_presence', { nookId });
+              if (!current()) return;
+              requireOwner(presence, expectedOwner);
+              presenceAt.current = { scope: expectedOwner, nookId, at: Date.now() };
+            } finally { presenceFlights.current.delete(presenceKey); }
+          }
           setSnapshot(detail as LiveSnapshot); setSelectedId(nookId);
           rememberSelection(expectedOwner, nookId);
-        } else setSnapshot(null);
-        if (current()) { setError(null); setUpdatedAt(Date.now()); }
+        } else if (!nookId) setSnapshot(null);
+        if (current()) { failures.current = 0; retryAfter.current = 0; setError(null); setUpdatedAt(Date.now()); }
       } catch (cause) {
         if (current()) {
-          setSnapshot(null);
+          setSnapshot(null); setNooks([]);
+          retryAfter.current = Date.now() + Math.min(120000, 10000 * 2 ** Math.min(failures.current++, 4));
           const code = (cause as { code?: string })?.code;
           if (code === 'FORBIDDEN' || code === 'ACCOUNT_CHANGED' || code === 'AUTH_REQUIRED') {
             active.current = undefined; setSelectedId(undefined); rememberSelection(expectedOwner);
@@ -111,12 +127,38 @@ export function useLiveNooks({ enabled, recoveryScope, activeNookId }: { enabled
     active.current = connected && scope ? nookIdValue(activeNookId) ?? rememberedSelection(scope) : undefined;
     page.current = { offset: 0, joinedOnly: false }; setDirectory({ ...page.current, hasMore: false });
     setSelectedId(undefined); setProfile(undefined); setNooks([]); setSnapshot(null); setError(null); setUpdatedAt(null);
+    presenceAt.current = { at: 0 }; failures.current = 0; retryAfter.current = 0;
     if (connected) void refresh();
-    const onVisible = () => { if (!document.hidden) void refresh(); };
-    const timer = window.setInterval(onVisible, 20_000);
-    document.addEventListener('visibilitychange', onVisible);
-    return () => { mounted.current = false; live.current = false; generation.current++; pending.current = false; window.clearInterval(timer); document.removeEventListener('visibilitychange', onVisible); };
+    return () => { mounted.current = false; live.current = false; generation.current++; pending.current = false; };
   }, [connected, scope, refresh]);
+
+  useEffect(() => {
+    if (!connected || !scope) return;
+    const expectedOwner = scope;
+    const current = () => mounted.current && live.current && owner.current === expectedOwner;
+    return startLiveSync({
+      refreshOnStart: false,
+      cooldown: () => memberCount.current >= 200 ? 12000 : 5000,
+      refresh: async target => { if (current() && Date.now() >= retryAfter.current) await refresh(target); },
+      // Native Sites identities are not Supabase JWT identities. Keep bounded
+      // reconciliation there until the host offers an authenticated push bridge.
+      subscribe: isEmbedded ? undefined : hint => nooksAccount.subscribeCommunity(scope, selectedId, topic => { if (current()) hint(topic); }),
+      heartbeat: async () => {
+        const nookId = active.current, stamp = generation.current;
+        if (!current() || !selectedId || nookId !== selectedId || document.hidden || Date.now() < retryAfter.current) return;
+        if (presenceAt.current.scope === scope && presenceAt.current.nookId === nookId && Date.now() - presenceAt.current.at < 45000) return;
+        const presenceKey = `${scope}:${nookId}`;
+        if (presenceFlights.current.has(presenceKey)) return;
+        presenceFlights.current.add(presenceKey);
+        try {
+          const result = await callTool('nook_presence', { nookId });
+          if (!current() || stamp !== generation.current) return;
+          requireOwner(result, scope); presenceAt.current = { scope, nookId, at: Date.now() };
+        } catch { if (current() && stamp === generation.current) void refresh(); }
+        finally { presenceFlights.current.delete(presenceKey); }
+      },
+    });
+  }, [connected, scope, selectedId, refresh]);
 
   useEffect(() => {
     // A focus session arriving after workspace hydration may supply recovery.

@@ -11,7 +11,7 @@ export const previewProjectConfig = { version: 2, framework: null };
 export const previewOutputConfig = { version: 3, routes: [
   { src: '/(.*)', headers: { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Permissions-Policy': 'camera=(), microphone=(), geolocation=()' }, continue: true },
   { src: '/api(?:/.*)?', dest: '/api/index' },
-  { src: '/assets/(.*)', headers: { 'Cache-Control': 'public, max-age=31536000, immutable' }, continue: true },
+  { src: '/assets/(.*)', headers: { 'Cache-Control': 'public, max-age=31536000, immutable', 'Access-Control-Allow-Origin': '*' }, continue: true },
   { handle: 'filesystem' },
   { src: '/.*', dest: '/index.html' },
 ] };

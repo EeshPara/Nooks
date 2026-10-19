@@ -1,0 +1,132 @@
+{
+  "reviewId": "17",
+  "reviewer": "scene_review_17",
+  "reviewedAtUtc": "2026-10-08T07:35:11.629539+00:00",
+  "method": "Viewed actual source artwork and producer mask/contact sheets; independently extracted native-resolution motion, source comparison and last-two/first-two seam crops, with labeled nearest-neighbor enlargements. Fully decoded all 84 frames and independently recomputed adjacent/seam/inside-outside-mask/brightness metrics; SHA verified before decoding, after decoding and before report creation.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Verdicts apply to exact-hash sampled visual evidence, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "antique-workshop",
+      "videoPath": "creative/nooks-animated-all/jobs/antique-workshop/finished.mp4",
+      "videoSha256": "41e7cfb06c80e428c250756ac0441351afea0535e2e69aee338a8114c6514e8d",
+      "qaMatchesVideo": true,
+      "verdict": "needs_correction",
+      "scope": "Exact-SHA sampled visuals and independent full decode; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 755653,
+        "frameChangeMean": 0.007210517416889781,
+        "seamChangeMean": 0.015454282407407408,
+        "seamVsTypical": 2.1432972856022214,
+        "insideMaskChange": 0.5282490088973256,
+        "outsideMaskChange": 8.116852998690172e-05,
+        "peakBrightnessChange": 0.002892433449076748,
+        "motionMaskCoverage": 0.01349826388888889,
+        "videoSha256": "41e7cfb06c80e428c250756ac0441351afea0535e2e69aee338a8114c6514e8d",
+        "sourceArtworkSha256": "d7d5e307dbd60c1a6e16600e091c5f6e3868883195003085d24a8e157ca68f66",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "41e7cfb06c80e428c250756ac0441351afea0535e2e69aee338a8114c6514e8d",
+        "frames": 84,
+        "meanFrameChange": 0.007210517416889781,
+        "seamChange": 0.015454282407407408,
+        "seamVsTypical": 2.1432972856022214,
+        "insideMaskChange": 0.5282490088973256,
+        "outsideMaskChange": 8.116852998690172e-05,
+        "peakBrightnessChange": 0.002892433449076748,
+        "qaMatchesVideo": true,
+        "audioTracks": 0
+      },
+      "findings": [
+        "Viewed the source artwork, producer mask/contact sheet, eight independently extracted motion samples, source comparisons and last-two/first-two seam crops. The room, desk, instruments, architecture and sleeping cat silhouette stay stable in these samples; cat breathing remains very restrained.",
+        "The clock pendulum produces two overlapping brass disks and duplicated support details in frames 0, 24, 48, 72, 82 and 83. The original art contains one disk. The persistent source disk plus displaced translucent generated disk looks like a compositing error, not the requested short physical pendulum swing. The defect is visible in native crops and especially the enlarged clock-motion and clock-seam sheets.",
+        "All 84 frames decode. Independent metrics reproduce the 2.1433 seam ratio and negligible outside-mask motion; these technical passes do not resolve the doubled moving solid object."
+      ],
+      "requiredChanges": [
+        "Freeze the original single pendulum while retaining the restrained cat motion, or repair the pendulum as one solid moving object. Re-render and independently review the corrected exact hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience after correction."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/17-evidence/antique-workshop-cat-motion.png",
+        "creative/nooks-release/scene-reviews/17-evidence/antique-workshop-cat-seam.png",
+        "creative/nooks-release/scene-reviews/17-evidence/antique-workshop-cat-source-compare.png",
+        "creative/nooks-release/scene-reviews/17-evidence/antique-workshop-clock-motion.png",
+        "creative/nooks-release/scene-reviews/17-evidence/antique-workshop-clock-seam.png",
+        "creative/nooks-release/scene-reviews/17-evidence/antique-workshop-clock-source-compare.png",
+        "creative/nooks-animated-all/jobs/antique-workshop/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/antique-workshop/review-contact.jpg",
+        "web/ui/public/images/nooks-50/antique-workshop.webp"
+      ]
+    },
+    {
+      "sceneId": "hateno-study",
+      "videoPath": "creative/nooks-animated-all/jobs/hateno-study/finished.mp4",
+      "videoSha256": "2950dbbc90e21a402eb7856c6f6e7e5d0f214cf683235bfeeb0fa34758e17bf6",
+      "qaMatchesVideo": true,
+      "verdict": "needs_correction",
+      "scope": "Exact-SHA sampled visuals and independent full decode; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 789505,
+        "frameChangeMean": 0.008956930151160196,
+        "seamChangeMean": 0.011349826388888888,
+        "seamVsTypical": 1.267155844395944,
+        "insideMaskChange": 0.8611206368802218,
+        "outsideMaskChange": 9.441414764322639e-05,
+        "peakBrightnessChange": 0.006548032407408755,
+        "motionMaskCoverage": 0.01029296875,
+        "videoSha256": "2950dbbc90e21a402eb7856c6f6e7e5d0f214cf683235bfeeb0fa34758e17bf6",
+        "sourceArtworkSha256": "77f55f01d81556917ae184a35f1444c7fd340b86b4c38fb53f4917d1447d1b72",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "2950dbbc90e21a402eb7856c6f6e7e5d0f214cf683235bfeeb0fa34758e17bf6",
+        "frames": 84,
+        "meanFrameChange": 0.008956930151160196,
+        "seamChange": 0.011349826388888888,
+        "seamVsTypical": 1.267155844395944,
+        "insideMaskChange": 0.8611206368802218,
+        "outsideMaskChange": 9.441414764322639e-05,
+        "peakBrightnessChange": 0.006548032407408755,
+        "qaMatchesVideo": true,
+        "audioTracks": 0
+      },
+      "findings": [
+        "Viewed the source artwork, producer mask/contact sheet, eight independently extracted leaf-motion samples, source comparisons, enlarged leaf details and last-two/first-two seam crops. Village architecture, mountains, desk, papers, ceramic containers and unlit lantern remain stable.",
+        "The sole animated leaf region includes a rigid forked branch. Around frames 0, 48 and 82, the large yellow leaf at the left of the mask has a second semitransparent edge, and branch/sky openings lose their singular outlines under displaced generated detail. This is subtler than the Antique Workshop pendulum defect, but close inspection reads as ghosted foliage and a soft double branch rather than crisp leaves moving on a fixed branch.",
+        "All 84 frames decode. Independent metrics reproduce the 1.2672 seam ratio and negligible outside-mask motion. The first/last samples do not show an additional hard jump, but the compositing defect remains throughout portions of the loop. The blue ceramic vessel on the left is a brush holder; the prompt mentions tea steam, but no steam mask is used in this clip."
+      ],
+      "requiredChanges": [
+        "Repair or replace the leaf motion so leaf edges and rigid branches remain singular. Simply disabling the sole mask would leave a still frame, so retain an honestly described, geometry-preserving subtle animation or hold the still artwork until a valid candidate exists. Re-render and independently review the corrected exact hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience after correction."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/17-evidence/hateno-study-leaf-detail.png",
+        "creative/nooks-release/scene-reviews/17-evidence/hateno-study-leaves-motion.png",
+        "creative/nooks-release/scene-reviews/17-evidence/hateno-study-leaves-seam.png",
+        "creative/nooks-release/scene-reviews/17-evidence/hateno-study-leaves-source-compare.png",
+        "creative/nooks-animated-all/jobs/hateno-study/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/hateno-study/review-contact.jpg",
+        "web/ui/public/images/nooks-50/hateno-study.webp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "lighthouse-study": {
+    "videoSha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b",
+    "frames": 84,
+    "meanFrameChange": 0.01529324764335118,
+    "seamChange": 0.02092086226851852,
+    "seamVsTypical": 1.3679803503093062,
+    "insideMaskChange": 0.9750993370804645,
+    "outsideMaskChange": 0.00012701146714397092,
+    "peakBrightnessChange": 0.0050245949074110285,
+    "qaMatchesVideo": true,
+    "quantitativeQa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 970565,
+      "frameChangeMean": 0.01529324764335118,
+      "seamChangeMean": 0.02092086226851852,
+      "seamVsTypical": 1.3679803503093062,
+      "insideMaskChange": 0.9750993370804645,
+      "outsideMaskChange": 0.00012701146714397092,
+      "peakBrightnessChange": 0.0050245949074110285,
+      "motionMaskCoverage": 0.015555555555555555,
+      "videoSha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b",
+      "sourceArtworkSha256": "3c3fd8b122553a014832e5054b36e414eaf6d71b490db8987ee20a99d662a7bf",
+      "technicalPass": true
+    },
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31,
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "audioTracks": 0,
+    "regions": {
+      "boat": {
+        "meanAdjacentChange": 0.0,
+        "maximumFrameChannelChange": 0,
+        "meanTemporalRange": 0.0,
+        "maskCoveredPixels": 0
+      },
+      "cliff": {
+        "meanAdjacentChange": 0.0,
+        "maximumFrameChannelChange": 0,
+        "meanTemporalRange": 0.0,
+        "maskCoveredPixels": 0
+      },
+      "water": {
+        "meanAdjacentChange": 0.6125967573999702,
+        "maximumFrameChannelChange": 72,
+        "meanTemporalRange": 15.406864197530863,
+        "maskCoveredPixels": 11563
+      },
+      "steam": {
+        "meanAdjacentChange": 0.30557051736357194,
+        "maximumFrameChannelChange": 21,
+        "meanTemporalRange": 5.459668174962292,
+        "maskCoveredPixels": 2773
+      },
+      "cup": {
+        "meanAdjacentChange": 0.0,
+        "maximumFrameChannelChange": 0,
+        "meanTemporalRange": 0.0,
+        "maskCoveredPixels": 0
+      }
+    }
+  },
+  "desert-casita": {
+    "videoSha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e",
+    "frames": 84,
+    "meanFrameChange": 0.03603886901773762,
+    "seamChange": 0.025753038194444446,
+    "seamVsTypical": 0.7145906321801971,
+    "insideMaskChange": 2.5576971664418253,
+    "outsideMaskChange": 0.0001764116455234116,
+    "peakBrightnessChange": 0.014131944444443434,
+    "qaMatchesVideo": true,
+    "quantitativeQa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 1084666,
+      "frameChangeMean": 0.03603886901773762,
+      "seamChangeMean": 0.025753038194444446,
+      "seamVsTypical": 0.7145906321801971,
+      "insideMaskChange": 2.5576971664418253,
+      "outsideMaskChange": 0.0001764116455234116,
+      "peakBrightnessChange": 0.014131944444443434,
+      "motionMaskCoverage": 0.014022352430555555,
+      "videoSha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e",
+      "sourceArtworkSha256": "d52c94a072735e4e82561d08a0a9d5d183e1abd316505de14b04b3f23a3812c2",
+      "technicalPass": true
+    },
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31,
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "audioTracks": 0,
+    "regions": {
+      "pedestal": {
+        "meanAdjacentChange": 1.593676292471473e-05,
+        "maximumFrameChannelChange": 3,
+        "meanTemporalRange": 0.0013227513227513227,
+        "maskCoveredPixels": 0
+      },
+      "pool": {
+        "meanAdjacentChange": 1.1388040052836224,
+        "maximumFrameChannelChange": 107,
+        "meanTemporalRange": 10.822955583229556,
+        "maskCoveredPixels": 12043
+      },
+      "steam": {
+        "meanAdjacentChange": 0.3653478779984804,
+        "maximumFrameChannelChange": 26,
+        "meanTemporalRange": 10.981981981981981,
+        "maskCoveredPixels": 3104
+      },
+      "cup": {
+        "meanAdjacentChange": 0.0,
+        "maximumFrameChannelChange": 0,
+        "meanTemporalRange": 0.0,
+        "maskCoveredPixels": 0
+      }
+    }
+  },
+  "stationery-studio": {
+    "videoSha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547",
+    "frames": 84,
+    "meanFrameChange": 0.006939502802878179,
+    "seamChange": 0.004169560185185185,
+    "seamVsTypical": 0.6008442252456253,
+    "insideMaskChange": 2.087624670868906,
+    "outsideMaskChange": 9.886920802590273e-05,
+    "peakBrightnessChange": 0.006414207175922115,
+    "qaMatchesVideo": true,
+    "quantitativeQa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 860354,
+      "frameChangeMean": 0.006939502802878179,
+      "seamChangeMean": 0.004169560185185185,
+      "seamVsTypical": 0.6008442252456253,
+      "insideMaskChange": 2.087624670868906,
+      "outsideMaskChange": 9.886920802590273e-05,
+      "peakBrightnessChange": 0.006414207175922115,
+      "motionMaskCoverage": 0.0032769097222222223,
+      "videoSha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547",
+      "sourceArtworkSha256": "e5ce38056e9e42b9529cab3a1fd0244495f2cab50ee108e12f75819ed3899f25",
+      "technicalPass": true
+    },
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31,
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "audioTracks": 0,
+    "regions": {
+      "vase": {
+        "meanAdjacentChange": 0.0,
+        "maximumFrameChannelChange": 0,
+        "meanTemporalRange": 0.0,
+        "maskCoveredPixels": 0
+      },
+      "steam": {
+        "meanAdjacentChange": 1.217627844712182,
+        "maximumFrameChannelChange": 39,
+        "meanTemporalRange": 11.428888888888888,
+        "maskCoveredPixels": 3020
+      },
+      "cup": {
+        "meanAdjacentChange": 0.0,
+        "maximumFrameChannelChange": 0,
+        "meanTemporalRange": 0.0,
+        "maskCoveredPixels": 0
+      }
+    }
+  }
+}

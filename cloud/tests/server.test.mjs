@@ -285,7 +285,8 @@ test('HTTP MCP initializes, discovers tools, renders UI and rejects foreign orig
     { not: { required: ['view', 'artifact'] } },
     { not: { required: ['view', 'artifactId'] } },
   ]);
-  assert.match(entrypoint.icons[0].src, /^data:image\/svg\+xml;base64,/);
+  assert.deepEqual(entrypoint.icons, [{ src: 'https://nooks-study-space.vercel.app/images/nook-cat-logo.webp', mimeType: 'image/webp', sizes: ['1254x1254'] }]);
+  assert.deepEqual(initialized.result.serverInfo.icons, entrypoint.icons);
   const resource = await (await post('resources/read', { uri: UI_URI })).json();
   assert.match(resource.result.contents[0].text, /dataset.test/);
   assert.equal(resource.result.contents[0].text.includes('src="/assets/'), false);
@@ -364,16 +365,19 @@ test('HTTP chat creation saves once and opens the verified owner’s item by id'
   assert.equal(preview.structuredContent.unsaved, true);
 });
 
-test('hosted widget images use only the configured HTTPS origin and public build registry', async t => {
+test('hosted widget images and fonts use only the configured HTTPS origin and public build registry', async t => {
   const { directory } = await fixture(t);
   const dist = join(directory, 'dist');
   await mkdir(join(dist, 'assets'), { recursive: true });
   await mkdir(join(dist, 'images'));
+  await mkdir(join(dist, 'fonts'));
   await writeFile(join(dist, 'index.html'), '<!doctype html><html><head><script type="module" src="/assets/main.js"></script><link rel="stylesheet" href="/assets/main.css"></head><body></body></html>');
   await writeFile(join(dist, 'assets/main.js'), 'const room="/images/room.png"; const repeated="/images/room.png";');
-  await writeFile(join(dist, 'assets/main.css'), 'body{background-image:url("/images/room.png")} @font-face{font-family:Test;src:url("/assets/font.ttf")}');
+  await writeFile(join(dist, 'assets/main.css'), 'body{background-image:url("/images/room.png")} @font-face{font-family:Test;src:url("/assets/font.ttf");font-display:swap} @font-face{font-family:Other;src:url("/fonts/font.woff2"),url("/fonts/font.otf"),url("/fonts/unknown.ttf")}');
   await writeFile(join(dist, 'images/room.png'), Buffer.from([137, 80, 78, 71]));
   await writeFile(join(dist, 'assets/font.ttf'), Buffer.from([0, 1, 2]));
+  await writeFile(join(dist, 'fonts/font.woff2'), Buffer.from([3, 4, 5]));
+  await writeFile(join(dist, 'fonts/font.otf'), Buffer.from([6, 7, 8]));
   for (const origin of ['http://nook.example', 'https://user:secret@nook.example', 'https://nook.example/path', 'https://nook.example?token=secret']) await assert.rejects(widgetHtml(dist, { assetOrigin: origin }), /configured HTTPS origin/);
   assert.throws(() => createNotableServer({ publicUrl: 'https://user:secret@nook.example/mcp' }), /without credentials/);
   const { server } = createNotableServer({ publicUrl: 'https://nook.example/mcp', dataDirectory: join(directory, 'data'), distDirectory: dist });
@@ -398,10 +402,15 @@ test('hosted widget images use only the configured HTTPS origin and public build
   assert.deepEqual(resource._meta['openai/widgetCSP'].resource_domains, ['https://nook.example']);
   assert.deepEqual(resource._meta.ui.csp.frameDomains, ['https://open.spotify.com']);
   assert.deepEqual(resource._meta['openai/widgetCSP'].frame_domains, ['https://open.spotify.com']);
-  assert.deepEqual(resource._meta.ui.csp.connectDomains, ['https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
-  assert.deepEqual(resource._meta['openai/widgetCSP'].connect_domains, ['https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
+  assert.deepEqual(resource._meta.ui.csp.connectDomains, ['https://nook.example', 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
+  assert.deepEqual(resource._meta['openai/widgetCSP'].connect_domains, ['https://nook.example', 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com']);
   assert.match(resource.text, /https:\/\/nook\.example\/images\/room\.png/);
-  assert.match(resource.text, /data:font\/ttf;base64/);
+  assert.match(resource.text, /https:\/\/nook\.example\/assets\/font\.ttf/);
+  assert.match(resource.text, /https:\/\/nook\.example\/fonts\/font\.woff2/);
+  assert.match(resource.text, /https:\/\/nook\.example\/fonts\/font\.otf/);
+  assert.match(resource.text, /url\("\/fonts\/unknown\.ttf"\)/);
+  assert.match(resource.text, /font-display:swap/);
+  assert.equal(resource.text.includes('data:font/'), false);
   assert.equal(resource.text.includes('untrusted.example'), false);
   assert.equal(resource.text.includes('data:image/png'), false);
   assert.equal(resource.text.includes('src="/assets/main.js"'), false);
@@ -410,10 +419,20 @@ test('hosted widget images use only the configured HTTPS origin and public build
   assert.equal(image.headers.get('access-control-allow-origin'), '*');
   assert.equal(image.headers.get('content-type'), 'image/png');
   assert.deepEqual(Buffer.from(await image.arrayBuffer()), Buffer.from([137, 80, 78, 71]));
+  for (const [path, type, bytes] of [['/assets/font.ttf', 'font/ttf', [0, 1, 2]], ['/fonts/font.woff2', 'font/woff2', [3, 4, 5]], ['/fonts/font.otf', 'font/otf', [6, 7, 8]]]) {
+    const font = await request(path, { headers: { Origin: 'https://web-sandbox.oaiusercontent.com' } });
+    assert.equal(font.status, 200);
+    assert.equal(font.headers.get('access-control-allow-origin'), '*');
+    assert.equal(font.headers.get('content-type'), type);
+    assert.deepEqual(Buffer.from(await font.arrayBuffer()), Buffer.from(bytes));
+  }
+  const fontWrite = await request('/fonts/font.otf', { method: 'POST', headers: { Origin: 'https://untrusted.example' } });
+  assert.equal(fontWrite.status, 403);
   const blocked = await request('/mcp', { method: 'POST', headers: { Origin: 'https://untrusted.example', 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/list' }) });
   assert.equal(blocked.status, 403);
   const inline = await widgetHtml(dist);
   assert.match(inline, /data:image\/png;base64/);
+  for (const type of ['ttf', 'woff2', 'otf']) assert.ok(inline.includes(`data:font/${type};base64,`));
   assert.equal(inline.includes('https://nook.example'), false);
 });
 
@@ -434,4 +453,27 @@ test('opening movies use the trusted media origin without embedding bytes or rew
   const local = await widgetHtml(dist);
   assert.ok(local.includes('"/media/opening-film/nooks-opening-v3.mp4"'));
   assert.ok(!local.includes('data:video'));
+});
+
+
+test('recordings stream from the trusted asset origin with CORS while private API remains closed', async t => {
+  const { directory } = await fixture(t);
+  const dist = join(directory, 'audio-dist');
+  await mkdir(join(dist, 'assets'), { recursive: true });
+  await writeFile(join(dist, 'index.html'), '<html><script type="module" src="/assets/entry.js"></script></html>');
+  await writeFile(join(dist, 'assets/entry.js'), 'const rain="/assets/rain-123.mp3"; const unknown="/assets/unknown.mp3";');
+  await writeFile(join(dist, 'assets/rain-123.mp3'), 'trusted-audio-bytes');
+  const hosted = await widgetHtml(dist, { assetOrigin: 'https://nook.example' });
+  assert.ok(hosted.includes('"https://nook.example/assets/rain-123.mp3"'));
+  assert.ok(hosted.includes('"/assets/unknown.mp3"'));
+  assert.ok(!hosted.includes('data:audio'));
+  const { server } = createNotableServer({ publicUrl:'https://nook.example/mcp',dataDirectory:join(directory,'data'),distDirectory:dist });
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  t.after(()=>new Promise(resolve=>server.close(resolve)));
+  const response=await new Promise((resolve,reject)=>{
+    const req=httpRequest(`http://127.0.0.1:${server.address().port}/assets/rain-123.mp3`, {headers:{Host:'nook.example',Origin:'https://web-sandbox.oaiusercontent.com'}}, incoming=>{
+      const chunks=[];incoming.on('data',chunk=>chunks.push(chunk));incoming.on('end',()=>resolve({status:incoming.statusCode,headers:incoming.headers,body:Buffer.concat(chunks).toString()}));
+    });req.on('error',reject);req.end();
+  });
+  assert.equal(response.status,200);assert.equal(response.headers['access-control-allow-origin'],'*');assert.equal(response.headers['content-type'],'audio/mpeg');assert.equal(response.body,'trusted-audio-bytes');
 });

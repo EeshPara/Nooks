@@ -1,0 +1,88 @@
+{
+  "startedAt": "2026-10-08T06:36:06.517Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "transport": "loopback HTTP running actual web createBrowserApiHandler; real hosted Supabase Auth/DB",
+  "realtime": true,
+  "load": 0,
+  "checks": [
+    {
+      "name": "two distinct confirmed ephemeral users with real JWTs",
+      "passed": true,
+      "ms": 1942
+    },
+    {
+      "name": "unauthenticated HTTP request denied",
+      "passed": true,
+      "ms": 2
+    },
+    {
+      "name": "private notes isolated between authenticated accounts",
+      "passed": true,
+      "ms": 1724
+    },
+    {
+      "name": "concurrent compare-and-swap accepts one edit, preserves loser",
+      "passed": true,
+      "ms": 956
+    },
+    {
+      "name": "authenticated Data API cannot read other account notes",
+      "passed": true,
+      "ms": 119
+    },
+    {
+      "name": "private room create retry creates exactly one room",
+      "passed": true,
+      "ms": 708
+    },
+    {
+      "name": "private room requires invite for join and snapshot",
+      "passed": true,
+      "ms": 1185
+    },
+    {
+      "name": "nonmember denied private Realtime subscription",
+      "passed": true,
+      "ms": 4650
+    },
+    {
+      "name": "invitation acceptance and retry consume one use",
+      "passed": true,
+      "ms": 1939
+    },
+    {
+      "name": "member receives content-free invalidation after other user changes profile",
+      "passed": false,
+      "error": "Invalidation payload contains unexpected data; shape [{\"type\":\"object\",\"keys\":[\"v\",\"id\"],\"version\":1,\"innerKeys\":[]}]"
+    }
+  ],
+  "cleanup": [
+    {
+      "type": "fixture-room",
+      "id": "69262a16-4b30-4c8f-9061-315a564cdc1f",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "26b633e8-e914-4ff6-b5a9-d7d81de7fa15",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "ea980044-3ec4-48e3-9627-3b2f8340e066",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "7bc6ddc5-2f51-4b1f-af11-d63f5aac1f28",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "3355f98b-8c11-44b4-acab-93dab99ac8cc",
+      "ok": true
+    }
+  ],
+  "passed": false,
+  "finishedAt": "2026-10-08T06:36:28.055Z"
+}

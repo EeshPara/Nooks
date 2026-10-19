@@ -1,0 +1,257 @@
+[
+  {
+    "roomId": "nevermore-study",
+    "videoSha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1",
+    "frames": 84,
+    "regions": [
+      {
+        "label": "right candle",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 36.4401287216191,
+        "sourceRelativeRange": 0.05337084924667762,
+        "modulationRange": 0.030866759627526226,
+        "maxAbsoluteModulation": 0.01905197294590136,
+        "maxFrameModulationStep": 0.00335879039233836,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          1157,
+          332,
+          1216,
+          427
+        ],
+        "comparison": "light-only-right-candle-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9992265541021832,
+        "predictionMeanAbsoluteErrorMax": 1.6945584299732381,
+        "predictionMeanAbsoluteErrorMean": 1.6630963000722145
+      },
+      {
+        "label": "back candle",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 80.89881179599233,
+        "sourceRelativeRange": 0.024681797297316885,
+        "modulationRange": 0.017391576093300005,
+        "maxAbsoluteModulation": 0.009460260515791142,
+        "maxFrameModulationStep": 0.0014060976982326633,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          1098,
+          281,
+          1152,
+          361
+        ],
+        "comparison": "light-only-back-candle-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9978809675278287,
+        "predictionMeanAbsoluteErrorMax": 1.6347222222222222,
+        "predictionMeanAbsoluteErrorMean": 1.6088036449147562
+      },
+      {
+        "label": "shelf candles",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 105.70030085692612,
+        "sourceRelativeRange": 0.02213413164737315,
+        "modulationRange": 0.011450381170786766,
+        "maxAbsoluteModulation": 0.006988410688702304,
+        "maxFrameModulationStep": 0.001644636146704547,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          20,
+          243,
+          83,
+          310
+        ],
+        "comparison": "light-only-shelf-candles-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9993782617650874,
+        "predictionMeanAbsoluteErrorMax": 2.052910052910053,
+        "predictionMeanAbsoluteErrorMean": 2.0458036724916604
+      }
+    ],
+    "limitations": "Measurements establish intensity-only construction and decoded geometry preservation; perceptual approval requires independent review. No full-speed video viewing performed by this implementation agent."
+  },
+  {
+    "roomId": "autumn-bakery",
+    "videoSha256": "149b1ad042465b04e6dd1dd475f13018884d8d6d63d5042e5afe598b656bd57c",
+    "frames": 84,
+    "regions": [
+      {
+        "label": "glass candle",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 135.51216745139178,
+        "sourceRelativeRange": 0.12072500078692462,
+        "modulationRange": 0.03948187180216874,
+        "maxAbsoluteModulation": 0.019965960591999985,
+        "maxFrameModulationStep": 0.003154072501631371,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          204,
+          466,
+          277,
+          564
+        ],
+        "comparison": "light-only-glass-candle-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9989589471777152,
+        "predictionMeanAbsoluteErrorMax": 3.0180784642624174,
+        "predictionMeanAbsoluteErrorMean": 2.992218250640113
+      }
+    ],
+    "limitations": "Measurements establish intensity-only construction and decoded geometry preservation; perceptual approval requires independent review. No full-speed video viewing performed by this implementation agent."
+  },
+  {
+    "roomId": "seoul-night-cafe",
+    "videoSha256": "c198f3557c42e3dbf7304fa569b560d088dde174e5b12a88badc2d08d6ca562f",
+    "frames": 84,
+    "regions": [
+      {
+        "label": "glass candle",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 195.06770324070462,
+        "sourceRelativeRange": 0.09307808231565239,
+        "modulationRange": 0.04910102296119645,
+        "maxAbsoluteModulation": 0.026806718374205025,
+        "maxFrameModulationStep": 0.0046644464302765835,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          1111,
+          572,
+          1180,
+          647
+        ],
+        "comparison": "light-only-glass-candle-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.997834051651706,
+        "predictionMeanAbsoluteErrorMax": 2.2993236714975844,
+        "predictionMeanAbsoluteErrorMean": 2.266443524269611
+      }
+    ],
+    "limitations": "Measurements establish intensity-only construction and decoded geometry preservation; perceptual approval requires independent review. No full-speed video viewing performed by this implementation agent."
+  },
+  {
+    "roomId": "thousand-sunny-study",
+    "videoSha256": "27afda1e1d953fc66951a57b7900263f79d228c7bf099722aaabdd6ff7e11f19",
+    "frames": 84,
+    "regions": [
+      {
+        "label": "lantern flame",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 128.76454751170928,
+        "sourceRelativeRange": 0.05708551630737664,
+        "modulationRange": 0.019864655548743924,
+        "maxAbsoluteModulation": 0.011781128467627739,
+        "maxFrameModulationStep": 0.002048298135420414,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          1111,
+          436,
+          1184,
+          537
+        ],
+        "comparison": "light-only-lantern-flame-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9993371191632483,
+        "predictionMeanAbsoluteErrorMax": 2.4015552240155524,
+        "predictionMeanAbsoluteErrorMean": 2.3890433563904336
+      }
+    ],
+    "limitations": "Measurements establish intensity-only construction and decoded geometry preservation; perceptual approval requires independent review. No full-speed video viewing performed by this implementation agent."
+  },
+  {
+    "roomId": "minecraft-cottage",
+    "videoSha256": "890b936e711542e0fb4ec700437cede5dae657f81d78fad392522f65fcce7e11",
+    "frames": 84,
+    "regions": [
+      {
+        "label": "front lantern",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 115.55187259470863,
+        "sourceRelativeRange": 0.012796264520619006,
+        "modulationRange": 0.0067490042137494915,
+        "maxAbsoluteModulation": 0.004303579165938692,
+        "maxFrameModulationStep": 0.0011584754825655792,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          1147,
+          515,
+          1231,
+          626
+        ],
+        "comparison": "light-only-front-lantern-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9974126840862404,
+        "predictionMeanAbsoluteErrorMax": 1.9135206635206634,
+        "predictionMeanAbsoluteErrorMean": 1.886483847793372
+      }
+    ],
+    "limitations": "Measurements establish intensity-only construction and decoded geometry preservation; perceptual approval requires independent review. No full-speed video viewing performed by this implementation agent."
+  },
+  {
+    "roomId": "moonlit-observatory",
+    "videoSha256": "be83ce5dae6ad1feabce951dcf61a481431651a649543cead6770ea5c2c74918",
+    "frames": 84,
+    "regions": [
+      {
+        "label": "left low flame",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 79.4849405695605,
+        "sourceRelativeRange": 0.019401222619000083,
+        "modulationRange": 0.011996983251685307,
+        "maxAbsoluteModulation": 0.0067943220293495525,
+        "maxFrameModulationStep": 0.0014221831892145369,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          407,
+          413,
+          467,
+          478
+        ],
+        "comparison": "light-only-left-low-flame-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9986485176465361,
+        "predictionMeanAbsoluteErrorMax": 2.258888888888889,
+        "predictionMeanAbsoluteErrorMean": 2.255475172975173
+      },
+      {
+        "label": "right low flame",
+        "method": "original geometry with AI-derived luminance only",
+        "sourceMeanLuminance": 96.92188002335459,
+        "sourceRelativeRange": 1.1403474883135591,
+        "modulationRange": 0.06840108170342475,
+        "maxAbsoluteModulation": 0.04,
+        "maxFrameModulationStep": 0.04199963931482691,
+        "smoothingSigmaFrames": 3,
+        "amplitudeCap": 0.04,
+        "amplitudeFloor": null,
+        "decodedFrames": 84,
+        "crop": [
+          882,
+          375,
+          945,
+          446
+        ],
+        "comparison": "light-only-right-low-flame-compare.png",
+        "originalGeometryGradientCorrelationMin": 0.9985172400518714,
+        "predictionMeanAbsoluteErrorMax": 2.2091810119979134,
+        "predictionMeanAbsoluteErrorMean": 2.2019932647028555
+      }
+    ],
+    "limitations": "Measurements establish intensity-only construction and decoded geometry preservation; perceptual approval requires independent review. No full-speed video viewing performed by this implementation agent."
+  }
+]

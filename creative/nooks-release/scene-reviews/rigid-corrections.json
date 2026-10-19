@@ -1,0 +1,150 @@
+{
+  "scope": "Producer correction; not independent publication approval. No public mapping/assets modified. No provider generation or paid calls.",
+  "method": "Fully decoded both final 84-frame files. Viewed full contact sheets plus native source/frames 0,12,24,42,60,72,82,83 crop comparisons enlarged 3x using nearest-neighbor.",
+  "limitations": [
+    "No full-speed playback or integrated ambience audition",
+    "No changed existing reviewed video hashes; only these two candidate files rendered"
+  ],
+  "scenes": [
+    {
+      "sceneId": "antique-workshop",
+      "videoSha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc",
+      "candidateStatus": "ready_for_independent_review",
+      "qa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 716718,
+        "frameChangeMean": 0.001785030747991968,
+        "seamChangeMean": 0.002847945601851852,
+        "seamVsTypical": 1.5954602491052814,
+        "insideMaskChange": 0.15327128107093924,
+        "outsideMaskChange": 0.00020336213687094774,
+        "peakBrightnessChange": 0.0011089409722160326,
+        "motionMaskCoverage": 0.010333116319444445,
+        "videoSha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc",
+        "sourceArtworkSha256": "d7d5e307dbd60c1a6e16600e091c5f6e3868883195003085d24a8e157ca68f66",
+        "technicalPass": true
+      },
+      "codec": {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31
+      },
+      "finishSpec": {
+        "method": "RGB static plate with geometry-masked forward overlap",
+        "durationSeconds": 3.5,
+        "fps": 24,
+        "crf": null,
+        "motionRegions": [
+          {
+            "kind": "ellipse",
+            "points": [
+              528,
+              252,
+              588,
+              285
+            ],
+            "alpha": 110,
+            "label": "sleeping cat torso"
+          }
+        ],
+        "coordinateSpace": [
+          600,
+          338
+        ],
+        "constantQp": 1,
+        "iToPQuantizerRatio": 1,
+        "pToBQuantizerRatio": 1
+      },
+      "sourceCropEvidence": {
+        "sha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc",
+        "decodedFrames": 84,
+        "regions": {
+          "clock": {
+            "maxPixelRangeAcross84Frames": 0.0,
+            "meanPixelRange": 0.0,
+            "meanFrameChange": 0.0
+          },
+          "cat": {
+            "maxPixelRangeAcross84Frames": 10.0,
+            "meanPixelRange": 1.4591476917266846,
+            "meanFrameChange": 0.08399461209774017
+          }
+        }
+      }
+    },
+    {
+      "sceneId": "hateno-study",
+      "videoSha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8",
+      "candidateStatus": "ready_for_independent_review",
+      "qa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 679619,
+        "frameChangeMean": 0.0009530265157853635,
+        "seamChangeMean": 0.0009747540509259259,
+        "seamVsTypical": 1.0227984581548157,
+        "insideMaskChange": 0.07364393267779105,
+        "outsideMaskChange": 0.00019703994409280532,
+        "peakBrightnessChange": 0.004628906249990905,
+        "motionMaskCoverage": 0.01029296875,
+        "videoSha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8",
+        "sourceArtworkSha256": "77f55f01d81556917ae184a35f1444c7fd340b86b4c38fb53f4917d1447d1b72",
+        "technicalPass": true
+      },
+      "codec": {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31
+      },
+      "finishSpec": {
+        "method": "RGB static plate with geometry-masked forward overlap",
+        "durationSeconds": 3.5,
+        "fps": 24,
+        "crf": null,
+        "motionRegions": [
+          {
+            "kind": "ellipse",
+            "points": [
+              166,
+              9,
+              230,
+              40
+            ],
+            "alpha": 85,
+            "label": "filtered daylight on fixed window leaves",
+            "mode": "light-only"
+          }
+        ],
+        "coordinateSpace": [
+          600,
+          338
+        ],
+        "constantQp": 1,
+        "iToPQuantizerRatio": 1,
+        "pToBQuantizerRatio": 1
+      },
+      "sourceCropEvidence": {
+        "sha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8",
+        "decodedFrames": 84,
+        "regions": {
+          "leaves": {
+            "maxPixelRangeAcross84Frames": 9.0,
+            "meanPixelRange": 0.9711635708808899,
+            "meanFrameChange": 0.03471475839614868
+          }
+        }
+      }
+    }
+  ]
+}

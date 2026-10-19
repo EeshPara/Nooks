@@ -28,7 +28,7 @@ function roomOf(space) { return ROOM_IDS.includes(space.room) ? space.room : ({ 
 export function nookDraftReadiness(draft) {
   const blockers = [];
   if (draft.artworkMode !== 'curated' && !draft.space.backgroundImage && !draft.space._storedBackground) blockers.push({ code: 'IMAGE_NOT_RECEIVED', message: 'Your custom image has not been saved yet. Complete the artwork handoff or choose an image before previewing this nook.' });
-  if (draft.space.backgroundImage || draft.space._storedBackground || draft.artworkMode !== 'curated') blockers.push({ code: 'CUSTOM_PUBLICATION_UNAVAILABLE', message: 'Your custom scene can be saved privately. Shared custom-art publication needs community-specific private asset references and access checks, which are not available yet.' });
+  if (draft.space.backgroundImage || draft.space._storedBackground || draft.artworkMode !== 'curated') blockers.push({ code: 'CUSTOM_PUBLICATION_UNAVAILABLE', message: 'Custom artwork can be saved privately. Choose a gallery scene to publish a shared nook.' });
   return { readyToPublish: blockers.length === 0, blockers, supportedAction: blockers.length ? null : 'curated_publish', createsNewNook: true, guidance: 'Publication creates a separate community from the reviewed curated backdrop. It never silently edits or unlists an existing community.' };
 }
 function canonical(value) { if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`; if (value && typeof value === 'object') return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`; return JSON.stringify(value); }
@@ -65,7 +65,7 @@ export class NookCreator {
       ...(isVerifiedSupabaseIdentity(user) ? { recoveryScope: `account:${user.id}` } : {}),
     });
     if (reads.has(name)) {
-      const workspace = await this.store.read(user.id), state = stateOf(workspace);
+      const workspace = await this.store.read(user.id, { hydrateArtwork: name !== 'nook_drafts_list' }), state = stateOf(workspace);
       const now = this.clock().toISOString();
       if (name === 'nook_drafts_list') return envelope({ drafts: state.drafts.map(draft => summary(draft, now)), publications: state.publicationIntents.map(item => ({ id: item.id, draftId: item.draftId, draftRevision: item.draftRevision, status: item.status, visibility: item.visibility, nookId: item.nookId, createdAt: item.createdAt })) });
       const draft = getDraft(state, id(args.draftId, 'draftId'));

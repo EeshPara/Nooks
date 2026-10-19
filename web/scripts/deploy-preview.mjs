@@ -6,6 +6,7 @@ import { resolve, join, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { previewProject, previewScope, previewApiEntry, previewFunctionConfig, previewProjectConfig, previewOutputConfig } from './preview-deployment-contract.mjs';
+import { retainLiveRelease, verifyLiveRelease, verifyReleaseAssets } from './release-assets.mjs';
 
 const defaultRoot = resolve(import.meta.dirname, '..');
 const fail = message => { throw new Error(`Public deployment stopped: ${message}`); };
@@ -68,6 +69,8 @@ export async function preflightPreview(root = defaultRoot, env = process.env) {
   await expectJson(join(destination, 'vercel.json'), previewProjectConfig, 'Vercel project configuration');
   await expectJson(join(output, 'config.json'), previewOutputConfig, 'Build Output routing');
   const files = await sameDirectory(join(root, 'dist-preview'), join(output, 'static'), 'Static assets');
+  await verifyReleaseAssets(root);
+  await verifyReleaseAssets(root, join(output, 'static'));
   const html = (await regular(join(output, 'static/index.html'), 'Compiled index')).toString();
   if (!files.size || !/<div\b[^>]*\bid=["']root["']/i.test(html)) fail('Compiled index is not the Nooks application.');
   const references = [...html.matchAll(/\b(?:src|href)=["']([^"']+)["']/g)].map(match => match[1]).filter(value => value.startsWith('/assets/'));
@@ -101,7 +104,7 @@ export function runCommand(command, args, options) {
   });
 }
 
-export async function deployPreview({ root = defaultRoot, env = process.env, run = runCommand, log = console.log } = {}) {
+export async function deployPreview({ root = defaultRoot, env = process.env, run = runCommand, log = console.log, retain = retainLiveRelease, verifyLive = verifyLiveRelease } = {}) {
   root = resolve(root);
   await validatePreviewProject(root, env); // Never build, relink or create a project after a wrong-destination check.
   const lockPath = join(root, '.nooks-preview-deploy.lock');
@@ -110,12 +113,15 @@ export async function deployPreview({ root = defaultRoot, env = process.env, run
   catch (error) { if (error.code === 'EEXIST') fail('Another public deployment holds the lock. Wait for it to finish; do not run a second deploy.'); throw new Error('Public deployment lock could not be created.'); }
   try {
     await lock.writeFile(JSON.stringify({ pid: process.pid, startedAt: new Date().toISOString() }));
+    log('Verifying and retaining the current public release before replacing its assets.');
+    const capture = await retain(root);
     log('Building and packaging the public Nooks app.');
     await run('npm', ['run', 'package:preview'], { cwd: root, env });
     const prepared = await preflightPreview(root, env);
     // Only import/construct the packaged handler. This check never sends a request or reads account data.
     await run(process.execPath, ['--input-type=module', '--eval', "const {pathToFileURL}=await import('node:url');const entry=await import(pathToFileURL(process.argv[1]));if(typeof entry.default!=='function')process.exit(1);", prepared.apiEntry], { cwd: prepared.destination, env: { PATH: env.PATH ?? '' } });
     await preflightPreview(root, env); // Catch source/output/link changes while the import check was running.
+    await verifyLive(capture); // The local lock cannot prevent a different computer from publishing.
     log('Verified compiled assets and the isolated API. Deploying the existing Nooks project.');
     await run('vercel', ['deploy', '--prebuilt', '--prod', '--yes', '--scope', previewScope], { cwd: prepared.destination, env });
     log('Vercel deployment completed. Verify the public page, hashed assets and API health before reporting release success.');

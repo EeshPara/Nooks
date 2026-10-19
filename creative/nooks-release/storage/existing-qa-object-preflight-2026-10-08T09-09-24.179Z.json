@@ -1,0 +1,10 @@
+{
+  "sampledAt": "2026-10-08T09:09:24.180Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "documentedSha256": "f1f8ea3690fad0e8b7eb274bbcff6dbd5b8ace3b0da6b12183ff2e0f8d2010b2",
+  "documentedBytes": 173490,
+  "passed": false,
+  "mutations": 0,
+  "candidateCount": 1,
+  "failure": "candidate_shape_mismatch"
+}

@@ -16,6 +16,7 @@ const code = ts.transpileModule(`export function create(draft,onTool,initial={})
  const operate=async(key,work)=>{state.error='';try{await work();}catch(e){state.error=e.message;}};
  const setReview=x=>{state.review=review=x;},setIntent=x=>{state.intent=intent=x;},setReadiness=x=>{state.readiness=readiness=x;},setStage=x=>state.stage=x,setDrafts=x=>state.drafts=x,setConflict=x=>state.conflict=x;
  const setPublications=fn=>{state.publications=publications=typeof fn==='function'?fn(publications):fn;},setPublished=x=>state.published=x,onPublished=x=>state.callbacks.push(x);
+ ${named('draftAppearance')}
  ${named('preview')}
  ${named('reviewPublication')}
  ${named('prepare')}

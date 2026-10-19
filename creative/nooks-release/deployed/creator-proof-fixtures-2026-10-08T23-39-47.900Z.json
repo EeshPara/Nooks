@@ -1,0 +1,59 @@
+{
+  "runId": "3ffc17cd-8616-4728-a5d0-b6eea0429c48",
+  "project": "lcfcjglybfeozyrjjikk",
+  "createdAt": "2026-10-08T23:39:47.903Z",
+  "updatedAt": "2026-10-08T23:40:14.707Z",
+  "phase": "cleanup",
+  "creatorDrafts": [
+    {
+      "ownerAccount": "557b1ef6-f7c8-4986-8a84-29f52e402eed",
+      "id": "357b403d-dee0-4de5-8fd4-beb03e9c31b7"
+    },
+    {
+      "ownerAccount": "557b1ef6-f7c8-4986-8a84-29f52e402eed",
+      "id": "2c4eecf9-9098-44d6-a88d-638e08a4a348"
+    }
+  ],
+  "users": [
+    {
+      "id": "2fb57a1d-56a6-4bd7-849d-da07176a444f",
+      "email": "nooks-soak-3ffc17cd-8616-4728-a5d0-b6eea0429c48-0@example.invalid",
+      "creation": "confirmed",
+      "account": "557b1ef6-f7c8-4986-8a84-29f52e402eed",
+      "roomIndex": 0,
+      "cleaned": true
+    },
+    {
+      "id": "e04d83b8-0137-492d-8405-b21bd1062008",
+      "email": "nooks-soak-3ffc17cd-8616-4728-a5d0-b6eea0429c48-1@example.invalid",
+      "creation": "confirmed",
+      "account": "d6b343ca-fa51-4ba0-8cb3-64b84560c2cf",
+      "roomIndex": 0,
+      "cleaned": true
+    }
+  ],
+  "rooms": [
+    {
+      "index": 0,
+      "ownerAuthId": "2fb57a1d-56a6-4bd7-849d-da07176a444f",
+      "ownerAccount": "557b1ef6-f7c8-4986-8a84-29f52e402eed",
+      "requestId": "8a397ea4-c934-45dc-9d36-cf38a4d32de8",
+      "cleaned": true
+    },
+    {
+      "index": 1,
+      "ownerAuthId": "2fb57a1d-56a6-4bd7-849d-da07176a444f",
+      "ownerAccount": "557b1ef6-f7c8-4986-8a84-29f52e402eed",
+      "requestId": "ec126a05-6858-4d5b-8e3a-79462b414ae0",
+      "id": "a4c67869-1edd-4acb-98ed-07b13eb4452a",
+      "cleaned": true
+    }
+  ],
+  "throttleTopics": [
+    "account:557b1ef6-f7c8-4986-8a84-29f52e402eed",
+    "account:d6b343ca-fa51-4ba0-8cb3-64b84560c2cf",
+    "nook:a4c67869-1edd-4acb-98ed-07b13eb4452a"
+  ],
+  "sharedDirectoryTopic": "nooks:directory (never delete)",
+  "containsCredentials": false
+}

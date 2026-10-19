@@ -124,7 +124,7 @@ export function LiveNookCommunity({ live, onClose, onSelectNook, onCreateNook }:
           </div>}
         </>}
       </div>
-      <footer className="nooks-live-footer"><span><i />{live.busy ? 'Saving your changes…' : live.loading ? 'Refreshing…' : live.updatedAt ? 'Updated while you are here · every 20 seconds' : 'Only real account activity appears here'}</span><small>Your study library stays private.</small></footer>
+      <footer className="nooks-live-footer" data-state={live.error ? 'error' : live.updatedAt ? 'ready' : 'pending'}><span title={live.updatedAt ? `Last checked at ${new Date(live.updatedAt).toLocaleTimeString()}` : undefined}><i />{live.busy ? 'Saving your changes…' : live.loading ? 'Refreshing…' : live.error ? 'Refresh to check the latest activity' : live.updatedAt ? 'Updates automatically while you’re here' : 'Only real account activity appears here'}</span><small>Your study library stays private.</small></footer>
     </div>
   </div>;
 }

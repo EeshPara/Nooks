@@ -1,0 +1,368 @@
+{
+  "reviewId": "14",
+  "reviewer": "scene_review_14",
+  "reviewedAtUtc": "2026-10-08T07:32:50.356059+00:00",
+  "method": "Read geometry-safe correction report and implementation; independently decoded all 84 frames of each exact candidate; recomputed motion/seam/brightness metrics; viewed full-frame contacts and independently extracted source, eight motion samples, brightness extrema and last-two/first-two seam crops. Small crops enlarged 2x for diagnosis. Hashes verified before and after decode. Report-writing hashes rechecked: superseded candidates are explicitly marked and no replacement bytes are approved.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approvals cover sampled visual integrity and full-decode metrics only; they are not integrated product or production-readiness approval."
+  ],
+  "scenes": [
+    {
+      "sceneId": "oxford-library",
+      "videoPath": "creative/nooks-animated-all/jobs/oxford-library/finished.mp4",
+      "videoSha256": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 845718,
+        "frameChangeMean": 0.051668723505131645,
+        "seamChangeMean": 0.044579716435185185,
+        "seamVsTypical": 0.8627988734956382,
+        "insideMaskChange": 7.8228895846544075,
+        "outsideMaskChange": 5.977685646465623e-05,
+        "peakBrightnessChange": 0.0649457465277763,
+        "motionMaskCoverage": 0.006597222222222222,
+        "videoSha256": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09",
+        "sourceArtworkSha256": "8304d1bd962ec7e9fc740f2d71c67ff8deb050bd3e6af43d9a74e831960b9357",
+        "technicalPass": true
+      },
+      "supersededAtReportWriting": false,
+      "independentMetrics": {
+        "videoSha256": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.051668723505131645,
+        "seamChange": 0.044579716435185185,
+        "seamVsTypical": 0.8627988734956382,
+        "insideMaskChange": 7.8228895846544075,
+        "outsideMaskChange": 5.977685646465623e-05,
+        "peakBrightnessChange": 0.0649457465277763,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "candle": {
+            "box": [
+              158,
+              324,
+              239,
+              458
+            ],
+            "minBrightnessFrame": 0,
+            "maxBrightnessFrame": 0,
+            "brightnessRange": 0.0,
+            "maxPixelRange": 0
+          },
+          "fire": {
+            "box": [
+              1130,
+              326,
+              1280,
+              470
+            ],
+            "minBrightnessFrame": 51,
+            "maxBrightnessFrame": 47,
+            "brightnessRange": 3.926651234567906,
+            "maxPixelRange": 188
+          }
+        },
+        "supersededAtReportWriting": false,
+        "currentVideoSha256AtReportWriting": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09"
+      },
+      "findings": [
+        "Original single foreground flame and wick are restored; the independently decoded candle crop has exactly identical pixels across all 84 frames. No displaced second flame remains in source/minimum/maximum/boundary comparisons.",
+        "Eight fireplace samples show localized changing fire behind a stable chair and masonry. Last-two/first-two samples retain geometry without an obvious added boundary jump; original candle remains still while the hearth supplies motion.",
+        "Independent full decode reproduces seam ratio 0.8628 and outside-mask change 0.000060."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/14-oxford-library-candle-motion.png",
+        "creative/nooks-release/scene-reviews/14-oxford-library-candle-source-seam.png",
+        "creative/nooks-release/scene-reviews/14-oxford-library-fire-motion.png",
+        "creative/nooks-release/scene-reviews/14-oxford-library-fire-source-seam.png",
+        "creative/nooks-animated-all/jobs/oxford-library/review-contact.jpg",
+        "web/ui/public/images/nooks-50/oxford-library.webp"
+      ]
+    },
+    {
+      "sceneId": "nevermore-study",
+      "videoPath": "creative/nooks-animated-all/jobs/nevermore-study/finished.mp4",
+      "videoSha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 591905,
+        "frameChangeMean": 0.0003795389892904953,
+        "seamChangeMean": 0.0008391203703703704,
+        "seamVsTypical": 2.210893726462754,
+        "insideMaskChange": 0.05184971814970727,
+        "outsideMaskChange": 8.115071868110845e-05,
+        "peakBrightnessChange": 0.003299334490741046,
+        "motionMaskCoverage": 0.005763888888888889,
+        "videoSha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1",
+        "sourceArtworkSha256": "f89e52af333f73726a9e5abfa0a02e743c66ae2ddb75d3e7b4598da315dfd6d8",
+        "technicalPass": true
+      },
+      "supersededAtReportWriting": false,
+      "independentMetrics": {
+        "videoSha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.0003795389892904953,
+        "seamChange": 0.0008391203703703704,
+        "seamVsTypical": 2.210893726462754,
+        "insideMaskChange": 0.05184971814970727,
+        "outsideMaskChange": 8.115071868110845e-05,
+        "peakBrightnessChange": 0.003299334490741046,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "right": {
+            "box": [
+              1157,
+              332,
+              1216,
+              427
+            ],
+            "minBrightnessFrame": 76,
+            "maxBrightnessFrame": 32,
+            "brightnessRange": 0.5441570026761866,
+            "maxPixelRange": 4
+          },
+          "back": {
+            "box": [
+              1098,
+              281,
+              1152,
+              361
+            ],
+            "minBrightnessFrame": 70,
+            "maxBrightnessFrame": 8,
+            "brightnessRange": 0.5081018518518547,
+            "maxPixelRange": 3
+          },
+          "shelf": {
+            "box": [
+              20,
+              243,
+              83,
+              310
+            ],
+            "minBrightnessFrame": 58,
+            "maxBrightnessFrame": 83,
+            "brightnessRange": 0.5064360736002484,
+            "maxPixelRange": 4
+          }
+        },
+        "supersededAtReportWriting": false,
+        "currentVideoSha256AtReportWriting": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1"
+      },
+      "findings": [
+        "Original lantern cage, hanging fixture, distant candle group and foreground glass edges retain singular source silhouettes in eight samples and source/minimum/maximum/boundary comparisons. The previously displaced rigid geometry is absent.",
+        "Only extremely subtle luminance variation remains: crop mean brightness ranges are 0.51\u20130.54 on a 0\u2013255 scale, and maximum per-channel pixel ranges are 3\u20134. This is measurable original-geometry light modulation, not moving flame silhouettes. Its perceptual contribution may be nearly imperceptible and still needs full-speed assessment.",
+        "Independent full decode reproduces seam ratio 2.2109, outside-mask change 0.000081 and peak whole-frame brightness change 0.003299. No obvious spatial discontinuity appears in boundary samples."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/14-nevermore-study-right-motion.png",
+        "creative/nooks-release/scene-reviews/14-nevermore-study-right-source-seam.png",
+        "creative/nooks-release/scene-reviews/14-nevermore-study-back-motion.png",
+        "creative/nooks-release/scene-reviews/14-nevermore-study-back-source-seam.png",
+        "creative/nooks-release/scene-reviews/14-nevermore-study-shelf-motion.png",
+        "creative/nooks-release/scene-reviews/14-nevermore-study-shelf-source-seam.png",
+        "creative/nooks-animated-all/jobs/nevermore-study/review-contact.jpg",
+        "web/ui/public/images/nooks-50/nevermore-study.webp"
+      ]
+    },
+    {
+      "sceneId": "autumn-bakery",
+      "videoPath": "creative/nooks-animated-all/jobs/autumn-bakery/finished.mp4",
+      "videoSha256": "149b1ad042465b04e6dd1dd475f13018884d8d6d63d5042e5afe598b656bd57c",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": null,
+      "supersededAtReportWriting": true,
+      "independentMetrics": {
+        "videoSha256": "149b1ad042465b04e6dd1dd475f13018884d8d6d63d5042e5afe598b656bd57c",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.023999748995983932,
+        "seamChange": 0.027842881944444446,
+        "seamVsTypical": 1.1601322142620583,
+        "insideMaskChange": 0.9859749031970176,
+        "outsideMaskChange": 0.000123664304044753,
+        "peakBrightnessChange": 0.011911168981484366,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "candle": {
+            "box": [
+              204,
+              466,
+              277,
+              564
+            ],
+            "minBrightnessFrame": 53,
+            "maxBrightnessFrame": 25,
+            "brightnessRange": 0.9186935047991795,
+            "maxPixelRange": 8
+          },
+          "steam": {
+            "box": [
+              385,
+              390,
+              491,
+              540
+            ],
+            "minBrightnessFrame": 75,
+            "maxBrightnessFrame": 19,
+            "brightnessRange": 4.863312368972743,
+            "maxPixelRange": 41
+          },
+          "leaves": {
+            "box": [
+              160,
+              0,
+              345,
+              112
+            ],
+            "minBrightnessFrame": 12,
+            "maxBrightnessFrame": 41,
+            "brightnessRange": 1.068355855855856,
+            "maxPixelRange": 63
+          }
+        },
+        "supersededAtReportWriting": true,
+        "currentVideoSha256AtReportWriting": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a"
+      },
+      "findings": [
+        "Corrected glass candle retains one original flame and wick. The smaller aligned bright shapes above it also exist in the original glass reflection; they are not new displaced flames. Coffee steam is faint and transparent, with stable mug and window sill in examined samples.",
+        "The separate foliage mask still blends displaced geometry. The diagonal branch is duplicated, leaf edges have a translucent displaced layer, and the distant building/window behind them is blurred and shifted relative to the source. This is clear in the source versus frame 12 enlarged comparison and recurs across motion samples.",
+        "Independent full decode passes numerical gates with seam ratio 1.1601 and outside-mask change 0.000124, but the persistent foliage/background ghosting prevents visual approval."
+      ],
+      "requiredChanges": [
+        "Remove or repair the foliage motion region so both branches and the building behind them remain singular. Retain reviewed steam and geometry-safe candle if desired; independently review the resulting new hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/14-autumn-bakery-candle-motion.png",
+        "creative/nooks-release/scene-reviews/14-autumn-bakery-candle-source-seam.png",
+        "creative/nooks-release/scene-reviews/14-autumn-bakery-steam-motion.png",
+        "creative/nooks-release/scene-reviews/14-autumn-bakery-steam-source-seam.png",
+        "creative/nooks-release/scene-reviews/14-autumn-bakery-leaves-motion.png",
+        "creative/nooks-release/scene-reviews/14-autumn-bakery-leaves-source-seam.png",
+        "creative/nooks-animated-all/jobs/autumn-bakery/review-contact.jpg",
+        "web/ui/public/images/nooks-50/autumn-bakery.webp",
+        "creative/nooks-release/scene-reviews/14-autumn-bakery-leaves-enlarged.png"
+      ]
+    },
+    {
+      "sceneId": "seoul-night-cafe",
+      "videoPath": "creative/nooks-animated-all/jobs/seoul-night-cafe/finished.mp4",
+      "videoSha256": "c198f3557c42e3dbf7304fa569b560d088dde174e5b12a88badc2d08d6ca562f",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": null,
+      "supersededAtReportWriting": true,
+      "independentMetrics": {
+        "videoSha256": "c198f3557c42e3dbf7304fa569b560d088dde174e5b12a88badc2d08d6ca562f",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.05498849129155511,
+        "seamChange": 0.0959523292824074,
+        "seamVsTypical": 1.7449529352179798,
+        "insideMaskChange": 0.46984416638188914,
+        "outsideMaskChange": 0.00029140257830195815,
+        "peakBrightnessChange": 0.015223885995368391,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "candle": {
+            "box": [
+              1111,
+              572,
+              1180,
+              647
+            ],
+            "minBrightnessFrame": 8,
+            "maxBrightnessFrame": 42,
+            "brightnessRange": 1.1828663446054861,
+            "maxPixelRange": 10
+          },
+          "steam": {
+            "box": [
+              364,
+              378,
+              484,
+              538
+            ],
+            "minBrightnessFrame": 74,
+            "maxBrightnessFrame": 4,
+            "brightnessRange": 1.3567013888888937,
+            "maxPixelRange": 24
+          },
+          "rain": {
+            "box": [
+              510,
+              10,
+              930,
+              280
+            ],
+            "minBrightnessFrame": 76,
+            "maxBrightnessFrame": 19,
+            "brightnessRange": 0.3026072898295169,
+            "maxPixelRange": 68
+          }
+        },
+        "supersededAtReportWriting": true,
+        "currentVideoSha256AtReportWriting": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab"
+      },
+      "findings": [
+        "Corrected candle retains original flame, wick and ribbed glass geometry. Tea steam is restrained and transparent in examined samples; cup and nearby chair remain stable.",
+        "The two broad rain masks still import shifted city geometry. N Seoul Tower has a clearly doubled antenna, observation deck and shaft relative to the single original tower. Nearby buildings have softened duplicate edges. This is visible at native resolution and obvious in the enlarged source versus frame 76 comparison; it persists across eight motion samples.",
+        "Independent full decode passes numerical gates with seam ratio 1.7450 and outside-mask change 0.000291, but duplicated skyline geometry prevents visual approval."
+      ],
+      "requiredChanges": [
+        "Remove or redesign the rain masks to exclude rigid skyline geometry and preserve a single tower/building silhouette. Retain the reviewed steam and geometry-safe candle if desired; independently review the resulting new hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/14-seoul-night-cafe-candle-motion.png",
+        "creative/nooks-release/scene-reviews/14-seoul-night-cafe-candle-source-seam.png",
+        "creative/nooks-release/scene-reviews/14-seoul-night-cafe-steam-motion.png",
+        "creative/nooks-release/scene-reviews/14-seoul-night-cafe-steam-source-seam.png",
+        "creative/nooks-release/scene-reviews/14-seoul-night-cafe-rain-motion.png",
+        "creative/nooks-release/scene-reviews/14-seoul-night-cafe-rain-source-seam.png",
+        "creative/nooks-animated-all/jobs/seoul-night-cafe/review-contact.jpg",
+        "web/ui/public/images/nooks-50/seoul-night-cafe.webp",
+        "creative/nooks-release/scene-reviews/14-seoul-night-cafe-rain-enlarged.png"
+      ]
+    }
+  ]
+}

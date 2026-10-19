@@ -1,0 +1,204 @@
+{
+  "reviewId": "23",
+  "reviewer": "scene_review_23",
+  "reviewedAtUtc": "2026-10-08T07:41:48.545366+00:00",
+  "method": "Independent full decode of all 84 frames per clip, exact SHA verification, recomputed motion/brightness/seam metrics, source artwork comparisons, full-scene contacts, native motion crops, enlarged rigid-object comparisons and sampled boundary frames.",
+  "limitations": [
+    "No continuous full-speed playback or audio audition performed.",
+    "Verdicts concern sampled visuals of the exact hash, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "lighthouse-study",
+      "videoPath": "creative/nooks-animated-all/jobs/lighthouse-study/finished.mp4",
+      "videoSha256": "1a0886e741aba2c66c73afbc268508a0f9a220727ed409e7e0b970c9d8bd8b06",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1668058,
+        "frameChangeMean": 0.06283505549977689,
+        "seamChangeMean": 0.08356553819444444,
+        "seamVsTypical": 1.3299190639648781,
+        "insideMaskChange": 1.002985497805296,
+        "outsideMaskChange": 0.00016648403715939324,
+        "peakBrightnessChange": 0.021200086805563956,
+        "motionMaskCoverage": 0.06249240451388889,
+        "videoSha256": "1a0886e741aba2c66c73afbc268508a0f9a220727ed409e7e0b970c9d8bd8b06",
+        "sourceArtworkSha256": "3c3fd8b122553a014832e5054b36e414eaf6d71b490db8987ee20a99d662a7bf",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "1a0886e741aba2c66c73afbc268508a0f9a220727ed409e7e0b970c9d8bd8b06",
+        "frames": 84,
+        "meanFrameChange": 0.06283505549977689,
+        "seamChange": 0.08356553819444444,
+        "seamVsTypical": 1.3299190639648781,
+        "insideMaskChange": 1.002985497805296,
+        "outsideMaskChange": 0.00016648403715939324,
+        "peakBrightnessChange": 0.021200086805563956,
+        "qaMatchesVideo": true,
+        "audioTracks": 0
+      },
+      "findings": [
+        "Inspected full-scene contact views, native-resolution motion crops, enlarged source comparisons and last-two/first-two seam frames. Furniture, rail, lamps and foreground cup remain stable; the tea steam is faint and aligned with the cup.",
+        "The sea mask includes the distant sailboat. Source comparisons show the original crisp sail/hull blended with an offset softer sail/hull, making the boat doubled or translucent. The left cliff face also becomes locally smeared because the same water mask extends onto rock.",
+        "Water variation is restrained and no conspicuous boundary jump was seen in sampled seam frames. Numeric seam and outside-mask passes do not detect rigid-object contamination inside the mask."
+      ],
+      "requiredChanges": [
+        "Restrict ocean motion to open water, excluding the complete sailboat and its immediate silhouette as well as all cliff/rock geometry with a safe feather margin. Preserve the original geometry; independently review the new exact hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience after correction."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-boat-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-boat-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-boat-source-compare.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-cliff-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-cliff-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-cliff-source-compare.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-sea-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-sea-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-sea-source-compare.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-steam-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-steam-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/lighthouse-study-steam-source-compare.png",
+        "creative/nooks-animated-all/jobs/lighthouse-study/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/lighthouse-study/review-contact.jpg"
+      ]
+    },
+    {
+      "sceneId": "desert-casita",
+      "videoPath": "creative/nooks-animated-all/jobs/desert-casita/finished.mp4",
+      "videoSha256": "5216bb6d656e1e4bfd31eb4a1a077fedd48ac5163f85d1a663c4fc185c136795",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1274720,
+        "frameChangeMean": 0.056345608126952246,
+        "seamChangeMean": 0.045073784722222225,
+        "seamVsTypical": 0.7999520498681373,
+        "insideMaskChange": 2.0078027458382373,
+        "outsideMaskChange": 0.0001258627695815967,
+        "peakBrightnessChange": 0.03161747685184935,
+        "motionMaskCoverage": 0.028002387152777777,
+        "videoSha256": "5216bb6d656e1e4bfd31eb4a1a077fedd48ac5163f85d1a663c4fc185c136795",
+        "sourceArtworkSha256": "d52c94a072735e4e82561d08a0a9d5d183e1abd316505de14b04b3f23a3812c2",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "5216bb6d656e1e4bfd31eb4a1a077fedd48ac5163f85d1a663c4fc185c136795",
+        "frames": 84,
+        "meanFrameChange": 0.056345608126952246,
+        "seamChange": 0.045073784722222225,
+        "seamVsTypical": 0.7999520498681373,
+        "insideMaskChange": 2.0078027458382373,
+        "outsideMaskChange": 0.0001258627695815967,
+        "peakBrightnessChange": 0.03161747685184935,
+        "qaMatchesVideo": true,
+        "audioTracks": 0
+      },
+      "findings": [
+        "Inspected full-scene contact views, native-resolution motion crops, enlarged source comparisons and last-two/first-two seam frames. Courtyard architecture, plants, lamps, tile borders and cup retain their layout. Steam originates above the foreground drink.",
+        "The fountain-trickle mask overlays the rigid stone pedestal. In source comparisons, its carved stem and base become softer and wider, with an offset translucent left contour visible in multiple samples. Water around the pedestal is plausible, but the stone should not participate in that blended motion.",
+        "The water stays inside the pool in sampled frames and the seam has no large discontinuity. The compositing defect remains despite passing technical metrics."
+      ],
+      "requiredChanges": [
+        "Remove the stone pedestal from all motion masks. Keep pool water animation confined around the pedestal or narrow the trickle treatment to actual water only; preserve the source stone geometry and review the new hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience after correction."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-pedestal-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-pedestal-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-pedestal-source-compare.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-pool-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-pool-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-pool-source-compare.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-steam-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-steam-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/desert-casita-steam-source-compare.png",
+        "creative/nooks-animated-all/jobs/desert-casita/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/desert-casita/review-contact.jpg"
+      ]
+    },
+    {
+      "sceneId": "stationery-studio",
+      "videoPath": "creative/nooks-animated-all/jobs/stationery-studio/finished.mp4",
+      "videoSha256": "9e6fbb179ae589db1ef9eb146531a3436b804030ad17d60121e169c9d3cdf76e",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 904914,
+        "frameChangeMean": 0.010395797600122712,
+        "seamChangeMean": 0.013167317708333333,
+        "seamVsTypical": 1.2666000450199133,
+        "insideMaskChange": 0.9661232399083723,
+        "outsideMaskChange": 8.976337565474539e-05,
+        "peakBrightnessChange": 0.005194227430550313,
+        "motionMaskCoverage": 0.010668402777777778,
+        "videoSha256": "9e6fbb179ae589db1ef9eb146531a3436b804030ad17d60121e169c9d3cdf76e",
+        "sourceArtworkSha256": "e5ce38056e9e42b9529cab3a1fd0244495f2cab50ee108e12f75819ed3899f25",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "9e6fbb179ae589db1ef9eb146531a3436b804030ad17d60121e169c9d3cdf76e",
+        "frames": 84,
+        "meanFrameChange": 0.010395797600122712,
+        "seamChange": 0.013167317708333333,
+        "seamVsTypical": 1.2666000450199133,
+        "insideMaskChange": 0.9661232399083723,
+        "outsideMaskChange": 8.976337565474539e-05,
+        "peakBrightnessChange": 0.005194227430550313,
+        "qaMatchesVideo": true,
+        "audioTracks": 0
+      },
+      "findings": [
+        "Inspected full-scene contact views, native-resolution motion crops, enlarged source comparisons and last-two/first-two seam frames. Papers, pens, shelf furniture, candles and cup are stable. Mug steam is clearly aligned with the drink and gently translucent in the sampled sequence.",
+        "The region labeled window plant leaf tips is actually centered largely on the ceramic vase below the plant. Source comparisons show the vase decoration and right contour becoming softened/overlaid by a moving layer. This reads as rigid ceramic texture/contour wobble rather than plant leaves moving.",
+        "No obvious seam jump or detached candle was observed; the bright candle remains part of the static artwork. The vase issue is localized and is not captured by outside-mask stability."
+      ],
+      "requiredChanges": [
+        "Freeze/remove the window plant leaf-tip mask, retaining mug steam, or re-mask only actual leaves without touching the rigid vase and independently review the new hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience after correction."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-leaves-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-leaves-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-leaves-source-compare.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-steam-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-steam-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-steam-source-compare.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-vase-motion.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-vase-seam.png",
+        "creative/nooks-release/scene-reviews/23-evidence/stationery-studio-vase-source-compare.png",
+        "creative/nooks-animated-all/jobs/stationery-studio/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/stationery-studio/review-contact.jpg"
+      ]
+    }
+  ]
+}

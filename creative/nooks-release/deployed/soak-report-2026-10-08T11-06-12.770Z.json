@@ -1,0 +1,5364 @@
+{
+  "runId": "1f19cc4b-6570-430e-a5e6-7298ed2ac6fe",
+  "startedAt": "2026-10-08T11:06:12.774Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "bounds": {
+    "users": 100,
+    "rooms": 5,
+    "membersPerRoom": 20,
+    "sockets": 100,
+    "channels": 300,
+    "durationMs": 900000,
+    "publicCap": 4200,
+    "adminCap": 350,
+    "cleanupCap": 800,
+    "minStartGapMs": 250,
+    "maxActive": 8,
+    "heartbeatMs": 40000,
+    "maxHeartbeatGapMs": 70000,
+    "cleanupDeadlineMs": 900000
+  },
+  "passed": false,
+  "phases": [
+    {
+      "name": "fixture_setup",
+      "durationMs": 283295,
+      "users": 100,
+      "rooms": 5
+    }
+  ],
+  "intervals": [],
+  "fanout": [],
+  "negativeChecks": [
+    {
+      "type": "foreign_snapshot",
+      "userIndex": 0,
+      "roomIndex": 1,
+      "status": 403,
+      "denied": true
+    },
+    {
+      "type": "foreign_snapshot",
+      "userIndex": 20,
+      "roomIndex": 2,
+      "status": 403,
+      "denied": true
+    },
+    {
+      "type": "foreign_snapshot",
+      "userIndex": 40,
+      "roomIndex": 3,
+      "status": 403,
+      "denied": true
+    },
+    {
+      "type": "foreign_snapshot",
+      "userIndex": 60,
+      "roomIndex": 4,
+      "status": 403,
+      "denied": true
+    },
+    {
+      "type": "foreign_snapshot",
+      "userIndex": 80,
+      "roomIndex": 0,
+      "status": 403,
+      "denied": true
+    }
+  ],
+  "reconnects": [],
+  "cleanup": [
+    {
+      "type": "room",
+      "roomIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "room",
+      "roomIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "room",
+      "roomIndex": 2,
+      "ok": true
+    },
+    {
+      "type": "room",
+      "roomIndex": 3,
+      "ok": true
+    },
+    {
+      "type": "room",
+      "roomIndex": 4,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 2,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 3,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 2,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 3,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 2,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 3,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 2,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 3,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 0,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 1,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 2,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 3,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 4,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 5,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 6,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 7,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 4,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 5,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 6,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 7,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 4,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 5,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 6,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 7,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 4,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 5,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 6,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 7,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 4,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 5,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 6,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 7,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 8,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 9,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 10,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 11,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 8,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 9,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 10,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 11,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 8,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 9,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 10,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 11,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 8,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 9,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 10,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 11,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 8,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 9,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 10,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 11,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 12,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 13,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 14,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 15,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 12,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 13,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 14,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 15,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 12,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 13,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 14,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 15,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 12,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 13,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 14,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 15,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 12,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 13,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 14,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 15,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 16,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 17,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 18,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 19,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 16,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 17,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 18,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 19,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 16,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 17,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 18,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 19,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 16,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 17,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 18,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 19,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 16,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 17,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 18,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 19,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 20,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 21,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 22,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 23,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 20,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 21,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 22,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 23,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 20,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 21,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 22,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 23,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 20,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 21,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 22,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 23,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 20,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 21,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 22,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 23,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 24,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 25,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 26,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 27,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 24,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 25,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 26,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 27,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 24,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 25,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 26,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 27,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 24,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 25,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 26,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 27,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 24,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 25,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 26,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 27,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 28,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 29,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 30,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 31,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 28,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 29,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 30,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 31,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 28,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 29,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 30,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 31,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 28,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 29,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 30,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 31,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 28,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 29,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 30,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 31,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 32,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 33,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 34,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 35,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 32,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 33,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 34,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 35,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 32,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 33,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 34,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 35,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 32,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 33,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 34,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 35,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 32,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 33,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 34,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 35,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 36,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 37,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 38,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 39,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 36,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 37,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 38,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 39,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 36,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 37,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 38,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 39,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 36,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 37,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 38,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 39,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 36,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 37,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 38,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 39,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 40,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 41,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 42,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 43,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 40,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 41,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 42,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 43,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 40,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 41,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 42,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 43,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 40,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 41,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 42,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 43,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 40,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 41,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 42,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 43,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 44,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 45,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 46,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 47,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 44,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 45,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 46,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 47,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 44,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 45,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 46,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 47,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 44,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 45,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 46,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 47,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 44,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 45,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 46,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 47,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 48,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 49,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 50,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 51,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 48,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 49,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 50,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 51,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 48,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 49,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 50,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 51,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 48,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 49,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 50,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 51,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 48,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 49,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 50,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 51,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 52,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 53,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 54,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 55,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 52,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 53,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 54,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 55,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 52,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 53,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 54,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 55,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 54,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 53,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 52,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 55,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 54,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 53,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 52,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 55,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 56,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 57,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 58,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 59,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 56,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 58,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 57,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 56,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 59,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 58,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 57,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 56,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 59,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 58,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 57,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 56,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 58,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 59,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 57,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 59,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 60,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 61,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 62,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 63,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 60,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 61,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 62,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 60,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 63,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 61,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 62,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 60,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 63,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 61,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 62,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 60,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 63,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 61,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 62,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 63,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 64,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 65,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 66,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 67,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 64,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 65,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 64,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 66,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 67,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 65,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 64,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 66,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 67,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 65,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 64,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 66,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 67,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 65,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 66,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 67,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 68,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 69,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 70,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 71,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 68,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 69,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 68,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 70,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 71,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 69,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 68,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 70,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 71,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 69,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 68,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 70,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 71,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 69,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 70,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 71,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 72,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 73,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 74,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 75,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 72,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 73,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 72,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 74,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 75,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 73,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 72,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 74,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 75,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 73,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 72,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 74,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 75,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 73,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 74,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 75,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 76,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 77,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 78,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 79,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 76,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 77,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 76,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 78,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 79,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 77,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 76,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 78,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 79,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 77,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 76,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 78,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 79,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 77,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 78,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 79,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 80,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 81,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 82,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 83,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 80,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 81,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 80,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 82,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 83,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 81,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 80,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 82,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 83,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 81,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 80,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 82,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 83,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 81,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 82,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 83,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 84,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 85,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 86,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 87,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 84,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 85,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 84,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 86,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 87,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 85,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 84,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 86,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 87,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 85,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 84,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 86,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 87,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 85,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 86,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 87,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 88,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 89,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 90,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 91,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 88,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 89,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 88,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 90,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 91,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 89,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 88,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 90,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 91,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 89,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 88,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 90,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 91,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 89,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 90,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 91,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 92,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 93,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 94,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 95,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 92,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 93,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 92,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 94,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 95,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 93,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 92,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 94,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 95,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 93,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 92,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 94,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 95,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 93,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 94,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 95,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 96,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 97,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 98,
+      "ok": true
+    },
+    {
+      "type": "session",
+      "userIndex": 99,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 96,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 97,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 96,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 98,
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "userIndex": 99,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 97,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 96,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 98,
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "userIndex": 99,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 97,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 96,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 98,
+      "ok": true
+    },
+    {
+      "type": "auth_absent",
+      "userIndex": 99,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 97,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 98,
+      "ok": true
+    },
+    {
+      "type": "account_absent",
+      "userIndex": 99,
+      "ok": true
+    }
+  ],
+  "limitations": [
+    "Actual public HTTPS plus direct Supabase WebSockets; one generator, no browser/email onboarding.",
+    "Fifteen minutes at a lower rate is not overnight stability, multi-region performance, 1000-user capacity or production approval.",
+    "Lossy invalidation hints are not content delivery guarantees. Reconnect convergence is checked with authorized snapshots.",
+    "No hosted disconnect cancellation, token-refresh/expiry, upload, artwork or populated-library evidence."
+  ],
+  "releaseStart": {
+    "id": "d03cf6fb1687397f7f16feb1",
+    "htmlSha256": "d03cf6fb1687397f7f16feb11bbe60ff45c2bea0740a13fbfb0efeba6cd8a41d",
+    "manifestSha256": "06afe5173a3fa9a1d4e11ae9689d6a2065e9b98bee9b59437019dc9872686547"
+  },
+  "failure": {
+    "phase": "isolation_and_socket_ramp",
+    "code": "unexpected_channel_failure"
+  },
+  "cleanupVerification": {
+    "plannedUsers": 100,
+    "identitiesVerifiedAbsent": 100,
+    "plannedRooms": 5,
+    "roomsVerifiedAbsent": 5,
+    "allAbsent": true
+  },
+  "fixtureThrottleTopics": [
+    "account:1753c74b-faab-4da7-b6f1-a3bb360559db",
+    "account:8196bb86-d28f-4d65-af82-052685d57e40",
+    "account:5667a41f-0b13-4227-8b5d-bf2df221188c",
+    "account:0ca428ef-42e3-44d5-af7d-2f857fcbb585",
+    "account:2ba24abc-2544-404f-8943-300835ed2a6c",
+    "account:c8813ee4-a773-4a5b-bbba-448dfe40dd70",
+    "account:c289158e-2cad-44c9-9141-8908809e5620",
+    "account:40e0d1e5-f8c8-4e71-9e5b-e67e7459c9ac",
+    "account:7c1dbaf3-0d75-4527-a1d2-aba0546c4c68",
+    "account:61e367a3-d2ba-4e29-8fac-4e81e11df3fd",
+    "account:9d859348-802e-49b5-984f-5cd401e01faf",
+    "account:b10fe865-da94-47e2-b07c-e47071b18ab8",
+    "account:15cddc5d-a506-40a6-ad08-062633b038ae",
+    "account:6f77bbc0-fc27-4f25-8ac3-47a1d0239786",
+    "account:c05b2f89-d607-41bc-b430-1f1ef26e8d74",
+    "account:a111f063-899b-4573-a0af-20d2f5136cf9",
+    "account:a339e6c4-2e9b-4294-a210-916c32035927",
+    "account:ec9f8691-68f5-4836-adbc-f1dcc8138b27",
+    "account:65bcd8eb-faee-441c-9570-990f28fe8d74",
+    "account:06b3d8ad-ca80-4377-871e-4370017fa76a",
+    "account:6759a618-73c7-4fd1-b07c-7f038c06a8ec",
+    "account:1f4b33d0-25cc-412c-ab14-8829ff75ef7a",
+    "account:50714862-77cd-4338-b15f-4728c89ea81e",
+    "account:87a20455-62d6-4c63-b20a-e1f91d73b2e9",
+    "account:95142152-9b41-4c4b-acd4-336d4d4d78e9",
+    "account:ac2d993b-59e2-4a59-9241-82a11a8b7dd6",
+    "account:b663babf-566f-46b8-ac9d-d6e2ad8d2636",
+    "account:8ca4925c-f065-44a6-ad00-c14cab9e0171",
+    "account:977c4504-8b8f-4d5c-ad48-1ec9481967b2",
+    "account:3275554b-3c55-4143-add6-7c8444091623",
+    "account:c45f4da6-bd1d-423d-884b-81638e0a31ef",
+    "account:79e816e9-c8ec-4855-8e79-f9c5cbbd0bf0",
+    "account:9ac33763-3b01-401c-af85-a80459b7c21c",
+    "account:cbae1843-b6a7-49e3-a644-98d5b9834e7a",
+    "account:64eb83cb-5449-427e-adbc-37f208fe5d0b",
+    "account:82308738-68f1-47cc-8786-a4fbbb0bf1a8",
+    "account:3b3f880e-65e6-4a19-928c-25440e3419b0",
+    "account:20448a15-72ad-42d8-9702-1dd66ccceb67",
+    "account:a9c2c6f2-19d0-4dbb-ba23-7e7c19854fd9",
+    "account:5580ae0d-fa80-4201-9740-c4caf390cd9b",
+    "account:4b24b789-1e4a-475e-9258-cbb7c4afe9f5",
+    "account:b82447b8-6f8a-4294-bed4-62ba76294b99",
+    "account:db0dc536-7b32-496d-9eab-8acf9cc93a1f",
+    "account:33538c87-645a-4316-b3cd-336fc7f82db8",
+    "account:fbc68e94-8953-428c-8aff-7e943a9773b7",
+    "account:802bb1dd-c832-47b7-ba07-dc948995fa2c",
+    "account:f64c2c98-4891-4e85-ab68-fb6c90c6cc65",
+    "account:10828492-b373-4929-8bfe-1e8d9d2aa40b",
+    "account:0055bb95-bc36-4b64-82ac-0b8860b77901",
+    "account:ea66f81a-f9a8-4a67-813a-2de0a64c9b54",
+    "account:5ddff99a-03c9-4d7e-925c-7a44a9242c45",
+    "account:373e3d16-f204-4826-8b47-421de6e75617",
+    "account:d35c56fa-433d-4681-90d2-230391e3c2d3",
+    "account:e22ab3fe-d710-4e63-bb5c-cf5f2f8b7d2b",
+    "account:43e50545-5632-4bcf-87b6-e70096a01b90",
+    "account:c5888baa-eef8-4f94-9ba0-0dade77e4622",
+    "account:b6d896cf-7f5e-4ea0-b099-38a26b1d2fd5",
+    "account:b39dd661-bab5-407c-810e-5d5e3c44bf79",
+    "account:5a1650bf-a8c4-4139-9f7c-8d9b6236e3f1",
+    "account:7687de5b-3a75-452f-97b8-b2f8009c67ac",
+    "account:894d3dc7-f4d9-4f34-8753-83744632607f",
+    "account:499cf516-ae51-469c-b1c6-3689e1717110",
+    "account:b76a7818-6810-4da5-a10e-5911d06d758c",
+    "account:a97ce7ce-a123-432a-b01c-1a9369f856bb",
+    "account:4f3f390a-6fd6-49cf-84b2-81986cf314cb",
+    "account:ff484c1d-61cb-4f74-b7ea-235c73f19afc",
+    "account:4faecdf0-8e35-43e2-a2a0-99643ba2672a",
+    "account:906936ef-5b79-49a0-a208-724280e413c4",
+    "account:f89d4d73-d9c0-4632-8dd5-0b1f42a26807",
+    "account:2b485274-510e-43a0-8cd3-b280784d09e3",
+    "account:fbfccc43-d607-497b-bad3-9fd112b701aa",
+    "account:5ec76900-f295-4d21-8fc1-71c492a3dd7c",
+    "account:6bd10c15-76bb-416e-87f9-6224fd2a4fa6",
+    "account:c418a9af-185d-413d-962f-099a9f2487c1",
+    "account:52004551-737d-4c82-b9af-2550aa8493e9",
+    "account:691bfbfb-9363-4c46-b30d-fa95d254da9c",
+    "account:73e30d4f-13d7-48bf-aae2-b4ddfe056e77",
+    "account:53210b76-248e-4461-8234-b1923b9ed637",
+    "account:563059fe-242f-41c4-8754-35c220b3439b",
+    "account:78da98b6-d712-4246-9b7f-92c001b6917c",
+    "account:253b5e57-afbf-4a29-893c-81a89c77880b",
+    "account:ff5add4f-df71-4561-8654-3f778f5e12df",
+    "account:db07aa7a-4694-4cae-b778-07cc53d02817",
+    "account:16451408-c430-46ea-a3ed-50420d019fb3",
+    "account:8dc55e78-9477-41fa-8529-5f75dd6b9482",
+    "account:0ac7511b-b316-464c-b5be-56ceaadccd35",
+    "account:ed6a7103-4a40-4666-a6db-0960ed9e3d5f",
+    "account:caceb11e-9e27-4cdb-91ea-6d0a47388c9f",
+    "account:8a0b14a9-9ff2-417d-afd9-20bcdcdf8db2",
+    "account:66c6d02e-d2ca-4ad6-9565-d3d2cfa5cb44",
+    "account:2f3ee3d6-c172-492c-800e-cdea3efc9a98",
+    "account:9082e687-9ef1-435c-aee0-2893f811c402",
+    "account:7cb13366-fc94-472b-b02a-b7e064a8fad2",
+    "account:2d63b686-42ea-44b9-a14e-4e0e7b0046b4",
+    "account:601e0a3a-dfdc-4fd1-a923-c6343d88cd40",
+    "account:58d5ca6c-6e38-44b0-b3ea-9d4c019aab9a",
+    "account:29a6d11d-9477-4ac6-ab68-13db83b12e52",
+    "account:36e3555b-2ff1-4fcf-9bc2-d4f00c57c9e6",
+    "account:44aebae5-006b-4036-aacb-8261326488fb",
+    "account:565fd7bb-bb4f-4da5-b1ed-c88d7fe136c7",
+    "nook:aebc55b1-df42-4505-a85b-4553e6bad2db",
+    "nook:64982a69-7c02-4f76-bdb1-cb2f67eb620d",
+    "nook:1fe7dfa1-a0bb-449c-bc8b-2bd394acb92e",
+    "nook:793984d7-551e-464e-a4ff-fed4551c0dec",
+    "nook:0445a04d-2845-4189-87bd-69a3930ad353"
+  ],
+  "throttleCleanup": "Root must delete only these exact topics after account/room absence guards, preserving nooks:directory. No private throttle SQL runs in this harness.",
+  "finalCheckReserve": 250,
+  "http": {
+    "counts": {
+      "public": 218,
+      "admin": 200,
+      "cleanup": 715
+    },
+    "peakActive": 4,
+    "requests": 218,
+    "unexpectedErrors": 0,
+    "expectedDenials": 5,
+    "p50Ms": 313,
+    "p95Ms": 450,
+    "p99Ms": 616,
+    "maxMs": 918,
+    "minimumStartGapMs": 250.006345999951
+  },
+  "realtime": {
+    "peakSockets": 1,
+    "peakChannels": 2,
+    "finalSockets": 0,
+    "finalChannels": 0
+  },
+  "samples": [
+    {
+      "phase": "preflight",
+      "tool": "/",
+      "startedMs": 46,
+      "durationMs": 450,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 796
+    },
+    {
+      "phase": "preflight",
+      "tool": "/nooks-release.json",
+      "startedMs": 496,
+      "durationMs": 278,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 14796
+    },
+    {
+      "phase": "preflight",
+      "tool": "/api/config",
+      "startedMs": 775,
+      "durationMs": 619,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 258
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 6788,
+      "durationMs": 918,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 1,
+      "startedMs": 9313,
+      "durationMs": 386,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 2,
+      "startedMs": 11734,
+      "durationMs": 469,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 3,
+      "startedMs": 14233,
+      "durationMs": 449,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 4,
+      "startedMs": 16734,
+      "durationMs": 342,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 5,
+      "startedMs": 19236,
+      "durationMs": 352,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 6,
+      "startedMs": 21736,
+      "durationMs": 333,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 7,
+      "startedMs": 24255,
+      "durationMs": 375,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 8,
+      "startedMs": 26740,
+      "durationMs": 360,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 9,
+      "startedMs": 29241,
+      "durationMs": 352,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 10,
+      "startedMs": 31740,
+      "durationMs": 385,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 11,
+      "startedMs": 34240,
+      "durationMs": 364,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 12,
+      "startedMs": 36742,
+      "durationMs": 305,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 13,
+      "startedMs": 39243,
+      "durationMs": 318,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 14,
+      "startedMs": 41742,
+      "durationMs": 351,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 15,
+      "startedMs": 44244,
+      "durationMs": 267,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 16,
+      "startedMs": 46744,
+      "durationMs": 354,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 17,
+      "startedMs": 49245,
+      "durationMs": 348,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 18,
+      "startedMs": 51746,
+      "durationMs": 312,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 0,
+      "userIndex": 19,
+      "startedMs": 54246,
+      "durationMs": 284,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 20,
+      "startedMs": 56764,
+      "durationMs": 349,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 21,
+      "startedMs": 59248,
+      "durationMs": 550,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 22,
+      "startedMs": 61748,
+      "durationMs": 335,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 23,
+      "startedMs": 64249,
+      "durationMs": 407,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 24,
+      "startedMs": 66749,
+      "durationMs": 363,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 25,
+      "startedMs": 69250,
+      "durationMs": 376,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 26,
+      "startedMs": 71751,
+      "durationMs": 269,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 27,
+      "startedMs": 74252,
+      "durationMs": 335,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 28,
+      "startedMs": 76752,
+      "durationMs": 288,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 29,
+      "startedMs": 79253,
+      "durationMs": 327,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 30,
+      "startedMs": 81754,
+      "durationMs": 293,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 31,
+      "startedMs": 84255,
+      "durationMs": 341,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 32,
+      "startedMs": 86755,
+      "durationMs": 281,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 33,
+      "startedMs": 89408,
+      "durationMs": 529,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 34,
+      "startedMs": 91892,
+      "durationMs": 291,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 35,
+      "startedMs": 94257,
+      "durationMs": 289,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 36,
+      "startedMs": 96756,
+      "durationMs": 285,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 37,
+      "startedMs": 99257,
+      "durationMs": 271,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 38,
+      "startedMs": 101758,
+      "durationMs": 383,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 1,
+      "userIndex": 39,
+      "startedMs": 104259,
+      "durationMs": 295,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 40,
+      "startedMs": 106760,
+      "durationMs": 330,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 41,
+      "startedMs": 109261,
+      "durationMs": 505,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 42,
+      "startedMs": 111762,
+      "durationMs": 332,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 43,
+      "startedMs": 114263,
+      "durationMs": 346,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 44,
+      "startedMs": 116764,
+      "durationMs": 309,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 45,
+      "startedMs": 119264,
+      "durationMs": 301,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 46,
+      "startedMs": 121767,
+      "durationMs": 320,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 47,
+      "startedMs": 124265,
+      "durationMs": 278,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 48,
+      "startedMs": 126767,
+      "durationMs": 311,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 49,
+      "startedMs": 129268,
+      "durationMs": 378,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 50,
+      "startedMs": 131768,
+      "durationMs": 348,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 51,
+      "startedMs": 134269,
+      "durationMs": 365,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 52,
+      "startedMs": 136768,
+      "durationMs": 304,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 53,
+      "startedMs": 139269,
+      "durationMs": 341,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 54,
+      "startedMs": 141769,
+      "durationMs": 276,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 55,
+      "startedMs": 144269,
+      "durationMs": 616,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 56,
+      "startedMs": 146769,
+      "durationMs": 311,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 57,
+      "startedMs": 149271,
+      "durationMs": 291,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 58,
+      "startedMs": 151771,
+      "durationMs": 275,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 2,
+      "userIndex": 59,
+      "startedMs": 154273,
+      "durationMs": 301,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 60,
+      "startedMs": 156773,
+      "durationMs": 303,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 61,
+      "startedMs": 159274,
+      "durationMs": 278,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 62,
+      "startedMs": 161792,
+      "durationMs": 352,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 63,
+      "startedMs": 164275,
+      "durationMs": 357,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 64,
+      "startedMs": 166776,
+      "durationMs": 450,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 65,
+      "startedMs": 169277,
+      "durationMs": 325,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 66,
+      "startedMs": 171777,
+      "durationMs": 324,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 67,
+      "startedMs": 174277,
+      "durationMs": 507,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 68,
+      "startedMs": 176779,
+      "durationMs": 314,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 69,
+      "startedMs": 179279,
+      "durationMs": 303,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 70,
+      "startedMs": 181780,
+      "durationMs": 300,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 71,
+      "startedMs": 184280,
+      "durationMs": 280,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 72,
+      "startedMs": 186782,
+      "durationMs": 392,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 73,
+      "startedMs": 189283,
+      "durationMs": 285,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 74,
+      "startedMs": 191784,
+      "durationMs": 293,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 75,
+      "startedMs": 194300,
+      "durationMs": 348,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 76,
+      "startedMs": 196787,
+      "durationMs": 345,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 77,
+      "startedMs": 199287,
+      "durationMs": 381,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 78,
+      "startedMs": 201787,
+      "durationMs": 252,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 3,
+      "userIndex": 79,
+      "startedMs": 204287,
+      "durationMs": 318,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 80,
+      "startedMs": 206787,
+      "durationMs": 459,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 81,
+      "startedMs": 209288,
+      "durationMs": 429,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 82,
+      "startedMs": 211789,
+      "durationMs": 328,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 83,
+      "startedMs": 214289,
+      "durationMs": 328,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 84,
+      "startedMs": 216790,
+      "durationMs": 272,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 85,
+      "startedMs": 219291,
+      "durationMs": 298,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 86,
+      "startedMs": 221791,
+      "durationMs": 271,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 87,
+      "startedMs": 224293,
+      "durationMs": 284,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 88,
+      "startedMs": 226807,
+      "durationMs": 348,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 89,
+      "startedMs": 229293,
+      "durationMs": 378,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 90,
+      "startedMs": 231794,
+      "durationMs": 335,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 91,
+      "startedMs": 234294,
+      "durationMs": 322,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 92,
+      "startedMs": 236794,
+      "durationMs": 316,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 93,
+      "startedMs": 239295,
+      "durationMs": 303,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 94,
+      "startedMs": 241796,
+      "durationMs": 317,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 95,
+      "startedMs": 244295,
+      "durationMs": 317,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 96,
+      "startedMs": 246795,
+      "durationMs": 313,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 97,
+      "startedMs": 249296,
+      "durationMs": 295,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 98,
+      "startedMs": 251798,
+      "durationMs": 316,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "workspace",
+      "roomIndex": 4,
+      "userIndex": 99,
+      "startedMs": 254299,
+      "durationMs": 278,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 739
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_create",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 254702,
+      "durationMs": 335,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 323
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_create",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 255081,
+      "durationMs": 410,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 289
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 1,
+      "startedMs": 255491,
+      "durationMs": 375,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 2,
+      "startedMs": 255866,
+      "durationMs": 290,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 3,
+      "startedMs": 256156,
+      "durationMs": 363,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 4,
+      "startedMs": 256519,
+      "durationMs": 275,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 5,
+      "startedMs": 256794,
+      "durationMs": 313,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 6,
+      "startedMs": 257107,
+      "durationMs": 364,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 7,
+      "startedMs": 257470,
+      "durationMs": 360,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 8,
+      "startedMs": 257830,
+      "durationMs": 271,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 9,
+      "startedMs": 258102,
+      "durationMs": 313,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 10,
+      "startedMs": 258414,
+      "durationMs": 246,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 11,
+      "startedMs": 258666,
+      "durationMs": 331,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 12,
+      "startedMs": 258997,
+      "durationMs": 260,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 13,
+      "startedMs": 259257,
+      "durationMs": 278,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 14,
+      "startedMs": 259535,
+      "durationMs": 285,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 15,
+      "startedMs": 259820,
+      "durationMs": 362,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 16,
+      "startedMs": 260182,
+      "durationMs": 335,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 17,
+      "startedMs": 260517,
+      "durationMs": 250,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 18,
+      "startedMs": 260768,
+      "durationMs": 351,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 0,
+      "userIndex": 19,
+      "startedMs": 261118,
+      "durationMs": 299,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_snapshot",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 261418,
+      "durationMs": 408,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 5139
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_create",
+      "roomIndex": 1,
+      "userIndex": 20,
+      "startedMs": 261868,
+      "durationMs": 280,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 324
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_create",
+      "roomIndex": 1,
+      "userIndex": 20,
+      "startedMs": 262191,
+      "durationMs": 423,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 289
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 21,
+      "startedMs": 262614,
+      "durationMs": 313,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 22,
+      "startedMs": 262927,
+      "durationMs": 265,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 23,
+      "startedMs": 263191,
+      "durationMs": 251,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 24,
+      "startedMs": 263443,
+      "durationMs": 286,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 25,
+      "startedMs": 263728,
+      "durationMs": 255,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 26,
+      "startedMs": 263983,
+      "durationMs": 262,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 27,
+      "startedMs": 264245,
+      "durationMs": 299,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 28,
+      "startedMs": 264544,
+      "durationMs": 243,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 29,
+      "startedMs": 264795,
+      "durationMs": 275,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 30,
+      "startedMs": 265070,
+      "durationMs": 357,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 31,
+      "startedMs": 265427,
+      "durationMs": 273,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 32,
+      "startedMs": 265700,
+      "durationMs": 284,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 33,
+      "startedMs": 265984,
+      "durationMs": 357,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 34,
+      "startedMs": 266341,
+      "durationMs": 269,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 35,
+      "startedMs": 266609,
+      "durationMs": 275,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 36,
+      "startedMs": 266884,
+      "durationMs": 277,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 37,
+      "startedMs": 267161,
+      "durationMs": 369,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 38,
+      "startedMs": 267530,
+      "durationMs": 280,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 1,
+      "userIndex": 39,
+      "startedMs": 267810,
+      "durationMs": 448,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_snapshot",
+      "roomIndex": 1,
+      "userIndex": 20,
+      "startedMs": 268258,
+      "durationMs": 313,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 5140
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_create",
+      "roomIndex": 2,
+      "userIndex": 40,
+      "startedMs": 268600,
+      "durationMs": 394,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 324
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_create",
+      "roomIndex": 2,
+      "userIndex": 40,
+      "startedMs": 269026,
+      "durationMs": 322,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 289
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 41,
+      "startedMs": 269348,
+      "durationMs": 268,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 42,
+      "startedMs": 269617,
+      "durationMs": 397,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 43,
+      "startedMs": 270014,
+      "durationMs": 264,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 44,
+      "startedMs": 270278,
+      "durationMs": 285,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 45,
+      "startedMs": 270564,
+      "durationMs": 265,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 46,
+      "startedMs": 270828,
+      "durationMs": 419,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 47,
+      "startedMs": 271247,
+      "durationMs": 336,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 48,
+      "startedMs": 271583,
+      "durationMs": 398,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 49,
+      "startedMs": 271981,
+      "durationMs": 270,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 50,
+      "startedMs": 272252,
+      "durationMs": 377,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 51,
+      "startedMs": 272629,
+      "durationMs": 261,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 52,
+      "startedMs": 272890,
+      "durationMs": 289,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 53,
+      "startedMs": 273179,
+      "durationMs": 281,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 54,
+      "startedMs": 273460,
+      "durationMs": 356,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 55,
+      "startedMs": 273817,
+      "durationMs": 255,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 56,
+      "startedMs": 274072,
+      "durationMs": 264,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 57,
+      "startedMs": 274336,
+      "durationMs": 269,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 58,
+      "startedMs": 274605,
+      "durationMs": 266,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 2,
+      "userIndex": 59,
+      "startedMs": 274871,
+      "durationMs": 255,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_snapshot",
+      "roomIndex": 2,
+      "userIndex": 40,
+      "startedMs": 275127,
+      "durationMs": 303,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 5140
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_create",
+      "roomIndex": 3,
+      "userIndex": 60,
+      "startedMs": 275498,
+      "durationMs": 275,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 324
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_create",
+      "roomIndex": 3,
+      "userIndex": 60,
+      "startedMs": 275821,
+      "durationMs": 328,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 289
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 61,
+      "startedMs": 276149,
+      "durationMs": 363,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 62,
+      "startedMs": 276511,
+      "durationMs": 309,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 63,
+      "startedMs": 276820,
+      "durationMs": 244,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 64,
+      "startedMs": 277072,
+      "durationMs": 254,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 65,
+      "startedMs": 277326,
+      "durationMs": 271,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 66,
+      "startedMs": 277597,
+      "durationMs": 276,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 67,
+      "startedMs": 277873,
+      "durationMs": 295,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 68,
+      "startedMs": 278168,
+      "durationMs": 273,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 69,
+      "startedMs": 278440,
+      "durationMs": 384,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 70,
+      "startedMs": 278824,
+      "durationMs": 257,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 71,
+      "startedMs": 279081,
+      "durationMs": 356,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 72,
+      "startedMs": 279437,
+      "durationMs": 295,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 73,
+      "startedMs": 279732,
+      "durationMs": 274,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 74,
+      "startedMs": 280006,
+      "durationMs": 249,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 75,
+      "startedMs": 280257,
+      "durationMs": 266,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 76,
+      "startedMs": 280523,
+      "durationMs": 266,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 77,
+      "startedMs": 280788,
+      "durationMs": 363,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 78,
+      "startedMs": 281151,
+      "durationMs": 392,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 3,
+      "userIndex": 79,
+      "startedMs": 281544,
+      "durationMs": 272,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_snapshot",
+      "roomIndex": 3,
+      "userIndex": 60,
+      "startedMs": 281816,
+      "durationMs": 383,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 5140
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_create",
+      "roomIndex": 4,
+      "userIndex": 80,
+      "startedMs": 282247,
+      "durationMs": 324,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 324
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_create",
+      "roomIndex": 4,
+      "userIndex": 80,
+      "startedMs": 282612,
+      "durationMs": 245,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 289
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 81,
+      "startedMs": 282863,
+      "durationMs": 296,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 82,
+      "startedMs": 283160,
+      "durationMs": 416,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 83,
+      "startedMs": 283576,
+      "durationMs": 360,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 84,
+      "startedMs": 283936,
+      "durationMs": 362,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 85,
+      "startedMs": 284299,
+      "durationMs": 259,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 86,
+      "startedMs": 284557,
+      "durationMs": 274,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 87,
+      "startedMs": 284831,
+      "durationMs": 253,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 88,
+      "startedMs": 285084,
+      "durationMs": 324,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 89,
+      "startedMs": 285408,
+      "durationMs": 480,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 90,
+      "startedMs": 285888,
+      "durationMs": 264,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 91,
+      "startedMs": 286152,
+      "durationMs": 265,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 92,
+      "startedMs": 286417,
+      "durationMs": 260,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 93,
+      "startedMs": 286678,
+      "durationMs": 261,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 94,
+      "startedMs": 286938,
+      "durationMs": 238,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 95,
+      "startedMs": 287188,
+      "durationMs": 316,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 96,
+      "startedMs": 287504,
+      "durationMs": 314,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 97,
+      "startedMs": 287818,
+      "durationMs": 330,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 98,
+      "startedMs": 288147,
+      "durationMs": 340,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_invite_accept",
+      "roomIndex": 4,
+      "userIndex": 99,
+      "startedMs": 288488,
+      "durationMs": 298,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 126
+    },
+    {
+      "phase": "fixture_setup",
+      "tool": "nook_snapshot",
+      "roomIndex": 4,
+      "userIndex": 80,
+      "startedMs": 288786,
+      "durationMs": 283,
+      "status": 200,
+      "ok": true,
+      "expectedDenial": false,
+      "responseBytes": 5140
+    },
+    {
+      "phase": "isolation_and_socket_ramp",
+      "tool": "nook_snapshot",
+      "roomIndex": 0,
+      "userIndex": 0,
+      "startedMs": 289069,
+      "durationMs": 341,
+      "status": 403,
+      "ok": true,
+      "expectedDenial": true,
+      "responseBytes": 144
+    },
+    {
+      "phase": "isolation_and_socket_ramp",
+      "tool": "nook_snapshot",
+      "roomIndex": 1,
+      "userIndex": 20,
+      "startedMs": 289410,
+      "durationMs": 290,
+      "status": 403,
+      "ok": true,
+      "expectedDenial": true,
+      "responseBytes": 144
+    },
+    {
+      "phase": "isolation_and_socket_ramp",
+      "tool": "nook_snapshot",
+      "roomIndex": 2,
+      "userIndex": 40,
+      "startedMs": 289701,
+      "durationMs": 383,
+      "status": 403,
+      "ok": true,
+      "expectedDenial": true,
+      "responseBytes": 144
+    },
+    {
+      "phase": "isolation_and_socket_ramp",
+      "tool": "nook_snapshot",
+      "roomIndex": 3,
+      "userIndex": 60,
+      "startedMs": 290084,
+      "durationMs": 247,
+      "status": 403,
+      "ok": true,
+      "expectedDenial": true,
+      "responseBytes": 144
+    },
+    {
+      "phase": "isolation_and_socket_ramp",
+      "tool": "nook_snapshot",
+      "roomIndex": 4,
+      "userIndex": 80,
+      "startedMs": 290335,
+      "durationMs": 290,
+      "status": 403,
+      "ok": true,
+      "expectedDenial": true,
+      "responseBytes": 144
+    }
+  ],
+  "finishedAt": "2026-10-08T11:14:08.199Z"
+}

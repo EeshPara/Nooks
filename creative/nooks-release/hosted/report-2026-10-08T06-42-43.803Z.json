@@ -1,0 +1,134 @@
+{
+  "startedAt": "2026-10-08T06:42:43.804Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "transport": "loopback HTTP running actual web createBrowserApiHandler; real hosted Supabase Auth/DB",
+  "realtime": true,
+  "load": 100,
+  "checks": [
+    {
+      "name": "two distinct confirmed ephemeral users with real JWTs",
+      "passed": true,
+      "ms": 2205
+    },
+    {
+      "name": "unauthenticated HTTP request denied",
+      "passed": true,
+      "ms": 3
+    },
+    {
+      "name": "private notes isolated between authenticated accounts",
+      "passed": true,
+      "ms": 1508
+    },
+    {
+      "name": "concurrent compare-and-swap accepts one edit, preserves loser",
+      "passed": true,
+      "ms": 887
+    },
+    {
+      "name": "authenticated Data API cannot read other account notes",
+      "passed": true,
+      "ms": 109
+    },
+    {
+      "name": "private room create retry creates exactly one room",
+      "passed": true,
+      "ms": 652
+    },
+    {
+      "name": "private room requires invite for join and snapshot",
+      "passed": true,
+      "ms": 1099
+    },
+    {
+      "name": "nonmember denied private Realtime subscription",
+      "passed": true,
+      "ms": 4660
+    },
+    {
+      "name": "invitation acceptance and retry consume one use",
+      "passed": true,
+      "ms": 1793
+    },
+    {
+      "name": "member receives content-free invalidation after other user changes profile",
+      "passed": true,
+      "ms": 2955
+    },
+    {
+      "name": "presence updates online count without study credits",
+      "passed": true,
+      "ms": 745
+    },
+    {
+      "name": "leaving private room immediately forbids fetch and presence",
+      "passed": true,
+      "ms": 1021
+    },
+    {
+      "name": "removed member denied a fresh subscription",
+      "passed": true,
+      "ms": 4936
+    },
+    {
+      "name": "public directory membership and owner-only controls",
+      "passed": true,
+      "ms": 2234
+    },
+    {
+      "name": "server-clock focus completion retry awards credit once",
+      "passed": true,
+      "ms": 63905
+    },
+    {
+      "name": "bounded 100 independent authenticated WebSocket connections",
+      "passed": true,
+      "ms": 14995
+    },
+    {
+      "name": "archive retry preserves closure and removes access",
+      "passed": true,
+      "ms": 1031
+    }
+  ],
+  "cleanup": [
+    {
+      "type": "fixture-room",
+      "id": "1870cc09-ac76-40b9-9394-a594d04e0d48",
+      "ok": true
+    },
+    {
+      "type": "fixture-room",
+      "id": "3f4964ae-b72c-4fe5-8007-abe7ab83136b",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "811bed74-97c8-4b66-a6a6-7f9f3f85ceac",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "892b6cda-2fb2-473d-be3a-cb4df00f715c",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "eda647e8-20b3-4a30-885d-f3543202883a",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "99d82b7c-2d3b-4a62-8c3c-44a879f739f1",
+      "ok": true
+    }
+  ],
+  "loadResult": {
+    "requested": 100,
+    "connected": 100,
+    "elapsedMs": 12074,
+    "received": 100
+  },
+  "passed": true,
+  "finishedAt": "2026-10-08T06:45:03.975Z"
+}

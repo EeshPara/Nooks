@@ -19,3 +19,5 @@
 **/*.pem
 **/*.key
 **/.nooks-preview-deploy.lock
+.gstack/
+**/supabase/.temp/

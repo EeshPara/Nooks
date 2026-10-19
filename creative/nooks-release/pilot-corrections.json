@@ -1,0 +1,102 @@
+{
+  "reviewer": "pilot_scene_corrections",
+  "status": "corrected candidates; not published; independent approval still required",
+  "newPaidCalls": 0,
+  "all50SpecsValidate": true,
+  "importedSubmissionMarkerVerification": "Called generate(duration=8,max_spend=0) for each with provider command replaced by a raising stub; all returned from existing completed markers without provider/network commands.",
+  "method": "Existing paid raw jobs copied without alteration into all-scenes jobs. Constant QP1, equal I/P/B ratios; original unchanged numeric QA gates. Source-versus-native sampled crops inspected after final rendering.",
+  "limitations": [
+    "Correction author review, not independent approval.",
+    "No continuous full-speed playback or subjective audio audition.",
+    "Rainy skyline is now static; Howl stove only changes luminance. Do not describe these as moving rain or shape-changing stove flames."
+  ],
+  "scenes": [
+    {
+      "sceneId": "rainy-library",
+      "candidatePath": "creative/nooks-animated-all/jobs/rainy-library/finished.mp4",
+      "videoSha256": "d915555624575c5c1355bd2055bcbf3b7217f9532c332d96cae84057ec04b093",
+      "technicalQA": {
+        "durationSeconds": 7.0,
+        "frames": 168,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 859651,
+        "frameChangeMean": 0.004159049522482812,
+        "seamChangeMean": 0.001365379050925926,
+        "seamVsTypical": 0.3282911260241116,
+        "insideMaskChange": 1.1439560696434068,
+        "outsideMaskChange": 0.0003445292586560722,
+        "peakBrightnessChange": 0.006287254050924673,
+        "motionMaskCoverage": 0.0033355034722222223,
+        "videoSha256": "d915555624575c5c1355bd2055bcbf3b7217f9532c332d96cae84057ec04b093",
+        "sourceArtworkSha256": "35bd2a9a0af234ae6e59a576ce113d2900d8ecaee9f62c0a0589569edf83ccf1",
+        "technicalPass": true
+      },
+      "correction": "Removed all generated window/skyline overlays and lamp regions. Real generated cup steam only, masked above the ceramic rim; rainy exterior remains the original still artwork.",
+      "providerJobId": "a3e9613b-dd7b-4389-9c6b-3558f558bb9a",
+      "generatedSha256": "743e59890d8ff558f9bd435d30d9e1557c9179098f54a8587de97a8a520cfa99",
+      "unchangedOriginalPublishedSha256": "9e72b3e52637ccec2bda95f3cf9cfbd447914ab46afaf3c16d6712d90c12c355",
+      "readyForIndependentReview": true
+    },
+    {
+      "sceneId": "howls-moving-study",
+      "candidatePath": "creative/nooks-animated-all/jobs/howls-moving-study/finished.mp4",
+      "videoSha256": "aaa752b280a9e5b2589e322adea960be8b2625acf839b7604be4d8423be14431",
+      "technicalQA": {
+        "durationSeconds": 7.0,
+        "frames": 168,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 924265,
+        "frameChangeMean": 0.0035714465166888443,
+        "seamChangeMean": 0.0018091724537037037,
+        "seamVsTypical": 0.5065657417098945,
+        "insideMaskChange": 0.4806997014011556,
+        "outsideMaskChange": 0.00019918376924614638,
+        "peakBrightnessChange": 0.018612919560197838,
+        "motionMaskCoverage": 0.0070182291666666665,
+        "videoSha256": "aaa752b280a9e5b2589e322adea960be8b2625acf839b7604be4d8423be14431",
+        "sourceArtworkSha256": "44b17a12042c265521e2eb2757b3c9c37b37c73bd096b24a3335c5dfda5bf672",
+        "technicalPass": true
+      },
+      "correction": "Removed generated cat and lantern movement. Real generated cup steam remains. The stove uses bounded periodic luminance derived from the existing generated frames, applied to original geometry; no generated iron bars or alternate flame silhouette is blended.",
+      "providerJobId": "63b09382-86e4-48af-a127-0e773f0d6982",
+      "generatedSha256": "00a2667ca5d9c0ba4de3abaf09a49d264433ff95441088be014b9adce2e06e33",
+      "unchangedOriginalPublishedSha256": "d9e3d7664770e5e98bf678e099dce7f113fd5233a0a43646adf5919547eb34d5",
+      "readyForIndependentReview": true
+    },
+    {
+      "sceneId": "gryffindor-common-room",
+      "candidatePath": "creative/nooks-animated-all/jobs/gryffindor-common-room/finished.mp4",
+      "videoSha256": "daeea4dd5d26b2724f6e757af7ccf4042665745df019f21f6a5238913891eac7",
+      "technicalQA": {
+        "durationSeconds": 7.0,
+        "frames": 168,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1368026,
+        "frameChangeMean": 0.0658902940646485,
+        "seamChangeMean": 0.07159505208333333,
+        "seamVsTypical": 1.086579641200077,
+        "insideMaskChange": 8.341874769184859,
+        "outsideMaskChange": 0.00038753460648475666,
+        "peakBrightnessChange": 0.16078378182870523,
+        "motionMaskCoverage": 0.007852647569444444,
+        "videoSha256": "daeea4dd5d26b2724f6e757af7ccf4042665745df019f21f6a5238913891eac7",
+        "sourceArtworkSha256": "5b2b770aa5102faaa3c6cd9c6be30d0bca0948d2442aea0f012ecf97777fb64f",
+        "technicalPass": true
+      },
+      "correction": "Removed generated candles and cat. Actual generated flame is restricted to the upper open hearth above screen bars, with an additional margin from the left ornamental post and lower opacity for gentler motion.",
+      "providerJobId": "ba8235b5-0ee1-47be-9f97-64566545e540",
+      "generatedSha256": "0b0af1128fad8f44a8546f78668e2fefe7239bd0e55416219fb806f40452b35d",
+      "unchangedOriginalPublishedSha256": "1ada672679da343f6a1bd1330313f098548288032094ca37691db94d8fe8744f",
+      "readyForIndependentReview": true
+    }
+  ]
+}

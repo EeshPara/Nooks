@@ -28,3 +28,13 @@ create schema nooks_test;
 create function nooks_test.assert(ok boolean,label text) returns void language plpgsql as $$ begin if ok is distinct from true then raise exception 'FAIL: %',label; end if; end $$;
 grant usage on schema nooks_test to anon,authenticated,service_role;
 grant execute on function nooks_test.assert(boolean,text) to anon,authenticated,service_role;
+
+-- Stand-in for Supabase's supported API: capture exact payloads locally only.
+create table nooks_test.broadcasts(payload jsonb,event text,topic text,private boolean);
+grant all on nooks_test.broadcasts to service_role;
+create function realtime.send(payload jsonb,event text,topic text,private boolean default true) returns void language plpgsql as $$
+begin
+ if current_setting('nooks_test.fail_broadcast',true)='yes' then raise exception 'Synthetic broadcast outage'; end if;
+ insert into nooks_test.broadcasts values(payload,event,topic,private);
+end $$;
+grant execute on function realtime.send(jsonb,text,text,boolean) to service_role;

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import ts from 'typescript';
 const source = fs.readFileSync(new URL('./useLiveNooks.ts', import.meta.url), 'utf8').replace(/^import .*;\n/gm, '').replace(/export /g, '');
-const code = ts.transpileModule(`export const create=({useCallback,useEffect,useRef,useState,callTool,document,window})=>{${source};return useLiveNooks;};`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022 } }).outputText;
+const code = ts.transpileModule(`export const create=({useCallback,useEffect,useRef,useState,callTool,document,window,isEmbedded,nooksAccount,startLiveSync})=>{${source};return useLiveNooks;};`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022 } }).outputText;
 const { create } = await import('data:text/javascript;base64,' + Buffer.from(code).toString('base64'));
 const settle = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
 function deferred() { let resolve, reject; const promise = new Promise((a,b) => { resolve=a; reject=b; }); return {promise,resolve,reject}; }
@@ -18,7 +18,7 @@ function harness(handler, initial = {}, storage = new Map()) {
     useEffect(fn,deps) { const slot=at++; if (!effects[slot] || deps.some((v,i)=>v!==effects[slot].deps[i])) pending.push(()=>{effects[slot]?.cleanup?.();effects[slot]={deps,cleanup:fn()};}); },
   };
   const h={options:{enabled:true,recoveryScope:ALICE,...initial},calls,document:{hidden:false,addEventListener(){},removeEventListener(){}}};
-  const hook=create({...hooks,document:h.document,window:{localStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},setInterval(){return 1;},clearInterval(){}},callTool:async(name,args)=>{calls.push({name,args});const scope=h.options.recoveryScope;const value=await handler(name,args);return {recoveryScope:scope,...(name==='nooks_list'?{profile:{id:scope?.slice(8),displayName:'Saved learner',avatar:3}}:{}),...value};}});
+  const hook=create({...hooks,isEmbedded:true,nooksAccount:{},startLiveSync:()=>()=>{},document:h.document,window:{localStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},setInterval(){return 1;},clearInterval(){}},callTool:async(name,args)=>{calls.push({name,args});const scope=h.options.recoveryScope;const value=await handler(name,args);return {recoveryScope:scope,...(name==='nooks_list'?{profile:{id:scope?.slice(8),displayName:'Saved learner',avatar:3}}:{}),...value};}});
   h.render=()=>{at=0;h.current=hook(h.options);pending.splice(0).forEach(fn=>fn());return h.current;};
   h.tick=async()=>{await settle();h.render();await settle();h.render();return h.current;};
   h.close=()=>effects.forEach(e=>e?.cleanup?.());h.render();return h;
@@ -132,4 +132,10 @@ test('privacy changes retain the selected lobby and reject unverified responses'
  assert.equal(h.current.activeNookId,SELECTED);assert.equal(h.current.snapshot.nook.visibility,'private');
  assert.deepEqual(h.calls.find(c=>c.name==='nook_visibility_update').args,{nookId:SELECTED,visibility:'private'});
  fail=true;await assert.rejects(h.current.updateVisibility(SELECTED,'public'),/Owner required/);await h.tick();assert.equal(h.current.snapshot.nook.visibility,'private');h.close();
+});
+
+test('room hints fetch only the selected snapshot and directory hints avoid snapshot/presence reads',async()=>{
+ const h=harness((name,args)=>name==='nooks_list'?{nooks:[nook(SELECTED)]}:name==='nook_snapshot'?snapshot(args.nookId):{}, {activeNookId:SELECTED});
+ await h.tick();h.calls.length=0;await h.current.refresh('room');await h.tick();assert.deepEqual(h.calls.map(c=>c.name),['nook_snapshot']);
+ h.calls.length=0;await h.current.refresh('directory');await h.tick();assert.deepEqual(h.calls.map(c=>c.name),['nooks_list']);assert.equal(h.current.snapshot.nook.id,SELECTED);h.close();
 });

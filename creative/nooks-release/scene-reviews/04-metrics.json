@@ -1,0 +1,18 @@
+{
+  "ravenclaw-tower": {
+    "videoSha256": "4ce46802b728a268c549a8d070343cb294dd8f7f698f0ea71ead0358bbd90a84",
+    "frames": 84,
+    "meanFrameChange": 0.004400126547858099,
+    "seamChange": 0.007354600694444445,
+    "seamVsTypical": 1.6714520854007096,
+    "qaMatchesVideo": true
+  },
+  "hufflepuff-common-room": {
+    "videoSha256": "a6d8c12f87c63ff14a1f01069a95c9dd928e09d930af7c01e0361a4c11f63095",
+    "frames": 84,
+    "meanFrameChange": 0.08781249564229138,
+    "seamChange": 0.13064199942129628,
+    "seamVsTypical": 1.4877381455308256,
+    "qaMatchesVideo": true
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "passed": true,
+  "rooms": 50,
+  "targets": [
+    "/Users/rparasu/plugins/nooks-sam-preview/web",
+    "/Users/rparasu/plugins/nooks-sam-preview/app",
+    "/Users/rparasu/plugins/nooks-sam-preview/cloud",
+    "/Users/rparasu/plugins/nooks-site-update"
+  ],
+  "scope": "Exact bytes, full-decode metadata, independent frame samples, source artwork and target parity; no continuous playback or listening claim",
+  "scenes": [
+    {
+      "roomId": "alpine-cabin",
+      "sha256": "3ea7e2e2c1a719e803861ad578fa1834be247c466c2da2005aa4f910f5eb0d0f",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/01.json"
+      ]
+    },
+    {
+      "roomId": "animal-crossing-island",
+      "sha256": "17e636e8be9aa00f11c37a56ab29e5ef20fd51a2584f1f24bed25dc758a849a0",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/corrections-01.json"
+      ]
+    },
+    {
+      "roomId": "antique-workshop",
+      "sha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/25.json"
+      ]
+    },
+    {
+      "roomId": "aurora-cabin",
+      "sha256": "0b1b2a9ef34b95e944d94bb4ad0b2604e11668d4c10d322da3cdfceb30df3cbf",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/26.json"
+      ]
+    },
+    {
+      "roomId": "autumn-bakery",
+      "sha256": "249525ef39e6af10be6962076a29c5f9024125d793efd84a88dacab639cd808a",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/18.json"
+      ]
+    },
+    {
+      "roomId": "bookshop-cat",
+      "sha256": "9c145ead038bf9686bfb94f270d11cb1ca1b56e05eac8495872b065162183fc9",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/06.json"
+      ]
+    },
+    {
+      "roomId": "capybara-onsen",
+      "sha256": "2c5c965b9c2f417afa143469c84e39e208d426fbeb2944a76de3050fd8c51a48",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/11.json"
+      ]
+    },
+    {
+      "roomId": "cinnamoroll-cloud-cafe",
+      "sha256": "dbf78fa5659789764f5ebe6a088b9c5b01dcfdf6e38f69abdf0a64445074e396",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/09.json"
+      ]
+    },
+    {
+      "roomId": "cloud-cafe",
+      "sha256": "35ec9f16845a1ea8361933f81c7b044f5d09538b9c4dc3b013d99cbecdb960b2",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/21.json"
+      ]
+    },
+    {
+      "roomId": "cyberpunk-rain-loft",
+      "sha256": "59ded8e2a4a4763462bbabff70ab17c12c878c86c580ef1b36bc1795afbb4e2d",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/26.json"
+      ]
+    },
+    {
+      "roomId": "desert-casita",
+      "sha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/27.json"
+      ]
+    },
+    {
+      "roomId": "dragon-hatchery",
+      "sha256": "ab622ff3f6fdcc0d9cf06008cd4838fc8b40bbcb7c16cf997e787e968486c4d2",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/07.json"
+      ]
+    },
+    {
+      "roomId": "dragon-rider-study",
+      "sha256": "66ccd01e767e3d1e435403d14a1e1d36d9908029220ca9f330c7fdbec07a0823",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/08.json"
+      ]
+    },
+    {
+      "roomId": "frog-pond-studio",
+      "sha256": "166cd92997997861e546ff6f25fc8e4e948e683ac6287ff8100c6f6f3751b96d",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/25.json"
+      ]
+    },
+    {
+      "roomId": "gryffindor-common-room",
+      "sha256": "daeea4dd5d26b2724f6e757af7ccf4042665745df019f21f6a5238913891eac7",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/28.json"
+      ]
+    },
+    {
+      "roomId": "hateno-study",
+      "sha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/25.json"
+      ]
+    },
+    {
+      "roomId": "hobbit-study",
+      "sha256": "8299b13c6d2c3e8c50a3e0f2333bcfb6836d4ffd9ea5a6dcce389ed220ac11f8",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/08.json"
+      ]
+    },
+    {
+      "roomId": "howls-moving-study",
+      "sha256": "aaa752b280a9e5b2589e322adea960be8b2625acf839b7604be4d8423be14431",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/28.json"
+      ]
+    },
+    {
+      "roomId": "hufflepuff-common-room",
+      "sha256": "a6d8c12f87c63ff14a1f01069a95c9dd928e09d930af7c01e0361a4c11f63095",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/04.json"
+      ]
+    },
+    {
+      "roomId": "kikis-bakery-attic",
+      "sha256": "ba5febe2d519fcad575eeae8fd78daaae9917c471d94518700e49695bf2c9a6e",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/03.json"
+      ]
+    },
+    {
+      "roomId": "kuromi-midnight-desk",
+      "sha256": "518038931ae5f2a34738f559e68800a02c913e0c839e682ad8a60c6ff917b047",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/16.json"
+      ]
+    },
+    {
+      "roomId": "kyoto-teahouse",
+      "sha256": "9a11c431c68a986ceb08c2079473467af58bb56586caa06a23c2872e8731c74e",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/10.json"
+      ]
+    },
+    {
+      "roomId": "lighthouse-study",
+      "sha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/27.json"
+      ]
+    },
+    {
+      "roomId": "mage-archive",
+      "sha256": "55525c6907c74897d6b64dc0d0c74ecb1d1c542f4f58e3c1fe294f5f0792eea7",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/19.json"
+      ]
+    },
+    {
+      "roomId": "midnight-train",
+      "sha256": "345fd653a0c0c10c4ceb36b99e0a4089fc59326ed8ed8f9fbba73be22b0fc89a",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/03.json"
+      ]
+    },
+    {
+      "roomId": "minecraft-cottage",
+      "sha256": "890b936e711542e0fb4ec700437cede5dae657f81d78fad392522f65fcce7e11",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/15.json"
+      ]
+    },
+    {
+      "roomId": "moonlit-observatory",
+      "sha256": "be83ce5dae6ad1feabce951dcf61a481431651a649543cead6770ea5c2c74918",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/15.json"
+      ]
+    },
+    {
+      "roomId": "neon-tokyo",
+      "sha256": "1b784cacfcc6d631843a29edfa917b8aeec8e7d1678aa2a302b5919dbeb5af6b",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/26.json"
+      ]
+    },
+    {
+      "roomId": "nevermore-study",
+      "sha256": "1844a33560e38f11b47606757c3b9628b6ae3430ed098437e946696a11cab9d1",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/14.json"
+      ]
+    },
+    {
+      "roomId": "oxford-library",
+      "sha256": "844f363004027ac468626fe27de279e9f667cf1a011ad90677409ed5ad45fe09",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/14.json"
+      ]
+    },
+    {
+      "roomId": "paris-attic",
+      "sha256": "41bb0bce500dab4a80fa5557ecbf630b53ee968d74d055c0a178e7dd591ceae0",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/13.json"
+      ]
+    },
+    {
+      "roomId": "pokemon-research-cottage",
+      "sha256": "532d99a6c24e6193a2b0acad9db763c11fc475830e1d145e280c4b67e2f8c1ae",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/12.json"
+      ]
+    },
+    {
+      "roomId": "rainy-library",
+      "sha256": "d915555624575c5c1355bd2055bcbf3b7217f9532c332d96cae84057ec04b093",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/28.json"
+      ]
+    },
+    {
+      "roomId": "ravenclaw-tower",
+      "sha256": "4ce46802b728a268c549a8d070343cb294dd8f7f698f0ea71ead0358bbd90a84",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/04.json"
+      ]
+    },
+    {
+      "roomId": "sakura-garden",
+      "sha256": "6eb196a6d82e7ab4e6bd05a8942c112471212469fc4fbcb1708853822a2dfa3f",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/18.json"
+      ]
+    },
+    {
+      "roomId": "secret-door-study",
+      "sha256": "f2bc48a5469c83fb79bba6889baa380b351e940f99a6b65a5c7aa39e1ab70b47",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/20.json"
+      ]
+    },
+    {
+      "roomId": "seoul-night-cafe",
+      "sha256": "8f6a2af67102d8a2bdc14fedfeb1727c26c5b5f3f01f71b8481b3ada111889ab",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/18.json"
+      ]
+    },
+    {
+      "roomId": "slytherin-common-room",
+      "sha256": "02f77614ff872ecc10e2f9ea11301302b382533dff91444bfdd85183539a4fd1",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/02.json"
+      ]
+    },
+    {
+      "roomId": "spirited-bathhouse",
+      "sha256": "d477d0d8d05eb815fe722c93cc27dd0bf164d33411ff4e2b301666e1dca9d780",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/05.json"
+      ]
+    },
+    {
+      "roomId": "stardew-farmhouse",
+      "sha256": "ace64b3020c2c7720b5e4815aed85e91577d1e353162b8329e3ac4a76b211fa5",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/05.json"
+      ]
+    },
+    {
+      "roomId": "stationery-studio",
+      "sha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/27.json"
+      ]
+    },
+    {
+      "roomId": "sumeru-akademiya",
+      "sha256": "59fd09b9c0919d258433e798564865d8c8bbaf359173bde28420d537a5131291",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/26.json"
+      ]
+    },
+    {
+      "roomId": "sunlit-greenhouse",
+      "sha256": "329c877ab03151ee14e322c4416c5df6509364206ce5b0b4eace269bb238fc9b",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/06.json"
+      ]
+    },
+    {
+      "roomId": "thousand-sunny-study",
+      "sha256": "27afda1e1d953fc66951a57b7900263f79d228c7bf099722aaabdd6ff7e11f19",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/15.json"
+      ]
+    },
+    {
+      "roomId": "tiny-mouse-house",
+      "sha256": "83ee2b83842ded38aa91e9a2cafab5bf6797a117599b33e427c211870c679bce",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/21.json"
+      ]
+    },
+    {
+      "roomId": "totoro-forest-window",
+      "sha256": "0479ba4ce3322d476ab73529d1f5db3fadc78ed83c18ab8926965f836bd5ad4c",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/02.json"
+      ]
+    },
+    {
+      "roomId": "underwater-study",
+      "sha256": "6819c12313c179b272adb0d203630e786e5b7206a93ae2e8ced62b0fd39555b4",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/13.json"
+      ]
+    },
+    {
+      "roomId": "velaris-study",
+      "sha256": "beec126210620e09ef348e0446dafc44e9a87f2d59bbdcc36cf1471d3c4a79eb",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/09.json"
+      ]
+    },
+    {
+      "roomId": "witch-apothecary",
+      "sha256": "0ed9d16d268ecf61726f2c6133b9f9e96a26b356186c6781f6a49f295554d9ba",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/corrections-01.json"
+      ]
+    },
+    {
+      "roomId": "woodland-treehouse",
+      "sha256": "0d47988831420a567777c5c18debd9c8b7b3df943c6908a75875e29e0f718128",
+      "independentReports": [
+        "creative/nooks-release/scene-reviews/22.json"
+      ]
+    }
+  ]
+}

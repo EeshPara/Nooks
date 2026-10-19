@@ -28,7 +28,7 @@ test('cloud current UI uses the restored fullscreen layout and a bounded public 
  const response=await worker.fetch(request('resources/read',{uri:'ui://notable/workspace-v2.html'}),env);
  const resource=(await response.json()).result.contents[0];
  assert.deepEqual(resource._meta.ui.csp.resourceDomains,[ARTWORK_ORIGIN]);
- assert.deepEqual(resource._meta.ui.csp.connectDomains,['https://files.oaiusercontent.com','https://sdmntprwestus.oaiusercontent.com','https://sdmntprcentralus.oaiusercontent.com']);
+ assert.deepEqual(resource._meta.ui.csp.connectDomains,[ARTWORK_ORIGIN,'https://files.oaiusercontent.com','https://sdmntprwestus.oaiusercontent.com','https://sdmntprcentralus.oaiusercontent.com']);
  assert.deepEqual(resource._meta['openai/widgetCSP'].connect_domains,resource._meta.ui.csp.connectDomains);
  assert.deepEqual(resource._meta['openai/ui'].availableDisplayModes,['fullscreen']);
  assert.equal(resource._meta['openai/ui'].preferredDisplayMode,undefined);
@@ -50,6 +50,7 @@ test('current native host can discover tools and read the UI without a legacy ha
  assert.ok(details.supportedVersions.includes(CURRENT_PROTOCOL_VERSION));
  assert.equal(details.resultType,'complete');
  assert.equal(details._meta['io.modelcontextprotocol/serverInfo'].name,'nooks');
+ assert.deepEqual(details._meta['io.modelcontextprotocol/serverInfo'].icons,[{src:ARTWORK_ORIGIN+'/images/nook-cat-logo.webp',mimeType:'image/webp',sizes:['1254x1254']}]);
  const listed = await worker.fetch(modernRequest('tools/list'),{});
  assert.equal(listed.status,200);
  assert.ok((await listed.json()).result.tools.some(tool=>tool.name==='workspace_render'));

@@ -1,5 +1,7 @@
 # Independent Nooks release judgment — 4 October 2026
 
+Historical judgment. The [October 8 independent grade](../../creative/nooks-release/final-independent-grade.md) supersedes the deployment and capacity evidence below; public email onboarding and other documented launch gates still remain.
+
 Status: the first deployed build received a scoped judgment; the subsequent crash-recovery and concurrency source round now passes independent review, with deployment evidence tracked separately below. This is not a public-production or student-pilot sign-off.
 
 ## Release scope and decision

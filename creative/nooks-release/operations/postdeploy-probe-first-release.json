@@ -1,0 +1,76 @@
+{
+  "sampledAt": "2026-10-08T07:59:56.575Z",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "nativeOrigin": "https://nooks-study-space.eeshwarpara.chatgpt.site",
+  "requireAccounts": true,
+  "pass": true,
+  "rows": [
+    {
+      "label": "public_html",
+      "status": 200,
+      "durationMs": 478,
+      "pass": true,
+      "sha256": "a679958e824a92c6877be4983e7ebca0013388773b531b302109572c9ad6c60b"
+    },
+    {
+      "label": "public_asset",
+      "path": "/assets/index-DQxGwHOS.js",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "label": "public_asset",
+      "path": "/assets/index-BcKeIWXw.css",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "label": "entry_assets_discovered",
+      "pass": true,
+      "count": 2
+    },
+    {
+      "label": "public_health",
+      "status": 200,
+      "durationMs": 279,
+      "pass": true,
+      "alive": true,
+      "configured": true,
+      "observation": "unknown",
+      "scope": "this-instance",
+      "readinessProven": false
+    },
+    {
+      "label": "public_config",
+      "status": 200,
+      "durationMs": 216,
+      "pass": true,
+      "backend": "supabase",
+      "expectedDatabase": true,
+      "publicKeyValid": true,
+      "accountSync": true,
+      "community": true
+    },
+    {
+      "label": "public_anonymous_boundary",
+      "status": 401,
+      "durationMs": 152,
+      "pass": true,
+      "errorCode": "AUTH_REQUIRED"
+    },
+    {
+      "label": "native_anonymous_gate",
+      "status": 401,
+      "durationMs": 279,
+      "pass": true,
+      "accessGated": true,
+      "nativeHealthProven": false
+    }
+  ],
+  "limits": [
+    "One unauthenticated HTTP sample; no database operation or user journey.",
+    "Native 401/403 proves an access gate only.",
+    "Health observations are per-instance and expire; unknown is not database readiness.",
+    "No email, realtime, save/recovery, load, backup restore, or alert-delivery proof."
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "reviewId": "27",
+  "reviewer": "scene_review_27",
+  "reviewedAtUtc": "2026-10-08T07:50:01.599556+00:00",
+  "method": "Read review 23 defects and producer correction report; independently fully decoded each candidate, verified exact SHA-256, recomputed whole-frame and rigid-region metrics, and viewed original source artwork, native full frames, enlarged source comparisons, eight motion samples and last-two/first-two seam crops.",
+  "limitations": [
+    "No continuous full-speed playback or audio audition performed.",
+    "Approval applies to the exact-hash sampled visuals and full decode, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "lighthouse-study",
+      "videoPath": "creative/nooks-animated-all/jobs/lighthouse-study/finished.mp4",
+      "videoSha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visual review and independent full decode",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 970565,
+        "frameChangeMean": 0.01529324764335118,
+        "seamChangeMean": 0.02092086226851852,
+        "seamVsTypical": 1.3679803503093062,
+        "insideMaskChange": 0.9750993370804645,
+        "outsideMaskChange": 0.00012701146714397092,
+        "peakBrightnessChange": 0.0050245949074110285,
+        "motionMaskCoverage": 0.015555555555555555,
+        "videoSha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b",
+        "sourceArtworkSha256": "3c3fd8b122553a014832e5054b36e414eaf6d71b490db8987ee20a99d662a7bf",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "a358cfcc2ed5225af6ec6641d66b05669f5e59ca8e5fd14da73d27c43fb2537b",
+        "frames": 84,
+        "meanFrameChange": 0.01529324764335118,
+        "seamChange": 0.02092086226851852,
+        "seamVsTypical": 1.3679803503093062,
+        "insideMaskChange": 0.9750993370804645,
+        "outsideMaskChange": 0.00012701146714397092,
+        "peakBrightnessChange": 0.0050245949074110285,
+        "qaMatchesVideo": true,
+        "codec": [
+          {
+            "codec_name": "h264",
+            "profile": "High",
+            "pix_fmt": "yuv420p",
+            "level": 31,
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "audioTracks": 0
+      },
+      "independentRegionMetrics": {
+        "boat": {
+          "meanAdjacentChange": 0.0,
+          "maximumFrameChannelChange": 0,
+          "meanTemporalRange": 0.0,
+          "maskCoveredPixels": 0
+        },
+        "cliff": {
+          "meanAdjacentChange": 0.0,
+          "maximumFrameChannelChange": 0,
+          "meanTemporalRange": 0.0,
+          "maskCoveredPixels": 0
+        },
+        "water": {
+          "meanAdjacentChange": 0.6125967573999702,
+          "maximumFrameChannelChange": 72,
+          "meanTemporalRange": 15.406864197530863,
+          "maskCoveredPixels": 11563
+        },
+        "steam": {
+          "meanAdjacentChange": 0.30557051736357194,
+          "maximumFrameChannelChange": 21,
+          "meanTemporalRange": 5.459668174962292,
+          "maskCoveredPixels": 2773
+        },
+        "cup": {
+          "meanAdjacentChange": 0.0,
+          "maximumFrameChannelChange": 0,
+          "meanTemporalRange": 0.0,
+          "maskCoveredPixels": 0
+        }
+      },
+      "findings": [
+        "The boat now has one crisp sail, mast and hull consistent with the source. The cliff retains its original rock contours without the former blended smear. Both independent inspection crops have zero decoded temporal change across all 84 frames and no mask coverage.",
+        "Localized open-sea variation and faint steam remain. Sampled water variation stays clear of the boat, cliff and railing; the furniture and foreground cup remain singular and stable. The cup inspection crop has zero temporal change.",
+        "The native full frame retains the original warm scene composition. Eight motion samples and last-two/first-two water and steam crops show no conspicuous boundary discontinuity. Independently recomputed seam/typical ratio is 1.3680."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and integrated ambience in the product."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-boat-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-boat-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-boat-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-cliff-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-cliff-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-cliff-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-cup-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-cup-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-cup-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-full-frame48.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-steam-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-steam-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-steam-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-water-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-water-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/lighthouse-study-water-source-compare.png"
+      ]
+    },
+    {
+      "sceneId": "desert-casita",
+      "videoPath": "creative/nooks-animated-all/jobs/desert-casita/finished.mp4",
+      "videoSha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visual review and independent full decode",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1084666,
+        "frameChangeMean": 0.03603886901773762,
+        "seamChangeMean": 0.025753038194444446,
+        "seamVsTypical": 0.7145906321801971,
+        "insideMaskChange": 2.5576971664418253,
+        "outsideMaskChange": 0.0001764116455234116,
+        "peakBrightnessChange": 0.014131944444443434,
+        "motionMaskCoverage": 0.014022352430555555,
+        "videoSha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e",
+        "sourceArtworkSha256": "d52c94a072735e4e82561d08a0a9d5d183e1abd316505de14b04b3f23a3812c2",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "bdf54988552ae7f23a71893c7424c7d2b7feb203c6e2a651d25970d35b28438e",
+        "frames": 84,
+        "meanFrameChange": 0.03603886901773762,
+        "seamChange": 0.025753038194444446,
+        "seamVsTypical": 0.7145906321801971,
+        "insideMaskChange": 2.5576971664418253,
+        "outsideMaskChange": 0.0001764116455234116,
+        "peakBrightnessChange": 0.014131944444443434,
+        "qaMatchesVideo": true,
+        "codec": [
+          {
+            "codec_name": "h264",
+            "profile": "High",
+            "pix_fmt": "yuv420p",
+            "level": 31,
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "audioTracks": 0
+      },
+      "independentRegionMetrics": {
+        "pedestal": {
+          "meanAdjacentChange": 1.593676292471473e-05,
+          "maximumFrameChannelChange": 3,
+          "meanTemporalRange": 0.0013227513227513227,
+          "maskCoveredPixels": 0
+        },
+        "pool": {
+          "meanAdjacentChange": 1.1388040052836224,
+          "maximumFrameChannelChange": 107,
+          "meanTemporalRange": 10.822955583229556,
+          "maskCoveredPixels": 12043
+        },
+        "steam": {
+          "meanAdjacentChange": 0.3653478779984804,
+          "maximumFrameChannelChange": 26,
+          "meanTemporalRange": 10.981981981981981,
+          "maskCoveredPixels": 3104
+        },
+        "cup": {
+          "meanAdjacentChange": 0.0,
+          "maximumFrameChannelChange": 0,
+          "meanTemporalRange": 0.0,
+          "maskCoveredPixels": 0
+        }
+      },
+      "findings": [
+        "The stone fountain stem and base retain singular source contours; the displaced translucent left edge from review 23 is absent. The pedestal inspection crop has zero mask coverage and only 0.00001594 mean adjacent channel change, consistent with negligible codec variation.",
+        "Water ripples remain in the open pool on either side of the pedestal, with stable tile borders and no sampled duplicate stone. Faint steam above the drink remains, while the cup inspection crop is pixel-identical across all 84 frames.",
+        "The native full frame preserves the courtyard architecture, plants and lamp geometry. Eight motion samples and last-two/first-two pool and steam crops show no conspicuous boundary jump. Independently recomputed seam/typical ratio is 0.7146."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and integrated ambience in the product."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-cup-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-cup-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-cup-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-full-frame48.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-pedestal-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-pedestal-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-pedestal-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-pool-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-pool-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-pool-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-steam-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-steam-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/desert-casita-steam-source-compare.png"
+      ]
+    },
+    {
+      "sceneId": "stationery-studio",
+      "videoPath": "creative/nooks-animated-all/jobs/stationery-studio/finished.mp4",
+      "videoSha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visual review and independent full decode",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 860354,
+        "frameChangeMean": 0.006939502802878179,
+        "seamChangeMean": 0.004169560185185185,
+        "seamVsTypical": 0.6008442252456253,
+        "insideMaskChange": 2.087624670868906,
+        "outsideMaskChange": 9.886920802590273e-05,
+        "peakBrightnessChange": 0.006414207175922115,
+        "motionMaskCoverage": 0.0032769097222222223,
+        "videoSha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547",
+        "sourceArtworkSha256": "e5ce38056e9e42b9529cab3a1fd0244495f2cab50ee108e12f75819ed3899f25",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "aac94049ca9f537333c203768554847117ead7dd2c595911369e571ca59cd547",
+        "frames": 84,
+        "meanFrameChange": 0.006939502802878179,
+        "seamChange": 0.004169560185185185,
+        "seamVsTypical": 0.6008442252456253,
+        "insideMaskChange": 2.087624670868906,
+        "outsideMaskChange": 9.886920802590273e-05,
+        "peakBrightnessChange": 0.006414207175922115,
+        "qaMatchesVideo": true,
+        "codec": [
+          {
+            "codec_name": "h264",
+            "profile": "High",
+            "pix_fmt": "yuv420p",
+            "level": 31,
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "audioTracks": 0
+      },
+      "independentRegionMetrics": {
+        "vase": {
+          "meanAdjacentChange": 0.0,
+          "maximumFrameChannelChange": 0,
+          "meanTemporalRange": 0.0,
+          "maskCoveredPixels": 0
+        },
+        "steam": {
+          "meanAdjacentChange": 1.217627844712182,
+          "maximumFrameChannelChange": 39,
+          "meanTemporalRange": 11.428888888888888,
+          "maskCoveredPixels": 3020
+        },
+        "cup": {
+          "meanAdjacentChange": 0.0,
+          "maximumFrameChannelChange": 0,
+          "meanTemporalRange": 0.0,
+          "maskCoveredPixels": 0
+        }
+      },
+      "findings": [
+        "The window vase now preserves the source decoration, handle and singular rim/body outline. Its inspection crop has zero mask coverage and zero temporal change across all 84 decoded frames, correcting the former ceramic wobble.",
+        "Only restrained translucent mug steam animates. The visible wisps stay above the drink in the inspected full frame and motion samples; the drinking mug inspection crop remains pixel-identical through the clip. The plant and candles remain static source artwork, and this must not be described as moving foliage.",
+        "The native full frame preserves desk, shelving, papers and pen geometry. Eight steam samples and last-two/first-two seam crops show no conspicuous jump or doubled rigid object. Independently recomputed seam/typical ratio is 0.6008."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and integrated ambience in the product."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-cup-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-cup-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-cup-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-full-frame48.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-steam-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-steam-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-steam-source-compare.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-vase-motion.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-vase-seam.png",
+        "creative/nooks-release/scene-reviews/27-evidence/stationery-studio-vase-source-compare.png"
+      ]
+    }
+  ]
+}

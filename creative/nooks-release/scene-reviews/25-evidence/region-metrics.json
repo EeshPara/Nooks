@@ -1,0 +1,38 @@
+{
+  "antique-workshop": {
+    "clock": {
+      "meanTemporalRange": 0.0,
+      "meanBrightnessRange": 0.0,
+      "meanAdjacentChange": 0.0
+    },
+    "cat": {
+      "meanTemporalRange": 2.316043956043956,
+      "meanBrightnessRange": 0.25494505494505404,
+      "meanAdjacentChange": 0.134267178604528
+    }
+  },
+  "hateno-study": {
+    "leaves": {
+      "meanTemporalRange": 0.8838541431134024,
+      "meanBrightnessRange": 0.6894888376369863,
+      "meanAdjacentChange": 0.03159383793029487
+    }
+  },
+  "frog-pond-studio": {
+    "open_water": {
+      "meanTemporalRange": 12.03888888888889,
+      "meanBrightnessRange": 1.557777777777801,
+      "meanAdjacentChange": 1.0262873717090584
+    },
+    "right_pad": {
+      "meanTemporalRange": 0.0,
+      "meanBrightnessRange": 0.0,
+      "meanAdjacentChange": 0.0
+    },
+    "front_pad": {
+      "meanTemporalRange": 0.0,
+      "meanBrightnessRange": 0.0,
+      "meanAdjacentChange": 0.0
+    }
+  }
+}

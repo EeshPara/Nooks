@@ -1,0 +1,128 @@
+{
+  "antique-workshop": {
+    "videoSha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc",
+    "frames": 84,
+    "meanFrameChange": 0.001785030747991968,
+    "seamChange": 0.002847945601851852,
+    "seamVsTypical": 1.5954602491052814,
+    "insideMaskChange": 0.15327128107093924,
+    "outsideMaskChange": 0.00020336213687094774,
+    "peakBrightnessChange": 0.0011089409722160326,
+    "qaMatchesVideo": true,
+    "quantitativeQa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 716718,
+      "frameChangeMean": 0.001785030747991968,
+      "seamChangeMean": 0.002847945601851852,
+      "seamVsTypical": 1.5954602491052814,
+      "insideMaskChange": 0.15327128107093924,
+      "outsideMaskChange": 0.00020336213687094774,
+      "peakBrightnessChange": 0.0011089409722160326,
+      "motionMaskCoverage": 0.010333116319444445,
+      "videoSha256": "7d8af58993a8b5b8e1318456dbc3d660cf0a2ff9e271c06fb8f133e594cc08cc",
+      "sourceArtworkSha256": "d7d5e307dbd60c1a6e16600e091c5f6e3868883195003085d24a8e157ca68f66",
+      "technicalPass": true
+    },
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31,
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "audioTracks": 0
+  },
+  "hateno-study": {
+    "videoSha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8",
+    "frames": 84,
+    "meanFrameChange": 0.0009530265157853635,
+    "seamChange": 0.0009747540509259259,
+    "seamVsTypical": 1.0227984581548157,
+    "insideMaskChange": 0.07364393267779105,
+    "outsideMaskChange": 0.00019703994409280532,
+    "peakBrightnessChange": 0.004628906249990905,
+    "qaMatchesVideo": true,
+    "quantitativeQa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 679619,
+      "frameChangeMean": 0.0009530265157853635,
+      "seamChangeMean": 0.0009747540509259259,
+      "seamVsTypical": 1.0227984581548157,
+      "insideMaskChange": 0.07364393267779105,
+      "outsideMaskChange": 0.00019703994409280532,
+      "peakBrightnessChange": 0.004628906249990905,
+      "motionMaskCoverage": 0.01029296875,
+      "videoSha256": "290ad7da5bca447dd6332a905fe9f0d62f9ea259f791fc78a3f0a63c4f9006a8",
+      "sourceArtworkSha256": "77f55f01d81556917ae184a35f1444c7fd340b86b4c38fb53f4917d1447d1b72",
+      "technicalPass": true
+    },
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31,
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "audioTracks": 0
+  },
+  "frog-pond-studio": {
+    "videoSha256": "166cd92997997861e546ff6f25fc8e4e948e683ac6287ff8100c6f6f3751b96d",
+    "frames": 84,
+    "meanFrameChange": 0.005130905566711289,
+    "seamChange": 0.0026374421296296298,
+    "seamVsTypical": 0.5140305342474131,
+    "insideMaskChange": 0.9480504264107951,
+    "outsideMaskChange": 0.00016003505736763104,
+    "peakBrightnessChange": 0.0010876012731415585,
+    "qaMatchesVideo": true,
+    "quantitativeQa": {
+      "durationSeconds": 3.5,
+      "frames": 84,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "audioTracks": 0,
+      "bytes": 855285,
+      "frameChangeMean": 0.005130905566711289,
+      "seamChangeMean": 0.0026374421296296298,
+      "seamVsTypical": 0.5140305342474131,
+      "insideMaskChange": 0.9480504264107951,
+      "outsideMaskChange": 0.00016003505736763104,
+      "peakBrightnessChange": 0.0010876012731415585,
+      "motionMaskCoverage": 0.005244140625,
+      "videoSha256": "166cd92997997861e546ff6f25fc8e4e948e683ac6287ff8100c6f6f3751b96d",
+      "sourceArtworkSha256": "010f8538b727158e25232962bed74ae6e29094c08eeb613db1469bcfe9a4f82c",
+      "technicalPass": true
+    },
+    "codec": [
+      {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "level": 31,
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "audioTracks": 0
+  }
+}

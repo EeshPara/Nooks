@@ -1,0 +1,185 @@
+{
+  "reviewId": "22",
+  "reviewer": "scene_review_22",
+  "reviewedAtUtc": "2026-10-08T07:40:07.532306+00:00",
+  "method": "Read AGENTS.md and START-HERE.md. Independently decoded all frames and recomputed seam, per-frame motion, brightness and mask metrics. Verified exact SHA-256 before and after. Inspected source artwork, producer contact/mask sheets, native extracted crops and enlarged source/extreme/seam comparisons with view_image.",
+  "limitations": [
+    "Sampled still frames only; no continuous full-speed playback or audio audition.",
+    "Approval applies only to listed hashes, not integrated product or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "woodland-treehouse",
+      "videoPath": "creative/nooks-animated-all/jobs/woodland-treehouse/finished.mp4",
+      "videoSha256": "0d47988831420a567777c5c18debd9c8b7b3df943c6908a75875e29e0f718128",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-hash sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1043382,
+        "frameChangeMean": 0.016706927536535028,
+        "seamChangeMean": 0.025170355902777778,
+        "seamVsTypical": 1.5065819761134873,
+        "insideMaskChange": 0.49374149089593794,
+        "outsideMaskChange": 7.79216290690184e-05,
+        "peakBrightnessChange": 0.04332465277778397,
+        "motionMaskCoverage": 0.03368489583333333,
+        "videoSha256": "0d47988831420a567777c5c18debd9c8b7b3df943c6908a75875e29e0f718128",
+        "sourceArtworkSha256": "6a627534b77d158db28ee582a37f8ddefa634077822f412bc65cf7c3c2b37217",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "0d47988831420a567777c5c18debd9c8b7b3df943c6908a75875e29e0f718128",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.016706927536535028,
+        "seamChange": 0.025170355902777778,
+        "seamVsTypical": 1.5065819761134873,
+        "insideMaskChange": 0.49374149089593794,
+        "outsideMaskChange": 7.79216290690184e-05,
+        "peakBrightnessChange": 0.04332465277778397,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "mist": {
+            "box": [
+              565,
+              290,
+              835,
+              470
+            ],
+            "minBrightnessFrame": 76,
+            "maxBrightnessFrame": 27,
+            "brightnessRange": 9.219533607681754,
+            "maxPixelRange": 43
+          },
+          "steam": {
+            "box": [
+              800,
+              440,
+              880,
+              575
+            ],
+            "minBrightnessFrame": 80,
+            "maxBrightnessFrame": 27,
+            "brightnessRange": 0.9030246913580271,
+            "maxPixelRange": 22
+          }
+        }
+      },
+      "findings": [
+        "Compared the original artwork, full-scene contact sheets, eight native mist and steam samples, brightness extremes, and frames 82/83/0/1. Mist subtly veils the distant treehouse and waterfall; roof, windows, branches and platform edges remain aligned without apparent duplicate silhouettes in the viewed crops.",
+        "Tea steam is restrained and transparent. The mug rim, nearby leaves and wooden sill retain their original geometry. Hanging lanterns, candle, bridge and foreground furniture stay fixed in the sampled full-scene images.",
+        "All 84 frames decode and independently computed seam ratio is 1.507. Sampled seams show no geometry jump. Continuous full-speed motion and audio remain unassessed."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/22-woodland-treehouse-mist-motion.png",
+        "creative/nooks-release/scene-reviews/22-woodland-treehouse-mist-source-seam.png",
+        "creative/nooks-release/scene-reviews/22-woodland-treehouse-steam-motion.png",
+        "creative/nooks-release/scene-reviews/22-woodland-treehouse-steam-source-seam.png",
+        "creative/nooks-release/scene-reviews/22-woodland-treehouse-detail.png",
+        "creative/nooks-animated-all/jobs/woodland-treehouse/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/woodland-treehouse/review-contact.jpg",
+        "web/ui/public/images/nooks-50/woodland-treehouse.webp"
+      ]
+    },
+    {
+      "sceneId": "aurora-cabin",
+      "videoPath": "creative/nooks-animated-all/jobs/aurora-cabin/finished.mp4",
+      "videoSha256": "50df02ecab1fa943906ebc934957054628a9da37125b6fd234713cf0fc3ce51d",
+      "qaMatchesVideo": true,
+      "verdict": "needs_revision",
+      "scope": "Exact-hash sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 2066853,
+        "frameChangeMean": 0.11281729783718207,
+        "seamChangeMean": 0.11073603877314815,
+        "seamVsTypical": 0.981551950774095,
+        "insideMaskChange": 1.1262125250437414,
+        "outsideMaskChange": 0.00023954830529463388,
+        "peakBrightnessChange": 0.08297272858796134,
+        "motionMaskCoverage": 0.09998263888888889,
+        "videoSha256": "50df02ecab1fa943906ebc934957054628a9da37125b6fd234713cf0fc3ce51d",
+        "sourceArtworkSha256": "ded9c2d65df708d8b7e35aca707b7f1badc37d8aaa403d4fb259be9696a4eb52",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "50df02ecab1fa943906ebc934957054628a9da37125b6fd234713cf0fc3ce51d",
+        "frames": 84,
+        "durationSeconds": 3.5,
+        "audioTracks": 0,
+        "meanFrameChange": 0.11281729783718207,
+        "seamChange": 0.11073603877314815,
+        "seamVsTypical": 0.981551950774095,
+        "insideMaskChange": 1.1262125250437414,
+        "outsideMaskChange": 0.00023954830529463388,
+        "peakBrightnessChange": 0.08297272858796134,
+        "qaMatchesVideo": true,
+        "cropMetrics": {
+          "aurora": {
+            "box": [
+              450,
+              30,
+              1050,
+              290
+            ],
+            "minBrightnessFrame": 78,
+            "maxBrightnessFrame": 24,
+            "brightnessRange": 3.3589935897435765,
+            "maxPixelRange": 91
+          },
+          "stove": {
+            "box": [
+              0,
+              350,
+              120,
+              475
+            ],
+            "minBrightnessFrame": 47,
+            "maxBrightnessFrame": 53,
+            "brightnessRange": 5.033022222222222,
+            "maxPixelRange": 158
+          }
+        }
+      },
+      "findings": [
+        "The animated aurora develops conspicuous bright green patches with flat clipped tops, especially frames 12, 24, 36 and 48. Frame 24 shows both a broad triangular patch at the left of the aurora crop and a near-vertical column with a horizontal top near its right-center. These shapes are absent from the original artwork and appear bounded by the compositing region, giving the sky an artificial cutout effect.",
+        "The stove flame samples are coherent and remain inside the stove glass; surrounding stove framing and logs appear stable. Mountains, lake, window frame, candle and hanging lamps remain still in sampled full-scene views.",
+        "All 84 frames decode and independently computed seam ratio is 0.982, but this numerical pass does not resolve the visibly clipped aurora. No full-speed smoothness or audio judgment was made."
+      ],
+      "requiredChanges": [
+        "Remove the hard bounded glow patches. Preserve original sky geometry and use a subtler smoothly feathered aurora treatment, or retain only the clean stove animation; independently review the replacement hash."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/22-aurora-cabin-aurora-motion.png",
+        "creative/nooks-release/scene-reviews/22-aurora-cabin-aurora-source-seam.png",
+        "creative/nooks-release/scene-reviews/22-aurora-cabin-stove-motion.png",
+        "creative/nooks-release/scene-reviews/22-aurora-cabin-stove-source-seam.png",
+        "creative/nooks-release/scene-reviews/22-aurora-cabin-detail.png",
+        "creative/nooks-animated-all/jobs/aurora-cabin/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/aurora-cabin/review-contact.jpg",
+        "web/ui/public/images/nooks-50/aurora-cabin.webp",
+        "creative/nooks-release/scene-reviews/22-aurora-cabin-frame24-native.png"
+      ]
+    }
+  ]
+}

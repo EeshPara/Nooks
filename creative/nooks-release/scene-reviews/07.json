@@ -1,0 +1,132 @@
+{
+  "reviewId": "07",
+  "reviewer": "scene_review_07",
+  "reviewedAtUtc": "2026-10-08T07:01:59.142004+00:00",
+  "method": "Viewed source artwork, producer masks/contact sheets, independently extracted native-resolution motion crops and last-two/first-two seam frames. Fully decoded all 84 frames of each video and independently recomputed adjacent-frame, seam, inside/outside-mask and brightness metrics. Verified SHA-256 before/after decode and at report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to exact visual hashes, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "dragon-hatchery",
+      "videoPath": "creative/nooks-animated-all/jobs/dragon-hatchery/finished.mp4",
+      "videoSha256": "ab622ff3f6fdcc0d9cf06008cd4838fc8b40bbcb7c16cf997e787e968486c4d2",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 891039,
+        "frameChangeMean": 0.007741743885263275,
+        "seamChangeMean": 0.01905852141203704,
+        "seamVsTypical": 2.4617866070609375,
+        "insideMaskChange": 0.30763174145290767,
+        "outsideMaskChange": 4.7122142421189134e-05,
+        "peakBrightnessChange": 0.011423972800912452,
+        "motionMaskCoverage": 0.025016276041666667,
+        "videoSha256": "ab622ff3f6fdcc0d9cf06008cd4838fc8b40bbcb7c16cf997e787e968486c4d2",
+        "sourceArtworkSha256": "d2c610058fa102241c9de54dfcff7840c2c03bca2559ceec11723b9b04a8eb53",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "ab622ff3f6fdcc0d9cf06008cd4838fc8b40bbcb7c16cf997e787e968486c4d2",
+        "frames": 84,
+        "meanFrameChange": 0.007741743885263275,
+        "seamChange": 0.01905852141203704,
+        "seamVsTypical": 2.4617866070609375,
+        "insideMaskChange": 0.30763174145290767,
+        "outsideMaskChange": 4.7122142421189134e-05,
+        "peakBrightnessChange": 0.011423972800912452,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, producer mask/contact sheet, eight native-resolution lantern, nest and cup samples, and last-two/first-two seam crops. Egg scales and outline, nest, stonework, lantern frame, cup rim, furniture and mountain vista retain stable geometry.",
+        "Lantern flicker is slight and localized; nest warmth and cup steam are barely perceptible. No added dragon, egg hatching, rectangular mask boundary, obvious duplicated object or scene-wide exposure pumping appears in inspected samples.",
+        "Independent full decode reproduces seam ratio 2.4618, outside-mask change 0.000047 and peak brightness change 0.011424 on a 0\u2013255 scale. Last/first crops show no obvious geometry reset."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/07-dragon-hatchery-lantern-motion.jpg",
+        "creative/nooks-release/scene-reviews/07-dragon-hatchery-lantern-seam.jpg",
+        "creative/nooks-release/scene-reviews/07-dragon-hatchery-nest-motion.jpg",
+        "creative/nooks-release/scene-reviews/07-dragon-hatchery-nest-seam.jpg",
+        "creative/nooks-release/scene-reviews/07-dragon-hatchery-steam-motion.jpg",
+        "creative/nooks-release/scene-reviews/07-dragon-hatchery-steam-seam.jpg",
+        "creative/nooks-animated-all/jobs/dragon-hatchery/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/dragon-hatchery/review-contact.jpg",
+        "web/ui/public/images/nooks-50/dragon-hatchery.webp"
+      ]
+    },
+    {
+      "sceneId": "velaris-study",
+      "videoPath": "creative/nooks-animated-all/jobs/velaris-study/finished.mp4",
+      "videoSha256": "0733031191ebd466e3e30084f48a741dee69def5dec28f09364a3bd1a267515f",
+      "qaMatchesVideo": true,
+      "verdict": "changes_required",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1099222,
+        "frameChangeMean": 0.016288539574966534,
+        "seamChangeMean": 0.043074363425925924,
+        "seamVsTypical": 2.644458284776241,
+        "insideMaskChange": 0.3382593297590543,
+        "outsideMaskChange": 7.661198004847911e-05,
+        "peakBrightnessChange": 0.008653428819442865,
+        "motionMaskCoverage": 0.047938368055555555,
+        "videoSha256": "0733031191ebd466e3e30084f48a741dee69def5dec28f09364a3bd1a267515f",
+        "sourceArtworkSha256": "08d5a0a27e1ac42dbe3a1353831aceeff9439a261156ca60be35b4ceaf1fb697",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "0733031191ebd466e3e30084f48a741dee69def5dec28f09364a3bd1a267515f",
+        "frames": 84,
+        "meanFrameChange": 0.016288539574966534,
+        "seamChange": 0.043074363425925924,
+        "seamVsTypical": 2.644458284776241,
+        "insideMaskChange": 0.3382593297590543,
+        "outsideMaskChange": 7.661198004847911e-05,
+        "peakBrightnessChange": 0.008653428819442865,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, producer mask/contact sheet, eight native-resolution river and both foreground candle samples, and last-two/first-two seam crops. City, bridge, mountains, interior architecture and table geometry stay stable; river changes are restrained.",
+        "BLOCKER: both foreground candles display two separated flame tips instead of the single flame in the source artwork. The right candle is especially clear. Duplication persists through sampled frames 0, 12, 24, 36, 48, 60, 72 and 83, including the seam. This resembles source/generated compositing ghosting and undermines realistic motion.",
+        "Independent full decode reproduces seam ratio 2.6445, outside-mask change 0.000077 and peak brightness change 0.008653. Passing numerical thresholds do not detect the duplicated flames."
+      ],
+      "requiredChanges": [
+        "Remove the doubled foreground candle flames. Preserve one flame per candle; keeping candles static while retaining river motion is acceptable. Generate new evidence and review the new exact video SHA before publishing."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/07-velaris-study-left-candle-motion.jpg",
+        "creative/nooks-release/scene-reviews/07-velaris-study-left-candle-seam.jpg",
+        "creative/nooks-release/scene-reviews/07-velaris-study-right-candle-motion.jpg",
+        "creative/nooks-release/scene-reviews/07-velaris-study-right-candle-seam.jpg",
+        "creative/nooks-release/scene-reviews/07-velaris-study-river-motion.jpg",
+        "creative/nooks-release/scene-reviews/07-velaris-study-river-seam.jpg",
+        "creative/nooks-animated-all/jobs/velaris-study/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/velaris-study/review-contact.jpg",
+        "web/ui/public/images/nooks-50/velaris-study.webp"
+      ]
+    }
+  ]
+}

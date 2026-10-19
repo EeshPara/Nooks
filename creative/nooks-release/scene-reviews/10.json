@@ -1,0 +1,132 @@
+{
+  "reviewId": "10",
+  "reviewer": "scene_review_10",
+  "reviewedAtUtc": "2026-10-08T07:08:33.014095+00:00",
+  "method": "Viewed source artwork, producer masks/contact sheets and independently extracted native-resolution motion crops and last-two/first-two seam frames. Fully decoded all 84 frames of each video and independently recomputed adjacent-frame, seam, inside/outside-mask and brightness metrics. Verified SHA-256 before/after decode and at report writing.",
+  "limitations": [
+    "No full-speed playback or audio audition performed.",
+    "Approval applies only to exact visual hashes, not integrated product quality or production readiness."
+  ],
+  "scenes": [
+    {
+      "sceneId": "witch-apothecary",
+      "videoPath": "creative/nooks-animated-all/jobs/witch-apothecary/finished.mp4",
+      "videoSha256": "e77431500cee42c10ed2aec2f483f40bc797096ae765a6ce0559fc1276ab1fec",
+      "qaMatchesVideo": true,
+      "verdict": "requires_changes",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 988455,
+        "frameChangeMean": 0.020729380194388667,
+        "seamChangeMean": 0.03733181423611111,
+        "seamVsTypical": 1.8009131911342255,
+        "insideMaskChange": 0.9622066511767415,
+        "outsideMaskChange": 5.5021777512657854e-05,
+        "peakBrightnessChange": 0.012955005787041785,
+        "motionMaskCoverage": 0.021487630208333334,
+        "videoSha256": "e77431500cee42c10ed2aec2f483f40bc797096ae765a6ce0559fc1276ab1fec",
+        "sourceArtworkSha256": "740b8b2949e231a4dcad48fb7d85378d49204cca65995d414931be28c3de6723",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "e77431500cee42c10ed2aec2f483f40bc797096ae765a6ce0559fc1276ab1fec",
+        "frames": 84,
+        "meanFrameChange": 0.020729380194388667,
+        "seamChange": 0.03733181423611111,
+        "seamVsTypical": 1.8009131911342255,
+        "insideMaskChange": 0.9622066511767415,
+        "outsideMaskChange": 5.5021777512657854e-05,
+        "peakBrightnessChange": 0.012955005787041785,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, producer mask/contact sheet, eight independently extracted native-resolution samples of front candle, shelf candle and incense, plus last-two/first-two seam crops. Desk, jars, candle body, stone garden, moon and door hardware remain stable.",
+        "Visual blocker: the front candle has two neighboring flame tips in the finished clip, one bright and one pale to its right, while the source candle has a single tip. This persists across the sampled frames and seam. It resembles an offset source/generated flame cross-blend, not natural single-wick flicker. See 10-witch-apothecary-front-candle-motion.jpg.",
+        "Incense samples show gentle transparent curl variation without a hard mask rectangle. Shelf candle is subtle. Independent decode passes numeric limits, including seam ratio 1.8009 and outside-mask change 0.000055, but those metrics do not detect the doubled flame."
+      ],
+      "requiredChanges": [
+        "Remove the duplicated front-candle flame. Disable this motion region while preserving the original flame, or use aligned opaque replacement with feathering outside flame geometry. Refinish, recompute QA and independently review the new SHA."
+      ],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/10-witch-apothecary-front-candle-motion.jpg",
+        "creative/nooks-release/scene-reviews/10-witch-apothecary-front-candle-seam.jpg",
+        "creative/nooks-release/scene-reviews/10-witch-apothecary-incense-motion.jpg",
+        "creative/nooks-release/scene-reviews/10-witch-apothecary-incense-seam.jpg",
+        "creative/nooks-release/scene-reviews/10-witch-apothecary-shelf-candle-motion.jpg",
+        "creative/nooks-release/scene-reviews/10-witch-apothecary-shelf-candle-seam.jpg",
+        "creative/nooks-animated-all/jobs/witch-apothecary/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/witch-apothecary/review-contact.jpg",
+        "web/ui/public/images/nooks-50/witch-apothecary.webp"
+      ]
+    },
+    {
+      "sceneId": "kyoto-teahouse",
+      "videoPath": "creative/nooks-animated-all/jobs/kyoto-teahouse/finished.mp4",
+      "videoSha256": "9a11c431c68a986ceb08c2079473467af58bb56586caa06a23c2872e8731c74e",
+      "qaMatchesVideo": true,
+      "verdict": "approved_visual_samples",
+      "scope": "Exact-SHA sampled visuals and independent full-decode metrics; no full-speed playback or audio audition",
+      "quantitativeQa": {
+        "durationSeconds": 3.5,
+        "frames": 84,
+        "width": 1280,
+        "height": 720,
+        "fps": 24,
+        "audioTracks": 0,
+        "bytes": 1291714,
+        "frameChangeMean": 0.023748561956157963,
+        "seamChangeMean": 0.0631228298611111,
+        "seamVsTypical": 2.657964300223385,
+        "insideMaskChange": 0.3612094736958224,
+        "outsideMaskChange": 6.658572849119377e-05,
+        "peakBrightnessChange": 0.015673828125002842,
+        "motionMaskCoverage": 0.06557508680555556,
+        "videoSha256": "9a11c431c68a986ceb08c2079473467af58bb56586caa06a23c2872e8731c74e",
+        "sourceArtworkSha256": "06b94f00cf444501d702320467f609f633b27df35127198ef84f48cb820524c0",
+        "technicalPass": true
+      },
+      "independentMetrics": {
+        "videoSha256": "9a11c431c68a986ceb08c2079473467af58bb56586caa06a23c2872e8731c74e",
+        "frames": 84,
+        "meanFrameChange": 0.023748561956157963,
+        "seamChange": 0.0631228298611111,
+        "seamVsTypical": 2.657964300223385,
+        "insideMaskChange": 0.3612094736958224,
+        "outsideMaskChange": 6.658572849119377e-05,
+        "peakBrightnessChange": 0.015673828125002842,
+        "qaMatchesVideo": true,
+        "technicalPass": true
+      },
+      "findings": [
+        "Viewed source artwork, producer mask/contact sheet, eight independently extracted native-resolution garden, water and tea samples, and last-two/first-two seam crops. Shoji lines, stone lantern, branches, kettle, cup rim and furniture retain stable geometry.",
+        "Garden movement, pond ripples and tea steam are restrained. No duplicate rigid objects, visible mask rectangles or bright ghost outlines appear in inspected regions. The seam samples preserve geometry without an obvious reset. This is a very subtle animation; full-speed review should confirm its motion feels sufficiently alive.",
+        "Independent full decode reproduces seam ratio 2.6580, outside-mask change 0.000067 and peak brightness change 0.015674 on a 0\u2013255 scale."
+      ],
+      "requiredChanges": [],
+      "followUps": [
+        "Verify repeated full-speed playback and audition integrated ambience."
+      ],
+      "evidence": [
+        "creative/nooks-release/scene-reviews/10-kyoto-teahouse-garden-motion.jpg",
+        "creative/nooks-release/scene-reviews/10-kyoto-teahouse-garden-seam.jpg",
+        "creative/nooks-release/scene-reviews/10-kyoto-teahouse-tea-motion.jpg",
+        "creative/nooks-release/scene-reviews/10-kyoto-teahouse-tea-seam.jpg",
+        "creative/nooks-release/scene-reviews/10-kyoto-teahouse-water-motion.jpg",
+        "creative/nooks-release/scene-reviews/10-kyoto-teahouse-water-seam.jpg",
+        "creative/nooks-animated-all/jobs/kyoto-teahouse/mask-review.jpg",
+        "creative/nooks-animated-all/jobs/kyoto-teahouse/review-contact.jpg",
+        "web/ui/public/images/nooks-50/kyoto-teahouse.webp"
+      ]
+    }
+  ]
+}

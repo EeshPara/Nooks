@@ -15,6 +15,20 @@ export const isEmbedded = !isPublicPreview && (window.parent !== window || !!leg
 let hostOrigin: string | null = null;
 let sequence = 0;
 let initialized = false;
+// A timed-out caller stays failed; a matching late handshake can enable a later
+// explicit retry. This bounded grace period never replays a tool operation.
+let lateInitialization: { id: number; timer: ReturnType<typeof setTimeout> } | null = null;
+function clearLateInitialization() {
+  if (lateInitialization) clearTimeout(lateInitialization.timer);
+  lateInitialization = null;
+}
+function acceptInitialization(result: ToolData) {
+  if (tornDown || initialized || !result || typeof result !== 'object' || Array.isArray(result)) return;
+  hostCapabilities = result?.hostCapabilities ?? {};
+  applyHostContext(result?.hostContext ?? {});
+  initialized = true;
+  window.parent.postMessage({ jsonrpc: '2.0', method: 'ui/notifications/initialized' }, hostOrigin ?? '*');
+}
 let tornDown = false;
 let hostContext: ToolData = {};
 let legacyHostContext: ToolData = isEmbedded ? legacyLayoutUpdate(legacy()) : {};
@@ -57,11 +71,15 @@ window.addEventListener('message', event => {
   if (!message || message.jsonrpc !== '2.0') return;
   // Pin the actual parent origin after its first valid bridge response/notification.
   const knownResponse = !message.method && message.id !== undefined && pending.has(message.id);
+  const lateInitializeResponse = !tornDown && !message.method && lateInitialization !== null && message.id === lateInitialization.id;
   const knownNotification = ['ui/notifications/tool-result', 'ui/notifications/tool-input', 'ui/notifications/host-context-changed'].includes(message.method ?? '');
   const appRequest = message.id !== undefined && ['tools/list', 'tools/call'].includes(message.method ?? '');
-  if (!knownResponse && !knownNotification && !appRequest && !['ping', 'ui/resource-teardown'].includes(message.method ?? '')) return;
+  if (!knownResponse && !lateInitializeResponse && !knownNotification && !appRequest && !['ping', 'ui/resource-teardown'].includes(message.method ?? '')) return;
   if (!hostOrigin && event.origin !== 'null') hostOrigin = event.origin;
-  if (knownResponse) {
+  if (lateInitializeResponse) {
+    clearLateInitialization();
+    if (!message.error) acceptInitialization(message.result);
+  } else if (knownResponse) {
     const request = pending.get(message.id!)!;
     pending.delete(message.id!); clearTimeout(request.timer);
     if (message.error) request.reject(new Error(message.error.message || 'ChatGPT could not complete this action.'));
@@ -75,7 +93,7 @@ window.addEventListener('message', event => {
   } else if (message.method === 'ui/notifications/host-context-changed') {
     applyHostContext(message.params);
   } else if (message.method === 'ui/resource-teardown' && message.id !== undefined) {
-    tornDown = true;
+    tornDown = true; clearLateInitialization();
     window.dispatchEvent(new Event('notable:teardown'));
     window.parent.postMessage({ jsonrpc: '2.0', id: message.id, result: {} }, hostOrigin ?? '*');
   } else if (message.method === 'ping' && message.id !== undefined) {
@@ -86,7 +104,14 @@ window.addEventListener('message', event => {
 function rpc(method: string, params: object, timeout = 15000): Promise<any> {
   const id = ++sequence;
   return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => { pending.delete(id); reject(new Error('The study space did not receive a response. Please try again.')); }, timeout);
+    const timer = setTimeout(() => {
+      pending.delete(id);
+      if (method === 'ui/initialize' && !tornDown) {
+        clearLateInitialization();
+        lateInitialization = { id, timer: setTimeout(() => { lateInitialization = null; }, 30000) };
+      }
+      reject(new Error('The study space did not receive a response. Please try again.'));
+    }, timeout);
     pending.set(id, { resolve, reject, timer });
     window.parent.postMessage({ jsonrpc: '2.0', id, method, params }, hostOrigin ?? '*');
   });
@@ -94,12 +119,7 @@ function rpc(method: string, params: object, timeout = 15000): Promise<any> {
 const connection = isEmbedded && window.parent !== window ? rpc('ui/initialize', {
   appInfo: { name: 'Nooks', version: '0.1.0' },
   appCapabilities: { availableDisplayModes: ['fullscreen'], tools: { listChanged: true } }, protocolVersion: '2026-01-26',
-}, 4000).then(result => {
-  hostCapabilities = result?.hostCapabilities ?? {};
-  applyHostContext(result?.hostContext ?? {});
-  initialized = true;
-  window.parent.postMessage({ jsonrpc: '2.0', method: 'ui/notifications/initialized' }, hostOrigin ?? '*');
-}).catch(() => {}) : Promise.resolve();
+}, 4000).then(acceptInitialization).catch(() => {}) : Promise.resolve();
 subscribeAppToolsChanged(() => { if (initialized) window.parent.postMessage({jsonrpc:'2.0',method:'notifications/tools/list_changed'},hostOrigin??'*'); });
 
 const flatten = readToolResult;

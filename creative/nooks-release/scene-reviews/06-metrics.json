@@ -1,0 +1,26 @@
+{
+  "bookshop-cat": {
+    "videoSha256": "9c145ead038bf9686bfb94f270d11cb1ca1b56e05eac8495872b065162183fc9",
+    "frames": 84,
+    "meanFrameChange": 0.040670821306057564,
+    "seamChange": 0.0671922019675926,
+    "seamVsTypical": 1.6520984777257228,
+    "outsideMaskChange": 0.00021609242436180078,
+    "insideMaskChange": 1.4449606532772958,
+    "peakBrightnessChange": 0.03726888020833741,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "sunlit-greenhouse": {
+    "videoSha256": "329c877ab03151ee14e322c4416c5df6509364206ce5b0b4eace269bb238fc9b",
+    "frames": 84,
+    "meanFrameChange": 0.016292596601684514,
+    "seamChange": 0.044067925347222224,
+    "seamVsTypical": 2.704782204124908,
+    "outsideMaskChange": 0.00012168586592345323,
+    "insideMaskChange": 0.33086829218380437,
+    "peakBrightnessChange": 0.008428457754632745,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

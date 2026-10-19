@@ -1,0 +1,47 @@
+{
+  "startedAt": "2026-10-08T08:02:55.768Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "transport": "Actual deployed HTTPS https://nooks-study-space.vercel.app; real hosted Supabase Auth/DB and direct Supabase WebSockets; no browser or email onboarding proof",
+  "realtime": true,
+  "load": 0,
+  "checks": [
+    {
+      "name": "two distinct confirmed ephemeral users with real JWTs",
+      "passed": false,
+      "error": "workspace: expected HTTP 200, received 503; code BACKEND_UNAVAILABLE"
+    }
+  ],
+  "cleanup": [
+    {
+      "type": "session-revoke",
+      "id": "67f18975-1437-473f-9e66-10843f4e6310",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "67f18975-1437-473f-9e66-10843f4e6310",
+      "ok": true
+    }
+  ],
+  "deployedConfig": {
+    "origin": "https://nooks-study-space.vercel.app",
+    "supabaseUrl": "https://lcfcjglybfeozyrjjikk.supabase.co",
+    "backend": "supabase",
+    "community": true
+  },
+  "httpFailure": {
+    "tool": "workspace",
+    "status": 503,
+    "requestId": "d1a34073-e76e-4328-af1f-77b0814c3325",
+    "code": "BACKEND_UNAVAILABLE"
+  },
+  "passed": false,
+  "fixtureThrottleTopics": [],
+  "throttleCleanup": "Exact owned fixture topics only; shared nooks:directory must be preserved.",
+  "cleanupVerification": {
+    "accountsRemaining": 0,
+    "roomsRemaining": 0,
+    "queryOk": true
+  },
+  "finishedAt": "2026-10-08T08:03:02.128Z"
+}

@@ -1,0 +1,26 @@
+{
+  "pokemon-research-cottage": {
+    "videoSha256": "532d99a6c24e6193a2b0acad9db763c11fc475830e1d145e280c4b67e2f8c1ae",
+    "frames": 84,
+    "meanFrameChange": 0.013216999944221333,
+    "seamChange": 0.024189091435185186,
+    "seamVsTypical": 1.830149923376599,
+    "insideMaskChange": 1.5513131811131995,
+    "outsideMaskChange": 5.419036561224434e-05,
+    "peakBrightnessChange": 0.01717809606481069,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "sakura-garden": {
+    "videoSha256": "a18af1bde51976ce9cc6948e0e872357b0a8d915c01a1d79e3009149799b4d7d",
+    "frames": 84,
+    "meanFrameChange": 0.034950178317436416,
+    "seamChange": 0.03792426215277778,
+    "seamVsTypical": 1.0850949545472737,
+    "insideMaskChange": 0.9289932762414597,
+    "outsideMaskChange": 0.00014979128165392864,
+    "peakBrightnessChange": 0.01295862268517567,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

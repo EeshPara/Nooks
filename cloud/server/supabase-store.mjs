@@ -94,10 +94,13 @@ export class SupabaseStore {
     await this.uploadArtwork(prepared);
     return prepared.stored;
   }
-  async unpack(value, owner=this.identity.id){
+  async unpack(value, owner=this.identity.id, {hydrateArtwork=true}={}){
     const workspace=structuredClone(value), spaces=appearances(workspace), loads=new Map();
     delete workspace.artworkWarnings;
     for(const space of spaces)if(space._storedBackground)parseArtworkReference(space._storedBackground,owner);
+    // Listing drafts needs owned references, not image bytes. Keep validation
+    // before this return; full reads and writes retain hydration by default.
+    if(hydrateArtwork===false)return workspace;
     // Artwork is optional for studying. Hydrate different images together, and a repeated
     // reference only once, within one short timeout rather than one timeout per draft.
     await Promise.all(spaces.map(async space=>{
@@ -128,16 +131,16 @@ export class SupabaseStore {
     if(workspace.artworkWarnings?.length)try{Promise.resolve(this.onArtworkUnavailable({count:Math.min(workspace.artworkWarnings.length,100)})).catch(()=>{});}catch{}
     return workspace;
   }
-  async load(userId){
+  async load(userId,{hydrateArtwork=true}={}){
     const owner=this.account(userId),record=await this.rpc('nooks_workspace_read',{p_account:owner});
     if(!record?.workspace)return {revision:0,workspace:this.empty()};
     if(!Number.isSafeInteger(record.revision)||record.revision<0)throw new Error('Invalid authoritative workspace revision.');
-    const workspace=await this.unpack(record.workspace);
+    const workspace=await this.unpack(record.workspace,owner,{hydrateArtwork});
     // The database counter wins over any legacy or client-supplied document field.
     workspace.revision=record.revision;
     return {revision:record.revision,workspace};
   }
-  async read(userId){return (await this.load(userId)).workspace;}
+  async read(userId,options){return (await this.load(userId,options)).workspace;}
   /** Poll only the session JSON; fetch bounded id/kind metadata solely for a pending target. */
   async readNavigationState(userId, { includeArtifacts = false } = {}) {
     const owner = this.account(userId);

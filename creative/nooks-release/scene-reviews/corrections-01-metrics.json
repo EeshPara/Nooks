@@ -1,0 +1,59 @@
+{
+  "witch-apothecary": {
+    "videoSha256": "0ed9d16d268ecf61726f2c6133b9f9e96a26b356186c6781f6a49f295554d9ba",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.016113425054384206,
+    "seamChange": 0.027650824652777777,
+    "seamVsTypical": 1.71601162133152,
+    "insideMaskChange": 1.0129733924758115,
+    "outsideMaskChange": 4.0143993395874714e-05,
+    "peakBrightnessChange": 0.00365451388888971,
+    "qaMatchesVideo": true,
+    "regionFrameChange": {
+      "front-candle": 0.0,
+      "shelf-candle": 0.0,
+      "vapor": 0.47584118525383584
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-front-candle-motion.png",
+      "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-front-candle-seam.png",
+      "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-shelf-candle-motion.png",
+      "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-shelf-candle-seam.png",
+      "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-vapor-motion.png",
+      "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-vapor-seam.png",
+      "creative/nooks-release/scene-reviews/corrections-01-witch-apothecary-full.png"
+    ]
+  },
+  "animal-crossing-island": {
+    "videoSha256": "17e636e8be9aa00f11c37a56ab29e5ef20fd51a2584f1f24bed25dc758a849a0",
+    "frames": 84,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "meanFrameChange": 0.006415444765171797,
+    "seamChange": 0.005959924768518519,
+    "seamVsTypical": 0.9289963496956272,
+    "insideMaskChange": 0.6680197459554595,
+    "outsideMaskChange": 7.811663279618162e-05,
+    "peakBrightnessChange": 0.011891637731480387,
+    "qaMatchesVideo": true,
+    "regionFrameChange": {
+      "left-sea": 0.00523192088080212,
+      "door-sea": 0.0029086345381526104,
+      "steam": 0.3953245148425871,
+      "tiny-water": 0.01890227576974565
+    },
+    "evidence": [
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-left-sea-motion.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-left-sea-seam.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-door-sea-motion.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-door-sea-seam.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-steam-motion.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-steam-seam.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-tiny-water-motion.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-tiny-water-seam.png",
+      "creative/nooks-release/scene-reviews/corrections-01-animal-crossing-island-full.png"
+    ]
+  }
+}

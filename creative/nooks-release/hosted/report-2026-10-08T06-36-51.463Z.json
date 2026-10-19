@@ -1,0 +1,123 @@
+{
+  "startedAt": "2026-10-08T06:36:51.464Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "transport": "loopback HTTP running actual web createBrowserApiHandler; real hosted Supabase Auth/DB",
+  "realtime": true,
+  "load": 0,
+  "checks": [
+    {
+      "name": "two distinct confirmed ephemeral users with real JWTs",
+      "passed": true,
+      "ms": 1912
+    },
+    {
+      "name": "unauthenticated HTTP request denied",
+      "passed": true,
+      "ms": 3
+    },
+    {
+      "name": "private notes isolated between authenticated accounts",
+      "passed": true,
+      "ms": 1548
+    },
+    {
+      "name": "concurrent compare-and-swap accepts one edit, preserves loser",
+      "passed": true,
+      "ms": 913
+    },
+    {
+      "name": "authenticated Data API cannot read other account notes",
+      "passed": true,
+      "ms": 103
+    },
+    {
+      "name": "private room create retry creates exactly one room",
+      "passed": true,
+      "ms": 669
+    },
+    {
+      "name": "private room requires invite for join and snapshot",
+      "passed": true,
+      "ms": 1096
+    },
+    {
+      "name": "nonmember denied private Realtime subscription",
+      "passed": true,
+      "ms": 4636
+    },
+    {
+      "name": "invitation acceptance and retry consume one use",
+      "passed": true,
+      "ms": 1956
+    },
+    {
+      "name": "member receives content-free invalidation after other user changes profile",
+      "passed": true,
+      "ms": 3005
+    },
+    {
+      "name": "presence updates online count without study credits",
+      "passed": true,
+      "ms": 710
+    },
+    {
+      "name": "leaving private room immediately forbids fetch and presence",
+      "passed": true,
+      "ms": 1013
+    },
+    {
+      "name": "removed member denied a fresh subscription",
+      "passed": true,
+      "ms": 4931
+    },
+    {
+      "name": "public directory membership and owner-only controls",
+      "passed": true,
+      "ms": 2431
+    },
+    {
+      "name": "server-clock focus completion retry awards credit once",
+      "passed": true,
+      "ms": 64009
+    },
+    {
+      "name": "archive retry preserves closure and removes access",
+      "passed": true,
+      "ms": 1019
+    }
+  ],
+  "cleanup": [
+    {
+      "type": "fixture-room",
+      "id": "41cd289d-b3a6-46dc-9fdb-59835483e07a",
+      "ok": true
+    },
+    {
+      "type": "fixture-room",
+      "id": "0cde0b8c-c5a8-4ee7-b1c6-765418f613fa",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "7394ff5a-5f81-4043-b6b4-f0aa7973f80c",
+      "ok": true
+    },
+    {
+      "type": "fixture-account",
+      "id": "0db4fb7d-08b1-49bf-96b9-cadf56703c72",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "456550f0-4152-4d89-812b-dd145fb6286e",
+      "ok": true
+    },
+    {
+      "type": "fixture-auth-user",
+      "id": "922352e2-e38b-4347-b882-ccf353e34768",
+      "ok": true
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-10-08T06:38:25.978Z"
+}

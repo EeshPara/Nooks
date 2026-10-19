@@ -1,0 +1,87 @@
+{
+  "startedAt": "2026-10-08T09:13:26.422Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "publicOrigin": "https://nooks-study-space.vercel.app",
+  "documentedSha256": "f1f8ea3690fad0e8b7eb274bbcff6dbd5b8ace3b0da6b12183ff2e0f8d2010b2",
+  "documentedBytes": 173490,
+  "objectMutations": 0,
+  "catalogMutations": 0,
+  "fixtureCount": 1,
+  "checks": [
+    {
+      "label": "privileged_hash_before",
+      "status": 200,
+      "bytes": 173490,
+      "byteHashMatches": true,
+      "durationMs": 513,
+      "pass": true
+    },
+    {
+      "label": "authenticated_foreign_denied",
+      "status": 400,
+      "imageBytesReturned": false,
+      "durationMs": 109,
+      "pass": true
+    },
+    {
+      "label": "anonymous_authenticated_route_denied",
+      "status": 400,
+      "imageBytesReturned": false,
+      "durationMs": 113,
+      "pass": true
+    },
+    {
+      "label": "anonymous_public_route_denied",
+      "status": 400,
+      "imageBytesReturned": false,
+      "durationMs": 171,
+      "pass": true
+    },
+    {
+      "label": "privileged_hash_after",
+      "status": 200,
+      "bytes": 173490,
+      "byteHashMatches": true,
+      "durationMs": 73,
+      "pass": true
+    }
+  ],
+  "cleanup": [
+    {
+      "type": "session_revoke",
+      "ok": true
+    },
+    {
+      "type": "account_delete",
+      "ok": true
+    },
+    {
+      "type": "auth_delete",
+      "ok": true
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Reads only the uniquely identified documented Oct4 QA cat-logo object.",
+    "One admin-confirmed disposable foreign account bypasses email onboarding; no owner-user JWT or browser rendering test.",
+    "No new upload, physical deletion, retention cleanup, backup restore, signed URL, or public custom-art publication is tested.",
+    "Fixture workspace GET may perform normal identity/quota bookkeeping."
+  ],
+  "documentedObject": {
+    "generation": "21f99023-26b0-4a93-847c-e0d6b2492032",
+    "mime": "image/webp",
+    "createdAt": "2026-10-04T20:29:03.952455+00:00"
+  },
+  "fixtureAuthId": "60c41c3d-a2d3-4780-af32-53992adf40a4",
+  "fixtureAccountId": "9b9a281b-b239-4464-83bb-7a309829da36",
+  "fixtureThrottleTopics": [
+    "account:9b9a281b-b239-4464-83bb-7a309829da36"
+  ],
+  "foreignMappingConfirmed": true,
+  "cleanupVerification": {
+    "accountsRemaining": 0,
+    "accountQueryOk": true,
+    "authAbsent": true
+  },
+  "finishedAt": "2026-10-08T09:13:36.203Z"
+}

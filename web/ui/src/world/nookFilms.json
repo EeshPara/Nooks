@@ -1,0 +1,202 @@
+{
+  "alpine-cabin": {
+    "image": "/images/nooks-50/alpine-cabin.webp",
+    "video": "/videos/nooks-animated-all/alpine-cabin.mp4"
+  },
+  "kikis-bakery-attic": {
+    "image": "/images/nooks-50/kikis-bakery-attic.webp",
+    "video": "/videos/nooks-animated-all/kikis-bakery-attic.mp4"
+  },
+  "hufflepuff-common-room": {
+    "image": "/images/nooks-50/hufflepuff-common-room.webp",
+    "video": "/videos/nooks-animated-all/hufflepuff-common-room.mp4"
+  },
+  "stardew-farmhouse": {
+    "image": "/images/nooks-50/stardew-farmhouse.webp",
+    "video": "/videos/nooks-animated-all/stardew-farmhouse.mp4"
+  },
+  "spirited-bathhouse": {
+    "image": "/images/nooks-50/spirited-bathhouse.webp",
+    "video": "/videos/nooks-animated-all/spirited-bathhouse.mp4"
+  },
+  "ravenclaw-tower": {
+    "image": "/images/nooks-50/ravenclaw-tower.webp",
+    "video": "/videos/nooks-animated-all/ravenclaw-tower.mp4"
+  },
+  "totoro-forest-window": {
+    "image": "/images/nooks-50/totoro-forest-window.webp",
+    "video": "/videos/nooks-animated-all/totoro-forest-window.mp4"
+  },
+  "slytherin-common-room": {
+    "image": "/images/nooks-50/slytherin-common-room.webp",
+    "video": "/videos/nooks-animated-all/slytherin-common-room.mp4"
+  },
+  "bookshop-cat": {
+    "image": "/images/nooks-50/bookshop-cat.webp",
+    "video": "/videos/nooks-animated-all/bookshop-cat.mp4"
+  },
+  "sunlit-greenhouse": {
+    "image": "/images/nooks-50/sunlit-greenhouse.webp",
+    "video": "/videos/nooks-animated-all/sunlit-greenhouse.mp4"
+  },
+  "dragon-rider-study": {
+    "image": "/images/nooks-50/dragon-rider-study.webp",
+    "video": "/videos/nooks-animated-all/dragon-rider-study.mp4"
+  },
+  "dragon-hatchery": {
+    "image": "/images/nooks-50/dragon-hatchery.webp",
+    "video": "/videos/nooks-animated-all/dragon-hatchery.mp4"
+  },
+  "cinnamoroll-cloud-cafe": {
+    "image": "/images/nooks-50/cinnamoroll-cloud-cafe.webp",
+    "video": "/videos/nooks-animated-all/cinnamoroll-cloud-cafe.mp4"
+  },
+  "hobbit-study": {
+    "image": "/images/nooks-50/hobbit-study.webp",
+    "video": "/videos/nooks-animated-all/hobbit-study.mp4"
+  },
+  "kyoto-teahouse": {
+    "image": "/images/nooks-50/kyoto-teahouse.webp",
+    "video": "/videos/nooks-animated-all/kyoto-teahouse.mp4"
+  },
+  "capybara-onsen": {
+    "image": "/images/nooks-50/capybara-onsen.webp",
+    "video": "/videos/nooks-animated-all/capybara-onsen.mp4"
+  },
+  "pokemon-research-cottage": {
+    "image": "/images/nooks-50/pokemon-research-cottage.webp",
+    "video": "/videos/nooks-animated-all/pokemon-research-cottage.mp4"
+  },
+  "midnight-train": {
+    "image": "/images/nooks-50/midnight-train.webp",
+    "video": "/videos/nooks-animated-all/midnight-train.mp4"
+  },
+  "paris-attic": {
+    "image": "/images/nooks-50/paris-attic.webp",
+    "video": "/videos/nooks-animated-all/paris-attic.mp4"
+  },
+  "underwater-study": {
+    "image": "/images/nooks-50/underwater-study.webp",
+    "video": "/videos/nooks-animated-all/underwater-study.mp4"
+  },
+  "kuromi-midnight-desk": {
+    "image": "/images/nooks-50/kuromi-midnight-desk.webp",
+    "video": "/videos/nooks-animated-all/kuromi-midnight-desk.mp4"
+  },
+  "mage-archive": {
+    "image": "/images/nooks-50/mage-archive.webp",
+    "video": "/videos/nooks-animated-all/mage-archive.mp4"
+  },
+  "secret-door-study": {
+    "image": "/images/nooks-50/secret-door-study.webp",
+    "video": "/videos/nooks-animated-all/secret-door-study.mp4"
+  },
+  "cloud-cafe": {
+    "image": "/images/nooks-50/cloud-cafe.webp",
+    "video": "/videos/nooks-animated-all/cloud-cafe.mp4"
+  },
+  "woodland-treehouse": {
+    "image": "/images/nooks-50/woodland-treehouse.webp",
+    "video": "/videos/nooks-animated-all/woodland-treehouse.mp4"
+  },
+  "tiny-mouse-house": {
+    "image": "/images/nooks-50/tiny-mouse-house.webp",
+    "video": "/videos/nooks-animated-all/tiny-mouse-house.mp4"
+  },
+  "velaris-study": {
+    "image": "/images/nooks-50/velaris-study.webp",
+    "video": "/videos/nooks-animated-all/velaris-study.mp4"
+  },
+  "witch-apothecary": {
+    "image": "/images/nooks-50/witch-apothecary.webp",
+    "video": "/videos/nooks-animated-all/witch-apothecary.mp4"
+  },
+  "animal-crossing-island": {
+    "image": "/images/nooks-50/animal-crossing-island.webp",
+    "video": "/videos/nooks-animated-all/animal-crossing-island.mp4"
+  },
+  "thousand-sunny-study": {
+    "image": "/images/nooks-50/thousand-sunny-study.webp",
+    "video": "/videos/nooks-animated-all/thousand-sunny-study.mp4"
+  },
+  "minecraft-cottage": {
+    "image": "/images/nooks-50/minecraft-cottage.webp",
+    "video": "/videos/nooks-animated-all/minecraft-cottage.mp4"
+  },
+  "moonlit-observatory": {
+    "image": "/images/nooks-50/moonlit-observatory.webp",
+    "video": "/videos/nooks-animated-all/moonlit-observatory.mp4"
+  },
+  "oxford-library": {
+    "image": "/images/nooks-50/oxford-library.webp",
+    "video": "/videos/nooks-animated-all/oxford-library.mp4"
+  },
+  "nevermore-study": {
+    "image": "/images/nooks-50/nevermore-study.webp",
+    "video": "/videos/nooks-animated-all/nevermore-study.mp4"
+  },
+  "sakura-garden": {
+    "image": "/images/nooks-50/sakura-garden.webp",
+    "video": "/videos/nooks-animated-all/sakura-garden.mp4"
+  },
+  "autumn-bakery": {
+    "image": "/images/nooks-50/autumn-bakery.webp",
+    "video": "/videos/nooks-animated-all/autumn-bakery.mp4"
+  },
+  "seoul-night-cafe": {
+    "image": "/images/nooks-50/seoul-night-cafe.webp",
+    "video": "/videos/nooks-animated-all/seoul-night-cafe.mp4"
+  },
+  "antique-workshop": {
+    "image": "/images/nooks-50/antique-workshop.webp",
+    "video": "/videos/nooks-animated-all/antique-workshop.mp4"
+  },
+  "hateno-study": {
+    "image": "/images/nooks-50/hateno-study.webp",
+    "video": "/videos/nooks-animated-all/hateno-study.mp4"
+  },
+  "frog-pond-studio": {
+    "image": "/images/nooks-50/frog-pond-studio.webp",
+    "video": "/videos/nooks-animated-all/frog-pond-studio.mp4"
+  },
+  "neon-tokyo": {
+    "image": "/images/nooks-50/neon-tokyo.webp",
+    "video": "/videos/nooks-animated-all/neon-tokyo.mp4"
+  },
+  "cyberpunk-rain-loft": {
+    "image": "/images/nooks-50/cyberpunk-rain-loft.webp",
+    "video": "/videos/nooks-animated-all/cyberpunk-rain-loft.mp4"
+  },
+  "sumeru-akademiya": {
+    "image": "/images/nooks-50/sumeru-akademiya.webp",
+    "video": "/videos/nooks-animated-all/sumeru-akademiya.mp4"
+  },
+  "aurora-cabin": {
+    "image": "/images/nooks-50/aurora-cabin.webp",
+    "video": "/videos/nooks-animated-all/aurora-cabin.mp4"
+  },
+  "lighthouse-study": {
+    "image": "/images/nooks-50/lighthouse-study.webp",
+    "video": "/videos/nooks-animated-all/lighthouse-study.mp4"
+  },
+  "desert-casita": {
+    "image": "/images/nooks-50/desert-casita.webp",
+    "video": "/videos/nooks-animated-all/desert-casita.mp4"
+  },
+  "stationery-studio": {
+    "image": "/images/nooks-50/stationery-studio.webp",
+    "video": "/videos/nooks-animated-all/stationery-studio.mp4"
+  },
+  "rainy-library": {
+    "image": "/images/nooks-50/rainy-library.webp",
+    "video": "/videos/nooks-animated-all/rainy-library.mp4"
+  },
+  "howls-moving-study": {
+    "image": "/images/nooks-50/howls-moving-study.webp",
+    "video": "/videos/nooks-animated-all/howls-moving-study.mp4"
+  },
+  "gryffindor-common-room": {
+    "image": "/images/nooks-50/gryffindor-common-room.webp",
+    "video": "/videos/nooks-animated-all/gryffindor-common-room.mp4"
+  }
+}

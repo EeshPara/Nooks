@@ -1,0 +1,784 @@
+{
+  "startedAt": "2026-10-08T06:55:49.262Z",
+  "project": "lcfcjglybfeozyrjjikk",
+  "transport": "Loopback HTTP using actual web browser API; real hosted Supabase Auth, DB and WebSockets. Not Vercel/browser/email verification.",
+  "bound": {
+    "users": 100,
+    "sockets": 100,
+    "privateChannelsPerSocket": 3,
+    "durationSeconds": 120,
+    "scheduledApiPerSecond": 8,
+    "absoluteApiPerSecond": 12
+  },
+  "phases": [],
+  "cleanup": [
+    {
+      "type": "account",
+      "id": "abd8bffb-754f-4718-94ec-ec0d3a9c6df7",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "d86d7c5c-050b-4297-b653-23dcafaee42a",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "d86d7c5c-050b-4297-b653-23dcafaee42a",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "08095c24-4c0a-44f0-be0a-2ee1f1337436",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "600169f6-ba33-46c8-84c6-f4fe4c9d4876",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "600169f6-ba33-46c8-84c6-f4fe4c9d4876",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "1a1a0013-4dc5-489b-b1b8-0f59c8737419",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "5de1c081-65e2-4266-8957-7e66aa9a43b0",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "5de1c081-65e2-4266-8957-7e66aa9a43b0",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "b4328f35-03df-41b0-bf1c-2716abd306cd",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "748c647d-7f32-40a5-8387-800ad617793a",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "748c647d-7f32-40a5-8387-800ad617793a",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "ec72794e-a813-41f8-96d5-2810a30346bb",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "f2ffc23c-15a6-49af-91b1-d862924f4a78",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "f2ffc23c-15a6-49af-91b1-d862924f4a78",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "a4a44882-98dd-4403-b295-a6a1ba70fbf0",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "1dffd013-c382-425a-add9-745cddd4d2cb",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "1dffd013-c382-425a-add9-745cddd4d2cb",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "5375564a-a44d-4c64-9c5d-295239c9fb8c",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "4eea7a97-72af-4181-b4aa-86990ade7333",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "4eea7a97-72af-4181-b4aa-86990ade7333",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "6bb228c2-f834-4efa-b5fa-8050dd0cbdef",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "2f969624-4d55-42ad-a652-212ab365da71",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "2f969624-4d55-42ad-a652-212ab365da71",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "99d06fb4-c308-40c4-a3e1-1d45a160c93e",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "d8bac958-6c01-40ed-a768-8a92ab9535ae",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "d8bac958-6c01-40ed-a768-8a92ab9535ae",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "5c50c5e5-c0c1-4867-b5a9-d48e5c7d2f23",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "f9e3ef8d-ff31-405a-99c5-285b2daa2ddd",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "f9e3ef8d-ff31-405a-99c5-285b2daa2ddd",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "e3f17108-4e3f-41df-81c1-88372876b094",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "6bac0759-71fd-4e2e-8099-5e610369fbb8",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "6bac0759-71fd-4e2e-8099-5e610369fbb8",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "99fb5c41-04ed-4c21-a002-39905d2a24df",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "b784c7fb-3d9d-4c77-99ec-b1785a56e3cc",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "b784c7fb-3d9d-4c77-99ec-b1785a56e3cc",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "2f506ab7-f1d0-405c-9afe-dc69ca201e52",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "23e36c59-682f-4149-a61b-35826866ac57",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "23e36c59-682f-4149-a61b-35826866ac57",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "d6a12a7b-8825-4e4f-84dd-72cd34238b2b",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "a23aa1c4-9305-4658-bda6-eae4c787d6ca",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "a23aa1c4-9305-4658-bda6-eae4c787d6ca",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "d69b8b02-6fec-42e3-8458-09b8abb71353",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "154b5a0d-8b5c-41b5-91d0-9e532d7009a2",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "154b5a0d-8b5c-41b5-91d0-9e532d7009a2",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "75c773ed-a139-4276-8630-47aa5c437664",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "d12adff1-ea7c-416f-a383-6b78078328e4",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "d12adff1-ea7c-416f-a383-6b78078328e4",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "c9356ab8-1909-46ee-8df5-9d754604cf29",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "85426e1e-38f5-4800-aa09-a89f3fc728ad",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "85426e1e-38f5-4800-aa09-a89f3fc728ad",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "c2ee72c4-f687-456a-b1b4-b5f9b0cd4f9a",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "7fa4644d-cb50-446c-a88c-3e860eb5add5",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "7fa4644d-cb50-446c-a88c-3e860eb5add5",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "b0da615f-5e6d-4486-9f78-56e2aecb5388",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "7756f8a5-d3e5-49e0-a19c-774e30bf7e46",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "7756f8a5-d3e5-49e0-a19c-774e30bf7e46",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "971b02f5-282d-4126-a2b9-2f9110e1ad1f",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "ee5c0938-afd0-49db-9cd2-84307be5cfcb",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "ee5c0938-afd0-49db-9cd2-84307be5cfcb",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "e6b9a749-c47f-4ee1-a21e-7be5e6d35820",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "6e20456c-65b5-4a79-8385-92ae7b23b97a",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "6e20456c-65b5-4a79-8385-92ae7b23b97a",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "bf81035d-cf67-4c62-921d-844b639cf003",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "65c5c485-b7ae-4c28-a733-96366604b148",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "65c5c485-b7ae-4c28-a733-96366604b148",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "fa326d68-c224-48b0-b0a9-df6b0c3d6627",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "389b4b58-1be5-4527-a26e-4a83767594a2",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "389b4b58-1be5-4527-a26e-4a83767594a2",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "6dbcef01-02f5-448e-9967-c4bfad75d6ca",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "a5164c65-958a-4a3f-abab-e0ad872a6284",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "a5164c65-958a-4a3f-abab-e0ad872a6284",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "3476fdd9-4c97-4250-a971-3d454ec1337a",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "00fa87cc-a0b9-47df-96d3-24e28fc1ff88",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "00fa87cc-a0b9-47df-96d3-24e28fc1ff88",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "d48b6862-b3ee-4d71-a2d5-fb4443a2144f",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "32a40808-e671-4642-a906-ab607fa0c1bb",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "32a40808-e671-4642-a906-ab607fa0c1bb",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "0f1d7583-d710-44f1-93a4-c30d32ecb39c",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "0ae99b78-52f6-432d-b5f9-9cb4f47db7a7",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "0ae99b78-52f6-432d-b5f9-9cb4f47db7a7",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "e100e50e-bbfa-4919-9425-a6658c1da748",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "8b01e862-2432-485d-b2ca-f0f93cff5f25",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "8b01e862-2432-485d-b2ca-f0f93cff5f25",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "c81bca10-252d-4334-9d27-b230583abdd9",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "8ab29e4e-3694-4bb3-a0f7-307e640ebf9c",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "8ab29e4e-3694-4bb3-a0f7-307e640ebf9c",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "c52372f0-1d4d-4068-b5a8-63b4b5f03315",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "3a1e28aa-0ef5-4d6b-96a3-9a088c71d292",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "3a1e28aa-0ef5-4d6b-96a3-9a088c71d292",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "60603152-e228-45ca-807a-df26245ce9a6",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "5db9e35f-096f-4d0d-bc79-d992571d62be",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "5db9e35f-096f-4d0d-bc79-d992571d62be",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "92eb79be-0c04-40e5-be9e-92b8120d850c",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "c6e68dcf-a0d8-4c52-90ef-390383c417f7",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "c6e68dcf-a0d8-4c52-90ef-390383c417f7",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "050ec396-9fc4-401c-9221-6cfb6413eb7f",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "32ab3f4e-45e7-43fe-8000-2973f906bc6e",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "32ab3f4e-45e7-43fe-8000-2973f906bc6e",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "fe85708c-c316-408b-9924-0785893ed6fd",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "593ee529-adce-4f32-a559-1c6cd8b48556",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "593ee529-adce-4f32-a559-1c6cd8b48556",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "18bbb32e-d796-46c4-8ca8-cecad068293d",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "8e47e993-4ad5-419d-b02f-14dcffb0c497",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "8e47e993-4ad5-419d-b02f-14dcffb0c497",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "aaca8dc5-ad30-4a88-af83-0ffa67638ce8",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "33f63edd-8f69-4690-8111-fa9a4c65abb3",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "33f63edd-8f69-4690-8111-fa9a4c65abb3",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "479ca139-d2e4-43b1-8295-10dd66117696",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "d20b0acf-e53b-4dfb-ba26-6a2378b3c532",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "d20b0acf-e53b-4dfb-ba26-6a2378b3c532",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "f0d7378c-6160-492b-9eec-a0d67ac2fcfb",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "9456e43c-1c70-4745-b589-2b586e983cf7",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "9456e43c-1c70-4745-b589-2b586e983cf7",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "2990d7a7-ee97-4b6f-848c-e898244455f5",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "8fb47344-01a1-4e00-bb3d-7ab3fce26db2",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "8fb47344-01a1-4e00-bb3d-7ab3fce26db2",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "f4117d2d-68fc-4932-9195-98bf59833446",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "c3814189-8c1c-46b6-8d29-ef3d72b403b5",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "c3814189-8c1c-46b6-8d29-ef3d72b403b5",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "5cc46102-af7f-40d2-bffc-66db966485f0",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "6d11f165-a71e-4f1b-8077-5427598fc447",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "6d11f165-a71e-4f1b-8077-5427598fc447",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "d3e3d3ad-543c-4b0f-a773-32644a1a8d4b",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "2cfe10da-ca70-4f7f-9918-686aa1689e02",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "2cfe10da-ca70-4f7f-9918-686aa1689e02",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "798e5c98-864c-464c-b5d0-4db306ce0beb",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "b8f53cf1-f5b3-455a-a6cb-b1b7530285ff",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "b8f53cf1-f5b3-455a-a6cb-b1b7530285ff",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "00ae3df8-3c92-4456-8055-37630d98304f",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "c3e4057e-ba84-4136-b1db-919a6c57992c",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "c3e4057e-ba84-4136-b1db-919a6c57992c",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "ac335237-7847-4f3b-a46d-d3ae7f4531d0",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "d02dfd6c-26ce-4b96-b0da-9a4d333e137b",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "d02dfd6c-26ce-4b96-b0da-9a4d333e137b",
+      "ok": true
+    },
+    {
+      "type": "account",
+      "id": "622d0d2c-fc54-4c0b-b083-ea214b9c81e0",
+      "ok": true
+    },
+    {
+      "type": "session-revoke",
+      "id": "133077c8-e8ac-43b7-9fb0-c197b43f347b",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "133077c8-e8ac-43b7-9fb0-c197b43f347b",
+      "ok": true
+    },
+    {
+      "type": "auth-user",
+      "id": "de29c796-c7b4-4d5c-9558-c12dc4595c1f",
+      "ok": true
+    }
+  ],
+  "socketFailures": [],
+  "delivery": [],
+  "limitations": [
+    "Admin-confirmed fixtures bypass email onboarding",
+    "Single generator and private room; no browser rendering",
+    "Short bounded sample, not 1000-user or production readiness proof"
+  ],
+  "preflight": {
+    "authStatus": 200,
+    "databaseRead": true
+  },
+  "browserApiSha256": "a8231fbb53d6e8c74f55ecfc9da283d2e0f8e7a9d584320db22010c9531357d1",
+  "passed": false,
+  "failure": {
+    "phase": "setup",
+    "message": "Fixture login failed at 46",
+    "name": "Error"
+  },
+  "cleanupVerification": {
+    "accountsRemaining": 0,
+    "roomsRemaining": 0,
+    "queryOk": true
+  },
+  "fixtureThrottleTopics": [
+    "account:abd8bffb-754f-4718-94ec-ec0d3a9c6df7",
+    "account:08095c24-4c0a-44f0-be0a-2ee1f1337436",
+    "account:1a1a0013-4dc5-489b-b1b8-0f59c8737419",
+    "account:b4328f35-03df-41b0-bf1c-2716abd306cd",
+    "account:ec72794e-a813-41f8-96d5-2810a30346bb",
+    "account:a4a44882-98dd-4403-b295-a6a1ba70fbf0",
+    "account:5375564a-a44d-4c64-9c5d-295239c9fb8c",
+    "account:6bb228c2-f834-4efa-b5fa-8050dd0cbdef",
+    "account:99d06fb4-c308-40c4-a3e1-1d45a160c93e",
+    "account:5c50c5e5-c0c1-4867-b5a9-d48e5c7d2f23",
+    "account:e3f17108-4e3f-41df-81c1-88372876b094",
+    "account:99fb5c41-04ed-4c21-a002-39905d2a24df",
+    "account:2f506ab7-f1d0-405c-9afe-dc69ca201e52",
+    "account:d6a12a7b-8825-4e4f-84dd-72cd34238b2b",
+    "account:d69b8b02-6fec-42e3-8458-09b8abb71353",
+    "account:75c773ed-a139-4276-8630-47aa5c437664",
+    "account:c9356ab8-1909-46ee-8df5-9d754604cf29",
+    "account:c2ee72c4-f687-456a-b1b4-b5f9b0cd4f9a",
+    "account:b0da615f-5e6d-4486-9f78-56e2aecb5388",
+    "account:971b02f5-282d-4126-a2b9-2f9110e1ad1f",
+    "account:e6b9a749-c47f-4ee1-a21e-7be5e6d35820",
+    "account:bf81035d-cf67-4c62-921d-844b639cf003",
+    "account:fa326d68-c224-48b0-b0a9-df6b0c3d6627",
+    "account:6dbcef01-02f5-448e-9967-c4bfad75d6ca",
+    "account:3476fdd9-4c97-4250-a971-3d454ec1337a",
+    "account:d48b6862-b3ee-4d71-a2d5-fb4443a2144f",
+    "account:0f1d7583-d710-44f1-93a4-c30d32ecb39c",
+    "account:e100e50e-bbfa-4919-9425-a6658c1da748",
+    "account:c81bca10-252d-4334-9d27-b230583abdd9",
+    "account:c52372f0-1d4d-4068-b5a8-63b4b5f03315",
+    "account:60603152-e228-45ca-807a-df26245ce9a6",
+    "account:92eb79be-0c04-40e5-be9e-92b8120d850c",
+    "account:050ec396-9fc4-401c-9221-6cfb6413eb7f",
+    "account:fe85708c-c316-408b-9924-0785893ed6fd",
+    "account:18bbb32e-d796-46c4-8ca8-cecad068293d",
+    "account:aaca8dc5-ad30-4a88-af83-0ffa67638ce8",
+    "account:479ca139-d2e4-43b1-8295-10dd66117696",
+    "account:f0d7378c-6160-492b-9eec-a0d67ac2fcfb",
+    "account:2990d7a7-ee97-4b6f-848c-e898244455f5",
+    "account:f4117d2d-68fc-4932-9195-98bf59833446",
+    "account:5cc46102-af7f-40d2-bffc-66db966485f0",
+    "account:d3e3d3ad-543c-4b0f-a773-32644a1a8d4b",
+    "account:798e5c98-864c-464c-b5d0-4db306ce0beb",
+    "account:00ae3df8-3c92-4456-8055-37630d98304f",
+    "account:ac335237-7847-4f3b-a46d-d3ae7f4531d0",
+    "account:622d0d2c-fc54-4c0b-b083-ea214b9c81e0"
+  ],
+  "throttleCleanup": "Private throttle table is not exposed to Data API; exact fixture topics recorded for separately authorized SQL cleanup. Shared directory topic must be preserved.",
+  "finishedAt": "2026-10-08T06:56:49.910Z"
+}

@@ -1,0 +1,79 @@
+{
+  "thousand-sunny-study": {
+    "sha256": "27afda1e1d953fc66951a57b7900263f79d228c7bf099722aaabdd6ff7e11f19",
+    "frames": 84,
+    "meanFrameChange": 0.0890948298401941,
+    "seamChange": 0.09207429108796296,
+    "seamVsTypical": 1.0334414606673923,
+    "insideMaskChange": 2.1416630468644433,
+    "outsideMaskChange": 0.00021885445446353635,
+    "peakBrightnessChange": 0.01118453414352416,
+    "qaMatchesVideo": true,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "regions": {
+      "lantern": {
+        "meanAdjacentChange": 0.025879196787148593,
+        "maxAdjacentChange": 0.33168
+      },
+      "sea": {
+        "meanAdjacentChange": 1.5291819357842777,
+        "maxAdjacentChange": 2.3721863799283156
+      }
+    }
+  },
+  "minecraft-cottage": {
+    "sha256": "890b936e711542e0fb4ec700437cede5dae657f81d78fad392522f65fcce7e11",
+    "frames": 84,
+    "meanFrameChange": 0.07687137438643464,
+    "seamChange": 0.08679398148148149,
+    "seamVsTypical": 1.1290806515981568,
+    "insideMaskChange": 1.954596322888367,
+    "outsideMaskChange": 0.000205649986761404,
+    "peakBrightnessChange": 0.08579897280093007,
+    "qaMatchesVideo": true,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "regions": {
+      "lantern": {
+        "meanAdjacentChange": 0.012937464142283419,
+        "maxAdjacentChange": 0.35495670995670997
+      },
+      "hearth": {
+        "meanAdjacentChange": 2.998291308469954,
+        "maxAdjacentChange": 4.763094606542882
+      },
+      "rain": {
+        "meanAdjacentChange": 0.36025479468895993,
+        "maxAdjacentChange": 0.5362244897959184
+      }
+    }
+  },
+  "moonlit-observatory": {
+    "sha256": "be83ce5dae6ad1feabce951dcf61a481431651a649543cead6770ea5c2c74918",
+    "frames": 84,
+    "meanFrameChange": 0.006063503144522535,
+    "seamChange": 0.008825593171296296,
+    "seamVsTypical": 1.455527103877054,
+    "insideMaskChange": 0.6223444239817704,
+    "outsideMaskChange": 8.260558883172439e-05,
+    "peakBrightnessChange": 0.013972800925927231,
+    "qaMatchesVideo": true,
+    "durationSeconds": 3.5,
+    "audioTracks": 0,
+    "regions": {
+      "left-light": {
+        "meanAdjacentChange": 0.006450644683999154,
+        "maxAdjacentChange": 0.17884210526315789
+      },
+      "right-light": {
+        "meanAdjacentChange": 0.0067156626506024095,
+        "maxAdjacentChange": 0.24843333333333334
+      },
+      "steam": {
+        "meanAdjacentChange": 0.36442968134219117,
+        "maxAdjacentChange": 0.9579439252336449
+      }
+    }
+  }
+}

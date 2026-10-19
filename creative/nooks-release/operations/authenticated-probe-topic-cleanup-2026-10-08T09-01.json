@@ -1,0 +1,7 @@
+{
+  "project": "lcfcjglybfeozyrjjikk",
+  "topic": "account:46ede04c-c630-457a-9423-4516cb965e0a",
+  "guardedDeleteRemoved": 0,
+  "fixtureAccounts": 0,
+  "note": "Exact orphan-only delete found no remaining fixture topic; account/Auth/session cleanup is in matching fixture report."
+}

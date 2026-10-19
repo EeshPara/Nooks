@@ -6,10 +6,11 @@ import { getNookPlaylist, type NookPlaylist } from './nookPlaylists';
 import { consumeDismissEscape, isTopmostDismissTarget } from './dismissal';
 import { ambienceKey, getAmbiencePreset, defaultAmbience, loadAmbience, safeVolume, type Channel, type Preferences } from './nookAmbience';
 export { safeVolume } from './nookAmbience';
-import { recordedAmbience, recordingBytes, fireVariant } from './recordedAmbience';
+import { recordedAmbience, loadRecordingBytes, fireVariant, sceneBed, type RecordingKind } from './recordedAmbience';
 import './ambient.css';
 
-interface Engine { ready: Promise<void>; fireGains: Record<'stove'|'hearth', GainNode>; context: AudioContext; master: GainNode; gains: Record<Channel, GainNode>; sources: AudioScheduledSourceNode[]; audio: HTMLAudioElement; localGain: GainNode; localSource: MediaElementAudioSourceNode }
+interface RecordingPlayer { gain: GainNode; ready: Promise<void>; source?: AudioBufferSourceNode; releaseTimer?: ReturnType<typeof setTimeout> }
+interface Engine { recordings: Partial<Record<RecordingKind, RecordingPlayer>>; mixRevision: number; disposed: boolean; context: AudioContext; master: GainNode; gains: Record<Channel, GainNode>; sources: AudioScheduledSourceNode[]; audio: HTMLAudioElement; localGain: GainNode; localSource: MediaElementAudioSourceNode }
 interface LocalTrack { url: string; name: string }
 export interface AmbientMixerProps { open: boolean; onClose: () => void; roomId: string; roomTitle: string }
 
@@ -44,22 +45,13 @@ function createEngine(): Engine {
   master.connect(limiter); limiter.connect(context.destination);
   const sources: AudioScheduledSourceNode[] = [];
   const gains = {} as Record<Channel, GainNode>;
-  for (const channel of ['rain', 'brown', 'fire', 'warm'] as Channel[]) {
+  for (const channel of ['rain', 'brown', 'fire', 'warm', 'scene'] as Channel[]) {
     const gain = context.createGain(); gain.gain.value = 0; gain.connect(master); gains[channel] = gain;
   }
   const brown = context.createBufferSource(); brown.buffer = brownNoise(context); brown.loop = true; brown.loopEnd = brown.buffer.duration - .12;
   const brownFilter = context.createBiquadFilter(); brownFilter.type = 'lowpass'; brownFilter.frequency.value = 650;
   const brownTrim = context.createGain(); brownTrim.gain.value = .25;
   brown.connect(brownFilter); brownFilter.connect(brownTrim); brownTrim.connect(gains.brown); brown.start(); sources.push(brown);
-  const fireGains = { stove: context.createGain(), hearth: context.createGain() };
-  for (const gain of Object.values(fireGains)) { gain.gain.value = 0; gain.connect(gains.fire); }
-  const ready = Promise.all(Object.entries(recordedAmbience).map(async ([kind, data]) => {
-    const buffer = await context.decodeAudioData(recordingBytes(data));
-    if (context.state === 'closed') return;
-    const source = context.createBufferSource(); source.buffer = buffer; source.loop = true;
-    source.connect(kind === 'rain' ? gains.rain : fireGains[kind as 'stove'|'hearth']);
-    source.start(); sources.push(source);
-  })).then(() => {});
   // A quiet original three-note pad. No music files or external streaming services.
   const warmFilter = context.createBiquadFilter(); warmFilter.type = 'lowpass'; warmFilter.frequency.value = 550; warmFilter.connect(gains.warm);
   [130.81, 196, 261.63].forEach((frequency, index) => {
@@ -73,11 +65,67 @@ function createEngine(): Engine {
   const audio = new Audio(); audio.loop = true; audio.preload = 'metadata';
   const localSource = context.createMediaElementSource(audio);
   const localGain = context.createGain(); localGain.gain.value = 0; localSource.connect(localGain); localGain.connect(master);
-  return { ready, fireGains, context, master, gains, sources, audio, localGain, localSource };
+  return { recordings: {}, mixRevision: 0, disposed: false, context, master, gains, sources, audio, localGain, localSource };
 }
 
-function matchFireToNook(engine: Engine, roomId: string) {
-  for (const kind of ['stove', 'hearth'] as const) changeGain(engine.fireGains[kind], kind === fireVariant(roomId) ? 1 : 0, engine.context, .45);
+// Keep active players through a room transition, then release their decoded buffers.
+// Existing fades use a .65-second time constant; eight constants finish below -69 dB.
+const RECORDING_RELEASE_MS = 5200;
+function releaseRecording(engine: Engine, kind: RecordingKind, entry: RecordingPlayer) {
+  clearTimeout(entry.releaseTimer);
+  if (engine.recordings[kind] === entry) delete engine.recordings[kind];
+  if (entry.source) {
+    try { entry.source.stop(); } catch { /* Already stopped. */ }
+    entry.source.disconnect(); entry.source.buffer = null; entry.source = undefined;
+  }
+  entry.gain.disconnect();
+}
+async function matchRecordingsToNook(engine: Engine, roomId: string, preferences: Preferences) {
+  if (engine.disposed || engine.context.state === 'closed') return;
+  const revision = ++engine.mixRevision;
+  const desired: Partial<Record<RecordingKind, number>> = { rain: preferences.levels.rain, [fireVariant(roomId)]: preferences.levels.fire };
+  for (const [kind, ratio] of Object.entries(sceneBed(roomId))) desired[kind as RecordingKind] = (desired[kind as RecordingKind] ?? 0) + ratio * preferences.levels.scene;
+  for (const [name, entry] of Object.entries(engine.recordings)) if (entry) {
+    const kind = name as RecordingKind;
+    const volume = desired[kind] ?? 0;
+    if (volume > 0) {
+      clearTimeout(entry.releaseTimer); entry.releaseTimer = undefined;
+    } else if (!entry.source) {
+      // A superseded fetch/decode may finish, but cannot retain a buffer or start audio.
+      releaseRecording(engine, kind, entry);
+    } else if (entry.releaseTimer === undefined) {
+      changeGain(entry.gain, 0, engine.context, .65);
+      entry.releaseTimer = setTimeout(() => releaseRecording(engine, kind, entry), RECORDING_RELEASE_MS);
+    }
+  }
+  await Promise.all(Object.entries(desired).filter(([, volume]) => volume > 0).map(async ([name, volume]) => {
+    const kind = name as RecordingKind;
+    let entry = engine.recordings[kind];
+    if (!entry) {
+      const gain = engine.context.createGain(); gain.gain.value = 0; gain.connect(engine.master);
+      const player: RecordingPlayer = { gain, ready: Promise.resolve() };
+      engine.recordings[kind] = player;
+      player.ready = loadRecordingBytes(recordedAmbience[kind]).then(bytes => {
+        if (engine.disposed || engine.recordings[kind] !== player) return;
+        return engine.context.decodeAudioData(bytes);
+      }).then(buffer => {
+        if (!buffer || engine.disposed || engine.context.state === 'closed' || engine.recordings[kind] !== player) return;
+        const source = engine.context.createBufferSource(); source.buffer = buffer; source.loop = true;
+        source.connect(gain); source.start(); player.source = source;
+      }).catch(problem => {
+        const current = engine.recordings[kind] === player;
+        releaseRecording(engine, kind, player);
+        if (current && !engine.disposed) throw problem;
+      });
+      entry = player;
+    }
+    try { await entry.ready; } catch (problem) {
+      if (revision === engine.mixRevision) throw problem;
+      return;
+    }
+    // An older room's slow decode cannot turn its sound back on after switching rooms.
+    if (!engine.disposed && revision === engine.mixRevision && engine.recordings[kind] === entry) changeGain(entry.gain, volume, engine.context, .65);
+  }));
 }
 function changeGain(gain: GainNode, value: number, context: AudioContext, fade = .08) {
   if (context.state === 'closed') return;
@@ -85,6 +133,8 @@ function changeGain(gain: GainNode, value: number, context: AudioContext, fade =
   gain.gain.setTargetAtTime(safeVolume(value), context.currentTime, fade);
 }
 function dispose(engine: Engine) {
+  engine.disposed = true; engine.mixRevision++;
+  for (const [kind, entry] of Object.entries(engine.recordings)) if (entry) releaseRecording(engine, kind as RecordingKind, entry);
   engine.context.onstatechange = null;
   engine.audio.pause(); engine.audio.removeAttribute('src'); engine.audio.load();
   engine.localSource.disconnect();
@@ -93,6 +143,7 @@ function dispose(engine: Engine) {
 }
 
 const channels: { id: Channel; name: string }[] = [
+  { id: 'scene', name: 'Natural surroundings' },
   { id: 'rain', name: 'Window rain' },
   { id: 'brown', name: 'Brown noise' },
   { id: 'fire', name: 'Fireplace' },
@@ -195,7 +246,9 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
     try { if (customized.current) localStorage.setItem(ambienceKey(roomId), JSON.stringify({ ...preferences, customized: true })); } catch { /* Private browsing may disable harmless preferences. */ }
     const current = engine.current;
     if (!current) return;
-    matchFireToNook(current, roomId);
+    if (current.context.state !== 'closed') void matchRecordingsToNook(current, roomId, preferences).catch(() => {
+      if (mounted.current && engine.current === current) setError('A nook sound could not load. Press Pause, then Play to retry.');
+    });
     for (const channel of Object.keys(preferences.levels) as Channel[]) changeGain(current.gains[channel], preferences.levels[channel], current.context, .45);
     changeGain(current.master, muted ? 0 : preferences.master, current.context);
     changeGain(current.localGain, preferences.local, current.context);
@@ -214,7 +267,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
           setError('Choose a sound below, then press Play.'); return;
         }
         const current = engine.current ??= createEngine();
-        matchFireToNook(current, roomId);
+        const recordingsReady = matchRecordingsToNook(current, roomId, preferences);
         current.context.onstatechange = () => {
           if (mounted.current && engine.current === current) setRunning(current.context.state === 'running');
         };
@@ -229,7 +282,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
         const localPlay = trackRef.current ? current.audio.play().catch(() => { if (mounted.current && token === epoch.current) setError('Your local track could not play. Try another audio file.'); }) : Promise.resolve();
         let timeout: ReturnType<typeof setTimeout> | undefined;
         try {
-          await Promise.race([Promise.all([resume, current.ready]), new Promise<never>((_, reject) => { timeout = setTimeout(() => reject(new Error('Tap Play again to enable sound in this window.')), 4000); })]);
+          await Promise.race([Promise.all([resume, recordingsReady]), new Promise<never>((_, reject) => { timeout = setTimeout(() => reject(new Error('Tap Play again to enable sound in this window.')), 4000); })]);
           if (current.context.state !== 'running') throw new Error('Tap Play again to enable sound in this window.');
           await localPlay;
         } finally { clearTimeout(timeout); }
@@ -298,7 +351,7 @@ export function AmbientMixer({ open, onClose, roomId, roomTitle }: AmbientMixerP
     </section>
     <details className="ambient-local"><summary><Upload size={14}/><span>Audio from your device</span><span className="ambient-local-expand">+</span></summary>{track ? <div className="ambient-local-track"><div className="ambient-file-name" title={track.name}>{track.name}</div><button type="button" className="ambient-icon" aria-label="Remove local audio track" onClick={removeTrack}><Trash2 size={15}/></button><input aria-label="Local audio track volume" className="ambient-slider" type="range" min="0" max="100" step="1" value={Math.round(preferences.local * 100)} onChange={event => setPreferences(value => ({ ...value, local: safeVolume(Number(event.target.value) / 100) }))}/><span className="ambient-local-note">Loops with your mix · {Math.round(preferences.local * 100)}%</span></div> : <button type="button" className="ambient-upload" onClick={() => upload.current?.click()}>Choose an audio file</button>}<input ref={upload} className="ambient-file-input" type="file" accept="audio/*" onChange={event => { addTrack(event.target.files?.[0]); event.currentTarget.value = ''; }}/><p className="ambient-privacy">Your file stays on this device.</p></details>
     {error && <p className="ambient-error" role="alert">{error}</p>}
-    <footer className="ambient-footer">Ambience follows your nook. Spotify plays on top.</footer>
+    <footer className="ambient-footer">Ambience follows your nook. Spotify plays on top.<br/><small>Stream recording: <a href="https://freesound.org/people/Geoff-Bremner-Audio/sounds/697496/" target="_blank" rel="noreferrer">Geoff Bremner</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a> · trimmed, softened and looped.</small></footer>
   </section>;
 }
 export default AmbientMixer;

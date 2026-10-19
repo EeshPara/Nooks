@@ -1,0 +1,2207 @@
+[
+  {
+    "roomId": "rainy-library",
+    "model": "seedance1_5",
+    "duration": 8,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only a faint transparent wisp of real cup steam moves above the blue floral cup. Preserve the original rainy skyline, window frames, architecture, lamps and desk perfectly still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          46,
+          226,
+          69,
+          250
+        ],
+        "alpha": 60,
+        "label": "cup steam above rim; original skyline fixed"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "35bd2a9a0af234ae6e59a576ce113d2900d8ecaee9f62c0a0589569edf83ccf1"
+  },
+  {
+    "roomId": "howls-moving-study",
+    "model": "seedance1_5",
+    "duration": 8,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. A delicate transparent steam wisp rises above the floral foreground cup. The original stove flame varies only in bounded AI-derived luminance, preserving every iron bar and the original flame geometry. Keep the sleeping cat, lantern, landscape and furnishings perfectly still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          155,
+          235,
+          179,
+          265
+        ],
+        "alpha": 55,
+        "label": "cup steam above rim"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          296,
+          156,
+          316,
+          176
+        ],
+        "alpha": 220,
+        "label": "stove warmth with original iron bars fixed",
+        "mode": "light-only"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "44b17a12042c265521e2eb2757b3c9c37b37c73bd096b24a3335c5dfda5bf672"
+  },
+  {
+    "roomId": "gryffindor-common-room",
+    "model": "seedance1_5",
+    "duration": 8,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Animate only the upper open hearth flames, above and clear of the rigid fire screen. Preserve both ornamental posts, every screen bar, the original wall candles, sleeping cat and entire room perfectly still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            112,
+            139
+          ],
+          [
+            146,
+            136
+          ],
+          [
+            151,
+            159
+          ],
+          [
+            145,
+            167
+          ],
+          [
+            112,
+            167
+          ]
+        ],
+        "alpha": 170,
+        "label": "upper open hearth flames above fixed screen"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "5b2b770aa5102faaa3c6cd9c6be30d0bca0948d2442aea0f012ecf97777fb64f"
+  },
+  {
+    "roomId": "neon-tokyo",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only fine rain trails slide down the exterior window glass. Faint transparent steam curls just above the dark mug at the front right. Neon signs remain constant, skyline and all window frames stay still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          394,
+          243,
+          414,
+          269
+        ],
+        "alpha": 28,
+        "label": "mug steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "4577e9bff147a4a429ada3ee8a33aee6a2118a808cbdadea5c672b4902629cef"
+  },
+  {
+    "roomId": "alpine-cabin",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only the existing hearth fire flickers gently inside the left fireplace. One fine transparent steam wisp rises above the tree-pattern mug at the front left. Snowy landscape stays still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            58,
+            149
+          ],
+          [
+            95,
+            133
+          ],
+          [
+            127,
+            149
+          ],
+          [
+            130,
+            206
+          ],
+          [
+            62,
+            219
+          ]
+        ],
+        "alpha": 215,
+        "label": "fire opening"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          101,
+          231,
+          122,
+          264
+        ],
+        "alpha": 35,
+        "label": "mug steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "4327f600d664a34ecf489636c18c6eeb8fd0d40f04187813012a1e2a941c284f"
+  },
+  {
+    "roomId": "totoro-forest-window",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Very fine rain falls in the garden beyond the window, with a tiny natural tremble in a few leaves near the opening. Barely visible steam rises above the blue floral cup near the desk center. The sleeping cat stays exactly curled and completely still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            109,
+            54
+          ],
+          [
+            190,
+            47
+          ],
+          [
+            189,
+            177
+          ],
+          [
+            106,
+            206
+          ]
+        ],
+        "alpha": 130,
+        "label": "rain left garden"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            395,
+            67
+          ],
+          [
+            515,
+            67
+          ],
+          [
+            515,
+            174
+          ],
+          [
+            395,
+            174
+          ]
+        ],
+        "alpha": 120,
+        "label": "rain right garden"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          319,
+          217,
+          346,
+          258
+        ],
+        "alpha": 55,
+        "label": "cup steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "b279fe7d39aa10348774b9a74bdcaed267687e42c151911b88bb7f15953d6b25"
+  },
+  {
+    "roomId": "slytherin-common-room",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Very subtle underwater light patterns undulate within the tall green lake windows, without swimming creatures or moving architecture. Existing fire at lower left flickers softly inside its opening. Foreground candles have tiny steady flame motion.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            146,
+            71
+          ],
+          [
+            170,
+            38
+          ],
+          [
+            193,
+            75
+          ],
+          [
+            191,
+            169
+          ],
+          [
+            148,
+            143
+          ]
+        ],
+        "alpha": 100,
+        "label": "first lake pane"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            250,
+            57
+          ],
+          [
+            274,
+            28
+          ],
+          [
+            298,
+            62
+          ],
+          [
+            296,
+            184
+          ],
+          [
+            253,
+            161
+          ]
+        ],
+        "alpha": 100,
+        "label": "second lake pane"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          48,
+          172,
+          79,
+          201
+        ],
+        "alpha": 210,
+        "label": "hearth"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          557,
+          230,
+          575,
+          259
+        ],
+        "alpha": 155,
+        "label": "foreground candle"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          254,
+          49,
+          292,
+          89
+        ],
+        "alpha": 0,
+        "label": "preserve shark silhouette"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "cde2f47ab1601e2aa3661fe11fefadaea69b8817919032badf24eab30250086f"
+  },
+  {
+    "roomId": "kikis-bakery-attic",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. A fine transparent wisp of warm tea steam rises above the floral mug at the front right. The plant leaves along the upper right window edge barely stir. The sleeping black cat remains perfectly still; rooftops and boats do not move.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          461,
+          186,
+          489,
+          240
+        ],
+        "alpha": 55,
+        "label": "tea steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          462,
+          10,
+          493,
+          87
+        ],
+        "alpha": 90,
+        "label": "window vine"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "3a55fb7272ce00a3f19376219abfde7dc5dddaad163170413d8599262e2d086f"
+  },
+  {
+    "roomId": "midnight-train",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Rain droplets slowly trace down the outside of the broad compartment window. Faint tea steam rises from the patterned cup beside the lamp. Keep the landscape stationary: no train-camera shaking, rushing scenery or rolling horizon.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          141,
+          216,
+          156,
+          237
+        ],
+        "alpha": 40,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "e2b30eb970daab3c9f75426089b47ae56f06dd10de2f3a0f4fa68ec02e3df41e"
+  },
+  {
+    "roomId": "hufflepuff-common-room",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The existing fire at the far right flickers softly inside the hearth. Faint transparent steam lifts just above the yellow cup in the foreground. The room, hanging plants and sunlit windows remain completely still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            550,
+            158
+          ],
+          [
+            580,
+            150
+          ],
+          [
+            598,
+            167
+          ],
+          [
+            598,
+            202
+          ],
+          [
+            551,
+            213
+          ]
+        ],
+        "alpha": 210,
+        "label": "right hearth"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          414,
+          231,
+          440,
+          278
+        ],
+        "alpha": 55,
+        "label": "cup steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "e0db6c674a8dff229911f754cd2ca970d16c6319d56021a63938bd5b33e92d74"
+  },
+  {
+    "roomId": "ravenclaw-tower",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Tiny steady flickers animate the existing candle flames on the right writing table. A very fine transparent wisp rises above the blue foreground mug. No moving stars, clouds or light rays; telescope and furnishings remain fixed.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          541,
+          197,
+          549,
+          217
+        ],
+        "alpha": 170,
+        "label": "table candle"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          565,
+          183,
+          576,
+          209
+        ],
+        "alpha": 160,
+        "label": "tall candle"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          468,
+          227,
+          497,
+          272
+        ],
+        "alpha": 55,
+        "label": "mug steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "5962f2f06e32a2cfaa5de5df4c27146125b4d742835cec904664e0742d1ce7a4"
+  },
+  {
+    "roomId": "stardew-farmhouse",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Animate only the small orange fire inside the black wood stove and a tiny warm flame inside the foreground lantern. A fine steam wisp rises above the foreground cream mug. Preserve the original pixel-textured painting and blocky details. The sleeping orange cat stays still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          189,
+          147,
+          215,
+          174
+        ],
+        "alpha": 220,
+        "label": "stove flame"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          550,
+          268,
+          579,
+          306
+        ],
+        "alpha": 155,
+        "label": "lantern flame"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          133,
+          224,
+          159,
+          278
+        ],
+        "alpha": 55,
+        "label": "cup steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "0c3aa332279dcb093eb9916fc842c728e70cd517eec5bdf74668bcc871cbdb18"
+  },
+  {
+    "roomId": "spirited-bathhouse",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Thin existing bathhouse mist drifts slowly and naturally over the courtyard below the bridge. The narrow waterfall at the far left flows continuously downward within its existing channel. No characters, lantern swings or shifting buildings.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            91,
+            93
+          ],
+          [
+            116,
+            110
+          ],
+          [
+            130,
+            163
+          ],
+          [
+            129,
+            210
+          ],
+          [
+            106,
+            204
+          ],
+          [
+            98,
+            155
+          ]
+        ],
+        "alpha": 160,
+        "label": "left waterfall"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            147,
+            183
+          ],
+          [
+            211,
+            170
+          ],
+          [
+            263,
+            187
+          ],
+          [
+            259,
+            211
+          ],
+          [
+            148,
+            211
+          ]
+        ],
+        "alpha": 90,
+        "label": "courtyard mist"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "dd5e668ca93cfce3cd19c2b6fe1342372d689f08bb5bcbbf7348ae294ea23431"
+  },
+  {
+    "roomId": "bookshop-cat",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The striped cat asleep on the front counter has only a tiny slow breathing movement, no head turn or change of pose. The small fire in the back-right stove flickers quietly within its opening. Thin transparent steam curls above the cup beside the left desk lamp.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          105,
+          203,
+          202,
+          251
+        ],
+        "alpha": 140,
+        "label": "sleeping cat torso"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          401,
+          134,
+          428,
+          166
+        ],
+        "alpha": 220,
+        "label": "stove flame"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "edc0a762aef628a14468cc4e4edcbed8ad695287296a2e5e922659d42c932b15"
+  },
+  {
+    "roomId": "sunlit-greenhouse",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Tiny rain trails descend outside the central conservatory glass. Only a few delicate fern tips barely sway. Fine transparent steam rises above the foreground botanical mug. Keep all structural glass bars and pots still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            280,
+            58
+          ],
+          [
+            307,
+            58
+          ],
+          [
+            307,
+            142
+          ],
+          [
+            280,
+            142
+          ]
+        ],
+        "alpha": 135,
+        "label": "center glass"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            331,
+            65
+          ],
+          [
+            365,
+            65
+          ],
+          [
+            365,
+            132
+          ],
+          [
+            331,
+            132
+          ]
+        ],
+        "alpha": 130,
+        "label": "right glass"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          52,
+          242,
+          82,
+          290
+        ],
+        "alpha": 50,
+        "label": "mug steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          176,
+          93,
+          215,
+          151
+        ],
+        "alpha": 80,
+        "label": "fern tips"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "73b06ad066e287475fbffbbab4b49569d26b26d56124f9f7b722c0c173aed73b"
+  },
+  {
+    "roomId": "dragon-hatchery",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Tiny natural flame motion in the large foreground lantern at the far right. The glowing warm nest in the stone alcove only has a barely perceptible local glow fluctuation, never hatching or moving an egg. Faint transparent steam above the dark front-left cup.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          558,
+          222,
+          584,
+          286
+        ],
+        "alpha": 175,
+        "label": "lantern flame"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          490,
+          121,
+          545,
+          159
+        ],
+        "alpha": 45,
+        "label": "nest warmth"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          120,
+          211,
+          140,
+          259
+        ],
+        "alpha": 50,
+        "label": "cup steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "d2c610058fa102241c9de54dfcff7840c2c03bca2559ceec11723b9b04a8eb53"
+  },
+  {
+    "roomId": "velaris-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Very small soft ripples animate only the distant river surface below the city. Keep reflections gently shimmering in place, no traveling boats or stars. The existing foreground candle flame softly flickers.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            270,
+            151
+          ],
+          [
+            463,
+            150
+          ],
+          [
+            507,
+            173
+          ],
+          [
+            428,
+            190
+          ],
+          [
+            316,
+            186
+          ]
+        ],
+        "alpha": 115,
+        "label": "river ripples"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "08d5a0a27e1ac42dbe3a1353831aceeff9439a261156ca60be35b4ceaf1fb697"
+  },
+  {
+    "roomId": "dragon-rider-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only the fire inside the right stone hearth flickers at low intensity. Very slight candle flame flutter along the mantel. Keep all dragons, skies and distant architecture absolutely motionless; do not add or animate flying creatures.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            550,
+            152
+          ],
+          [
+            573,
+            138
+          ],
+          [
+            599,
+            142
+          ],
+          [
+            599,
+            203
+          ],
+          [
+            550,
+            196
+          ]
+        ],
+        "alpha": 205,
+        "label": "hearth fire"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          491,
+          73,
+          513,
+          86
+        ],
+        "alpha": 150,
+        "label": "mantel candles"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "221eb579e62a1fce623fca61dd5f6ce458df9d98c2056feda7f23a5e3a873ca1"
+  },
+  {
+    "roomId": "hobbit-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. A tiny natural movement stirs just the leaf tips directly outside the round doorway, without branches swaying. A delicate transparent wisp of tea steam rises above the green foreground mug. The countryside, furniture, food and room stay still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          126,
+          230,
+          151,
+          282
+        ],
+        "alpha": 60,
+        "label": "green mug steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          188,
+          29,
+          233,
+          55
+        ],
+        "alpha": 85,
+        "label": "doorway leaf tips"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "a286ccaceabf5cd4d79cf6d893d7e9670770a99b7c683f3c3bb23f14a359a633"
+  },
+  {
+    "roomId": "animal-crossing-island",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Gentle small ocean ripples shimmer outside the left window and through the open arched door. A tiny transparent steam wisp rises above the green-patterned foreground cup. Preserve the miniature toy-like art and keep all furnishings perfectly still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            59,
+            117
+          ],
+          [
+            72,
+            117
+          ],
+          [
+            72,
+            135
+          ],
+          [
+            59,
+            135
+          ]
+        ],
+        "alpha": 110,
+        "label": "open left sea excluding pier and cliff"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            343,
+            110.5
+          ],
+          [
+            358,
+            110.5
+          ],
+          [
+            358,
+            113.5
+          ],
+          [
+            343,
+            113.5
+          ]
+        ],
+        "alpha": 110,
+        "label": "open doorway sea above railing"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          104,
+          206,
+          130,
+          251
+        ],
+        "alpha": 50,
+        "label": "cup steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "4f8a88ce047373fc2e05d11cc04d744f7609cef36e6c564dca073e2aeac3f4a4"
+  },
+  {
+    "roomId": "cinnamoroll-cloud-cafe",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. A delicate short transparent steam curl rises above the latte in the foreground. The distant soft clouds barely change contour in the large central opening. Keep the plush characters, cloud seats, pastries and all furniture completely still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          160,
+          214,
+          190,
+          260
+        ],
+        "alpha": 55,
+        "label": "latte steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          218,
+          106,
+          333,
+          142
+        ],
+        "alpha": 60,
+        "label": "distant clouds"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "4d2f9c1b9fbe073d4dc04ea175c9d953a12ba0f93f08aaebf60d1934d478ce2e"
+  },
+  {
+    "roomId": "witch-apothecary",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The already visible thin incense or kettle vapor at the far right curls gently upward, staying exactly near its source. Both existing candle flames remain perfectly still. No magical particles, potion bubbling, moving herbs or changing moon.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          550,
+          92,
+          589,
+          173
+        ],
+        "alpha": 110,
+        "label": "existing vapor"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "740b8b2949e231a4dcad48fb7d85378d49204cca65995d414931be28c3de6723"
+  },
+  {
+    "roomId": "kyoto-teahouse",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Fine rain falls only in the open garden beyond the veranda. Tiny ripples spread across the small garden water surface. A fine transparent steam wisp rises above the tea cup on the right. Shoji doors, hanging ornament and indoor objects stay fixed.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            102,
+            59
+          ],
+          [
+            178,
+            44
+          ],
+          [
+            200,
+            163
+          ],
+          [
+            135,
+            182
+          ]
+        ],
+        "alpha": 110,
+        "label": "garden rain"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          233,
+          169,
+          291,
+          194
+        ],
+        "alpha": 140,
+        "label": "garden stream"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          427,
+          218,
+          454,
+          262
+        ],
+        "alpha": 50,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "06b94f00cf444501d702320467f609f633b27df35127198ef84f48cb820524c0"
+  },
+  {
+    "roomId": "oxford-library",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Animate only the existing low fire inside the far-right fireplace. Preserve the foreground candle and its single original flame completely still. All pages, walls, windows, cups and room lighting remain steady.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          563,
+          172,
+          595,
+          207
+        ],
+        "alpha": 210,
+        "label": "right fire"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "8304d1bd962ec7e9fc740f2d71c67ff8deb050bd3e6af43d9a74e831960b9357"
+  },
+  {
+    "roomId": "capybara-onsen",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Warm thin steam drifts very slowly just above the hot pool. Small ripples move gently on the water around the two completely still resting capybaras. The narrow waterfall on the far right pours calmly downward. Preserve animal bodies, faces, citrus, stone and architecture exactly.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            198,
+            199
+          ],
+          [
+            266,
+            192
+          ],
+          [
+            300,
+            211
+          ],
+          [
+            388,
+            205
+          ],
+          [
+            400,
+            224
+          ],
+          [
+            496,
+            232
+          ],
+          [
+            479,
+            247
+          ],
+          [
+            295,
+            237
+          ]
+        ],
+        "alpha": 115,
+        "label": "pool surface avoiding animals"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          283,
+          145,
+          333,
+          195
+        ],
+        "alpha": 85,
+        "label": "pool vapor"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            490,
+            155
+          ],
+          [
+            508,
+            144
+          ],
+          [
+            505,
+            177
+          ],
+          [
+            484,
+            198
+          ],
+          [
+            473,
+            193
+          ]
+        ],
+        "alpha": 170,
+        "label": "waterfall"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "d9cc7211d876963ab7bbfd3214d098c469c80bd38aa69f5092f547ead008be03"
+  },
+  {
+    "roomId": "pokemon-research-cottage",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The small existing stove fire at the far left flickers warmly. Faint transparent steam rises above the nearby cream mug. Keep sleeping creatures, terrariums, notebooks and the whole sunny landscape perfectly still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          32,
+          144,
+          59,
+          169
+        ],
+        "alpha": 200,
+        "label": "stove fire"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          120,
+          174,
+          141,
+          208
+        ],
+        "alpha": 55,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "882647bfb41fb98dbfb25e820063b119a5194f1f88d6db1771d16249eb2e7509"
+  },
+  {
+    "roomId": "sakura-garden",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. A few existing blossom clusters beyond the open window tremble almost imperceptibly in a light breeze. Tiny ripples animate the courtyard pond at the lower center outside. No new airborne petals or leaves, and all petals lying on the desk remain fixed.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            222,
+            177
+          ],
+          [
+            306,
+            173
+          ],
+          [
+            363,
+            195
+          ],
+          [
+            348,
+            207
+          ],
+          [
+            244,
+            204
+          ]
+        ],
+        "alpha": 130,
+        "label": "garden pond"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "369fa1f048350d3f18220d2c1604da68f9ce4f08782fac6e22d85981adbcb28f"
+  },
+  {
+    "roomId": "paris-attic",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Fine transparent steam curls above the blue floral coffee mug in the foreground right. The outermost small leaves on the balcony plant barely stir. Curtains, chairs and city skyline are completely still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          413,
+          221,
+          439,
+          274
+        ],
+        "alpha": 60,
+        "label": "coffee steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          290,
+          130,
+          331,
+          159
+        ],
+        "alpha": 80,
+        "label": "balcony leaves"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "3c9d654bfc3406d8e5eb83613b6c293ee467a062018da7de3346d1927f76799e"
+  },
+  {
+    "roomId": "underwater-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Very soft underwater light caustics evolve inside the broad blue panes at the center, without changing room exposure. No moving fish, schools, sharks or creatures: they remain frozen in the reference composition. A thin short steam wisp rises above the front-left tea cup.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            230,
+            71
+          ],
+          [
+            310,
+            69
+          ],
+          [
+            309,
+            119
+          ],
+          [
+            247,
+            135
+          ],
+          [
+            224,
+            125
+          ]
+        ],
+        "alpha": 65,
+        "label": "underwater light center"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            335,
+            65
+          ],
+          [
+            398,
+            53
+          ],
+          [
+            406,
+            100
+          ],
+          [
+            340,
+            128
+          ]
+        ],
+        "alpha": 65,
+        "label": "underwater light right"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          100,
+          244,
+          125,
+          288
+        ],
+        "alpha": 45,
+        "label": "tea steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          243,
+          93,
+          282,
+          126
+        ],
+        "alpha": 0,
+        "label": "preserve shark silhouette"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "18d34d3b5229d0a9e0e77b56a978997725a0167999ab6df763fef47ae149c882"
+  },
+  {
+    "roomId": "moonlit-observatory",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only a delicate transparent wisp rises above the foreground dark tea cup. Existing tiny flames in the low lanterns beside the balcony flicker gently. No twinkling stars, moving moon, cloud drift or telescope motion.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          443,
+          226,
+          469,
+          272
+        ],
+        "alpha": 55,
+        "label": "tea steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          199,
+          202,
+          210,
+          216
+        ],
+        "alpha": 140,
+        "label": "left low flame",
+        "mode": "light-only"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          422,
+          184,
+          434,
+          201
+        ],
+        "alpha": 130,
+        "label": "right low flame",
+        "mode": "light-only"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "97879723c13a7b5d85593d83f5a264b97baeba63ab1a19e73a4c264c18489894"
+  },
+  {
+    "roomId": "frog-pond-studio",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Tiny calm water ripples pass around the existing lily pads outside the studio. Plants and pads remain anchored; no frogs jump and no new animals appear. Faint transparent tea steam rises above the front-left botanical cup.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            270,
+            181
+          ],
+          [
+            284,
+            177
+          ],
+          [
+            296,
+            171
+          ],
+          [
+            321,
+            172
+          ],
+          [
+            328,
+            181
+          ],
+          [
+            324,
+            188
+          ],
+          [
+            287,
+            187
+          ],
+          [
+            270,
+            189
+          ]
+        ],
+        "alpha": 35,
+        "label": "restrained open-water ripples excluding lily pads"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "010f8538b727158e25232962bed74ae6e29094c08eeb613db1469bcfe9a4f82c"
+  },
+  {
+    "roomId": "kuromi-midnight-desk",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only a very thin transparent wisp of warm drink steam curls directly above the black-and-lilac mug at the front right. Keep every plush character, lamp, star, moon and curtain absolutely still. Quiet believable heat motion, no magical effects.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          485,
+          210,
+          518,
+          260
+        ],
+        "alpha": 60,
+        "label": "mug steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "d4c5d67be47b751a95ce3ce89e02217774a843ee1abaefc13f38f96a0993a37d"
+  },
+  {
+    "roomId": "antique-workshop",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The sleeping cat on the lower-right chair breathes almost imperceptibly without repositioning. Preserve the original single clock pendulum completely still. Everything else, including hanging violins and the view, stays still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          528,
+          252,
+          588,
+          285
+        ],
+        "alpha": 110,
+        "label": "sleeping cat torso"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "d7d5e307dbd60c1a6e16600e091c5f6e3868883195003085d24a8e157ca68f66"
+  },
+  {
+    "roomId": "minecraft-cottage",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Tiny existing hearth flames flicker at the lower left and the foreground lantern flame flickers gently within its block-built enclosure. Very fine rain falls beyond the open doorway. Preserve rigid voxel geometry and original pixel texture, no smoothing or morphing.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          22,
+          181,
+          57,
+          222
+        ],
+        "alpha": 220,
+        "label": "hearth fire"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          546,
+          250,
+          568,
+          285
+        ],
+        "alpha": 150,
+        "label": "front lantern",
+        "mode": "light-only"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            384,
+            54
+          ],
+          [
+            432,
+            54
+          ],
+          [
+            432,
+            144
+          ],
+          [
+            384,
+            144
+          ]
+        ],
+        "alpha": 120,
+        "label": "doorway rain"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "3d862638a81559967f3b930301aa65c8fe600e91d5158fa802e6931bf33d0aff"
+  },
+  {
+    "roomId": "hateno-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Preserve all leaf and branch geometry. Only subtle filtered daylight varies over the existing nearest window leaves, using bounded luminance derived from the generated frames. The village, mountains, brush holder and room remain completely still; no steam.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          166,
+          9,
+          230,
+          40
+        ],
+        "alpha": 85,
+        "label": "filtered daylight on fixed window leaves",
+        "mode": "light-only"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "77f55f01d81556917ae184a35f1444c7fd340b86b4c38fb53f4917d1447d1b72"
+  },
+  {
+    "roomId": "sumeru-akademiya",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The narrow distant waterfalls in the central green landscape flow gently downward within their exact existing channels. A few leaf tips on the hanging plant near the right edge barely tremble. All stonework, lamps and manuscripts are perfectly still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            397,
+            124
+          ],
+          [
+            421,
+            126
+          ],
+          [
+            419,
+            159
+          ],
+          [
+            409,
+            166
+          ],
+          [
+            399,
+            149
+          ]
+        ],
+        "alpha": 155,
+        "label": "distant waterfall"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "c4a52ca80a50ee546807e2c7e9d2e1d038181ff7b7ae2854386e98a8650be1b3"
+  },
+  {
+    "roomId": "mage-archive",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The small existing fire in the far-right fireplace flickers quietly inside its stone opening. A very fine transparent steam wisp rises above the pale cup on the front-left desk. No moving books, papers, chandelier or meadow.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          557,
+          211,
+          587,
+          247
+        ],
+        "alpha": 200,
+        "label": "right hearth"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          114,
+          226,
+          135,
+          263
+        ],
+        "alpha": 50,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "c487ac189bde530d53484807ed72396e71c7bc83b83ca9aefaa200df64047379"
+  },
+  {
+    "roomId": "cyberpunk-rain-loft",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Fine exterior rain slides down the big glass panes. Very small ripples shimmer on the distant canal, while neon signs and towers remain constant. Keep all indoor objects still and do not animate vehicles or introduce people.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            280,
+            166
+          ],
+          [
+            343,
+            162
+          ],
+          [
+            433,
+            184
+          ],
+          [
+            426,
+            200
+          ],
+          [
+            300,
+            192
+          ]
+        ],
+        "alpha": 100,
+        "label": "canal reflections"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "2222b8b20cad93101d439282d421690644a277c0dd75e80929d970627acf827b"
+  },
+  {
+    "roomId": "secret-door-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only thin transparent steam curls upward a short distance above the owl mug on the foreground left. The little door stays closed, doll and decorations remain still, moon and stars do not move. Comfortable quiet atmosphere, no spooky surprises or magic.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          105,
+          203,
+          132,
+          249
+        ],
+        "alpha": 60,
+        "label": "owl mug steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "8987dd3ad9ff0aa1000f34f73b6d525983df68fe04c7d7ebd93a93c31d92ad1a"
+  },
+  {
+    "roomId": "nevermore-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Very small candle flame flickers occur on the right side of the gothic room and in the left shelf candle cluster. Keep overall light absolutely stable. Rainclouds beyond the stained glass, sculptures, flowers and ink bottle remain still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          551,
+          164,
+          561,
+          192
+        ],
+        "alpha": 170,
+        "label": "right candle",
+        "mode": "light-only"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          523,
+          140,
+          531,
+          161
+        ],
+        "alpha": 150,
+        "label": "back candle",
+        "mode": "light-only"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          18,
+          122,
+          30,
+          137
+        ],
+        "alpha": 120,
+        "label": "shelf candles",
+        "mode": "light-only"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "f89e52af333f73726a9e5abfa0a02e743c66ae2ddb75d3e7b4598da315dfd6d8"
+  },
+  {
+    "roomId": "autumn-bakery",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. A fine transparent steam curl rises above the foreground patterned coffee cup. The small candle in its glass holder at the left softly flickers. A few autumn leaf tips outside the window barely stir; no falling leaves or patrons.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          191,
+          195,
+          219,
+          245
+        ],
+        "alpha": 60,
+        "label": "coffee steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          104,
+          227,
+          121,
+          256
+        ],
+        "alpha": 160,
+        "label": "glass candle",
+        "mode": "light-only"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "46ca602a7f118e5c2d2c748f3e3cc6eab9c822f75cdea021c85a18fb7896e55a"
+  },
+  {
+    "roomId": "seoul-night-cafe",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Fine rain trails descend outside the broad central window. Faint steam rises above the white foreground cup. The small candle beside the cake flickers gently. The city reflections remain stable without flashing signs or people.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          184,
+          187,
+          210,
+          237
+        ],
+        "alpha": 60,
+        "label": "tea steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          529,
+          277,
+          544,
+          295
+        ],
+        "alpha": 160,
+        "label": "glass candle",
+        "mode": "light-only"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "71031759fd010c945a8a50fab9a6fac4b357621670701dee0d88ad1dea28151a"
+  },
+  {
+    "roomId": "cloud-cafe",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The foreground white cup gives off one delicate transparent steam wisp. Soft distant clouds evolve almost imperceptibly in place, without camera travel. The sleeping orange-and-white cat on the left bench stays perfectly still, and all furniture and plants remain fixed.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          162,
+          188,
+          186,
+          234
+        ],
+        "alpha": 55,
+        "label": "tea steam"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          307,
+          143,
+          409,
+          177
+        ],
+        "alpha": 65,
+        "label": "distant cloud contour"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "48f1074cd757c66af54fc936e1841f4873473437b561eff0310394159872e7fd"
+  },
+  {
+    "roomId": "tiny-mouse-house",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The tiny existing fire inside the miniature hearth near the lower center-left flickers gently. A delicate tea steam wisp rises above the blue-patterned cup at the front right. No mice or furniture move; preserve the miniature proportions exactly.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          522,
+          208,
+          552,
+          258
+        ],
+        "alpha": 60,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "932be95c4d7253b75d22f10ad197213800d24029cd57986d79417733082ce07c"
+  },
+  {
+    "roomId": "woodland-treehouse",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Thin distant forest mist drifts almost imperceptibly between the trees beyond the central opening. One fine transparent tea steam wisp rises above the small cup near the desk center-right. Keep branches, bridge, houses, hanging lanterns and foreground leaves still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          278,
+          142,
+          379,
+          205
+        ],
+        "alpha": 80,
+        "label": "distant forest mist"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          383,
+          217,
+          406,
+          253
+        ],
+        "alpha": 55,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "6a627534b77d158db28ee582a37f8ddefa634077822f412bc65cf7c3c2b37217"
+  },
+  {
+    "roomId": "aurora-cabin",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. The existing northern lights form a very slow soft ripple within the green ribbons in the upper window. The small fire inside the stove at far left flickers naturally. All mountains, stars, lake and interior remain fixed; no exposure pulses.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          9,
+          177,
+          44,
+          210
+        ],
+        "alpha": 215,
+        "label": "stove flame"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "ded9c2d65df708d8b7e35aca707b7f1badc37d8aaa403d4fb259be9696a4eb52"
+  },
+  {
+    "roomId": "lighthouse-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Gentle ocean wavelets move naturally only within open sea below the distant sailboat, with safe margins from every cliff, rock, rail and telescope. Boats and rigid scenery remain fixed. A thin transparent tea steam wisp rises above the blue patterned cup near the left desk.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            332,
+            172
+          ],
+          [
+            400,
+            171
+          ],
+          [
+            436,
+            175
+          ],
+          [
+            440,
+            187
+          ],
+          [
+            323,
+            187
+          ]
+        ],
+        "alpha": 145,
+        "label": "open sea below boat, clear of cliffs"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          135,
+          210,
+          153,
+          238
+        ],
+        "alpha": 50,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "3c3fd8b122553a014832e5054b36e414eaf6d71b490db8987ee20a99d662a7bf"
+  },
+  {
+    "roomId": "desert-casita",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Small ripples gently spread across two open-water portions of the shallow courtyard pool, with generous fixed margins around the entire stone fountain pedestal and tiled pool edges. Faint transparent tea steam rises above the patterned cup on the front right. Fountain stone, architecture and plants remain still.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            275,
+            217
+          ],
+          [
+            314,
+            217
+          ],
+          [
+            314,
+            235
+          ],
+          [
+            275,
+            235
+          ]
+        ],
+        "alpha": 150,
+        "label": "pool water left of stone pedestal"
+      },
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            356,
+            221
+          ],
+          [
+            386,
+            221
+          ],
+          [
+            406,
+            235
+          ],
+          [
+            356,
+            235
+          ]
+        ],
+        "alpha": 150,
+        "label": "pool water right of stone pedestal"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          423,
+          223,
+          446,
+          249
+        ],
+        "alpha": 50,
+        "label": "tea steam"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "d52c94a072735e4e82561d08a0a9d5d183e1abd316505de14b04b3f23a3812c2"
+  },
+  {
+    "roomId": "stationery-studio",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Only a thin transparent wisp of warm drink steam rises gently a short distance above the blue-patterned mug at the foreground right. All plants, vases, paper, stamps, curtains, instruments and shadows stay still.",
+    "regions": [
+      {
+        "kind": "ellipse",
+        "points": [
+          439,
+          159,
+          462,
+          183
+        ],
+        "alpha": 60,
+        "label": "mug steam above ceramic rim"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "e5ce38056e9e42b9529cab3a1fd0244495f2cab50ee108e12f75819ed3899f25"
+  },
+  {
+    "roomId": "thousand-sunny-study",
+    "model": "seedance1_5",
+    "duration": 4,
+    "prompt": "Animate this exact reference into a calm living study background. Absolutely locked tripod camera, zero pan, zoom, tilt, parallax, cuts or framing drift. Preserve the exact original art style, geometry, composition, colors, furniture and object identities. Real-world gentle physics, very small localized motion at normal speed; never a slow-motion effect. No added subjects, people, animals, text, sparks, floating particles or magical effects. Everything not specifically named is perfectly still. No light switching, strobing, exposure breathing, morphing or dramatic wind. Return to the identical starting composition for a seamless loop. Silent video. Small calm ocean wavelets move beyond the open shipboard balcony, entirely below the fixed horizon. A tiny warm flame flickers within the front-right lantern. Ship, rigging, sail, horizon, furniture and maps are completely fixed; no ship rocking.",
+    "regions": [
+      {
+        "kind": "polygon",
+        "points": [
+          [
+            241,
+            128
+          ],
+          [
+            421,
+            130
+          ],
+          [
+            417,
+            162
+          ],
+          [
+            224,
+            162
+          ]
+        ],
+        "alpha": 150,
+        "label": "sea wavelets"
+      },
+      {
+        "kind": "ellipse",
+        "points": [
+          529,
+          213,
+          546,
+          243
+        ],
+        "alpha": 160,
+        "label": "lantern flame",
+        "mode": "light-only"
+      }
+    ],
+    "coordinateSpace": [
+      600,
+      338
+    ],
+    "sourceArtworkSha256": "da79a538c80f453e34482e121b838fb6798c236b1dba1e857e00edaa718340ab"
+  }
+]

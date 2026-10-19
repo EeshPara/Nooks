@@ -48,3 +48,25 @@ test('cancellation becoming unsafe after a switch confirmation still prevents lo
  const h=harness();h.setDirty(true);h.switchDraft();h.localCancellation.current={scope:'account:alice',draftId:'draft-a',requestId:'request-a'};h.cancellationUnsafe.current=true;
  h.completeLeave();assert.equal(h.state.switches,0);assert.equal(typeof h.pending,'function');h.requestClose();assert.equal(h.state.closes,1);assert.equal(h.localCancellation.current.requestId,'request-a');
 });
+
+// Replay the actual dialog effect, without rerendering, as React StrictMode does.
+const surface=ts.createSourceFile('Surface.tsx',named('StudioSurface'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+let surfaceEffect;
+function findEffect(node){if(ts.isCallExpression(node)&&node.expression.getText(surface)==='useEffect')surfaceEffect=node.arguments[0].getText(surface);ts.forEachChild(node,findEffect);}
+findEffect(surface);assert.ok(surfaceEffect);
+const surfaceCode=ts.transpileModule(`export function surfaceHarness(){
+ const state={opened:0,closed:0,dismissed:0},dismissRef={current:null},dismiss=()=>state.dismissed++;
+ class HTMLElement{};const document={activeElement:null},window={requestAnimationFrame:()=>{}};
+ const dialog={current:{showModal:()=>state.opened++,close:()=>state.closed++}};
+ const setup=${surfaceEffect};return{state,dismissRef,dismiss,setup};
+}`,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
+const {surfaceHarness}=await import('data:text/javascript;base64,'+Buffer.from(surfaceCode).toString('base64'));
+test('StrictMode setup-cleanup-setup reinstalls close without a rerender during a held save',()=>{
+ const h=surfaceHarness();const firstCleanup=h.setup();assert.equal(h.dismissRef.current,h.dismiss);
+ firstCleanup();assert.equal(h.dismissRef.current,null);
+ const secondCleanup=h.setup();h.dismissRef.current();assert.equal(h.state.dismissed,1);assert.equal(h.state.opened,2);
+ secondCleanup();assert.equal(h.dismissRef.current,null);assert.equal(h.state.closed,2);
+});
+test('an old dialog cleanup cannot clear a newer dialog dismiss handle',()=>{
+ const h=surfaceHarness(),cleanup=h.setup(),newer=()=>{};h.dismissRef.current=newer;cleanup();assert.equal(h.dismissRef.current,newer);
+});

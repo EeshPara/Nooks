@@ -1,0 +1,42 @@
+{
+  "runId": "ef577aab-6408-4958-9646-992397e133b3",
+  "project": "lcfcjglybfeozyrjjikk",
+  "createdAt": "2026-10-08T11:30:18.990Z",
+  "updatedAt": "2026-10-08T11:31:19.651Z",
+  "phase": "cleanup",
+  "users": [
+    {
+      "id": "43ec50f0-bf97-43b2-b723-62f64ca091cb",
+      "email": "nooks-soak-ef577aab-6408-4958-9646-992397e133b3-0@example.invalid",
+      "creation": "confirmed",
+      "account": "04890a6d-9d99-4257-84fc-f82b13cd3ba2",
+      "roomIndex": 0,
+      "cleaned": true
+    },
+    {
+      "id": "9bbe8997-dcd6-4ba6-9c3d-aabdb2a871a0",
+      "email": "nooks-soak-ef577aab-6408-4958-9646-992397e133b3-1@example.invalid",
+      "creation": "confirmed",
+      "account": "47443a1c-4628-4b1b-9d88-0203fac22fc3",
+      "roomIndex": 0,
+      "cleaned": true
+    }
+  ],
+  "rooms": [
+    {
+      "index": 0,
+      "ownerAuthId": "43ec50f0-bf97-43b2-b723-62f64ca091cb",
+      "ownerAccount": "04890a6d-9d99-4257-84fc-f82b13cd3ba2",
+      "requestId": "a18749f2-49b1-4d37-bd63-b56765c72d97",
+      "id": "fa6cd9fd-2101-4b87-b148-37bea25e2da2",
+      "cleaned": true
+    }
+  ],
+  "throttleTopics": [
+    "account:04890a6d-9d99-4257-84fc-f82b13cd3ba2",
+    "account:47443a1c-4628-4b1b-9d88-0203fac22fc3",
+    "nook:fa6cd9fd-2101-4b87-b148-37bea25e2da2"
+  ],
+  "sharedDirectoryTopic": "nooks:directory (never delete)",
+  "containsCredentials": false
+}

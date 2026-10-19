@@ -6,7 +6,6 @@ function declarations(file,names){const source=fs.readFileSync(new URL(file,impo
 async function compile(source){const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ES2022,target:ts.ScriptTarget.ES2022}}).outputText;return import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));}
 const {create}=await compile(`export function create(draft,onTool,requestChatGPT,isEmbedded=true){
  const visibility={current:{visible:true,epoch:0}};const currentPresentation=(ticket,scope)=>currentOwner(scope)&&visibility.current.visible&&visibility.current.epoch===ticket;const state={draft,error:'',notice:'',busy:'',conflict:null,artwork:null,stops:0}; const owner='account:alice',dirty=true,mounted={current:true},currentOwner=()=>mounted.current;
- const visibility={current:{visible:true,epoch:0}}; const currentPresentation=(ticket)=>mounted.current&&visibility.current.visible&&visibility.current.epoch===ticket;
  const currentDraft={current:draft},currentSnapshot={current:''},currentBusy={current:''},cancelingArtwork={current:null},localCancellation={current:null},cancellationUnsafe={current:false};
  const tool={current:onTool},artworkRequestKeys={current:new Map()},artworkController={current:{stop:()=>state.stops++}},records=new Map();
  const cancellationStore={get:id=>records.get(id),retain:record=>{records.set(record.draftId,record);return true;},acknowledge:record=>{if(records.get(record.draftId)?.requestId===record.requestId)records.delete(record.draftId);}};

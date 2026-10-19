@@ -8,14 +8,14 @@ import { createIntrospectionVerifier, requestIdentity } from './auth.mjs';
 import { NookCreator, creatorToolNames } from './nook-creator.mjs';
 import { listNookCreatorTools } from './nook-creator-tools.mjs';
 import { communityTools, isCommunityTool, invokeCommunity } from './community-tools.mjs';
-import { listTools, toolNames, UI_URI, LEGACY_UI_URI, UI_MIME, UI_ICON } from './tools.mjs';
+import { listTools, toolNames, UI_URI, LEGACY_UI_URI, UI_MIME, UI_ICONS } from './tools.mjs';
 import { studyInstructions } from './study-instructions.mjs';
 import { createRequestLimiter } from './request-limiter.mjs';
 import { createOperationalMonitor, failureStatus } from './operations.mjs';
 
 const PROJECT_ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 import { LEGACY_PROTOCOL_VERSIONS, validateMcpRequest, mcpResult, discoverResult } from './protocol.mjs';
-const types = { '.mp4': 'video/mp4', '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.woff': 'font/woff', '.ttf': 'font/ttf', '.otf': 'font/otf' };
+const types = { '.mp3': 'audio/mpeg', '.mp4': 'video/mp4', '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.woff': 'font/woff', '.ttf': 'font/ttf', '.otf': 'font/otf' };
 const loopback = host => ['localhost', '127.0.0.1', '[::1]', '::1'].includes(host);
 const json = (response, status, value, headers = {}) => { response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...headers }); response.end(JSON.stringify(value)); };
 
@@ -102,10 +102,10 @@ export async function widgetHtml(distDirectory, { assetOrigin = null } = {}) {
     for (const entry of await readdir(directory, { withFileTypes: true })) {
       const relative = `${prefix}${entry.name}`;
       if (entry.isDirectory()) await walk(join(directory, entry.name), `${relative}/`);
-      else if (entry.isFile() && /\.(png|jpe?g|webp|svg|ico|woff2?|ttf|otf|mp4)$/i.test(entry.name)) {
+      else if (entry.isFile() && /\.(png|jpe?g|webp|svg|ico|woff2?|ttf|otf|mp4|mp3)$/i.test(entry.name)) {
         const url = '/' + relative;
         if (!html.includes(url)) continue;
-        if (assetOrigin && /\.(png|jpe?g|webp|svg|ico|mp4)$/i.test(entry.name)) {
+        if (assetOrigin && /\.(png|jpe?g|webp|svg|ico|woff2?|ttf|otf|mp4|mp3)$/i.test(entry.name)) {
           // Only files found in the trusted build registry are rewritten. No tool
           // argument or user-provided URL can broaden the widget's asset origin.
           html = html.split(url).join(assetOrigin + url);
@@ -182,7 +182,7 @@ export function createNotableServer(options = {}) {
     if (structuredContent.workspace) structuredContent.workspace.backend = options.storeForIdentity && user ? 'supabase' : demo ? 'local-demo' : 'local';
     return { structuredContent, content: [{ type: 'text', text: name === 'workspace_render' ? 'Your study nook is ready.' : name === 'workspace_get' ? `${structuredContent.workspace.artifacts.length} study items loaded${user ? '' : ' in read-only preview'}.` : 'Your study space is updated.' }] };
   };
-  const serverInfo = { name: 'notable-study-space', title: 'Nooks', version: '0.1.0', icons: [{ src: UI_ICON, mimeType: 'image/svg+xml' }] };
+  const serverInfo = { name: 'notable-study-space', title: 'Nooks', version: '0.1.0', icons: UI_ICONS };
   const capabilities = { tools: { listChanged: false }, resources: { subscribe: false, listChanged: false } };
   const instructions = studyInstructions({ connectedCommunity: !!options.storeForIdentity });
   const rpc = async (message, request, protocol) => {
@@ -202,7 +202,7 @@ export function createNotableServer(options = {}) {
         try { return reply(modelSafeResult(await invoke(message.params.name, message.params.arguments ?? {}, request))); }
         catch (error) { return reply(failure(error, request)); }
       }
-      case 'resources/list': return reply({ resources: [{ uri: UI_URI, name: 'notable-study-workspace', title: 'Nooks study space', description: 'Interactive notes, quizzes, flashcards, study games, planning and focus workspace.', mimeType: UI_MIME }] });
+      case 'resources/list': return reply({ resources: [{ uri: UI_URI, name: 'notable-study-workspace', title: 'Nooks study space', icons: UI_ICONS, description: 'Interactive notes, quizzes, flashcards, study games, planning and focus workspace.', mimeType: UI_MIME }] });
       case 'resources/templates/list': return reply({ resourceTemplates: [] });
       case 'resources/read': {
         const context = requestContexts.get(request); monitor.setOperation(context, 'resources_read'); context.phase = 'resource';
@@ -212,7 +212,7 @@ export function createNotableServer(options = {}) {
           const resourceDomains = publicUrl ? [publicUrl.origin] : [];
           // Spotify owns the optional user-loaded player; it receives no study API access.
           const frameDomains = ['https://open.spotify.com'];
-          return reply({ contents: [{ uri: message.params.uri, mimeType: UI_MIME, text, _meta: { ui: { prefersBorder: false, csp: { connectDomains: ['https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com'], resourceDomains, frameDomains } }, 'openai/ui': { availableDisplayModes: ['fullscreen'] }, 'openai/widgetDescription': 'Nooks study workspace with saved learning materials, practice modes, focus timers, nook-specific collections and sample community lobbies.', 'openai/widgetPrefersBorder': false, 'openai/widgetCSP': { connect_domains: ['https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com'], resource_domains: resourceDomains, frame_domains: frameDomains } } }] });
+          return reply({ contents: [{ uri: message.params.uri, mimeType: UI_MIME, text, _meta: { ui: { prefersBorder: false, csp: { connectDomains: [...resourceDomains, 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com'], resourceDomains, frameDomains } }, 'openai/ui': { availableDisplayModes: ['fullscreen'] }, 'openai/widgetDescription': 'Nooks study workspace with saved learning materials, practice modes, focus timers, nook-specific collections and sample community lobbies.', 'openai/widgetPrefersBorder': false, 'openai/widgetCSP': { connect_domains: [...resourceDomains, 'https://files.oaiusercontent.com', 'https://sdmntprwestus.oaiusercontent.com', 'https://sdmntprcentralus.oaiusercontent.com'], resource_domains: resourceDomains, frame_domains: frameDomains } } }] });
         } catch (error) { monitor.failure(context, error, { status: 500, transportStatus: 200 }); return { jsonrpc: '2.0', id: message.id, error: { code: -32603, message: 'Build the frontend before reading the UI resource.', data: { requestId: context.requestId } } }; }
       }
       default: return { jsonrpc: '2.0', id: message.id, error: { code: -32601, message: 'Method not found' } };
@@ -226,11 +226,11 @@ export function createNotableServer(options = {}) {
       const allowedHost = publicUrl ? requestedHost === publicUrl.hostname : loopback(requestedHost);
       if (!allowedHost) return json(response, 403, { error: 'Invalid host.' });
       const requestedPath = new URL(request.url ?? '/', `http://${request.headers.host}`).pathname;
-      const publicMedia = !!publicUrl && request.method === 'GET' && (/^\/(?:images|assets)\/.+\.(?:png|jpe?g|webp|svg|ico)$/i.test(requestedPath) || /^\/media\/(?:opening-film|nooks)\/[a-z0-9-]+\.mp4$/i.test(requestedPath));
+      const publicMedia = !!publicUrl && request.method === 'GET' && (/^\/(?:images|assets)\/.+\.(?:png|jpe?g|webp|svg|ico|mp3)$/i.test(requestedPath) || /^\/(?:fonts|assets)\/.+\.(?:woff2?|ttf|otf)$/i.test(requestedPath) || /^\/media\/(?:opening-film|nooks)\/[a-z0-9-]+\.mp4$/i.test(requestedPath));
       const origin = request.headers.origin;
       if (origin && publicMedia) {
-        // Build images and the opening film are public. Sandbox media requests do not
-        // opening the authenticated API or MCP transport to other origins.
+        // Build media and fonts are public. Sandbox asset requests do not
+        // open the authenticated API or MCP transport to other origins.
         response.setHeader('Access-Control-Allow-Origin', '*');
       } else if (origin) {
         let url; try { url = new URL(origin); } catch { return json(response, 403, { error: 'Invalid origin.' }); }

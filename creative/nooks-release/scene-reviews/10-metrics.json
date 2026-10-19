@@ -1,0 +1,26 @@
+{
+  "witch-apothecary": {
+    "videoSha256": "e77431500cee42c10ed2aec2f483f40bc797096ae765a6ce0559fc1276ab1fec",
+    "frames": 84,
+    "meanFrameChange": 0.020729380194388667,
+    "seamChange": 0.03733181423611111,
+    "seamVsTypical": 1.8009131911342255,
+    "insideMaskChange": 0.9622066511767415,
+    "outsideMaskChange": 5.5021777512657854e-05,
+    "peakBrightnessChange": 0.012955005787041785,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  },
+  "kyoto-teahouse": {
+    "videoSha256": "9a11c431c68a986ceb08c2079473467af58bb56586caa06a23c2872e8731c74e",
+    "frames": 84,
+    "meanFrameChange": 0.023748561956157963,
+    "seamChange": 0.0631228298611111,
+    "seamVsTypical": 2.657964300223385,
+    "insideMaskChange": 0.3612094736958224,
+    "outsideMaskChange": 6.658572849119377e-05,
+    "peakBrightnessChange": 0.015673828125002842,
+    "qaMatchesVideo": true,
+    "technicalPass": true
+  }
+}

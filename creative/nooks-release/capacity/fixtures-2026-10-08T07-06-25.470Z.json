@@ -1,0 +1,513 @@
+{
+  "project": "lcfcjglybfeozyrjjikk",
+  "startedAt": "2026-10-08T07:06:25.471Z",
+  "users": [
+    {
+      "id": "c8cbd3a2-6718-4631-a677-1b8b29010ce7",
+      "account": "d5518c8f-37ca-41e9-b8ad-41f97f9cdc8c"
+    },
+    {
+      "id": "0d5175be-1ac0-436f-af87-5e9a6bb88881",
+      "account": "9d42d17a-e1e9-449b-ba75-a0fefdb8e250"
+    },
+    {
+      "id": "1686f776-eb7a-490e-831d-82c68b641535",
+      "account": "eb8b9ee9-d7e5-45c0-a19d-73aafaf50c1c"
+    },
+    {
+      "id": "a3006db5-c0db-4ddb-8ebc-017d67af9292",
+      "account": "15e695b8-69c4-4ac9-beb1-bba6c8e050ff"
+    },
+    {
+      "id": "a80c8016-429c-4a51-9a04-ae7db06e33ec",
+      "account": "f02f1183-5fb3-490e-b256-f3b377194de7"
+    },
+    {
+      "id": "c748832e-61d3-4797-92e3-cbdfaeba7c9e",
+      "account": "1292a8ea-996e-42b1-9715-1c4b8a9693b1"
+    },
+    {
+      "id": "b5a2c6cf-c295-48ca-a38f-34d400727077",
+      "account": "6db26f17-164c-42e2-bf01-71ce2bc33dc5"
+    },
+    {
+      "id": "cd43fd23-bbe4-43da-a08d-a6e5470914f7",
+      "account": "c61ae424-a0f4-4159-ab1f-6f6e8d2d49d6"
+    },
+    {
+      "id": "66e6d142-c152-44ee-b23a-39b76b386f8c",
+      "account": "93ad5463-0724-4438-86c2-6be7f7216d65"
+    },
+    {
+      "id": "6eb9025a-b8cf-4320-a0fb-47f4cabf08e8",
+      "account": "c580a12a-bb22-4adf-9b19-af36d206fcc0"
+    },
+    {
+      "id": "ad6d0c97-f2e6-4d8e-be35-bd6cad09535f",
+      "account": "6642402b-bcd1-4024-a22e-259435d87f04"
+    },
+    {
+      "id": "e880f270-7b26-48e5-84c7-9ab3e3564b69",
+      "account": "d84e3441-7503-480a-acac-b0eaa13b4f81"
+    },
+    {
+      "id": "b490bbe7-1d37-4d50-bc89-d7b676d9e751",
+      "account": "e93235fb-3a7e-428c-bf69-ec7216cb9356"
+    },
+    {
+      "id": "f30a6049-ef20-4880-970b-5ff6dabf0cbc",
+      "account": "eae07191-0746-4574-8bc1-18188c83d145"
+    },
+    {
+      "id": "c931f7e2-00d7-4047-ae4b-88a68929b37d",
+      "account": "95fee05b-3468-487e-b1c5-1e611a8b6bd6"
+    },
+    {
+      "id": "f1e1f0af-e59f-48f9-991e-0a91f3777500",
+      "account": "e733f590-c86d-46f1-9edd-9b2e882553ea"
+    },
+    {
+      "id": "0599f470-dd3f-467d-aaf9-6341cd51c698",
+      "account": "ab031e3d-b91c-4101-a794-9cbb7ef57b33"
+    },
+    {
+      "id": "b54ebdd3-bf9a-43b2-9d12-91d677f9ef57",
+      "account": "e061a57a-2631-46ce-ade6-2ac9027e1d2f"
+    },
+    {
+      "id": "32f31b58-5002-487f-919a-09c1cd8961bd",
+      "account": "4414d77d-f59f-4b64-b649-9b1bf24492fe"
+    },
+    {
+      "id": "141f788a-302e-415e-8735-3b0ba4259f0a",
+      "account": "bd7f2386-5262-47c9-a7cd-c01b431797a8"
+    },
+    {
+      "id": "40fea4d1-c8ab-4783-9f22-a63d13110a5c",
+      "account": "776fb196-20b3-434f-8d36-b0916b1e1813"
+    },
+    {
+      "id": "29554818-2f2d-40ee-a64b-5715e9a2f692",
+      "account": "5f6ddddd-97e1-4aa5-a9ba-7eb6d1242094"
+    },
+    {
+      "id": "a3bfbd7a-79fe-4f48-b983-0b359c3bc54d",
+      "account": "9d0648ec-2521-4a05-9797-ed3276e58b69"
+    },
+    {
+      "id": "b27d05fd-2260-4a94-8d4e-f9ba3b83e5a1",
+      "account": "e5057e82-aa0a-4913-aaf3-d0a0ef82dc2a"
+    },
+    {
+      "id": "ee63f954-d6e4-4eb2-ae60-63b0ba2d876a",
+      "account": "442d39cc-8074-4a0b-9522-81094a615100"
+    },
+    {
+      "id": "e44f8f5f-6682-4338-8ba6-023f027e0cd6",
+      "account": "45294914-8c0b-4ab9-9426-3255744d5d4f"
+    },
+    {
+      "id": "e5da585a-5fdd-4a70-93f9-2bb5f29b033b",
+      "account": "c81fab8a-13d0-414d-8adb-84372c5a3e53"
+    },
+    {
+      "id": "30d75769-9438-4dfe-8954-01bbc0028446",
+      "account": "122469c3-148e-416c-935c-7e08a17bd7e4"
+    },
+    {
+      "id": "dd438f2c-3df6-4626-acfe-a32aef505b26",
+      "account": "3a4e93ec-5694-45fe-abac-a0454f594e0e"
+    },
+    {
+      "id": "efffbc33-777b-41f4-ac2b-4ac68559509e",
+      "account": "90b696d3-86be-4a64-9a14-6811a56d973e"
+    },
+    {
+      "id": "d751096c-cb58-4f9f-bbb7-a8f8d5750d06",
+      "account": "286151b7-4b37-4714-8c6a-f65f34dbe23c"
+    },
+    {
+      "id": "4ccb7fc3-493f-446d-8a5e-c3bb47c2bb64",
+      "account": "997f64b3-6110-478c-84c1-3e788a1f973e"
+    },
+    {
+      "id": "d4636133-b585-434b-9ca2-e257a035421e",
+      "account": "68188061-f942-4bff-8ca0-b75583582f87"
+    },
+    {
+      "id": "1d0b7a39-c7bf-46bb-85fd-14f61f18bb09",
+      "account": "089f4db9-ccb1-4438-a1fe-484cd65b88fd"
+    },
+    {
+      "id": "261a5b08-f227-4603-afa0-b0b26e727846",
+      "account": "4b8169e8-89e7-4df0-95e4-88d78bb326a7"
+    },
+    {
+      "id": "a27bd5ce-e644-4fc4-b3b1-5a960618a63e",
+      "account": "dd986492-d9d8-44f9-bde0-edd3fc9ef619"
+    },
+    {
+      "id": "1c1b1f08-aa9a-4e0e-b958-99f4aa4b7906",
+      "account": "9dd063c7-f4b7-4a05-af2b-ee25f6489d83"
+    },
+    {
+      "id": "3dcf1812-94cb-4d9b-978d-c9f4fb49c7e3",
+      "account": "57faa8a8-0f53-4893-a51d-6b42d497ced5"
+    },
+    {
+      "id": "879c1be2-15c3-426d-817a-32a09f0d50e0",
+      "account": "1ccbd00f-a821-4265-967f-27416491f3e2"
+    },
+    {
+      "id": "36a409f5-ffa3-45c8-a9ac-5139fe6ff910",
+      "account": "45de3875-5ae4-462f-abc7-e9881bdbbaf2"
+    },
+    {
+      "id": "df858c06-8ed3-4d09-b534-95f30689c086",
+      "account": "843ff1a0-df23-4cc6-8868-d83f0855e993"
+    },
+    {
+      "id": "2acb5911-e5c8-4272-862b-28e8ce3b1665",
+      "account": "7731ad80-884b-489d-b99d-2270f1dd5563"
+    },
+    {
+      "id": "643bdf42-0f68-42cb-af24-4fc5c1af89eb",
+      "account": "0cb647d4-4e8b-416c-b48a-9a3883163c62"
+    },
+    {
+      "id": "84c03afc-9d04-4a3e-92f5-910fca1a364c",
+      "account": "a2b08652-a03c-4a52-9b45-7860b8294a4b"
+    },
+    {
+      "id": "840bf478-a3a4-4069-8d5f-5fd0577c58b2",
+      "account": "bb75aa2c-0197-476b-81ef-3899afd275c8"
+    },
+    {
+      "id": "fc421a63-7b68-458e-ac8c-400ecc74d7c1",
+      "account": "33573126-0a50-451c-9bdc-03abe86cd5e6"
+    },
+    {
+      "id": "b22678fc-d041-484f-9247-56f1743184d2",
+      "account": "336cfff0-0ba5-4a54-b8d2-49af40279826"
+    },
+    {
+      "id": "93799572-0963-4eb5-909c-afbef136d4eb",
+      "account": "a7911d1c-110a-4e4d-8063-8185409b5930"
+    },
+    {
+      "id": "58af8c20-d3fb-4c58-bfe4-d864c344dff3",
+      "account": "784aa6c7-219c-4331-9be2-bb064907e7a3"
+    },
+    {
+      "id": "0e4b0f12-ec16-45d5-b54c-ccd01fe2933e",
+      "account": "4c6d32fe-761d-4070-b554-bf5234e3c8bb"
+    },
+    {
+      "id": "22283a4e-21e0-42e5-a76f-d9182b613878",
+      "account": "93450d61-2c4f-4b1c-b0de-5909ee729779"
+    },
+    {
+      "id": "e2d2acf7-c567-469f-a79a-bddb56e036f6",
+      "account": "4dc6ce50-916a-4d32-91dd-063bec5088a7"
+    },
+    {
+      "id": "9522f5be-c308-49ed-97bf-26410cdc915a",
+      "account": "1318f2cd-ea45-4d70-803a-cadb4bc011d5"
+    },
+    {
+      "id": "816b468c-492e-4b61-b287-f0388c7e94b5",
+      "account": "2d096366-9c9c-4b43-8eec-73926f70ca20"
+    },
+    {
+      "id": "11f4e70e-b11c-4c25-85ef-35cab15fb8a9",
+      "account": "66fdc340-5c8e-4b9f-ba89-d0d1935f7a6c"
+    },
+    {
+      "id": "e5e03f84-8b42-4cf3-9cbb-f682b48a7b70",
+      "account": "dbcbf114-b99e-4a7d-a560-8dc209fcd4d0"
+    },
+    {
+      "id": "73edfa15-dd3b-4997-adbc-f7dbd599adeb",
+      "account": "39795087-5124-48aa-a5da-b6d9de0690b6"
+    },
+    {
+      "id": "2d4dc1a5-3e22-4ebb-8afa-7aab18ace97a",
+      "account": "02f77a76-4f17-4b93-b70a-b0a2fc14c2f1"
+    },
+    {
+      "id": "bd661579-d81f-440f-9942-26fbc850fb60",
+      "account": "28f5ed46-4335-432a-b2c0-b71728cd7749"
+    },
+    {
+      "id": "e3b18cf0-764f-46e4-8233-dd53414eaa69",
+      "account": "97d469ae-f6cc-43f6-b362-de2dfd0cb4af"
+    },
+    {
+      "id": "59324589-d1ad-4d43-8aaa-d5d80e1fef3d",
+      "account": "1180d467-b5a3-4923-a535-b18a140e810b"
+    },
+    {
+      "id": "ac5afb3b-f37d-45ac-b0e2-471c0bb382fb",
+      "account": "313c3027-4ab1-408b-a5b0-53594be3bcc5"
+    },
+    {
+      "id": "1e58ebfd-5215-4753-8e8a-9d719efc51fc",
+      "account": "ee8aba9c-4279-4ebf-a164-bdc8dc10d57b"
+    },
+    {
+      "id": "f8aade5d-93e2-4ac4-bde7-26736593cb9b",
+      "account": "f995777b-adba-4ea8-ba9b-a76977366333"
+    },
+    {
+      "id": "dce4f57f-ad66-4ad5-9433-7362b042533d",
+      "account": "e13872a5-d504-4a1e-a72e-0d8172e15071"
+    },
+    {
+      "id": "34400e24-0119-4cc9-a081-4fd25903595b",
+      "account": "0743c06c-b458-4f91-a90a-d1489a35ce05"
+    },
+    {
+      "id": "2278e9a6-c121-4c34-9a3e-689271525895",
+      "account": "681a7949-42fe-4b42-a50b-64c867c3ed51"
+    },
+    {
+      "id": "a50bb8b3-8a3d-4557-bcdc-f6b9cfac3fb4",
+      "account": "b1130fd0-0ae8-46c6-9af9-b018d8dd755a"
+    },
+    {
+      "id": "db0eb957-0ce4-4848-b448-a6109ee87524",
+      "account": "ae32a0f0-4845-4dcf-958f-9e84218ea70b"
+    },
+    {
+      "id": "5417581a-a523-46a6-9b91-46053335144f",
+      "account": "86be42cf-61bf-4780-9f08-6fd88fc5ac57"
+    },
+    {
+      "id": "e6a20bd0-71c0-43bf-b236-34837328989b",
+      "account": "3ae0d35f-eec2-4f57-977c-abfc1319e5fa"
+    },
+    {
+      "id": "48cc553d-4363-441f-83bf-7687b25c134f",
+      "account": "2301df2c-5628-4702-8b6f-cfdb8009babe"
+    },
+    {
+      "id": "b0d99f33-e134-43fd-9522-53060b3f0820",
+      "account": "35fd8ed6-d3f7-4150-b814-c82ee4244902"
+    },
+    {
+      "id": "aca93325-5030-432a-9d10-3faaccf20d92",
+      "account": "18ed26d5-5012-4575-9a2e-abcf1826b6e8"
+    },
+    {
+      "id": "1765ea3b-1912-405f-86c4-18999d3daf58",
+      "account": "50461377-dc84-4865-ae27-6f7e94650d70"
+    },
+    {
+      "id": "e830f4aa-6d3d-4681-a35b-983547e4b10e",
+      "account": "a99b197b-4147-44dc-9d2e-a6203148261b"
+    },
+    {
+      "id": "6a67c9a2-8cc4-4002-9771-94c35a191f0b",
+      "account": "56c3b52d-3e67-4077-ac50-da6a40718dc0"
+    },
+    {
+      "id": "49ea8da7-f849-4836-b36a-c496d2f71ed6",
+      "account": "7aa7db38-39d4-4971-962a-079240867ebe"
+    },
+    {
+      "id": "ba1cf000-5048-43d6-a851-4b52da2fe31b",
+      "account": "874cd667-7251-4f4a-ad7f-9a46e1422318"
+    },
+    {
+      "id": "ae4b796e-e31a-4cea-9294-559a50a29eef",
+      "account": "62017cb4-fe4f-4c46-9665-bfd2291d3a88"
+    },
+    {
+      "id": "b18a049b-a847-43dc-b5c1-5774ef8e187c",
+      "account": "5117332c-83ee-42ef-959d-0dbaaf7cad82"
+    },
+    {
+      "id": "cffff586-c46c-4a40-90de-9de4257c08f1",
+      "account": "37c327a6-adb3-4594-8ad0-41ceb75b681b"
+    },
+    {
+      "id": "9b58cfed-d11f-4ccc-8c75-221f5c3936cd",
+      "account": "36863fb0-279b-4980-8a59-39865633eef5"
+    },
+    {
+      "id": "dac067bf-c8c9-4521-9bd3-7657a1fc5aee",
+      "account": "7a6fc7db-578b-43b7-bf90-dfcaa0983253"
+    },
+    {
+      "id": "9c4ba2c6-487d-4878-bc2a-472c9e0fd660",
+      "account": "86f2425c-0bd2-447b-b3e9-8a0efc816575"
+    },
+    {
+      "id": "45303243-d9c4-45ad-866f-daee49f4ef02",
+      "account": "b304bb10-062a-4244-bec9-f82915791864"
+    },
+    {
+      "id": "0f0686e2-2f02-4052-b795-df62801f3230",
+      "account": "722bae4a-3194-4639-a501-955d28b86c02"
+    },
+    {
+      "id": "eb96f19e-50bb-4443-9e47-226a207ffc2a",
+      "account": "4a2fa473-ab28-44d6-8be0-4c0aaab6c02e"
+    },
+    {
+      "id": "ec43a058-a5cd-4caa-80fc-bf675bc75929",
+      "account": "277f69d0-5b7c-4078-8aa2-ad45dce3c19e"
+    },
+    {
+      "id": "1d4ecc33-75a2-40f8-a6d6-e61341a986b4",
+      "account": "7ddf3979-f9da-4f20-9a15-aec4bbd7429f"
+    },
+    {
+      "id": "b88037a8-239f-4e0d-9de7-8a78a3c73afc",
+      "account": "3b79830b-7df7-4d9d-b7a5-0d1eeed13ab4"
+    },
+    {
+      "id": "6d58df96-9a34-4d02-b251-150fd5cfe711",
+      "account": "053656a5-cb08-445f-a4ec-4c368fe30a2d"
+    },
+    {
+      "id": "64621ede-73e8-4bce-8a27-37b82e74d298",
+      "account": "0360697c-c879-4756-b3bd-1bccc30b2e70"
+    },
+    {
+      "id": "09e21488-5647-44ab-b191-f5b86841aed5",
+      "account": "3cd33d62-9e9a-4e0d-8caa-e44f779b8107"
+    },
+    {
+      "id": "c7f9d55f-32e5-4e21-b28e-bb93f84037b5",
+      "account": "25ccefa6-cd27-4868-94b6-a85c595e20eb"
+    },
+    {
+      "id": "4f2b8717-6b6d-4f6b-b627-7004c13c9bef",
+      "account": "6eba2e87-4358-4c2d-a870-6878ee979803"
+    },
+    {
+      "id": "4a4a103e-54ab-46f7-9185-17bf6e5fdea2",
+      "account": "b0a101c0-cc04-419b-8c7e-c9dada444129"
+    },
+    {
+      "id": "4a86627e-0917-4147-86ae-cb1fdee3166d",
+      "account": "53058af2-acf2-4790-a7fa-0c827a8802d2"
+    },
+    {
+      "id": "95b6ff68-ebd7-4c51-b3f9-e0bf1fd9abc4",
+      "account": "17fdc2c2-086d-4615-8ce4-a66c5cb1b76d"
+    },
+    {
+      "id": "bfb7db79-5b9b-4fba-926e-55e9df4a46eb",
+      "account": "6ab0a45b-32ba-4b1f-8d75-f04215004094"
+    }
+  ],
+  "rooms": [
+    "a7695876-8665-4386-8e91-5e691ee4858e"
+  ],
+  "throttleTopics": [
+    "account:d5518c8f-37ca-41e9-b8ad-41f97f9cdc8c",
+    "account:9d42d17a-e1e9-449b-ba75-a0fefdb8e250",
+    "account:eb8b9ee9-d7e5-45c0-a19d-73aafaf50c1c",
+    "account:15e695b8-69c4-4ac9-beb1-bba6c8e050ff",
+    "account:f02f1183-5fb3-490e-b256-f3b377194de7",
+    "account:1292a8ea-996e-42b1-9715-1c4b8a9693b1",
+    "account:6db26f17-164c-42e2-bf01-71ce2bc33dc5",
+    "account:c61ae424-a0f4-4159-ab1f-6f6e8d2d49d6",
+    "account:93ad5463-0724-4438-86c2-6be7f7216d65",
+    "account:c580a12a-bb22-4adf-9b19-af36d206fcc0",
+    "account:6642402b-bcd1-4024-a22e-259435d87f04",
+    "account:d84e3441-7503-480a-acac-b0eaa13b4f81",
+    "account:e93235fb-3a7e-428c-bf69-ec7216cb9356",
+    "account:eae07191-0746-4574-8bc1-18188c83d145",
+    "account:95fee05b-3468-487e-b1c5-1e611a8b6bd6",
+    "account:e733f590-c86d-46f1-9edd-9b2e882553ea",
+    "account:ab031e3d-b91c-4101-a794-9cbb7ef57b33",
+    "account:e061a57a-2631-46ce-ade6-2ac9027e1d2f",
+    "account:4414d77d-f59f-4b64-b649-9b1bf24492fe",
+    "account:bd7f2386-5262-47c9-a7cd-c01b431797a8",
+    "account:776fb196-20b3-434f-8d36-b0916b1e1813",
+    "account:5f6ddddd-97e1-4aa5-a9ba-7eb6d1242094",
+    "account:9d0648ec-2521-4a05-9797-ed3276e58b69",
+    "account:e5057e82-aa0a-4913-aaf3-d0a0ef82dc2a",
+    "account:442d39cc-8074-4a0b-9522-81094a615100",
+    "account:45294914-8c0b-4ab9-9426-3255744d5d4f",
+    "account:c81fab8a-13d0-414d-8adb-84372c5a3e53",
+    "account:122469c3-148e-416c-935c-7e08a17bd7e4",
+    "account:3a4e93ec-5694-45fe-abac-a0454f594e0e",
+    "account:90b696d3-86be-4a64-9a14-6811a56d973e",
+    "account:286151b7-4b37-4714-8c6a-f65f34dbe23c",
+    "account:997f64b3-6110-478c-84c1-3e788a1f973e",
+    "account:68188061-f942-4bff-8ca0-b75583582f87",
+    "account:089f4db9-ccb1-4438-a1fe-484cd65b88fd",
+    "account:4b8169e8-89e7-4df0-95e4-88d78bb326a7",
+    "account:dd986492-d9d8-44f9-bde0-edd3fc9ef619",
+    "account:9dd063c7-f4b7-4a05-af2b-ee25f6489d83",
+    "account:57faa8a8-0f53-4893-a51d-6b42d497ced5",
+    "account:1ccbd00f-a821-4265-967f-27416491f3e2",
+    "account:45de3875-5ae4-462f-abc7-e9881bdbbaf2",
+    "account:843ff1a0-df23-4cc6-8868-d83f0855e993",
+    "account:7731ad80-884b-489d-b99d-2270f1dd5563",
+    "account:0cb647d4-4e8b-416c-b48a-9a3883163c62",
+    "account:a2b08652-a03c-4a52-9b45-7860b8294a4b",
+    "account:bb75aa2c-0197-476b-81ef-3899afd275c8",
+    "account:33573126-0a50-451c-9bdc-03abe86cd5e6",
+    "account:336cfff0-0ba5-4a54-b8d2-49af40279826",
+    "account:a7911d1c-110a-4e4d-8063-8185409b5930",
+    "account:784aa6c7-219c-4331-9be2-bb064907e7a3",
+    "account:4c6d32fe-761d-4070-b554-bf5234e3c8bb",
+    "account:93450d61-2c4f-4b1c-b0de-5909ee729779",
+    "account:4dc6ce50-916a-4d32-91dd-063bec5088a7",
+    "account:1318f2cd-ea45-4d70-803a-cadb4bc011d5",
+    "account:2d096366-9c9c-4b43-8eec-73926f70ca20",
+    "account:66fdc340-5c8e-4b9f-ba89-d0d1935f7a6c",
+    "account:dbcbf114-b99e-4a7d-a560-8dc209fcd4d0",
+    "account:39795087-5124-48aa-a5da-b6d9de0690b6",
+    "account:02f77a76-4f17-4b93-b70a-b0a2fc14c2f1",
+    "account:28f5ed46-4335-432a-b2c0-b71728cd7749",
+    "account:97d469ae-f6cc-43f6-b362-de2dfd0cb4af",
+    "account:1180d467-b5a3-4923-a535-b18a140e810b",
+    "account:313c3027-4ab1-408b-a5b0-53594be3bcc5",
+    "account:ee8aba9c-4279-4ebf-a164-bdc8dc10d57b",
+    "account:f995777b-adba-4ea8-ba9b-a76977366333",
+    "account:e13872a5-d504-4a1e-a72e-0d8172e15071",
+    "account:0743c06c-b458-4f91-a90a-d1489a35ce05",
+    "account:681a7949-42fe-4b42-a50b-64c867c3ed51",
+    "account:b1130fd0-0ae8-46c6-9af9-b018d8dd755a",
+    "account:ae32a0f0-4845-4dcf-958f-9e84218ea70b",
+    "account:86be42cf-61bf-4780-9f08-6fd88fc5ac57",
+    "account:3ae0d35f-eec2-4f57-977c-abfc1319e5fa",
+    "account:2301df2c-5628-4702-8b6f-cfdb8009babe",
+    "account:35fd8ed6-d3f7-4150-b814-c82ee4244902",
+    "account:18ed26d5-5012-4575-9a2e-abcf1826b6e8",
+    "account:50461377-dc84-4865-ae27-6f7e94650d70",
+    "account:a99b197b-4147-44dc-9d2e-a6203148261b",
+    "account:56c3b52d-3e67-4077-ac50-da6a40718dc0",
+    "account:7aa7db38-39d4-4971-962a-079240867ebe",
+    "account:874cd667-7251-4f4a-ad7f-9a46e1422318",
+    "account:62017cb4-fe4f-4c46-9665-bfd2291d3a88",
+    "account:5117332c-83ee-42ef-959d-0dbaaf7cad82",
+    "account:37c327a6-adb3-4594-8ad0-41ceb75b681b",
+    "account:36863fb0-279b-4980-8a59-39865633eef5",
+    "account:7a6fc7db-578b-43b7-bf90-dfcaa0983253",
+    "account:86f2425c-0bd2-447b-b3e9-8a0efc816575",
+    "account:b304bb10-062a-4244-bec9-f82915791864",
+    "account:722bae4a-3194-4639-a501-955d28b86c02",
+    "account:4a2fa473-ab28-44d6-8be0-4c0aaab6c02e",
+    "account:277f69d0-5b7c-4078-8aa2-ad45dce3c19e",
+    "account:7ddf3979-f9da-4f20-9a15-aec4bbd7429f",
+    "account:3b79830b-7df7-4d9d-b7a5-0d1eeed13ab4",
+    "account:053656a5-cb08-445f-a4ec-4c368fe30a2d",
+    "account:0360697c-c879-4756-b3bd-1bccc30b2e70",
+    "account:3cd33d62-9e9a-4e0d-8caa-e44f779b8107",
+    "account:25ccefa6-cd27-4868-94b6-a85c595e20eb",
+    "account:6eba2e87-4358-4c2d-a870-6878ee979803",
+    "account:b0a101c0-cc04-419b-8c7e-c9dada444129",
+    "account:53058af2-acf2-4790-a7fa-0c827a8802d2",
+    "account:17fdc2c2-086d-4615-8ce4-a66c5cb1b76d",
+    "account:6ab0a45b-32ba-4b1f-8d75-f04215004094",
+    "nook:a7695876-8665-4386-8e91-5e691ee4858e"
+  ],
+  "sharedDirectoryTopic": "nooks:directory (never delete shared topic)"
+}
